@@ -1,4 +1,4 @@
-package convoy.quick;
+package convoy.objects;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -23,10 +23,12 @@ public class Attachments {
      * Method addAttachment(File file) adds attachment
      *
      * @param file file to be attached
+     * 
+     * @return attachments.add(file)
      */
-    public void addAttachment(File file) {
+    public boolean addAttachment(File file) {
 
-        attachments.add(file);
+        return attachments.add(file);
 
     }
 
@@ -52,7 +54,7 @@ public class Attachments {
      */
     public void removeAllAttachments() {
 
-        attachments = new ArrayList<>();
+       attachments.clear();
 
     }
 

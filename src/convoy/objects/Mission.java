@@ -1,4 +1,4 @@
-package convoy.quick;
+package convoy.objects;
 
 import java.sql.Time;
 import java.util.ArrayList;
@@ -27,8 +27,8 @@ public class Mission {
         numberOfVehicles = 2;
         missionStagingArea = "Staging Area";
         unitName = "Unit Name";
-        vehicles = new ArrayList<Vehicle>();
-        people = new ArrayList<Personnel>();
+        vehicles = new ArrayList<>();
+        people = new ArrayList<>();
         attachments = new Attachments();
         missionClassification = new Classification();
         missionLinkUpTime = new Time(7,0,0);
@@ -50,17 +50,17 @@ public class Mission {
      * @param dTM int value representing minutes use to instantiate missionDepartureTime
      * @param dTS int value representing seconds use to instantiate missionDepartureTime
      */
-    public Mission(int mNumber, String mName, int nOPersonnel, int nOVehicles,
-            String mSAreas, String uName, int lUH, int lUM, int lUS,
+    public Mission(int missionNumber, String missionName, int numberOfPersonnel, int numberOfVehicles,
+            String missionStagingArea, String unitName, int lUH, int lUM, int lUS,
             int dTH, int dTM, int dTS) {
-        missionNumber = mNumber;
-        missionName = mName;
-        numberOfPersonnel = nOPersonnel;
-        numberOfVehicles = nOVehicles;
-        missionStagingArea = mSAreas;
-        unitName = uName;
-        vehicles = new ArrayList<Vehicle>();
-        people = new ArrayList<Personnel>();
+        this.missionNumber = missionNumber;
+        this.missionName = missionName;
+        this.numberOfPersonnel = numberOfPersonnel;
+        this.numberOfVehicles = numberOfVehicles;
+        this.missionStagingArea = missionStagingArea;
+        this.unitName = unitName;
+        vehicles = new ArrayList<>();
+        people = new ArrayList<>();
         attachments = new Attachments();
         missionClassification = new Classification();
         missionLinkUpTime = new Time(lUH,lUM,lUS);
