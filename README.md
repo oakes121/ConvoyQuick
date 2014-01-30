@@ -1,8 +1,8 @@
 ConvoyQuick
 ===========
-<strong>Project Title:</strong> Convoy Project 
-<strong>Project Start Date:</strong> January 13th, 2014 
-<strong>Project Finish Date:</strong> May 9th, 2014
+<strong>Project Title:</strong> Convoy Project<br /> 
+<strong>Project Start Date:</strong> January 13th, 2014<br /> 
+<strong>Project Finish Date:</strong> May 9th, 2014<br /> 
 
 <strong><strong>Budget Information:</strong>
 
