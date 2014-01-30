@@ -1,7 +1,7 @@
 package convoy.quick;
 
 class Classification {
-    private String type;
+    private String type;                  
     private String status;
     
     public Classification() {
