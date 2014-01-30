@@ -3,6 +3,7 @@ package convoy.objects;
 import java.sql.Time;
 import java.util.ArrayList;
 
+
 public class Mission {
     private int missionNumber;                       // The designated mission number for the convoy
     private String missionName;                      // The designated mission name for the convoy 
@@ -67,19 +68,26 @@ public class Mission {
         missionDepartureTime = new Time(dTH,dTM,dTS);        
     }
     
-    public void addPersonnel(Personnel p) {
-        people.add(p);
+    /**
+     * Method addPersonnel(Personnel person) adds persons to mission
+     * @param person
+     * @return 
+     */
+    public boolean addPersonnel(Personnel person) {
+        
+        return people.add(person);
+        
     }
     
-    public void removePersonnel(Personnel p) {
-        int i = people.indexOf(p);
+    public void removePersonnel(Personnel person) {
+        int i = people.indexOf(person);
         if (i >= 0) {
             people.remove(i);
         }
     } 
     
-    public void addVehicle(Vehicle v) {
-        vehicles.add(v);
+    public boolean addVehicle(Vehicle vehicle) {
+        return vehicles.add(vehicle);
     }
     
     public void removeVehicle(Vehicle v) {
