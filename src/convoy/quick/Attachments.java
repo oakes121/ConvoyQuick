@@ -7,12 +7,13 @@ import java.util.ArrayList;
 
 public class Attachments {
     
-    private ArrayList<File> attachments; 
+    private ArrayList<File> attachments;
     //private List<File> attachments;
     
     /**
      * This constructor initializes attachments 
      */
+    
     public Attachments() {
         
         attachments = new ArrayList<>();
@@ -47,6 +48,7 @@ public class Attachments {
         }
         
     }
+    
     /**
      * Method removeAllAttachments() re-instantiates attachments
      */
@@ -62,6 +64,7 @@ public class Attachments {
      * @param file file to be retrieved
      * @return attachments.get(i) returns selected file or returns null
      */
+    
     public File getSingleAttachment(File file) {
         
         int i = attachments.indexOf(file);
