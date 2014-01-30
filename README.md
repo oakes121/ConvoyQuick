@@ -1,5 +1,8 @@
 ConvoyQuick
 ===========
+
+<strong>Convoy Quick creates convoy documentation to help save lives.</strong><br />
+<br >
 <strong>Project Title:</strong> Convoy Project<br /> 
 <strong>Project Start Date:</strong> January 13th, 2014<br /> 
 <strong>Project Finish Date:</strong> May 9th, 2014<br /> 
