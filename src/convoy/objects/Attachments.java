@@ -21,10 +21,8 @@ public class Attachments {
 
     /**
      * Method addAttachment(File file) adds attachment
-     *
      * @param file file to be attached
-     * 
-     * @return attachments.add(file)
+     * @return attachments.add(file) returns whether or not attachment was added
      */
     public boolean addAttachment(File file) {
 
@@ -34,23 +32,26 @@ public class Attachments {
 
     /**
      * Method removeAttachment(File file)
-     *
      * @param file file to be removed
+     * @return boolean returns whether or not attachment was removed
      */
-    public void removeAttachment(File file) {
+    public boolean removeAttachment(File file) {
 
         int i = attachments.indexOf(file);
 
         if (i >= 0) {
 
             attachments.remove(i);
+            return true;
 
         }
-
+        
+        return false;
+        
     }
 
     /**
-     * Method removeAllAttachments() re-instantiates attachments
+     * Method removeAllAttachments() removes all attachments
      */
     public void removeAllAttachments() {
 
@@ -60,7 +61,6 @@ public class Attachments {
 
     /**
      * Method getSingleAttachment(File file) gets a single file
-     *
      * @param file file to be retrieved
      * @return attachments.get(i) returns selected file or returns null
      */
