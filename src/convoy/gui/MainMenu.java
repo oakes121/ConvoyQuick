@@ -3,13 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package convoy.gui;
 
-import java.awt.Image;
-import java.io.File;
-import java.io.IOException;
-import java.net.URL;
+import java.awt.Color;
+import java.awt.Font;
 import javax.swing.ImageIcon;
 
 /**
@@ -17,14 +14,18 @@ import javax.swing.ImageIcon;
  * @author dizoo548
  */
 public class MainMenu extends javax.swing.JFrame {
-    
-    private static MainMenu frame = new MainMenu();
+
+    private static MainMenu frame = new MainMenu();    
 
     /**
      * Creates new form MainMenu
      */
     public MainMenu() {
         initComponents();
+        hideMenuBar();
+        doMainMenuFont();
+        setMainMenuButtonColor();
+        setMainMenuButtonColor();
     }
 
     /**
@@ -36,33 +37,110 @@ public class MainMenu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel2 = new javax.swing.JPanel();
+        mainMenuPanel = new javax.swing.JPanel();
+        mainMenuTitle = new javax.swing.JLabel();
+        newProjectPanel = new javax.swing.JPanel();
+        newProjectLabel = new javax.swing.JLabel();
+        loadProjectPanel = new javax.swing.JPanel();
+        loadProjectLabel = new javax.swing.JLabel();
+        menuBar = new javax.swing.JMenuBar();
+        fileMenu = new javax.swing.JMenu();
+        editMenu = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 255, 255));
+        setIconImage(new ImageIcon(getClass().getResource("/convoy/resources/images/humveeIcon.png")).getImage());
+        setName("mainWindow"); // NOI18N
         setPreferredSize(new java.awt.Dimension(1000, 800));
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        mainMenuPanel.setBackground(new java.awt.Color(255, 255, 255));
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+        mainMenuTitle.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        mainMenuTitle.setText("Convoy Quick");
+
+        newProjectLabel.setText("New Convoy");
+
+        javax.swing.GroupLayout newProjectPanelLayout = new javax.swing.GroupLayout(newProjectPanel);
+        newProjectPanel.setLayout(newProjectPanelLayout);
+        newProjectPanelLayout.setHorizontalGroup(
+            newProjectPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(newProjectPanelLayout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addComponent(newProjectLabel)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+        newProjectPanelLayout.setVerticalGroup(
+            newProjectPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(newProjectPanelLayout.createSequentialGroup()
+                .addGap(43, 43, 43)
+                .addComponent(newProjectLabel)
+                .addContainerGap(43, Short.MAX_VALUE))
         );
+
+        loadProjectLabel.setText("Load Convoy");
+
+        javax.swing.GroupLayout loadProjectPanelLayout = new javax.swing.GroupLayout(loadProjectPanel);
+        loadProjectPanel.setLayout(loadProjectPanelLayout);
+        loadProjectPanelLayout.setHorizontalGroup(
+            loadProjectPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(loadProjectPanelLayout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addComponent(loadProjectLabel)
+                .addContainerGap(35, Short.MAX_VALUE))
+        );
+        loadProjectPanelLayout.setVerticalGroup(
+            loadProjectPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loadProjectPanelLayout.createSequentialGroup()
+                .addContainerGap(44, Short.MAX_VALUE)
+                .addComponent(loadProjectLabel)
+                .addGap(42, 42, 42))
+        );
+
+        javax.swing.GroupLayout mainMenuPanelLayout = new javax.swing.GroupLayout(mainMenuPanel);
+        mainMenuPanel.setLayout(mainMenuPanelLayout);
+        mainMenuPanelLayout.setHorizontalGroup(
+            mainMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(mainMenuPanelLayout.createSequentialGroup()
+                .addGap(110, 110, 110)
+                .addGroup(mainMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(mainMenuPanelLayout.createSequentialGroup()
+                        .addComponent(newProjectPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(loadProjectPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(mainMenuTitle))
+                .addContainerGap(55, Short.MAX_VALUE))
+        );
+        mainMenuPanelLayout.setVerticalGroup(
+            mainMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(mainMenuPanelLayout.createSequentialGroup()
+                .addGap(66, 66, 66)
+                .addComponent(mainMenuTitle)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
+                .addGroup(mainMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(newProjectPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(loadProjectPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30))
+        );
+
+        menuBar.setName("menuBar"); // NOI18N
+
+        fileMenu.setText("File");
+        menuBar.add(fileMenu);
+
+        editMenu.setText("Edit");
+        menuBar.add(editMenu);
+
+        setJMenuBar(menuBar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(mainMenuPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(mainMenuPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -94,28 +172,65 @@ public class MainMenu extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(MainMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        
-        
-        
+
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                
-                URL iconURL = getClass().getResource("/convoy/resources/images/humveeIcon.jpg");
-                ImageIcon icon = new ImageIcon(iconURL);
-                
+
                 frame.setVisible(true);
                 frame.setLocationRelativeTo(null);
                 frame.setTitle("Convoy Quick - Convoy documentation creator to help save lives");
-                frame.setIconImage(icon.getImage());
-                
-                
+
             }
+
         });
+
     }
+
+    private void hideMenuBar() {
+
+        menuBar.setVisible(false);
+
+    }
+
+    private void doMainMenuFont() {
+        try {
+            
+            Font topSecretFont = Font.createFont(Font.TRUETYPE_FONT, getClass().getResourceAsStream("/convoy/resources/fonts/topSecret.ttf"));
+            topSecretFont = topSecretFont.deriveFont(Font.BOLD, 96f);
+            mainMenuTitle.setFont(topSecretFont);
+            
+            Font captureItFont = Font.createFont(Font.TRUETYPE_FONT, getClass().getResourceAsStream("/convoy/resources/fonts/captureIt.ttf"));
+            captureItFont = captureItFont.deriveFont(Font.BOLD, 48f);
+            newProjectLabel.setFont(captureItFont);
+            loadProjectLabel.setFont(captureItFont);
+
+            
+        } catch (Exception ex) {
+            ex.printStackTrace();;
+        }
+
+    }
+    
+    private void setMainMenuButtonColor(){
         
+       Color desertStormColor = new  Color(194, 178, 128);
+       
+       newProjectPanel.setBackground(desertStormColor);
+       loadProjectPanel.setBackground(desertStormColor);
+        
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JMenu editMenu;
+    private javax.swing.JMenu fileMenu;
+    private javax.swing.JLabel loadProjectLabel;
+    private javax.swing.JPanel loadProjectPanel;
+    private javax.swing.JPanel mainMenuPanel;
+    private javax.swing.JLabel mainMenuTitle;
+    private javax.swing.JMenuBar menuBar;
+    private javax.swing.JLabel newProjectLabel;
+    private javax.swing.JPanel newProjectPanel;
     // End of variables declaration//GEN-END:variables
+
 }
