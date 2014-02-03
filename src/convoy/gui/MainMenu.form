@@ -112,6 +112,10 @@
           </Properties>
         </Component>
         <Container class="javax.swing.JPanel" name="newProjectPanel">
+          <Events>
+            <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="newProjectPanelMouseEntered"/>
+            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="newProjectPanelMouseExited"/>
+          </Events>
 
           <Layout>
             <DimensionLayout dim="0">
@@ -142,6 +146,10 @@
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="loadProjectPanel">
+          <Events>
+            <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="loadProjectPanelMouseEntered"/>
+            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="loadProjectPanelMouseExited"/>
+          </Events>
 
           <Layout>
             <DimensionLayout dim="0">

@@ -60,6 +60,15 @@ public class MainMenu extends javax.swing.JFrame {
         mainMenuTitle.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         mainMenuTitle.setText("Convoy Quick");
 
+        newProjectPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                newProjectPanelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                newProjectPanelMouseExited(evt);
+            }
+        });
+
         newProjectLabel.setText("New Convoy");
 
         javax.swing.GroupLayout newProjectPanelLayout = new javax.swing.GroupLayout(newProjectPanel);
@@ -78,6 +87,15 @@ public class MainMenu extends javax.swing.JFrame {
                 .addComponent(newProjectLabel)
                 .addContainerGap(43, Short.MAX_VALUE))
         );
+
+        loadProjectPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                loadProjectPanelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                loadProjectPanelMouseExited(evt);
+            }
+        });
 
         loadProjectLabel.setText("Load Convoy");
 
@@ -148,6 +166,30 @@ public class MainMenu extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void newProjectPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newProjectPanelMouseEntered
+        
+        newProjectPanel.setBorder(new BevelBorder(BevelBorder.LOWERED));
+        
+    }//GEN-LAST:event_newProjectPanelMouseEntered
+
+    private void loadProjectPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loadProjectPanelMouseEntered
+        
+        loadProjectPanel.setBorder(new BevelBorder(BevelBorder.LOWERED));
+        
+    }//GEN-LAST:event_loadProjectPanelMouseEntered
+
+    private void loadProjectPanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loadProjectPanelMouseExited
+        
+        loadProjectPanel.setBorder(new BevelBorder(BevelBorder.RAISED));
+        
+    }//GEN-LAST:event_loadProjectPanelMouseExited
+
+    private void newProjectPanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newProjectPanelMouseExited
+        
+        newProjectPanel.setBorder(new BevelBorder(BevelBorder.RAISED));
+        
+    }//GEN-LAST:event_newProjectPanelMouseExited
 
     /**
      * @param args the command line arguments
