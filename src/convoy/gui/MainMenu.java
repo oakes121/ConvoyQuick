@@ -202,6 +202,7 @@ public class MainMenu extends javax.swing.JFrame {
             
             Font captureItFont = Font.createFont(Font.TRUETYPE_FONT, getClass().getResourceAsStream("/convoy/resources/fonts/captureIt.ttf"));
             captureItFont = captureItFont.deriveFont(Font.BOLD, 48f);
+            
             newProjectLabel.setFont(captureItFont);
             loadProjectLabel.setFont(captureItFont);
 
