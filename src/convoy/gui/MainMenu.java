@@ -9,6 +9,7 @@ import java.awt.Color;
 import java.awt.Font;
 import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
+import javax.swing.border.BevelBorder;
 
 /**
  *
@@ -115,9 +116,9 @@ public class MainMenu extends javax.swing.JFrame {
         mainMenuPanelLayout.setVerticalGroup(
             mainMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mainMenuPanelLayout.createSequentialGroup()
-                .addGap(50, 50, 50)
+                .addGap(47, 47, 47)
                 .addComponent(mainMenuTitle)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
                 .addGroup(mainMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(newProjectPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(loadProjectPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -224,7 +225,10 @@ public class MainMenu extends javax.swing.JFrame {
        
        newProjectPanel.setBackground(desertStormColor);
        loadProjectPanel.setBackground(desertStormColor);
-        
+       
+       newProjectPanel.setBorder(new BevelBorder(BevelBorder.RAISED));
+       loadProjectPanel.setBorder(new BevelBorder(BevelBorder.RAISED));
+       
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
