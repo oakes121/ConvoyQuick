@@ -24,7 +24,6 @@ public class MainMenu extends javax.swing.JFrame {
      */
     public MainMenu() {
         initComponents();
-        hideMenuBar();
         doMainMenuFont();
         setMainMenuButtonColor();
         setMainMenuButtonColor();
@@ -45,9 +44,6 @@ public class MainMenu extends javax.swing.JFrame {
         newProjectLabel = new javax.swing.JLabel();
         loadProjectPanel = new javax.swing.JPanel();
         loadProjectLabel = new javax.swing.JLabel();
-        menuBar = new javax.swing.JMenuBar();
-        fileMenu = new javax.swing.JMenu();
-        editMenu = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -62,6 +58,9 @@ public class MainMenu extends javax.swing.JFrame {
         mainMenuTitle.setText("Convoy Quick");
 
         newProjectPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                newProjectPanelMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 newProjectPanelMouseEntered(evt);
             }
@@ -137,22 +136,12 @@ public class MainMenu extends javax.swing.JFrame {
             .addGroup(mainMenuPanelLayout.createSequentialGroup()
                 .addGap(47, 47, 47)
                 .addComponent(mainMenuTitle)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 594, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 615, Short.MAX_VALUE)
                 .addGroup(mainMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(newProjectPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(loadProjectPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30))
         );
-
-        menuBar.setName("menuBar"); // NOI18N
-
-        fileMenu.setText("File");
-        menuBar.add(fileMenu);
-
-        editMenu.setText("Edit");
-        menuBar.add(editMenu);
-
-        setJMenuBar(menuBar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -162,7 +151,7 @@ public class MainMenu extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mainMenuPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(mainMenuPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 821, Short.MAX_VALUE)
         );
 
         pack();
@@ -191,6 +180,10 @@ public class MainMenu extends javax.swing.JFrame {
         newProjectPanel.setBorder(new BevelBorder(BevelBorder.RAISED));
         
     }//GEN-LAST:event_newProjectPanelMouseExited
+
+    private void newProjectPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newProjectPanelMouseClicked
+        mainMenuPanel.setVisible(false);
+    }//GEN-LAST:event_newProjectPanelMouseClicked
 
     /**
      * @param args the command line arguments
@@ -235,12 +228,6 @@ public class MainMenu extends javax.swing.JFrame {
 
     }
 
-    private void hideMenuBar() {
-
-        menuBar.setVisible(false);
-
-    }
-
     private void doMainMenuFont() {
         try {
             
@@ -275,13 +262,10 @@ public class MainMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu editMenu;
-    private javax.swing.JMenu fileMenu;
     private javax.swing.JLabel loadProjectLabel;
     private javax.swing.JPanel loadProjectPanel;
     private javax.swing.JPanel mainMenuPanel;
     private javax.swing.JLabel mainMenuTitle;
-    private javax.swing.JMenuBar menuBar;
     private javax.swing.JLabel newProjectLabel;
     private javax.swing.JPanel newProjectPanel;
     // End of variables declaration//GEN-END:variables
