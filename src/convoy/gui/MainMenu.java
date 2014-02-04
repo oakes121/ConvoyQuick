@@ -53,9 +53,10 @@ public class MainMenu extends javax.swing.JFrame {
         setBackground(new java.awt.Color(255, 255, 255));
         setIconImage(new ImageIcon(getClass().getResource("/convoy/resources/images/humveeIcon.png")).getImage());
         setName("mainWindow"); // NOI18N
-        setPreferredSize(new java.awt.Dimension(1000, 800));
 
         mainMenuPanel.setBackground(new java.awt.Color(255, 255, 255));
+        mainMenuPanel.setMinimumSize(new java.awt.Dimension(1000, 800));
+        mainMenuPanel.setPreferredSize(new java.awt.Dimension(1000, 800));
 
         mainMenuTitle.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         mainMenuTitle.setText("Convoy Quick");
@@ -136,7 +137,7 @@ public class MainMenu extends javax.swing.JFrame {
             .addGroup(mainMenuPanelLayout.createSequentialGroup()
                 .addGap(47, 47, 47)
                 .addComponent(mainMenuTitle)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 594, Short.MAX_VALUE)
                 .addGroup(mainMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(newProjectPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(loadProjectPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
