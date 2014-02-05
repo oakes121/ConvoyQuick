@@ -19,7 +19,7 @@ public class Mission {
     private Attachments attachments;                 // All of the attachments associated with the convoy
 
     /**
-     * This constructor initializes all class variables
+     *  constructor Mission() initializes all class variables
      */
     public Mission() {
         missionNumber = 0;
@@ -37,7 +37,10 @@ public class Mission {
     }
 
     /**
-     * This constructor sets initializes all class variables
+     * constructor Mission(int missionNumber, String missionName,
+     * int numberOfPersonnel, int numberOfVehicles, String missionStagingArea,
+     * String unitName, int lUH, int lUM, int lUS, int dTH, int dTM, int dTS)
+     * initializes all class variables
      *
      * @param missionNumber int value that missionNumber will be set to
      * @param missionName string value that missionName will be set to
@@ -78,7 +81,6 @@ public class Mission {
 
     /**
      * Method addPersonnel(Personnel person) adds persons to mission
-     *
      * @param person person to be added
      * @return people.add(person) returns whether or not a person was addded
      */
@@ -137,78 +139,163 @@ public class Mission {
         return false;
     }
 
+    /**
+     * Method setMissionNumber(int missionNumber) sets this.missionNumber 
+     * to missionNumber
+     * @param missionNumber 
+     */
     public void setMissionNumber(int missionNumber) {
         this.missionNumber = missionNumber;
     }
 
+    /**
+     * Method setMissionName(String missionName) sets this.missionName to 
+     * missionName
+     * @param missionName String value that missionName will be set to
+     */
     public void setMissionName(String missionName) {
         this.missionName = missionName;
     }
 
+    /**
+     * Method setNumberOfPersonnel(int numberOfPersonnel) sets this.numberOfPersonnel
+     * to numberOfPersonnel
+     * @param numberOfPersonnel int value that this.numberOfPersonnel is set to
+     */
     public void setNumberOfPersonnel(int numberOfPersonnel) {
         this.numberOfPersonnel = numberOfPersonnel;
     }
 
+    /**
+     * Method setNumberOfVehicles(int numberOfVehicles) sets this.numberOfVehicles
+     * to numberOfVehicles
+     * @param numberOfVehicles int value that this.numberOfVehicles is set to
+     */
     public void setNumberOfVehicles(int numberOfVehicles) {
         this.numberOfVehicles = numberOfVehicles;
     }
 
+    /**
+     * Method setMissionClassification(Classification classification) sets
+     * this.missionClassification to classification
+     * @param classification Classification value that this.missionClassification
+     * is set to
+     */
     public void setMissionClassification(Classification classification) {
         this.missionClassification = classification;
     }
 
-    public void setmissionLinkUptime(int h, int m, int s) {
-        missionLinkUpTime.setHours(h);
-        missionLinkUpTime.setMinutes(m);
-        missionLinkUpTime.setSeconds(s);
+    /**
+     * Method setmissionLinkUptime(int hours, int minutes, int seconds) sets the time of the 
+     * missionLinkUpTime to hours:minutes:seconds
+     * @param hours int value that will be passed to setHours
+     * @param minutes int value that will be passed to setMinutes
+     * @param seconds int value that will be passed to setSeconds
+     */
+    public void setmissionLinkUptime(int hours, int minutes, int seconds) {
+        missionLinkUpTime.setHours(hours);
+        missionLinkUpTime.setMinutes(minutes);
+        missionLinkUpTime.setSeconds(seconds);
     }
 
-    public void setMissionDepartureTime(int h, int m, int s) {
-        missionDepartureTime.setHours(h);
-        missionDepartureTime.setMinutes(m);
-        missionDepartureTime.setSeconds(s);
+    /**
+     * Method setMissionDepartureTime(int hours, int minutes, int seconds) sets the time of the 
+     * setMissionDepartureTime to hours:minutes:seconds
+     * @param hours int value that will be passed to setHours
+     * @param minutes int value that will be passed to setMinutes
+     * @param seconds int value that will be passed to setSeconds
+     */
+    public void setMissionDepartureTime(int hours, int minutes, int seconds) {
+        missionDepartureTime.setHours(hours);
+        missionDepartureTime.setMinutes(minutes);
+        missionDepartureTime.setSeconds(seconds);
     }
 
+    /**
+     * Method setMissionStagingArea(String stagingArea) sets this.missionStagingArea
+     * to stagingArea
+     * @param stagingArea String value that missionStagingArea will be set to
+     */
     public void setMissionStagingArea(String stagingArea) {
         this.missionStagingArea = stagingArea;
     }
 
+    /**
+     * Method setUnitName(String unitName) sets this.unitName to unitName
+     * @param unitName String value that unitName will be set to
+     */
     public void setUnitName(String unitName) {
         this.unitName = unitName;
     }
 
+    /**
+     * Method getMissionNumber() will return missionNumber
+     * @return missionNumber
+     */
     public int getMissionNumber() {
         return missionNumber;
     }
 
+    /**
+     * Method getMissionName() will return missionName
+     * @return missionName
+     */
     public String getMissionName() {
         return missionName;
     }
 
+    /**
+     * Method getNumberOfPersonnel() will return numberOfPersonnel
+     * @return numberOfPersonnel
+     */
     public int getNumberOfPersonnel() {
         return numberOfPersonnel;
     }
 
+    /**
+     * Method getNumberOfVehicles() will return numberOfVehicles
+     * @return numberOfVehicles
+     */
     public int getNumberOfVehicles() {
         return numberOfVehicles;
     }
 
+    /**
+     * Method getMissionClassification() will return missionClassification
+     * @return missionClassification
+     */
     public Classification getMissionClassification() {
         return missionClassification;
     }
 
+    /**
+     * Method getMissionLinkUpTime() will return missionLinkUpTime.toString()
+     * @return missionLinkUpTime.toString()
+     */
     public String getMissionLinkUpTime() {
         return missionLinkUpTime.toString();
     }
 
+    /**
+     * Method getMissionDepartureTime() will return missionDepartureTime.toString()
+     * @return missionDepartureTime.toString();
+     */
     public String getMissionDepartureTime() {
         return missionDepartureTime.toString();
     }
 
+    /**
+     * Method getMissionstagingArea() will return missionStagingArea
+     * @return missionStagingArea
+     */
     public String getMissionstagingArea() {
         return missionStagingArea;
     }
 
+    /**
+     * Method getUnitName() will return unitName
+     * @return unitName
+     */
     public String getUnitName() {
         return unitName;
     }
