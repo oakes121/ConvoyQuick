@@ -6,6 +6,7 @@
 package convoy.gui;
 
 import java.awt.Color;
+import java.awt.FileDialog;
 import java.awt.Font;
 import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
@@ -90,6 +91,9 @@ public class MainMenu extends javax.swing.JFrame {
         );
 
         loadProjectPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                loadProjectPanelMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 loadProjectPanelMouseEntered(evt);
             }
@@ -124,7 +128,7 @@ public class MainMenu extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainMenuPanelLayout.createSequentialGroup()
                 .addGap(120, 120, 120)
                 .addComponent(newProjectPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 596, Short.MAX_VALUE)
                 .addComponent(loadProjectPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(80, 80, 80))
             .addGroup(mainMenuPanelLayout.createSequentialGroup()
@@ -191,6 +195,15 @@ public class MainMenu extends javax.swing.JFrame {
         revalidate();
     }//GEN-LAST:event_newProjectPanelMouseClicked
 
+    private void loadProjectPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loadProjectPanelMouseClicked
+       
+        //To load a previously saved convoy
+        FileDialog loadFile;
+        loadFile = new FileDialog(this, "Choose a file", FileDialog.LOAD);
+        loadFile.setDirectory("C:\\");
+        loadFile.setVisible(true);
+    }//GEN-LAST:event_loadProjectPanelMouseClicked
+        
     /**
      * @param args the command line arguments
      */
