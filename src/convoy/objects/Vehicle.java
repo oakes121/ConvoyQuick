@@ -16,9 +16,9 @@ public class Vehicle {
 
     /**
      * Constructor Vehicle() sets default vehicle
-     */
+ */
     public Vehicle() {
-
+        passengers = new ArrayList<>();
         this.bumperNumber = "";
         this.callSign = "";
         this.equipment = null;
@@ -34,7 +34,7 @@ public class Vehicle {
      * @param callSign
      */
     public Vehicle(String bumperNumber, String callSign) {
-
+        passengers = new ArrayList<>();
         this.bumperNumber = bumperNumber;
         this.callSign = callSign;
         this.equipment = null;

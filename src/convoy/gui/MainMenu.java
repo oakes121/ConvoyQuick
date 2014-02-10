@@ -24,7 +24,7 @@ public class MainMenu extends javax.swing.JFrame {
      * Creates new form MainMenu
      */
     public MainMenu() {
-        mw.setVisible(false);
+        mainWindow.setVisible(false);
         initComponents();
         doMainMenuFont();
         setMainMenuButtonColor();
@@ -188,9 +188,9 @@ public class MainMenu extends javax.swing.JFrame {
 
     private void newProjectPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newProjectPanelMouseClicked
         this.setVisible(false);        
-        mw.setVisible(true);
-        mw.setExtendedState(mw.MAXIMIZED_BOTH);
-        mw.toFront();
+        mainWindow.setVisible(true);
+        mainWindow.setExtendedState(mainWindow.MAXIMIZED_BOTH);
+        mainWindow.toFront();
         repaint();
         revalidate();
     }//GEN-LAST:event_newProjectPanelMouseClicked
@@ -280,7 +280,7 @@ public class MainMenu extends javax.swing.JFrame {
        
     }
 
-    private MainWindow mw = new MainWindow();
+    private MainWindow mainWindow = new MainWindow();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel loadProjectLabel;
     private javax.swing.JPanel loadProjectPanel;
