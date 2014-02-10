@@ -1,9 +1,10 @@
 package convoy.objects;
 
+import java.io.Serializable;
 import java.sql.Time;
 import java.util.ArrayList;
 
-public class Mission {
+public class Mission implements Serializable {
 
     private static Mission uniqueInstance;            
     private static String constructorUsed;

@@ -1,10 +1,11 @@
 package convoy.objects;
 
 import java.io.File;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 //import java.util.List; //Dont need this
-public class Attachments {
+public class Attachments implements Serializable {
 
     private ArrayList<File> attachments;
     //private List<File> attachments;

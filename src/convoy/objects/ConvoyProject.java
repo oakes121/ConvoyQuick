@@ -1,6 +1,8 @@
 package convoy.objects;
 
-public class ConvoyProject {
+import java.io.Serializable;
+
+public class ConvoyProject implements Serializable {
 
     private String projectName;
     private Mission convoyMission;

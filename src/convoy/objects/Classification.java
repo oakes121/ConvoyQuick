@@ -1,6 +1,8 @@
 package convoy.objects;
 
-class Classification {
+import java.io.Serializable;
+
+class Classification implements Serializable {
 
     private String type;
     private String status;

@@ -1,9 +1,10 @@
 package convoy.objects;
 
 import java.awt.Image;
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Vehicle {
+public class Vehicle implements Serializable {
 
     private String bumperNumber;
     private String callSign;

@@ -1,6 +1,8 @@
 package convoy.objects;
 
-public class Personnel {
+import java.io.Serializable;
+
+public class Personnel implements Serializable {
     
     private String firstName;
     private String lastName;
