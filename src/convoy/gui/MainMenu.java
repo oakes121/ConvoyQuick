@@ -5,6 +5,7 @@
  */
 package convoy.gui;
 
+import convoy.objects.Mission;
 import java.awt.Color;
 import java.awt.FileDialog;
 import java.awt.Font;
@@ -17,13 +18,16 @@ import javax.swing.border.BevelBorder;
  * @author dizoo548
  */
 public class MainMenu extends javax.swing.JFrame {
+    
 
-    private static MainMenu frame = new MainMenu();    
+    private static MainMenu frame = new MainMenu();
+    protected static Mission mission;
 
     /**
      * Creates new form MainMenu
      */
-    public MainMenu() {
+    public MainMenu() {        
+        mission = Mission.getInstance();
         mainWindow.setVisible(false);
         initComponents();
         doMainMenuFont();
@@ -40,10 +44,10 @@ public class MainMenu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        mainMenuPanel = new javax.swing.JPanel();
-        mainMenuTitle = new javax.swing.JLabel();
+        picturePanel1 = new convoy.gui.PicturePanel("/convoy/resources/images/camo.jpg");
         newProjectPanel = new javax.swing.JPanel();
         newProjectLabel = new javax.swing.JLabel();
+        mainMenuTitle = new javax.swing.JLabel();
         loadProjectPanel = new javax.swing.JPanel();
         loadProjectLabel = new javax.swing.JLabel();
 
@@ -51,13 +55,6 @@ public class MainMenu extends javax.swing.JFrame {
         setBackground(new java.awt.Color(255, 255, 255));
         setIconImage(new ImageIcon(getClass().getResource("/convoy/resources/images/humveeIcon.png")).getImage());
         setName("mainWindow"); // NOI18N
-
-        mainMenuPanel.setBackground(new java.awt.Color(255, 255, 255));
-        mainMenuPanel.setMinimumSize(new java.awt.Dimension(1000, 800));
-        mainMenuPanel.setPreferredSize(new java.awt.Dimension(1000, 800));
-
-        mainMenuTitle.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        mainMenuTitle.setText("Convoy Quick");
 
         newProjectPanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -90,6 +87,9 @@ public class MainMenu extends javax.swing.JFrame {
                 .addContainerGap(43, Short.MAX_VALUE))
         );
 
+        mainMenuTitle.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        mainMenuTitle.setText("Convoy Quick");
+
         loadProjectPanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 loadProjectPanelMouseClicked(evt);
@@ -121,42 +121,45 @@ public class MainMenu extends javax.swing.JFrame {
                 .addContainerGap(45, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout mainMenuPanelLayout = new javax.swing.GroupLayout(mainMenuPanel);
-        mainMenuPanel.setLayout(mainMenuPanelLayout);
-        mainMenuPanelLayout.setHorizontalGroup(
-            mainMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainMenuPanelLayout.createSequentialGroup()
+        javax.swing.GroupLayout picturePanel1Layout = new javax.swing.GroupLayout(picturePanel1);
+        picturePanel1.setLayout(picturePanel1Layout);
+        picturePanel1Layout.setHorizontalGroup(
+            picturePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(picturePanel1Layout.createSequentialGroup()
                 .addGap(120, 120, 120)
                 .addComponent(newProjectPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 596, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 1015, Short.MAX_VALUE)
                 .addComponent(loadProjectPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(80, 80, 80))
-            .addGroup(mainMenuPanelLayout.createSequentialGroup()
+                .addGap(120, 120, 120))
+            .addGroup(picturePanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(mainMenuTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        mainMenuPanelLayout.setVerticalGroup(
-            mainMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(mainMenuPanelLayout.createSequentialGroup()
+        picturePanel1Layout.setVerticalGroup(
+            picturePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, picturePanel1Layout.createSequentialGroup()
                 .addGap(47, 47, 47)
                 .addComponent(mainMenuTitle)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 615, Short.MAX_VALUE)
-                .addGroup(mainMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(newProjectPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(loadProjectPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 623, Short.MAX_VALUE)
+                .addGroup(picturePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, picturePanel1Layout.createSequentialGroup()
+                        .addComponent(newProjectPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 30, 30))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, picturePanel1Layout.createSequentialGroup()
+                        .addComponent(loadProjectPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 30, 30))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mainMenuPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(picturePanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mainMenuPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 821, Short.MAX_VALUE)
+            .addComponent(picturePanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -240,11 +243,8 @@ public class MainMenu extends javax.swing.JFrame {
                 frame.setTitle("Convoy Quick - Convoy documentation creator to help save lives");
                 frame.setExtendedState(MainMenu.MAXIMIZED_BOTH);
                 //frame.setUndecorated(true); 
-
             }
-
         });
-
     }
 
     private void doMainMenuFont() {
@@ -284,10 +284,10 @@ public class MainMenu extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel loadProjectLabel;
     private javax.swing.JPanel loadProjectPanel;
-    private javax.swing.JPanel mainMenuPanel;
     private javax.swing.JLabel mainMenuTitle;
     private javax.swing.JLabel newProjectLabel;
     private javax.swing.JPanel newProjectPanel;
+    private convoy.gui.PicturePanel picturePanel1;
     // End of variables declaration//GEN-END:variables
 
 }

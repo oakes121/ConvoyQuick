@@ -5,6 +5,8 @@ import java.util.ArrayList;
 
 public class Mission {
 
+    private static Mission uniqueInstance;            
+    private static String constructorUsed;
     private int missionNumber;                       // The designated mission number for the convoy
     private String missionName;                      // The designated mission name for the convoy 
     private int numberOfPersonnel;                   // The number of personnel in the convoy
@@ -21,7 +23,8 @@ public class Mission {
     /**
      *  constructor Mission() initializes all class variables
      */
-    public Mission() {
+    private Mission() {
+        constructorUsed = "default";
         missionNumber = 0;
         missionName = "Mission Name";
         numberOfPersonnel = 2;
@@ -62,9 +65,10 @@ public class Mission {
      * @param dTS int value representing seconds use to instantiate
      * missionDepartureTime
      */
-    public Mission(int missionNumber, String missionName, int numberOfPersonnel, int numberOfVehicles,
+    private Mission(int missionNumber, String missionName, int numberOfPersonnel, int numberOfVehicles,
             String missionStagingArea, String unitName, int lUH, int lUM, int lUS,
             int dTH, int dTM, int dTS) {
+        constructorUsed = "alt1"; 
         this.missionNumber = missionNumber;
         this.missionName = missionName;
         this.numberOfPersonnel = numberOfPersonnel;
@@ -78,6 +82,75 @@ public class Mission {
         missionLinkUpTime = new Time(lUH, lUM, lUS);
         missionDepartureTime = new Time(dTH, dTM, dTS);
     }
+    
+    /**
+     * Method getInstance() will return a static object of Mission() that was  
+     *  assigned the name uniqueInstance. 
+     * @return if null will return new Mission() ,else return uniqueInstance
+     */
+    public static synchronized Mission getInstance() {
+        
+        // if uniqueInstance is null, instantiate it to new Mission()
+        if (uniqueInstance == null) {
+            uniqueInstance = new Mission();
+        }
+        
+        // if constructorUsed is set to "alt1" then return uniqueInstance else return null
+        if (constructorUsed.equals("default")) 
+            return uniqueInstance;
+        
+        return null;
+    }
+    
+    /**
+     * getInstance(int missionNumber, String missionName,
+            int numberOfPersonnel, int numberOfVehicles,String missionStagingArea,
+            String unitName, int lUH, int lUM, int lUS, int dTH, int dTM, int dTS)
+     *
+     * will return a static object of Mission(int missionNumber, String missionName,
+            int numberOfPersonnel, int numberOfVehicles,String missionStagingArea,
+            String unitName, int lUH, int lUM, int lUS, int dTH, int dTM, int dTS) 
+     * that was assigned the name uniqueInstance. 
+     * @param missionNumber int value that missionNumber will be set to
+     * @param missionName string value that missionName will be set to
+     * @param numberOfPersonnel int value that numberOfPersonnel will be set to
+     * @param numberOfVehicles int value that numberOfVehicles will be set to
+     * @param missionStagingArea string value that missionStagingArea will be
+     * set to
+     * @param unitName string value that unitName will be set to
+     * @param lUH int value representing hours use to instantiate
+     * missionLinkUpTime
+     * @param lUM int value representing minutes use to instantiate
+     * missionLinkUpTime
+     * @param lUS int value representing seconds use to instantiate
+     * missionLinkUpTime
+     * @param dTH int value representing hours use to instantiate
+     * missionDepartureTime
+     * @param dTM int value representing minutes use to instantiate
+     * missionDepartureTime
+     * @param dTS int value representing seconds use to instantiate
+     * missionDepartureTime
+     * @return 
+     */
+    public static synchronized Mission getInstance(int missionNumber, String missionName,
+            int numberOfPersonnel, int numberOfVehicles,String missionStagingArea,
+            String unitName, int lUH, int lUM, int lUS, int dTH, int dTM, int dTS) {
+        
+        // if uniqueInstance is null, instantiate it to new Mission()
+        if (uniqueInstance == null) {
+            uniqueInstance = new Mission(missionNumber, missionName, numberOfPersonnel,
+                    numberOfVehicles, missionStagingArea, unitName, lUH, lUM, 
+                    lUS, dTH, dTM, dTS);
+        }
+        
+        // if constructorUsed is set to "alt1" then return uniqueInstance else return null
+        if (constructorUsed.equals("alt1")) 
+            return uniqueInstance;
+        
+        return null;
+    }
+		
+	
 
     /**
      * Method addPersonnel(Personnel person) adds persons to mission
@@ -121,8 +194,11 @@ public class Mission {
      * @param vehicle vehicle to be added
      * @return vehicles.add(vehicle) returns whether or not vehicle was added
      */
-    public boolean addVehicle(Vehicle vehicle) {
-        return vehicles.add(vehicle);
+    public void addVehicle(Vehicle vehicle) {
+        Vehicle v = vehicle;
+        //System.out.println(vehicle.getDriverName());
+        vehicles.add(vehicle);
+        
     }
     
     /**
@@ -290,6 +366,28 @@ public class Mission {
      */
     public String getMissionstagingArea() {
         return missionStagingArea;
+    }
+    
+    /**
+     * Method getVehicles() will return vehicles
+     * @return vehicles
+     */
+    public ArrayList<Vehicle> getVehicles() {
+        return vehicles;
+    }
+    
+    /**
+     * 
+     * @param index position in vehicles ArrayList
+     * @return vehicle object
+     */
+    public Vehicle getVehicleAtIndex(int index) {
+        Vehicle vehicle = vehicles.get(index);
+        
+        if (vehicle != null)
+            return vehicle;
+        
+        return null;
     }
 
     /**

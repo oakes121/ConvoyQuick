@@ -4,46 +4,60 @@
  */
 package convoy.gui;
 
+import convoy.objects.Mission;
 import convoy.objects.Personnel;
 import convoy.objects.Vehicle;
+import java.awt.Font;
 import javax.swing.JLabel;
+import javax.swing.SwingConstants;
 
 /**
  *
  * @author Oakes
  */
 public class VehiclePanel extends javax.swing.JPanel {
-
-    public Vehicle vehicle;
-    /*
-    public void setDriverName() {
-        String firstName = vehicle.getDriver().getFirstName();
-        String lastName = vehicle.getDriver().getLastName();
-        driverNameLabel = new JLabel(firstName + " " + lastName);
-    }
-    
-    public void setPassengerName(JLabel passengerLabel, int passengerNum) {
-        Personnel passenger = vehicle.getPassengers().get(passengerNum);
-        
-        if (passenger != null) {
-            String firstName = vehicle.getDriver().getFirstName();
-            String lastName = vehicle.getDriver().getLastName();
-            passengerLabel = new JLabel(firstName + " " + lastName);
-        }
-    }
-     */
-    
-    
+    private Mission mission = Mission.getInstance();
+    private int vehicleCount = 0;
     /**
      * Creates new form VehiclePanel
      */
-    public VehiclePanel() {
-        vehicle = new Vehicle();
+    public VehiclePanel() { 
         vehiclePicturePanel2 = new PicturePanel("/convoy/resources/images/camo.jpg");
         this.setOpaque(false);
-        
-        //setPassengerName(passenger1NameLabel, 1);
         initComponents();
+        doMainMenuFont();
+        setTransparent();    
+        setDriverName();
+        ++vehicleCount;
+    }
+    
+    public void setDriverName() {
+        String driverName;
+        mission.addVehicle(new Vehicle());
+        driverName = mission.getVehicleAtIndex(vehicleCount).getDriverName();
+        driverLabel.setText(driverName);
+    }
+    
+    public void setTransparent() {
+        componentPanel.setOpaque(false);
+    }
+    
+    private void doMainMenuFont() {
+        try {
+                        
+            Font woodCutter = Font.createFont(Font.TRUETYPE_FONT, getClass().getResourceAsStream("/convoy/resources/fonts/lucidaGrande.ttf"));
+            woodCutter = woodCutter.deriveFont(Font.TRUETYPE_FONT, 12);            
+            
+            driverLabel.setFont(woodCutter);
+            passenger1Label.setFont(woodCutter);
+            passenger2Label.setFont(woodCutter);
+            passenger3Label.setFont(woodCutter);
+            bumperNumberLabel.setFont(woodCutter);
+            callSignLabel.setFont(woodCutter);
+            
+        } catch (Exception ex) {
+            ex.printStackTrace();;
+        }
     }
 
     /**
@@ -58,115 +72,137 @@ public class VehiclePanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel8 = new javax.swing.JLabel();
+        componentPanel = new javax.swing.JPanel();
+        passenger1Label = new javax.swing.JLabel();
+        passenger3Label = new javax.swing.JLabel();
         vehiclePicturePanel2 = new convoy.gui.PicturePanel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
+        bumperNumberLabel = new javax.swing.JLabel();
+        driverLabel = new javax.swing.JLabel();
+        passenger2Label = new javax.swing.JLabel();
+        callSignLabel = new javax.swing.JLabel();
 
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(194, 178, 128)));
         setName(""); // NOI18N
 
-        jLabel8.setBackground(new java.awt.Color(102, 102, 255));
-        jLabel8.setText("jLabel3");
-        jLabel8.setMaximumSize(new java.awt.Dimension(50, 11));
-        jLabel8.setMinimumSize(new java.awt.Dimension(50, 11));
-        jLabel8.setName(""); // NOI18N
-        jLabel8.setPreferredSize(new java.awt.Dimension(50, 11));
+        passenger1Label.setText("Passenger");
+        passenger1Label.setMaximumSize(new java.awt.Dimension(50, 11));
+        passenger1Label.setMinimumSize(new java.awt.Dimension(50, 11));
+        passenger1Label.setName(""); // NOI18N
+        passenger1Label.setPreferredSize(new java.awt.Dimension(50, 11));
+
+        passenger3Label.setText("Passenger");
+        passenger3Label.setMaximumSize(new java.awt.Dimension(50, 11));
+        passenger3Label.setMinimumSize(new java.awt.Dimension(50, 10));
+        passenger3Label.setName(""); // NOI18N
+        passenger3Label.setPreferredSize(new java.awt.Dimension(50, 11));
 
         javax.swing.GroupLayout vehiclePicturePanel2Layout = new javax.swing.GroupLayout(vehiclePicturePanel2);
         vehiclePicturePanel2.setLayout(vehiclePicturePanel2Layout);
         vehiclePicturePanel2Layout.setHorizontalGroup(
             vehiclePicturePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 80, Short.MAX_VALUE)
         );
         vehiclePicturePanel2Layout.setVerticalGroup(
             vehiclePicturePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 48, Short.MAX_VALUE)
         );
 
-        jLabel9.setText("jLabel3");
-        jLabel9.setMaximumSize(new java.awt.Dimension(50, 11));
-        jLabel9.setMinimumSize(new java.awt.Dimension(50, 11));
-        jLabel9.setName(""); // NOI18N
-        jLabel9.setPreferredSize(new java.awt.Dimension(50, 11));
+        bumperNumberLabel.setBackground(new java.awt.Color(102, 102, 255));
+        bumperNumberLabel.setText("Bumper Number");
+        bumperNumberLabel.setMaximumSize(new java.awt.Dimension(50, 11));
+        bumperNumberLabel.setMinimumSize(new java.awt.Dimension(50, 11));
+        bumperNumberLabel.setName(""); // NOI18N
+        bumperNumberLabel.setPreferredSize(new java.awt.Dimension(50, 11));
 
-        jLabel10.setText("jLabel3");
-        jLabel10.setMaximumSize(new java.awt.Dimension(50, 11));
-        jLabel10.setMinimumSize(new java.awt.Dimension(50, 11));
-        jLabel10.setName(""); // NOI18N
-        jLabel10.setPreferredSize(new java.awt.Dimension(50, 11));
+        driverLabel.setBackground(new java.awt.Color(102, 102, 255));
+        driverLabel.setForeground(new java.awt.Color(0, 255, 0));
+        driverLabel.setText("Driver");
+        driverLabel.setMaximumSize(new java.awt.Dimension(50, 11));
+        driverLabel.setMinimumSize(new java.awt.Dimension(50, 11));
+        driverLabel.setName(""); // NOI18N
+        driverLabel.setPreferredSize(new java.awt.Dimension(50, 11));
 
-        jLabel11.setText("jLabel3");
-        jLabel11.setMaximumSize(new java.awt.Dimension(50, 11));
-        jLabel11.setMinimumSize(new java.awt.Dimension(50, 10));
-        jLabel11.setName(""); // NOI18N
-        jLabel11.setPreferredSize(new java.awt.Dimension(50, 11));
+        passenger2Label.setText("Passenger");
+        passenger2Label.setMaximumSize(new java.awt.Dimension(50, 11));
+        passenger2Label.setMinimumSize(new java.awt.Dimension(50, 11));
+        passenger2Label.setName(""); // NOI18N
+        passenger2Label.setPreferredSize(new java.awt.Dimension(50, 11));
 
-        jLabel12.setBackground(new java.awt.Color(102, 102, 255));
-        jLabel12.setText("jLabel3");
-        jLabel12.setMaximumSize(new java.awt.Dimension(50, 11));
-        jLabel12.setMinimumSize(new java.awt.Dimension(50, 11));
-        jLabel12.setName(""); // NOI18N
-        jLabel12.setPreferredSize(new java.awt.Dimension(50, 11));
+        callSignLabel.setBackground(new java.awt.Color(102, 102, 255));
+        callSignLabel.setText("Call Sign");
+        callSignLabel.setMaximumSize(new java.awt.Dimension(50, 11));
+        callSignLabel.setMinimumSize(new java.awt.Dimension(50, 11));
+        callSignLabel.setName(""); // NOI18N
+        callSignLabel.setPreferredSize(new java.awt.Dimension(50, 11));
 
-        jLabel13.setBackground(new java.awt.Color(102, 102, 255));
-        jLabel13.setText("jLabel3");
-        jLabel13.setMaximumSize(new java.awt.Dimension(50, 11));
-        jLabel13.setMinimumSize(new java.awt.Dimension(50, 11));
-        jLabel13.setName(""); // NOI18N
-        jLabel13.setPreferredSize(new java.awt.Dimension(50, 11));
+        javax.swing.GroupLayout componentPanelLayout = new javax.swing.GroupLayout(componentPanel);
+        componentPanel.setLayout(componentPanelLayout);
+        componentPanelLayout.setHorizontalGroup(
+            componentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(componentPanelLayout.createSequentialGroup()
+                .addGroup(componentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(componentPanelLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(vehiclePicturePanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 23, Short.MAX_VALUE))
+                    .addComponent(passenger3Label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(passenger2Label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(passenger1Label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(driverLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(bumperNumberLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(callSignLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        componentPanelLayout.setVerticalGroup(
+            componentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(componentPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(driverLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(passenger1Label, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(passenger2Label, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(passenger3Label, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(vehiclePicturePanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(bumperNumberLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(callSignLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        componentPanelLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {passenger2Label, passenger3Label});
+
+        driverLabel.getAccessibleContext().setAccessibleName("driver");
+        driverLabel.getAccessibleContext().setAccessibleDescription("driver");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(vehiclePicturePanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
-                    .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE))
-                .addContainerGap(30, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(componentPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(vehiclePicturePanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(componentPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
-        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jLabel10, jLabel11, jLabel8, jLabel9});
-
-        jLabel8.getAccessibleContext().setAccessibleName("driver");
-        jLabel8.getAccessibleContext().setAccessibleDescription("driver");
     }// </editor-fold>//GEN-END:initComponents
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel bumperNumberLabel;
+    private javax.swing.JLabel callSignLabel;
+    private javax.swing.JPanel componentPanel;
+    private javax.swing.JLabel driverLabel;
+    private javax.swing.JLabel passenger1Label;
+    private javax.swing.JLabel passenger2Label;
+    private javax.swing.JLabel passenger3Label;
     private convoy.gui.PicturePanel vehiclePicturePanel2;
     // End of variables declaration//GEN-END:variables
 }

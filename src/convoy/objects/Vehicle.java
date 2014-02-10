@@ -19,6 +19,7 @@ public class Vehicle {
  */
     public Vehicle() {
         passengers = new ArrayList<>();
+        driver = new Personnel("The", "Driver", "Driver", "");
         this.bumperNumber = "";
         this.callSign = "";
         this.equipment = null;
@@ -221,9 +222,9 @@ public class Vehicle {
      *
      * @return this.driver returns vehicle driver
      */
-    public Personnel getDriver() {
+    public String getDriverName() {
 
-        return this.driver;
+        return driver.getFirstName() + " "+ driver.getLastName();
     }
 
     /**
