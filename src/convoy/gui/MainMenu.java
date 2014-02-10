@@ -28,7 +28,6 @@ public class MainMenu extends javax.swing.JFrame {
      */
     public MainMenu() {        
         mission = Mission.getInstance();
-        mainWindow.setVisible(false);
         initComponents();
         doMainMenuFont();
         setMainMenuButtonColor();
@@ -52,7 +51,7 @@ public class MainMenu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        picturePanel1 = new convoy.gui.PicturePanel("/convoy/resources/images/camo.jpg");
+        picturePanel1 = new convoy.gui.PicturePanel("/convoy/resources/images/multicam.jpg");
         newProjectPanel = new javax.swing.JPanel();
         newProjectLabel = new javax.swing.JLabel();
         mainMenuTitle = new javax.swing.JLabel();
@@ -198,7 +197,8 @@ public class MainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_newProjectPanelMouseExited
 
     private void newProjectPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newProjectPanelMouseClicked
-        this.setVisible(false);        
+        this.setVisible(false); 
+        mainWindow = new MainWindow();
         mainWindow.setVisible(true);
         mainWindow.setExtendedState(mainWindow.MAXIMIZED_BOTH);
         mainWindow.toFront();
@@ -283,7 +283,7 @@ public class MainMenu extends javax.swing.JFrame {
        
     }
 
-    private MainWindow mainWindow = new MainWindow();
+    private MainWindow mainWindow; 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel loadProjectLabel;
     private javax.swing.JPanel loadProjectPanel;

@@ -74,7 +74,7 @@ public class MainWindow extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel2 = new javax.swing.JPanel();
-        picturePanel2 = new convoy.gui.PicturePanel("/convoy/resources/images/camo.jpg");
+        picturePanel2 = new convoy.gui.PicturePanel("");
         missionNumberPanel = new javax.swing.JPanel();
         classificationDropBox = new javax.swing.JComboBox();
         missionTextField = new javax.swing.JTextField();
@@ -125,6 +125,8 @@ public class MainWindow extends javax.swing.JFrame {
         setBackground(new java.awt.Color(255, 255, 255));
         setMinimumSize(new java.awt.Dimension(1000, 800));
         getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.LINE_AXIS));
+
+        picturePanel2.setBackground(new java.awt.Color(255, 255, 255));
 
         missionNumberPanel.setBackground(new java.awt.Color(255, 255, 255));
 

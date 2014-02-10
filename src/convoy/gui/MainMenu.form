@@ -42,7 +42,7 @@
   <SubComponents>
     <Container class="convoy.gui.PicturePanel" name="picturePanel1">
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new convoy.gui.PicturePanel(&quot;/convoy/resources/images/camo.jpg&quot;)"/>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new convoy.gui.PicturePanel(&quot;/convoy/resources/images/multicam.jpg&quot;)"/>
       </AuxValues>
 
       <Layout>
@@ -69,15 +69,10 @@
                   <Component id="mainMenuTitle" min="-2" max="-2" attributes="0"/>
                   <EmptySpace pref="623" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="1" attributes="0">
-                          <Component id="newProjectPanel" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <Component id="loadProjectPanel" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="newProjectPanel" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Component id="loadProjectPanel" alignment="1" min="-2" max="-2" attributes="0"/>
                   </Group>
+                  <EmptySpace min="30" pref="30" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
