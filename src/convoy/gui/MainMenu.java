@@ -34,6 +34,14 @@ public class MainMenu extends javax.swing.JFrame {
         setMainMenuButtonColor();
         setMainMenuButtonColor();
     }
+    
+    public void display() {
+        frame.setVisible(true);
+        frame.setLocationRelativeTo(null);
+        frame.setTitle("Convoy Quick - Convoy documentation creator to help save lives");
+        frame.setExtendedState(MainMenu.MAXIMIZED_BOTH);
+        //frame.setUndecorated(true); 
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -237,12 +245,7 @@ public class MainMenu extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-
-                frame.setVisible(true);
-                frame.setLocationRelativeTo(null);
-                frame.setTitle("Convoy Quick - Convoy documentation creator to help save lives");
-                frame.setExtendedState(MainMenu.MAXIMIZED_BOTH);
-                //frame.setUndecorated(true); 
+                new MainMenu().display();
             }
         });
     }
