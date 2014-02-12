@@ -40,9 +40,9 @@ public class MainWindow extends javax.swing.JFrame {
     
     public void makeSelectPanelsTransparent() {
         missionNumberPanel.setOpaque(false);
-        vehiclePanel.setOpaque(false);
+        //vehiclePanel.setOpaque(false);
         additionalInfoPanel.setOpaque(false);
-        buttonsPanel.setOpaque(false);
+        //buttonsPanel.setOpaque(false);
     }
     
     private void addMenuBar(){
@@ -78,34 +78,10 @@ public class MainWindow extends javax.swing.JFrame {
         missionNumberPanel = new javax.swing.JPanel();
         classificationDropBox = new javax.swing.JComboBox();
         missionTextField = new javax.swing.JTextField();
-        jPanel1 = new javax.swing.JPanel();
-        vehiclePanel = new javax.swing.JPanel();
-        vehicle1 = new convoy.gui.VehiclePanel();
-        vehicle9 = new convoy.gui.VehiclePanel();
-        vehicle2 = new convoy.gui.VehiclePanel();
-        vehicle10 = new convoy.gui.VehiclePanel();
-        vehicle12 = new convoy.gui.VehiclePanel();
-        vehicle4 = new convoy.gui.VehiclePanel();
-        vehicle3 = new convoy.gui.VehiclePanel();
-        vehicle11 = new convoy.gui.VehiclePanel();
-        vehicle5 = new convoy.gui.VehiclePanel();
-        vehicle7 = new convoy.gui.VehiclePanel();
-        vehicle14 = new convoy.gui.VehiclePanel();
-        vehicle13 = new convoy.gui.VehiclePanel();
-        vehicle8 = new convoy.gui.VehiclePanel();
-        vehicle15 = new convoy.gui.VehiclePanel();
-        vehicle16 = new convoy.gui.VehiclePanel();
-        vehiclePanel19 = new convoy.gui.VehiclePanel();
-        buttonsPanel = new javax.swing.JPanel();
-        mainMenuPanel = new javax.swing.JPanel();
-        mainMenuLabel = new javax.swing.JLabel();
-        savePanel = new javax.swing.JPanel();
-        saveLabel = new javax.swing.JLabel();
-        finalizePanel = new javax.swing.JPanel();
-        finalizeLabel = new javax.swing.JLabel();
-        printPanel = new javax.swing.JPanel();
-        printLabel = new javax.swing.JLabel();
         additionalInfoPanel = new javax.swing.JPanel();
+        missionNumberPanel1 = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
         editMenu = new javax.swing.JMenu();
@@ -130,6 +106,7 @@ public class MainWindow extends javax.swing.JFrame {
         picturePanel2.setBackground(new java.awt.Color(255, 255, 255));
 
         missionNumberPanel.setBackground(new java.awt.Color(255, 255, 255));
+        missionNumberPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 0, 0)));
 
         classificationDropBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "For Official Use Only", "Unclassified", "Classified", "Secret", "Top Secret" }));
 
@@ -145,266 +122,29 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1434, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 84, Short.MAX_VALUE)
-        );
-
         javax.swing.GroupLayout missionNumberPanelLayout = new javax.swing.GroupLayout(missionNumberPanel);
         missionNumberPanel.setLayout(missionNumberPanelLayout);
         missionNumberPanelLayout.setHorizontalGroup(
             missionNumberPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(missionNumberPanelLayout.createSequentialGroup()
-                .addGap(32, 32, 32)
+                .addContainerGap()
                 .addGroup(missionNumberPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(classificationDropBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(missionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         missionNumberPanelLayout.setVerticalGroup(
             missionNumberPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(missionNumberPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(missionNumberPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(missionNumberPanelLayout.createSequentialGroup()
-                        .addComponent(classificationDropBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(missionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(27, Short.MAX_VALUE))
-        );
-
-        vehiclePanel.setBackground(new java.awt.Color(255, 255, 255));
-
-        javax.swing.GroupLayout vehiclePanelLayout = new javax.swing.GroupLayout(vehiclePanel);
-        vehiclePanel.setLayout(vehiclePanelLayout);
-        vehiclePanelLayout.setHorizontalGroup(
-            vehiclePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(vehiclePanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(vehiclePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(vehicle9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(vehicle1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
-                .addGroup(vehiclePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(vehicle10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(vehicle2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
-                .addGroup(vehiclePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(vehicle11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(vehicle3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
-                .addGroup(vehiclePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(vehicle12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(vehicle4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
-                .addGroup(vehiclePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(vehicle13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(vehicle5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
-                .addGroup(vehiclePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(vehicle14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(vehicle7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
-                .addGroup(vehiclePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(vehicle15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(vehicle8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
-                .addGroup(vehiclePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(vehicle16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(vehiclePanel19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        vehiclePanelLayout.setVerticalGroup(
-            vehiclePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(vehiclePanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(vehiclePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, vehiclePanelLayout.createSequentialGroup()
-                        .addComponent(vehiclePanel19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
-                        .addComponent(vehicle16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, vehiclePanelLayout.createSequentialGroup()
-                        .addComponent(vehicle8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(vehicle15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, vehiclePanelLayout.createSequentialGroup()
-                        .addComponent(vehicle7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(vehicle14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, vehiclePanelLayout.createSequentialGroup()
-                        .addComponent(vehicle5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(vehicle13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, vehiclePanelLayout.createSequentialGroup()
-                        .addComponent(vehicle4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(vehicle12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, vehiclePanelLayout.createSequentialGroup()
-                        .addComponent(vehicle3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(vehicle11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, vehiclePanelLayout.createSequentialGroup()
-                        .addComponent(vehicle2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(vehicle10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, vehiclePanelLayout.createSequentialGroup()
-                        .addComponent(vehicle1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(vehicle9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        buttonsPanel.setBackground(new java.awt.Color(255, 255, 255));
-
-        mainMenuPanel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                mainMenuPanelMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                mainMenuPanelMouseExited(evt);
-            }
-        });
-
-        mainMenuLabel.setText("Main Menu");
-
-        javax.swing.GroupLayout mainMenuPanelLayout = new javax.swing.GroupLayout(mainMenuPanel);
-        mainMenuPanel.setLayout(mainMenuPanelLayout);
-        mainMenuPanelLayout.setHorizontalGroup(
-            mainMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(mainMenuPanelLayout.createSequentialGroup()
-                .addGap(54, 54, 54)
-                .addComponent(mainMenuLabel)
-                .addContainerGap(54, Short.MAX_VALUE))
-        );
-        mainMenuPanelLayout.setVerticalGroup(
-            mainMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(mainMenuPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(mainMenuLabel)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        savePanel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                savePanelMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                savePanelMouseExited(evt);
-            }
-        });
-
-        saveLabel.setText("Save");
-
-        javax.swing.GroupLayout savePanelLayout = new javax.swing.GroupLayout(savePanel);
-        savePanel.setLayout(savePanelLayout);
-        savePanelLayout.setHorizontalGroup(
-            savePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(savePanelLayout.createSequentialGroup()
-                .addGap(51, 51, 51)
-                .addComponent(saveLabel)
-                .addContainerGap(51, Short.MAX_VALUE))
-        );
-        savePanelLayout.setVerticalGroup(
-            savePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(savePanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(saveLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 15, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        finalizePanel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                finalizePanelMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                finalizePanelMouseExited(evt);
-            }
-        });
-
-        finalizeLabel.setText("Finalize");
-
-        javax.swing.GroupLayout finalizePanelLayout = new javax.swing.GroupLayout(finalizePanel);
-        finalizePanel.setLayout(finalizePanelLayout);
-        finalizePanelLayout.setHorizontalGroup(
-            finalizePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(finalizePanelLayout.createSequentialGroup()
-                .addGap(52, 52, 52)
-                .addComponent(finalizeLabel)
-                .addContainerGap(52, Short.MAX_VALUE))
-        );
-        finalizePanelLayout.setVerticalGroup(
-            finalizePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(finalizePanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(finalizeLabel)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        printPanel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                printPanelMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                printPanelMouseExited(evt);
-            }
-        });
-
-        printLabel.setText("Print");
-
-        javax.swing.GroupLayout printPanelLayout = new javax.swing.GroupLayout(printPanel);
-        printPanel.setLayout(printPanelLayout);
-        printPanelLayout.setHorizontalGroup(
-            printPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(printPanelLayout.createSequentialGroup()
-                .addGap(51, 51, 51)
-                .addComponent(printLabel)
-                .addContainerGap(51, Short.MAX_VALUE))
-        );
-        printPanelLayout.setVerticalGroup(
-            printPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(printPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(printLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout buttonsPanelLayout = new javax.swing.GroupLayout(buttonsPanel);
-        buttonsPanel.setLayout(buttonsPanelLayout);
-        buttonsPanelLayout.setHorizontalGroup(
-            buttonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(buttonsPanelLayout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(mainMenuPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
-                .addComponent(savePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 942, Short.MAX_VALUE)
-                .addComponent(finalizePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
-                .addComponent(printPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32))
-        );
-        buttonsPanelLayout.setVerticalGroup(
-            buttonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(buttonsPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(buttonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(savePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(mainMenuPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(buttonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(printPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(finalizePanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(classificationDropBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(missionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(46, Short.MAX_VALUE))
         );
 
         additionalInfoPanel.setBackground(new java.awt.Color(255, 255, 255));
+        additionalInfoPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 0, 0)));
 
         javax.swing.GroupLayout additionalInfoPanelLayout = new javax.swing.GroupLayout(additionalInfoPanel);
         additionalInfoPanel.setLayout(additionalInfoPanelLayout);
@@ -414,34 +154,67 @@ public class MainWindow extends javax.swing.JFrame {
         );
         additionalInfoPanelLayout.setVerticalGroup(
             additionalInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 58, Short.MAX_VALUE)
+            .addGap(0, 134, Short.MAX_VALUE)
+        );
+
+        missionNumberPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        missionNumberPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 0, 0)));
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(194, 178, 128)));
+        jPanel1.setName(""); // NOI18N
+
+        jLabel1.setText("Add New Vehicle");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(jLabel1)
+                .addContainerGap(35, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(96, 96, 96)
+                .addComponent(jLabel1)
+                .addContainerGap(102, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout missionNumberPanel1Layout = new javax.swing.GroupLayout(missionNumberPanel1);
+        missionNumberPanel1.setLayout(missionNumberPanel1Layout);
+        missionNumberPanel1Layout.setHorizontalGroup(
+            missionNumberPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(missionNumberPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(1567, Short.MAX_VALUE))
+        );
+        missionNumberPanel1Layout.setVerticalGroup(
+            missionNumberPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(missionNumberPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(226, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout picturePanel2Layout = new javax.swing.GroupLayout(picturePanel2);
         picturePanel2.setLayout(picturePanel2Layout);
         picturePanel2Layout.setHorizontalGroup(
             picturePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(picturePanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(picturePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(buttonsPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(vehiclePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(missionNumberPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(additionalInfoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+            .addComponent(additionalInfoPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(missionNumberPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(missionNumberPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         picturePanel2Layout.setVerticalGroup(
             picturePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(picturePanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(missionNumberPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(vehiclePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(missionNumberPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(additionalInfoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(buttonsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(additionalInfoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         getContentPane().add(picturePanel2);
@@ -459,45 +232,13 @@ public class MainWindow extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void missionTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_missionTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_missionTextFieldActionPerformed
-
     private void missionTextFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_missionTextFieldFocusGained
         missionTextField.setText("");
     }//GEN-LAST:event_missionTextFieldFocusGained
 
-    private void mainMenuPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mainMenuPanelMouseEntered
-        mainMenuPanel.setBorder(new BevelBorder(BevelBorder.LOWERED));
-    }//GEN-LAST:event_mainMenuPanelMouseEntered
-
-    private void savePanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_savePanelMouseEntered
-        savePanel.setBorder(new BevelBorder(BevelBorder.LOWERED));
-    }//GEN-LAST:event_savePanelMouseEntered
-
-    private void finalizePanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_finalizePanelMouseEntered
-        finalizePanel.setBorder(new BevelBorder(BevelBorder.LOWERED));
-    }//GEN-LAST:event_finalizePanelMouseEntered
-
-    private void printPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_printPanelMouseEntered
-        printPanel.setBorder(new BevelBorder(BevelBorder.LOWERED));
-    }//GEN-LAST:event_printPanelMouseEntered
-
-    private void mainMenuPanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mainMenuPanelMouseExited
-        mainMenuPanel.setBorder(new BevelBorder(BevelBorder.RAISED));
-    }//GEN-LAST:event_mainMenuPanelMouseExited
-
-    private void savePanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_savePanelMouseExited
-        savePanel.setBorder(new BevelBorder(BevelBorder.RAISED));
-    }//GEN-LAST:event_savePanelMouseExited
-
-    private void finalizePanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_finalizePanelMouseExited
-        finalizePanel.setBorder(new BevelBorder(BevelBorder.RAISED));
-    }//GEN-LAST:event_finalizePanelMouseExited
-
-    private void printPanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_printPanelMouseExited
-        printPanel.setBorder(new BevelBorder(BevelBorder.RAISED));
-    }//GEN-LAST:event_printPanelMouseExited
+    private void missionTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_missionTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_missionTextFieldActionPerformed
 
     /**
      * @param args the command line arguments
@@ -544,10 +285,10 @@ public class MainWindow extends javax.swing.JFrame {
             Font captureItFont = Font.createFont(Font.TRUETYPE_FONT, getClass().getResourceAsStream("/convoy/resources/fonts/captureIt.ttf"));
             captureItFont = captureItFont.deriveFont(Font.ITALIC, 15f);
                         
-            finalizeLabel.setFont(captureItFont);
-            mainMenuLabel.setFont(captureItFont);
-            printLabel.setFont(captureItFont);
-            saveLabel.setFont(captureItFont);
+            //finalizeLabel.setFont(captureItFont);
+            //mainMenuLabel.setFont(captureItFont);
+            //printLabel.setFont(captureItFont);
+            //saveLabel.setFont(captureItFont);
             
             classificationDropBox.setFont(captureItFont);
             missionTextField.setFont(captureItFont);
@@ -562,7 +303,7 @@ public class MainWindow extends javax.swing.JFrame {
     private void setMainWindowButtonColor(){
         
        Color desertStormColor = new  Color(194, 178, 128);
-       
+       /*
        finalizePanel.setBackground(desertStormColor);
        mainMenuPanel.setBackground(desertStormColor);
        printPanel.setBackground(desertStormColor);
@@ -572,46 +313,22 @@ public class MainWindow extends javax.swing.JFrame {
        mainMenuPanel.setBorder(new BevelBorder(BevelBorder.RAISED));
        printPanel.setBorder(new BevelBorder(BevelBorder.RAISED));
        savePanel.setBorder(new BevelBorder(BevelBorder.RAISED));
-       
+       */
        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel additionalInfoPanel;
-    private javax.swing.JPanel buttonsPanel;
     private javax.swing.JComboBox classificationDropBox;
     private javax.swing.JMenu editMenu;
     private javax.swing.JMenu fileMenu;
-    private javax.swing.JLabel finalizeLabel;
-    private javax.swing.JPanel finalizePanel;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JLabel mainMenuLabel;
-    private javax.swing.JPanel mainMenuPanel;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JPanel missionNumberPanel;
+    private javax.swing.JPanel missionNumberPanel1;
     private javax.swing.JTextField missionTextField;
     private convoy.gui.PicturePanel picturePanel2;
-    private javax.swing.JLabel printLabel;
-    private javax.swing.JPanel printPanel;
-    private javax.swing.JLabel saveLabel;
-    private javax.swing.JPanel savePanel;
-    private convoy.gui.VehiclePanel vehicle1;
-    private convoy.gui.VehiclePanel vehicle10;
-    private convoy.gui.VehiclePanel vehicle11;
-    private convoy.gui.VehiclePanel vehicle12;
-    private convoy.gui.VehiclePanel vehicle13;
-    private convoy.gui.VehiclePanel vehicle14;
-    private convoy.gui.VehiclePanel vehicle15;
-    private convoy.gui.VehiclePanel vehicle16;
-    private convoy.gui.VehiclePanel vehicle2;
-    private convoy.gui.VehiclePanel vehicle3;
-    private convoy.gui.VehiclePanel vehicle4;
-    private convoy.gui.VehiclePanel vehicle5;
-    private convoy.gui.VehiclePanel vehicle7;
-    private convoy.gui.VehiclePanel vehicle8;
-    private convoy.gui.VehiclePanel vehicle9;
-    private javax.swing.JPanel vehiclePanel;
-    private convoy.gui.VehiclePanel vehiclePanel19;
     // End of variables declaration//GEN-END:variables
 }
