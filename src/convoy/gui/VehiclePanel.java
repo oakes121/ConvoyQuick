@@ -8,6 +8,7 @@ import convoy.objects.Mission;
 import convoy.objects.Personnel;
 import convoy.objects.Vehicle;
 import java.awt.Font;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
@@ -21,9 +22,8 @@ public class VehiclePanel extends javax.swing.JPanel {
     /**
      * Creates new form VehiclePanel
      */
-    public VehiclePanel() {        
-        vehiclePicturePanel2 = new PicturePanel("/convoy/resources/images/camo.jpg");
-        this.setOpaque(false);
+    public VehiclePanel() {     
+        //this.setOpaque(false);
         initComponents();
         doMainMenuFont();
         setTransparent();    
@@ -31,6 +31,21 @@ public class VehiclePanel extends javax.swing.JPanel {
         mission.addVehicle(new Vehicle());        
         setDriverName();
         ++vehicleCount;
+        loadImage();
+        
+    }
+    
+    public void loadImage() {
+        /*
+        
+        ImageIcon icon = new ImageIcon("/convoy/resources/images/humveeIcon.png"); 
+        JLabel label = new JLabel(); 
+        label.setIcon(icon); 
+        jPanel1.add(label); 
+        
+        revalidate();
+        repaint(); */
+        
     }
     
     public void setDriverName() {
@@ -40,7 +55,7 @@ public class VehiclePanel extends javax.swing.JPanel {
     }
     
     public void setTransparent() {
-        componentPanel.setOpaque(false);
+        //componentPanel.setOpaque(false);
     }
     
     private void doMainMenuFont() {
@@ -76,11 +91,12 @@ public class VehiclePanel extends javax.swing.JPanel {
         componentPanel = new javax.swing.JPanel();
         passenger1Label = new javax.swing.JLabel();
         passenger3Label = new javax.swing.JLabel();
-        vehiclePicturePanel2 = new convoy.gui.PicturePanel();
         bumperNumberLabel = new javax.swing.JLabel();
         driverLabel = new javax.swing.JLabel();
         passenger2Label = new javax.swing.JLabel();
         callSignLabel = new javax.swing.JLabel();
+        picturePanel = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(194, 178, 128));
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(194, 178, 128)));
@@ -99,17 +115,6 @@ public class VehiclePanel extends javax.swing.JPanel {
         passenger3Label.setMinimumSize(new java.awt.Dimension(50, 10));
         passenger3Label.setName(""); // NOI18N
         passenger3Label.setPreferredSize(new java.awt.Dimension(50, 11));
-
-        javax.swing.GroupLayout vehiclePicturePanel2Layout = new javax.swing.GroupLayout(vehiclePicturePanel2);
-        vehiclePicturePanel2.setLayout(vehiclePicturePanel2Layout);
-        vehiclePicturePanel2Layout.setHorizontalGroup(
-            vehiclePicturePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 80, Short.MAX_VALUE)
-        );
-        vehiclePicturePanel2Layout.setVerticalGroup(
-            vehiclePicturePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 48, Short.MAX_VALUE)
-        );
 
         bumperNumberLabel.setBackground(new java.awt.Color(102, 102, 255));
         bumperNumberLabel.setText("Bumper Number");
@@ -140,22 +145,38 @@ public class VehiclePanel extends javax.swing.JPanel {
         callSignLabel.setName(""); // NOI18N
         callSignLabel.setPreferredSize(new java.awt.Dimension(50, 11));
 
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/convoy/resources/images/humveeIconLarge.png"))); // NOI18N
+
+        javax.swing.GroupLayout picturePanelLayout = new javax.swing.GroupLayout(picturePanel);
+        picturePanel.setLayout(picturePanelLayout);
+        picturePanelLayout.setHorizontalGroup(
+            picturePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(picturePanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        picturePanelLayout.setVerticalGroup(
+            picturePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, picturePanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout componentPanelLayout = new javax.swing.GroupLayout(componentPanel);
         componentPanel.setLayout(componentPanelLayout);
         componentPanelLayout.setHorizontalGroup(
             componentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(componentPanelLayout.createSequentialGroup()
                 .addGroup(componentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(componentPanelLayout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(vehiclePicturePanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 23, Short.MAX_VALUE))
                     .addComponent(passenger3Label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(passenger2Label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(passenger1Label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(driverLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(bumperNumberLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(callSignLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(callSignLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(picturePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         componentPanelLayout.setVerticalGroup(
@@ -170,7 +191,7 @@ public class VehiclePanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(passenger3Label, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(vehiclePicturePanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(picturePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(bumperNumberLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -197,7 +218,7 @@ public class VehiclePanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(componentPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -205,10 +226,11 @@ public class VehiclePanel extends javax.swing.JPanel {
     private javax.swing.JLabel callSignLabel;
     private javax.swing.JPanel componentPanel;
     private javax.swing.JLabel driverLabel;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel passenger1Label;
     private javax.swing.JLabel passenger2Label;
     private javax.swing.JLabel passenger3Label;
-    private convoy.gui.PicturePanel vehiclePicturePanel2;
+    private javax.swing.JPanel picturePanel;
     // End of variables declaration//GEN-END:variables
 
     void addMouseListener(VehicleGrid aThis) {

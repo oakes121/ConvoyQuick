@@ -78,7 +78,7 @@ public class VehicleGrid extends javax.swing.JPanel {
         if (vehicleCount < 16) {
             panelHolder.get(vehicleCount).remove(addNewVehiclePanel1);
             
-            vehiclePanelArray.add(new VehiclePanel());    
+            vehiclePanelArray.add(new VehiclePanel());
             panelHolder.get(vehicleCount).add(vehiclePanelArray.get(vehicleCount));
             ++vehicleCount;
             vehiclePanelMouseListenerUpdate();
@@ -104,7 +104,6 @@ public class VehicleGrid extends javax.swing.JPanel {
                 vehiclePanelArray.get(0).addMouseListener(new java.awt.event.MouseAdapter() {
                     public void mouseClicked(java.awt.event.MouseEvent evt) {
                         System.out.println(" mouseClicked 0 ");
-                        swapPanel(0, 1);
                     }
                 });
             }
@@ -263,7 +262,7 @@ public class VehicleGrid extends javax.swing.JPanel {
         addNewVehiclePanel1 = new convoy.gui.AddNewVehiclePanel();
 
         setPreferredSize(new java.awt.Dimension(1724, 300));
-        setLayout(new java.awt.GridLayout());
+        setLayout(new java.awt.GridLayout(1, 0));
 
         addNewVehiclePanel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
