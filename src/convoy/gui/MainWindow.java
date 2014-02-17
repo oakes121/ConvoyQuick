@@ -33,8 +33,6 @@ public class MainWindow extends javax.swing.JFrame {
         revalidate();
         repaint();
         
-        
-        
         //addMenuBar();
     }
     
@@ -76,8 +74,8 @@ public class MainWindow extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         picturePanel2 = new convoy.gui.PicturePanel("");
         missionNumberPanel = new javax.swing.JPanel();
-        classificationDropBox = new javax.swing.JComboBox();
-        missionTextField = new javax.swing.JTextField();
+        leftMissionInfoPanel1 = new convoy.gui.LeftMissionInfoPanel();
+        rightMissionInfoPanel2 = new convoy.gui.RightMissionInfoPanel();
         additionalInfoPanel = new javax.swing.JPanel();
         vehicleGrid1 = new convoy.gui.VehicleGrid();
         menuBar = new javax.swing.JMenuBar();
@@ -105,41 +103,9 @@ public class MainWindow extends javax.swing.JFrame {
 
         missionNumberPanel.setBackground(new java.awt.Color(255, 255, 255));
         missionNumberPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 0, 0)));
-
-        classificationDropBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "For Official Use Only", "Unclassified", "Classified", "Secret", "Top Secret" }));
-
-        missionTextField.setText("Mission #");
-        missionTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                missionTextFieldActionPerformed(evt);
-            }
-        });
-        missionTextField.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                missionTextFieldFocusGained(evt);
-            }
-        });
-
-        javax.swing.GroupLayout missionNumberPanelLayout = new javax.swing.GroupLayout(missionNumberPanel);
-        missionNumberPanel.setLayout(missionNumberPanelLayout);
-        missionNumberPanelLayout.setHorizontalGroup(
-            missionNumberPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(missionNumberPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(missionNumberPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(classificationDropBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(missionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(1753, Short.MAX_VALUE))
-        );
-        missionNumberPanelLayout.setVerticalGroup(
-            missionNumberPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(missionNumberPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(classificationDropBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(missionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(46, Short.MAX_VALUE))
-        );
+        missionNumberPanel.setLayout(new javax.swing.BoxLayout(missionNumberPanel, javax.swing.BoxLayout.LINE_AXIS));
+        missionNumberPanel.add(leftMissionInfoPanel1);
+        missionNumberPanel.add(rightMissionInfoPanel2);
 
         additionalInfoPanel.setBackground(new java.awt.Color(255, 255, 255));
         additionalInfoPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 0, 0)));
@@ -161,14 +127,14 @@ public class MainWindow extends javax.swing.JFrame {
             picturePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(additionalInfoPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(missionNumberPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(vehicleGrid1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(vehicleGrid1, javax.swing.GroupLayout.DEFAULT_SIZE, 801, Short.MAX_VALUE)
         );
         picturePanel2Layout.setVerticalGroup(
             picturePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(picturePanel2Layout.createSequentialGroup()
                 .addComponent(missionNumberPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(vehicleGrid1, javax.swing.GroupLayout.DEFAULT_SIZE, 453, Short.MAX_VALUE)
+                .addComponent(vehicleGrid1, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(additionalInfoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -187,14 +153,6 @@ public class MainWindow extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void missionTextFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_missionTextFieldFocusGained
-        missionTextField.setText("");
-    }//GEN-LAST:event_missionTextFieldFocusGained
-
-    private void missionTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_missionTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_missionTextFieldActionPerformed
 
     /**
      * @param args the command line arguments
@@ -246,9 +204,6 @@ public class MainWindow extends javax.swing.JFrame {
             //printLabel.setFont(captureItFont);
             //saveLabel.setFont(captureItFont);
             
-            classificationDropBox.setFont(captureItFont);
-            missionTextField.setFont(captureItFont);
-
             
         } catch (Exception ex) {
             ex.printStackTrace();;
@@ -258,7 +213,7 @@ public class MainWindow extends javax.swing.JFrame {
     
     private void setMainWindowButtonColor(){
         
-       Color desertStormColor = new  Color(194, 178, 128);
+       //Color desertStormColor = new  Color(194, 178, 128);
        /*
        finalizePanel.setBackground(desertStormColor);
        mainMenuPanel.setBackground(desertStormColor);
@@ -275,14 +230,14 @@ public class MainWindow extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel additionalInfoPanel;
-    private javax.swing.JComboBox classificationDropBox;
     private javax.swing.JMenu editMenu;
     private javax.swing.JMenu fileMenu;
     private javax.swing.JPanel jPanel2;
+    private convoy.gui.LeftMissionInfoPanel leftMissionInfoPanel1;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JPanel missionNumberPanel;
-    private javax.swing.JTextField missionTextField;
     private convoy.gui.PicturePanel picturePanel2;
+    private convoy.gui.RightMissionInfoPanel rightMissionInfoPanel2;
     private convoy.gui.VehicleGrid vehicleGrid1;
     // End of variables declaration//GEN-END:variables
 }
