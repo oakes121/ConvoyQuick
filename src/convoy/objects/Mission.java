@@ -195,11 +195,8 @@ public class Mission implements Serializable {
      * @param vehicle vehicle to be added
      * @return vehicles.add(vehicle) returns whether or not vehicle was added
      */
-    public void addVehicle(Vehicle vehicle) {
-        Vehicle v = vehicle;
-        //System.out.println(vehicle.getDriverName());
-        vehicles.add(vehicle);
-        
+    public void addVehicle(Vehicle newVehicle) {
+        vehicles.add(newVehicle);        
     }
     
     /**
@@ -383,10 +380,10 @@ public class Mission implements Serializable {
      * @return vehicle object
      */
     public Vehicle getVehicleAtIndex(int index) {
-        Vehicle vehicle = vehicles.get(index);
+        Vehicle tempVehicle = this.vehicles.get(index);
         
-        if (vehicle != null)
-            return vehicle;
+        if (tempVehicle != null)
+            return tempVehicle;
         
         return null;
     }

@@ -17,25 +17,26 @@ import javax.swing.SwingConstants;
  */
 public class VehiclePanel extends javax.swing.JPanel {
     private Mission mission = Mission.getInstance();
-    private int vehicleCount = 0;
+    private static int vehicleCount = 0;
     /**
      * Creates new form VehiclePanel
      */
-    public VehiclePanel() { 
+    public VehiclePanel() {        
         vehiclePicturePanel2 = new PicturePanel("/convoy/resources/images/camo.jpg");
         this.setOpaque(false);
         initComponents();
         doMainMenuFont();
         setTransparent();    
+        
+        mission.addVehicle(new Vehicle());        
         setDriverName();
         ++vehicleCount;
     }
     
     public void setDriverName() {
         String driverName;
-        mission.addVehicle(new Vehicle());
         driverName = mission.getVehicleAtIndex(vehicleCount).getDriverName();
-        driverLabel.setText(driverName);
+        driverLabel.setText(driverName + " " + vehicleCount);
     }
     
     public void setTransparent() {
@@ -81,8 +82,11 @@ public class VehiclePanel extends javax.swing.JPanel {
         passenger2Label = new javax.swing.JLabel();
         callSignLabel = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(194, 178, 128));
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(194, 178, 128)));
         setName(""); // NOI18N
+
+        componentPanel.setBackground(new java.awt.Color(194, 178, 128));
 
         passenger1Label.setText("Passenger");
         passenger1Label.setMaximumSize(new java.awt.Dimension(50, 11));
@@ -115,7 +119,8 @@ public class VehiclePanel extends javax.swing.JPanel {
         bumperNumberLabel.setPreferredSize(new java.awt.Dimension(50, 11));
 
         driverLabel.setBackground(new java.awt.Color(102, 102, 255));
-        driverLabel.setForeground(new java.awt.Color(0, 255, 0));
+        driverLabel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        driverLabel.setForeground(new java.awt.Color(0, 204, 0));
         driverLabel.setText("Driver");
         driverLabel.setMaximumSize(new java.awt.Dimension(50, 11));
         driverLabel.setMinimumSize(new java.awt.Dimension(50, 11));
@@ -205,4 +210,8 @@ public class VehiclePanel extends javax.swing.JPanel {
     private javax.swing.JLabel passenger3Label;
     private convoy.gui.PicturePanel vehiclePicturePanel2;
     // End of variables declaration//GEN-END:variables
+
+    void addMouseListener(VehicleGrid aThis) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
