@@ -10,6 +10,7 @@ import java.awt.Color;
 import java.awt.Font;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.border.BevelBorder;
 
 /**
@@ -41,12 +42,6 @@ public class MainWindow extends javax.swing.JFrame {
         //vehiclePanel.setOpaque(false);
         additionalInfoPanel.setOpaque(false);
         //buttonsPanel.setOpaque(false);
-    }
-    
-    private void addMenuBar(){
-        
-        frame.add(menuBar);
-        
     }
     
     private void display() {
@@ -148,18 +143,28 @@ public class MainWindow extends javax.swing.JFrame {
 
         fileMenu.setText("File");
 
+        newMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.CTRL_MASK));
         newMenuItem.setText("New");
+        newMenuItem.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                newMenuItemMouseClicked(evt);
+            }
+        });
         fileMenu.add(newMenuItem);
 
+        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem1.setText("Load");
         fileMenu.add(jMenuItem1);
 
+        jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem2.setText("Save");
         fileMenu.add(jMenuItem2);
 
+        jMenuItem3.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem3.setText("Finalize");
         fileMenu.add(jMenuItem3);
 
+        jMenuItem4.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem4.setText("Print");
         fileMenu.add(jMenuItem4);
 
@@ -182,6 +187,23 @@ public class MainWindow extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void newMenuItemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newMenuItemMouseClicked
+        
+        
+        int response = JOptionPane.showConfirmDialog(this, "Are you sure you want to start a new convoy?\nAll unsaved data will be lost!", "New Convoy?",  JOptionPane.YES_NO_OPTION);
+        if (response == JOptionPane.YES_OPTION)
+        {
+           this.setVisible(false); 
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.setVisible(true);
+            mainWindow.setExtendedState(mainWindow.MAXIMIZED_BOTH);
+            mainWindow.toFront();
+            repaint();
+            revalidate();
+        }
+        //String response = JOptionPane.  // .showInputDialog(null, stuff, "Add New Freq", JOptionPane.OK_CANCEL_OPTION);
+    }//GEN-LAST:event_newMenuItemMouseClicked
 
     /**
      * @param args the command line arguments
