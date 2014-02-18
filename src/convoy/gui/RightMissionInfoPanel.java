@@ -7,6 +7,7 @@ package convoy.gui;
 import java.awt.Font;
 import java.awt.FontFormatException;
 import java.io.IOException;
+import javax.swing.*;
 
 /**
  *
@@ -38,6 +39,7 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
         toSPLabel.setFont(captureItFont);
         toLinkUpLabel.setFont(captureItFont);
         stagingAreaLabel.setFont(captureItFont);
+        freqLabel.setFont(captureItFont);
         
         
        }catch(FontFormatException | IOException ex){
@@ -75,7 +77,9 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
         fromSPTextField1 = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
-        jPanel1 = new javax.swing.JPanel();
+        freqPanel = new javax.swing.JPanel();
+        freqLabel = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -102,15 +106,35 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
         jTextArea1.setText("1\n2\n3\n4\n5\n6");
         jScrollPane1.setViewportView(jTextArea1);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+        freqLabel.setText("Frequency - ");
+
+        jLabel2.setForeground(new java.awt.Color(0, 51, 255));
+        jLabel2.setText("<HTML><U>+ Add Freq</U></HTML>");
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout freqPanelLayout = new javax.swing.GroupLayout(freqPanel);
+        freqPanel.setLayout(freqPanelLayout);
+        freqPanelLayout.setHorizontalGroup(
+            freqPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(freqPanelLayout.createSequentialGroup()
+                .addComponent(freqLabel)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(freqPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 50, Short.MAX_VALUE)
+        freqPanelLayout.setVerticalGroup(
+            freqPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(freqPanelLayout.createSequentialGroup()
+                .addComponent(freqLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 19, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -157,7 +181,7 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
                         .addComponent(stagingAreaLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(stagingAreaTextField))
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(freqPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -181,7 +205,7 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
                     .addComponent(fromLinkUpLabel)
                     .addComponent(fromTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(fromSPTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(toLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(toTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -190,25 +214,46 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
                     .addComponent(toSPLabel)
                     .addComponent(toSPTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(freqPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+        
+        JTextField freqName = new JTextField();
+        
+        Object[] stuff = {"Freq Name: ", freqName, "Frequency:"};
+        String response = JOptionPane.showInputDialog(null, stuff, "Add New Freq", JOptionPane.OK_CANCEL_OPTION);
+        
+        if(response != null){ 
+            javax.swing.JLabel newFreqLabel = new javax.swing.JLabel();
+        
+            newFreqLabel.setText("CH1: ");
+
+            this.freqPanel.add(newFreqLabel);
+        }else{
+       
+        
+        }
+    }//GEN-LAST:event_jLabel2MouseClicked
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel accLabel;
     private javax.swing.JTextField accTextField;
     private javax.swing.JLabel ccLabel;
     private javax.swing.JTextField ccTextField;
+    private javax.swing.JLabel freqLabel;
+    private javax.swing.JPanel freqPanel;
     private javax.swing.JLabel fromLabel;
     private javax.swing.JLabel fromLinkUpLabel;
     private javax.swing.JTextField fromLinkUpTextField;
     private javax.swing.JLabel fromSPLabel;
     private javax.swing.JTextField fromSPTextField1;
     private javax.swing.JTextField fromTextField;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel stagingAreaLabel;
