@@ -7,7 +7,6 @@ package convoy.gui;
 
 import convoy.objects.Mission;
 import java.awt.Color;
-import java.awt.Cursor;
 import java.awt.FileDialog;
 import java.awt.Font;
 import java.util.concurrent.ExecutorService;
@@ -15,8 +14,6 @@ import java.util.concurrent.Executors;
 import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
 import javax.swing.border.BevelBorder;
-
-
 
 /**
  *
@@ -201,21 +198,13 @@ public class MainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_newProjectPanelMouseExited
 
     private void newProjectPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newProjectPanelMouseClicked
-        
-        try {
-  this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-  this.setVisible(false); 
+        this.setVisible(false); 
         mainWindow = new MainWindow();
         mainWindow.setVisible(true);
         mainWindow.setExtendedState(mainWindow.MAXIMIZED_BOTH);
         mainWindow.toFront();
         repaint();
         revalidate();
-} finally {
-  this.setCursor(Cursor.getDefaultCursor());
-}
-        
-        
     }//GEN-LAST:event_newProjectPanelMouseClicked
 
     private void loadProjectPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loadProjectPanelMouseClicked

@@ -108,7 +108,7 @@ public class MainWindow extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(1000, 800));
         getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.LINE_AXIS));
 
-        picturePanel2.setBackground(new java.awt.Color(255, 255, 255));
+        picturePanel2.setBackground(new java.awt.Color(204, 0, 0));
 
         missionNumberPanel.setBackground(new java.awt.Color(255, 255, 255));
         missionNumberPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 0, 0)));
@@ -122,6 +122,7 @@ public class MainWindow extends javax.swing.JFrame {
         additionalInfoPanel.add(additionalTextPanel1, java.awt.BorderLayout.CENTER);
 
         vehicleGrid1.setBackground(new java.awt.Color(255, 255, 255));
+        vehicleGrid1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 0, 0)));
 
         javax.swing.GroupLayout picturePanel2Layout = new javax.swing.GroupLayout(picturePanel2);
         picturePanel2.setLayout(picturePanel2Layout);
