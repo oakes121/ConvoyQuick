@@ -227,13 +227,11 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
         
         Object[] stuff = {"Freq Name: ", freqName, "Frequency:"};
         String response = JOptionPane.showInputDialog(null, stuff, "Add New Freq", JOptionPane.OK_CANCEL_OPTION);
-        
+                
         if(response != null){ 
-            javax.swing.JLabel newFreqLabel = new javax.swing.JLabel();
-        
-            newFreqLabel.setText("CH1: ");
+            javax.swing.JLabel newFreqLabel = new javax.swing.JLabel("CH1: ");
 
-            this.freqPanel.add(newFreqLabel);
+            add(newFreqLabel);
         }else{
        
         

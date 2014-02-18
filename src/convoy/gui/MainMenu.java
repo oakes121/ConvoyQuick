@@ -201,6 +201,8 @@ public class MainMenu extends javax.swing.JFrame {
         this.setVisible(false); 
         mainWindow = new MainWindow();
         mainWindow.setVisible(true);
+        mainWindow.setTitle("Convoy QuicMaink - Convoy documentation creator to help save lives");
+        mainWindow.setIconImage(new ImageIcon(getClass().getResource("/convoy/resources/images/humveeIcon.png")).getImage());
         mainWindow.setExtendedState(mainWindow.MAXIMIZED_BOTH);
         mainWindow.toFront();
         repaint();
