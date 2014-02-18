@@ -6,6 +6,8 @@
 
 package convoy.gui;
 
+import java.awt.FileDialog;
+
 /**
  *
  * @author chand_000
@@ -121,6 +123,11 @@ public class CreateVehiclePopUp extends javax.swing.JFrame {
         );
 
         jButton4.setText("Select Image");
+        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton4MouseClicked(evt);
+            }
+        });
 
         jButton5.setText("Add Vehicle");
 
@@ -187,6 +194,14 @@ public class CreateVehiclePopUp extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
+        // TODO add your handling code here:
+        FileDialog loadFile;
+        loadFile = new FileDialog(this, "Choose a file", FileDialog.LOAD);
+        loadFile.setDirectory("C:\\");
+        loadFile.setVisible(true);
+    }//GEN-LAST:event_jButton4MouseClicked
 
     /**
      * @param args the command line arguments
