@@ -6,12 +6,10 @@
 
 package convoy.gui;
 
-import java.awt.Color;
 import java.awt.Font;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.border.BevelBorder;
 
 /**
  *
@@ -190,8 +188,7 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void newMenuItemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newMenuItemMouseClicked
         
-        
-        int response = JOptionPane.showConfirmDialog(this, "Are you sure you want to start a new convoy?\nAll unsaved data will be lost!", "New Convoy?",  JOptionPane.YES_NO_OPTION);
+        int response = JOptionPane.showConfirmDialog(null, "Are you sure you want to start a new convoy?\nAll unsaved data will be lost!", "New Convoy?",  JOptionPane.YES_NO_OPTION);
         if (response == JOptionPane.YES_OPTION)
         {
            this.setVisible(false); 
@@ -202,7 +199,6 @@ public class MainWindow extends javax.swing.JFrame {
             repaint();
             revalidate();
         }
-        //String response = JOptionPane.  // .showInputDialog(null, stuff, "Add New Freq", JOptionPane.OK_CANCEL_OPTION);
     }//GEN-LAST:event_newMenuItemMouseClicked
 
     /**
@@ -245,7 +241,7 @@ public class MainWindow extends javax.swing.JFrame {
     private void doMainWindowFont() {
         try {
             
-            Font topSecretFont = Font.createFont(Font.TRUETYPE_FONT, getClass().getResourceAsStream("/convoy/resources/fonts/topSecret.ttf"));
+            //Font topSecretFont = Font.createFont(Font.TRUETYPE_FONT, getClass().getResourceAsStream("/convoy/resources/fonts/topSecret.ttf"));
             
             Font captureItFont = Font.createFont(Font.TRUETYPE_FONT, getClass().getResourceAsStream("/convoy/resources/fonts/captureIt.ttf"));
             captureItFont = captureItFont.deriveFont(Font.ITALIC, 15f);
