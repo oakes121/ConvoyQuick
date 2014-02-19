@@ -21,6 +21,9 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
     public RightMissionInfoPanel() {
         initComponents();
         doFonts();
+        
+        channelOneLabel.setVisible(false);
+        
     }
     
     private void doFonts(){
@@ -80,6 +83,7 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
         freqPanel = new javax.swing.JPanel();
         freqLabel = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        channelOneLabel = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(194, 178, 128));
 
@@ -118,15 +122,19 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
             }
         });
 
+        channelOneLabel.setText("CH1: ");
+
         javax.swing.GroupLayout freqPanelLayout = new javax.swing.GroupLayout(freqPanel);
         freqPanel.setLayout(freqPanelLayout);
         freqPanelLayout.setHorizontalGroup(
             freqPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(freqPanelLayout.createSequentialGroup()
                 .addComponent(freqLabel)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 720, Short.MAX_VALUE))
             .addGroup(freqPanelLayout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(channelOneLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -135,7 +143,9 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
             .addGroup(freqPanelLayout.createSequentialGroup()
                 .addComponent(freqLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(freqPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(channelOneLabel))
                 .addGap(0, 19, Short.MAX_VALUE))
         );
 
@@ -231,10 +241,16 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
         
-        JTextField freqName = new JTextField();
+        java.net.URL imgURL = getClass().getResource("/convoy/resources/images/radioFrequencyIcon.png");
         
-        Object[] stuff = {"Freq Name: ", freqName, "Frequency:"};
-        int response = JOptionPane.showConfirmDialog(null, stuff, "Add New Freq", JOptionPane.OK_CANCEL_OPTION);
+        Icon icon = new ImageIcon(imgURL);        
+        
+        JTextField freqName = new JTextField();
+        JTextField freq = new JTextField();
+        
+        Object[] stuff = {"Freq Name: ", freqName, "Frequency:", freq};
+        int response;
+        response = JOptionPane.showConfirmDialog(this, stuff, "Add New Freq", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, icon);
                 
         if(response == JOptionPane.OK_OPTION){ 
             
@@ -257,6 +273,7 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
     private javax.swing.JTextField accTextField;
     private javax.swing.JLabel ccLabel;
     private javax.swing.JTextField ccTextField;
+    private javax.swing.JLabel channelOneLabel;
     private javax.swing.JLabel freqLabel;
     private javax.swing.JPanel freqPanel;
     private javax.swing.JLabel fromLabel;
