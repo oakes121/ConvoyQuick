@@ -7,6 +7,7 @@
 package convoy.gui;
 
 import java.awt.Font;
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -31,6 +32,9 @@ public class MainWindow extends javax.swing.JFrame {
         picturePanel2 = new PicturePanel("/convoy/resources/images/camo.jpg");
         revalidate();
         repaint();
+        
+        missionNumberPanel.setBorder(BorderFactory.createEmptyBorder(0,0,0,0));
+        additionalInfoPanel.setBorder(BorderFactory.createEmptyBorder(0,0,0,0));
         
         //addMenuBar();
     }
@@ -101,10 +105,9 @@ public class MainWindow extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(1000, 800));
         getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.LINE_AXIS));
 
-        picturePanel2.setBackground(new java.awt.Color(204, 0, 0));
+        picturePanel2.setBackground(new java.awt.Color(194, 178, 128));
 
         missionNumberPanel.setBackground(new java.awt.Color(255, 255, 255));
-        missionNumberPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 0, 0)));
         missionNumberPanel.setLayout(new javax.swing.BoxLayout(missionNumberPanel, javax.swing.BoxLayout.LINE_AXIS));
         missionNumberPanel.add(leftMissionInfoPanel1);
         missionNumberPanel.add(rightMissionInfoPanel2);
@@ -115,23 +118,28 @@ public class MainWindow extends javax.swing.JFrame {
         additionalInfoPanel.add(additionalTextPanel1, java.awt.BorderLayout.CENTER);
 
         vehicleGrid1.setBackground(new java.awt.Color(255, 255, 255));
-        vehicleGrid1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 0, 0)));
 
         javax.swing.GroupLayout picturePanel2Layout = new javax.swing.GroupLayout(picturePanel2);
         picturePanel2.setLayout(picturePanel2Layout);
         picturePanel2Layout.setHorizontalGroup(
             picturePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(additionalInfoPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(missionNumberPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 870, Short.MAX_VALUE)
-            .addComponent(vehicleGrid1, javax.swing.GroupLayout.DEFAULT_SIZE, 801, Short.MAX_VALUE)
+            .addGroup(picturePanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(picturePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(missionNumberPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 858, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, picturePanel2Layout.createSequentialGroup()
+                        .addGroup(picturePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(additionalInfoPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(vehicleGrid1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                        .addContainerGap())))
         );
         picturePanel2Layout.setVerticalGroup(
             picturePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(picturePanel2Layout.createSequentialGroup()
                 .addComponent(missionNumberPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(vehicleGrid1, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(1, 1, 1)
+                .addComponent(vehicleGrid1, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
+                .addGap(1, 1, 1)
                 .addComponent(additionalInfoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 

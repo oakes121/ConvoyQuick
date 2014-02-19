@@ -41,6 +41,7 @@ public class MainMenu extends javax.swing.JFrame {
         frame.setLocationRelativeTo(null);
         frame.setTitle("Convoy Quick - Convoy documentation creator to help save lives");
         frame.setExtendedState(MainMenu.MAXIMIZED_BOTH);
+        frame.setResizable(false);
         //frame.setUndecorated(true); 
     }
 
