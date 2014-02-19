@@ -106,6 +106,8 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
         jTextArea1.setText("1\n2\n3\n4\n5\n6");
         jScrollPane1.setViewportView(jTextArea1);
 
+        freqPanel.setBackground(new java.awt.Color(255, 255, 255));
+
         freqLabel.setText("Frequency - ");
 
         jLabel2.setForeground(new java.awt.Color(0, 51, 255));
