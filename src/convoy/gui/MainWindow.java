@@ -6,6 +6,7 @@
 
 package convoy.gui;
 
+import java.awt.FileDialog;
 import java.awt.Font;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -151,15 +152,20 @@ public class MainWindow extends javax.swing.JFrame {
 
         newMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.CTRL_MASK));
         newMenuItem.setText("New");
-        newMenuItem.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                newMenuItemMouseClicked(evt);
+        newMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newMenuItemActionPerformed(evt);
             }
         });
         fileMenu.add(newMenuItem);
 
         jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem1.setText("Load");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
         fileMenu.add(jMenuItem1);
 
         jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
@@ -194,7 +200,7 @@ public class MainWindow extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void newMenuItemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newMenuItemMouseClicked
+    private void newMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newMenuItemActionPerformed
         
         int response = JOptionPane.showConfirmDialog(null, "Are you sure you want to start a new convoy?\nAll unsaved data will be lost!", "New Convoy?",  JOptionPane.YES_NO_OPTION);
         if (response == JOptionPane.YES_OPTION)
@@ -207,7 +213,19 @@ public class MainWindow extends javax.swing.JFrame {
             repaint();
             revalidate();
         }
-    }//GEN-LAST:event_newMenuItemMouseClicked
+    }//GEN-LAST:event_newMenuItemActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        int response = JOptionPane.showConfirmDialog(null, "Are you sure you want to load a convoy?\nAll unsaved data will be lost!", "New Convoy?",  JOptionPane.YES_NO_OPTION);
+        if (response == JOptionPane.YES_OPTION)
+        {
+           //To load a previously saved convoy
+            FileDialog loadFile;
+            loadFile = new FileDialog(this, "Choose a file", FileDialog.LOAD);
+            loadFile.setDirectory("C:\\");
+            loadFile.setVisible(true);
+        }
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
