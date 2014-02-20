@@ -86,8 +86,8 @@ public class MainWindow extends javax.swing.JFrame {
         jMenuItem4 = new javax.swing.JMenuItem();
         editMenu = new javax.swing.JMenu();
         helpMenu = new javax.swing.JMenu();
-        jMenu1 = new javax.swing.JMenu();
-        aboutMenu = new javax.swing.JMenu();
+        helpMenuItem = new javax.swing.JMenuItem();
+        aboutMenuItem = new javax.swing.JMenuItem();
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -187,13 +187,25 @@ public class MainWindow extends javax.swing.JFrame {
 
         helpMenu.setText("Help");
 
-        jMenu1.setText("jMenu1");
-        helpMenu.add(jMenu1);
+        helpMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_H, java.awt.event.InputEvent.CTRL_MASK));
+        helpMenuItem.setText("Help");
+        helpMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                helpMenuItemActionPerformed(evt);
+            }
+        });
+        helpMenu.add(helpMenuItem);
+
+        aboutMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        aboutMenuItem.setText("About");
+        aboutMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                aboutMenuItemActionPerformed(evt);
+            }
+        });
+        helpMenu.add(aboutMenuItem);
 
         menuBar.add(helpMenu);
-
-        aboutMenu.setText("About");
-        menuBar.add(aboutMenu);
 
         setJMenuBar(menuBar);
 
@@ -226,6 +238,21 @@ public class MainWindow extends javax.swing.JFrame {
             loadFile.setVisible(true);
         }
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void aboutMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutMenuItemActionPerformed
+         
+        Object[] stuff = {new ImageIcon(getClass().getResource("/convoy/resources/images/logo.gif")),"HelpContent"};
+        
+        JOptionPane. showMessageDialog(null, stuff, "About Content Goes Here", JOptionPane.INFORMATION_MESSAGE, null);        
+        
+    }//GEN-LAST:event_aboutMenuItemActionPerformed
+
+    private void helpMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpMenuItemActionPerformed
+        
+        JOptionPane. showMessageDialog(null, "Help Content Goes Here", "Help", JOptionPane.QUESTION_MESSAGE, null);       
+        
+      
+    }//GEN-LAST:event_helpMenuItemActionPerformed
 
     /**
      * @param args the command line arguments
@@ -302,13 +329,13 @@ public class MainWindow extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu aboutMenu;
+    private javax.swing.JMenuItem aboutMenuItem;
     private javax.swing.JPanel additionalInfoPanel;
     private convoy.gui.additionalTextPanel additionalTextPanel1;
     private javax.swing.JMenu editMenu;
     private javax.swing.JMenu fileMenu;
     private javax.swing.JMenu helpMenu;
-    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenuItem helpMenuItem;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
