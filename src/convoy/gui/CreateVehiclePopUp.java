@@ -8,6 +8,7 @@ package convoy.gui;
 
 import java.awt.FileDialog;
 import java.awt.event.WindowEvent;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -23,6 +24,9 @@ public class CreateVehiclePopUp extends javax.swing.JFrame {
      */
     public CreateVehiclePopUp() {
         initComponents();
+        this.setLocationRelativeTo(null); //centers frame
+        this.setTitle("Create New Vehicle"); //adds title
+        this.setIconImage(new ImageIcon(getClass().getResource("/convoy/resources/images/humveeIcon.png")).getImage());
     }
 
     /**
