@@ -73,7 +73,6 @@ public class LeftMissionInfoPanel extends javax.swing.JPanel {
         fromLabel.setFont(captureItFont);
         toLabel.setFont(captureItFont);
         
-        
        }catch(FontFormatException | IOException ex){
            //ex.printStackTrace();
        }
@@ -119,9 +118,8 @@ public class LeftMissionInfoPanel extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(194, 178, 128));
 
-        classificationDropBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "For Official Use Only", "Unclassified", "Classified", "Secret", "Top Secret" }));
+        classificationDropBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "For Official Use Only", "Unclassified", "Classified", "Secret" }));
 
-        missionNumberTextField.setText("Mission #");
         missionNumberTextField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 missionNumberTextFieldFocusGained(evt);
@@ -172,7 +170,7 @@ public class LeftMissionInfoPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(10, 10, 10)
-                .addComponent(classificationDropBox, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(classificationDropBox, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(missionNumberTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
