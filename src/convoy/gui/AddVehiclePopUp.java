@@ -6,6 +6,8 @@
 
 package convoy.gui;
 
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author USER1
@@ -16,7 +18,12 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
      * Creates new form AddVehiclePopUp
      */
     public AddVehiclePopUp() {
+        
         initComponents();
+        this.setLocationRelativeTo(null); //centers frame
+        this.setTitle("Add a New Vehicle"); //adds title
+        this.setIconImage(new ImageIcon(getClass().getResource("/convoy/resources/images/humveeIcon.png")).getImage());
+        
     }
 
     /**
@@ -349,7 +356,7 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
         // TODO add your handling code here:
         CreateVehiclePopUp createVehicle= new CreateVehiclePopUp();
         createVehicle.setObject(this);
-       createVehicle.setVisible(true);
+        createVehicle.setVisible(true);
         this.hide();
         createVehicle.show();
         
@@ -362,11 +369,13 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         //dispose();
-        System.exit(0);
+        //System.exit(0);
+        this.setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
