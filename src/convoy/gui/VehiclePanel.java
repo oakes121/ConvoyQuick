@@ -97,6 +97,7 @@ public class VehiclePanel extends javax.swing.JPanel {
         callSignLabel = new javax.swing.JLabel();
         picturePanel = new javax.swing.JPanel();
         imageLabel = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(194, 178, 128));
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(194, 178, 128)));
@@ -164,6 +165,9 @@ public class VehiclePanel extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
+        jTextField1.setText("Additional Info");
+        jTextField1.setPreferredSize(new java.awt.Dimension(59, 13));
+
         javax.swing.GroupLayout componentPanelLayout = new javax.swing.GroupLayout(componentPanel);
         componentPanel.setLayout(componentPanelLayout);
         componentPanelLayout.setHorizontalGroup(
@@ -176,7 +180,8 @@ public class VehiclePanel extends javax.swing.JPanel {
                     .addComponent(driverLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(bumperNumberLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(callSignLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(picturePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(picturePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         componentPanelLayout.setVerticalGroup(
@@ -196,6 +201,8 @@ public class VehiclePanel extends javax.swing.JPanel {
                 .addComponent(bumperNumberLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(callSignLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
         );
 
@@ -227,6 +234,7 @@ public class VehiclePanel extends javax.swing.JPanel {
     private javax.swing.JPanel componentPanel;
     private javax.swing.JLabel driverLabel;
     private javax.swing.JLabel imageLabel;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel passenger1Label;
     private javax.swing.JLabel passenger2Label;
     private javax.swing.JLabel passenger3Label;

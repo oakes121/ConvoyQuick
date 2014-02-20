@@ -89,8 +89,8 @@ public class VehicleGrid extends javax.swing.JPanel implements KeyListener, Mous
                 vehiclePanelClickedFlags.get(counter).setTruthValue(true);
                 addBorder(counter, 1);  
                 trueCount++;
+                swapPanel();
                 //JOptionPane.showMessageDialog(this, "1 "+ trueCount, "count", JOptionPane.WARNING_MESSAGE);
-                //System.out.println(trueCount +"");
             }
             else if (vehiclePanelClickedFlags.get(counter).getTruthValue() == true) {
                 vehiclePanelClickedFlags.get(counter).setTruthValue(false);
@@ -182,19 +182,41 @@ public class VehicleGrid extends javax.swing.JPanel implements KeyListener, Mous
         }        
     }    
 
-    
-    private void swapPanel(int panelCount1, int panelCount2) {
+    /**
+     * swapPanel() methods swaps the position of two different panels within the grid
+     */
+    private void swapPanel() {
         
-        panelHolder.get(panelCount1).removeAll();
-        panelHolder.get(panelCount2).removeAll(); 
+        int pos1 = -1, pos2 = -1;
+                
+        for (int i = 0; i < vehiclePanelClickedFlags.size(); i++) {
+            if (vehiclePanelClickedFlags.get(i).getTruthValue() == true) {
+                pos1 = i; break;
+            }
+        }
         
-        panelHolder.get(panelCount1).add(vehiclePanelArray.get(panelCount2));
-        panelHolder.get(panelCount2).add(vehiclePanelArray.get(panelCount1));
+        for (int i = 0; i < vehiclePanelClickedFlags.size(); i++) {
+            if (vehiclePanelClickedFlags.get(i).getTruthValue() == true) {
+                pos2 = i; 
+            }
+        }
         
-        Collections.swap(vehiclePanelArray, panelCount1, panelCount2);
         
-        revalidate();
-        repaint();
+        if ((pos1 != -1) && (pos2 != -1) && (pos1 != pos2)) {      
+            vehiclePanelArray.get(pos1).setBorder(BorderFactory.createMatteBorder(0, 0, 0, 0, Color.red));
+            vehiclePanelArray.get(pos2).setBorder(BorderFactory.createMatteBorder(0, 0, 0, 0, Color.red));
+            vehiclePanelClickedFlags.get(pos1).setTruthValue(false);
+            vehiclePanelClickedFlags.get(pos2).setTruthValue(false);
+            trueCount = 0;
+            
+            Collections.swap(vehiclePanelClickedFlags, pos1, pos2);
+            Collections.swap(vehiclePanelArray, pos1, pos2);
+            Collections.swap(panelHolder, pos1, pos2);        
+            removeAll();
+            reDraw();
+            
+            
+        }        
         
     }
    
@@ -225,8 +247,9 @@ public class VehicleGrid extends javax.swing.JPanel implements KeyListener, Mous
         
         for (int i = 0; i<vehiclePanelClickedFlags.size(); i++ ) {
             if (vehiclePanelClickedFlags.get(i).getTruthValue() == true) {
-                int answer = JOptionPane.showConfirmDialog(this, "Are you sure that you want to delete this panel", "Confirmation", JOptionPane.WARNING_MESSAGE);
+                int answer = JOptionPane.showConfirmDialog(this, "Are you sure that you want to delete this vehicle?", "Confirmation", JOptionPane.WARNING_MESSAGE);
                 if (answer == 0) {
+                    vehiclePanelArray.get(indicator).removeMouseListener(this);
                     panelHolder.remove(indicator);
                     vehiclePanelArray.remove(indicator);
                     vehiclePanelClickedFlags.remove(indicator);
@@ -266,6 +289,9 @@ public class VehicleGrid extends javax.swing.JPanel implements KeyListener, Mous
             
             add(panelHolder.get(m), gbc);
         }
+        
+        revalidate();
+        repaint();
     }
     
     @Override
@@ -282,8 +308,11 @@ public class VehicleGrid extends javax.swing.JPanel implements KeyListener, Mous
         // handles vehiclePanelArray elements
         try {
             for (int i = 0; i < vehiclePanelArray.size() ; i++) {
-                if (e.getSource() == vehiclePanelArray.get(i)) 
+                if (e.getSource() == vehiclePanelArray.get(i)) {
                     setFlag(i);
+                    break;
+                }
+                
             }
             
         } catch(IndexOutOfBoundsException ioobe) {} catch(NullPointerException npe) {}
