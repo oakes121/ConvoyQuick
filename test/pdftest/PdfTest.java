@@ -19,7 +19,7 @@ public class PdfTest {
  
     /** Path to the resulting PDF file. */
     public static final String RESULT
-        = "hello.pdf";
+        = "test\\pdftest\\testOuput\\hello.pdf";
  
     /**
      * Creates a PDF file: hello.pdf

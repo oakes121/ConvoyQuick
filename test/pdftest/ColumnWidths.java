@@ -18,7 +18,7 @@ import com.itextpdf.text.pdf.PdfWriter;
 public class ColumnWidths {
  
     /** The resulting PDF file. */
-    public static final String RESULT = "src\\pdftest\\testOuput\\column_widths.pdf";
+    public static final String RESULT = "test\\pdftest\\testOuput\\column_widths.pdf";
  
     /**
      * Creates a PDF with five tables.
