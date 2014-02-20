@@ -2,6 +2,9 @@
 
 <Form version="1.3" maxVersion="1.8" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
   <Properties>
+    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+      <Color blue="ff" green="ff" red="ff" type="rgb"/>
+    </Property>
     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
       <Dimension value="[1724, 300]"/>
     </Property>
@@ -23,14 +26,4 @@
     <Property name="columns" type="int" value="0"/>
     <Property name="rows" type="int" value="1"/>
   </Layout>
-  <SubComponents>
-    <Component class="convoy.gui.AddNewVehiclePanel" name="addNewVehiclePanel1">
-      <Events>
-        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="addNewVehiclePanel1MouseClicked"/>
-      </Events>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new convoy.gui.AddNewVehiclePanel()"/>
-      </AuxValues>
-    </Component>
-  </SubComponents>
 </Form>
