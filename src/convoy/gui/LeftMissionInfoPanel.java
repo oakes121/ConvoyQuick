@@ -54,7 +54,7 @@ public class LeftMissionInfoPanel extends javax.swing.JPanel {
      * Creates new form MissionInfoPanel
      */
     public LeftMissionInfoPanel() {
-         super();        
+        super();        
         initComponents();
         doFonts();       
         setLayout(this.getLayout());
