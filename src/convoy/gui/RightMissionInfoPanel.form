@@ -26,17 +26,18 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                               <Component id="toLabel" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" alignment="0" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="fromLabel" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="fromTextField" pref="277" max="32767" attributes="0"/>
+                          <Component id="fromTextField" max="32767" attributes="0"/>
                           <Component id="toTextField" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
@@ -61,28 +62,28 @@
                       </Group>
                   </Group>
                   <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                      <EmptySpace min="5" pref="5" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <Component id="ccLabel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="ccTextField" min="-2" pref="221" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="ccTextField" min="-2" pref="325" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                               <Component id="accLabel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="accTextField" max="32767" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="accTextField" min="-2" pref="325" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
                               <Component id="stagingAreaLabel" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="stagingAreaTextField" max="32767" attributes="0"/>
                           </Group>
-                          <Component id="freqPanel" alignment="0" max="32767" attributes="0"/>
                           <Component id="jScrollPane1" alignment="1" pref="781" max="32767" attributes="0"/>
+                          <Component id="freqPanel" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -96,12 +97,12 @@
                   <Component id="accLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="accTextField" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="stagingAreaLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="stagingAreaTextField" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="fromLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="fromSPLabel" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -110,7 +111,7 @@
                   <Component id="fromTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="fromSPTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="toLabel" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
                   <Component id="toTextField" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -119,11 +120,11 @@
                   <Component id="toSPLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="toSPTextField" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
               <Component id="freqPanel" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-              <Component id="jScrollPane1" min="-2" pref="120" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jScrollPane1" min="-2" pref="75" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -203,7 +204,6 @@
           <Properties>
             <Property name="columns" type="int" value="50"/>
             <Property name="rows" type="int" value="5"/>
-            <Property name="text" type="java.lang.String" value="1&#xa;2&#xa;3&#xa;4&#xa;5&#xa;6"/>
           </Properties>
         </Component>
       </SubComponents>
@@ -218,15 +218,63 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <Component id="freqLabel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="720" max="32767" attributes="0"/>
-              </Group>
-              <Group type="102" alignment="0" attributes="0">
+              <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="channelOneLabel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="freqLabel" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="addFreqLabel" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="channelFourLabel" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="channelFourName" min="-2" pref="100" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="channelFourFreq" min="-2" pref="50" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="channelOneLabel" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="channelOneName" min="-2" pref="100" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="channelOneFreq" min="-2" pref="50" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Component id="channelTwoLabel" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="channelTwoName" min="-2" pref="100" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="channelTwoFreq" min="-2" pref="50" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="channelThreeLabel" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="channelThreeName" min="-2" pref="100" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="channelThreeFreq" min="-2" pref="50" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Component id="channelFiveLabel" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="channelFiveName" min="-2" pref="100" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="channelFiveFreq" min="-2" pref="50" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="channelSixLabel" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="channelSixName" min="-2" pref="100" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="channelSixFreq" min="-2" pref="50" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                  </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -234,13 +282,35 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <Component id="freqLabel" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="freqLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="addFreqLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="channelOneLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="channelOneFreq" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="channelOneName" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="channelTwoLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="channelTwoName" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="channelTwoFreq" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="channelThreeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="channelThreeName" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="channelThreeFreq" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="0" pref="19" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="channelFourLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="channelFourName" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="channelFourFreq" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="channelFiveLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="channelFiveName" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="channelFiveFreq" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="channelSixLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="channelSixName" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="channelSixFreq" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="0" pref="10" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -248,10 +318,10 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="freqLabel">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Frequency - "/>
+            <Property name="text" type="java.lang.String" value="Frequencys - "/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel2">
+        <Component class="javax.swing.JLabel" name="addFreqLabel">
           <Properties>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="33" red="0" type="rgb"/>
@@ -259,13 +329,62 @@
             <Property name="text" type="java.lang.String" value="&lt;HTML&gt;&lt;U&gt;+ Add Freq&lt;/U&gt;&lt;/HTML&gt;"/>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabel2MouseClicked"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="addFreqLabelMouseClicked"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="channelOneLabel">
           <Properties>
             <Property name="text" type="java.lang.String" value="CH1: "/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="channelOneFreq">
+        </Component>
+        <Component class="javax.swing.JTextField" name="channelOneName">
+        </Component>
+        <Component class="javax.swing.JLabel" name="channelTwoLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="CH2: "/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="channelTwoName">
+        </Component>
+        <Component class="javax.swing.JTextField" name="channelTwoFreq">
+        </Component>
+        <Component class="javax.swing.JLabel" name="channelThreeLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="CH3: "/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="channelThreeName">
+        </Component>
+        <Component class="javax.swing.JTextField" name="channelThreeFreq">
+        </Component>
+        <Component class="javax.swing.JLabel" name="channelFourLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="CH4: "/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="channelFourName">
+        </Component>
+        <Component class="javax.swing.JTextField" name="channelFourFreq">
+        </Component>
+        <Component class="javax.swing.JLabel" name="channelFiveLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="CH5: "/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="channelFiveName">
+        </Component>
+        <Component class="javax.swing.JTextField" name="channelFiveFreq">
+        </Component>
+        <Component class="javax.swing.JLabel" name="channelSixLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="CH6: "/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="channelSixName">
+        </Component>
+        <Component class="javax.swing.JTextField" name="channelSixFreq">
         </Component>
       </SubComponents>
     </Container>

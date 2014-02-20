@@ -17,6 +17,7 @@ public class CreateVehiclePopUp extends javax.swing.JFrame {
 
     
     private String vehicleName; 
+    private AddVehiclePopUp obj2;
     /**
      * Creates new form CreateVehiclePopUp
      */
@@ -217,9 +218,15 @@ public class CreateVehiclePopUp extends javax.swing.JFrame {
 
     private void cancelButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelButtonMouseClicked
         // TODO add your handling code here:   
-        System.exit(0);
+        //System.exit(0);
+        obj2.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_cancelButtonMouseClicked
 
+    public void setObject(AddVehiclePopUp obj1){
+        
+        obj2= obj1;
+    }
     /**
      * @param args the command line arguments
      */
