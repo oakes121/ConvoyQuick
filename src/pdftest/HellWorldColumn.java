@@ -22,7 +22,7 @@ public class HellWorldColumn {
  
     /** Path to the resulting PDF file. */
     public static final String RESULT
-        = "hello_column.pdf";
+        = "src\\pdftest\\testOuput\\hello_column.pdf";
  
     /**
      * Creates a PDF file: hello_column.pdf

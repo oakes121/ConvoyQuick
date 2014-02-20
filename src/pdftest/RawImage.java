@@ -16,7 +16,7 @@ public class RawImage {
  
     /** The resulting PDF file. */
     public static final String RESULT
-        = "gradient.pdf";
+        = "src\\pdftest\\testOuput\\gradient.pdf";
  
     /**
      * Creates a PDF document.

@@ -11,7 +11,6 @@ import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
-import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.pdf.PdfWriter;
  
 /**
@@ -21,7 +20,7 @@ public class HelloWorldLandScape1 {
  
     /** Path to the resulting PDF file. */
     public static final String RESULT
-        = "hello_landscape1.pdf";
+        = "src\\pdftest\\testOuput\\hello_landscape1.pdf";
  
     /**
      * Creates a PDF file: hello_landscape1.pdf

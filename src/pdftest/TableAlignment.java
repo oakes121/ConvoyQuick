@@ -17,7 +17,7 @@ public class TableAlignment extends MyFirstTable {
  
     /** The resulting PDF file. */
     public static final String RESULT
-        = "table_alignment.pdf";
+        = "src\\pdftest\\testOuput\\table_alignment.pdf";
  
     /**
      * Creates a PDF with information about the movies

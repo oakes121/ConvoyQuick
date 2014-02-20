@@ -18,7 +18,7 @@ public class MyFirstTable {
  
     /** The resulting PDF file. */
     public static final String RESULT
-        = "first_table.pdf";
+        = "src\\pdftest\\testOuput\\first_table.pdf";
  
     /**
      * Main method.
