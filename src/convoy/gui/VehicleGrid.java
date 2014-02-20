@@ -16,7 +16,6 @@ import java.util.Collections;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.border.BevelBorder;
 
 /**
  *
@@ -42,7 +41,7 @@ public class VehicleGrid extends javax.swing.JPanel implements KeyListener, Mous
     private int indicator = -1;                            // indicicates what element from the three arrays to remove
                                                            //  when deletePanel is called
     
-    private static final AddVehiclePopUp addVehiclePopUp = new AddVehiclePopUp();
+    private AddVehiclePopUp addVehiclePopUp = new AddVehiclePopUp();
     
 
     /**
