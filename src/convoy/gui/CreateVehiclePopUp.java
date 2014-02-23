@@ -8,7 +8,16 @@ package convoy.gui;
 
 import java.awt.FileDialog;
 import java.awt.event.WindowEvent;
+import java.io.File;
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -19,6 +28,8 @@ public class CreateVehiclePopUp extends javax.swing.JFrame {
     
     private String vehicleName; 
     private AddVehiclePopUp obj2;
+    private ImageIcon icon;
+    private BufferedImage img;
     /**
      * Creates new form CreateVehiclePopUp
      */
@@ -213,11 +224,34 @@ public class CreateVehiclePopUp extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void selectImageButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_selectImageButtonMouseClicked
-        // TODO add your handling code here:
-        FileDialog loadFile;
-        loadFile = new FileDialog(this, "Choose a file", FileDialog.LOAD);
-        loadFile.setDirectory("C:\\");
-        loadFile.setVisible(true);
+        try {
+            // TODO add your handling code here:
+            FileDialog loadFile;
+            loadFile = new FileDialog(this, "Choose a file", FileDialog.LOAD);
+            loadFile.setDirectory("C:\\");
+            loadFile.setVisible(true);
+            File file = new File(loadFile.getFile());
+            System.out.print(file);
+            URL url = new URL("file:///"+loadFile.getDirectory()+file);
+            System.out.print(url);
+            img = ImageIO.read(url);
+            
+            
+            icon = new ImageIcon(img);
+            JLabel label = new JLabel();
+            label.setIcon(icon);
+            jPanel4.add(label);
+            
+        } catch (IOException ex) {
+            Logger.getLogger(CreateVehiclePopUp.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.print("Image Error");
+        }
+       
+        
+        
+        
+        
+        
     }//GEN-LAST:event_selectImageButtonMouseClicked
 
     private void cancelButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelButtonMouseClicked
