@@ -38,7 +38,7 @@ public class PicturePanel extends JPanel {
      * 
      * @param imageName file path name for the image to be loaded
      */
-    public PicturePanel(String imageName) {
+   public PicturePanel(String imageName) {
         super();
         setLayout(this.getLayout());
         loadImage(imageName);
