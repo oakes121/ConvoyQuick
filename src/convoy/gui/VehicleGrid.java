@@ -250,6 +250,10 @@ public class VehicleGrid extends javax.swing.JPanel implements KeyListener, Mous
         return vehiclePanelArray;        
     }
     
+    public int getVehicleCount() {
+        return vehicleCount;
+    }
+    
     /**
      * deletePanel() removes panelHolder.get(indicator), vehiclePanelArray.get(indicator)
      *  vehiclePanelClickedFlags.get(indicator), decrements vehicleCount, trueCount and 
