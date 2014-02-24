@@ -54,6 +54,30 @@ public class VehiclePanel extends javax.swing.JPanel {
         driverLabel.setText(driverName + " " + vehicleCount);
     }
     
+    public void setDriverName(String driverName) {
+        driverLabel.setText(driverName);
+    }
+    
+    public void setPassenger1(String passenger1) {
+        passenger1Label.setText(passenger1);
+    }
+    
+    public void setPassenger2(String passenger2) {
+        passenger2Label.setText(passenger2);
+    }
+    
+    public void setPassenger3(String passenger3) {
+        passenger3Label.setText(passenger3);
+    }
+    
+    public void setBumperNumber(String bumperNumber) {
+        bumperNumberLabel.setText(bumperNumber);
+    }
+    
+    public void setCallSign(String callSign) {
+        callSignLabel.setText(callSign);
+    }
+    
     public void setTransparent() {
         //componentPanel.setOpaque(false);
     }

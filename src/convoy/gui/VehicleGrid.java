@@ -309,7 +309,7 @@ public class VehicleGrid extends javax.swing.JPanel implements KeyListener, Mous
         }        
     }
 
-    public synchronized void addNewVehiclePanel1() {
+    public void addNewVehiclePanel1() {
         addVehiclePopUp = new AddVehiclePopUp();
         addVehiclePopUp.setVisible(true);
         addVehiclePopUp.toFront();
