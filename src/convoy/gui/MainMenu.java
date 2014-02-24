@@ -237,13 +237,7 @@ public class MainMenu extends javax.swing.JFrame {
     private void newProjectPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newProjectPanelMouseClicked
         this.setVisible(false); 
         mainWindow = new MainWindow();
-        mainWindow.setVisible(true);
-        mainWindow.setTitle("Convoy Quick - Convoy documentation creator to help save lives");
-        mainWindow.setIconImage(new ImageIcon(getClass().getResource("/convoy/resources/images/humveeIcon.png")).getImage());
-        mainWindow.setExtendedState(mainWindow.MAXIMIZED_BOTH);
-        mainWindow.toFront();
-        repaint();
-        revalidate();
+        mainWindow.display(); 
     }//GEN-LAST:event_newProjectPanelMouseClicked
 
     private void loadProjectPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loadProjectPanelMouseClicked

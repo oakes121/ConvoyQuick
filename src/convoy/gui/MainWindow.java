@@ -42,12 +42,10 @@ public class MainWindow extends javax.swing.JFrame {
     
     public void makeSelectPanelsTransparent() {
         missionNumberPanel.setOpaque(false);
-        //vehiclePanel.setOpaque(false);
         additionalInfoPanel.setOpaque(false);
-        //buttonsPanel.setOpaque(false);
     }
     
-    private void display() {
+    public void display() {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();        
         frame.setLocationRelativeTo(null);
@@ -287,8 +285,6 @@ public class MainWindow extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new MainWindow().display();
-                
-                
             }
         });
     }
