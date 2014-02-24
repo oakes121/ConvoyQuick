@@ -41,8 +41,7 @@ public class VehicleGrid extends javax.swing.JPanel implements KeyListener, Mous
     private int indicator = -1;                            // indicicates what element from the three arrays to remove
                                                            //  when deletePanel is called
     
-    private AddVehiclePopUp addVehiclePopUp = new AddVehiclePopUp();
-    
+    private AddVehiclePopUp addVehiclePopUp;     
 
     /**
      * Creates new form VehicleGrid
@@ -202,9 +201,17 @@ public class VehicleGrid extends javax.swing.JPanel implements KeyListener, Mous
         }
         
         
+        JOptionPane.showMessageDialog(this, ""+ pos1 + "  " + pos2, "pos1", JOptionPane.WARNING_MESSAGE);
+        
         if ((pos1 != -1) && (pos2 != -1) && (pos1 != pos2)) {      
-            vehiclePanelArray.get(pos1).setBorder(BorderFactory.createMatteBorder(0, 0, 0, 0, Color.red));
-            vehiclePanelArray.get(pos2).setBorder(BorderFactory.createMatteBorder(0, 0, 0, 0, Color.red));
+            
+            /*
+            if (pos1 > pos2) 
+                vehiclePanelArray.get(pos1).setBorder(BorderFactory.createMatteBorder(0, 0, 0, 0, Color.red));
+            else  
+                vehiclePanelArray.get(pos2).setBorder(BorderFactory.createMatteBorder(0, 0, 0, 0, Color.red));
+            */
+            
             vehiclePanelClickedFlags.get(pos1).setTruthValue(false);
             vehiclePanelClickedFlags.get(pos2).setTruthValue(false);
             trueCount = 0;
@@ -302,6 +309,28 @@ public class VehicleGrid extends javax.swing.JPanel implements KeyListener, Mous
         }        
     }
 
+    public synchronized void addNewVehiclePanel1() {
+        addVehiclePopUp = new AddVehiclePopUp();
+        addVehiclePopUp.setVisible(true);
+        addVehiclePopUp.toFront();
+            
+        
+        //while (addVehiclePopUp.getIsFinished())
+            
+            
+        addVehiclePanel(rowCount, columnCount);
+        columnCount++;
+            
+        if (columnCount == 8) {
+            rowCount = 1;
+            columnCount = 0;
+            
+        }
+        
+        revalidate();
+        repaint();
+    }
+    
     @Override
     public void mouseClicked(MouseEvent e) {
         
@@ -319,19 +348,7 @@ public class VehicleGrid extends javax.swing.JPanel implements KeyListener, Mous
          
         // handles addNewVehiclePanel1
         if (e.getSource() == addNewVehiclePanel1) {
-            
-            //addVehiclePopUp.setVisible(true);
-            //addVehiclePopUp.toFront();
-            
-            addVehiclePanel(rowCount, columnCount);
-            columnCount++;
-            
-            if (columnCount == 8) {
-                rowCount = 1;
-                columnCount = 0;
-            }
-            revalidate();
-            repaint();
+            addNewVehiclePanel1();         
             
         }
     }
