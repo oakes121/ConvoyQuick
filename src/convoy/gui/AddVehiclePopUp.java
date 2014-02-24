@@ -10,13 +10,14 @@ import javax.swing.ImageIcon;
 
 /**
  *
- * @author USER1
+ * @author Siddharth
  */
 public class AddVehiclePopUp extends javax.swing.JFrame {
 
     /**
      * Creates new form AddVehiclePopUp
      */
+    private VehiclePanel vehiclePanel;
     public AddVehiclePopUp() {
         
         initComponents();
@@ -391,6 +392,9 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    public void setObject(VehiclePanel vehicleInfo){
+        vehiclePanel=vehicleInfo;
+    }
     /**
      * @param args the command line arguments
      */
