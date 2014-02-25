@@ -1,0 +1,23 @@
+@font-face
+{
+font-family: font;
+src: url(..fonts/captureIt.tff);
+}
+
+table{
+	width: 100%;
+}
+
+td{
+	border:1px solid #000;
+}
+
+.label{
+	font-weight: bold;
+	font-family: font;	
+}
+
+#classification{
+	text-align: center;
+	font-weight: bold;
+}
