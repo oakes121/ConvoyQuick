@@ -24,7 +24,12 @@ import org.allcolor.yahp.converter.IHtmlToPdfTransformer;
 
 public class CreatePDF {
     
+    private static final GenerateHtml gh = new GenerateHtml(); 
+    
     public  static void main(String ... args ) throws Exception {
+        
+    gh.generateHtml();        
+        
     String root = "src\\convoy\\resources\\html";
     String input = "convoy.htm";  // need to be charset utf-8
     String output = "src\\pdf\\" + input.replace(".htm","");
@@ -39,21 +44,21 @@ public class CreatePDF {
     String htmlContents = scanner.next();
 
     CYaHPConverter converter = new CYaHPConverter();
-    FileOutputStream out = new FileOutputStream(pdfOut);
-    Map properties = new HashMap();
-    List headerFooterList = new ArrayList();
-
-    properties.put(IHtmlToPdfTransformer.PDF_RENDERER_CLASS,
-                   IHtmlToPdfTransformer.FLYINGSAUCER_PDF_RENDERER);
-    //properties.put(IHtmlToPdfTransformer.FOP_TTF_FONT_PATH, fontPath);
-    converter.convertToPdf(htmlContents,
-                IHtmlToPdfTransformer.A3L,
-                headerFooterList,
-                "file:///temp/html/",
-                out,
-                properties);
-    out.flush();
-    out.close();
+        try (FileOutputStream out = new FileOutputStream(pdfOut)) {
+            Map properties = new HashMap();
+            List headerFooterList = new ArrayList();
+            
+            properties.put(IHtmlToPdfTransformer.PDF_RENDERER_CLASS,
+                    IHtmlToPdfTransformer.FLYINGSAUCER_PDF_RENDERER);
+            //properties.put(IHtmlToPdfTransformer.FOP_TTF_FONT_PATH, fontPath);
+            converter.convertToPdf(htmlContents,
+                    IHtmlToPdfTransformer.A3L,
+                    headerFooterList,
+                    "file:///temp/html/",
+                    out,
+                    properties);
+            out.flush();
+        }
     
   }
 }
