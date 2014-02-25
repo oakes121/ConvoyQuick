@@ -311,6 +311,8 @@ public class CreateVehiclePopUp extends javax.swing.JFrame {
         addVehicleObject.setNumberOfSeats(numberOfSeats);
         addVehicleObject.setImageUrl(url);
         
+        addVehicleObject.modifyPopUp();
+        
         addVehicleObject.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_addVehicleButtonActionPerformed
