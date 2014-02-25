@@ -18,6 +18,10 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
      * Creates new form AddVehiclePopUp
      */
     private VehiclePanel vehiclePanel;
+    private String vehicleName;
+    private String numberOfSeats;
+    private String imageUrl;
+    
     public AddVehiclePopUp() {
         
         initComponents();
@@ -394,6 +398,18 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
 
     public void setObject(VehiclePanel vehicleInfo){
         vehiclePanel=vehicleInfo;
+    }
+    
+    public void setVehicleName(String name){
+        vehicleName = name;
+    }
+    
+    public void setNumberOfSeats(String seats){
+        numberOfSeats=seats;
+    }
+    
+    public void setImageUrl(String imgUrl){
+        imageUrl=imgUrl;
     }
     /**
      * @param args the command line arguments
