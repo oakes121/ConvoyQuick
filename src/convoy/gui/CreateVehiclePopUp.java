@@ -35,6 +35,7 @@ public class CreateVehiclePopUp extends javax.swing.JFrame {
     private String imageName; 
     private CreateVehiclePopUp abc; 
     private String numberOfSeats;
+    private URL url;
     /**
      * Creates new form CreateVehiclePopUp
      */
@@ -142,6 +143,11 @@ public class CreateVehiclePopUp extends javax.swing.JFrame {
         });
 
         addVehicleButton.setText("Add Vehicle");
+        addVehicleButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addVehicleButtonActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel1.setText("Create Vehicle");
@@ -228,7 +234,7 @@ public class CreateVehiclePopUp extends javax.swing.JFrame {
             File file = new File(loadFile.getFile());
             //System.out.print(loadFile.getDirectory());
             
-            URL url = new URL("file:\\"+loadFile.getDirectory()+file);
+            url = new URL("file:\\"+loadFile.getDirectory()+file);
             //String y = url.toString();
             //String x = (url.toString().substring(6,9));
             //String fileLocation = y.replace(x,"");
@@ -298,6 +304,16 @@ public class CreateVehiclePopUp extends javax.swing.JFrame {
         }
         System.out.print(numberOfSeats);
     }//GEN-LAST:event_numberOfSeatsComboBoxActionPerformed
+
+    private void addVehicleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addVehicleButtonActionPerformed
+        // TODO add your handling code here:
+        addVehicleObject.setVehicleName(enterVehicleField.getText());
+        addVehicleObject.setNumberOfSeats(numberOfSeats);
+        addVehicleObject.setImageUrl(url);
+        
+        addVehicleObject.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_addVehicleButtonActionPerformed
 
     public void setObject(AddVehiclePopUp obj1){
         

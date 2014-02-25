@@ -6,6 +6,7 @@
 
 package convoy.gui;
 
+import java.net.URL;
 import javax.swing.ImageIcon;
 
 /**
@@ -20,7 +21,7 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
     private VehiclePanel vehiclePanel;
     private String vehicleName;
     private String numberOfSeats;
-    private String imageUrl;
+    private URL imageUrl;
     
     public AddVehiclePopUp() {
         
@@ -408,7 +409,7 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
         numberOfSeats=seats;
     }
     
-    public void setImageUrl(String imgUrl){
+    public void setImageUrl(URL imgUrl){
         imageUrl=imgUrl;
     }
     /**
