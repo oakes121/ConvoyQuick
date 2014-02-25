@@ -28,12 +28,14 @@ public class CreateVehiclePopUp extends javax.swing.JFrame {
 
     
     private String vehicleName; 
-    private AddVehiclePopUp obj2;
+    private AddVehiclePopUp addVehicleObject;
     private ImageIcon icon;
     private Image img;
     private Image finalImage;
     private String imageName; 
     private CreateVehiclePopUp abc; 
+    private String numberOfSeats;
+    private URL url;
     /**
      * Creates new form CreateVehiclePopUp
      */
@@ -81,6 +83,11 @@ public class CreateVehiclePopUp extends javax.swing.JFrame {
         jLabel5.setText("Number Of Seats");
 
         numberOfSeatsComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "", "1", "2", "3", "4", "> 4" }));
+        numberOfSeatsComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                numberOfSeatsComboBoxActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -136,6 +143,11 @@ public class CreateVehiclePopUp extends javax.swing.JFrame {
         });
 
         addVehicleButton.setText("Add Vehicle");
+        addVehicleButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addVehicleButtonActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel1.setText("Create Vehicle");
@@ -152,13 +164,10 @@ public class CreateVehiclePopUp extends javax.swing.JFrame {
         jLayeredPane1Layout.setHorizontalGroup(
             jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jLayeredPane1Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(selectImageButton, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(selectImageButton, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 217, Short.MAX_VALUE)
                 .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jLayeredPane1Layout.createSequentialGroup()
@@ -225,7 +234,7 @@ public class CreateVehiclePopUp extends javax.swing.JFrame {
             File file = new File(loadFile.getFile());
             //System.out.print(loadFile.getDirectory());
             
-            URL url = new URL("file:\\"+loadFile.getDirectory()+file);
+            url = new URL("file:\\"+loadFile.getDirectory()+file);
             //String y = url.toString();
             //String x = (url.toString().substring(6,9));
             //String fileLocation = y.replace(x,"");
@@ -256,27 +265,61 @@ public class CreateVehiclePopUp extends javax.swing.JFrame {
         } catch (Exception ex) {
             Logger.getLogger(CreateVehiclePopUp.class.getName()).log(Level.SEVERE, null, ex);
             System.out.print("Image Error");
-        }
-       
-        
-  
-        
-        
-        
+        }    
     }//GEN-LAST:event_selectImageButtonMouseClicked
  
+    
+    
+    
+    
    
     
     private void cancelButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelButtonMouseClicked
         // TODO add your handling code here:   
         //System.exit(0);
-        obj2.setVisible(true);
+        addVehicleObject.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_cancelButtonMouseClicked
 
+    private void numberOfSeatsComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numberOfSeatsComboBoxActionPerformed
+        if (numberOfSeatsComboBox.getSelectedItem().equals("1"))
+                {
+                    numberOfSeats = "1"; 
+                }
+        else if(numberOfSeatsComboBox.getSelectedItem().equals("2"))
+        {
+            numberOfSeats = "2";
+        }
+        else if (numberOfSeatsComboBox.getSelectedItem().equals("3"))
+        {
+            numberOfSeats = "3";
+        }
+        else if (numberOfSeatsComboBox.getSelectedItem().equals("4"))
+        {
+            numberOfSeats = "4";
+        }
+        else if (numberOfSeatsComboBox.getSelectedItem().equals("> 4"))
+        {
+            numberOfSeats = "5";
+        }
+        System.out.print(numberOfSeats);
+    }//GEN-LAST:event_numberOfSeatsComboBoxActionPerformed
+
+    private void addVehicleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addVehicleButtonActionPerformed
+        // TODO add your handling code here:
+        addVehicleObject.setVehicleName(enterVehicleField.getText());
+        addVehicleObject.setNumberOfSeats(numberOfSeats);
+        addVehicleObject.setImageUrl(url);
+        
+        addVehicleObject.modifyPopUp();
+        
+        addVehicleObject.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_addVehicleButtonActionPerformed
+
     public void setObject(AddVehiclePopUp obj1){
         
-        obj2= obj1;
+        addVehicleObject= obj1;
     }
     /**
      * @param args the command line arguments

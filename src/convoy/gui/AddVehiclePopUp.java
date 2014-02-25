@@ -6,6 +6,7 @@
 
 package convoy.gui;
 
+import java.net.URL;
 import javax.swing.ImageIcon;
 
 /**
@@ -18,6 +19,10 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
      * Creates new form AddVehiclePopUp
      */
     private VehiclePanel vehiclePanel;
+    private String vehicleName;
+    private String numberOfSeats;
+    private URL imageUrl;
+    
     public AddVehiclePopUp() {
         
         initComponents();
@@ -40,16 +45,16 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jButton3 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jPanel4 = new javax.swing.JPanel();
+        vehicleNameField = new javax.swing.JTextField();
+        imagePanel = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
+        personnel1Field = new javax.swing.JTextField();
+        personnel2Field = new javax.swing.JTextField();
+        personnel3Field = new javax.swing.JTextField();
+        personnel4Field = new javax.swing.JTextField();
+        jComboBox2 = new javax.swing.JComboBox();
         jComboBox3 = new javax.swing.JComboBox();
-        jComboBox4 = new javax.swing.JComboBox();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -59,9 +64,9 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField9 = new javax.swing.JTextField();
-        jTextField10 = new javax.swing.JTextField();
-        jTextField11 = new javax.swing.JTextField();
+        vehicleInfo1Field = new javax.swing.JTextField();
+        vehicleInfo2Field = new javax.swing.JTextField();
+        vehicleInfo3Field = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
@@ -88,18 +93,18 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
 
         jLabel1.setText("VEHICLE SELECTION");
 
-        jTextField1.setText("jTextField1");
+        vehicleNameField.setText("jTextField1");
 
-        jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        imagePanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout imagePanelLayout = new javax.swing.GroupLayout(imagePanel);
+        imagePanel.setLayout(imagePanelLayout);
+        imagePanelLayout.setHorizontalGroup(
+            imagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        imagePanelLayout.setVerticalGroup(
+            imagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
@@ -115,8 +120,8 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
                         .addGap(181, 181, 181))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(vehicleNameField, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(imagePanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(40, 40, 40))))
         );
@@ -126,9 +131,9 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(vehicleNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(imagePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(65, 65, 65)
                 .addComponent(jButton3)
                 .addGap(20, 20, 20))
@@ -138,22 +143,22 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
 
         jLabel2.setText("PERSONNEL");
 
-        jTextField2.setText("jTextField2");
+        personnel1Field.setText("jTextField2");
 
-        jTextField3.setText("jTextField3");
+        personnel2Field.setText("jTextField3");
 
-        jTextField4.setText("jTextField4");
+        personnel3Field.setText("jTextField4");
 
-        jTextField5.setText("jTextField5");
+        personnel4Field.setText("jTextField5");
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select Type", "CC", "ACC", "Medic", "Passenger" }));
-        jComboBox3.addActionListener(new java.awt.event.ActionListener() {
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select Type", "CC", "ACC", "Medic", "Passenger" }));
+        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox3ActionPerformed(evt);
+                jComboBox2ActionPerformed(evt);
             }
         });
 
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select Type", "CC", "ACC", "Medic", "Passenger" }));
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select Type", "CC", "ACC", "Medic", "Passenger" }));
 
         jLabel4.setForeground(new java.awt.Color(255, 0, 0));
         jLabel4.setText("*1");
@@ -193,15 +198,15 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
                             .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jTextField3)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField5)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.Alignment.LEADING))
+                            .addComponent(personnel2Field)
+                            .addComponent(personnel1Field, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(personnel4Field)
+                            .addComponent(personnel3Field, javax.swing.GroupLayout.Alignment.LEADING))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jComboBox3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jComboBox4, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18))))
         );
@@ -214,23 +219,23 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
                     .addComponent(jLabel11))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(personnel1Field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4)
                     .addComponent(jLabel8))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(personnel2Field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(personnel3Field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(personnel4Field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
                 .addContainerGap(25, Short.MAX_VALUE))
         );
@@ -239,11 +244,11 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
 
         jLabel3.setText("VEHICLE INFORMATION");
 
-        jTextField9.setText("jTextField9");
+        vehicleInfo1Field.setText("jTextField9");
 
-        jTextField10.setText("jTextField10");
+        vehicleInfo2Field.setText("jTextField10");
 
-        jTextField11.setText("jTextField11");
+        vehicleInfo3Field.setText("jTextField11");
 
         jLabel9.setForeground(new java.awt.Color(255, 0, 0));
         jLabel9.setText("*");
@@ -268,9 +273,9 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
                             .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField10)
-                            .addComponent(jTextField11)
-                            .addComponent(jTextField9, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addComponent(vehicleInfo2Field)
+                            .addComponent(vehicleInfo3Field)
+                            .addComponent(vehicleInfo1Field, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addGap(24, 24, 24))))
         );
         jPanel3Layout.setVerticalGroup(
@@ -280,14 +285,14 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(vehicleInfo1Field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(vehicleInfo2Field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(vehicleInfo3Field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(29, Short.MAX_VALUE))
         );
 
@@ -376,9 +381,9 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
+    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox3ActionPerformed
+    }//GEN-LAST:event_jComboBox2ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
@@ -394,6 +399,83 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
 
     public void setObject(VehiclePanel vehicleInfo){
         vehiclePanel=vehicleInfo;
+    }
+    
+    public void setVehicleName(String name){
+        vehicleName = name;
+    }
+    
+    public void setNumberOfSeats(String seats){
+        numberOfSeats=seats;
+    }
+    
+    public void setImageUrl(URL imgUrl){
+        imageUrl=imgUrl;
+    }
+    
+    public void modifyPopUp(){
+        
+        vehicleNameField.setText(vehicleName);
+        
+        if (numberOfSeats.equals("1")){
+        
+            personnel2Field.setVisible(false);
+            personnel3Field.setVisible(false);
+            personnel4Field.setVisible(false);
+            jComboBox1.setVisible(false);
+            jComboBox2.setVisible(false);
+            jComboBox3.setVisible(false);
+            jLabel5.setVisible(false);
+            jLabel6.setVisible(false);
+            jLabel7.setVisible(false);
+        }
+        else if(numberOfSeats.equals("2")){
+        
+            personnel3Field.setVisible(false);
+            personnel4Field.setVisible(false);
+            jComboBox2.setVisible(false);
+            jComboBox3.setVisible(false);
+            jLabel6.setVisible(false);
+            jLabel7.setVisible(false);
+        }
+        else if (numberOfSeats.equals("3")){
+        
+            personnel4Field.setVisible(false);
+            jComboBox3.setVisible(false);
+            jLabel7.setVisible(false);
+        }
+        else if (numberOfSeats.equals("4")){
+        
+            //Keep all fields
+        }
+        else if (numberOfSeats.equals("5")){
+        
+           //Keep a roster
+            personnel1Field.setVisible(false);
+            personnel2Field.setVisible(false);
+            personnel3Field.setVisible(false);
+            personnel4Field.setVisible(false);
+            jComboBox1.setVisible(false);
+            jComboBox2.setVisible(false);
+            jComboBox3.setVisible(false);
+            jLabel4.setVisible(false);
+            jLabel5.setVisible(false);
+            jLabel6.setVisible(false);
+            jLabel7.setVisible(false);
+            jLabel8.setVisible(false);
+        }
+        
+        else{
+            //trailer or some unmanned vehicle
+            personnel1Field.setVisible(false);
+            personnel2Field.setVisible(false);
+            personnel3Field.setVisible(false);
+            personnel4Field.setVisible(false);
+            jComboBox1.setVisible(false);
+            jComboBox2.setVisible(false);
+            jComboBox3.setVisible(false);
+        }
+        
     }
     /**
      * @param args the command line arguments
@@ -431,12 +513,13 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel imagePanel;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JComboBox jComboBox1;
+    private javax.swing.JComboBox jComboBox2;
     private javax.swing.JComboBox jComboBox3;
-    private javax.swing.JComboBox jComboBox4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -452,14 +535,13 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField11;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField9;
+    private javax.swing.JTextField personnel1Field;
+    private javax.swing.JTextField personnel2Field;
+    private javax.swing.JTextField personnel3Field;
+    private javax.swing.JTextField personnel4Field;
+    private javax.swing.JTextField vehicleInfo1Field;
+    private javax.swing.JTextField vehicleInfo2Field;
+    private javax.swing.JTextField vehicleInfo3Field;
+    private javax.swing.JTextField vehicleNameField;
     // End of variables declaration//GEN-END:variables
 }
