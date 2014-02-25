@@ -35,7 +35,7 @@ public class CreatePDF {
     String output = "src\\pdf\\" + input.replace(".htm","");
     htmlToPdfFile(new File(root, input),
                   new File(output + ".pdf"));
-    System.out.println("Done");
+    //System.out.println("Done");
   }
 
   public static void htmlToPdfFile(File htmlIn, File pdfOut) throws Exception {
