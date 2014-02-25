@@ -30,7 +30,7 @@ public class CreateVehiclePopUp extends javax.swing.JFrame {
     private String vehicleName; 
     private AddVehiclePopUp obj2;
     private ImageIcon icon;
-    private BufferedImage img;
+    private Image img;
     private String imageName; 
     private CreateVehiclePopUp abc; 
     /**
@@ -112,8 +112,6 @@ public class CreateVehiclePopUp extends javax.swing.JFrame {
                 .addContainerGap(51, Short.MAX_VALUE))
         );
 
-        jLabel2.setText("jLabel2");
-
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -160,7 +158,7 @@ public class CreateVehiclePopUp extends javax.swing.JFrame {
                     .addGroup(jLayeredPane1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(selectImageButton, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 282, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 217, Short.MAX_VALUE)
                 .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jLayeredPane1Layout.createSequentialGroup()
                         .addComponent(addVehicleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -203,7 +201,7 @@ public class CreateVehiclePopUp extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLayeredPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 916, Short.MAX_VALUE)
+            .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 851, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -226,28 +224,29 @@ public class CreateVehiclePopUp extends javax.swing.JFrame {
             File file = new File(loadFile.getFile());
             //System.out.print(loadFile.getDirectory());
             
-            //URL url = new URL(loadFile.getDirectory()+file);
+            URL url = new URL("file:\\"+loadFile.getDirectory()+file);
             //String y = url.toString();
             //String x = (url.toString().substring(6,9));
             //String fileLocation = y.replace(x,"");
-            String fileLocation = loadFile.getDirectory()+file;
+            //String fileLocation = loadFile.getDirectory()+file;
             //String url2 = new String("file:\\"+loadFile.getDirectory()+file);
-            //System.out.print(url);
-            //img = ImageIO.read(url);
+            System.out.print(url);
+            img = ImageIO.read(url);
+            img.getScaledInstance(1, 2, Image.SCALE_SMOOTH);
             //System.out.print(fileLocation);
            //System.out.println(url2);
            //ImagePanel imgPanel = new ImagePanel(fileLocation);
             
-            jLabel2.setIcon(new javax.swing.ImageIcon(fileLocation)); // NOI18N
+           // jLabel2.setIcon(new javax.swing.ImageIcon(fileLocation)); // NOI18N
            
            //this.add(imgPanel);           
-           //ImageIcon icon = new ImageIcon(img);
-            //JLabel label = new JLabel(new ImageIcon("C:/Users/chand_000/Desktop/hmm-photoshop.jpg"));
+           ImageIcon icon = new ImageIcon(img);
+            jLabel2.setIcon(icon);
  
             //jPanel4.add(label);
             
-           //revalidate();
-           //repaint();
+           revalidate();
+           repaint();
             
         } catch (Exception ex) {
             Logger.getLogger(CreateVehiclePopUp.class.getName()).log(Level.SEVERE, null, ex);
@@ -327,47 +326,6 @@ public class CreateVehiclePopUp extends javax.swing.JFrame {
     private javax.swing.JComboBox numberOfSeatsComboBox;
     private javax.swing.JButton selectImageButton;
     // End of variables declaration//GEN-END:variables
+    
 }
 
-class ImagePanel extends JPanel {
-    private BufferedImage image;                                // used to store image to be loaded
-    
-    /**
-     * This constructor, calls the super class constructor and loads the image to the panel
-     * 
-     * @param imageName file path name for the image to be loaded
-     */
-    public ImagePanel() {
-        super();
-    }
-    
-    /**
-     * This constructor, calls the super class constructor and loads the image to the panel
-     * 
-     * @param imageName file path name for the image to be loaded
-     */
-   public ImagePanel(String imageName) {
-        super();
-        setLayout(this.getLayout());
-        loadImage(imageName);
-        repaint();
-        revalidate();
-    }
-    
-    @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        g.drawImage(image, 0, 0, null); // see javadoc for more info on the parameters            
-    }
-    
-    /**
-     * Method used to load an image
-     * @param imageName the file path of the image to be loaded
-     */
-    private void loadImage(String imgFile) {
-       try {
-            image = ImageIO.read(new File(imgFile));
-        } catch (IOException ex) {
-        }
-    }
-}
