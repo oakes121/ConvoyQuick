@@ -15,7 +15,7 @@ import javax.swing.*;
  */
 public class RightMissionInfoPanel extends javax.swing.JPanel {
     
-    private int addFreqCount = 0;
+    private int addFreqCount = 1;
 
     /**
      * Creates new form rightMissionInfoPanel
@@ -264,9 +264,9 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(5, 5, 5)
@@ -295,23 +295,26 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(toSPTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
                             .addComponent(fromSPTextField1)))
-                    .addGroup(layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGap(5, 5, 5)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(ccLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(ccTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(ccTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(accLabel)
-                                .addGap(18, 18, 18)
-                                .addComponent(accTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(10, 10, 10)
+                                .addComponent(accTextField))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(stagingAreaLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(stagingAreaTextField))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 781, Short.MAX_VALUE)
-                            .addComponent(freqPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addComponent(stagingAreaTextField))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(freqPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jScrollPane1))))
                 .addGap(10, 10, 10))
         );
         layout.setVerticalGroup(
@@ -352,9 +355,7 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void addFreqLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addFreqLabelMouseClicked
-        
-        addFreqCount++;
-        
+                        
         java.net.URL imgURL = getClass().getResource("/convoy/resources/images/radioFrequencyIcon.png");
         
         Icon icon = new ImageIcon(imgURL);        
@@ -375,9 +376,12 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
             channelOneName.setText(freqName.getText()); 
             channelOneFreq.setText(freq.getText());
             
+            addFreqCount++;
+            
+            
         }
         
-        if(response == JOptionPane.OK_OPTION && addFreqCount == 2){ 
+        else if(response == JOptionPane.OK_OPTION && addFreqCount == 2){ 
             
             channelTwoLabel.setVisible(true); 
             channelTwoName.setVisible(true); 
@@ -386,9 +390,11 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
             channelTwoName.setText(freqName.getText()); 
             channelTwoFreq.setText(freq.getText());
             
+            addFreqCount++;
+            
         }
         
-         if(response == JOptionPane.OK_OPTION && addFreqCount == 3){ 
+        else if(response == JOptionPane.OK_OPTION && addFreqCount == 3){ 
             
             channelThreeLabel.setVisible(true); 
             channelThreeName.setVisible(true); 
@@ -397,9 +403,11 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
             channelThreeName.setText(freqName.getText()); 
             channelThreeFreq.setText(freq.getText());
             
+            addFreqCount++;
+            
         }
          
-        if(response == JOptionPane.OK_OPTION && addFreqCount == 4){ 
+        else if(response == JOptionPane.OK_OPTION && addFreqCount == 4){ 
             
             channelFourLabel.setVisible(true); 
             channelFourName.setVisible(true); 
@@ -408,9 +416,11 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
             channelFourName.setText(freqName.getText()); 
             channelFourFreq.setText(freq.getText());
             
+            addFreqCount++;
+            
         }
         
-        if(response == JOptionPane.OK_OPTION && addFreqCount == 5){ 
+        else if(response == JOptionPane.OK_OPTION && addFreqCount == 5){ 
             
             channelFiveLabel.setVisible(true); 
             channelFiveName.setVisible(true); 
@@ -419,9 +429,11 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
             channelFiveName.setText(freqName.getText()); 
             channelFiveFreq.setText(freq.getText());
             
+            addFreqCount++;
+            
         }
         
-        if(response == JOptionPane.OK_OPTION && addFreqCount == 6){ 
+        else if(response == JOptionPane.OK_OPTION && addFreqCount == 6){ 
             
             channelSixLabel.setVisible(true); 
             channelSixName.setVisible(true); 
@@ -431,6 +443,8 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
             channelSixFreq.setText(freq.getText());
             
             addFreqLabel.setVisible(false);
+            
+            addFreqCount++;
             
         }
     }//GEN-LAST:event_addFreqLabelMouseClicked
