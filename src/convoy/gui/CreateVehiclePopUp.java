@@ -31,6 +31,7 @@ public class CreateVehiclePopUp extends javax.swing.JFrame {
     private AddVehiclePopUp obj2;
     private ImageIcon icon;
     private Image img;
+    private Image finalImage;
     private String imageName; 
     private CreateVehiclePopUp abc; 
     /**
@@ -232,7 +233,8 @@ public class CreateVehiclePopUp extends javax.swing.JFrame {
             //String url2 = new String("file:\\"+loadFile.getDirectory()+file);
             System.out.print(url);
             img = ImageIO.read(url);
-            img.getScaledInstance(1, 2, Image.SCALE_SMOOTH);
+            finalImage = img.getScaledInstance( 268, 209,  java.awt.Image.SCALE_SMOOTH ); // getScaledInstance(width, hieght, algorithm)
+            //img.getScaledInstance(8, 10, Image.SCALE_SMOOTH);
             //System.out.print(fileLocation);
            //System.out.println(url2);
            //ImagePanel imgPanel = new ImagePanel(fileLocation);
@@ -240,7 +242,10 @@ public class CreateVehiclePopUp extends javax.swing.JFrame {
            // jLabel2.setIcon(new javax.swing.ImageIcon(fileLocation)); // NOI18N
            
            //this.add(imgPanel);           
-           ImageIcon icon = new ImageIcon(img);
+           ImageIcon icon = new ImageIcon(finalImage);
+           
+     
+           
             jLabel2.setIcon(icon);
  
             //jPanel4.add(label);
