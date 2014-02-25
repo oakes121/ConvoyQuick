@@ -176,7 +176,7 @@
             </Component>
             <Component class="javax.swing.JTextField" name="vehicleNameField">
               <Properties>
-                <Property name="text" type="java.lang.String" value="jTextField1"/>
+                <Property name="text" type="java.lang.String" value="Search vehicle"/>
               </Properties>
             </Component>
             <Container class="javax.swing.JPanel" name="imagePanel">
@@ -219,7 +219,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="jLabel2" pref="133" max="32767" attributes="0"/>
+                              <Component id="jLabel2" pref="134" max="32767" attributes="0"/>
                               <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                               <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="157" max="-2" attributes="0"/>
@@ -234,7 +234,7 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="1" attributes="0">
                                   <Component id="personnel2Field" alignment="1" max="32767" attributes="0"/>
-                                  <Component id="personnel1Field" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="personnel1Field" alignment="0" pref="251" max="32767" attributes="0"/>
                                   <Component id="personnel4Field" alignment="1" max="32767" attributes="0"/>
                                   <Component id="personnel3Field" alignment="0" max="32767" attributes="0"/>
                               </Group>
@@ -296,22 +296,22 @@
             </Component>
             <Component class="javax.swing.JTextField" name="personnel1Field">
               <Properties>
-                <Property name="text" type="java.lang.String" value="jTextField2"/>
+                <Property name="text" type="java.lang.String" value="Driver Name"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="personnel2Field">
               <Properties>
-                <Property name="text" type="java.lang.String" value="jTextField3"/>
+                <Property name="text" type="java.lang.String" value="Commander Name"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="personnel3Field">
               <Properties>
-                <Property name="text" type="java.lang.String" value="jTextField4"/>
+                <Property name="text" type="java.lang.String" value="Passenger Name"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="personnel4Field">
               <Properties>
-                <Property name="text" type="java.lang.String" value="jTextField5"/>
+                <Property name="text" type="java.lang.String" value="Passenger Name"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JComboBox" name="jComboBox2">
@@ -416,7 +416,7 @@
                       <EmptySpace min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="jLabel3" pref="159" max="32767" attributes="0"/>
+                              <Component id="jLabel3" pref="160" max="32767" attributes="0"/>
                               <EmptySpace min="-2" pref="157" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
@@ -467,17 +467,17 @@
             </Component>
             <Component class="javax.swing.JTextField" name="vehicleInfo1Field">
               <Properties>
-                <Property name="text" type="java.lang.String" value="jTextField9"/>
+                <Property name="text" type="java.lang.String" value="Bumper Number"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="vehicleInfo2Field">
               <Properties>
-                <Property name="text" type="java.lang.String" value="jTextField10"/>
+                <Property name="text" type="java.lang.String" value="Callsign"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="vehicleInfo3Field">
               <Properties>
-                <Property name="text" type="java.lang.String" value="jTextField11"/>
+                <Property name="text" type="java.lang.String" value="Additional Information"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel9">

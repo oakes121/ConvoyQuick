@@ -93,7 +93,7 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
 
         jLabel1.setText("VEHICLE SELECTION");
 
-        vehicleNameField.setText("jTextField1");
+        vehicleNameField.setText("Search vehicle");
 
         imagePanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -143,13 +143,13 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
 
         jLabel2.setText("PERSONNEL");
 
-        personnel1Field.setText("jTextField2");
+        personnel1Field.setText("Driver Name");
 
-        personnel2Field.setText("jTextField3");
+        personnel2Field.setText("Commander Name");
 
-        personnel3Field.setText("jTextField4");
+        personnel3Field.setText("Passenger Name");
 
-        personnel4Field.setText("jTextField5");
+        personnel4Field.setText("Passenger Name");
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select Type", "CC", "ACC", "Medic", "Passenger" }));
         jComboBox2.addActionListener(new java.awt.event.ActionListener() {
@@ -186,7 +186,7 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
                         .addGap(38, 38, 38)
                         .addComponent(jLabel11)
                         .addGap(157, 157, 157))
@@ -199,7 +199,7 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(personnel2Field)
-                            .addComponent(personnel1Field, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(personnel1Field, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
                             .addComponent(personnel4Field)
                             .addComponent(personnel3Field, javax.swing.GroupLayout.Alignment.LEADING))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -244,11 +244,11 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
 
         jLabel3.setText("VEHICLE INFORMATION");
 
-        vehicleInfo1Field.setText("jTextField9");
+        vehicleInfo1Field.setText("Bumper Number");
 
-        vehicleInfo2Field.setText("jTextField10");
+        vehicleInfo2Field.setText("Callsign");
 
-        vehicleInfo3Field.setText("jTextField11");
+        vehicleInfo3Field.setText("Additional Information");
 
         jLabel9.setForeground(new java.awt.Color(255, 0, 0));
         jLabel9.setText("*");
@@ -264,7 +264,7 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
                         .addGap(157, 157, 157))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(6, 6, 6)
