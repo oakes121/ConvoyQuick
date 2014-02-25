@@ -34,6 +34,7 @@ public class CreateVehiclePopUp extends javax.swing.JFrame {
     private Image finalImage;
     private String imageName; 
     private CreateVehiclePopUp abc; 
+    private String numberOfSeats;
     /**
      * Creates new form CreateVehiclePopUp
      */
@@ -81,6 +82,11 @@ public class CreateVehiclePopUp extends javax.swing.JFrame {
         jLabel5.setText("Number Of Seats");
 
         numberOfSeatsComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "", "1", "2", "3", "4", "> 4" }));
+        numberOfSeatsComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                numberOfSeatsComboBoxActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -256,15 +262,13 @@ public class CreateVehiclePopUp extends javax.swing.JFrame {
         } catch (Exception ex) {
             Logger.getLogger(CreateVehiclePopUp.class.getName()).log(Level.SEVERE, null, ex);
             System.out.print("Image Error");
-        }
-       
-        
-  
-        
-        
-        
+        }    
     }//GEN-LAST:event_selectImageButtonMouseClicked
  
+    
+    
+    
+    
    
     
     private void cancelButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelButtonMouseClicked
@@ -273,6 +277,30 @@ public class CreateVehiclePopUp extends javax.swing.JFrame {
         obj2.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_cancelButtonMouseClicked
+
+    private void numberOfSeatsComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numberOfSeatsComboBoxActionPerformed
+        if (numberOfSeatsComboBox.getSelectedItem().equals("1"))
+                {
+                    numberOfSeats = "1"; 
+                }
+        else if(numberOfSeatsComboBox.getSelectedItem().equals("2"))
+        {
+            numberOfSeats = "2";
+        }
+        else if (numberOfSeatsComboBox.getSelectedItem().equals("3"))
+        {
+            numberOfSeats = "3";
+        }
+        else if (numberOfSeatsComboBox.getSelectedItem().equals("4"))
+        {
+            numberOfSeats = "4";
+        }
+        else if (numberOfSeatsComboBox.getSelectedItem().equals("> 4"))
+        {
+            numberOfSeats = "5";
+        }
+        System.out.print(numberOfSeats);
+    }//GEN-LAST:event_numberOfSeatsComboBoxActionPerformed
 
     public void setObject(AddVehiclePopUp obj1){
         
