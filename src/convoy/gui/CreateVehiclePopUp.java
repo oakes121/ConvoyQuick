@@ -265,10 +265,6 @@ public class CreateVehiclePopUp extends javax.swing.JFrame {
         
     }//GEN-LAST:event_selectImageButtonMouseClicked
  
-     private void paintComponent(Graphics g) {
-      paintComponent(g);
-        g.drawImage(img, 0, 0, this);
-}
    
     
     private void cancelButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelButtonMouseClicked
