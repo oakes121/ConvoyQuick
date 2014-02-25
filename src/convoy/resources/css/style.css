@@ -1,23 +1,25 @@
+@page { size:50.0cm 20.0cm; }
+
 @font-face
 {
-font-family: font;
-src: url(..fonts/captureIt.tff);
+font-family: capture;
+src: url('../fonts/captureIt.tff');
 }
 
-table{
-	width: 100%;
+div, table, textarea{
+width: 100%;
 }
 
 td{
-	border:1px solid #000;
+border:1px solid #000;
 }
 
 .label{
-	font-weight: bold;
-	font-family: font;	
+font-weight: bold;
+font-family: capture;   
 }
 
 #classification{
-	text-align: center;
-	font-weight: bold;
+text-align: center;
+font-weight: bold;
 }

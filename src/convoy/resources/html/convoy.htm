@@ -1,104 +1,279 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<title></title>
-	<style type="text/css">
-/*<![CDATA[*/
-	  @font-face
-{
-font-family: font;
-src: url(..fonts/captureIt.tff);
-}
+  <meta name="generator" content=
+  "HTML Tidy for Linux/x86 (vers 25 March 2009), see www.w3.org" />
 
-div, table{
-	width: 100%;
-}
+  <title></title>
+  <style type="text/css">
+            div, table{
+                    width: 100%;
+                    border: 1px solid #000;
+                    height: 100%;
+            }
 
-td{
-	border:1px solid #000;
-}
+            td{
+                    border: 1px solid #000;
+                    background-color: white;
+            }
 
-.label{
-	font-weight: bold;
-	font-family: font;	
-}
+            .label{
+                    font-weight: bold;
+                    font-family: capture;   
+            }
 
-#classification{
-	text-align: center;
-	font-weight: bold;
-}
-	  
-	/*]]>*/
-	</style>
+            #classification{
+                    text-align: center;
+                    font-weight: bold;
+                    font-size: 24pt;
+            }
+            .data{
+
+                    text-align: center;
+
+            }
+            #freqTable{
+                    border:0;
+            }
+            .rows{
+                    border: red solid 1px;
+                    height: 33%;
+            }
+            .vehicle{
+                height: 200px;
+            }
+            #leftMissionInfo{
+                font-size: 11pt;
+                background: url('../images/2id.png') no-repeat center center;
+                width: 40%;
+            }
+            #leftMissionInfoTable{
+                
+                opacity:0.9;
+                -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
+                filter: alpha(opacity=90);
+                
+            }
+            /*
+            @font-face
+            {
+            font-family: capture;
+            src: url('../fonts/captureIt.tff');
+            }*/
+  </style>
 </head>
 
 <body>
-	<div>
-		<table>
-			<!-- main table //-->
+  <div>
+    <table>
+      <!-- main table //-->
 
-			<tr>
-				<!-- first row //-->
+      <tr class="rows">
+        <!-- first row //-->
 
-				<td style="width: 40%;">
-					<table>
-						<!-- left mission info table //-->
+        <td style="width: 40%;" valign="top" id="leftMissionInfo">
+          <table id="leftMissionInfoTable">
+            <!-- left mission info table //-->
 
-						<tr>
-							<td colspan="2" id="classification">SECRET</td>
-						</tr>
+            <tr>
+              <td colspan="2" id="classification">SECRET</td>
+            </tr>
 
-						<tr>
-							<td class="label">Mission #</td>
+            <tr>
+              <td class="label">Mission #</td>
 
-							<td id="misisonNumber">00001</td>
-						</tr>
+              <td class="data" id="misisonNumber">00001</td>
+            </tr>
 
-						<tr>
-							<td class="label">FROM:</td>
+            <tr>
+              <td class="label">FROM:</td>
 
-							<td id="leftFrom">Edgewood</td>
-						</tr>
+              <td class="data" id="leftFrom">Edgewood</td>
+            </tr>
 
-						<tr>
-							<td class="label">To:</td>
+            <tr>
+              <td class="label">To:</td>
 
-							<td id="rightTo">Ft. AP Hill</td>
-						</tr>
+              <td class="data" id="leftTo">Ft. AP Hill</td>
+            </tr>
 
-						<tr>
-							<td class="textarea">
-							<textarea cols="4" style="width: 100%;">
-</textarea></td>
-						</tr>
-					</table>
-				</td>
+            <tr>
+              <td colspan="2" id="leftAdditionaInfo">
+                <pre>
+Hill: 06/07/02+02
+                                                                        
+</pre>
+              </td>
+            </tr>
+          </table><!-- end left mission info table //-->
+        </td>
 
-				<td style="width: 60%;">
-					<table>
-						<!-- right mission info table //-->
+        <td style="width: 60%;" valign="top">
+          <table>
+            <!-- right mission info table //-->
 
-						<tr>
-							<td></td>
-						</tr>
-					</table>
-				</td>
-			</tr>
+            <tr>
+              <!-- cc and acc row //-->
 
-			<tr>
-				<!-- second row //-->
+              <td class="label">CC -</td>
 
-				<td></td>
-			</tr>
+              <td class="data" colspan="2" id="cc">1SG Somethin</td>
 
-			<tr>
-				<!-- third row //-->
+              <td class="label">ACC -</td>
 
-				<td></td>
-			</tr>
-		</table>
-	</div>
+              <td class="data" colspan="2" id="acc">MSG Joe Snuffy</td>
+            </tr>
+
+            <tr>
+              <!-- staging area row //-->
+
+              <td class="label">Staging Area -</td>
+
+              <td class="data" colspan="5" id="stagingArea">Edgewood Motor Vehicle
+              Line</td>
+            </tr>
+
+            <tr>
+              <!-- from l/u sp //-->
+
+              <td class="label">From -</td>
+
+              <td class="data" id="rightFrom">Edgewood</td>
+
+              <td class="label">L/U -</td>
+
+              <td class="data" id="fromLu">XXXXXXZAPR14</td>
+
+              <td class="label">SP -</td>
+
+              <td class="data" id="fromSP">XXXXXXZAPR14</td>
+            </tr>
+
+            <tr>
+              <!-- to l/u sp//-->
+
+              <td class="label">To -</td>
+
+              <td class="data" id="rightTo">Fort AP Hill</td>
+
+              <td class="label">L/U -</td>
+
+              <td class="data" id="toLu">XXXXXXZAPR14</td>
+
+              <td class="label">SP -</td>
+
+              <td class="data" id="toSP">XXXXXXZAPR14</td>
+            </tr>
+
+            <tr>
+              <!-- frequency row //-->
+
+              <td colspan="6">
+                <table id="freqTable">
+                  <!-- frequency table //-->
+
+                  <tr>
+                    <td class="label" colspan="6">Frequencys -</td>
+                  </tr>
+
+                  <tr>
+                    <td class="label">CH1:</td>
+
+                    <td class="data" id="ch1Name">Internal Frequency</td>
+
+                    <td class="data" id="ch1Freq">XX.XXX</td>
+
+                    <td class="label">CH2:</td>
+
+                    <td class="data" id="ch2Name">Alternate/Eagle Main FSC:TOC</td>
+
+                    <td class="data" id="ch2Freq">XX.XXX</td>
+                  </tr>
+
+                  <tr>
+                    <td class="label">CH3:</td>
+
+                    <td class="data" id="ch3Name">P:</td>
+
+                    <td class="data" id="ch3Freq">30.075 FM</td>
+
+                    <td class="label">CH4:</td>
+
+                    <td class="data" id="ch4Name">S:</td>
+
+                    <td class="data" id="ch4Freq">40.525 FM</td>
+                  </tr>
+                </table><!-- end frequency table //-->
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="6" id="righAdditionalInfo">
+                <pre>
+Battle Spaces:
+                        AP Hill TOC OPS Net:        CH 2: 30.075 FM
+                        Ground to Air Net:          CH 5: 139.4625 VHF
+                        Range Control AP Hill:      CH 3: XX.XXX FM
+                                                                        
+</pre>
+              </td>
+            </tr>
+          </table><!-- end right mission info table //-->
+        </td>
+      </tr>
+
+      <tr class="rows">
+        <!-- third row //-->
+
+        <td colspan="2">
+          <table>
+            <tr>
+              <td class="vehicle"></td>
+
+              <td class="vehicle"></td>
+
+              <td class="vehicle"></td>
+
+              <td class="vehicle"></td>
+
+              <td class="vehicle"></td>
+
+              <td class="vehicle"></td>
+
+              <td class="vehicle"></td>
+
+              <td class="vehicle"></td>
+            </tr>
+
+            <tr>
+              <td class="vehicle"></td>
+
+              <td class="vehicle"></td>
+
+              <td class="vehicle"></td>
+
+              <td class="vehicle"></td>
+
+              <td class="vehicle"></td>
+
+              <td class="vehicle"></td>
+
+              <td class="vehicle"></td>
+
+              <td class="vehicle"></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+
+      <tr class="rows">
+        <!-- second row //-->
+
+        <td colspan="2">Additional Text</td>
+      </tr>
+    </table>
+  </div>
 </body>
 </html>

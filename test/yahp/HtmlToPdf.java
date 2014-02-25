@@ -42,7 +42,7 @@ public class HtmlToPdf {
                    IHtmlToPdfTransformer.FLYINGSAUCER_PDF_RENDERER);
     //properties.put(IHtmlToPdfTransformer.FOP_TTF_FONT_PATH, fontPath);
     converter.convertToPdf(htmlContents,
-                IHtmlToPdfTransformer.A4P,
+                IHtmlToPdfTransformer.A3L,
                 headerFooterList,
                 "file:///temp/html/",
                 out,
