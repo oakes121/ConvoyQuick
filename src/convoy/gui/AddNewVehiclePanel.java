@@ -30,7 +30,7 @@ public class AddNewVehiclePanel extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(194, 178, 128));
-        setPreferredSize(new java.awt.Dimension(136, 200));
+        setPreferredSize(new java.awt.Dimension(114, 181));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 0, 0));

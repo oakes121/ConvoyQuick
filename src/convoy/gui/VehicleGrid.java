@@ -134,7 +134,7 @@ public class VehicleGrid extends javax.swing.JPanel implements ActionListener, K
         
         if (flag == 1)
             vehiclePanelArray.get(counter).setBorder(BorderFactory.createMatteBorder(
-                                    5, 5, 5, 5, Color.red));
+                                    3, 3, 3, 3, Color.red));
         
         else if (flag == 0)
             vehiclePanelArray.get(counter).setBorder(BorderFactory.createMatteBorder(
@@ -223,7 +223,7 @@ public class VehicleGrid extends javax.swing.JPanel implements ActionListener, K
             
             vehiclePanelArray.get(pos1).setBorder(BorderFactory.createMatteBorder(0, 0, 0, 0, Color.GREEN));
             vehiclePanelArray.get(pos2).setBorder(BorderFactory.createMatteBorder(0, 0, 0, 0, Color.GREEN));
-            vehiclePanelArray.get(pos1).setBorder(BorderFactory.createMatteBorder(5, 5, 5, 5, Color.GREEN)); 
+            vehiclePanelArray.get(pos1).setBorder(BorderFactory.createMatteBorder(3, 3, 3, 3, Color.GREEN)); 
             
             vehiclePanelClickedFlags.get(pos1).setTruthValue(false);
             vehiclePanelClickedFlags.get(pos2).setTruthValue(false);
@@ -372,30 +372,27 @@ public class VehicleGrid extends javax.swing.JPanel implements ActionListener, K
     }
     
     @Override
-    public void mouseClicked(MouseEvent e) {
-        
-        // handles vehiclePanelArray elements
+    
+    public void mousePressed(MouseEvent e) {
+         // handles vehiclePanelArray elements
         try {
             for (int i = 0; i < vehiclePanelArray.size() ; i++) {
                 if (e.getSource() == vehiclePanelArray.get(i)) {
                     setFlag(i);
                     break;
                 }
-                
             }
             
         } catch(IndexOutOfBoundsException ioobe) {} catch(NullPointerException npe) {}
          
         // handles addNewVehiclePanel1
         if (e.getSource() == addNewVehiclePanel1) {
-            addNewVehiclePanel1();         
-            
+            addNewVehiclePanel1();  
         }
     }
-
     public void keyPressed(KeyEvent e) {}
     public void keyReleased(KeyEvent e) {}
-    public void mousePressed(MouseEvent e) {}
+    public void mouseClicked(MouseEvent e) {}
     public void mouseReleased(MouseEvent e) {}
     public void mouseEntered(MouseEvent e) {}
     public void mouseExited(MouseEvent e) {}
