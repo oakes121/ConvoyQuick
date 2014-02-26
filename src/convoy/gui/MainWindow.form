@@ -191,7 +191,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <Component id="missionNumberPanel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-                  <Component id="vehicleGrid1" pref="163" max="32767" attributes="0"/>
+                  <Component id="vehicleGrid1" pref="219" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
                   <Component id="additionalInfoPanel" min="-2" max="-2" attributes="0"/>
               </Group>

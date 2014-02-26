@@ -58,7 +58,7 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="toSPTextField" pref="165" max="32767" attributes="0"/>
-                          <Component id="fromSPTextField1" max="32767" attributes="0"/>
+                          <Component id="fromSPTextField" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -114,7 +114,7 @@
                   <Component id="fromLinkUpTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="fromLinkUpLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="fromTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="fromSPTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="fromSPTextField" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -196,7 +196,7 @@
         <Property name="text" type="java.lang.String" value="SP -"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="fromSPTextField1">
+    <Component class="javax.swing.JTextField" name="fromSPTextField">
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">
       <AuxValues>

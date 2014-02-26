@@ -293,7 +293,17 @@ public class MainWindow extends javax.swing.JFrame {
                         this.leftMissionInfoPanel1.getClassification(), 
                         this.leftMissionInfoPanel1.getMissionNumber(),
                         this.leftMissionInfoPanel1.getFrom(),
-                        this.leftMissionInfoPanel1.getTo()
+                        this.leftMissionInfoPanel1.getTo(),
+                        this.leftMissionInfoPanel1.getAdditionalText(),
+                        this.rightMissionInfoPanel2.getCC(),
+                        this.rightMissionInfoPanel2.getACC(),
+                        this.rightMissionInfoPanel2.getStagingArea(),
+                        this.rightMissionInfoPanel2.getFrom(),
+                        this.rightMissionInfoPanel2.getTo(),
+                        this.rightMissionInfoPanel2.getFromLU(),
+                        this.rightMissionInfoPanel2.getToLU(),
+                        this.rightMissionInfoPanel2.getFromSP(),
+                        this.rightMissionInfoPanel2.getToSP()
                         
                 );
 

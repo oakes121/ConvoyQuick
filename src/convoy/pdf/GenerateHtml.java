@@ -17,7 +17,17 @@ public class GenerateHtml {
                                 String classification,
                                 String missionNumber,
                                 String leftFrom,
-                                String leftTo){
+                                String leftTo,
+                                String leftAdditionalText,
+                                String cc,
+                                String acc,
+                                String stagingArea,
+                                String rightFrom,
+                                String rightTo,
+                                String fromLU,
+                                String toLU,
+                                String fromSP,
+                                String toSP){
         
         String classificationColor = "";
         
@@ -118,7 +128,7 @@ public class GenerateHtml {
 "                        <tr>\n" +
 "                            <td class=\"additionalText\" colspan=\"2\" id=\"leftAdditionaInfo\">\n" +
 "                                <pre>\n" +
-"Hill: 06/07/02+02\n" +
+"" + leftAdditionalText +"\n" +
 "</pre>\n" +
 "                            </td>\n" +
 "                        </tr>\n" +
@@ -131,32 +141,32 @@ public class GenerateHtml {
 "                        <tr>\n" +
 "                            <!-- cc and acc row //-->\n" +
 "                            <td class=\"label\">CC -</td>\n" +
-"                            <td class=\"data\" colspan=\"2\" id=\"cc\">1SG Somethin</td>\n" +
+"                            <td class=\"data\" colspan=\"2\" id=\"cc\">" + cc + "</td>\n" +
 "                            <td class=\"label\">ACC -</td>\n" +
-"                            <td class=\"data\" colspan=\"2\" id=\"acc\">MSG Joe Snuffy</td>\n" +
+"                            <td class=\"data\" colspan=\"2\" id=\"acc\">" + acc + "</td>\n" +
 "                        </tr>\n" +
 "                        <tr>\n" +
 "                            <!-- staging area row //-->\n" +
 "                            <td class=\"label\">Staging Area -</td>\n" +
-"                            <td class=\"data\" colspan=\"5\" id=\"stagingArea\">Edgewood Motor Vehicle Line</td>\n" +
+"                            <td class=\"data\" colspan=\"5\" id=\"stagingArea\">" + stagingArea + "</td>\n" +
 "                        </tr>\n" +
 "                        <tr>\n" +
 "                            <!-- from l/u sp //-->\n" +
 "                            <td class=\"label\">From -</td>\n" +
-"                            <td class=\"data\" id=\"rightFrom\">Edgewood</td>\n" +
+"                            <td class=\"data\" id=\"rightFrom\">" + rightFrom + "</td>\n" +
 "                            <td class=\"label\">L/U -</td>\n" +
-"                            <td class=\"data\" id=\"fromLu\">XXXXXXZAPR14</td>\n" +
+"                            <td class=\"data\" id=\"fromLu\">" + fromLU + "</td>\n" +
 "                            <td class=\"label\">SP -</td>\n" +
-"                            <td class=\"data\" id=\"fromSP\">XXXXXXZAPR14</td>\n" +
+"                            <td class=\"data\" id=\"fromSP\">" + fromSP + "</td>\n" +
 "                        </tr>\n" +
 "                        <tr>\n" +
 "                            <!-- to l/u sp//-->\n" +
 "                            <td class=\"label\">To -</td>\n" +
-"                            <td class=\"data\" id=\"rightTo\">Fort AP Hill</td>\n" +
+"                            <td class=\"data\" id=\"rightTo\">" + rightTo + "</td>\n" +
 "                            <td class=\"label\">L/U -</td>\n" +
-"                            <td class=\"data\" id=\"toLu\">XXXXXXZAPR14</td>\n" +
+"                            <td class=\"data\" id=\"toLu\">" + toLU + "</td>\n" +
 "                            <td class=\"label\">SP -</td>\n" +
-"                            <td class=\"data\" id=\"toSP\">XXXXXXZAPR14</td>\n" +
+"                            <td class=\"data\" id=\"toSP\">" + toSP + "</td>\n" +
 "                        </tr>\n" +
 "                        <tr>\n" +
 "                            <!-- frequency row //-->\n" +

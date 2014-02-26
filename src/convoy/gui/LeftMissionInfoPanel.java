@@ -46,6 +46,12 @@ public class LeftMissionInfoPanel extends javax.swing.JPanel {
         return this.toTextField.getText();
 
     }
+    
+    public String getAdditionalText() {
+                
+        return this.jTextArea3.getText();
+
+    }
 
     private BufferedImage image;
 

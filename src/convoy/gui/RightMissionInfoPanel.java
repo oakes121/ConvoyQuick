@@ -28,6 +28,34 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
         
     }
     
+    public String getCC(){
+        return this.ccTextField.getText();
+    }
+    public String getACC(){
+        return this.accTextField.getText();
+    }
+    public String getStagingArea(){
+        return this.stagingAreaTextField.getText();
+    }
+    public String getFrom(){
+        return this.fromTextField.getText();
+    }
+    public String getTo(){
+        return this.toTextField.getText();
+    }
+    public String getFromLU(){
+        return this.fromLinkUpTextField.getText();
+    }
+    public String getToLU(){
+        return this.toTextField.getText();
+    }
+    public String getFromSP(){
+        return this.fromSPTextField.getText();
+    }
+    public String getToSP(){
+        return this.toSPTextField.getText();
+    }
+    
     private void doFreqs(){
         
         channelOneLabel.setVisible(false); 
@@ -102,7 +130,7 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
         toLinkUpLabel = new javax.swing.JLabel();
         toLinkUpTextField = new javax.swing.JTextField();
         toSPLabel = new javax.swing.JLabel();
-        fromSPTextField1 = new javax.swing.JTextField();
+        fromSPTextField = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         freqPanel = new javax.swing.JPanel();
@@ -294,7 +322,7 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(toSPTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
-                            .addComponent(fromSPTextField1)))
+                            .addComponent(fromSPTextField)))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGap(5, 5, 5)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -337,7 +365,7 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
                     .addComponent(fromLinkUpTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(fromLinkUpLabel)
                     .addComponent(fromTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(fromSPTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(fromSPTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(5, 5, 5)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(toLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -479,7 +507,7 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
     private javax.swing.JLabel fromLinkUpLabel;
     private javax.swing.JTextField fromLinkUpTextField;
     private javax.swing.JLabel fromSPLabel;
-    private javax.swing.JTextField fromSPTextField1;
+    private javax.swing.JTextField fromSPTextField;
     private javax.swing.JTextField fromTextField;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
