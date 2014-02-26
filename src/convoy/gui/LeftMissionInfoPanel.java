@@ -64,7 +64,7 @@ public class LeftMissionInfoPanel extends javax.swing.JPanel {
         BufferedImage tmpImg = new BufferedImage(image.getWidth(), image.getHeight(),
                 BufferedImage.TYPE_INT_ARGB);
         Graphics2D g2d = (Graphics2D) tmpImg.getGraphics();
-        g2d.setComposite(AlphaComposite.SrcOver.derive(0.5f));
+        g2d.setComposite(AlphaComposite.SrcOver.derive(0.8f));
         // set the transparency level in range 0.0f - 1.0f 
         g2d.drawImage(image, 0, 0, null);
         image = tmpImg;
