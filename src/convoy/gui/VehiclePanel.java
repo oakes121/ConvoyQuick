@@ -9,6 +9,7 @@ import convoy.objects.Personnel;
 import convoy.objects.Vehicle;
 import java.awt.Font;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
@@ -46,6 +47,10 @@ public class VehiclePanel extends javax.swing.JPanel {
         revalidate();
         repaint(); */
         
+    }
+    
+    public JButton getDeleteButton() {
+        return deleteButton;
     }
     
     public void setDriverName() {
@@ -122,6 +127,7 @@ public class VehiclePanel extends javax.swing.JPanel {
         picturePanel = new javax.swing.JPanel();
         imageLabel = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
+        deleteButton = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(194, 178, 128));
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(194, 178, 128)));
@@ -206,7 +212,7 @@ public class VehiclePanel extends javax.swing.JPanel {
                     .addComponent(callSignLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(picturePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                .addGap(0, 0, 0))
         );
         componentPanelLayout.setVerticalGroup(
             componentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -235,27 +241,49 @@ public class VehiclePanel extends javax.swing.JPanel {
         driverLabel.getAccessibleContext().setAccessibleName("driver");
         driverLabel.getAccessibleContext().setAccessibleDescription("driver");
 
+        deleteButton.setBackground(new java.awt.Color(204, 0, 0));
+        deleteButton.setFont(new java.awt.Font("Tahoma", 1, 8)); // NOI18N
+        deleteButton.setForeground(new java.awt.Color(255, 255, 255));
+        deleteButton.setText("X");
+        deleteButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        deleteButton.setPreferredSize(new java.awt.Dimension(15, 22));
+        deleteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(componentPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(componentPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(deleteButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(componentPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_deleteButtonActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel bumperNumberLabel;
     private javax.swing.JLabel callSignLabel;
     private javax.swing.JPanel componentPanel;
+    private javax.swing.JButton deleteButton;
     private javax.swing.JLabel driverLabel;
     private javax.swing.JLabel imageLabel;
     private javax.swing.JTextField jTextField1;
