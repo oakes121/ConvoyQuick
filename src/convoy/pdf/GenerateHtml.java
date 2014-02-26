@@ -50,16 +50,17 @@ public class GenerateHtml {
 "    <title></title>\n" +
 "    <style type=\"text/css\">\n" +
 "        body {\n" +
-"            background-color: rgb(194, 178, 128);\n" +
+"            //background-color: rgb(194, 178, 128);\n" +
 "        }\n" +
 "        div,\n" +
 "        table {\n" +
 "            width: 100%;\n" +
 "            //border: 1px solid #000;\n" +
 "            height: 100%;\n" +
+"            font-size: 14pt;\n" +  
 "        }\n" +
 "        td {\n" +
-"            border: 1px solid #000;\n" +
+"            //border: 1px solid #000;\n" +
 "            background-color: white;\n" +
 "        }\n" +
 "        .label {\n" +
@@ -78,6 +79,7 @@ public class GenerateHtml {
 "        }\n" +
 "        .vehicle {\n" +
 "            height: 250px;\n" +
+"            border: 1px solid black;\n" +
 "        }\n" +
 "        #leftMissionInfo {\n" +
 "            font-size: 16pt;\n" +
