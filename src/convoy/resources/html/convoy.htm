@@ -4,18 +4,6 @@
 
 <head>
     <script type="text/javascript" src="../javascript/jquery-latest.min.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function($){
-            doClassification();
-        });
-        function doClassification() {            
-            if ($('#classification').html() === 'SECRET') {
-                $('style').append('#classification{text-align: center;font-weight: bold;font-size: 36pt;color: red;}');
-            } else {
-                $('style').append('#classification{text-align: center;font-weight: bold;font-size: 36pt;}');
-            }
-        }
-    </script>
     <title></title>
     <style type="text/css">
         body {
@@ -24,7 +12,7 @@
         div,
         table {
             width: 100%;
-            border: 1px solid #000;
+            //border: 1px solid #000;
             height: 100%;
         }
         td {
@@ -49,8 +37,8 @@
             height: 250px;
         }
         #leftMissionInfo {
-            font-size: 24pt;
-            background: url('../images/2id.png') no-repeat center center;
+            font-size: 16pt;
+            //background: url('null') no-repeat center center;
         }
         #leftMissionInfoTable {
             opacity: 0.9;
@@ -58,8 +46,9 @@
             filter: alpha(opacity=90);
         }
         .additionalText {
-            height: 125px;
+            height: 150px;
         }
+#classification{text-align: center;font-weight: bold;font-size: 24pt;color: black;}
     </style>
 </head>
 
@@ -76,22 +65,22 @@
                             <td colspan="2"></td>
                         </tr>
                         <tr>
-                            <td colspan="2" id="classification">SECRET</td>
+                            <td colspan="2" id="classification">FOR OFFICIAL USE ONLY</td>
                         </tr>
                         <tr>
                             <td colspan="2"></td>
                         </tr>
                         <tr>
                             <td class="label">Mission #</td>
-                            <td class="data" id="misisonNumber">00001</td>
+                            <td class="data" id="misisonNumber"></td>
                         </tr>
                         <tr>
                             <td class="label">FROM:</td>
-                            <td class="data" id="leftFrom">Edgewood</td>
+                            <td class="data" id="leftFrom"></td>
                         </tr>
                         <tr>
                             <td class="label">To:</td>
-                            <td class="data" id="leftTo">Ft. AP Hill</td>
+                            <td class="data" id="leftTo"></td>
                         </tr>
                         <tr>
                             <td class="additionalText" colspan="2" id="leftAdditionaInfo">

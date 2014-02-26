@@ -6,8 +6,18 @@
 
 package convoy.gui;
 
+import convoy.pdf.*;
+import java.awt.AlphaComposite;
+
 import java.awt.FileDialog;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.net.URL;
+import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -80,9 +90,10 @@ public class MainWindow extends javax.swing.JFrame {
         newMenuItem = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
+        finalizeMenu = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
         editMenu = new javax.swing.JMenu();
+        wateMarkMenu = new javax.swing.JMenuItem();
         helpMenu = new javax.swing.JMenu();
         helpMenuItem = new javax.swing.JMenuItem();
         aboutMenuItem = new javax.swing.JMenuItem();
@@ -115,8 +126,6 @@ public class MainWindow extends javax.swing.JFrame {
         additionalInfoPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 0, 0)));
         additionalInfoPanel.setLayout(new java.awt.BorderLayout());
         additionalInfoPanel.add(additionalTextPanel1, java.awt.BorderLayout.CENTER);
-
-        vehicleGrid1.setBackground(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout picturePanel2Layout = new javax.swing.GroupLayout(picturePanel2);
         picturePanel2.setLayout(picturePanel2Layout);
@@ -170,9 +179,14 @@ public class MainWindow extends javax.swing.JFrame {
         jMenuItem2.setText("Save");
         fileMenu.add(jMenuItem2);
 
-        jMenuItem3.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem3.setText("Finalize");
-        fileMenu.add(jMenuItem3);
+        finalizeMenu.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F, java.awt.event.InputEvent.CTRL_MASK));
+        finalizeMenu.setText("Finalize");
+        finalizeMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                finalizeMenuActionPerformed(evt);
+            }
+        });
+        fileMenu.add(finalizeMenu);
 
         jMenuItem4.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem4.setText("Print");
@@ -181,6 +195,16 @@ public class MainWindow extends javax.swing.JFrame {
         menuBar.add(fileMenu);
 
         editMenu.setText("Edit");
+
+        wateMarkMenu.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_W, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        wateMarkMenu.setText("Watermark");
+        wateMarkMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                wateMarkMenuActionPerformed(evt);
+            }
+        });
+        editMenu.add(wateMarkMenu);
+
         menuBar.add(editMenu);
 
         helpMenu.setText("Help");
@@ -253,6 +277,86 @@ public class MainWindow extends javax.swing.JFrame {
         
       
     }//GEN-LAST:event_helpMenuItemActionPerformed
+
+    private void finalizeMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finalizeMenuActionPerformed
+        
+        int response = JOptionPane.showConfirmDialog(null, "Are you sure you want to finalize the convoy?", "Finalize Convoy?",  JOptionPane.YES_NO_OPTION);
+        if (response == JOptionPane.YES_OPTION)
+        {
+            
+            try{
+                
+                GenerateHtml gh = new GenerateHtml();
+                gh.generateHtml(
+                        
+                        null,
+                        this.leftMissionInfoPanel1.getClassification(), 
+                        this.leftMissionInfoPanel1.getMissionNumber(),
+                        this.leftMissionInfoPanel1.getFrom(),
+                        this.leftMissionInfoPanel1.getTo()
+                        
+                );
+
+                CreatePDF cp = new CreatePDF();
+                cp.createPDF();
+            
+            }catch(Exception ex){
+                
+            }
+        }
+        
+    }//GEN-LAST:event_finalizeMenuActionPerformed
+
+    private void wateMarkMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_wateMarkMenuActionPerformed
+            
+        try{
+        
+            FileDialog loadFile;
+            loadFile = new FileDialog(this, "Choose a file", FileDialog.LOAD);
+            loadFile.setDirectory("C:\\");
+            loadFile.setVisible(true);
+            
+            if(loadFile.getFile() != null){
+                
+                //imageName = loadFile.getFile();
+                File file = new File(loadFile.getFile());
+                
+                
+                //System.out.print(loadFile.getDirectory());
+                
+                URL url = new URL("file:\\"+loadFile.getDirectory()+file);
+                //String y = url.toString();
+                //String x = (url.toString().substring(6,9));
+                //String fileLocation = y.replace(x,"");
+                //String fileLocation = loadFile.getDirectory()+file;
+                //String url2 = new String("file:\\"+loadFile.getDirectory()+file);
+                System.out.print(url);
+                BufferedImage image = ImageIO.read(url);
+                //finalImage = img.getScaledInstance( 268, 209,  java.awt.Image.SCALE_SMOOTH );
+                //leftMissionInfoPanel1.setBackground(null);
+                Graphics g = leftMissionInfoPanel1.getGraphics();
+                leftMissionInfoPanel1 = new LeftMissionInfoPanel();
+                leftMissionInfoPanel1.paintComponent(g);
+                //int x = (leftMissionInfoPanel1.getWidth() - image.getWidth(null)) / 2;
+                //int y = (leftMissionInfoPanel1.getHeight() - image.getHeight(null)) / 2;
+                
+                
+                BufferedImage tmpImg = new BufferedImage(image.getWidth(), image.getHeight(),
+                        BufferedImage.TYPE_INT_ARGB);
+                Graphics2D g2d = (Graphics2D) tmpImg.getGraphics();
+                g2d.setComposite(AlphaComposite.SrcOver.derive(0.5f));
+                // set the transparency level in range 0.0f - 1.0f
+                g2d.drawImage(image, 0, 0, null);
+                image = tmpImg;
+                
+                g.drawImage(image, 0, 0, null);
+                repaint();
+                revalidate();
+            }
+        }catch(IOException ex){
+            
+        }
+    }//GEN-LAST:event_wateMarkMenuActionPerformed
 
     /**
      * @param args the command line arguments
@@ -332,11 +436,11 @@ public class MainWindow extends javax.swing.JFrame {
     private convoy.gui.additionalTextPanel additionalTextPanel1;
     private javax.swing.JMenu editMenu;
     private javax.swing.JMenu fileMenu;
+    private javax.swing.JMenuItem finalizeMenu;
     private javax.swing.JMenu helpMenu;
     private javax.swing.JMenuItem helpMenuItem;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JPanel jPanel2;
     private convoy.gui.LeftMissionInfoPanel leftMissionInfoPanel1;
@@ -346,5 +450,6 @@ public class MainWindow extends javax.swing.JFrame {
     private convoy.gui.PicturePanel picturePanel2;
     private convoy.gui.RightMissionInfoPanel rightMissionInfoPanel2;
     private convoy.gui.VehicleGrid vehicleGrid1;
+    private javax.swing.JMenuItem wateMarkMenu;
     // End of variables declaration//GEN-END:variables
 }

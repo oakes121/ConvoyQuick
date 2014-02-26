@@ -10,7 +10,9 @@ import java.awt.FontFormatException;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import javax.imageio.ImageIO;
 
 /**
@@ -19,64 +21,111 @@ import javax.imageio.ImageIO;
  */
 public class LeftMissionInfoPanel extends javax.swing.JPanel {
     
-    private BufferedImage image;
+    private String waterMark;
+
+    public String getClassification() {
+
+        return this.classificationDropBox.getSelectedItem().toString().toUpperCase();
+
+    }
+
+    public String getMissionNumber() {
+
+        return this.missionNumberTextField.getText();
+
+    }
     
+    public String getFrom() {
+
+        return this.fromTextField.getText();
+
+    }
+    
+    public String getTo() {
+
+        return this.toTextField.getText();
+
+    }
+
+    private BufferedImage image;
+
     @Override
-    protected void paintComponent(Graphics g) {
+    public void paintComponent(Graphics g) {
         super.paintComponent(g);
         int x = (this.getWidth() - image.getWidth(null)) / 2;
         int y = (this.getHeight() - image.getHeight(null)) / 2;
-        
-        BufferedImage tmpImg = new BufferedImage(image.getWidth(), image.getHeight(), 
-                                                  BufferedImage.TYPE_INT_ARGB);
+
+        BufferedImage tmpImg = new BufferedImage(image.getWidth(), image.getHeight(),
+                BufferedImage.TYPE_INT_ARGB);
         Graphics2D g2d = (Graphics2D) tmpImg.getGraphics();
-        g2d.setComposite(AlphaComposite.SrcOver.derive(0.3f)); 
-                 // set the transparency level in range 0.0f - 1.0f 
+        g2d.setComposite(AlphaComposite.SrcOver.derive(0.5f));
+        // set the transparency level in range 0.0f - 1.0f 
         g2d.drawImage(image, 0, 0, null);
         image = tmpImg;
-        
+
         g.drawImage(image, x, y, null); // see javadoc for more info on the parameters            
     }
-    
+
     /**
      * Method used to load an image
+     *
      * @param imageName the file path of the image to be loaded
      */
-    private void loadImage() {
-       try {
-            image = ImageIO.read(getClass().getResource("/convoy/resources/images/2id.png"));
+    private void loadImage(File file) {
+        try {
+            image = ImageIO.read(file);
         } catch (IOException ex) {
         }
     }
     
-    
+    private void loadImage(URL file) {
+        try {
+            image = ImageIO.read(file);
+        } catch (IOException ex) {
+        }
+    }
+
     /**
      * Creates new form MissionInfoPanel
      */
-    public LeftMissionInfoPanel() {
-        super();        
+    public LeftMissionInfoPanel(BufferedImage img) {
+        
+        super();
+        
+        image = img;
         initComponents();
-        doFonts();       
+        doFonts();
         setLayout(this.getLayout());
-        loadImage();
+        //loadImage(file);
         repaint();
         revalidate();
     }
     
-    private void doFonts(){
-       try{ 
-        Font captureItFont = Font.createFont(Font.TRUETYPE_FONT, getClass().getResourceAsStream("/convoy/resources/fonts/captureIt.ttf"));
-        captureItFont = captureItFont.deriveFont(Font.ITALIC, 16f);
+    public LeftMissionInfoPanel() {
         
-        classificationDropBox.setFont(captureItFont);
-        missionNumberLabel.setFont(captureItFont);
-        fromLabel.setFont(captureItFont);
-        toLabel.setFont(captureItFont);
-        
-       }catch(FontFormatException | IOException ex){
-           //ex.printStackTrace();
-       }
-        
+        super();
+        initComponents();
+        doFonts();
+        setLayout(this.getLayout());
+        loadImage(getClass().getResource("/convoy/resources/images/2id.png"));
+        repaint();
+        revalidate();
+    }
+
+    private void doFonts() {
+        try {
+            Font captureItFont = Font.createFont(Font.TRUETYPE_FONT, getClass().getResourceAsStream("/convoy/resources/fonts/captureIt.ttf"));
+            captureItFont = captureItFont.deriveFont(Font.ITALIC, 16f);
+
+            classificationDropBox.setFont(captureItFont);
+            missionNumberLabel.setFont(captureItFont);
+            fromLabel.setFont(captureItFont);
+            toLabel.setFont(captureItFont);
+
+        } catch (FontFormatException | IOException ex) {
+            //ex.printStackTrace();
+        }
+
     }
 
     /**

@@ -252,9 +252,6 @@ public class CreateVehiclePopUp extends javax.swing.JFrame {
            
            //this.add(imgPanel);           
            ImageIcon icon = new ImageIcon(finalImage);
-           
-     
-           
             jLabel2.setIcon(icon);
  
             //jPanel4.add(label);

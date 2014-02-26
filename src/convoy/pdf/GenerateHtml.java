@@ -10,12 +10,23 @@ import java.awt.Desktop;
 import java.io.*;
 
 public class GenerateHtml {
-    
     public GenerateHtml(){
-        
     }
     
-    public void generateHtml(){
+    public void generateHtml(   String watermark,
+                                String classification,
+                                String missionNumber,
+                                String leftFrom,
+                                String leftTo){
+        
+        String classificationColor = "";
+        
+        if(classification.equalsIgnoreCase("SECRET")){
+            classificationColor = "red";
+        }
+        else{
+            classificationColor = "black";
+        }
         
         try{
         File f = new File("src\\convoy\\resources\\html\\convoy.htm");
@@ -26,18 +37,6 @@ public class GenerateHtml {
 "\n" +
 "<head>\n" +
 "    <script type=\"text/javascript\" src=\"../javascript/jquery-latest.min.js\"></script>\n" +
-"    <script type=\"text/javascript\">\n" +
-"        $(document).ready(function($){\n" +
-"            doClassification();\n" +
-"        });\n" +
-"        function doClassification() {            \n" +
-"            if ($('#classification').html() === 'SECRET') {\n" +
-"                $('style').append('#classification{text-align: center;font-weight: bold;font-size: 36pt;color: red;}');\n" +
-"            } else {\n" +
-"                $('style').append('#classification{text-align: center;font-weight: bold;font-size: 36pt;}');\n" +
-"            }\n" +
-"        }\n" +
-"    </script>\n" +
 "    <title></title>\n" +
 "    <style type=\"text/css\">\n" +
 "        body {\n" +
@@ -46,7 +45,7 @@ public class GenerateHtml {
 "        div,\n" +
 "        table {\n" +
 "            width: 100%;\n" +
-"            border: 1px solid #000;\n" +
+"            //border: 1px solid #000;\n" +
 "            height: 100%;\n" +
 "        }\n" +
 "        td {\n" +
@@ -71,8 +70,8 @@ public class GenerateHtml {
 "            height: 250px;\n" +
 "        }\n" +
 "        #leftMissionInfo {\n" +
-"            font-size: 24pt;\n" +
-"            background: url('../images/2id.png') no-repeat center center;\n" +
+"            font-size: 16pt;\n" +
+"            //background: url('" + watermark + "') no-repeat center center;\n" +
 "        }\n" +
 "        #leftMissionInfoTable {\n" +
 "            opacity: 0.9;\n" +
@@ -80,8 +79,9 @@ public class GenerateHtml {
 "            filter: alpha(opacity=90);\n" +
 "        }\n" +
 "        .additionalText {\n" +
-"            height: 125px;\n" +
+"            height: 150px;\n" +
 "        }\n" +
+         "#classification{text-align: center;font-weight: bold;font-size: 24pt;color: " + classificationColor +";}\n" +
 "    </style>\n" +
 "</head>\n" +
 "\n" +
@@ -98,22 +98,22 @@ public class GenerateHtml {
 "                            <td colspan=\"2\"></td>\n" +
 "                        </tr>\n" +
 "                        <tr>\n" +
-"                            <td colspan=\"2\" id=\"classification\">SECRET</td>\n" +
+"                            <td colspan=\"2\" id=\"classification\">" + classification +"</td>\n" +
 "                        </tr>\n" +
 "                        <tr>\n" +
 "                            <td colspan=\"2\"></td>\n" +
 "                        </tr>\n" +
 "                        <tr>\n" +
 "                            <td class=\"label\">Mission #</td>\n" +
-"                            <td class=\"data\" id=\"misisonNumber\">00001</td>\n" +
+"                            <td class=\"data\" id=\"misisonNumber\">" + missionNumber + "</td>\n" +
 "                        </tr>\n" +
 "                        <tr>\n" +
 "                            <td class=\"label\">FROM:</td>\n" +
-"                            <td class=\"data\" id=\"leftFrom\">Edgewood</td>\n" +
+"                            <td class=\"data\" id=\"leftFrom\">" + leftFrom + "</td>\n" +
 "                        </tr>\n" +
 "                        <tr>\n" +
 "                            <td class=\"label\">To:</td>\n" +
-"                            <td class=\"data\" id=\"leftTo\">Ft. AP Hill</td>\n" +
+"                            <td class=\"data\" id=\"leftTo\">" + leftTo+ "</td>\n" +
 "                        </tr>\n" +
 "                        <tr>\n" +
 "                            <td class=\"additionalText\" colspan=\"2\" id=\"leftAdditionaInfo\">\n" +

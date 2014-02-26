@@ -10,8 +10,10 @@ package convoy.pdf;
  * 
  */
 
+import java.awt.Desktop;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -24,11 +26,7 @@ import org.allcolor.yahp.converter.IHtmlToPdfTransformer;
 
 public class CreatePDF {
     
-    private static final GenerateHtml gh = new GenerateHtml(); 
-    
-    public  static void main(String ... args ) throws Exception {
-        
-    gh.generateHtml();        
+    public static void main(String args[]) throws Exception {       
         
     String root = "src\\convoy\\resources\\html";
     String input = "convoy.htm";  // need to be charset utf-8
@@ -37,6 +35,32 @@ public class CreatePDF {
                   new File(output + ".pdf"));
     //System.out.println("Done");
   }
+    
+    public  void createPDF() throws Exception {       
+        
+    String root = "src\\convoy\\resources\\html";
+    String input = "convoy.htm";  // need to be charset utf-8
+    String output = "src\\pdf\\" + input.replace(".htm","");
+    htmlToPdfFile(new File(root, input),
+                  new File(output + ".pdf"));
+    //System.out.println("Done");
+    
+    open(new File(output + ".pdf"));
+    
+    
+  }
+    
+    public static void open(File document) {
+        
+        try{
+            Desktop dt = Desktop.getDesktop();
+            dt.open(document);
+        }catch(IOException ex){
+            
+        }
+}
+    
+    
 
   public static void htmlToPdfFile(File htmlIn, File pdfOut) throws Exception {
     Scanner scanner =
