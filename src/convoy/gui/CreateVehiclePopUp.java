@@ -79,10 +79,15 @@ public class CreateVehiclePopUp extends javax.swing.JFrame {
         jLabel4.setText("Vehicle Name");
 
         enterVehicleField.setText("Enter Vehicle Name");
+        enterVehicleField.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                enterVehicleFieldMouseClicked(evt);
+            }
+        });
 
         jLabel5.setText("Number Of Seats");
 
-        numberOfSeatsComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "", "1", "2", "3", "4", "> 4" }));
+        numberOfSeatsComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4", "> 4" }));
         numberOfSeatsComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 numberOfSeatsComboBoxActionPerformed(evt);
@@ -313,6 +318,11 @@ public class CreateVehiclePopUp extends javax.swing.JFrame {
         addVehicleObject.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_addVehicleButtonActionPerformed
+
+    private void enterVehicleFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enterVehicleFieldMouseClicked
+        // TODO add your handling code here:
+        enterVehicleField.setText("");
+    }//GEN-LAST:event_enterVehicleFieldMouseClicked
 
     public void setObject(AddVehiclePopUp obj1){
         
