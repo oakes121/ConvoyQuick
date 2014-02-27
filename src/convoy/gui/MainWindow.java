@@ -29,18 +29,18 @@ import javax.swing.JOptionPane;
 public final class MainWindow extends javax.swing.JFrame {
 
     private static final MainWindow frame = new MainWindow();
-    
+
     private String imagePath;
-    
-    public String getImagePath(){
-        return this.imagePath;       
+
+    public String getImagePath() {
+        return this.imagePath;
     }
 
     /**
      * Creates new form mainWindow
      */
     public MainWindow() {
-        this.imagePath = getClass().getResource("/convoy/resources/images/2id.png").getPath().substring(1).replace("/","\\");
+        this.imagePath = getClass().getResource("/convoy/resources/images/2id.png").getPath().substring(1).replace("/", "\\");
 
         initComponents();
         makeSelectPanelsTransparent();
@@ -288,13 +288,12 @@ public final class MainWindow extends javax.swing.JFrame {
         if (response == JOptionPane.YES_OPTION) {
 
             try {
-                
+
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-  
+
                 GenerateHtml gh = new GenerateHtml();
-                
+
                 //System.out.print(this.rightMissionInfoPanel2.getFreqs().get(0).getFreq());
-                
                 gh.generateHtml(
                         this.getImagePath(),
                         this.leftMissionInfoPanel1.getClassification(),
@@ -318,10 +317,10 @@ public final class MainWindow extends javax.swing.JFrame {
 
                 CreatePDF cp = new CreatePDF();
                 cp.createPDF();
-                
+
             } catch (Exception ex) {
 
-            }finally{
+            } finally {
                 this.setCursor(Cursor.getDefaultCursor());
             }
         }
@@ -330,57 +329,58 @@ public final class MainWindow extends javax.swing.JFrame {
 
     @SuppressWarnings("empty-statement")
     private void wateMarkMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_wateMarkMenuActionPerformed
-        try{        
-        FileDialog loadFile;
-        loadFile = new FileDialog(this, "Choose an Image", FileDialog.LOAD);
-        //loadFile.set
-        loadFile.setFile("*.jpg;*.jpeg;*.png;*.gif");
-        //loadFile.setDirectory("C:\\");
-        loadFile.setVisible(true);
+        try {
+            FileDialog loadFile;
+            loadFile = new FileDialog(this, "Choose an Image", FileDialog.LOAD);
+            //loadFile.set
+            loadFile.setFile("*.jpg;*.jpeg;*.png;*.gif");
+            //loadFile.setDirectory("C:\\");
+            loadFile.setVisible(true);
         //imageName = loadFile.getFile();
-        
-        if(loadFile.getFile() != null){
-        
-        File file = new File(loadFile.getFile());
 
-        URL url = null;
-        try {
-            url = new URL("file:\\" + loadFile.getDirectory() + file);
-            
-            imagePath = loadFile.getDirectory() + file;
-            
-        } catch (MalformedURLException ex) {            
-            Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
-        }
+            if (loadFile.getFile() != null) {
+
+                File file = new File(loadFile.getFile());
+
+                URL url = null;
+                try {
+                    url = new URL("file:\\" + loadFile.getDirectory() + file);
+
+                    imagePath = loadFile.getDirectory() + file;
+
+                } catch (MalformedURLException ex) {
+                    Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
+                }
             //String y = url.toString();
-        //String x = (url.toString().substring(6,9));
-        //String fileLocation = y.replace(x,"");
-        //String fileLocation = loadFile.getDirectory()+file;
-        //String url2 = new String("file:\\"+loadFile.getDirectory()+file);
-        //System.out.print(url);
-        Image img = null;
-        try {
-            if(url != null){
-            img = ImageIO.read(url);
-        }else{}
-        } catch (IOException ex) {
-            Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
-        }
+                //String x = (url.toString().substring(6,9));
+                //String fileLocation = y.replace(x,"");
+                //String fileLocation = loadFile.getDirectory()+file;
+                //String url2 = new String("file:\\"+loadFile.getDirectory()+file);
+                //System.out.print(url);
+                Image img = null;
+                try {
+                    if (url != null) {
+                        img = ImageIO.read(url);
+                    } else {
+                    }
+                } catch (IOException ex) {
+                    Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
+                }
 
-        if (img != null) {
-            Image finalImage = img.getScaledInstance(this.leftMissionInfoPanel1.getIconWidth(), this.leftMissionInfoPanel1.getIconHeight(), java.awt.Image.SCALE_SMOOTH); // getScaledInstance(width, hieght, algorithm)
-            ImageIcon icon = new ImageIcon(finalImage);
-            this.leftMissionInfoPanel1.setIcon(icon);
-        }//img.getScaledInstance(8, 10, Image.SCALE_SMOOTH);
-        //System.out.print(fileLocation);
-        //System.out.println(url2);
-        //ImagePanel imgPanel = new ImagePanel(fileLocation);
+                if (img != null) {
+                    Image finalImage = img.getScaledInstance(this.leftMissionInfoPanel1.getIconWidth(), this.leftMissionInfoPanel1.getIconHeight(), java.awt.Image.SCALE_SMOOTH); // getScaledInstance(width, hieght, algorithm)
+                    ImageIcon icon = new ImageIcon(finalImage);
+                    this.leftMissionInfoPanel1.setIcon(icon);
+                }//img.getScaledInstance(8, 10, Image.SCALE_SMOOTH);
+                //System.out.print(fileLocation);
+                //System.out.println(url2);
+                //ImagePanel imgPanel = new ImagePanel(fileLocation);
 
            // jLabel2.setIcon(new javax.swing.ImageIcon(fileLocation)); // NOI18N
-           //this.add(imgPanel);  
-        }
-        }catch(Exception ex){
-            ex.printStackTrace();;
+                //this.add(imgPanel);  
+            }
+        } catch (Exception ex) {
+            ;
         }
 
     }//GEN-LAST:event_wateMarkMenuActionPerformed
@@ -401,13 +401,7 @@ public final class MainWindow extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(MainWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
@@ -440,7 +434,7 @@ public final class MainWindow extends javax.swing.JFrame {
 
     private void setMainWindowButtonColor() {
 
-       //Color desertStormColor = new  Color(194, 178, 128);
+        //Color desertStormColor = new  Color(194, 178, 128);
        /*
          finalizePanel.setBackground(desertStormColor);
          mainMenuPanel.setBackground(desertStormColor);

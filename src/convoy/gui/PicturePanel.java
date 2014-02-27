@@ -27,7 +27,6 @@ public class PicturePanel extends JPanel {
     /**
      * This constructor, calls the super class constructor and loads the image to the panel
      * 
-     * @param imageName file path name for the image to be loaded
      */
     public PicturePanel() {
         super();

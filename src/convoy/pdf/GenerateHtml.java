@@ -6,7 +6,6 @@
 package convoy.pdf;
 
 import convoy.objects.Radio;
-import java.awt.Desktop;
 import java.io.*;
 import java.util.ArrayList;
 

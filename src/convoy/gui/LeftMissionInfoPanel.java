@@ -15,7 +15,9 @@ import javax.swing.ScrollPaneConstants;
  *
  * @author MTM5313
  */
-public class LeftMissionInfoPanel extends javax.swing.JPanel {;
+public class LeftMissionInfoPanel extends javax.swing.JPanel {
+
+    ;
 
     public String getClassification() {
 
@@ -28,58 +30,57 @@ public class LeftMissionInfoPanel extends javax.swing.JPanel {;
         return this.missionNumberTextField.getText();
 
     }
-    
+
     public String getFrom() {
 
         return this.fromTextField.getText();
 
     }
-    
+
     public String getTo() {
 
         return this.toTextField.getText();
 
     }
-    
+
     public String getAdditionalText() {
-                
+
         return this.additionalText.getText();
 
     }
-    
-    public void setIcon(ImageIcon icon){
+
+    public void setIcon(ImageIcon icon) {
         jLabel1.setText("");
         jLabel1.setIcon(icon);
-        
+
     }
-    
-    public int getIconWidth(){
-        
+
+    public int getIconWidth() {
+
         return this.jLabel1.getWidth();
-        
+
     }
-    
-    public int getIconHeight(){
-        
+
+    public int getIconHeight() {
+
         return this.jLabel1.getHeight();
-        
+
     }
-    public Icon getIcon(){
-        
-        return this.jLabel1.getIcon();        
+
+    public Icon getIcon() {
+
+        return this.jLabel1.getIcon();
     }
-    
-    
+
     /**
      * Creates new form MissionInfoPanel
      */
-    
     public LeftMissionInfoPanel() {
-        
+
         super();
         initComponents();
         doFonts();
-        setLayout(this.getLayout());        
+        setLayout(this.getLayout());
     }
 
     private void doFonts() {
