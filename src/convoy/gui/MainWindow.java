@@ -468,14 +468,20 @@ public final class MainWindow extends javax.swing.JFrame {
                     );
 
                     CreatePDF cp = new CreatePDF(chooser.getSelectedFile().getPath());
-                    cp.createPDF();
+                    cp.createPDFPrint();
 
                 } catch (Exception ex) {
 
                 } finally {
-                    this.setCursor(Cursor.getDefaultCursor());
-                    PrintPDF p = new PrintPDF();
-                    p.print();
+                    try {
+                        this.setCursor(Cursor.getDefaultCursor());
+                        PrintPDF p = new PrintPDF();
+                        p.print(chooser.getSelectedFile().getPath() + ".pdf");
+                    } catch (Exception ex) {
+                        this.setCursor(Cursor.getDefaultCursor());
+                        PrintPDF p = new PrintPDF();
+                        p.print(chooser.getSelectedFile().getPath() + ".pdf");
+                    }
                 }
             }
         }

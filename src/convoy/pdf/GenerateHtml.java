@@ -38,7 +38,9 @@ public class GenerateHtml {
         if (!freqs.get(0).getName().equalsIgnoreCase("")) {
 
             radio
-                    = "                                <table id=\"freqTable\">\n"
+                    = "<tr>"
+                    + "<td colspan=\"6\">"
+                    + "                                <table id=\"freqTable\">\n"
                     + "                                    <!-- frequency table //-->\n"
                     + "                                    <tr>\n"
                     + "                                        <td class=\"label\" colspan=\"6\">Frequencys -</td>\n"
@@ -49,7 +51,9 @@ public class GenerateHtml {
                     + "                                        <td class=\"data\" id=\"ch1Freq\">" + freqs.get(0).getFreq() + "</td>\n"
                     + "                                    </tr>\n"
                     + "                                </table>\n"
-                    + "                                <!-- end frequency table //-->\n";
+                    + "                                <!-- end frequency table //-->\n"
+                    + "</td>"
+                    + "</tr>";
 
         }
         if (!freqs.get(1).getName().equalsIgnoreCase("")) {
@@ -216,14 +220,15 @@ public class GenerateHtml {
                         + "            height: 33%;\n"
                         + "        }\n"
                         + "        .vehicle td{\n"
-                        + "            height: 250px;\n"
+                        + "            //height: 250px;\n"
                         + "            text-align: center;\n"
-                        + "            border: 0;"
-                        + "            vertical-align: bottom;"
+                        + "            border: 0;\n"
+                        + "            vertical-align: bottom;\n"
                         + "        }\n"
                         + "        #leftMissionInfo {\n"
-                        + "            font-size: 16pt;\n"
-                        + "            //border-right: 5px solid red;"
+                        + "            font-size: 18pt;\n"
+                        + "            //border-right: 5px solid red;\n"
+                        + "            width: 40%;\n"
                         + "        }\n"
                         + "        .additionalText {\n"
                         + "            height: 100px;\n"
@@ -643,7 +648,7 @@ public class GenerateHtml {
                         + "                        </tr>\n"
                         + "                        <tr>\n"
                         + "                             <td class=\"rows\" colspan=\"8\"></td>\n"
-                        + "                         <tr>\n"                        
+                        + "                         <tr>\n"
                         + "                        <tr>\n"
                         + "                            <td class=\"vehicle\">"
                         + "                                     <table>\n"

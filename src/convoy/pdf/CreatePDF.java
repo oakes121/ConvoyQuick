@@ -51,7 +51,7 @@ public class CreatePDF {
         //String output = "src\\pdf\\" + input.replace(".htm","");
         htmlToPdfFile(new File(root, input),
                 new File(location + ".pdf"));
-    //System.out.println("Done");
+        //System.out.println("Done");
 
         open(new File(location + ".pdf"));
 
@@ -60,13 +60,13 @@ public class CreatePDF {
     public void createPDFPrint() throws Exception {
 
         String root = "src\\convoy\\resources\\html";
-        String input = "convoy.htm";  // need to be charset utf-8
-        String output = "src\\pdf\\" + input.replace(".htm", "");
+        String input = "convoy.htm";  // need to be charset utf-8    
+        //String output = "src\\pdf\\" + input.replace(".htm","");
         htmlToPdfFile(new File(root, input),
-                new File(output + ".pdf"));
+                new File(location + ".pdf"));
     //System.out.println("Done");
 
-    //open(new File(output + ".pdf"));
+        //open(new File(location + ".pdf"));
     }
 
     public static void open(File document) {
