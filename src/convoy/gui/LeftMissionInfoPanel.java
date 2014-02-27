@@ -7,6 +7,7 @@ package convoy.gui;
 import java.awt.Font;
 import java.awt.FontFormatException;
 import java.io.IOException;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
 /**
@@ -61,6 +62,10 @@ public class LeftMissionInfoPanel extends javax.swing.JPanel {;
         
         return this.jLabel1.getHeight();
         
+    }
+    public Icon getIcon(){
+        
+        return this.jLabel1.getIcon();        
     }
     
     

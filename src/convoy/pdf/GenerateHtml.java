@@ -31,6 +31,8 @@ public class GenerateHtml {
         
         String classificationColor = "";
         
+        System.out.print(watermark);
+                        
         if(classification.equalsIgnoreCase("SECRET")){
             classificationColor = "red";
         }
@@ -68,7 +70,7 @@ public class GenerateHtml {
 "            font-family: capture;\n" +
 "        }\n" +
 "        .data {\n" +
-"            text-align: center;\n" +
+"            text-align: left;\n" +
 "        }\n" +
 "        #freqTable {\n" +
 "            border: 0;\n" +
@@ -83,17 +85,15 @@ public class GenerateHtml {
 "        }\n" +
 "        #leftMissionInfo {\n" +
 "            font-size: 16pt;\n" +
-"            //background: url('" + watermark + "') no-repeat center center;\n" +
-"        }\n" +
-"        #leftMissionInfoTable {\n" +
-"            opacity: 0.9;\n" +
-"            -ms-filter: \"progid:DXImageTransform.Microsoft.Alpha(Opacity=90)\";\n" +
-"            filter: alpha(opacity=90);\n" +
 "        }\n" +
 "        .additionalText {\n" +
 "            height: 150px;\n" +
 "        }\n" +
-         "#classification{text-align: center;font-weight: bold;font-size: 24pt;color: " + classificationColor +";}\n" +
+"        img {\n" +
+"            width: 202px;\n" +
+"            height: 172px;\n" +
+"        }\n" +
+         "#classification{text-align: center;font-weight: bold;font-size: 18pt;color: " + classificationColor +";}\n" +
 "    </style>\n" +
 "</head>\n" +
 "\n" +
@@ -107,7 +107,7 @@ public class GenerateHtml {
 "                    <table id=\"leftMissionInfoTable\">\n" +
 "                        <!-- left mission info table //-->\n" +
 "                        <tr>\n" +
-"                            <td colspan=\"2\"></td>\n" +
+"                            <td rowspan=\"6\" id=\"unitPatch\"><img src=\"" + "file:\\" + watermark + "\" alt=\"unitPatch\"/></td>\n" +
 "                        </tr>\n" +
 "                        <tr>\n" +
 "                            <td colspan=\"2\" id=\"classification\">" + classification +"</td>\n" +
@@ -128,7 +128,7 @@ public class GenerateHtml {
 "                            <td class=\"data\" id=\"leftTo\">" + leftTo+ "</td>\n" +
 "                        </tr>\n" +
 "                        <tr>\n" +
-"                            <td class=\"additionalText\" colspan=\"2\" id=\"leftAdditionaInfo\">\n" +
+"                            <td class=\"additionalText\" colspan=\"3\" id=\"leftAdditionaInfo\">\n" +
 "                                <pre>\n" +
 "" + leftAdditionalText +"\n" +
 "</pre>\n" +
@@ -249,7 +249,7 @@ public class GenerateHtml {
 "\n" +
 "</html>");
                 
-                Desktop.getDesktop().browse(f.toURI());
+                //Desktop.getDesktop().browse(f.toURI());
             }
         }catch(IOException ex){
         }

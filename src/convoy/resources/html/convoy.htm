@@ -25,7 +25,7 @@
             font-family: capture;
         }
         .data {
-            text-align: center;
+            text-align: left;
         }
         #freqTable {
             border: 0;
@@ -40,17 +40,15 @@
         }
         #leftMissionInfo {
             font-size: 16pt;
-            //background: url('null') no-repeat center center;
-        }
-        #leftMissionInfoTable {
-            opacity: 0.9;
-            -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
-            filter: alpha(opacity=90);
         }
         .additionalText {
             height: 150px;
         }
-#classification{text-align: center;font-weight: bold;font-size: 24pt;color: black;}
+        img {
+            width: 202px;
+            height: 172px;
+        }
+#classification{text-align: center;font-weight: bold;font-size: 18pt;color: black;}
     </style>
 </head>
 
@@ -64,7 +62,7 @@
                     <table id="leftMissionInfoTable">
                         <!-- left mission info table //-->
                         <tr>
-                            <td colspan="2"></td>
+                            <td rowspan="6" id="unitPatch"><img src="file:\/C:/Netbeans/ConvoyQuick/build/classes/convoy/resources/images/2id.png" alt="unitPatch"/></td>
                         </tr>
                         <tr>
                             <td colspan="2" id="classification">FOR OFFICIAL USE ONLY</td>
@@ -74,20 +72,20 @@
                         </tr>
                         <tr>
                             <td class="label">Mission #</td>
-                            <td class="data" id="misisonNumber">qewrtqwertq</td>
+                            <td class="data" id="misisonNumber"></td>
                         </tr>
                         <tr>
                             <td class="label">FROM:</td>
-                            <td class="data" id="leftFrom">qewrtqwertq</td>
+                            <td class="data" id="leftFrom"></td>
                         </tr>
                         <tr>
                             <td class="label">To:</td>
-                            <td class="data" id="leftTo">qewrtqwertq</td>
+                            <td class="data" id="leftTo"></td>
                         </tr>
                         <tr>
-                            <td class="additionalText" colspan="2" id="leftAdditionaInfo">
+                            <td class="additionalText" colspan="3" id="leftAdditionaInfo">
                                 <pre>
-
+Addtional Information
 </pre>
                             </td>
                         </tr>
@@ -100,32 +98,32 @@
                         <tr>
                             <!-- cc and acc row //-->
                             <td class="label">CC -</td>
-                            <td class="data" colspan="2" id="cc">qewrtqwertq</td>
+                            <td class="data" colspan="2" id="cc"></td>
                             <td class="label">ACC -</td>
-                            <td class="data" colspan="2" id="acc">qewrtqwertq</td>
+                            <td class="data" colspan="2" id="acc"></td>
                         </tr>
                         <tr>
                             <!-- staging area row //-->
                             <td class="label">Staging Area -</td>
-                            <td class="data" colspan="5" id="stagingArea">qewrtqwertq</td>
+                            <td class="data" colspan="5" id="stagingArea"></td>
                         </tr>
                         <tr>
                             <!-- from l/u sp //-->
                             <td class="label">From -</td>
-                            <td class="data" id="rightFrom">qewrtqwertq</td>
+                            <td class="data" id="rightFrom"></td>
                             <td class="label">L/U -</td>
-                            <td class="data" id="fromLu">qewrtqwertq</td>
+                            <td class="data" id="fromLu"></td>
                             <td class="label">SP -</td>
-                            <td class="data" id="fromSP">qewrtqwertq</td>
+                            <td class="data" id="fromSP"></td>
                         </tr>
                         <tr>
                             <!-- to l/u sp//-->
                             <td class="label">To -</td>
-                            <td class="data" id="rightTo">qewrtqwertq</td>
+                            <td class="data" id="rightTo"></td>
                             <td class="label">L/U -</td>
-                            <td class="data" id="toLu">qewrtqwertq</td>
+                            <td class="data" id="toLu"></td>
                             <td class="label">SP -</td>
-                            <td class="data" id="toSP">qewrtqwertq</td>
+                            <td class="data" id="toSP"></td>
                         </tr>
                         <tr>
                             <!-- frequency row //-->

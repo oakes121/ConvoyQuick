@@ -28,11 +28,18 @@ import javax.swing.JOptionPane;
 public final class MainWindow extends javax.swing.JFrame {
 
     private static final MainWindow frame = new MainWindow();
+    
+    private String imagePath;
+    
+    public String getImagePath(){
+        return this.imagePath;       
+    }
 
     /**
      * Creates new form mainWindow
      */
     public MainWindow() {
+        this.imagePath = "file:\\" + getClass().getResource("/convoy/resources/images/2id.png").getPath();
 
         initComponents();
         makeSelectPanelsTransparent();
@@ -283,7 +290,7 @@ public final class MainWindow extends javax.swing.JFrame {
 
                 GenerateHtml gh = new GenerateHtml();
                 gh.generateHtml(
-                        null,
+                        this.getImagePath(),
                         this.leftMissionInfoPanel1.getClassification(),
                         this.leftMissionInfoPanel1.getMissionNumber(),
                         this.leftMissionInfoPanel1.getFrom(),
@@ -328,6 +335,9 @@ public final class MainWindow extends javax.swing.JFrame {
         URL url = null;
         try {
             url = new URL("file:\\" + loadFile.getDirectory() + file);
+            
+            imagePath = loadFile.getDirectory() + file;
+            
         } catch (MalformedURLException ex) {            
             Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
         }
