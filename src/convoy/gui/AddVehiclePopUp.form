@@ -279,6 +279,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Driver Name"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="personnel1FieldActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="personnel2Field">
               <Properties>

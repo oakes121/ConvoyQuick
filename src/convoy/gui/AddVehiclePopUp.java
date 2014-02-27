@@ -34,6 +34,7 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
         this.setLocationRelativeTo(null); //centers frame
         this.setTitle("Add a New Vehicle"); //adds title
         this.setIconImage(new ImageIcon(getClass().getResource("/convoy/resources/images/humveeIcon.png")).getImage());
+        this.setResizable(false);
        
     }
 
@@ -137,6 +138,11 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
         jLabel2.setText("PERSONNEL");
 
         personnel1Field.setText("Driver Name");
+        personnel1Field.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                personnel1FieldActionPerformed(evt);
+            }
+        });
 
         personnel2Field.setText("Commander Name");
 
@@ -388,6 +394,10 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
         addValuesToVehiclePanel();
         this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void personnel1FieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_personnel1FieldActionPerformed
+        personnel1Field.setText("");
+    }//GEN-LAST:event_personnel1FieldActionPerformed
 
     public void setObject(VehiclePanel vehicleInfo){
         newVehiclePanel=vehicleInfo;

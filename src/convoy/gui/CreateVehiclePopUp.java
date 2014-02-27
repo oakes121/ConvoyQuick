@@ -41,6 +41,7 @@ public class CreateVehiclePopUp extends javax.swing.JFrame {
         this.setLocationRelativeTo(null); //centers frame
         this.setTitle("Create New Vehicle"); //adds title
         this.setIconImage(new ImageIcon(getClass().getResource("/convoy/resources/images/humveeIcon.png")).getImage());
+        this.setResizable(false);
     }
 
     /**
