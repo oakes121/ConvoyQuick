@@ -37,7 +37,7 @@ public final class MainWindow extends javax.swing.JFrame {
     public String getImagePath() {
         return this.imagePath;
     }
-    
+
     String missionNumberText;
 
     /**
@@ -294,68 +294,66 @@ public final class MainWindow extends javax.swing.JFrame {
     private void finalizeMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finalizeMenuActionPerformed
 
         int response = JOptionPane.showConfirmDialog(null, "Are you sure you want to finalize the convoy?", "Finalize Convoy?", JOptionPane.YES_NO_OPTION);
-        if (response == JOptionPane.YES_OPTION) {            
-                     
-                        
+        if (response == JOptionPane.YES_OPTION) {
+
             JFileChooser chooser = new JFileChooser();
             //chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
             chooser.setAcceptAllFileFilterUsed(false);
-            chooser.addChoosableFileFilter((new FileNameExtensionFilter("PDF Files","pdf")));
+            chooser.addChoosableFileFilter((new FileNameExtensionFilter("PDF Files", "pdf")));
             //chooser.setFileFilter(ff);
-            
-            missionNumberText = this.leftMissionInfoPanel1.getMissionNumber(); 
-            
-            if(missionNumberText.equalsIgnoreCase("")){
-                
+
+            missionNumberText = this.leftMissionInfoPanel1.getMissionNumber();
+
+            if (missionNumberText.equalsIgnoreCase("")) {
+
                 missionNumberText = "Untitled";
-                
+
             }
-            
+
             chooser.setSelectedFile(new File(missionNumberText + ".pdf"));
             chooser.setCurrentDirectory(new File(System.getProperty("user.home") + "\\My Documents"));
             //chooser
-                 
+
             int option = chooser.showSaveDialog(null);
-            if (option == JFileChooser.APPROVE_OPTION)
-            {
+            if (option == JFileChooser.APPROVE_OPTION) {
 
-            try {
+                try {
 
-                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                    this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 
-                GenerateHtml gh = new GenerateHtml();
+                    GenerateHtml gh = new GenerateHtml();
 
-                //System.out.print(this.rightMissionInfoPanel2.getFreqs().get(0).getFreq());
-                gh.generateHtml(
-                        this.getImagePath(),
-                        this.leftMissionInfoPanel1.getClassification(),
-                        this.leftMissionInfoPanel1.getMissionNumber(),
-                        this.leftMissionInfoPanel1.getFrom(),
-                        this.leftMissionInfoPanel1.getTo(),
-                        this.leftMissionInfoPanel1.getAdditionalText(),
-                        this.rightMissionInfoPanel2.getCC(),
-                        this.rightMissionInfoPanel2.getACC(),
-                        this.rightMissionInfoPanel2.getStagingArea(),
-                        this.rightMissionInfoPanel2.getFrom(),
-                        this.rightMissionInfoPanel2.getTo(),
-                        this.rightMissionInfoPanel2.getFromLU(),
-                        this.rightMissionInfoPanel2.getToLU(),
-                        this.rightMissionInfoPanel2.getFromSP(),
-                        this.rightMissionInfoPanel2.getToSP(),
-                        this.rightMissionInfoPanel2.getFreqs(),
-                        this.rightMissionInfoPanel2.getAdditionalText(),
-                        this.additionalTextPanel1.getAdditionalText()
-                );
+                    //System.out.print(this.rightMissionInfoPanel2.getFreqs().get(0).getFreq());
+                    gh.generateHtml(
+                            this.getImagePath(),
+                            this.leftMissionInfoPanel1.getClassification(),
+                            this.leftMissionInfoPanel1.getMissionNumber(),
+                            this.leftMissionInfoPanel1.getFrom(),
+                            this.leftMissionInfoPanel1.getTo(),
+                            this.leftMissionInfoPanel1.getAdditionalText(),
+                            this.rightMissionInfoPanel2.getCC(),
+                            this.rightMissionInfoPanel2.getACC(),
+                            this.rightMissionInfoPanel2.getStagingArea(),
+                            this.rightMissionInfoPanel2.getFrom(),
+                            this.rightMissionInfoPanel2.getTo(),
+                            this.rightMissionInfoPanel2.getFromLU(),
+                            this.rightMissionInfoPanel2.getToLU(),
+                            this.rightMissionInfoPanel2.getFromSP(),
+                            this.rightMissionInfoPanel2.getToSP(),
+                            this.rightMissionInfoPanel2.getFreqs(),
+                            this.rightMissionInfoPanel2.getAdditionalText(),
+                            this.additionalTextPanel1.getAdditionalText()
+                    );
 
-                CreatePDF cp = new CreatePDF(chooser.getSelectedFile().getPath());
-                cp.createPDF();
+                    CreatePDF cp = new CreatePDF(chooser.getSelectedFile().getPath());
+                    cp.createPDF();
 
-            } catch (Exception ex) {
+                } catch (Exception ex) {
 
-            } finally {
-                this.setCursor(Cursor.getDefaultCursor());
+                } finally {
+                    this.setCursor(Cursor.getDefaultCursor());
+                }
             }
-        }
         }
 
     }//GEN-LAST:event_finalizeMenuActionPerformed
@@ -369,7 +367,7 @@ public final class MainWindow extends javax.swing.JFrame {
             loadFile.setFile("*.jpg;*.jpeg;*.png;*.gif");
             //loadFile.setDirectory("C:\\");
             loadFile.setVisible(true);
-        //imageName = loadFile.getFile();
+            //imageName = loadFile.getFile();
 
             if (loadFile.getFile() != null) {
 
@@ -384,7 +382,7 @@ public final class MainWindow extends javax.swing.JFrame {
                 } catch (MalformedURLException ex) {
                     Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            //String y = url.toString();
+                //String y = url.toString();
                 //String x = (url.toString().substring(6,9));
                 //String fileLocation = y.replace(x,"");
                 //String fileLocation = loadFile.getDirectory()+file;
@@ -409,7 +407,7 @@ public final class MainWindow extends javax.swing.JFrame {
                 //System.out.println(url2);
                 //ImagePanel imgPanel = new ImagePanel(fileLocation);
 
-           // jLabel2.setIcon(new javax.swing.ImageIcon(fileLocation)); // NOI18N
+                // jLabel2.setIcon(new javax.swing.ImageIcon(fileLocation)); // NOI18N
                 //this.add(imgPanel);  
             }
         } catch (Exception ex) {
@@ -419,71 +417,70 @@ public final class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_wateMarkMenuActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-        
+
         int response = JOptionPane.showConfirmDialog(null, "Are you sure you want to print the convoy?", "Print Convoy?", JOptionPane.YES_NO_OPTION);
         if (response == JOptionPane.YES_OPTION) {
             JFileChooser chooser = new JFileChooser();
             //chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
             chooser.setAcceptAllFileFilterUsed(false);
-            chooser.addChoosableFileFilter((new FileNameExtensionFilter("PDF Files","pdf")));
+            chooser.addChoosableFileFilter((new FileNameExtensionFilter("PDF Files", "pdf")));
             //chooser.setFileFilter(ff);
-            
-            missionNumberText = this.leftMissionInfoPanel1.getMissionNumber(); 
-            
-            if(missionNumberText.equalsIgnoreCase("")){
-                
+
+            missionNumberText = this.leftMissionInfoPanel1.getMissionNumber();
+
+            if (missionNumberText.equalsIgnoreCase("")) {
+
                 missionNumberText = "Untitled";
-                
+
             }
-            
+
             chooser.setSelectedFile(new File(missionNumberText + ".pdf"));
             chooser.setCurrentDirectory(new File(System.getProperty("user.home") + "\\My Documents"));
             //chooser
-                 
+
             int option = chooser.showSaveDialog(null);
-            if (option == JFileChooser.APPROVE_OPTION)
-            {
-            try {
+            if (option == JFileChooser.APPROVE_OPTION) {
+                try {
 
-                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                    this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 
-                GenerateHtml gh = new GenerateHtml();
-                
-                gh.generateHtml(
-                        this.getImagePath(),
-                        this.leftMissionInfoPanel1.getClassification(),
-                        this.leftMissionInfoPanel1.getMissionNumber(),
-                        this.leftMissionInfoPanel1.getFrom(),
-                        this.leftMissionInfoPanel1.getTo(),
-                        this.leftMissionInfoPanel1.getAdditionalText(),
-                        this.rightMissionInfoPanel2.getCC(),
-                        this.rightMissionInfoPanel2.getACC(),
-                        this.rightMissionInfoPanel2.getStagingArea(),
-                        this.rightMissionInfoPanel2.getFrom(),
-                        this.rightMissionInfoPanel2.getTo(),
-                        this.rightMissionInfoPanel2.getFromLU(),
-                        this.rightMissionInfoPanel2.getToLU(),
-                        this.rightMissionInfoPanel2.getFromSP(),
-                        this.rightMissionInfoPanel2.getToSP(),
-                        this.rightMissionInfoPanel2.getFreqs(),
-                        this.rightMissionInfoPanel2.getAdditionalText(),
-                        this.additionalTextPanel1.getAdditionalText()
-                );
+                    GenerateHtml gh = new GenerateHtml();
 
-                CreatePDF cp = new CreatePDF(chooser.getSelectedFile().getPath());
-                cp.createPDF();
+                    gh.generateHtml(
+                            this.getImagePath(),
+                            this.leftMissionInfoPanel1.getClassification(),
+                            this.leftMissionInfoPanel1.getMissionNumber(),
+                            this.leftMissionInfoPanel1.getFrom(),
+                            this.leftMissionInfoPanel1.getTo(),
+                            this.leftMissionInfoPanel1.getAdditionalText(),
+                            this.rightMissionInfoPanel2.getCC(),
+                            this.rightMissionInfoPanel2.getACC(),
+                            this.rightMissionInfoPanel2.getStagingArea(),
+                            this.rightMissionInfoPanel2.getFrom(),
+                            this.rightMissionInfoPanel2.getTo(),
+                            this.rightMissionInfoPanel2.getFromLU(),
+                            this.rightMissionInfoPanel2.getToLU(),
+                            this.rightMissionInfoPanel2.getFromSP(),
+                            this.rightMissionInfoPanel2.getToSP(),
+                            this.rightMissionInfoPanel2.getFreqs(),
+                            this.rightMissionInfoPanel2.getAdditionalText(),
+                            this.additionalTextPanel1.getAdditionalText()
+                    );
 
-            } catch (Exception ex) {
+                    CreatePDF cp = new CreatePDF(chooser.getSelectedFile().getPath());
+                    cp.createPDF();
 
-            } finally {
-                this.setCursor(Cursor.getDefaultCursor());
-                PrintPDF p = new PrintPDF();
-                p.print();
-            }
+                } catch (Exception ex) {
+
+                } finally {
+                    this.setCursor(Cursor.getDefaultCursor());
+                    PrintPDF p = new PrintPDF();
+                    p.print();
+                }
             }
         }
-        
-        
+
+
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     /**
