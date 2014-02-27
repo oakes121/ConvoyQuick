@@ -453,7 +453,7 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
             Object[] stuff = {"Freq Name: ", freqName, "Frequency:", freq};
             int response;
             response = JOptionPane.showConfirmDialog(this, stuff, "Add New Freq", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, icon);
-
+            freqName.requestFocus();
             if (response == JOptionPane.CANCEL_OPTION) {
 
             } else {

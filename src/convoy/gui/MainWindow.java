@@ -19,8 +19,10 @@ import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
@@ -35,6 +37,8 @@ public final class MainWindow extends javax.swing.JFrame {
     public String getImagePath() {
         return this.imagePath;
     }
+    
+    String missionNumberText;
 
     /**
      * Creates new form mainWindow
@@ -290,7 +294,30 @@ public final class MainWindow extends javax.swing.JFrame {
     private void finalizeMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finalizeMenuActionPerformed
 
         int response = JOptionPane.showConfirmDialog(null, "Are you sure you want to finalize the convoy?", "Finalize Convoy?", JOptionPane.YES_NO_OPTION);
-        if (response == JOptionPane.YES_OPTION) {
+        if (response == JOptionPane.YES_OPTION) {            
+                     
+                        
+            JFileChooser chooser = new JFileChooser();
+            //chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+            chooser.setAcceptAllFileFilterUsed(false);
+            chooser.addChoosableFileFilter((new FileNameExtensionFilter("PDF Files","pdf")));
+            //chooser.setFileFilter(ff);
+            
+            missionNumberText = this.leftMissionInfoPanel1.getMissionNumber(); 
+            
+            if(missionNumberText.equalsIgnoreCase("")){
+                
+                missionNumberText = "Untitled";
+                
+            }
+            
+            chooser.setSelectedFile(new File(missionNumberText + ".pdf"));
+            chooser.setCurrentDirectory(new File(System.getProperty("user.home") + "\\My Documents"));
+            //chooser
+                 
+            int option = chooser.showSaveDialog(null);
+            if (option == JFileChooser.APPROVE_OPTION)
+            {
 
             try {
 
@@ -320,7 +347,7 @@ public final class MainWindow extends javax.swing.JFrame {
                         this.additionalTextPanel1.getAdditionalText()
                 );
 
-                CreatePDF cp = new CreatePDF();
+                CreatePDF cp = new CreatePDF(chooser.getSelectedFile().getPath());
                 cp.createPDF();
 
             } catch (Exception ex) {
@@ -328,6 +355,7 @@ public final class MainWindow extends javax.swing.JFrame {
             } finally {
                 this.setCursor(Cursor.getDefaultCursor());
             }
+        }
         }
 
     }//GEN-LAST:event_finalizeMenuActionPerformed
@@ -394,14 +422,33 @@ public final class MainWindow extends javax.swing.JFrame {
         
         int response = JOptionPane.showConfirmDialog(null, "Are you sure you want to print the convoy?", "Print Convoy?", JOptionPane.YES_NO_OPTION);
         if (response == JOptionPane.YES_OPTION) {
-
+            JFileChooser chooser = new JFileChooser();
+            //chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+            chooser.setAcceptAllFileFilterUsed(false);
+            chooser.addChoosableFileFilter((new FileNameExtensionFilter("PDF Files","pdf")));
+            //chooser.setFileFilter(ff);
+            
+            missionNumberText = this.leftMissionInfoPanel1.getMissionNumber(); 
+            
+            if(missionNumberText.equalsIgnoreCase("")){
+                
+                missionNumberText = "Untitled";
+                
+            }
+            
+            chooser.setSelectedFile(new File(missionNumberText + ".pdf"));
+            chooser.setCurrentDirectory(new File(System.getProperty("user.home") + "\\My Documents"));
+            //chooser
+                 
+            int option = chooser.showSaveDialog(null);
+            if (option == JFileChooser.APPROVE_OPTION)
+            {
             try {
 
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 
                 GenerateHtml gh = new GenerateHtml();
-
-                //System.out.print(this.rightMissionInfoPanel2.getFreqs().get(0).getFreq());
+                
                 gh.generateHtml(
                         this.getImagePath(),
                         this.leftMissionInfoPanel1.getClassification(),
@@ -423,7 +470,7 @@ public final class MainWindow extends javax.swing.JFrame {
                         this.additionalTextPanel1.getAdditionalText()
                 );
 
-                CreatePDF cp = new CreatePDF();
+                CreatePDF cp = new CreatePDF(chooser.getSelectedFile().getPath());
                 cp.createPDF();
 
             } catch (Exception ex) {
@@ -432,6 +479,7 @@ public final class MainWindow extends javax.swing.JFrame {
                 this.setCursor(Cursor.getDefaultCursor());
                 PrintPDF p = new PrintPDF();
                 p.print();
+            }
             }
         }
         

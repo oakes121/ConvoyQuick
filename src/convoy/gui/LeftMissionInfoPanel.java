@@ -141,12 +141,6 @@ public class LeftMissionInfoPanel extends javax.swing.JPanel {
 
         classificationDropBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "For Official Use Only", "Unclassified", "Classified", "Secret" }));
 
-        missionNumberTextField.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                missionNumberTextFieldFocusGained(evt);
-            }
-        });
-
         missionNumberLabel.setText("Mission #");
 
         fromLabel.setText("From: ");
@@ -160,7 +154,6 @@ public class LeftMissionInfoPanel extends javax.swing.JPanel {
         toLabel.setText("To: ");
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/convoy/resources/images/2id.png"))); // NOI18N
-        jLabel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
 
         additionalText.setColumns(50);
         additionalText.setRows(5);
@@ -199,28 +192,24 @@ public class LeftMissionInfoPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(classificationDropBox, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(20, 20, 20)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(missionNumberTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(missionNumberLabel))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(20, 20, 20)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(fromTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(fromLabel))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(20, 20, 20)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(toTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(toLabel)))
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(20, 20, 20)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void missionNumberTextFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_missionNumberTextFieldFocusGained
-        missionNumberTextField.setText("");
-    }//GEN-LAST:event_missionNumberTextFieldFocusGained
 
     private void fromTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fromTextFieldActionPerformed
         // TODO add your handling code here:

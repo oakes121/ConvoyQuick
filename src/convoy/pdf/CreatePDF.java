@@ -26,6 +26,16 @@ import org.allcolor.yahp.converter.IHtmlToPdfTransformer;
 
 public class CreatePDF {
     
+    String location = "";
+    
+    public CreatePDF(){
+        
+    }
+    
+    public CreatePDF(String location){
+        this.location = location;
+    }
+    
     public static void main(String args[]) throws Exception {       
         
     String root = "src\\convoy\\resources\\html";
@@ -39,13 +49,13 @@ public class CreatePDF {
     public  void createPDF() throws Exception {       
         
     String root = "src\\convoy\\resources\\html";
-    String input = "convoy.htm";  // need to be charset utf-8
-    String output = "src\\pdf\\" + input.replace(".htm","");
+    String input = "convoy.htm";  // need to be charset utf-8    
+    //String output = "src\\pdf\\" + input.replace(".htm","");
     htmlToPdfFile(new File(root, input),
-                  new File(output + ".pdf"));
+                  new File(location + ".pdf"));
     //System.out.println("Done");
     
-    open(new File(output + ".pdf"));
+    open(new File(location + ".pdf"));
     
     
   }
