@@ -310,20 +310,25 @@ public final class MainWindow extends javax.swing.JFrame {
 
     }//GEN-LAST:event_finalizeMenuActionPerformed
 
+    @SuppressWarnings("empty-statement")
     private void wateMarkMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_wateMarkMenuActionPerformed
-
+        try{        
         FileDialog loadFile;
-        loadFile = new FileDialog(this, "Choose a file", FileDialog.LOAD);
+        loadFile = new FileDialog(this, "Choose an Image", FileDialog.LOAD);
+        //loadFile.set
+        loadFile.setFile("*.jpg;*.jpeg;*.png;*.gif");
         //loadFile.setDirectory("C:\\");
         loadFile.setVisible(true);
         //imageName = loadFile.getFile();
+        
+        if(loadFile.getFile() != null){
+        
         File file = new File(loadFile.getFile());
-            //System.out.print(loadFile.getDirectory());
 
         URL url = null;
         try {
             url = new URL("file:\\" + loadFile.getDirectory() + file);
-        } catch (MalformedURLException ex) {
+        } catch (MalformedURLException ex) {            
             Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
         }
             //String y = url.toString();
@@ -351,7 +356,11 @@ public final class MainWindow extends javax.swing.JFrame {
         //ImagePanel imgPanel = new ImagePanel(fileLocation);
 
            // jLabel2.setIcon(new javax.swing.ImageIcon(fileLocation)); // NOI18N
-           //this.add(imgPanel);           
+           //this.add(imgPanel);  
+        }
+        }catch(Exception ex){
+            ex.printStackTrace();;
+        }
 
     }//GEN-LAST:event_wateMarkMenuActionPerformed
 
