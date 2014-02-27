@@ -70,6 +70,9 @@ public class MainMenu extends javax.swing.JFrame {
         loadImage();
         repaint();
         revalidate();
+        
+        newProjectPanel.requestFocus();
+        
     }
     
     public void display() {
@@ -104,6 +107,7 @@ public class MainMenu extends javax.swing.JFrame {
 
         picturePanel1.setBackground(new java.awt.Color(255, 255, 255));
 
+        newProjectPanel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 0, 0), null, new java.awt.Color(0, 0, 0)));
         newProjectPanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 newProjectPanelMouseClicked(evt);
@@ -138,6 +142,7 @@ public class MainMenu extends javax.swing.JFrame {
         mainMenuTitle.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         mainMenuTitle.setText("Convoy Quick");
 
+        loadProjectPanel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 0, 0), null, new java.awt.Color(0, 0, 0)));
         loadProjectPanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 loadProjectPanelMouseClicked(evt);
@@ -176,7 +181,7 @@ public class MainMenu extends javax.swing.JFrame {
             .addGroup(picturePanel1Layout.createSequentialGroup()
                 .addGap(120, 120, 120)
                 .addComponent(newProjectPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 1015, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 1003, Short.MAX_VALUE)
                 .addComponent(loadProjectPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(120, 120, 120))
             .addGroup(picturePanel1Layout.createSequentialGroup()
@@ -189,7 +194,7 @@ public class MainMenu extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, picturePanel1Layout.createSequentialGroup()
                 .addGap(47, 47, 47)
                 .addComponent(mainMenuTitle)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 623, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 617, Short.MAX_VALUE)
                 .addGroup(picturePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(newProjectPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(loadProjectPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
