@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package convoy.gui;
 
 import java.awt.Image;
@@ -27,15 +26,16 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
     private String numberOfSeats;
     private URL imageUrl;
     private Image img;
-    
+
     public AddVehiclePopUp() {
-        
+
         initComponents();
         this.setLocationRelativeTo(null); //centers frame
         this.setTitle("Add a New Vehicle"); //adds title
         this.setIconImage(new ImageIcon(getClass().getResource("/convoy/resources/images/humveeIcon.png")).getImage());
         this.setResizable(false);
-       
+        this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+
     }
 
     /**
@@ -99,6 +99,11 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
         jLabel1.setText("VEHICLE SELECTION");
 
         vehicleNameField.setText("Search vehicle");
+        vehicleNameField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                vehicleNameFieldActionPerformed(evt);
+            }
+        });
 
         imageLabel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -143,12 +148,37 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
                 personnel1FieldActionPerformed(evt);
             }
         });
+        personnel1Field.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                personnel1FieldFocusGained(evt);
+            }
+        });
 
         personnel2Field.setText("Commander Name");
+        personnel2Field.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                personnel2FieldFocusGained(evt);
+            }
+        });
 
         personnel3Field.setText("Passenger Name");
+        personnel3Field.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                personnel3FieldActionPerformed(evt);
+            }
+        });
+        personnel3Field.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                personnel3FieldFocusGained(evt);
+            }
+        });
 
         personnel4Field.setText("Passenger Name");
+        personnel4Field.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                personnel4FieldFocusGained(evt);
+            }
+        });
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select Type", "CC", "ACC", "Medic", "Passenger" }));
         jComboBox2.addActionListener(new java.awt.event.ActionListener() {
@@ -360,9 +390,7 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 464, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jLayeredPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 464, Short.MAX_VALUE)
         );
 
         pack();
@@ -370,12 +398,12 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        CreateVehiclePopUp createVehicle= new CreateVehiclePopUp();
+        CreateVehiclePopUp createVehicle = new CreateVehiclePopUp();
         createVehicle.setObject(this);
         createVehicle.setVisible(true);
-        this.hide();
+        //this.hide();
         createVehicle.show();
-        
+
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
@@ -396,26 +424,50 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void personnel1FieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_personnel1FieldActionPerformed
-        personnel1Field.setText("");
+
     }//GEN-LAST:event_personnel1FieldActionPerformed
 
-    public void setObject(VehiclePanel vehicleInfo){
-        newVehiclePanel=vehicleInfo;
+    private void vehicleNameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vehicleNameFieldActionPerformed
+        vehicleNameField.setText("");
+    }//GEN-LAST:event_vehicleNameFieldActionPerformed
+
+    private void personnel3FieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_personnel3FieldActionPerformed
+        //personnel3Field.setText(vehicleName);
+    }//GEN-LAST:event_personnel3FieldActionPerformed
+
+    private void personnel1FieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_personnel1FieldFocusGained
+        personnel1Field.setText("");
+    }//GEN-LAST:event_personnel1FieldFocusGained
+
+    private void personnel2FieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_personnel2FieldFocusGained
+        personnel2Field.setText("");
+    }//GEN-LAST:event_personnel2FieldFocusGained
+
+    private void personnel3FieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_personnel3FieldFocusGained
+        personnel3Field.setText("");
+    }//GEN-LAST:event_personnel3FieldFocusGained
+
+    private void personnel4FieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_personnel4FieldFocusGained
+        personnel4Field.setText("");
+    }//GEN-LAST:event_personnel4FieldFocusGained
+
+    public void setObject(VehiclePanel vehicleInfo) {
+        newVehiclePanel = vehicleInfo;
     }
-    
-    public void setVehicleName(String name){
+
+    public void setVehicleName(String name) {
         vehicleName = name;
     }
-    
-    public void setNumberOfSeats(String seats){
-        numberOfSeats=seats;
+
+    public void setNumberOfSeats(String seats) {
+        numberOfSeats = seats;
     }
-    
-    public void setImageUrl(URL imgUrl){
-        imageUrl=imgUrl;
+
+    public void setImageUrl(URL imgUrl) {
+        imageUrl = imgUrl;
     }
-    
-    public void addValuesToVehiclePanel(){
+
+    public void addValuesToVehiclePanel() {
         newVehiclePanel.setDriverName(personnel1Field.getText());
         newVehiclePanel.setPassenger1(personnel2Field.getText());
         newVehiclePanel.setPassenger2(personnel3Field.getText());
@@ -423,8 +475,9 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
         newVehiclePanel.setBumperNumber(vehicleInfo1Field.getText());
         newVehiclePanel.setCallSign(vehicleInfo2Field.getText());
     }
-    public void modifyPopUp(){
-        
+
+    public void modifyPopUp() {
+
         vehicleNameField.setText(vehicleName);
         setImage();
         switch (numberOfSeats) {
@@ -484,26 +537,27 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
                 jPanel2.hide();
                 break;
         }
-        
+
     }
-    
-    public void setImage(){
-        
-        try{
-        img = ImageIO.read(imageUrl);
-        img = img.getScaledInstance( 268, 209,  java.awt.Image.SCALE_SMOOTH );
-        
-        ImageIcon icon = new ImageIcon(img);
-        imageLabel.setIcon(icon);
-        
-        revalidate();
-        repaint();
-        }
-        catch (Exception ex) {
+
+    public void setImage() {
+
+        try {
+
+            img = ImageIO.read(imageUrl);
+            img = img.getScaledInstance(268, 209, java.awt.Image.SCALE_SMOOTH);
+
+            ImageIcon icon = new ImageIcon(img);
+            imageLabel.setIcon(icon);
+
+            revalidate();
+            repaint();
+        } catch (Exception ex) {
             Logger.getLogger(AddVehiclePopUp.class.getName()).log(Level.SEVERE, null, ex);
             System.out.print("Image Error");
-        }   
+        }
     }
+
     /**
      * @param args the command line arguments
      */
