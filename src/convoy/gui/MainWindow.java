@@ -278,7 +278,7 @@ public final class MainWindow extends javax.swing.JFrame {
 
     private void aboutMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutMenuItemActionPerformed
 
-        Object[] stuff = {new ImageIcon(getClass().getResource("/convoy/resources/images/logo.gif")), "About Content Goes Here"};
+        Object[] stuff = {new ImageIcon(getClass().getResource("/convoy/resources/images/logo.png")), "About Content Goes Here"};
 
         JOptionPane.showMessageDialog(null, stuff, "About", JOptionPane.INFORMATION_MESSAGE, null);
 
@@ -310,7 +310,7 @@ public final class MainWindow extends javax.swing.JFrame {
 
             }
 
-            chooser.setSelectedFile(new File(missionNumberText + ".pdf"));
+            chooser.setSelectedFile(new File(missionNumberText));
             chooser.setCurrentDirectory(new File(System.getProperty("user.home") + "\\My Documents"));
             //chooser
 
@@ -434,7 +434,7 @@ public final class MainWindow extends javax.swing.JFrame {
 
             }
 
-            chooser.setSelectedFile(new File(missionNumberText + ".pdf"));
+            chooser.setSelectedFile(new File(missionNumberText));
             chooser.setCurrentDirectory(new File(System.getProperty("user.home") + "\\My Documents"));
             //chooser
 
