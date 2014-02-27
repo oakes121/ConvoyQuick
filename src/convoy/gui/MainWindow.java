@@ -292,6 +292,9 @@ public final class MainWindow extends javax.swing.JFrame {
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
   
                 GenerateHtml gh = new GenerateHtml();
+                
+                //System.out.print(this.rightMissionInfoPanel2.getFreqs().get(0).getFreq());
+                
                 gh.generateHtml(
                         this.getImagePath(),
                         this.leftMissionInfoPanel1.getClassification(),
@@ -307,7 +310,8 @@ public final class MainWindow extends javax.swing.JFrame {
                         this.rightMissionInfoPanel2.getFromLU(),
                         this.rightMissionInfoPanel2.getToLU(),
                         this.rightMissionInfoPanel2.getFromSP(),
-                        this.rightMissionInfoPanel2.getToSP()
+                        this.rightMissionInfoPanel2.getToSP(),
+                        this.rightMissionInfoPanel2.getFreqs()
                 );
 
                 CreatePDF cp = new CreatePDF();

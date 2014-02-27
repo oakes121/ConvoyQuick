@@ -6,10 +6,15 @@
 
 package convoy.pdf;
 
+import convoy.objects.Radio;
 import java.awt.Desktop;
 import java.io.*;
+import java.util.ArrayList;
 
 public class GenerateHtml {
+    
+    
+        
     public GenerateHtml(){
     }
     
@@ -27,9 +32,102 @@ public class GenerateHtml {
                                 String fromLU,
                                 String toLU,
                                 String fromSP,
-                                String toSP){
+                                String toSP,
+                                ArrayList<Radio> freqs){
         
-        String classificationColor = "";
+        String radio = "";
+        
+        if(!freqs.get(0).getName().equalsIgnoreCase("")){
+            
+            radio = 
+"                                <table id=\"freqTable\">\n" +
+"                                    <!-- frequency table //-->\n" +
+"                                    <tr>\n" +
+"                                        <td class=\"label\" colspan=\"6\">Frequencys -</td>\n" +
+"                                    </tr>\n" +
+"                                    <tr>\n" +
+"                                        <td class=\"label\">CH1:</td>\n" +
+"                                        <td class=\"data\" id=\"ch1Name\">" + freqs.get(0).getName()+ "</td>\n" +
+"                                        <td class=\"data\" id=\"ch1Freq\">" + freqs.get(0).getFreq()+ "</td>\n" +
+"                                    </tr>\n" +
+"                                </table>\n" +
+"                                <!-- end frequency table //-->\n";
+            
+        }
+        if(!freqs.get(1).getName().equalsIgnoreCase("")){
+            
+            radio = 
+"                    <table id=\"freqTable\">\n" +
+"                                    <!-- frequency table //-->\n" +
+"                                    <tr>\n" +
+"                                        <td class=\"label\" colspan=\"6\">Frequencys -</td>\n" +
+"                                    </tr>\n" +
+"                                    <tr>\n" +
+"                                        <td class=\"label\">CH1:</td>\n" +
+"                                        <td class=\"data\" id=\"ch1Name\">" + freqs.get(0).getName()+ "</td>\n" +
+"                                        <td class=\"data\" id=\"ch1Freq\">" + freqs.get(0).getFreq()+ "</td>\n" +
+"                                        <td class=\"label\">CH2:</td>\n" +
+"                                        <td class=\"data\" id=\"ch2Name\">" + freqs.get(1).getName()+ "</td>\n" +
+"                                        <td class=\"data\" id=\"ch2Freq\">" + freqs.get(1).getFreq()+ "</td>\n" +
+"                                    </tr>\n" +
+"                                </table>\n" +
+"                                <!-- end frequency table //-->\n";                                
+            
+        }
+        
+        if(!freqs.get(2).getName().equalsIgnoreCase("")){
+            radio = 
+"                    <table id=\"freqTable\">\n" +
+"                                    <!-- frequency table //-->\n" +
+"                                    <tr>\n" +
+"                                        <td class=\"label\" colspan=\"6\">Frequencys -</td>\n" +
+"                                    </tr>\n" +
+"                                    <tr>\n" +
+"                                        <td class=\"label\">CH1:</td>\n" +
+"                                        <td class=\"data\" id=\"ch1Name\">" + freqs.get(0).getName()+ "</td>\n" +
+"                                        <td class=\"data\" id=\"ch1Freq\">" + freqs.get(0).getFreq()+ "</td>\n" +
+"                                        <td class=\"label\">CH2:</td>\n" +
+"                                        <td class=\"data\" id=\"ch2Name\">" + freqs.get(1).getName()+ "</td>\n" +
+"                                        <td class=\"data\" id=\"ch2Freq\">" + freqs.get(1).getFreq()+ "</td>\n" +
+"                                    </tr>\n" +
+"                                     <tr>\n" +
+"                                        <td class=\"label\">CH3:</td>\n" +
+"                                        <td class=\"data\" id=\"ch3Name\">" + freqs.get(2).getName()+ "</td>\n" +
+"                                        <td class=\"data\" id=\"ch3Freq\">" + freqs.get(2).getFreq()+ "</td>\n" +
+"                                    </tr>\n" +
+"                                </table>\n" +
+"                                <!-- end frequency table //-->\n";  
+        }
+        
+        if(!freqs.get(3).getName().equalsIgnoreCase("")){
+            radio = 
+"                    <table id=\"freqTable\">\n" +
+"                                    <!-- frequency table //-->\n" +
+"                                    <tr>\n" +
+"                                        <td class=\"label\" colspan=\"6\">Frequencys -</td>\n" +
+"                                    </tr>\n" +
+"                                    <tr>\n" +
+"                                        <td class=\"label\">CH1:</td>\n" +
+"                                        <td class=\"data\" id=\"ch1Name\">" + freqs.get(0).getName()+ "</td>\n" +
+"                                        <td class=\"data\" id=\"ch1Freq\">" + freqs.get(0).getFreq()+ "</td>\n" +
+"                                        <td class=\"label\">CH2:</td>\n" +
+"                                        <td class=\"data\" id=\"ch2Name\">" + freqs.get(1).getName()+ "</td>\n" +
+"                                        <td class=\"data\" id=\"ch2Freq\">" + freqs.get(1).getFreq()+ "</td>\n" +
+"                                    </tr>\n" +
+"                                     <tr>\n" +
+"                                        <td class=\"label\">CH3:</td>\n" +
+"                                        <td class=\"data\" id=\"ch3Name\">" + freqs.get(2).getName()+ "</td>\n" +
+"                                        <td class=\"data\" id=\"ch3Freq\">" + freqs.get(2).getFreq()+ "</td>\n" +
+"                                        <td class=\"label\">CH4:</td>\n" +
+"                                        <td class=\"data\" id=\"ch4Name\">" + freqs.get(3).getName()+ "</td>\n" +
+"                                        <td class=\"data\" id=\"ch4Freq\">" + freqs.get(3).getFreq()+ "</td>\n" +
+"                                    </tr>\n" +
+"                                </table>\n" +
+"                                <!-- end frequency table //-->\n";  
+        }
+        
+        
+        String classificationColor;
                         
         if(classification.equalsIgnoreCase("SECRET")){
             classificationColor = "red";
@@ -55,12 +153,12 @@ public class GenerateHtml {
 "        div,\n" +
 "        table {\n" +
 "            width: 100%;\n" +
-"            //border: 1px solid #000;\n" +
+"            border: 1px solid #000;\n" +
 "            height: 100%;\n" +
 "            font-size: 14pt;\n" +                     
 "        }\n" +
 "        td {\n" +
-"            //border: 1px solid #000;\n" +
+"            border: 1px solid #000;\n" +
 "            background-color: white;\n" +
 "        }\n" +
 "        .label {\n" +
@@ -182,29 +280,7 @@ public class GenerateHtml {
 "                        <tr>\n" +
 "                            <!-- frequency row //-->\n" +
 "                            <td colspan=\"6\">\n" +
-"                                <table id=\"freqTable\">\n" +
-"                                    <!-- frequency table //-->\n" +
-"                                    <tr>\n" +
-"                                        <td class=\"label\" colspan=\"6\">Frequencys -</td>\n" +
-"                                    </tr>\n" +
-"                                    <tr>\n" +
-"                                        <td class=\"label\">CH1:</td>\n" +
-"                                        <td class=\"data\" id=\"ch1Name\">Internal Frequency</td>\n" +
-"                                        <td class=\"data\" id=\"ch1Freq\">XX.XXX</td>\n" +
-"                                        <td class=\"label\">CH2:</td>\n" +
-"                                        <td class=\"data\" id=\"ch2Name\">Alternate/Eagle Main FSC:TOC</td>\n" +
-"                                        <td class=\"data\" id=\"ch2Freq\">XX.XXX</td>\n" +
-"                                    </tr>\n" +
-"                                    <tr>\n" +
-"                                        <td class=\"label\">CH3:</td>\n" +
-"                                        <td class=\"data\" id=\"ch3Name\">P:</td>\n" +
-"                                        <td class=\"data\" id=\"ch3Freq\">30.075 FM</td>\n" +
-"                                        <td class=\"label\">CH4:</td>\n" +
-"                                        <td class=\"data\" id=\"ch4Name\">S:</td>\n" +
-"                                        <td class=\"data\" id=\"ch4Freq\">40.525 FM</td>\n" +
-"                                    </tr>\n" +
-"                                </table>\n" +
-"                                <!-- end frequency table //-->\n" +
+radio +
 "                            </td>\n" +
 "                        </tr>\n" +
 "                        <tr>\n" +

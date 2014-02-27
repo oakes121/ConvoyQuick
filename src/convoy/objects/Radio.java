@@ -4,12 +4,24 @@
  */
 package convoy.objects;
 
-import java.util.ArrayList;
-
 public class Radio {
     
-    private String freqName;
-    private String freqChannel;
-    private String freqType;
-    private float  freq;
+    private final String freqName;
+    private final String  freq;
+    
+    public Radio(String name, String freq){
+        
+        this.freqName = name;
+        this.freq = freq;
+        
+    }
+    
+    public String getName(){
+        return this.freqName;        
+    }
+    public String getFreq(){
+        return this.freq;
+    }
 }
+
+
