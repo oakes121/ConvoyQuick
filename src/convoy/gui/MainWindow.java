@@ -196,6 +196,11 @@ public final class MainWindow extends javax.swing.JFrame {
 
         jMenuItem4.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem4.setText("<html><strong>Print</strong></html>");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
         fileMenu.add(jMenuItem4);
 
         menuBar.add(fileMenu);
@@ -384,6 +389,54 @@ public final class MainWindow extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_wateMarkMenuActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        
+        int response = JOptionPane.showConfirmDialog(null, "Are you sure you want to print the convoy?", "Print Convoy?", JOptionPane.YES_NO_OPTION);
+        if (response == JOptionPane.YES_OPTION) {
+
+            try {
+
+                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+                GenerateHtml gh = new GenerateHtml();
+
+                //System.out.print(this.rightMissionInfoPanel2.getFreqs().get(0).getFreq());
+                gh.generateHtml(
+                        this.getImagePath(),
+                        this.leftMissionInfoPanel1.getClassification(),
+                        this.leftMissionInfoPanel1.getMissionNumber(),
+                        this.leftMissionInfoPanel1.getFrom(),
+                        this.leftMissionInfoPanel1.getTo(),
+                        this.leftMissionInfoPanel1.getAdditionalText(),
+                        this.rightMissionInfoPanel2.getCC(),
+                        this.rightMissionInfoPanel2.getACC(),
+                        this.rightMissionInfoPanel2.getStagingArea(),
+                        this.rightMissionInfoPanel2.getFrom(),
+                        this.rightMissionInfoPanel2.getTo(),
+                        this.rightMissionInfoPanel2.getFromLU(),
+                        this.rightMissionInfoPanel2.getToLU(),
+                        this.rightMissionInfoPanel2.getFromSP(),
+                        this.rightMissionInfoPanel2.getToSP(),
+                        this.rightMissionInfoPanel2.getFreqs(),
+                        this.rightMissionInfoPanel2.getAdditionalText(),
+                        this.additionalTextPanel1.getAdditionalText()
+                );
+
+                CreatePDF cp = new CreatePDF();
+                cp.createPDF();
+
+            } catch (Exception ex) {
+
+            } finally {
+                this.setCursor(Cursor.getDefaultCursor());
+                PrintPDF p = new PrintPDF();
+                p.print();
+            }
+        }
+        
+        
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     /**
      * @param args the command line arguments
