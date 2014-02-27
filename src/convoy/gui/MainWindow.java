@@ -6,6 +6,7 @@
 package convoy.gui;
 
 import convoy.pdf.*;
+import java.awt.Cursor;
 
 import java.awt.FileDialog;
 import java.awt.Image;
@@ -39,7 +40,7 @@ public final class MainWindow extends javax.swing.JFrame {
      * Creates new form mainWindow
      */
     public MainWindow() {
-        this.imagePath = "file:\\" + getClass().getResource("/convoy/resources/images/2id.png").getPath();
+        this.imagePath = getClass().getResource("/convoy/resources/images/2id.png").getPath().substring(1).replace("/","\\");
 
         initComponents();
         makeSelectPanelsTransparent();
@@ -160,10 +161,10 @@ public final class MainWindow extends javax.swing.JFrame {
 
         menuBar.setName("menuBar"); // NOI18N
 
-        fileMenu.setText("File");
+        fileMenu.setText("<html> <strong>File</strong> </html>");
 
         newMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.CTRL_MASK));
-        newMenuItem.setText("New");
+        newMenuItem.setText("<html> <strong>New</strong> </html>");
         newMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 newMenuItemActionPerformed(evt);
@@ -172,7 +173,7 @@ public final class MainWindow extends javax.swing.JFrame {
         fileMenu.add(newMenuItem);
 
         jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem1.setText("Load");
+        jMenuItem1.setText("<html><strong>Load</strong></html>");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem1ActionPerformed(evt);
@@ -181,7 +182,7 @@ public final class MainWindow extends javax.swing.JFrame {
         fileMenu.add(jMenuItem1);
 
         jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem2.setText("Save");
+        jMenuItem2.setText("<html><strong>Save</strong></html>");
         fileMenu.add(jMenuItem2);
 
         finalizeMenu.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F, java.awt.event.InputEvent.CTRL_MASK));
@@ -199,10 +200,10 @@ public final class MainWindow extends javax.swing.JFrame {
 
         menuBar.add(fileMenu);
 
-        editMenu.setText("Edit");
+        editMenu.setText("<html>\n<strong>Edit</strong>\n</html>");
 
         wateMarkMenu.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_W, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
-        wateMarkMenu.setText("Unit Patch");
+        wateMarkMenu.setText("<html><strong>Unit Patch</strong></html>");
         wateMarkMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 wateMarkMenuActionPerformed(evt);
@@ -212,10 +213,10 @@ public final class MainWindow extends javax.swing.JFrame {
 
         menuBar.add(editMenu);
 
-        helpMenu.setText("Help");
+        helpMenu.setText("<html>\n<strong>Help</strong>\n</html>");
 
         helpMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_H, java.awt.event.InputEvent.CTRL_MASK));
-        helpMenuItem.setText("Help");
+        helpMenuItem.setText("<html><strong>Help</strong></html>");
         helpMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 helpMenuItemActionPerformed(evt);
@@ -224,7 +225,7 @@ public final class MainWindow extends javax.swing.JFrame {
         helpMenu.add(helpMenuItem);
 
         aboutMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
-        aboutMenuItem.setText("About");
+        aboutMenuItem.setText("<html><strong>About</strong></html>");
         aboutMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 aboutMenuItemActionPerformed(evt);
@@ -287,7 +288,9 @@ public final class MainWindow extends javax.swing.JFrame {
         if (response == JOptionPane.YES_OPTION) {
 
             try {
-
+                
+                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+  
                 GenerateHtml gh = new GenerateHtml();
                 gh.generateHtml(
                         this.getImagePath(),
@@ -309,9 +312,11 @@ public final class MainWindow extends javax.swing.JFrame {
 
                 CreatePDF cp = new CreatePDF();
                 cp.createPDF();
-
+                
             } catch (Exception ex) {
 
+            }finally{
+                this.setCursor(Cursor.getDefaultCursor());
             }
         }
 

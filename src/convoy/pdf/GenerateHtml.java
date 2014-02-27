@@ -30,8 +30,6 @@ public class GenerateHtml {
                                 String toSP){
         
         String classificationColor = "";
-        
-        System.out.print(watermark);
                         
         if(classification.equalsIgnoreCase("SECRET")){
             classificationColor = "red";
@@ -59,7 +57,7 @@ public class GenerateHtml {
 "            width: 100%;\n" +
 "            //border: 1px solid #000;\n" +
 "            height: 100%;\n" +
-"            font-size: 14pt;\n" +  
+"            font-size: 14pt;\n" +                     
 "        }\n" +
 "        td {\n" +
 "            //border: 1px solid #000;\n" +
@@ -84,16 +82,27 @@ public class GenerateHtml {
 "            border: 1px solid black;\n" +
 "        }\n" +
 "        #leftMissionInfo {\n" +
-"            font-size: 16pt;\n" +
+"            font-size: 16pt;\n"+ 
+"            //border-right: 5px solid red;" +
 "        }\n" +
 "        .additionalText {\n" +
-"            height: 150px;\n" +
+"            height: 100px;\n" +
 "        }\n" +
 "        img {\n" +
 "            width: 202px;\n" +
 "            height: 172px;\n" +
 "        }\n" +
-         "#classification{text-align: center;font-weight: bold;font-size: 18pt;color: " + classificationColor +";}\n" +
+"        .redBorder {\n" +
+"            border-top: red solid 5px;\n" +
+"            border-bottom: red solid 5px;\n" +
+"            padding-top: 20px;\n" +
+"            padding-bottom: 20px;\n" +                         
+"        }\n" +                      
+"        #classification{"+
+"              text-align: center;" +
+"              font-weight: bold;" +
+"              font-size: 18pt;" +
+"              color: " + classificationColor +";}\n" +
 "    </style>\n" +
 "</head>\n" +
 "\n" +
@@ -215,7 +224,7 @@ public class GenerateHtml {
 "            <tr class=\"rows\">\n" +
 "                <!-- third row //-->\n" +
 "                <td colspan=\"2\">\n" +
-"                    <table>\n" +
+"                    <table class=\"redBorder\">\n" +
 "                        <tr>\n" +
 "                            <td class=\"vehicle\"></td>\n" +
 "                            <td class=\"vehicle\"></td>\n" +
