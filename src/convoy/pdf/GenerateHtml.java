@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package convoy.pdf;
 
 import convoy.objects.Radio;
@@ -12,333 +11,352 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class GenerateHtml {
-    
-    
-        
-    public GenerateHtml(){
+
+    public GenerateHtml() {
     }
-    
-    public void generateHtml(   String watermark,
-                                String classification,
-                                String missionNumber,
-                                String leftFrom,
-                                String leftTo,
-                                String leftAdditionalText,
-                                String cc,
-                                String acc,
-                                String stagingArea,
-                                String rightFrom,
-                                String rightTo,
-                                String fromLU,
-                                String toLU,
-                                String fromSP,
-                                String toSP,
-                                ArrayList<Radio> freqs){
-        
+
+    public void generateHtml(String watermark,
+            String classification,
+            String missionNumber,
+            String leftFrom,
+            String leftTo,
+            String leftAdditionalText,
+            String cc,
+            String acc,
+            String stagingArea,
+            String rightFrom,
+            String rightTo,
+            String fromLU,
+            String toLU,
+            String fromSP,
+            String toSP,
+            ArrayList<Radio> freqs,
+            String rightAdditionalText,
+            String additionalText) {
+
         String radio = "";
-        
-        if(!freqs.get(0).getName().equalsIgnoreCase("")){
-            
-            radio = 
-"                                <table id=\"freqTable\">\n" +
-"                                    <!-- frequency table //-->\n" +
-"                                    <tr>\n" +
-"                                        <td class=\"label\" colspan=\"6\">Frequencys -</td>\n" +
-"                                    </tr>\n" +
-"                                    <tr>\n" +
-"                                        <td class=\"label\">CH1:</td>\n" +
-"                                        <td class=\"data\" id=\"ch1Name\">" + freqs.get(0).getName()+ "</td>\n" +
-"                                        <td class=\"data\" id=\"ch1Freq\">" + freqs.get(0).getFreq()+ "</td>\n" +
-"                                    </tr>\n" +
-"                                </table>\n" +
-"                                <!-- end frequency table //-->\n";
-            
+
+        if (!freqs.get(0).getName().equalsIgnoreCase("")) {
+
+            radio
+                    = "                                <table id=\"freqTable\">\n"
+                    + "                                    <!-- frequency table //-->\n"
+                    + "                                    <tr>\n"
+                    + "                                        <td class=\"label\" colspan=\"6\">Frequencys -</td>\n"
+                    + "                                    </tr>\n"
+                    + "                                    <tr>\n"
+                    + "                                        <td class=\"label\">CH1:</td>\n"
+                    + "                                        <td class=\"data\" id=\"ch1Name\">" + freqs.get(0).getName() + "</td>\n"
+                    + "                                        <td class=\"data\" id=\"ch1Freq\">" + freqs.get(0).getFreq() + "</td>\n"
+                    + "                                    </tr>\n"
+                    + "                                </table>\n"
+                    + "                                <!-- end frequency table //-->\n";
+
         }
-        if(!freqs.get(1).getName().equalsIgnoreCase("")){
-            
-            radio = 
-"                    <table id=\"freqTable\">\n" +
-"                                    <!-- frequency table //-->\n" +
-"                                    <tr>\n" +
-"                                        <td class=\"label\" colspan=\"6\">Frequencys -</td>\n" +
-"                                    </tr>\n" +
-"                                    <tr>\n" +
-"                                        <td class=\"label\">CH1:</td>\n" +
-"                                        <td class=\"data\" id=\"ch1Name\">" + freqs.get(0).getName()+ "</td>\n" +
-"                                        <td class=\"data\" id=\"ch1Freq\">" + freqs.get(0).getFreq()+ "</td>\n" +
-"                                        <td class=\"label\">CH2:</td>\n" +
-"                                        <td class=\"data\" id=\"ch2Name\">" + freqs.get(1).getName()+ "</td>\n" +
-"                                        <td class=\"data\" id=\"ch2Freq\">" + freqs.get(1).getFreq()+ "</td>\n" +
-"                                    </tr>\n" +
-"                                </table>\n" +
-"                                <!-- end frequency table //-->\n";                                
-            
+        if (!freqs.get(1).getName().equalsIgnoreCase("")) {
+
+            radio
+                    = "                        <tr>\n"
+                    + "                            <!-- frequency row //-->\n"
+                    + "                            <td colspan=\"6\">\n"
+                    + "                                 <table id=\"freqTable\">\n"
+                    + "                                    <!-- frequency table //-->\n"
+                    + "                                    <tr>\n"
+                    + "                                        <td class=\"label\" colspan=\"6\">Frequencys -</td>\n"
+                    + "                                    </tr>\n"
+                    + "                                    <tr>\n"
+                    + "                                        <td class=\"label\">CH1:</td>\n"
+                    + "                                        <td class=\"data\" id=\"ch1Name\">" + freqs.get(0).getName() + "</td>\n"
+                    + "                                        <td class=\"data\" id=\"ch1Freq\">" + freqs.get(0).getFreq() + "</td>\n"
+                    + "                                        <td class=\"label\">CH2:</td>\n"
+                    + "                                        <td class=\"data\" id=\"ch2Name\">" + freqs.get(1).getName() + "</td>\n"
+                    + "                                        <td class=\"data\" id=\"ch2Freq\">" + freqs.get(1).getFreq() + "</td>\n"
+                    + "                                    </tr>\n"
+                    + "                                </table>\n"
+                    + "                                <!-- end frequency table //-->\n" + "                            </td>\n"
+                    + "                        </tr>\n";
+
         }
-        
-        if(!freqs.get(2).getName().equalsIgnoreCase("")){
-            radio = 
-"                    <table id=\"freqTable\">\n" +
-"                                    <!-- frequency table //-->\n" +
-"                                    <tr>\n" +
-"                                        <td class=\"label\" colspan=\"6\">Frequencys -</td>\n" +
-"                                    </tr>\n" +
-"                                    <tr>\n" +
-"                                        <td class=\"label\">CH1:</td>\n" +
-"                                        <td class=\"data\" id=\"ch1Name\">" + freqs.get(0).getName()+ "</td>\n" +
-"                                        <td class=\"data\" id=\"ch1Freq\">" + freqs.get(0).getFreq()+ "</td>\n" +
-"                                        <td class=\"label\">CH2:</td>\n" +
-"                                        <td class=\"data\" id=\"ch2Name\">" + freqs.get(1).getName()+ "</td>\n" +
-"                                        <td class=\"data\" id=\"ch2Freq\">" + freqs.get(1).getFreq()+ "</td>\n" +
-"                                    </tr>\n" +
-"                                     <tr>\n" +
-"                                        <td class=\"label\">CH3:</td>\n" +
-"                                        <td class=\"data\" id=\"ch3Name\">" + freqs.get(2).getName()+ "</td>\n" +
-"                                        <td class=\"data\" id=\"ch3Freq\">" + freqs.get(2).getFreq()+ "</td>\n" +
-"                                    </tr>\n" +
-"                                </table>\n" +
-"                                <!-- end frequency table //-->\n";  
+
+        if (!freqs.get(2).getName().equalsIgnoreCase("")) {
+            radio
+                    = "                        <tr>\n"
+                    + "                            <!-- frequency row //-->\n"
+                    + "                            <td colspan=\"6\">\n" + "                    <table id=\"freqTable\">\n"
+                    + "                                    <!-- frequency table //-->\n"
+                    + "                                    <tr>\n"
+                    + "                                        <td class=\"label\" colspan=\"6\">Frequencys -</td>\n"
+                    + "                                    </tr>\n"
+                    + "                                    <tr>\n"
+                    + "                                        <td class=\"label\">CH1:</td>\n"
+                    + "                                        <td class=\"data\" id=\"ch1Name\">" + freqs.get(0).getName() + "</td>\n"
+                    + "                                        <td class=\"data\" id=\"ch1Freq\">" + freqs.get(0).getFreq() + "</td>\n"
+                    + "                                        <td class=\"label\">CH2:</td>\n"
+                    + "                                        <td class=\"data\" id=\"ch2Name\">" + freqs.get(1).getName() + "</td>\n"
+                    + "                                        <td class=\"data\" id=\"ch2Freq\">" + freqs.get(1).getFreq() + "</td>\n"
+                    + "                                    </tr>\n"
+                    + "                                     <tr>\n"
+                    + "                                        <td class=\"label\">CH3:</td>\n"
+                    + "                                        <td class=\"data\" id=\"ch3Name\">" + freqs.get(2).getName() + "</td>\n"
+                    + "                                        <td class=\"data\" id=\"ch3Freq\">" + freqs.get(2).getFreq() + "</td>\n"
+                    + "                                    </tr>\n"
+                    + "                                </table>\n"
+                    + "                                <!-- end frequency table //-->\n" + "                            </td>\n"
+                    + "                        </tr>\n";
         }
-        
-        if(!freqs.get(3).getName().equalsIgnoreCase("")){
-            radio = 
-"                    <table id=\"freqTable\">\n" +
-"                                    <!-- frequency table //-->\n" +
-"                                    <tr>\n" +
-"                                        <td class=\"label\" colspan=\"6\">Frequencys -</td>\n" +
-"                                    </tr>\n" +
-"                                    <tr>\n" +
-"                                        <td class=\"label\">CH1:</td>\n" +
-"                                        <td class=\"data\" id=\"ch1Name\">" + freqs.get(0).getName()+ "</td>\n" +
-"                                        <td class=\"data\" id=\"ch1Freq\">" + freqs.get(0).getFreq()+ "</td>\n" +
-"                                        <td class=\"label\">CH2:</td>\n" +
-"                                        <td class=\"data\" id=\"ch2Name\">" + freqs.get(1).getName()+ "</td>\n" +
-"                                        <td class=\"data\" id=\"ch2Freq\">" + freqs.get(1).getFreq()+ "</td>\n" +
-"                                    </tr>\n" +
-"                                     <tr>\n" +
-"                                        <td class=\"label\">CH3:</td>\n" +
-"                                        <td class=\"data\" id=\"ch3Name\">" + freqs.get(2).getName()+ "</td>\n" +
-"                                        <td class=\"data\" id=\"ch3Freq\">" + freqs.get(2).getFreq()+ "</td>\n" +
-"                                        <td class=\"label\">CH4:</td>\n" +
-"                                        <td class=\"data\" id=\"ch4Name\">" + freqs.get(3).getName()+ "</td>\n" +
-"                                        <td class=\"data\" id=\"ch4Freq\">" + freqs.get(3).getFreq()+ "</td>\n" +
-"                                    </tr>\n" +
-"                                </table>\n" +
-"                                <!-- end frequency table //-->\n";  
+
+        if (!freqs.get(3).getName().equalsIgnoreCase("")) {
+            radio
+                    = "                        <tr>\n"
+                    + "                            <!-- frequency row //-->\n"
+                    + "                            <td colspan=\"6\">\n" + "                    <table id=\"freqTable\">\n"
+                    + "                    <table id=\"freqTable\">\n"
+                    + "                                    <!-- frequency table //-->\n"
+                    + "                                    <tr>\n"
+                    + "                                        <td class=\"label\" colspan=\"6\">Frequencys -</td>\n"
+                    + "                                    </tr>\n"
+                    + "                                    <tr>\n"
+                    + "                                        <td class=\"label\">CH1:</td>\n"
+                    + "                                        <td class=\"data\" id=\"ch1Name\">" + freqs.get(0).getName() + "</td>\n"
+                    + "                                        <td class=\"data\" id=\"ch1Freq\">" + freqs.get(0).getFreq() + "</td>\n"
+                    + "                                        <td class=\"label\">CH2:</td>\n"
+                    + "                                        <td class=\"data\" id=\"ch2Name\">" + freqs.get(1).getName() + "</td>\n"
+                    + "                                        <td class=\"data\" id=\"ch2Freq\">" + freqs.get(1).getFreq() + "</td>\n"
+                    + "                                    </tr>\n"
+                    + "                                     <tr>\n"
+                    + "                                        <td class=\"label\">CH3:</td>\n"
+                    + "                                        <td class=\"data\" id=\"ch3Name\">" + freqs.get(2).getName() + "</td>\n"
+                    + "                                        <td class=\"data\" id=\"ch3Freq\">" + freqs.get(2).getFreq() + "</td>\n"
+                    + "                                        <td class=\"label\">CH4:</td>\n"
+                    + "                                        <td class=\"data\" id=\"ch4Name\">" + freqs.get(3).getName() + "</td>\n"
+                    + "                                        <td class=\"data\" id=\"ch4Freq\">" + freqs.get(3).getFreq() + "</td>\n"
+                    + "                                    </tr>\n"
+                    + "                                </table>\n"
+                    + "                                <!-- end frequency table //-->\n" + "                            </td>\n"
+                    + "                        </tr>\n";
         }
-        
-        
+
+        if (rightAdditionalText.equalsIgnoreCase("")) {
+            rightAdditionalText = "";
+        } else {
+            rightAdditionalText = "                        <tr>\n"
+                    + "                            <td class=\"additionalText\" colspan=\"6\">\n"
+                    + "                                <pre>\n"
+                    + rightAdditionalText
+                    + "</pre>\n"
+                    + "                            </td>\n"
+                    + "                        </tr>\n";
+        }
+
+        if (leftAdditionalText.equalsIgnoreCase("")) {
+            leftAdditionalText = "";
+        } else {
+            leftAdditionalText = "                        <tr>\n"
+                    + "                            <td class=\"additionalText\" colspan=\"3\" id=\"leftAdditionaInfo\">\n"
+                    + "                                <pre>\n"
+                    + "" + leftAdditionalText + "\n"
+                    + "</pre>\n"
+                    + "                            </td>\n"
+                    + "                        </tr>\n";
+        }
+
+        if (additionalText.equalsIgnoreCase("")) {
+            additionalText = "";
+        } else {
+            additionalText = "            <tr class=\"rows\">\n"
+                    + "                <!-- second row //-->\n"
+                    + "                <td class=\"additionalText\" colspan=\"2\">Additional Text</td>\n"
+                    + "            </tr>\n";
+        }
+
         String classificationColor;
-                        
-        if(classification.equalsIgnoreCase("SECRET")){
+
+        if (classification.equalsIgnoreCase("SECRET")) {
             classificationColor = "red";
-        }
-        else{
+        } else {
             classificationColor = "black";
         }
-        
-        try{
-        File f = new File("src\\convoy\\resources\\html\\convoy.htm");
+
+        try {
+            File f = new File("src\\convoy\\resources\\html\\convoy.htm");
             try (BufferedWriter bw = new BufferedWriter(new FileWriter(f))) {
-                bw.write("<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\"\n" +
-"\"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\">\n" +
-"<html xmlns=\"http://www.w3.org/1999/xhtml\">\n" +
-"\n" +
-"<head>\n" +
-"    <script type=\"text/javascript\" src=\"../javascript/jquery-latest.min.js\"></script>\n" +
-"    <title></title>\n" +
-"    <style type=\"text/css\">\n" +
-"        body {\n" +
-"            //background-color: rgb(194, 178, 128);\n" +
-"        }\n" +
-"        div,\n" +
-"        table {\n" +
-"            width: 100%;\n" +
-"            border: 1px solid #000;\n" +
-"            height: 100%;\n" +
-"            font-size: 14pt;\n" +                     
-"        }\n" +
-"        td {\n" +
-"            border: 1px solid #000;\n" +
-"            background-color: white;\n" +
-"        }\n" +
-"        .label {\n" +
-"            font-weight: bold;\n" +
-"            font-family: capture;\n" +
-"        }\n" +
-"        .data {\n" +
-"            text-align: left;\n" +
-"        }\n" +
-"        #freqTable {\n" +
-"            border: 0;\n" +
-"        }\n" +
-"        .rows {\n" +
-"            border: red solid 1px;\n" +
-"            height: 33%;\n" +
-"        }\n" +
-"        .vehicle {\n" +
-"            height: 250px;\n" +
-"            border: 1px solid black;\n" +
-"        }\n" +
-"        #leftMissionInfo {\n" +
-"            font-size: 16pt;\n"+ 
-"            //border-right: 5px solid red;" +
-"        }\n" +
-"        .additionalText {\n" +
-"            height: 100px;\n" +
-"        }\n" +
-"        img {\n" +
-"            width: 202px;\n" +
-"            height: 172px;\n" +
-"        }\n" +
-"        .redBorder {\n" +
-"            border-top: red solid 5px;\n" +
-"            border-bottom: red solid 5px;\n" +
-"            padding-top: 20px;\n" +
-"            padding-bottom: 20px;\n" +                         
-"        }\n" +                      
-"        #classification{"+
-"              text-align: center;" +
-"              font-weight: bold;" +
-"              font-size: 18pt;" +
-"              color: " + classificationColor +";}\n" +
-"    </style>\n" +
-"</head>\n" +
-"\n" +
-"<body>\n" +
-"    <div>\n" +
-"        <table>\n" +
-"            <!-- main table //-->\n" +
-"            <tr class=\"rows\">\n" +
-"                <!-- first row //-->\n" +
-"                <td style=\"width: 40%;\" valign=\"top\" id=\"leftMissionInfo\">\n" +
-"                    <table id=\"leftMissionInfoTable\">\n" +
-"                        <!-- left mission info table //-->\n" +
-"                        <tr>\n" +
-"                            <td rowspan=\"6\" id=\"unitPatch\"><img src=\"" + "file:\\" + watermark + "\" alt=\"unitPatch\"/></td>\n" +
-"                        </tr>\n" +
-"                        <tr>\n" +
-"                            <td colspan=\"2\" id=\"classification\">" + classification +"</td>\n" +
-"                        </tr>\n" +
-"                        <tr>\n" +
-"                            <td colspan=\"2\"></td>\n" +
-"                        </tr>\n" +
-"                        <tr>\n" +
-"                            <td class=\"label\">Mission #</td>\n" +
-"                            <td class=\"data\" id=\"misisonNumber\">" + missionNumber + "</td>\n" +
-"                        </tr>\n" +
-"                        <tr>\n" +
-"                            <td class=\"label\">FROM:</td>\n" +
-"                            <td class=\"data\" id=\"leftFrom\">" + leftFrom + "</td>\n" +
-"                        </tr>\n" +
-"                        <tr>\n" +
-"                            <td class=\"label\">To:</td>\n" +
-"                            <td class=\"data\" id=\"leftTo\">" + leftTo+ "</td>\n" +
-"                        </tr>\n" +
-"                        <tr>\n" +
-"                            <td class=\"additionalText\" colspan=\"3\" id=\"leftAdditionaInfo\">\n" +
-"                                <pre>\n" +
-"" + leftAdditionalText +"\n" +
-"</pre>\n" +
-"                            </td>\n" +
-"                        </tr>\n" +
-"                    </table>\n" +
-"                    <!-- end left mission info table //-->\n" +
-"                </td>\n" +
-"                <td style=\"width: 60%;\" valign=\"top\">\n" +
-"                    <table>\n" +
-"                        <!-- right mission info table //-->\n" +
-"                        <tr>\n" +
-"                            <!-- cc and acc row //-->\n" +
-"                            <td class=\"label\">CC -</td>\n" +
-"                            <td class=\"data\" colspan=\"2\" id=\"cc\">" + cc + "</td>\n" +
-"                            <td class=\"label\">ACC -</td>\n" +
-"                            <td class=\"data\" colspan=\"2\" id=\"acc\">" + acc + "</td>\n" +
-"                        </tr>\n" +
-"                        <tr>\n" +
-"                            <!-- staging area row //-->\n" +
-"                            <td class=\"label\">Staging Area -</td>\n" +
-"                            <td class=\"data\" colspan=\"5\" id=\"stagingArea\">" + stagingArea + "</td>\n" +
-"                        </tr>\n" +
-"                        <tr>\n" +
-"                            <!-- from l/u sp //-->\n" +
-"                            <td class=\"label\">From -</td>\n" +
-"                            <td class=\"data\" id=\"rightFrom\">" + rightFrom + "</td>\n" +
-"                            <td class=\"label\">L/U -</td>\n" +
-"                            <td class=\"data\" id=\"fromLu\">" + fromLU + "</td>\n" +
-"                            <td class=\"label\">SP -</td>\n" +
-"                            <td class=\"data\" id=\"fromSP\">" + fromSP + "</td>\n" +
-"                        </tr>\n" +
-"                        <tr>\n" +
-"                            <!-- to l/u sp//-->\n" +
-"                            <td class=\"label\">To -</td>\n" +
-"                            <td class=\"data\" id=\"rightTo\">" + rightTo + "</td>\n" +
-"                            <td class=\"label\">L/U -</td>\n" +
-"                            <td class=\"data\" id=\"toLu\">" + toLU + "</td>\n" +
-"                            <td class=\"label\">SP -</td>\n" +
-"                            <td class=\"data\" id=\"toSP\">" + toSP + "</td>\n" +
-"                        </tr>\n" +
-"                        <tr>\n" +
-"                            <!-- frequency row //-->\n" +
-"                            <td colspan=\"6\">\n" +
-radio +
-"                            </td>\n" +
-"                        </tr>\n" +
-"                        <tr>\n" +
-"                            <td class=\"additionalText\" colspan=\"6\">\n" +
-"                                <pre>\n" +
-"Battle Spaces:\n" +
-"              AP Hill TOC OPS Net:        CH 2: 30.075 FM\n" +
-"              Ground to Air Net:          CH 5: 139.4625 VHF\n" +
-"              Range Control AP Hill:      CH 3: XX.XXX FM\n" +
-"</pre>\n" +
-"                            </td>\n" +
-"                        </tr>\n" +
-"                    </table>\n" +
-"                    <!-- end right mission info table //-->\n" +
-"                </td>\n" +
-"            </tr>\n" +
-"            <tr class=\"rows\">\n" +
-"                <!-- third row //-->\n" +
-"                <td colspan=\"2\">\n" +
-"                    <table class=\"redBorder\">\n" +
-"                        <tr>\n" +
-"                            <td class=\"vehicle\"></td>\n" +
-"                            <td class=\"vehicle\"></td>\n" +
-"                            <td class=\"vehicle\"></td>\n" +
-"                            <td class=\"vehicle\"></td>\n" +
-"                            <td class=\"vehicle\"></td>\n" +
-"                            <td class=\"vehicle\"></td>\n" +
-"                            <td class=\"vehicle\"></td>\n" +
-"                            <td class=\"vehicle\"></td>\n" +
-"                        </tr>\n" +
-"                        <tr>\n" +
-"                            <td class=\"vehicle\"></td>\n" +
-"                            <td class=\"vehicle\"></td>\n" +
-"                            <td class=\"vehicle\"></td>\n" +
-"                            <td class=\"vehicle\"></td>\n" +
-"                            <td class=\"vehicle\"></td>\n" +
-"                            <td class=\"vehicle\"></td>\n" +
-"                            <td class=\"vehicle\"></td>\n" +
-"                            <td class=\"vehicle\"></td>\n" +
-"                        </tr>\n" +
-"                    </table>\n" +
-"                </td>\n" +
-"            </tr>\n" +
-"            <tr class=\"rows\">\n" +
-"                <!-- second row //-->\n" +
-"                <td class=\"additionalText\" colspan=\"2\">Additional Text</td>\n" +
-"            </tr>\n" +
-"        </table>\n" +
-"    </div>\n" +
-"</body>\n" +
-"\n" +
-"</html>");
-                
+                bw.write("<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\"\n"
+                        + "\"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\">\n"
+                        + "<html xmlns=\"http://www.w3.org/1999/xhtml\">\n"
+                        + "\n"
+                        + "<head>\n"
+                        + "    <script type=\"text/javascript\" src=\"../javascript/jquery-latest.min.js\"></script>\n"
+                        + "    <title></title>\n"
+                        + "    <style type=\"text/css\">\n"
+                        + "        body {\n"
+                        + "            //background-color: rgb(194, 178, 128);\n"
+                        + "        }\n"
+                        + "        div,\n"
+                        + "        table {\n"
+                        + "            width: 100%;\n"
+                        + "            border: 1px solid #000;\n"
+                        + "            height: 100%;\n"
+                        + "            font-size: 14pt;\n"
+                        + "        }\n"
+                        + "        td {\n"
+                        + "            border: 1px solid #000;\n"
+                        + "            background-color: white;\n"
+                        + "        }\n"
+                        + "        .label {\n"
+                        + "            font-weight: bold;\n"
+                        + "            font-family: capture;\n"
+                        + "        }\n"
+                        + "        .data {\n"
+                        + "            text-align: left;\n"
+                        + "        }\n"
+                        + "        #freqTable {\n"
+                        + "            border: 0;\n"
+                        + "        }\n"
+                        + "        .rows {\n"
+                        + "            border: red solid 1px;\n"
+                        + "            height: 33%;\n"
+                        + "        }\n"
+                        + "        .vehicle {\n"
+                        + "            height: 250px;\n"
+                        + "            border: 1px solid black;\n"
+                        + "        }\n"
+                        + "        #leftMissionInfo {\n"
+                        + "            font-size: 16pt;\n"
+                        + "            //border-right: 5px solid red;"
+                        + "        }\n"
+                        + "        .additionalText {\n"
+                        + "            height: 100px;\n"
+                        + "        }\n"
+                        + "        img {\n"
+                        + "            width: 202px;\n"
+                        + "            height: 172px;\n"
+                        + "        }\n"
+                        + "        .redBorder {\n"
+                        + "            border-top: red solid 5px;\n"
+                        + "            border-bottom: red solid 5px;\n"
+                        + "            padding-top: 20px;\n"
+                        + "            padding-bottom: 20px;\n"
+                        + "        }\n"
+                        + "        #classification{"
+                        + "              text-align: center;"
+                        + "              font-weight: bold;"
+                        + "              font-size: 18pt;"
+                        + "              color: " + classificationColor + ";}\n"
+                        + "    </style>\n"
+                        + "</head>\n"
+                        + "\n"
+                        + "<body>\n"
+                        + "    <div>\n"
+                        + "        <table>\n"
+                        + "            <!-- main table //-->\n"
+                        + "            <tr class=\"rows\">\n"
+                        + "                <!-- first row //-->\n"
+                        + "                <td style=\"width: 40%;\" valign=\"top\" id=\"leftMissionInfo\">\n"
+                        + "                    <table id=\"leftMissionInfoTable\">\n"
+                        + "                        <!-- left mission info table //-->\n"
+                        + "                        <tr>\n"
+                        + "                            <td rowspan=\"6\" id=\"unitPatch\"><img src=\"" + "file:\\" + watermark + "\" alt=\"unitPatch\"/></td>\n"
+                        + "                        </tr>\n"
+                        + "                        <tr>\n"
+                        + "                            <td colspan=\"2\" id=\"classification\">" + classification + "</td>\n"
+                        + "                        </tr>\n"
+                        + "                        <tr>\n"
+                        + "                            <td colspan=\"2\"></td>\n"
+                        + "                        </tr>\n"
+                        + "                        <tr>\n"
+                        + "                            <td class=\"label\">Mission #</td>\n"
+                        + "                            <td class=\"data\" id=\"misisonNumber\">" + missionNumber + "</td>\n"
+                        + "                        </tr>\n"
+                        + "                        <tr>\n"
+                        + "                            <td class=\"label\">FROM:</td>\n"
+                        + "                            <td class=\"data\" id=\"leftFrom\">" + leftFrom + "</td>\n"
+                        + "                        </tr>\n"
+                        + "                        <tr>\n"
+                        + "                            <td class=\"label\">To:</td>\n"
+                        + "                            <td class=\"data\" id=\"leftTo\">" + leftTo + "</td>\n"
+                        + "                        </tr>\n"
+                        + leftAdditionalText
+                        + "                    </table>\n"
+                        + "                    <!-- end left mission info table //-->\n"
+                        + "                </td>\n"
+                        + "                <td style=\"width: 60%;\" valign=\"top\">\n"
+                        + "                    <table>\n"
+                        + "                        <!-- right mission info table //-->\n"
+                        + "                        <tr>\n"
+                        + "                            <!-- cc and acc row //-->\n"
+                        + "                            <td class=\"label\">CC -</td>\n"
+                        + "                            <td class=\"data\" colspan=\"2\" id=\"cc\">" + cc + "</td>\n"
+                        + "                            <td class=\"label\">ACC -</td>\n"
+                        + "                            <td class=\"data\" colspan=\"2\" id=\"acc\">" + acc + "</td>\n"
+                        + "                        </tr>\n"
+                        + "                        <tr>\n"
+                        + "                            <!-- staging area row //-->\n"
+                        + "                            <td class=\"label\">Staging Area -</td>\n"
+                        + "                            <td class=\"data\" colspan=\"5\" id=\"stagingArea\">" + stagingArea + "</td>\n"
+                        + "                        </tr>\n"
+                        + "                        <tr>\n"
+                        + "                            <!-- from l/u sp //-->\n"
+                        + "                            <td class=\"label\">From -</td>\n"
+                        + "                            <td class=\"data\" id=\"rightFrom\">" + rightFrom + "</td>\n"
+                        + "                            <td class=\"label\">L/U -</td>\n"
+                        + "                            <td class=\"data\" id=\"fromLu\">" + fromLU + "</td>\n"
+                        + "                            <td class=\"label\">SP -</td>\n"
+                        + "                            <td class=\"data\" id=\"fromSP\">" + fromSP + "</td>\n"
+                        + "                        </tr>\n"
+                        + "                        <tr>\n"
+                        + "                            <!-- to l/u sp//-->\n"
+                        + "                            <td class=\"label\">To -</td>\n"
+                        + "                            <td class=\"data\" id=\"rightTo\">" + rightTo + "</td>\n"
+                        + "                            <td class=\"label\">L/U -</td>\n"
+                        + "                            <td class=\"data\" id=\"toLu\">" + toLU + "</td>\n"
+                        + "                            <td class=\"label\">SP -</td>\n"
+                        + "                            <td class=\"data\" id=\"toSP\">" + toSP + "</td>\n"
+                        + "                        </tr>\n"
+                        + radio
+                        + rightAdditionalText
+                        + "                    </table>\n"
+                        + "                    <!-- end right mission info table //-->\n"
+                        + "                </td>\n"
+                        + "            </tr>\n"
+                        + "            <tr class=\"rows\">\n"
+                        + "                <!-- third row //-->\n"
+                        + "                <td colspan=\"2\">\n"
+                        + "                    <table class=\"redBorder\">\n"
+                        + "                        <tr>\n"
+                        + "                            <td class=\"vehicle\"></td>\n"
+                        + "                            <td class=\"vehicle\"></td>\n"
+                        + "                            <td class=\"vehicle\"></td>\n"
+                        + "                            <td class=\"vehicle\"></td>\n"
+                        + "                            <td class=\"vehicle\"></td>\n"
+                        + "                            <td class=\"vehicle\"></td>\n"
+                        + "                            <td class=\"vehicle\"></td>\n"
+                        + "                            <td class=\"vehicle\"></td>\n"
+                        + "                        </tr>\n"
+                        + "                        <tr>\n"
+                        + "                            <td class=\"vehicle\"></td>\n"
+                        + "                            <td class=\"vehicle\"></td>\n"
+                        + "                            <td class=\"vehicle\"></td>\n"
+                        + "                            <td class=\"vehicle\"></td>\n"
+                        + "                            <td class=\"vehicle\"></td>\n"
+                        + "                            <td class=\"vehicle\"></td>\n"
+                        + "                            <td class=\"vehicle\"></td>\n"
+                        + "                            <td class=\"vehicle\"></td>\n"
+                        + "                        </tr>\n"
+                        + "                    </table>\n"
+                        + "                </td>\n"
+                        + "            </tr>\n"
+                        + additionalText
+                        + "        </table>\n"
+                        + "    </div>\n"
+                        + "</body>\n"
+                        + "\n"
+                        + "</html>");
+
                 //Desktop.getDesktop().browse(f.toURI());
             }
-        }catch(IOException ex){
+        } catch (IOException ex) {
         }
-        
+
     }
-    
+
 }

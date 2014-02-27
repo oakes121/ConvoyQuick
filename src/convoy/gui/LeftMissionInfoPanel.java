@@ -9,6 +9,7 @@ import java.awt.FontFormatException;
 import java.io.IOException;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.ScrollPaneConstants;
 
 /**
  *
@@ -162,8 +163,9 @@ public class LeftMissionInfoPanel extends javax.swing.JPanel {;
 
         additionalText.setColumns(50);
         additionalText.setRows(5);
-        additionalText.setText("Addtional Information");
+        additionalText.setText("Additional Information Goes Here");
         jScrollPane3.setViewportView(additionalText);
+        jScrollPane3.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

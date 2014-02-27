@@ -6,6 +6,8 @@
 
 package convoy.gui;
 
+import javax.swing.ScrollPaneConstants;
+
 /**
  *
  * @author dizoo548
@@ -17,6 +19,10 @@ public class additionalTextPanel extends javax.swing.JPanel {
      */
     public additionalTextPanel() {
         initComponents();
+    }
+    
+    public String getAdditionalText(){
+        return this.jTextArea1.getText();
     }
 
     /**
@@ -42,6 +48,7 @@ public class additionalTextPanel extends javax.swing.JPanel {
             }
         });
         jScrollPane1.setViewportView(jTextArea1);
+        jScrollPane1.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

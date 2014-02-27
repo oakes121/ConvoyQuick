@@ -140,10 +140,10 @@ public final class MainWindow extends javax.swing.JFrame {
             .addGroup(picturePanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(picturePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(missionNumberPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 858, Short.MAX_VALUE)
+                    .addComponent(missionNumberPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1236, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, picturePanel2Layout.createSequentialGroup()
-                        .addGroup(picturePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(additionalInfoPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(picturePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(additionalInfoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(vehicleGrid1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                         .addContainerGap())))
         );
@@ -311,7 +311,9 @@ public final class MainWindow extends javax.swing.JFrame {
                         this.rightMissionInfoPanel2.getToLU(),
                         this.rightMissionInfoPanel2.getFromSP(),
                         this.rightMissionInfoPanel2.getToSP(),
-                        this.rightMissionInfoPanel2.getFreqs()
+                        this.rightMissionInfoPanel2.getFreqs(),
+                        this.rightMissionInfoPanel2.getAdditionalText(),
+                        this.additionalTextPanel1.getAdditionalText()
                 );
 
                 CreatePDF cp = new CreatePDF();

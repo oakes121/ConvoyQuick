@@ -108,6 +108,10 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
 
         return freqs;
     }
+    
+    public String getAdditionalText(){
+        return this.jTextArea1.getText();        
+    }
 
     private void doFreqs() {
 
@@ -230,6 +234,7 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
         jTextArea1.setColumns(50);
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
+        jScrollPane1.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 
         freqPanel.setBackground(new java.awt.Color(255, 255, 255));
 
