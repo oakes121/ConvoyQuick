@@ -22,7 +22,7 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
     /**
      * Creates new form AddVehiclePopUp
      */
-    private VehiclePanel vehiclePanel;
+    private VehiclePanel newVehiclePanel;
     private String vehicleName;
     private String numberOfSeats;
     private URL imageUrl;
@@ -391,11 +391,12 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        addValuesToVehiclePanel();
         this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     public void setObject(VehiclePanel vehicleInfo){
-        vehiclePanel=vehicleInfo;
+        newVehiclePanel=vehicleInfo;
     }
     
     public void setVehicleName(String name){
@@ -410,68 +411,74 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
         imageUrl=imgUrl;
     }
     
+    public void addValuesToVehiclePanel(){
+        newVehiclePanel.setDriverName(personnel1Field.getText());
+        newVehiclePanel.setPassenger1(personnel2Field.getText());
+        newVehiclePanel.setPassenger2(personnel3Field.getText());
+        newVehiclePanel.setPassenger3(personnel4Field.getText());
+        newVehiclePanel.setBumperNumber(vehicleInfo1Field.getText());
+        newVehiclePanel.setCallSign(vehicleInfo2Field.getText());
+    }
     public void modifyPopUp(){
         
         vehicleNameField.setText(vehicleName);
         setImage();
-        
-        if (numberOfSeats.equals("1")){
-        
-            personnel2Field.setVisible(false);
-            personnel3Field.setVisible(false);
-            personnel4Field.setVisible(false);
-            jComboBox1.setVisible(false);
-            jComboBox2.setVisible(false);
-            jComboBox3.setVisible(false);
-            jLabel5.setVisible(false);
-            jLabel6.setVisible(false);
-            jLabel7.setVisible(false);
-        }
-        else if(numberOfSeats.equals("2")){
-        
-            personnel3Field.setVisible(false);
-            personnel4Field.setVisible(false);
-            jComboBox2.setVisible(false);
-            jComboBox3.setVisible(false);
-            jLabel6.setVisible(false);
-            jLabel7.setVisible(false);
-        }
-        else if (numberOfSeats.equals("3")){
-        
-            personnel4Field.setVisible(false);
-            jComboBox3.setVisible(false);
-            jLabel7.setVisible(false);
-        }
-        else if (numberOfSeats.equals("4")){
-        
-            //Keep all fields
-        }
-        else if (numberOfSeats.equals("5")){
-        
-           //Keep a roster
-            personnel1Field.setVisible(false);
-            personnel2Field.setVisible(false);
-            personnel3Field.setVisible(false);
-            personnel4Field.setVisible(false);
-            jComboBox1.setVisible(false);
-            jComboBox2.setVisible(false);
-            jComboBox3.setVisible(false);
-            jLabel4.setVisible(false);
-            jLabel5.setVisible(false);
-            jLabel6.setVisible(false);
-            jLabel7.setVisible(false);
-            jLabel8.setVisible(false);
-        }
-        
-        else{
-            //trailer or some unmanned vehicle
-            personnel1Field.setVisible(false);
-            personnel2Field.setVisible(false);
-            personnel3Field.setVisible(false);
-            personnel4Field.setVisible(false);
-            jComboBox1.setVisible(false);
-            jComboBox2.setVisible(false);
-            jComboBox3.setVisible(false);
+        switch (numberOfSeats) {
+            case "1":
+                personnel2Field.setVisible(false);
+                personnel2Field.setText("");
+                personnel3Field.setVisible(false);
+                personnel3Field.setText("");
+                personnel4Field.setVisible(false);
+                personnel4Field.setText("");
+                jComboBox1.setVisible(false);
+                jComboBox2.setVisible(false);
+                jComboBox3.setVisible(false);
+                jLabel5.setVisible(false);
+                jLabel6.setVisible(false);
+                jLabel7.setVisible(false);
+                break;
+            case "2":
+                personnel3Field.setVisible(false);
+                personnel3Field.setText("");
+                personnel4Field.setVisible(false);
+                personnel4Field.setText("");
+                jComboBox2.setVisible(false);
+                jComboBox3.setVisible(false);
+                jLabel6.setVisible(false);
+                jLabel7.setVisible(false);
+                break;
+            case "3":
+                personnel4Field.setVisible(false);
+                personnel4Field.setText("");
+                jComboBox3.setVisible(false);
+                jLabel7.setVisible(false);
+                break;
+            case "4":
+                break;
+            case "5":
+                //Keep a roster
+                personnel1Field.setVisible(false);
+                personnel1Field.setText("");
+                personnel2Field.setVisible(false);
+                personnel2Field.setText("");
+                personnel3Field.setVisible(false);
+                personnel3Field.setText("");
+                personnel4Field.setVisible(false);
+                personnel4Field.setText("");
+                jComboBox1.setVisible(false);
+                jComboBox2.setVisible(false);
+                jComboBox3.setVisible(false);
+                jLabel4.setVisible(false);
+                jLabel5.setVisible(false);
+                jLabel6.setVisible(false);
+                jLabel7.setVisible(false);
+                jLabel8.setVisible(false);
+                break;
+            default:
+                //trailer or some unmanned vehicle
+                jPanel2.hide();
+                break;
         }
         
     }

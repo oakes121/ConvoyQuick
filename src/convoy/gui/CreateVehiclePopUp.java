@@ -40,6 +40,7 @@ public class CreateVehiclePopUp extends javax.swing.JFrame {
      * Creates new form CreateVehiclePopUp
      */
     public CreateVehiclePopUp() {
+        numberOfSeats = "0";
         initComponents();
         this.setLocationRelativeTo(null); //centers frame
         this.setTitle("Create New Vehicle"); //adds title
@@ -284,10 +285,14 @@ public class CreateVehiclePopUp extends javax.swing.JFrame {
     }//GEN-LAST:event_cancelButtonMouseClicked
 
     private void numberOfSeatsComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numberOfSeatsComboBoxActionPerformed
-        if (numberOfSeatsComboBox.getSelectedItem().equals("1"))
-                {
-                    numberOfSeats = "1"; 
-                }
+        if (numberOfSeatsComboBox.getSelectedItem().equals("0"))
+        {
+            numberOfSeats = "0"; 
+        }        
+        else if (numberOfSeatsComboBox.getSelectedItem().equals("1"))
+        {
+            numberOfSeats = "1"; 
+        }
         else if(numberOfSeatsComboBox.getSelectedItem().equals("2"))
         {
             numberOfSeats = "2";
@@ -304,7 +309,8 @@ public class CreateVehiclePopUp extends javax.swing.JFrame {
         {
             numberOfSeats = "5";
         }
-        System.out.print(numberOfSeats);
+        
+        System.out.println(numberOfSeats);
     }//GEN-LAST:event_numberOfSeatsComboBoxActionPerformed
 
     private void addVehicleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addVehicleButtonActionPerformed
