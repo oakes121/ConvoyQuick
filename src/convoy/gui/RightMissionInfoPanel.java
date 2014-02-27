@@ -233,6 +233,7 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
 
         jTextArea1.setColumns(50);
         jTextArea1.setRows(5);
+        jTextArea1.setText("Additional Information Goes Here");
         jScrollPane1.setViewportView(jTextArea1);
         jScrollPane1.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 

@@ -89,7 +89,7 @@ public final class MainWindow extends javax.swing.JFrame {
         leftMissionInfoPanel1 = new convoy.gui.LeftMissionInfoPanel();
         rightMissionInfoPanel2 = new convoy.gui.RightMissionInfoPanel();
         additionalInfoPanel = new javax.swing.JPanel();
-        additionalTextPanel1 = new convoy.gui.additionalTextPanel();
+        additionalTextPanel1 = new convoy.gui.AdditionalTextPanel();
         vehicleGrid1 = new convoy.gui.VehicleGrid();
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
@@ -457,7 +457,7 @@ public final class MainWindow extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem aboutMenuItem;
     private javax.swing.JPanel additionalInfoPanel;
-    private convoy.gui.additionalTextPanel additionalTextPanel1;
+    private convoy.gui.AdditionalTextPanel additionalTextPanel1;
     private javax.swing.JMenu editMenu;
     private javax.swing.JMenu fileMenu;
     private javax.swing.JMenuItem finalizeMenu;
