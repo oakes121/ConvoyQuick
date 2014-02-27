@@ -6,6 +6,8 @@
 
 package convoy.gui;
 
+import javax.swing.ScrollPaneConstants;
+
 /**
  *
  * @author dizoo548
