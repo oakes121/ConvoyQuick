@@ -88,7 +88,7 @@
                 <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
                   <KeyStroke key="Shift+Ctrl+W"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Watermark"/>
+                <Property name="text" type="java.lang.String" value="Unit Patch"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="wateMarkMenuActionPerformed"/>

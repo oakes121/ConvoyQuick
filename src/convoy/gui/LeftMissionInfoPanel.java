@@ -4,24 +4,16 @@
  */
 package convoy.gui;
 
-import java.awt.AlphaComposite;
 import java.awt.Font;
 import java.awt.FontFormatException;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
-import java.net.URL;
-import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 
 /**
  *
  * @author MTM5313
  */
-public class LeftMissionInfoPanel extends javax.swing.JPanel {
-    
-    private String waterMark;
+public class LeftMissionInfoPanel extends javax.swing.JPanel {;
 
     public String getClassification() {
 
@@ -49,79 +41,45 @@ public class LeftMissionInfoPanel extends javax.swing.JPanel {
     
     public String getAdditionalText() {
                 
-        return this.jTextArea3.getText();
+        return this.additionalText.getText();
 
-    }
-
-    private BufferedImage image;
-
-    @Override
-    public void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        int x = (this.getWidth() - image.getWidth(null)) / 2;
-        int y = (this.getHeight() - image.getHeight(null)) / 2;
-
-        BufferedImage tmpImg = new BufferedImage(image.getWidth(), image.getHeight(),
-                BufferedImage.TYPE_INT_ARGB);
-        Graphics2D g2d = (Graphics2D) tmpImg.getGraphics();
-        g2d.setComposite(AlphaComposite.SrcOver.derive(0.8f));
-        // set the transparency level in range 0.0f - 1.0f 
-        g2d.drawImage(image, 0, 0, null);
-        image = tmpImg;
-
-        g.drawImage(image, x, y, null); // see javadoc for more info on the parameters            
-    }
-
-    /**
-     * Method used to load an image
-     *
-     * @param imageName the file path of the image to be loaded
-     */
-    private void loadImage(File file) {
-        try {
-            image = ImageIO.read(file);
-        } catch (IOException ex) {
-        }
     }
     
-    private void loadImage(URL file) {
-        try {
-            image = ImageIO.read(file);
-        } catch (IOException ex) {
-        }
+    public void setIcon(ImageIcon icon){
+        jLabel1.setText("");
+        jLabel1.setIcon(icon);
+        
     }
-
+    
+    public int getIconWidth(){
+        
+        return this.jLabel1.getWidth();
+        
+    }
+    
+    public int getIconHeight(){
+        
+        return this.jLabel1.getHeight();
+        
+    }
+    
+    
     /**
      * Creates new form MissionInfoPanel
      */
-    public LeftMissionInfoPanel(BufferedImage img) {
-        
-        super();
-        
-        image = img;
-        initComponents();
-        doFonts();
-        setLayout(this.getLayout());
-        //loadImage(file);
-        repaint();
-        revalidate();
-    }
     
     public LeftMissionInfoPanel() {
         
         super();
         initComponents();
         doFonts();
-        setLayout(this.getLayout());
-        loadImage(getClass().getResource("/convoy/resources/images/2id.png"));
-        repaint();
-        revalidate();
+        setLayout(this.getLayout());        
     }
 
     private void doFonts() {
         try {
             Font captureItFont = Font.createFont(Font.TRUETYPE_FONT, getClass().getResourceAsStream("/convoy/resources/fonts/captureIt.ttf"));
-            captureItFont = captureItFont.deriveFont(Font.ITALIC, 16f);
+            captureItFont = captureItFont.deriveFont(Font.ITALIC, 18f);
 
             classificationDropBox.setFont(captureItFont);
             missionNumberLabel.setFont(captureItFont);
@@ -153,8 +111,9 @@ public class LeftMissionInfoPanel extends javax.swing.JPanel {
         fromTextField = new javax.swing.JTextField();
         toLabel = new javax.swing.JLabel();
         toTextField = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTextArea3 = new javax.swing.JTextArea();
+        additionalText = new javax.swing.JTextArea();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -185,18 +144,21 @@ public class LeftMissionInfoPanel extends javax.swing.JPanel {
 
         fromLabel.setText("From: ");
 
-        toLabel.setText("To: ");
-
-        jTextArea3.setColumns(50);
-        jTextArea3.setRows(5);
-        jTextArea3.setText("Additional information goes here");
-        jTextArea3.setPreferredSize(new java.awt.Dimension(200, 94));
-        jTextArea3.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                jTextArea3FocusGained(evt);
+        fromTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fromTextFieldActionPerformed(evt);
             }
         });
-        jScrollPane3.setViewportView(jTextArea3);
+
+        toLabel.setText("To: ");
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/convoy/resources/images/2id.png"))); // NOI18N
+        jLabel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+
+        additionalText.setColumns(50);
+        additionalText.setRows(5);
+        additionalText.setText("Addtional Information");
+        jScrollPane3.setViewportView(additionalText);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -204,43 +166,47 @@ public class LeftMissionInfoPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 571, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 575, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(fromLabel)
-                            .addComponent(toLabel))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(fromTextField)
-                            .addComponent(toTextField)))
-                    .addComponent(classificationDropBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(missionNumberLabel)
-                        .addGap(18, 18, 18)
-                        .addComponent(missionNumberTextField)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(fromLabel)
+                                    .addComponent(missionNumberLabel)
+                                    .addComponent(toLabel))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(fromTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+                                    .addComponent(missionNumberTextField)
+                                    .addComponent(toTextField)))
+                            .addComponent(classificationDropBox, 0, 363, Short.MAX_VALUE)))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(10, 10, 10)
-                .addComponent(classificationDropBox, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(missionNumberTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(missionNumberLabel))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(classificationDropBox, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(missionNumberTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(missionNumberLabel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(fromTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(fromLabel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(toTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(toLabel)))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(fromLabel)
-                    .addComponent(fromTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(toTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(toLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -248,19 +214,20 @@ public class LeftMissionInfoPanel extends javax.swing.JPanel {
         missionNumberTextField.setText("");
     }//GEN-LAST:event_missionNumberTextFieldFocusGained
 
-    private void jTextArea3FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextArea3FocusGained
-        jTextArea3.setText("");
-    }//GEN-LAST:event_jTextArea3FocusGained
+    private void fromTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fromTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fromTextFieldActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextArea additionalText;
     private javax.swing.JComboBox classificationDropBox;
     private javax.swing.JLabel fromLabel;
     private javax.swing.JTextField fromTextField;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea3;
     private javax.swing.JLabel missionNumberLabel;
     private javax.swing.JTextField missionNumberTextField;
     private javax.swing.JLabel toLabel;
