@@ -62,7 +62,7 @@
                 <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
                   <KeyStroke key="Ctrl+F"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Finalize"/>
+                <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;strong&gt;Finalize&lt;/strong&gt;&lt;/html&gt;"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="finalizeMenuActionPerformed"/>
@@ -73,7 +73,7 @@
                 <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
                   <KeyStroke key="Ctrl+P"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Print"/>
+                <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;strong&gt;Print&lt;/strong&gt;&lt;/html&gt;"/>
               </Properties>
             </MenuItem>
           </SubComponents>

@@ -186,7 +186,7 @@ public final class MainWindow extends javax.swing.JFrame {
         fileMenu.add(jMenuItem2);
 
         finalizeMenu.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F, java.awt.event.InputEvent.CTRL_MASK));
-        finalizeMenu.setText("Finalize");
+        finalizeMenu.setText("<html><strong>Finalize</strong></html>");
         finalizeMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 finalizeMenuActionPerformed(evt);
@@ -195,7 +195,7 @@ public final class MainWindow extends javax.swing.JFrame {
         fileMenu.add(finalizeMenu);
 
         jMenuItem4.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem4.setText("Print");
+        jMenuItem4.setText("<html><strong>Print</strong></html>");
         fileMenu.add(jMenuItem4);
 
         menuBar.add(fileMenu);
