@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package convoy.pdf;
 
 import convoy.objects.Mission;
@@ -17,26 +16,25 @@ import javax.swing.JOptionPane;
  * @author dizoo548
  */
 public class Save {
-  
-  private File file;
-  private Mission mission;
-    
-    public Save(Mission mission){
+
+    private File file;
+    private Mission mission;
+
+    public Save(Mission mission) {
         this.mission = mission;
-        
+
     }
-    
-    public void save(){
-                        
-            file = new File("src/convoy/save/" + mission.getMissionNumber() + ".conx");
-        
-        
+
+    public void save() {
+
+        file = new File("src/convoy/save/" + mission.getMissionNumber() + ".conx");
+
         //String text = "Hello world";
         try {
-            
-            String saveData = "missionNumber, classification, stagingArea, acc, cc, FromLinkUpTime, FromSPTime, LeftFrom, RightFrom, LeftTo, RightTo, ToLinkUpTime";
-            
-            saveData += mission.getMissionNumber() + ",";
+
+            //String saveData = "missionNumber, classification, stagingArea, acc, cc, FromLinkUpTime, FromSPTime, LeftFrom, RightFrom, LeftTo, RightTo, ToLinkUpTime";
+
+            String saveData = mission.getMissionNumber() + ",";
             saveData += mission.getClassification() + ",";
             saveData += mission.getMissionstagingArea() + ",";
             saveData += mission.getACC() + ",";
@@ -49,25 +47,21 @@ public class Save {
             saveData += mission.getRightTo() + ",";
             saveData += mission.getToLinkUpTime() + ",";
             saveData += mission.getToSPTime();
-            
-            
-            byte[] dataToWrite = saveData.getBytes("UTF32");
-            
-            String str = new String(dataToWrite, "UTF32");
-            
-            System.out.print(str);
-            
+
+            byte[] dataToWrite = saveData.getBytes("UTF8");
+
+            //String str = new String(dataToWrite, "UTF8");
+
+            //System.out.print(str);
+
             try (FileOutputStream out = new FileOutputStream(file)) {
                 out.write(dataToWrite);
             }
-            
-            
-            
-        } catch ( IOException e ) {
-           JOptionPane.showMessageDialog(null, "Mission failed to save, please try again.");
+
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, "Mission failed to save, please try again.");
         }
-        
-        
-    } 
-    
+
+    }
+
 }

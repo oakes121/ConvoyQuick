@@ -8,16 +8,23 @@ package convoy.gui;
 import convoy.objects.Mission;
 import java.awt.AlphaComposite;
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.FileDialog;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import javax.swing.border.BevelBorder;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
@@ -247,11 +254,56 @@ public class MainMenu extends javax.swing.JFrame {
 
     private void loadProjectPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loadProjectPanelMouseClicked
        
-        //To load a previously saved convoy
-        FileDialog loadFile;
-        loadFile = new FileDialog(this, "Choose a file", FileDialog.LOAD);
-        loadFile.setDirectory("C:\\");
-        loadFile.setVisible(true);
+        String missionNumber = null;
+        String classification = null;
+        
+        
+            JFileChooser chooser = new JFileChooser();
+            chooser.setAcceptAllFileFilterUsed(false);
+            chooser.addChoosableFileFilter((new FileNameExtensionFilter("Convoy Quick Files", "conx")));
+            chooser.setSelectedFile(new File("*.conx"));
+            chooser.setCurrentDirectory(new File("src/convoy/save"));
+
+            int option = chooser.showOpenDialog(null);
+            if (option == JFileChooser.APPROVE_OPTION) {
+
+                try {
+                    BufferedReader br;
+                    File file = chooser.getSelectedFile();
+                    String line;
+                    String cvsSplitBy = ",";
+                    
+                    br = new BufferedReader(new FileReader(file));
+                    while ((line = br.readLine()) != null) {
+ 
+		        // use comma as separator
+			String[] mission = line.split(cvsSplitBy);
+                        
+                        missionNumber = mission[0];
+                        classification = mission[1];
+                        
+                        
+                    }
+                    
+                    this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+                    this.setVisible(false);
+                    MainWindow mainWindow = new MainWindow(missionNumber);
+                    mainWindow.setVisible(true);
+                    mainWindow.setTitle("Convoy QuicMaink - Convoy documentation creator to help save lives");
+                    mainWindow.setIconImage(new ImageIcon(getClass().getResource("/convoy/resources/images/humveeIcon.png")).getImage());
+                    mainWindow.setExtendedState(MainWindow.MAXIMIZED_BOTH);
+                    mainWindow.toFront();
+                    repaint();
+                    revalidate();
+
+                } catch (IOException ex) {
+
+                } finally {
+                    this.setCursor(Cursor.getDefaultCursor());
+                }
+            
+        }
     }//GEN-LAST:event_loadProjectPanelMouseClicked
         
     /**

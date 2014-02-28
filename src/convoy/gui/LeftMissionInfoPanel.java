@@ -30,6 +30,12 @@ public class LeftMissionInfoPanel extends javax.swing.JPanel {
         return this.missionNumberTextField.getText();
 
     }
+    
+    public void setMissionNumber(String missionNumber) {
+
+        missionNumberTextField.setText(missionNumber);
+
+    }
 
     public String getFrom() {
 

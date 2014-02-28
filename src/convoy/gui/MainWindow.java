@@ -10,9 +10,10 @@ import convoy.pdf.*;
 import java.awt.Cursor;
 
 import java.awt.FileDialog;
-import java.awt.HeadlessException;
 import java.awt.Image;
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -39,6 +40,8 @@ public final class MainWindow extends javax.swing.JFrame {
     public String getImagePath() {
         return this.imagePath;
     }
+    
+    
 
     String missionNumberText;
 
@@ -59,6 +62,24 @@ public final class MainWindow extends javax.swing.JFrame {
         missionNumberPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
         additionalInfoPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
 
+    }
+    
+    public MainWindow(String missionNumber) {
+        this.imagePath = getClass().getResource("/convoy/resources/images/2id.png").getPath().substring(1).replace("/", "\\");
+
+        initComponents();
+        makeSelectPanelsTransparent();
+        doMainWindowFont();
+        setMainWindowButtonColor();
+        picturePanel2 = new PicturePanel("/convoy/resources/images/camo.jpg");
+        revalidate();
+        repaint();
+
+        missionNumberPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        additionalInfoPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        
+        this.leftMissionInfoPanel1.setMissionNumber(missionNumber);
+        
     }
 
     public void makeSelectPanelsTransparent() {
@@ -272,14 +293,68 @@ public final class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_newMenuItemActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        int response = JOptionPane.showConfirmDialog(null, "Are you sure you want to load a convoy?\nAll unsaved data will be lost!", "New Convoy?", JOptionPane.YES_NO_OPTION);
+        
+        String missionNumber = null;
+        
+        int response = JOptionPane.showConfirmDialog(null, "Are you sure you want to load a convoy?\n All unsaved data will be lost.", "Load Convoy?", JOptionPane.YES_NO_OPTION);
+        if (response == JOptionPane.YES_OPTION) {
+
+            JFileChooser chooser = new JFileChooser();
+            chooser.setAcceptAllFileFilterUsed(false);
+            chooser.addChoosableFileFilter((new FileNameExtensionFilter("Convoy Quick Files", "conx")));
+            chooser.setSelectedFile(new File("*.conx"));
+            chooser.setCurrentDirectory(new File("src/convoy/save"));
+
+            int option = chooser.showOpenDialog(null);
+            if (option == JFileChooser.APPROVE_OPTION) {
+
+                try {
+                    BufferedReader br;
+                    File file = chooser.getSelectedFile();
+                    String line;
+                    String cvsSplitBy = ",";
+                    
+                    br = new BufferedReader(new FileReader(file));
+                    while ((line = br.readLine()) != null) {
+ 
+		        // use comma as separator
+			String[] mission = line.split(cvsSplitBy);
+                        
+                        missionNumber = mission[0];
+                        String classification = mission[1];
+                        
+                        
+                    }
+                    
+                    this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+                    this.setVisible(false);
+                    MainWindow mainWindow = new MainWindow(missionNumber);
+                    mainWindow.setVisible(true);
+                    mainWindow.setTitle("Convoy QuicMaink - Convoy documentation creator to help save lives");
+                    mainWindow.setIconImage(new ImageIcon(getClass().getResource("/convoy/resources/images/humveeIcon.png")).getImage());
+                    mainWindow.setExtendedState(MainWindow.MAXIMIZED_BOTH);
+                    mainWindow.toFront();
+                    repaint();
+                    revalidate();
+
+                } catch (IOException ex) {
+
+                } finally {
+                    this.setCursor(Cursor.getDefaultCursor());
+                }
+            }
+        }
+        
+        
+        /*int response = JOptionPane.showConfirmDialog(null, "Are you sure you want to load a convoy?\nAll unsaved data will be lost!", "New Convoy?", JOptionPane.YES_NO_OPTION);
         if (response == JOptionPane.YES_OPTION) {
             //To load a previously saved convoy
             FileDialog loadFile;
             loadFile = new FileDialog(this, "Choose a file", FileDialog.LOAD);
-            loadFile.setDirectory("C:\\");
+            loadFile.setDirectory("src/convoy/save");
             loadFile.setVisible(true);
-        }
+        }*/
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void aboutMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutMenuItemActionPerformed
