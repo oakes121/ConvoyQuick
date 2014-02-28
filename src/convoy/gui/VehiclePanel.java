@@ -106,6 +106,9 @@ public class VehiclePanel extends javax.swing.JPanel {
     public void setTransparent() {
         //componentPanel.setOpaque(false);
     }
+    public void setAdditionalInfo(String additionalInfo){
+        additionalInfoField.setText(additionalInfo);
+    }
 
     private void doMainMenuFont() {
         try {
@@ -143,7 +146,7 @@ public class VehiclePanel extends javax.swing.JPanel {
         callSignLabel = new javax.swing.JLabel();
         picturePanel = new javax.swing.JPanel();
         imageLabel = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        additionalInfoField = new javax.swing.JTextField();
         deleteButton = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(194, 178, 128));
@@ -212,8 +215,8 @@ public class VehiclePanel extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        jTextField1.setText("Additional Info");
-        jTextField1.setPreferredSize(new java.awt.Dimension(59, 13));
+        additionalInfoField.setText("Additional Info");
+        additionalInfoField.setPreferredSize(new java.awt.Dimension(59, 13));
 
         javax.swing.GroupLayout componentPanelLayout = new javax.swing.GroupLayout(componentPanel);
         componentPanel.setLayout(componentPanelLayout);
@@ -221,7 +224,7 @@ public class VehiclePanel extends javax.swing.JPanel {
             componentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, componentPanelLayout.createSequentialGroup()
                 .addGroup(componentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(additionalInfoField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(passenger3Label, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(passenger2Label, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(passenger1Label, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -249,7 +252,8 @@ public class VehiclePanel extends javax.swing.JPanel {
                 .addGap(3, 3, 3)
                 .addComponent(callSignLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(1, 1, 1)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(additionalInfoField, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         driverLabel.getAccessibleContext().setAccessibleName("driver");
@@ -293,13 +297,13 @@ public class VehiclePanel extends javax.swing.JPanel {
     }//GEN-LAST:event_deleteButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField additionalInfoField;
     private javax.swing.JLabel bumperNumberLabel;
     private javax.swing.JLabel callSignLabel;
     private javax.swing.JPanel componentPanel;
     private javax.swing.JButton deleteButton;
     private javax.swing.JLabel driverLabel;
     private javax.swing.JLabel imageLabel;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel passenger1Label;
     private javax.swing.JLabel passenger2Label;
     private javax.swing.JLabel passenger3Label;
