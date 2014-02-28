@@ -464,16 +464,25 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Bumper Number"/>
               </Properties>
+              <Events>
+                <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="vehicleInfo1FieldFocusGained"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="vehicleInfo2Field">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Callsign"/>
               </Properties>
+              <Events>
+                <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="vehicleInfo2FieldFocusGained"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="vehicleInfo3Field">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Additional Information"/>
               </Properties>
+              <Events>
+                <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="vehicleInfo3FieldFocusGained"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel9">
               <Properties>
