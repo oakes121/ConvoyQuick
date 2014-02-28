@@ -26,6 +26,10 @@ public class Save {
     }
 
     public void save() {
+        
+        if(mission.getMissionNumber().equalsIgnoreCase("")){
+            JOptionPane.showMessageDialog(null, "Please enter the mission number.");
+        }else
 
         file = new File("src/convoy/convoy/" + mission.getMissionNumber() + ".conx");
 
@@ -49,7 +53,9 @@ public class Save {
             saveData += mission.getToSPTime() + ",";
             saveData += mission.getLeftAdditionalInfo() + ",";
             saveData += mission.getRightAdditionalInfo() + ",";
-            saveData += mission.getAdditionalInfo();
+            saveData += mission.getAdditionalInfo() + ",";
+            saveData += mission.getUnitPatch();
+            
 
             byte[] dataToWrite = saveData.getBytes("UTF8");
 

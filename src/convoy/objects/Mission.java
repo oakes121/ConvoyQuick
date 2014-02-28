@@ -31,6 +31,7 @@ public class Mission implements Serializable {
     private String leftAdditionalText;
     private String rightAdditionalText;
     private String additionalText;
+    private String unitPatch;
     /**
      *  constructor Mission() initializes all class variables
      */
@@ -92,7 +93,8 @@ public class Mission implements Serializable {
                         String classification,
                         String left,
                         String right,
-                        String text) {
+                        String text,
+                        String unitPatch) {
         constructorUsed = "alt1"; 
         this.missionNumber = missionNumber;
         this.missionStagingArea = missionStagingArea;
@@ -117,6 +119,7 @@ public class Mission implements Serializable {
         this.leftAdditionalText = left;
         this.rightAdditionalText = right;
         this.additionalText = text;
+        this.unitPatch = unitPatch;
     }
     
     /**
@@ -180,12 +183,13 @@ public class Mission implements Serializable {
                                                     String classification,
                                                     String leftAdditionalText,
                                                     String rightAdditionalText,
-                                                    String additionalText) {
+                                                    String additionalText,
+                                                    String unitPatch) {
         
         // if uniqueInstance is null, instantiate it to new Mission()
         if (uniqueInstance == null) {
             uniqueInstance = new Mission(   missionNumber, missionStagingArea, leftTo, rightTo, leftFrom, rightFrom,
-            cc, acc, fromLinkUpTime, fromSPTime, toLinkUpTime, toSPTime, classification,leftAdditionalText, rightAdditionalText, additionalText);
+            cc, acc, fromLinkUpTime, fromSPTime, toLinkUpTime, toSPTime, classification,leftAdditionalText, rightAdditionalText, additionalText, unitPatch);
         }
         
         // if constructorUsed is set to "alt1" then return uniqueInstance else return null
@@ -476,6 +480,9 @@ public class Mission implements Serializable {
     }
     public String getAdditionalInfo(){
         return this.additionalText;        
+    }
+    public String getUnitPatch(){
+        return this.unitPatch;        
     }
 
 }

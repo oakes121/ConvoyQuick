@@ -269,6 +269,7 @@ public class MainMenu extends javax.swing.JFrame {
         String leftAdditionalText = null;
         String rightAdditionalText = null;
         String additionalText = null;
+        String unitPatch = null;
 
         JFileChooser chooser = new JFileChooser();
         chooser.setAcceptAllFileFilterUsed(false);
@@ -307,6 +308,7 @@ public class MainMenu extends javax.swing.JFrame {
                     leftAdditionalText = mission[13];
                     rightAdditionalText = mission[14];
                     additionalText = mission[15];
+                    unitPatch = mission[16];
 
                 }
 
@@ -328,7 +330,8 @@ public class MainMenu extends javax.swing.JFrame {
                         toSPTime,
                         leftAdditionalText,
                         rightAdditionalText,
-                        additionalText);
+                        additionalText, 
+                        unitPatch);
                 mainWindow.setVisible(true);
                 mainWindow.setTitle("Convoy QuicMaink - Convoy documentation creator to help save lives");
                 mainWindow.setIconImage(new ImageIcon(getClass().getResource("/convoy/resources/images/humveeIcon.png")).getImage());
