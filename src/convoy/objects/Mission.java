@@ -21,6 +21,13 @@ public class Mission implements Serializable {
     private String rightTo;
     private String leftFrom;
     private String rightFrom;
+    private String cc;
+    private String acc;
+    private String fromLinkUpTime;
+    private String fromSPTime;
+    private String toLinkUpTime;
+    private String toSPTime;
+    String classification;
 
     /**
      *  constructor Mission() initializes all class variables
@@ -68,9 +75,19 @@ public class Mission implements Serializable {
      * @param dTS int value representing seconds use to instantiate
      * missionDepartureTime
      */
-    private Mission(String missionNumber, 
-            String missionStagingArea,String leftTo, String rightTo, String leftFrom, String rightFrom, String unitName, int lUH, int lUM, int lUS,
-            int dTH, int dTM, int dTS) {
+    public  Mission(    String missionNumber, 
+                        String missionStagingArea,
+                        String leftTo, 
+                        String rightTo, 
+                        String leftFrom, 
+                        String rightFrom, 
+                        String cc, 
+                        String acc, 
+                        String fromLinkUpTime, 
+                        String fromSPTime, 
+                        String toLinkUpTime, 
+                        String toSPTime,
+                        String classification) {
         constructorUsed = "alt1"; 
         this.missionNumber = missionNumber;
         this.missionStagingArea = missionStagingArea;
@@ -83,8 +100,15 @@ public class Mission implements Serializable {
         people = new ArrayList<>();
         attachments = new Attachments();
         missionClassification = new Classification();
-        missionLinkUpTime = new Time(lUH, lUM, lUS);
-        missionDepartureTime = new Time(dTH, dTM, dTS);
+        //missionLinkUpTime = new Time(lUH, lUM, lUS);
+        //missionDepartureTime = new Time(dTH, dTM, dTS);
+        this.cc = cc;
+        this.acc = acc;
+        this.fromLinkUpTime = fromLinkUpTime;
+        this.toLinkUpTime = toLinkUpTime;
+        this.fromSPTime = fromSPTime;
+        this.toSPTime = toSPTime;
+        this.classification = classification;
     }
     
     /**
@@ -133,13 +157,24 @@ public class Mission implements Serializable {
      * missionDepartureTime
      * @return 
      */
-    public static synchronized Mission getInstance(String missionNumber, String missionStagingArea, String leftTo, String rightTo, String leftFrom, String rightFrom,
-            String unitName, int lUH, int lUM, int lUS, int dTH, int dTM, int dTS) {
+    public static synchronized Mission getInstance( String missionNumber, 
+                                                    String missionStagingArea, 
+                                                    String leftTo, 
+                                                    String rightTo, 
+                                                    String leftFrom, 
+                                                    String rightFrom, 
+                                                    String cc, 
+                                                    String acc, 
+                                                    String fromLinkUpTime, 
+                                                    String fromSPTime, 
+                                                    String toLinkUpTime, 
+                                                    String toSPTime,
+                                                    String classification) {
         
         // if uniqueInstance is null, instantiate it to new Mission()
         if (uniqueInstance == null) {
-            uniqueInstance = new Mission(missionNumber,  leftTo,  rightTo,  leftFrom,  rightFrom, missionStagingArea, unitName, lUH, lUM, 
-                    lUS, dTH, dTM, dTS);
+            uniqueInstance = new Mission(   missionNumber, missionStagingArea, leftTo, rightTo, leftFrom, rightFrom,
+            cc, acc, fromLinkUpTime, fromSPTime, toLinkUpTime, toSPTime, classification);
         }
         
         // if constructorUsed is set to "alt1" then return uniqueInstance else return null
@@ -399,6 +434,28 @@ public class Mission implements Serializable {
      */
     public String getUnitName() {
         return unitName;
+    }
+    
+    public String getCC(){
+        return this.cc;        
+    }
+    public String getACC(){
+        return this.acc;        
+    }
+    public String getFromLinkUpTime(){
+        return this.fromLinkUpTime;        
+    }
+    public String getFromSPTime(){
+        return this.fromSPTime;        
+    }
+    public String getToLinkUpTime(){
+        return this.toLinkUpTime;        
+    }
+    public String getToSPTime(){
+        return this.toSPTime;        
+    }
+    public String getClassification(){
+        return this.classification;        
     }
 
 }

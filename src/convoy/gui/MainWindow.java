@@ -10,13 +10,12 @@ import convoy.pdf.*;
 import java.awt.Cursor;
 
 import java.awt.FileDialog;
+import java.awt.HeadlessException;
 import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
@@ -25,7 +24,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
@@ -498,8 +496,31 @@ public final class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        //Mission mission = new Mission(this.leftMissionInfoPanel1.getMissionNumber(),
-                                      //this.);
+        Mission mission = new Mission(  this.leftMissionInfoPanel1.getMissionNumber(),
+                                        this.rightMissionInfoPanel2.getStagingArea(),
+                                        this.leftMissionInfoPanel1.getTo(),
+                                        this.rightMissionInfoPanel2.getTo(),
+                                        this.leftMissionInfoPanel1.getFrom(),
+                                        this.rightMissionInfoPanel2.getFrom(),
+                                        this.rightMissionInfoPanel2.getCC(),
+                                        this.rightMissionInfoPanel2.getACC(),
+                                        this.rightMissionInfoPanel2.getFromLU(),
+                                        this.rightMissionInfoPanel2.getFromSP(),
+                                        this.rightMissionInfoPanel2.getToLU(),
+                                        this.rightMissionInfoPanel2.getToSP(),
+                                        this.leftMissionInfoPanel1.getClassification()
+                                      );
+        try{
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            Save sf = new Save(mission);
+            sf.save();
+        }catch(Exception ex){
+            //JOptionPane.showMessageDialog(this, "Mission failed to save, please try agian.");
+        }finally{            
+            this.setCursor(Cursor.getDefaultCursor());
+        }
+        
+        
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     /**

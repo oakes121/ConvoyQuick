@@ -10,6 +10,7 @@ import convoy.objects.Mission;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -18,29 +19,39 @@ import java.io.IOException;
 public class Save {
   
   private File file;
-  private String fileName;
+  private Mission mission;
     
-    public Save(String fileName, Mission mission){
-        
-        this.fileName = fileName;
+    public Save(Mission mission){
+        this.mission = mission;
         
     }
     
     public void save(){
-        
-        try{
-            file = new File("src/convoy/save/" + fileName + ".conx");
-        }catch(Exception ex){
-            
-        }finally{
+                        
+            file = new File("src/convoy/save/" + mission.getMissionNumber() + ".conx");
         
         
         //String text = "Hello world";
         try {
             
-            String test = "testByteString";
+            String saveData = "missionNumber, classification, stagingArea, acc, cc, FromLinkUpTime, FromSPTime, LeftFrom, RightFrom, LeftTo, RightTo, ToLinkUpTime";
             
-            byte[] dataToWrite = test.getBytes("UTF32");
+            saveData += mission.getMissionNumber() + ",";
+            saveData += mission.getClassification() + ",";
+            saveData += mission.getMissionstagingArea() + ",";
+            saveData += mission.getACC() + ",";
+            saveData += mission.getCC() + ",";
+            saveData += mission.getFromLinkUpTime() + ",";
+            saveData += mission.getFromSPTime() + ",";
+            saveData += mission.getLeftFrom() + ",";
+            saveData += mission.getRightFrom() + ",";
+            saveData += mission.getLeftTo() + ",";
+            saveData += mission.getRightTo() + ",";
+            saveData += mission.getToLinkUpTime() + ",";
+            saveData += mission.getToSPTime();
+            
+            
+            byte[] dataToWrite = saveData.getBytes("UTF32");
             
             String str = new String(dataToWrite, "UTF32");
             
@@ -53,9 +64,9 @@ public class Save {
             
             
         } catch ( IOException e ) {
-           e.printStackTrace();
+           JOptionPane.showMessageDialog(null, "Mission failed to save, please try again.");
         }
-        }
+        
         
     } 
     
