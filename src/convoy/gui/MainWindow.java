@@ -50,7 +50,7 @@ public final class MainWindow extends javax.swing.JFrame {
      */
     public MainWindow() {
         this.imagePath = getClass().getResource("/convoy/resources/images/2id.png").getPath().substring(1).replace("/", "\\");
-
+        
         initComponents();
         makeSelectPanelsTransparent();
         doMainWindowFont();
@@ -480,7 +480,7 @@ public final class MainWindow extends javax.swing.JFrame {
                 }
 
                 if (img != null) {
-                    Image finalImage = img.getScaledInstance(this.leftMissionInfoPanel1.getIconWidth(), this.leftMissionInfoPanel1.getIconHeight(), java.awt.Image.SCALE_SMOOTH); // getScaledInstance(width, hieght, algorithm)
+                    Image finalImage = img.getScaledInstance(175, 150, java.awt.Image.SCALE_SMOOTH); // getScaledInstance(width, hieght, algorithm)
                     ImageIcon icon = new ImageIcon(finalImage);
                     this.leftMissionInfoPanel1.setIcon(icon);
                 }//img.getScaledInstance(8, 10, Image.SCALE_SMOOTH);
