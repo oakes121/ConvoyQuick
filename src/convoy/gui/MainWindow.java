@@ -5,6 +5,7 @@
  */
 package convoy.gui;
 
+import convoy.objects.Mission;
 import convoy.pdf.*;
 import java.awt.Cursor;
 
@@ -14,6 +15,8 @@ import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
@@ -22,6 +25,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
@@ -57,7 +61,6 @@ public final class MainWindow extends javax.swing.JFrame {
         missionNumberPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
         additionalInfoPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
 
-        //addMenuBar();
     }
 
     public void makeSelectPanelsTransparent() {
@@ -187,6 +190,11 @@ public final class MainWindow extends javax.swing.JFrame {
 
         jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem2.setText("<html><strong>Save</strong></html>");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         fileMenu.add(jMenuItem2);
 
         finalizeMenu.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F, java.awt.event.InputEvent.CTRL_MASK));
@@ -476,11 +484,11 @@ public final class MainWindow extends javax.swing.JFrame {
                     try {
                         this.setCursor(Cursor.getDefaultCursor());
                         PrintPDF p = new PrintPDF();
-                        p.print(chooser.getSelectedFile().getPath() + ".pdf");
+                        p.print(chooser.getSelectedFile().getPath());
                     } catch (Exception ex) {
                         this.setCursor(Cursor.getDefaultCursor());
                         PrintPDF p = new PrintPDF();
-                        p.print(chooser.getSelectedFile().getPath() + ".pdf");
+                        p.print(chooser.getSelectedFile().getPath());
                     }
                 }
             }
@@ -488,6 +496,11 @@ public final class MainWindow extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        //Mission mission = new Mission(this.leftMissionInfoPanel1.getMissionNumber(),
+                                      //this.);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     /**
      * @param args the command line arguments

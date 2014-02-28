@@ -8,10 +8,7 @@ public class Mission implements Serializable {
 
     private static Mission uniqueInstance;            
     private static String constructorUsed;
-    private int missionNumber;                       // The designated mission number for the convoy
-    private String missionName;                      // The designated mission name for the convoy 
-    private int numberOfPersonnel;                   // The number of personnel in the convoy
-    private int numberOfVehicles;                    // The number of vehicles in the convoy
+    private String missionNumber;                    // The designated mission name for the convoy
     private Classification missionClassification;    // The classification of the mission 
     private Time missionLinkUpTime;                  // The meeting time of the convoy 
     private Time missionDepartureTime;               // The departure time of the convoy
@@ -20,16 +17,21 @@ public class Mission implements Serializable {
     private ArrayList<Vehicle> vehicles;             // All of the vehicles in the convoy
     private ArrayList<Personnel> people;             // All of the personnel in the convoy
     private Attachments attachments;                 // All of the attachments associated with the convoy
+    private String leftTo;
+    private String rightTo;
+    private String leftFrom;
+    private String rightFrom;
 
     /**
      *  constructor Mission() initializes all class variables
      */
     private Mission() {
         constructorUsed = "default";
-        missionNumber = 0;
-        missionName = "Mission Name";
-        numberOfPersonnel = 2;
-        numberOfVehicles = 2;
+        missionNumber = "Misson Number";
+        leftTo = "";
+        rightTo = "";
+        leftFrom = "";
+        rightFrom = "";
         missionStagingArea = "Staging Area";
         unitName = "Unit Name";
         vehicles = new ArrayList<>();
@@ -66,16 +68,17 @@ public class Mission implements Serializable {
      * @param dTS int value representing seconds use to instantiate
      * missionDepartureTime
      */
-    private Mission(int missionNumber, String missionName, int numberOfPersonnel, int numberOfVehicles,
-            String missionStagingArea, String unitName, int lUH, int lUM, int lUS,
+    private Mission(String missionNumber, 
+            String missionStagingArea,String leftTo, String rightTo, String leftFrom, String rightFrom, String unitName, int lUH, int lUM, int lUS,
             int dTH, int dTM, int dTS) {
         constructorUsed = "alt1"; 
         this.missionNumber = missionNumber;
-        this.missionName = missionName;
-        this.numberOfPersonnel = numberOfPersonnel;
-        this.numberOfVehicles = numberOfVehicles;
         this.missionStagingArea = missionStagingArea;
         this.unitName = unitName;
+        this.leftTo = leftTo;
+        this.rightTo = rightTo;
+        this.leftFrom = leftFrom;
+        this.rightFrom = rightFrom;
         vehicles = new ArrayList<>();
         people = new ArrayList<>();
         attachments = new Attachments();
@@ -113,9 +116,6 @@ public class Mission implements Serializable {
             String unitName, int lUH, int lUM, int lUS, int dTH, int dTM, int dTS) 
      * that was assigned the name uniqueInstance. 
      * @param missionNumber int value that missionNumber will be set to
-     * @param missionName string value that missionName will be set to
-     * @param numberOfPersonnel int value that numberOfPersonnel will be set to
-     * @param numberOfVehicles int value that numberOfVehicles will be set to
      * @param missionStagingArea string value that missionStagingArea will be
      * set to
      * @param unitName string value that unitName will be set to
@@ -133,14 +133,12 @@ public class Mission implements Serializable {
      * missionDepartureTime
      * @return 
      */
-    public static synchronized Mission getInstance(int missionNumber, String missionName,
-            int numberOfPersonnel, int numberOfVehicles,String missionStagingArea,
+    public static synchronized Mission getInstance(String missionNumber, String missionStagingArea, String leftTo, String rightTo, String leftFrom, String rightFrom,
             String unitName, int lUH, int lUM, int lUS, int dTH, int dTM, int dTS) {
         
         // if uniqueInstance is null, instantiate it to new Mission()
         if (uniqueInstance == null) {
-            uniqueInstance = new Mission(missionNumber, missionName, numberOfPersonnel,
-                    numberOfVehicles, missionStagingArea, unitName, lUH, lUM, 
+            uniqueInstance = new Mission(missionNumber,  leftTo,  rightTo,  leftFrom,  rightFrom, missionStagingArea, unitName, lUH, lUM, 
                     lUS, dTH, dTM, dTS);
         }
         
@@ -218,17 +216,8 @@ public class Mission implements Serializable {
      * to missionNumber
      * @param missionNumber 
      */
-    public void setMissionNumber(int missionNumber) {
+    public void setMissionNumber(String missionNumber) {
         this.missionNumber = missionNumber;
-    }
-
-    /**
-     * Method setMissionName(String missionName) sets this.missionName to 
-     * missionName
-     * @param missionName String value that missionName will be set to
-     */
-    public void setMissionName(String missionName) {
-        this.missionName = missionName;
     }
 
     /**
@@ -236,8 +225,12 @@ public class Mission implements Serializable {
      * to numberOfPersonnel
      * @param numberOfPersonnel int value that this.numberOfPersonnel is set to
      */
-    public void setNumberOfPersonnel(int numberOfPersonnel) {
-        this.numberOfPersonnel = numberOfPersonnel;
+    public void setLeftTo(String leftTo) {
+        this.leftTo = leftTo;
+    }
+    
+    public void setLeftFrom(String leftFrom) {
+        this.leftFrom = leftFrom;
     }
 
     /**
@@ -245,8 +238,12 @@ public class Mission implements Serializable {
      * to numberOfVehicles
      * @param numberOfVehicles int value that this.numberOfVehicles is set to
      */
-    public void setNumberOfVehicles(int numberOfVehicles) {
-        this.numberOfVehicles = numberOfVehicles;
+    public void setRightTo(String rightTo) {
+        this.rightTo = rightTo;
+    }
+    
+    public void setRightFrom(String rightFrom) {
+        this.rightFrom = rightFrom;
     }
 
     /**
@@ -306,32 +303,40 @@ public class Mission implements Serializable {
      * Method getMissionNumber() will return missionNumber
      * @return missionNumber
      */
-    public int getMissionNumber() {
+    public String getMissionNumber() {
         return missionNumber;
-    }
-
-    /**
-     * Method getMissionName() will return missionName
-     * @return missionName
-     */
-    public String getMissionName() {
-        return missionName;
     }
 
     /**
      * Method getNumberOfPersonnel() will return numberOfPersonnel
      * @return numberOfPersonnel
      */
-    public int getNumberOfPersonnel() {
-        return numberOfPersonnel;
+    public String getLeftTo() {
+        return leftTo;
     }
 
     /**
      * Method getNumberOfVehicles() will return numberOfVehicles
      * @return numberOfVehicles
      */
-    public int getNumberOfVehicles() {
-        return numberOfVehicles;
+    public String getRightTo() {
+        return rightTo;
+    }
+    
+    /**
+     * Method getNumberOfPersonnel() will return numberOfPersonnel
+     * @return numberOfPersonnel
+     */
+    public String getLeftFrom() {
+        return leftFrom;
+    }
+
+    /**
+     * Method getNumberOfVehicles() will return numberOfVehicles
+     * @return numberOfVehicles
+     */
+    public String getRightFrom() {
+        return rightFrom;
     }
 
     /**

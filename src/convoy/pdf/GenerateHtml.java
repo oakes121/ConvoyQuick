@@ -168,7 +168,7 @@ public class GenerateHtml {
         } else {
             additionalText = "            <tr class=\"rows\">\n"
                     + "                <!-- second row //-->\n"
-                    + "                <td class=\"additionalText\" colspan=\"2\">Additional Text</td>\n"
+                    + "                <td class=\"additionalText\" colspan=\"3\">" + additionalText + "</td>\n"
                     + "            </tr>\n";
         }
 
@@ -202,7 +202,7 @@ public class GenerateHtml {
                         + "            font-size: 14pt;\n"
                         + "        }\n"
                         + "        td {\n"
-                        + "            //border: 1px solid #000;\n"
+                        + "            border: 1px solid #000;\n"
                         + "            background-color: white;\n"
                         + "        }\n"
                         + "        .label {\n"
@@ -268,7 +268,7 @@ public class GenerateHtml {
                         + "                    <table id=\"leftMissionInfoTable\">\n"
                         + "                        <!-- left mission info table //-->\n"
                         + "                        <tr>\n"
-                        + "                            <td colspan=\"2\" id=\"classification\">" + classification + "</td>\n"
+                        + "                            <td colspan=\"3\" id=\"classification\">" + classification + "</td>\n"
                         + "                        </tr>\n"
                         + "                        <tr>\n"
                         + "                            <td rowspan=\"4\" id=\"unitPatch\"><img src=\"" + "file:\\" + watermark + "\" alt=\"unitPatch\"/></td>\n"

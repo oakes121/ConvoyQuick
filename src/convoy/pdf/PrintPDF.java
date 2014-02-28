@@ -20,7 +20,7 @@ public class PrintPDF {
 
         try {
 
-            File document = new File(file);
+            File document = new File(file + ".pdf");
 
             Desktop.getDesktop().print(document);
         } catch (IOException ex) {
