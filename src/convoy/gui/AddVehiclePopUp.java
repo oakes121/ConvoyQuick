@@ -274,10 +274,25 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
         jLabel3.setText("VEHICLE INFORMATION");
 
         vehicleInfo1Field.setText("Bumper Number");
+        vehicleInfo1Field.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                vehicleInfo1FieldFocusGained(evt);
+            }
+        });
 
         vehicleInfo2Field.setText("Callsign");
+        vehicleInfo2Field.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                vehicleInfo2FieldFocusGained(evt);
+            }
+        });
 
         vehicleInfo3Field.setText("Additional Information");
+        vehicleInfo3Field.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                vehicleInfo3FieldFocusGained(evt);
+            }
+        });
 
         jLabel9.setForeground(new java.awt.Color(255, 0, 0));
         jLabel9.setText("*");
@@ -451,6 +466,21 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
         personnel4Field.setText("");
     }//GEN-LAST:event_personnel4FieldFocusGained
 
+    private void vehicleInfo1FieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_vehicleInfo1FieldFocusGained
+        // TODO add your handling code here:
+        vehicleInfo1Field.setText("");
+    }//GEN-LAST:event_vehicleInfo1FieldFocusGained
+
+    private void vehicleInfo2FieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_vehicleInfo2FieldFocusGained
+        // TODO add your handling code here:
+        vehicleInfo2Field.setText("");
+    }//GEN-LAST:event_vehicleInfo2FieldFocusGained
+
+    private void vehicleInfo3FieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_vehicleInfo3FieldFocusGained
+        // TODO add your handling code here:
+        vehicleInfo3Field.setText("");
+    }//GEN-LAST:event_vehicleInfo3FieldFocusGained
+
     public void setObject(VehiclePanel vehicleInfo) {
         newVehiclePanel = vehicleInfo;
     }
@@ -474,6 +504,7 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
         newVehiclePanel.setPassenger3(personnel4Field.getText());
         newVehiclePanel.setBumperNumber(vehicleInfo1Field.getText());
         newVehiclePanel.setCallSign(vehicleInfo2Field.getText());
+        newVehiclePanel.setAdditionalInfo(vehicleInfo3Field.getText());
     }
 
     public void modifyPopUp() {
