@@ -9,7 +9,6 @@ import convoy.objects.Mission;
 import java.awt.AlphaComposite;
 import java.awt.Color;
 import java.awt.Cursor;
-import java.awt.FileDialog;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -31,44 +30,44 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  * @author dizoo548
  */
 public class MainMenu extends javax.swing.JFrame {
-    
 
     private static MainMenu frame = new MainMenu();
     protected static Mission mission;
-    
+
     private BufferedImage image;
-    
+
     protected void paintComponent(Graphics g) {
         this.paintComponent(g);
         int x = (this.getWidth() - image.getWidth(null)) / 2;
         int y = (this.getHeight() - image.getHeight(null)) / 2;
-        
-        BufferedImage tmpImg = new BufferedImage(image.getWidth(), image.getHeight(), 
-                                                  BufferedImage.TYPE_INT_ARGB);
+
+        BufferedImage tmpImg = new BufferedImage(image.getWidth(), image.getHeight(),
+                BufferedImage.TYPE_INT_ARGB);
         Graphics2D g2d = (Graphics2D) tmpImg.getGraphics();
-        g2d.setComposite(AlphaComposite.SrcOver.derive(0.3f)); 
-                 // set the transparency level in range 0.0f - 1.0f 
+        g2d.setComposite(AlphaComposite.SrcOver.derive(0.3f));
+        // set the transparency level in range 0.0f - 1.0f 
         g2d.drawImage(image, 0, 0, null);
         image = tmpImg;
-        
+
         g.drawImage(image, x, y, null); // see javadoc for more info on the parameters            
     }
-    
+
     /**
      * Method used to load an image
+     *
      * @param imageName the file path of the image to be loaded
      */
     private void loadImage() {
-       try {
+        try {
             image = ImageIO.read(getClass().getResource("/convoy/resources/images/humveeWithGun.jpg"));
         } catch (IOException ex) {
         }
     }
-    
+
     /**
      * Creates new form MainMenu
      */
-    public MainMenu() {        
+    public MainMenu() {
         mission = Mission.getInstance();
         initComponents();
         doMainMenuFont();
@@ -77,11 +76,11 @@ public class MainMenu extends javax.swing.JFrame {
         loadImage();
         repaint();
         revalidate();
-        
+
         newProjectPanel.requestFocus();
-        
+
     }
-    
+
     public void display() {
         frame.setVisible(true);
         frame.setLocationRelativeTo(null);
@@ -223,89 +222,130 @@ public class MainMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void newProjectPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newProjectPanelMouseEntered
-        
+
         newProjectPanel.setBorder(new BevelBorder(BevelBorder.LOWERED));
-        
+
     }//GEN-LAST:event_newProjectPanelMouseEntered
 
     private void loadProjectPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loadProjectPanelMouseEntered
-        
+
         loadProjectPanel.setBorder(new BevelBorder(BevelBorder.LOWERED));
-        
+
     }//GEN-LAST:event_loadProjectPanelMouseEntered
 
     private void loadProjectPanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loadProjectPanelMouseExited
-        
+
         loadProjectPanel.setBorder(new BevelBorder(BevelBorder.RAISED));
-        
+
     }//GEN-LAST:event_loadProjectPanelMouseExited
 
     private void newProjectPanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newProjectPanelMouseExited
-        
+
         newProjectPanel.setBorder(new BevelBorder(BevelBorder.RAISED));
-        
+
     }//GEN-LAST:event_newProjectPanelMouseExited
 
     private void newProjectPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newProjectPanelMouseClicked
-        this.setVisible(false); 
+        this.setVisible(false);
         mainWindow = new MainWindow();
-        mainWindow.display(); 
+        mainWindow.display();
     }//GEN-LAST:event_newProjectPanelMouseClicked
 
     private void loadProjectPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loadProjectPanelMouseClicked
-       
+
         String missionNumber = null;
         String classification = null;
-        
-        
-            JFileChooser chooser = new JFileChooser();
-            chooser.setAcceptAllFileFilterUsed(false);
-            chooser.addChoosableFileFilter((new FileNameExtensionFilter("Convoy Quick Files", "conx")));
-            chooser.setSelectedFile(new File("*.conx"));
-            chooser.setCurrentDirectory(new File("src/convoy/save"));
+        String stagingArea = null;
+        String acc = null;
+        String cc = null;
+        String fromLinkUpTime = null;
+        String fromSPTime = null;
+        String leftFrom = null;
+        String rightFrom = null;
+        String leftTo = null;
+        String rightTo = null;
+        String toLinkUpTime = null;
+        String toSPTime = null;
+        String leftAdditionalText = null;
+        String rightAdditionalText = null;
+        String additionalText = null;
 
-            int option = chooser.showOpenDialog(null);
-            if (option == JFileChooser.APPROVE_OPTION) {
+        JFileChooser chooser = new JFileChooser();
+        chooser.setAcceptAllFileFilterUsed(false);
+        chooser.addChoosableFileFilter((new FileNameExtensionFilter("Convoy Quick Files", "conx")));
+        chooser.setSelectedFile(new File("*.conx"));
+        chooser.setCurrentDirectory(new File("src/convoy/save"));
 
-                try {
-                    BufferedReader br;
-                    File file = chooser.getSelectedFile();
-                    String line;
-                    String cvsSplitBy = ",";
-                    
-                    br = new BufferedReader(new FileReader(file));
-                    while ((line = br.readLine()) != null) {
- 
-		        // use comma as separator
-			String[] mission = line.split(cvsSplitBy);
-                        
-                        missionNumber = mission[0];
-                        classification = mission[1];
-                        
-                        
-                    }
-                    
-                    this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        int option = chooser.showOpenDialog(null);
+        if (option == JFileChooser.APPROVE_OPTION) {
 
-                    this.setVisible(false);
-                    MainWindow mainWindow = new MainWindow(missionNumber);
-                    mainWindow.setVisible(true);
-                    mainWindow.setTitle("Convoy QuicMaink - Convoy documentation creator to help save lives");
-                    mainWindow.setIconImage(new ImageIcon(getClass().getResource("/convoy/resources/images/humveeIcon.png")).getImage());
-                    mainWindow.setExtendedState(MainWindow.MAXIMIZED_BOTH);
-                    mainWindow.toFront();
-                    repaint();
-                    revalidate();
+            try {
+                BufferedReader br;
+                File file = chooser.getSelectedFile();
+                String line;
+                String cvsSplitBy = ",";
 
-                } catch (IOException ex) {
+                br = new BufferedReader(new FileReader(file));
+                while ((line = br.readLine()) != null) {
 
-                } finally {
-                    this.setCursor(Cursor.getDefaultCursor());
+                    // use comma as separator
+                    String[] mission = line.split(cvsSplitBy);
+
+                    missionNumber = mission[0];
+                    classification = mission[1];
+                    stagingArea = mission[2];
+                    acc = mission[3];
+                    cc = mission[4];
+                    fromLinkUpTime = mission[5];
+                    fromSPTime = mission[6];
+                    leftFrom = mission[7];
+                    rightFrom = mission[8];
+                    leftTo = mission[9];
+                    rightTo = mission[10];
+                    toLinkUpTime = mission[11];
+                    toSPTime = mission[12];
+                    leftAdditionalText = mission[13];
+                    rightAdditionalText = mission[14];
+                    additionalText = mission[15];
+
                 }
-            
+
+                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+                this.setVisible(false);
+                MainWindow mainWindow = new MainWindow(missionNumber,
+                        classification,
+                        stagingArea,
+                        acc,
+                        cc,
+                        fromLinkUpTime,
+                        fromSPTime,
+                        leftFrom,
+                        rightFrom,
+                        leftTo,
+                        rightTo,
+                        toLinkUpTime,
+                        toSPTime,
+                        leftAdditionalText,
+                        rightAdditionalText,
+                        additionalText);
+                mainWindow.setVisible(true);
+                mainWindow.setTitle("Convoy QuicMaink - Convoy documentation creator to help save lives");
+                mainWindow.setIconImage(new ImageIcon(getClass().getResource("/convoy/resources/images/humveeIcon.png")).getImage());
+                mainWindow.setExtendedState(MainWindow.MAXIMIZED_BOTH);
+                mainWindow.toFront();
+                repaint();
+                revalidate();
+
+            } catch (IOException ex) {
+
+            } finally {
+                this.setCursor(Cursor.getDefaultCursor());
+            }
         }
+
     }//GEN-LAST:event_loadProjectPanelMouseClicked
-        
+
     /**
      * @param args the command line arguments
      */
@@ -343,38 +383,37 @@ public class MainMenu extends javax.swing.JFrame {
 
     private void doMainMenuFont() {
         try {
-            
+
             Font topSecretFont = Font.createFont(Font.TRUETYPE_FONT, getClass().getResourceAsStream("/convoy/resources/fonts/topSecret.ttf"));
             topSecretFont = topSecretFont.deriveFont(Font.BOLD, 96f);
             mainMenuTitle.setHorizontalAlignment(SwingConstants.CENTER);
             mainMenuTitle.setFont(topSecretFont);
-            
+
             Font captureItFont = Font.createFont(Font.TRUETYPE_FONT, getClass().getResourceAsStream("/convoy/resources/fonts/captureIt.ttf"));
             captureItFont = captureItFont.deriveFont(Font.BOLD, 48f);
-            
+
             newProjectLabel.setFont(captureItFont);
             loadProjectLabel.setFont(captureItFont);
 
-            
         } catch (Exception ex) {
             ex.printStackTrace();;
         }
 
     }
-    
-    private void setMainMenuButtonColor(){
-        
-       Color desertStormColor = new  Color(194, 178, 128);
-       
-       newProjectPanel.setBackground(desertStormColor);
-       loadProjectPanel.setBackground(desertStormColor);
-       
-       newProjectPanel.setBorder(new BevelBorder(BevelBorder.RAISED));
-       loadProjectPanel.setBorder(new BevelBorder(BevelBorder.RAISED));
-       
+
+    private void setMainMenuButtonColor() {
+
+        Color desertStormColor = new Color(194, 178, 128);
+
+        newProjectPanel.setBackground(desertStormColor);
+        loadProjectPanel.setBackground(desertStormColor);
+
+        newProjectPanel.setBorder(new BevelBorder(BevelBorder.RAISED));
+        loadProjectPanel.setBorder(new BevelBorder(BevelBorder.RAISED));
+
     }
 
-    private MainWindow mainWindow; 
+    private MainWindow mainWindow;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel loadProjectLabel;
     private javax.swing.JPanel loadProjectPanel;

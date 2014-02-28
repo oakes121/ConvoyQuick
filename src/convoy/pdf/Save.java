@@ -46,7 +46,10 @@ public class Save {
             saveData += mission.getLeftTo() + ",";
             saveData += mission.getRightTo() + ",";
             saveData += mission.getToLinkUpTime() + ",";
-            saveData += mission.getToSPTime();
+            saveData += mission.getToSPTime() + ",";
+            saveData += mission.getLeftAdditionalInfo() + ",";
+            saveData += mission.getRightAdditionalInfo() + ",";
+            saveData += mission.getAdditionalInfo();
 
             byte[] dataToWrite = saveData.getBytes("UTF8");
 

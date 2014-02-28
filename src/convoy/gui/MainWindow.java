@@ -64,7 +64,22 @@ public final class MainWindow extends javax.swing.JFrame {
 
     }
     
-    public MainWindow(String missionNumber) {
+    public MainWindow(  String missionNumber,
+                        String classification,
+                        String stagingArea,
+                        String acc,
+                        String cc,
+                        String fromLinkUpTime,
+                        String fromSPTime,
+                        String leftFrom,
+                        String rightFrom,
+                        String leftTo,
+                        String rightTo,
+                        String toLinkUpTime,
+                        String toSPTime,
+                        String leftAdditionalText,
+                        String rightAdditionalText,
+                        String additionalText) {
         this.imagePath = getClass().getResource("/convoy/resources/images/2id.png").getPath().substring(1).replace("/", "\\");
 
         initComponents();
@@ -79,6 +94,21 @@ public final class MainWindow extends javax.swing.JFrame {
         additionalInfoPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
         
         this.leftMissionInfoPanel1.setMissionNumber(missionNumber);
+        this.leftMissionInfoPanel1.setClassification(classification);
+        this.leftMissionInfoPanel1.setFrom(leftFrom);
+        this.leftMissionInfoPanel1.setTo(leftTo);
+        this.leftMissionInfoPanel1.setAdditionalText(leftAdditionalText);
+        this.rightMissionInfoPanel2.setCC(cc);
+        this.rightMissionInfoPanel2.setACC(acc);
+        this.rightMissionInfoPanel2.setStagingArea(stagingArea);
+        this.rightMissionInfoPanel2.setFrom(rightFrom);
+        this.rightMissionInfoPanel2.setFromLU(fromLinkUpTime);
+        this.rightMissionInfoPanel2.setFromSP(fromSPTime);
+        this.rightMissionInfoPanel2.setTo(rightTo);
+        this.rightMissionInfoPanel2.setToLU(toLinkUpTime);
+        this.rightMissionInfoPanel2.setToSP(toSPTime);
+        this.rightMissionInfoPanel2.setAddtionalText(rightAdditionalText);
+        this.additionalTextPanel1.setAdditionalText(additionalText);
         
     }
 
@@ -295,6 +325,21 @@ public final class MainWindow extends javax.swing.JFrame {
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         
         String missionNumber = null;
+        String classification = null;
+        String stagingArea = null;
+        String acc = null;
+        String cc = null;
+        String fromLinkUpTime = null;
+        String fromSPTime = null;
+        String leftFrom = null;
+        String rightFrom = null;
+        String leftTo = null;
+        String rightTo = null;
+        String toLinkUpTime = null;
+        String toSPTime = null;
+        String leftAdditionalText = null;
+        String rightAdditionalText = null;
+        String additionalText = null;
         
         int response = JOptionPane.showConfirmDialog(null, "Are you sure you want to load a convoy?\n All unsaved data will be lost.", "Load Convoy?", JOptionPane.YES_NO_OPTION);
         if (response == JOptionPane.YES_OPTION) {
@@ -321,15 +366,43 @@ public final class MainWindow extends javax.swing.JFrame {
 			String[] mission = line.split(cvsSplitBy);
                         
                         missionNumber = mission[0];
-                        String classification = mission[1];
-                        
+                        classification = mission[1];
+                        stagingArea = mission[2];
+                        acc = mission[3];
+                        cc = mission[4];
+                        fromLinkUpTime = mission[5];
+                        fromSPTime = mission[6];
+                        leftFrom = mission[7];
+                        rightFrom = mission[8];
+                        leftTo = mission[9];
+                        rightTo = mission[10];
+                        toLinkUpTime = mission[11];
+                        toSPTime = mission[12];
+                        leftAdditionalText = mission[13];
+                        rightAdditionalText = mission[14];
+                        additionalText = mission[15];
                         
                     }
                     
                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 
                     this.setVisible(false);
-                    MainWindow mainWindow = new MainWindow(missionNumber);
+                    MainWindow mainWindow = new MainWindow( missionNumber, 
+                                                            classification,
+                                                            stagingArea, 
+                                                            acc,
+                                                            cc,
+                                                            fromLinkUpTime, 
+                                                            fromSPTime,
+                                                            leftFrom,
+                                                            rightFrom,
+                                                            leftTo,
+                                                            rightTo,
+                                                            toLinkUpTime,
+                                                            toSPTime,
+                                                            leftAdditionalText,
+                                                            rightAdditionalText,
+                                                            additionalText );
                     mainWindow.setVisible(true);
                     mainWindow.setTitle("Convoy QuicMaink - Convoy documentation creator to help save lives");
                     mainWindow.setIconImage(new ImageIcon(getClass().getResource("/convoy/resources/images/humveeIcon.png")).getImage());

@@ -24,6 +24,10 @@ public class AdditionalTextPanel extends javax.swing.JPanel {
     public String getAdditionalText(){
         return this.jTextArea1.getText();
     }
+    
+    public void setAdditionalText(String text){
+        this.jTextArea1.setText(text);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.

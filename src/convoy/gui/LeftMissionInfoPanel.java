@@ -25,12 +25,29 @@ public class LeftMissionInfoPanel extends javax.swing.JPanel {
 
     }
 
+    public void setClassification(String classification) {
+
+        if (classification.equalsIgnoreCase("For official use only")) {
+            this.classificationDropBox.setSelectedIndex(0);            
+        }
+        if (classification.equalsIgnoreCase("Unclassified")) {
+            this.classificationDropBox.setSelectedIndex(1);            
+        }
+        if (classification.equalsIgnoreCase("Classified")) {
+            this.classificationDropBox.setSelectedIndex(2);            
+        }
+        if (classification.equalsIgnoreCase("Secret")) {
+            this.classificationDropBox.setSelectedIndex(3);            
+        }
+
+    }
+
     public String getMissionNumber() {
 
         return this.missionNumberTextField.getText();
 
     }
-    
+
     public void setMissionNumber(String missionNumber) {
 
         missionNumberTextField.setText(missionNumber);
@@ -52,6 +69,24 @@ public class LeftMissionInfoPanel extends javax.swing.JPanel {
     public String getAdditionalText() {
 
         return this.additionalText.getText();
+
+    }
+
+    public void setFrom(String from) {
+
+        this.fromTextField.setText(from);
+
+    }
+
+    public void setTo(String to) {
+
+        this.toTextField.setText(to);
+
+    }
+
+    public void setAdditionalText(String text) {
+
+        this.additionalText.setText(text);
 
     }
 

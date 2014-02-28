@@ -468,7 +468,7 @@ public class Mission implements Serializable {
     public String getClassification(){
         return this.classification;        
     }
-    public String getReftAdditionalInfo(){
+    public String getLeftAdditionalInfo(){
         return this.leftAdditionalText;        
     }
     public String getRightAdditionalInfo(){

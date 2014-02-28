@@ -66,6 +66,50 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
     public String getToSP() {
         return this.toSPTextField.getText();
     }
+    
+    public String getAddtionalText() {
+        return this.jTextArea1.getText();
+    }
+    
+    public void setAddtionalText(String text) {
+       this.jTextArea1.setText(text);
+    }
+    
+    public void setCC(String cc) {
+        this.ccTextField.setText(cc);
+    }
+
+    public void setACC(String acc) {
+        this.accTextField.setText(acc);
+    }
+
+    public void setStagingArea(String stagingArea) {
+        this.stagingAreaTextField.setText(stagingArea);
+    }
+
+    public void setFrom(String from) {
+        this.fromTextField.setText(from);
+    }
+
+    public void setTo(String to) {
+        this.toTextField.setText(to);
+    }
+
+    public void setFromLU(String fromLU) {
+        this.fromLinkUpTextField.setText(fromLU);
+    }
+
+    public void setToLU(String toLU) {
+        this.toTextField.setText(toLU);
+    }
+
+    public void setFromSP(String fromSP) {
+        this.fromSPTextField.setText(fromSP);
+    }
+
+    public void setToSP(String toSP) {
+        this.toSPTextField.setText(toSP);
+    }
 
     public ArrayList<Radio> getFreqs() {
 
