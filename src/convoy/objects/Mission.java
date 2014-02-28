@@ -27,8 +27,10 @@ public class Mission implements Serializable {
     private String fromSPTime;
     private String toLinkUpTime;
     private String toSPTime;
-    String classification;
-
+    private String classification;
+    private String leftAdditionalText;
+    private String rightAdditionalText;
+    private String additionalText;
     /**
      *  constructor Mission() initializes all class variables
      */
@@ -87,7 +89,10 @@ public class Mission implements Serializable {
                         String fromSPTime, 
                         String toLinkUpTime, 
                         String toSPTime,
-                        String classification) {
+                        String classification,
+                        String left,
+                        String right,
+                        String text) {
         constructorUsed = "alt1"; 
         this.missionNumber = missionNumber;
         this.missionStagingArea = missionStagingArea;
@@ -109,6 +114,9 @@ public class Mission implements Serializable {
         this.fromSPTime = fromSPTime;
         this.toSPTime = toSPTime;
         this.classification = classification;
+        this.leftAdditionalText = left;
+        this.rightAdditionalText = right;
+        this.additionalText = text;
     }
     
     /**
@@ -169,12 +177,15 @@ public class Mission implements Serializable {
                                                     String fromSPTime, 
                                                     String toLinkUpTime, 
                                                     String toSPTime,
-                                                    String classification) {
+                                                    String classification,
+                                                    String leftAdditionalText,
+                                                    String rightAdditionalText,
+                                                    String additionalText) {
         
         // if uniqueInstance is null, instantiate it to new Mission()
         if (uniqueInstance == null) {
             uniqueInstance = new Mission(   missionNumber, missionStagingArea, leftTo, rightTo, leftFrom, rightFrom,
-            cc, acc, fromLinkUpTime, fromSPTime, toLinkUpTime, toSPTime, classification);
+            cc, acc, fromLinkUpTime, fromSPTime, toLinkUpTime, toSPTime, classification,leftAdditionalText, rightAdditionalText, additionalText);
         }
         
         // if constructorUsed is set to "alt1" then return uniqueInstance else return null
@@ -456,6 +467,15 @@ public class Mission implements Serializable {
     }
     public String getClassification(){
         return this.classification;        
+    }
+    public String getReftAdditionalInfo(){
+        return this.leftAdditionalText;        
+    }
+    public String getRightAdditionalInfo(){
+        return this.rightAdditionalText;        
+    }
+    public String getAdditionalInfo(){
+        return this.additionalText;        
     }
 
 }

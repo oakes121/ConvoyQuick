@@ -480,7 +480,7 @@ public final class MainWindow extends javax.swing.JFrame {
                 }
 
                 if (img != null) {
-                    Image finalImage = img.getScaledInstance(175, 150, java.awt.Image.SCALE_SMOOTH); // getScaledInstance(width, hieght, algorithm)
+                    Image finalImage = img.getScaledInstance(202, 168, java.awt.Image.SCALE_SMOOTH); // getScaledInstance(width, hieght, algorithm)
                     ImageIcon icon = new ImageIcon(finalImage);
                     this.leftMissionInfoPanel1.setIcon(icon);
                 }//img.getScaledInstance(8, 10, Image.SCALE_SMOOTH);
@@ -583,7 +583,10 @@ public final class MainWindow extends javax.swing.JFrame {
                                         this.rightMissionInfoPanel2.getFromSP(),
                                         this.rightMissionInfoPanel2.getToLU(),
                                         this.rightMissionInfoPanel2.getToSP(),
-                                        this.leftMissionInfoPanel1.getClassification()
+                                        this.leftMissionInfoPanel1.getClassification(),
+                                        this.leftMissionInfoPanel1.getAdditionalText(),
+                                        this.rightMissionInfoPanel2.getAdditionalText(),
+                                        this.additionalTextPanel1.getAdditionalText()
                                       );
         try{
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
