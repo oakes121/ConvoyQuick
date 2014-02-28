@@ -274,7 +274,7 @@ public class MainMenu extends javax.swing.JFrame {
         chooser.setAcceptAllFileFilterUsed(false);
         chooser.addChoosableFileFilter((new FileNameExtensionFilter("Convoy Quick Files", "conx")));
         chooser.setSelectedFile(new File("*.conx"));
-        chooser.setCurrentDirectory(new File("src/convoy/save"));
+        chooser.setCurrentDirectory(new File("src/convoy/convoy"));
 
         int option = chooser.showOpenDialog(null);
         if (option == JFileChooser.APPROVE_OPTION) {

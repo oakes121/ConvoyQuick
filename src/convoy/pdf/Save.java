@@ -27,7 +27,7 @@ public class Save {
 
     public void save() {
 
-        file = new File("src/convoy/save/" + mission.getMissionNumber() + ".conx");
+        file = new File("src/convoy/convoy/" + mission.getMissionNumber() + ".conx");
 
         //String text = "Hello world";
         try {
