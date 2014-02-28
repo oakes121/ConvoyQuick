@@ -232,7 +232,8 @@ public class CreateVehiclePopUp extends javax.swing.JFrame {
             // TODO add your handling code here:
             FileDialog loadFile;
             loadFile = new FileDialog(this, "Choose a file", FileDialog.LOAD);
-            loadFile.setDirectory("C:\\");
+            loadFile.setFile("*.jpg;*.jpeg;*.png;*.gif");
+            //loadFile.setDirectory("C:\\");
             loadFile.setVisible(true);
             imageName = loadFile.getFile();
             File file = new File(loadFile.getFile());
