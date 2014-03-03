@@ -28,23 +28,25 @@ public class VehicleGrid extends javax.swing.JPanel implements ActionListener, K
     private static final int MAX_VEHICLES = 16;
     private int expNumberOfVehicles = MAX_VEHICLES;          
     
+    private final AddNewVehiclePanel addNewVehiclePanel1;
+    private AddVehiclePopUp addVehiclePopUp; 
     private ArrayList<VehiclePanel> vehiclePanelArray;     // array to hold all vehiclePanels
     private ArrayList<JPanel> panelHolder;                 // array used to create a grid of blank jPanels
     private ArrayList<Boolean> vehiclePanelClickedFlags;   // array used as a flag for each element in vehiclePanelArray
                                                            //  andpanelHolder when a vehiclePanle is clicked
-    GridBagConstraints gbc = new GridBagConstraints ();    // constraints used to control the layout of the grid
+    private GridBagConstraints gbc = new GridBagConstraints ();    // constraints used to control the layout of the grid
     private int trueCount = 0;                             // number of vehicle panels selected
     private int vehicleCount = 0;                          // count of vehicles in vehiclePanelArray
     private int columnCount = 0;                           // the column that a vehiclePanel will be added to in the 
                                                            //  placeHolder grid
     private int rowCount = 0;                              // the row that a vehiclePanel will be added to in the 
                                                            //  placeHolder grid
-    private final AddNewVehiclePanel addNewVehiclePanel1;
+    
     private int indicator = -1;                            // indicicates what element from the three arrays to remove
                                                            //  when deletePanel is called
     private int pos1 = -1, pos2 = -1;
     
-    private AddVehiclePopUp addVehiclePopUp;     
+        
 
     /**
      * Creates new form VehicleGrid
@@ -168,11 +170,9 @@ public class VehicleGrid extends javax.swing.JPanel implements ActionListener, K
      * @param row specifies which row in the placeHolder grid to add a vehiclePanel to 
      * @param column specifies which column in the placeHolder grid to add a vehiclePanel to 
      */
-    private void addVehiclePanel(int row, int column) {
+    private void addVehiclePanel() {
         if (vehicleCount < 16) {
             panelHolder.get(vehicleCount).remove(addNewVehiclePanel1);
-            
-            
             
             vehiclePanelArray.add(new VehiclePanel());
             vehiclePanelArray.get(vehicleCount).addMouseListener(this);
@@ -349,17 +349,9 @@ public class VehicleGrid extends javax.swing.JPanel implements ActionListener, K
         }        
     }
 
-    public void addNewVehiclePanel1() {
-        
+    public void replaceAddNewVehiclePanel() {
             
-        
-        //while (addVehiclePopUp.getIsFinished())
-            
-        addVehiclePanel(rowCount, columnCount);
-        addVehiclePopUp = new AddVehiclePopUp();
-        addVehiclePopUp.setVisible(true);
-        addVehiclePopUp.toFront();
-        addVehiclePopUp.setObject(vehiclePanelArray.get(vehicleCount-1));
+        addVehiclePanel();
 
         columnCount++;
             
@@ -387,17 +379,17 @@ public class VehicleGrid extends javax.swing.JPanel implements ActionListener, K
             
         } catch(IndexOutOfBoundsException ioobe) {} catch(NullPointerException npe) {}
          
-        // handles addNewVehiclePanel1
+        // handles replaceAddNewVehiclePanel
         if (e.getSource() == addNewVehiclePanel1) {
-            addNewVehiclePanel1();  
+            
+            /*
+            addVehiclePopUp = new AddVehiclePopUp();
+            addVehiclePopUp.setVisible(true);
+            addVehiclePopUp.toFront();*/
+            
+            replaceAddNewVehiclePanel();  
         }
     }
-    public void keyPressed(KeyEvent e) {}
-    public void keyReleased(KeyEvent e) {}
-    public void mouseClicked(MouseEvent e) {}
-    public void mouseReleased(MouseEvent e) {}
-    public void mouseEntered(MouseEvent e) {}
-    public void mouseExited(MouseEvent e) {}
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -410,7 +402,13 @@ public class VehicleGrid extends javax.swing.JPanel implements ActionListener, K
                     break;
                 }
             }
-            
         } catch(IndexOutOfBoundsException ioobe) {} catch(NullPointerException npe) {}
     }
+    
+    public void keyPressed(KeyEvent e) {}
+    public void keyReleased(KeyEvent e) {}
+    public void mouseClicked(MouseEvent e) {}
+    public void mouseReleased(MouseEvent e) {}
+    public void mouseEntered(MouseEvent e) {}
+    public void mouseExited(MouseEvent e) {}
 }
