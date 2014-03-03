@@ -44,6 +44,7 @@
             font-size: 18pt;
             //border-right: 5px solid red;
             width: 40%;
+            table-layout: fixed;
         }
         .additionalText {
             height: 100px;
@@ -63,7 +64,7 @@
         .midBorder {
             border-top: red solid 5px;
         }
-    </style>
+        .picCell{             max-width:52px;             width:52px;         }    </style>
 </head>
 
 <body>
@@ -73,13 +74,13 @@
             <tr class="rows">
                 <!-- first row //-->
                 <td style="width: 40%;" valign="top" id="leftMissionInfo">
-                    <table id="leftMissionInfoTable" style="table-layout: auto">
+                    <table id="leftMissionInfoTable">
                         <!-- left mission info table //-->
                         <tr>
                             <td colspan="3" id="classification">FOR OFFICIAL USE ONLY</td>
                         </tr>
                         <tr>
-                            <td style="" rowspan="4" id="unitPatch"><img src="file:\C:\Users\Public\Pictures\Sample Pictures\Penguins.jpg" alt="unitPatch"/></td>
+                            <td class="picCell" colspan="1" rowspan="4" id="unitPatch"><img src="file:\C:\Users\Public\Pictures\Sample Pictures\Jellyfish.jpg" alt="unitPatch"/></td>
                         </tr>
                         <tr>
                             <td class="label">Mission #</td>
