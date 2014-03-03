@@ -14,6 +14,7 @@ import java.awt.*;
 import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -296,6 +297,15 @@ public class CreateVehiclePopUp extends javax.swing.JFrame {
 
     private void addVehicleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addVehicleButtonActionPerformed
         // TODO add your handling code here:
+        if (url == null){
+            JOptionPane.showMessageDialog(null, "Select an Image", "Alert Message", JOptionPane.WARNING_MESSAGE);
+        }
+            /*
+        else if(enterVehicleField.getText() == null){
+            JOptionPane.showMessageDialog(null, "Enter Vehicle name", "Alert Message", JOptionPane.WARNING_MESSAGE);
+        }
+            */
+        else{
         addVehicleObject.setVehicleName(enterVehicleField.getText());
         addVehicleObject.setNumberOfSeats(numberOfSeats);
         addVehicleObject.setImageUrl(url);
@@ -304,6 +314,7 @@ public class CreateVehiclePopUp extends javax.swing.JFrame {
 
         addVehicleObject.setVisible(true);
         this.setVisible(false);
+        }
     }//GEN-LAST:event_addVehicleButtonActionPerformed
 
     private void enterVehicleFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enterVehicleFieldMouseClicked
