@@ -589,6 +589,7 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
     }
     
     public void setAllFieldsVisible(){
+                jPanel2.setVisible(true);
                 personnel1Field.setVisible(true);
                 personnel2Field.setVisible(true);
                 personnel3Field.setVisible(true);
