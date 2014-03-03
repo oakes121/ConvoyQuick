@@ -4,9 +4,17 @@
  */
 package convoy.gui;
 
+import java.awt.FileDialog;
 import java.awt.Font;
 import java.awt.FontFormatException;
+import java.awt.Image;
+import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.ScrollPaneConstants;
@@ -17,7 +25,7 @@ import javax.swing.ScrollPaneConstants;
  */
 public class LeftMissionInfoPanel extends javax.swing.JPanel {
 
-    ;
+    private String imagePath;
 
     public String getClassification() {
 
@@ -112,6 +120,18 @@ public class LeftMissionInfoPanel extends javax.swing.JPanel {
 
         return this.jLabel1.getIcon();
     }
+    
+    public void setImagePath(String path){
+        
+        this.imagePath = path;
+        
+    }
+    
+    public String getImagePath(){
+        
+        return this.imagePath;
+        
+    }
 
     /**
      * Creates new form MissionInfoPanel
@@ -195,6 +215,11 @@ public class LeftMissionInfoPanel extends javax.swing.JPanel {
         toLabel.setText("To: ");
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/convoy/resources/images/2id.png"))); // NOI18N
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLabel1MousePressed(evt);
+            }
+        });
 
         additionalText.setColumns(50);
         additionalText.setRows(5);
@@ -255,6 +280,62 @@ public class LeftMissionInfoPanel extends javax.swing.JPanel {
     private void fromTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fromTextFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_fromTextFieldActionPerformed
+
+    private void jLabel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MousePressed
+        try {
+            FileDialog loadFile = null;
+            loadFile = new FileDialog(loadFile, "Choose an Image", FileDialog.LOAD);
+            //loadFile.set
+            loadFile.setFile("*.jpg;*.jpeg;*.png;*.gif");
+            //loadFile.setDirectory("C:\\");
+            loadFile.setVisible(true);
+            //imageName = loadFile.getFile();
+
+            if (loadFile.getFile() != null) {
+
+                File file = new File(loadFile.getFile());
+
+                URL url = null;
+                try {
+                    url = new URL("file:\\" + loadFile.getDirectory() + file);
+
+                    this.setImagePath(loadFile.getDirectory() + file);
+
+                } catch (MalformedURLException ex) {
+                    Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                //String y = url.toString();
+                //String x = (url.toString().substring(6,9));
+                //String fileLocation = y.replace(x,"");
+                //String fileLocation = loadFile.getDirectory()+file;
+                //String url2 = new String("file:\\"+loadFile.getDirectory()+file);
+                //System.out.print(url);
+                Image img = null;
+                try {
+                    if (url != null) {
+                        img = ImageIO.read(url);
+                    } else {
+                    }
+                } catch (IOException ex) {
+                    Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+                if (img != null) {
+                    Image finalImage = img.getScaledInstance(202, 168, java.awt.Image.SCALE_SMOOTH); // getScaledInstance(width, hieght, algorithm)
+                    ImageIcon icon = new ImageIcon(finalImage);
+                    this.setIcon(icon);
+                }//img.getScaledInstance(8, 10, Image.SCALE_SMOOTH);
+                //System.out.print(fileLocation);
+                //System.out.println(url2);
+                //ImagePanel imgPanel = new ImagePanel(fileLocation);
+
+                // jLabel2.setIcon(new javax.swing.ImageIcon(fileLocation)); // NOI18N
+                //this.add(imgPanel);  
+            }
+        } catch (Exception ex) {
+            ;
+        }
+    }//GEN-LAST:event_jLabel1MousePressed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea additionalText;

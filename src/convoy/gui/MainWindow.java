@@ -35,20 +35,14 @@ public final class MainWindow extends javax.swing.JFrame {
 
     private static final MainWindow frame = new MainWindow();
 
-    private String imagePath;
-
-    public String getImagePath() {
-        return this.imagePath;
-    }
-
+    
     String missionNumberText;
 
     /**
      * Creates new form mainWindow
      */
     public MainWindow() {
-        this.imagePath = getClass().getResource("/convoy/resources/images/2id.png").getPath().substring(1).replace("/", "\\");
-
+       
         initComponents();
         makeSelectPanelsTransparent();
         doMainWindowFont();
@@ -59,6 +53,9 @@ public final class MainWindow extends javax.swing.JFrame {
 
         missionNumberPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
         additionalInfoPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        
+         this.leftMissionInfoPanel1.setImagePath(getClass().getResource("/convoy/resources/images/2id.png").getPath().substring(1).replace("/", "\\"));
+
 
     }
 
@@ -482,7 +479,7 @@ public final class MainWindow extends javax.swing.JFrame {
 
                     //System.out.print(this.rightMissionInfoPanel2.getFreqs().get(0).getFreq());
                     gh.generateHtml(
-                            this.getImagePath(),
+                            this.leftMissionInfoPanel1.getImagePath(),
                             this.leftMissionInfoPanel1.getClassification(),
                             this.leftMissionInfoPanel1.getMissionNumber(),
                             this.leftMissionInfoPanel1.getFrom(),
@@ -534,7 +531,7 @@ public final class MainWindow extends javax.swing.JFrame {
                 try {
                     url = new URL("file:\\" + loadFile.getDirectory() + file);
 
-                    imagePath = loadFile.getDirectory() + file;
+                    this.leftMissionInfoPanel1.setImagePath(loadFile.getDirectory() + file);
 
                 } catch (MalformedURLException ex) {
                     Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
@@ -604,7 +601,7 @@ public final class MainWindow extends javax.swing.JFrame {
                     GenerateHtml gh = new GenerateHtml();
 
                     gh.generateHtml(
-                            this.getImagePath(),
+                            this.leftMissionInfoPanel1.getImagePath(),
                             this.leftMissionInfoPanel1.getClassification(),
                             this.leftMissionInfoPanel1.getMissionNumber(),
                             this.leftMissionInfoPanel1.getFrom(),
@@ -663,7 +660,7 @@ public final class MainWindow extends javax.swing.JFrame {
                 this.leftMissionInfoPanel1.getAdditionalText(),
                 this.rightMissionInfoPanel2.getAdditionalText(),
                 this.additionalTextPanel1.getAdditionalText(),
-                this.getImagePath()
+                this.leftMissionInfoPanel1.getImagePath()
         );
         try {
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
