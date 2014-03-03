@@ -170,11 +170,11 @@ public class VehicleGrid extends javax.swing.JPanel implements ActionListener, K
      * @param row specifies which row in the placeHolder grid to add a vehiclePanel to 
      * @param column specifies which column in the placeHolder grid to add a vehiclePanel to 
      */
-    private void addVehiclePanel() {
+    private void addVehiclePanel(VehiclePanel vp) {
         if (vehicleCount < 16) {
             panelHolder.get(vehicleCount).remove(addNewVehiclePanel1);
             
-            vehiclePanelArray.add(new VehiclePanel());
+            vehiclePanelArray.add(vp);
             vehiclePanelArray.get(vehicleCount).addMouseListener(this);
             vehiclePanelArray.get(vehicleCount).getDeleteButton().addActionListener(this);
             panelHolder.get(vehicleCount).add(vehiclePanelArray.get(vehicleCount));
@@ -349,9 +349,9 @@ public class VehicleGrid extends javax.swing.JPanel implements ActionListener, K
         }        
     }
 
-    public void replaceAddNewVehiclePanel() {
+    public void replaceAddNewVehiclePanel(VehiclePanel vp) {
             
-        addVehiclePanel();
+        addVehiclePanel(vp);
 
         columnCount++;
             
@@ -382,12 +382,13 @@ public class VehicleGrid extends javax.swing.JPanel implements ActionListener, K
         // handles replaceAddNewVehiclePanel
         if (e.getSource() == addNewVehiclePanel1) {
             
-            /*
+            
             addVehiclePopUp = new AddVehiclePopUp();
             addVehiclePopUp.setVisible(true);
-            addVehiclePopUp.toFront();*/
+            addVehiclePopUp.toFront();
+            //addVehiclePopup.setObject(this);
             
-            replaceAddNewVehiclePanel();  
+            //replaceAddNewVehiclePanel();  
         }
     }
 
