@@ -386,7 +386,8 @@ public class VehicleGrid extends javax.swing.JPanel implements ActionListener, K
             addVehiclePopUp = new AddVehiclePopUp();
             addVehiclePopUp.setVisible(true);
             addVehiclePopUp.toFront();
-            //addVehiclePopup.setObject(this);
+            addVehiclePopUp.setObject(this);
+            
             
             //replaceAddNewVehiclePanel();  
         }

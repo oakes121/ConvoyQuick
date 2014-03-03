@@ -22,6 +22,7 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
      * Creates new form AddVehiclePopUp
      */
     private VehiclePanel newVehiclePanel;
+    private VehicleGrid vehicleGridObj;
     private String vehicleName;
     private String numberOfSeats;
     private URL imageUrl;
@@ -30,6 +31,7 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
     public AddVehiclePopUp() {
 
         initComponents();
+        newVehiclePanel = new VehiclePanel();
         this.setLocationRelativeTo(null); //centers frame
         this.setTitle("Add a New Vehicle"); //adds title
         this.setIconImage(new ImageIcon(getClass().getResource("/convoy/resources/images/humveeIcon.png")).getImage());
@@ -435,6 +437,8 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
     private void addVehicleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addVehicleButtonActionPerformed
         // TODO add your handling code here:
         addValuesToVehiclePanel();
+        System.out.println("Adding New Vehicle");
+        vehicleGridObj.replaceAddNewVehiclePanel(newVehiclePanel);
         this.setVisible(false);
     }//GEN-LAST:event_addVehicleButtonActionPerformed
 
@@ -481,8 +485,8 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
         vehicleInfo3Field.setText("");
     }//GEN-LAST:event_vehicleInfo3FieldFocusGained
 
-    public void setObject(VehiclePanel vehicleInfo) {
-        newVehiclePanel = vehicleInfo;
+    public void setObject(VehicleGrid vehicleGrid) {
+        vehicleGridObj = vehicleGrid;
     }
 
     public void setVehicleName(String name) {
@@ -498,6 +502,7 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
     }
 
     public void addValuesToVehiclePanel() {
+        
         newVehiclePanel.setDriverName(personnel1Field.getText());
         newVehiclePanel.setPassenger1(personnel2Field.getText());
         newVehiclePanel.setPassenger2(personnel3Field.getText());
@@ -505,7 +510,9 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
         newVehiclePanel.setBumperNumber(vehicleInfo1Field.getText());
         newVehiclePanel.setCallSign(vehicleInfo2Field.getText());
         newVehiclePanel.setAdditionalInfo(vehicleInfo3Field.getText());
-    }
+        newVehiclePanel.setImage(img);
+      
+        }
 
     public void modifyPopUp() {
 
