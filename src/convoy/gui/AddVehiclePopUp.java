@@ -519,7 +519,9 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
         vehicleNameField.setText(vehicleName);
         setImage();
         switch (numberOfSeats) {
+            
             case "1":
+                setAllFieldsVisible();
                 personnel2Field.setVisible(false);
                 personnel2Field.setText("");
                 personnel3Field.setVisible(false);
@@ -533,7 +535,9 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
                 jLabel6.setVisible(false);
                 jLabel7.setVisible(false);
                 break;
+            
             case "2":
+                setAllFieldsVisible();
                 personnel3Field.setVisible(false);
                 personnel3Field.setText("");
                 personnel4Field.setVisible(false);
@@ -543,15 +547,21 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
                 jLabel6.setVisible(false);
                 jLabel7.setVisible(false);
                 break;
+            
             case "3":
+                setAllFieldsVisible();
                 personnel4Field.setVisible(false);
                 personnel4Field.setText("");
                 jComboBox3.setVisible(false);
                 jLabel7.setVisible(false);
                 break;
+            
             case "4":
+                setAllFieldsVisible();
                 break;
+            
             case "5":
+                setAllFieldsVisible();
                 //Keep a roster
                 personnel1Field.setVisible(false);
                 personnel1Field.setText("");
@@ -576,6 +586,21 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
                 break;
         }
 
+    }
+    
+    public void setAllFieldsVisible(){
+                personnel1Field.setVisible(true);
+                personnel2Field.setVisible(true);
+                personnel3Field.setVisible(true);
+                personnel4Field.setVisible(true);
+                jComboBox1.setVisible(true);
+                jComboBox2.setVisible(true);
+                jComboBox3.setVisible(true);
+                jLabel4.setVisible(true);
+                jLabel5.setVisible(true);
+                jLabel6.setVisible(true);
+                jLabel7.setVisible(true);
+                jLabel8.setVisible(true);
     }
 
     public void setImage() {
