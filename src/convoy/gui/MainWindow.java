@@ -524,9 +524,9 @@ public final class MainWindow extends javax.swing.JFrame {
             //imageName = loadFile.getFile();
 
             if (loadFile.getFile() != null) {
-
+                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                 File file = new File(loadFile.getFile());
-
+                
                 URL url = null;
                 try {
                     url = new URL("file:\\" + loadFile.getDirectory() + file);
@@ -556,13 +556,9 @@ public final class MainWindow extends javax.swing.JFrame {
                     Image finalImage = img.getScaledInstance(202, 168, java.awt.Image.SCALE_SMOOTH); // getScaledInstance(width, hieght, algorithm)
                     ImageIcon icon = new ImageIcon(finalImage);
                     this.leftMissionInfoPanel1.setIcon(icon);
-                }//img.getScaledInstance(8, 10, Image.SCALE_SMOOTH);
-                //System.out.print(fileLocation);
-                //System.out.println(url2);
-                //ImagePanel imgPanel = new ImagePanel(fileLocation);
-
-                // jLabel2.setIcon(new javax.swing.ImageIcon(fileLocation)); // NOI18N
-                //this.add(imgPanel);  
+                }
+                
+                this.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
             }
         } catch (Exception ex) {
             ;
