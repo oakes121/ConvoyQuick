@@ -4,10 +4,7 @@
  */
 package convoy.gui;
 
-import java.awt.FileDialog;
-import java.awt.Font;
-import java.awt.FontFormatException;
-import java.awt.Image;
+import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -15,9 +12,10 @@ import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
-import javax.swing.ScrollPaneConstants;
+import javax.swing.*;
+import javax.swing.text.AbstractDocument;
+
+import convoy.objects.MaximumSizeFilter;
 
 /**
  *
@@ -222,10 +220,16 @@ public class LeftMissionInfoPanel extends javax.swing.JPanel {
         });
 
         additionalText.setColumns(50);
-        additionalText.setRows(5);
+        additionalText.setRows(2);
         additionalText.setText("Additional Information Goes Here");
         jScrollPane3.setViewportView(additionalText);
         jScrollPane3.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+
+        AbstractDocument pDoc=(AbstractDocument)additionalText.getDocument();
+
+        pDoc.setDocumentFilter(new MaximumSizeFilter(2, 100));
+
+        additionalText.setMargin(new Insets(5,5,5,5));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -324,13 +328,7 @@ public class LeftMissionInfoPanel extends javax.swing.JPanel {
                     Image finalImage = img.getScaledInstance(202, 168, java.awt.Image.SCALE_SMOOTH); // getScaledInstance(width, hieght, algorithm)
                     ImageIcon icon = new ImageIcon(finalImage);
                     this.setIcon(icon);
-                }//img.getScaledInstance(8, 10, Image.SCALE_SMOOTH);
-                //System.out.print(fileLocation);
-                //System.out.println(url2);
-                //ImagePanel imgPanel = new ImagePanel(fileLocation);
-
-                // jLabel2.setIcon(new javax.swing.ImageIcon(fileLocation)); // NOI18N
-                //this.add(imgPanel);  
+                } 
             }
         } catch (Exception ex) {
             ;
@@ -353,3 +351,4 @@ public class LeftMissionInfoPanel extends javax.swing.JPanel {
     private javax.swing.JTextField toTextField;
     // End of variables declaration//GEN-END:variables
 }
+

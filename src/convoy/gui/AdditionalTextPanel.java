@@ -6,7 +6,10 @@
 
 package convoy.gui;
 
+import convoy.objects.MaximumSizeFilter;
+import java.awt.Insets;
 import javax.swing.ScrollPaneConstants;
+import javax.swing.text.AbstractDocument;
 
 /**
  *
@@ -48,6 +51,11 @@ public class AdditionalTextPanel extends javax.swing.JPanel {
         jTextArea1.setText("Additional Text Goes Here");
         jScrollPane1.setViewportView(jTextArea1);
         jScrollPane1.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+
+        AbstractDocument pDoc=(AbstractDocument)jTextArea1.getDocument();
+
+        pDoc.setDocumentFilter(new MaximumSizeFilter(2, 250));
+        jTextArea1.setMargin(new Insets(5,5,5,5));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

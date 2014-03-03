@@ -4,13 +4,13 @@
  */
 package convoy.gui;
 
+import convoy.objects.MaximumSizeFilter;
 import convoy.objects.Radio;
-import java.awt.Font;
-import java.awt.FontFormatException;
-import java.awt.HeadlessException;
+import java.awt.*;
 import java.io.IOException;
 import java.util.ArrayList;
 import javax.swing.*;
+import javax.swing.text.AbstractDocument;
 
 /**
  *
@@ -280,6 +280,12 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
         jTextArea1.setText("Additional Information Goes Here");
         jScrollPane1.setViewportView(jTextArea1);
         jScrollPane1.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+
+        AbstractDocument pDoc=(AbstractDocument)jTextArea1.getDocument();
+
+        pDoc.setDocumentFilter(new MaximumSizeFilter(5, 125));
+
+        jTextArea1.setMargin(new Insets(5,5,5,5));
 
         freqPanel.setBackground(new java.awt.Color(255, 255, 255));
 
