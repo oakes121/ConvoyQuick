@@ -1,14 +1,5 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package convoy.pdf;
 
-/**
- *
- * @author Mike Moye
- *
- */
 import java.awt.Desktop;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -22,18 +13,42 @@ import java.util.Scanner;
 import org.allcolor.yahp.converter.CYaHPConverter;
 import org.allcolor.yahp.converter.IHtmlToPdfTransformer;
 
-public class CreatePDF {
+/**
+ * @author Mike Moye <mtm5313@psu.edu>
+ * @version 1.0
+ * @since 2014-02-27
+ *
+ * <p>
+ * This class is used to create the pdf. I creates the pdf using the pdf library
+ * by grabbing the generated html and opening the pdf in the user's default pdf
+ * application.
+ * </p>
+ */
+public class Create {
 
-    String location = "";
+    String location = ""; //loacation that the pdf is stored
 
-    public CreatePDF() {
-
+    /**
+     * Default constructor
+     */
+    public Create() {
     }
 
-    public CreatePDF(String location) {
+    /**
+     * Constructor that creates the pdf in the specified location
+     *
+     * @param location location pdf will be stored
+     */
+    public Create(String location) {
         this.location = location;
     }
 
+    /**
+     * The Main method
+     *
+     * @param args the command line arguments
+     * @throws Exception
+     */
     public static void main(String args[]) throws Exception {
 
         String root = "src\\convoy\\resources\\html";
@@ -44,41 +59,51 @@ public class CreatePDF {
         //System.out.println("Done");
     }
 
+    /**
+     * Creates pdf and opens pdf in the user's default pdf application
+     *
+     * @throws Exception
+     */
     public void createPDF() throws Exception {
-
         String root = "src\\convoy\\resources\\html";
-        String input = "convoy.htm";  // need to be charset utf-8    
-        //String output = "src\\pdf\\" + input.replace(".htm","");
+        String input = "convoy.htm";  // need to be charset utf-8 
         htmlToPdfFile(new File(root, input),
                 new File(location + ".pdf"));
-        //System.out.println("Done");
-
         open(new File(location + ".pdf"));
-
     }
 
+    /**
+     * Creates pdf but does not open pdf
+     *
+     * @throws Exception
+     */
     public void createPDFPrint() throws Exception {
-
         String root = "src\\convoy\\resources\\html";
-        String input = "convoy.htm";  // need to be charset utf-8    
-        //String output = "src\\pdf\\" + input.replace(".htm","");
+        String input = "convoy.htm";  // need to be charset utf-8 
         htmlToPdfFile(new File(root, input),
                 new File(location + ".pdf"));
-    //System.out.println("Done");
-
-        //open(new File(location + ".pdf"));
     }
 
+    /**
+     * Opens a file externally in its default application
+     *
+     * @param document file to be opened
+     */
     public static void open(File document) {
-
         try {
             Desktop dt = Desktop.getDesktop();
             dt.open(document);
         } catch (IOException ex) {
-
         }
     }
 
+    /**
+     * Converts HTML to PDF using the pdf library
+     *
+     * @param htmlIn
+     * @param pdfOut
+     * @throws Exception
+     */
     public static void htmlToPdfFile(File htmlIn, File pdfOut) throws Exception {
         Scanner scanner
                 = new Scanner(htmlIn).useDelimiter("\\Z");
@@ -100,6 +125,5 @@ public class CreatePDF {
                     properties);
             out.flush();
         }
-
     }
 }

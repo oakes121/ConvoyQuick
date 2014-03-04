@@ -501,7 +501,7 @@ public final class MainWindow extends javax.swing.JFrame {
                             this.additionalTextPanel1.getAdditionalText()
                     );
 
-                    CreatePDF cp = new CreatePDF(chooser.getSelectedFile().getPath());
+                    Create cp = new Create(chooser.getSelectedFile().getPath());
                     cp.createPDF();
 
                 } catch (Exception ex) {
@@ -616,18 +616,18 @@ public final class MainWindow extends javax.swing.JFrame {
                             this.additionalTextPanel1.getAdditionalText()
                     );
 
-                    CreatePDF cp = new CreatePDF(chooser.getSelectedFile().getPath());
+                    Create cp = new Create(chooser.getSelectedFile().getPath());
                     cp.createPDFPrint();
 
                 } catch (Exception ex) {
                 } finally {
                     try {
                         this.setCursor(Cursor.getDefaultCursor());
-                        PrintPDF p = new PrintPDF();
+                        Print p = new Print();
                         p.print(chooser.getSelectedFile().getPath());
                     } catch (Exception ex) {
                         this.setCursor(Cursor.getDefaultCursor());
-                        PrintPDF p = new PrintPDF();
+                        Print p = new Print();
                         p.print(chooser.getSelectedFile().getPath());
                     }
                 }

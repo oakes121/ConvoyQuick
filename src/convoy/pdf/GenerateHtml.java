@@ -1,19 +1,55 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package convoy.pdf;
 
-import convoy.objects.Radio;
 import java.io.*;
 import java.util.ArrayList;
 
+import convoy.objects.Radio;
+
+/**
+ * @author Mike Moye <mtm5313@psu.edu>
+ * @version 1.0
+ * @since 2014-02-27
+ *
+ * <p>
+ * This class is used to create the pdf. I creates the pdf using the pdf library
+ * by grabbing the generated html and opening the pdf in the user's default pdf
+ * application.
+ * </p>
+ */
 public class GenerateHtml {
 
+    /**
+     * Default constructor
+     */
     public GenerateHtml() {
     }
 
+    /**
+     * <p>
+     * This method is used to generate the HTML and CSS. It grabs all the
+     * attribute from the convoy and adds them to the HTML file. The CSS is
+     * embedded in the HTML file.
+     * </p>
+     *
+     * @param watermark
+     * @param classification
+     * @param missionNumber
+     * @param leftFrom
+     * @param leftTo
+     * @param leftAdditionalText
+     * @param cc
+     * @param acc
+     * @param stagingArea
+     * @param rightFrom
+     * @param rightTo
+     * @param fromLU
+     * @param toLU
+     * @param fromSP
+     * @param toSP
+     * @param freqs
+     * @param rightAdditionalText
+     * @param additionalText
+     */
     public void generateHtml(String watermark,
             String classification,
             String missionNumber,
@@ -36,10 +72,8 @@ public class GenerateHtml {
         String radio = "";
 
         if (!freqs.get(0).getName().equalsIgnoreCase("")) {
-
-            radio
-                    = "<tr>"
-                    + "<td colspan=\"6\">"
+            radio = "                           <tr>"
+                    + "                             <td colspan=\"6\">"
                     + "                                <table id=\"freqTable\">\n"
                     + "                                    <!-- frequency table //-->\n"
                     + "                                    <tr>\n"
@@ -52,14 +86,11 @@ public class GenerateHtml {
                     + "                                    </tr>\n"
                     + "                                </table>\n"
                     + "                                <!-- end frequency table //-->\n"
-                    + "</td>"
-                    + "</tr>";
-
+                    + "                             </td>"
+                    + "                         </tr>";
         }
         if (!freqs.get(1).getName().equalsIgnoreCase("")) {
-
-            radio
-                    = "                        <tr>\n"
+            radio = "                           <tr>\n"
                     + "                            <!-- frequency row //-->\n"
                     + "                            <td colspan=\"6\">\n"
                     + "                                 <table id=\"freqTable\">\n"
@@ -76,14 +107,13 @@ public class GenerateHtml {
                     + "                                        <td class=\"data\" id=\"ch2Freq\">" + freqs.get(1).getFreq() + "</td>\n"
                     + "                                    </tr>\n"
                     + "                                </table>\n"
-                    + "                                <!-- end frequency table //-->\n" + "                            </td>\n"
+                    + "                                <!-- end frequency table //-->\n"
+                    + "                            </td>\n"
                     + "                        </tr>\n";
-
         }
 
         if (!freqs.get(2).getName().equalsIgnoreCase("")) {
-            radio
-                    = "                        <tr>\n"
+            radio = "                        <tr>\n"
                     + "                            <!-- frequency row //-->\n"
                     + "                            <td colspan=\"6\">\n" + "                    <table id=\"freqTable\">\n"
                     + "                                    <!-- frequency table //-->\n"
@@ -142,11 +172,11 @@ public class GenerateHtml {
         if (rightAdditionalText.equalsIgnoreCase("")) {
             rightAdditionalText = "";
         } else {
-            rightAdditionalText = "                        <tr>\n"
+            rightAdditionalText = "             <tr>\n"
                     + "                            <td class=\"additionalText\" colspan=\"6\">\n"
                     + "                                <pre>\n"
                     + rightAdditionalText
-                    + "</pre>\n"
+                    + "                                 </pre>\n"
                     + "                            </td>\n"
                     + "                        </tr>\n";
         }
@@ -155,12 +185,12 @@ public class GenerateHtml {
             leftAdditionalText = "";
         } else {
             leftAdditionalText = "                        <tr>\n"
-                    + "                            <td class=\"additionalText\" colspan=\"3\" id=\"leftAdditionaInfo\">\n"
-                    + "                                <pre>\n"
+                    + "                                     <td class=\"additionalText\" colspan=\"3\" id=\"leftAdditionaInfo\">\n"
+                    + "                                         <pre>\n"
                     + "" + leftAdditionalText + "\n"
-                    + "</pre>\n"
-                    + "                            </td>\n"
-                    + "                        </tr>\n";
+                    + "                                         </pre>\n"
+                    + "                                     </td>\n"
+                    + "                                 </tr>\n";
         }
 
         if (additionalText.equalsIgnoreCase("")) {
@@ -978,11 +1008,10 @@ public class GenerateHtml {
                         + "\n"
                         + "</html>");
 
-                //Desktop.getDesktop().browse(f.toURI());
+                //Desktop.getDesktop().browse(f.toURI()); open html file in default browser.
             }
         } catch (IOException ex) {
+            //ex.printStackTrace();
         }
-
     }
-
 }
