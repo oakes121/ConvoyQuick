@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package convoy.gui;
 
 import convoy.objects.MaximumSizeFilter;
@@ -12,8 +6,14 @@ import javax.swing.ScrollPaneConstants;
 import javax.swing.text.AbstractDocument;
 
 /**
+ * @author Mike Moye <mtm5313@psu.edu>
+ * @version 1.0
+ * @since 2014-02-27
  *
- * @author dizoo548
+ * <p>
+ * This class is to create the text area at the bottom of the main window. It
+ * gets and sets the text.
+ * </p>
  */
 public class AdditionalTextPanel extends javax.swing.JPanel {
 
@@ -23,13 +23,21 @@ public class AdditionalTextPanel extends javax.swing.JPanel {
     public AdditionalTextPanel() {
         initComponents();
     }
-    
-    public String getAdditionalText(){
-        return this.jTextArea1.getText();
+
+    /**
+     * Return the text that is in the additionalText text area.
+     * @return addtionalText.getText()
+     */
+    public String getAdditionalText() {
+        return this.addtionalText.getText();
     }
-    
-    public void setAdditionalText(String text){
-        this.jTextArea1.setText(text);
+
+    /**
+     * Sets the text for the additionalText text area.
+     * @param text The text to be set in the additionalText text area.
+     */
+    public void setAdditionalText(String text) {
+        this.addtionalText.setText(text);
     }
 
     /**
@@ -42,20 +50,20 @@ public class AdditionalTextPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        addtionalText = new javax.swing.JTextArea();
 
         setBackground(new java.awt.Color(194, 178, 128));
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jTextArea1.setText("Additional Text Goes Here");
-        jScrollPane1.setViewportView(jTextArea1);
+        addtionalText.setColumns(20);
+        addtionalText.setRows(5);
+        addtionalText.setText("Additional Text Goes Here");
+        jScrollPane1.setViewportView(addtionalText);
         jScrollPane1.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 
-        AbstractDocument pDoc=(AbstractDocument)jTextArea1.getDocument();
+        AbstractDocument pDoc=(AbstractDocument)addtionalText.getDocument();
 
         pDoc.setDocumentFilter(new MaximumSizeFilter(2, 250));
-        jTextArea1.setMargin(new Insets(5,5,5,5));
+        addtionalText.setMargin(new Insets(5,5,5,5));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -77,7 +85,7 @@ public class AdditionalTextPanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextArea addtionalText;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
 }

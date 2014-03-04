@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package convoy.gui;
 
 import java.awt.*;
@@ -18,130 +14,198 @@ import javax.swing.text.AbstractDocument;
 import convoy.objects.MaximumSizeFilter;
 
 /**
+ * @author Mike Moye <mtm5313@psu.edu>
+ * @version 1.0
+ * @since 2014-02-27
  *
- * @author MTM5313
+ * <p>
+ * This class is to create the left mission information panel at the top left of
+ * the main window.
+ * </p>
  */
 public class LeftMissionInfoPanel extends javax.swing.JPanel {
 
-    private String imagePath;
-
-    public String getClassification() {
-
-        return this.classificationDropBox.getSelectedItem().toString().toUpperCase();
-
-    }
-
-    public void setClassification(String classification) {
-
-        if (classification.equalsIgnoreCase("For official use only")) {
-            this.classificationDropBox.setSelectedIndex(0);            
-        }
-        if (classification.equalsIgnoreCase("Unclassified")) {
-            this.classificationDropBox.setSelectedIndex(1);            
-        }
-        if (classification.equalsIgnoreCase("Classified")) {
-            this.classificationDropBox.setSelectedIndex(2);            
-        }
-        if (classification.equalsIgnoreCase("Secret")) {
-            this.classificationDropBox.setSelectedIndex(3);            
-        }
-
-    }
-
-    public String getMissionNumber() {
-
-        return this.missionNumberTextField.getText();
-
-    }
-
-    public void setMissionNumber(String missionNumber) {
-
-        missionNumberTextField.setText(missionNumber);
-
-    }
-
-    public String getFrom() {
-
-        return this.fromTextField.getText();
-
-    }
-
-    public String getTo() {
-
-        return this.toTextField.getText();
-
-    }
-
-    public String getAdditionalText() {
-
-        return this.additionalText.getText();
-
-    }
-
-    public void setFrom(String from) {
-
-        this.fromTextField.setText(from);
-
-    }
-
-    public void setTo(String to) {
-
-        this.toTextField.setText(to);
-
-    }
-
-    public void setAdditionalText(String text) {
-
-        this.additionalText.setText(text);
-
-    }
-
-    public void setIcon(ImageIcon icon) {
-        jLabel1.setText("");
-        jLabel1.setIcon(icon);
-
-    }
-
-    public int getIconWidth() {
-
-        return this.jLabel1.getWidth();
-
-    }
-
-    public int getIconHeight() {
-
-        return this.jLabel1.getHeight();
-
-    }
-
-    public Icon getIcon() {
-
-        return this.jLabel1.getIcon();
-    }
-    
-    public void setImagePath(String path){
-        
-        this.imagePath = path;
-        
-    }
-    
-    public String getImagePath(){
-        
-        return this.imagePath;
-        
-    }
+    private String imagePath; //directory path of the unit patch
 
     /**
-     * Creates new form MissionInfoPanel
+     * This constructor is use the initialize the left mission information
+     * panel.
      */
     public LeftMissionInfoPanel() {
-
         super();
         initComponents();
         doFonts();
         setLayout(this.getLayout());
     }
 
+    /**
+     * Returns the classification of the convoy in uppercase
+     *
+     * @return classificationDropBox.getSelectedItem().toString().toUpperCase()
+     */
+    public String getClassification() {
+        return this.classificationDropBox.getSelectedItem().toString().toUpperCase();
+    }
+
+    /**
+     * Sets the convoy classification
+     *
+     * @param classification the classification to be set
+     */
+    public void setClassification(String classification) {
+        if (classification.equalsIgnoreCase("For official use only")) {
+            this.classificationDropBox.setSelectedIndex(0);
+        }
+        if (classification.equalsIgnoreCase("Unclassified")) {
+            this.classificationDropBox.setSelectedIndex(1);
+        }
+        if (classification.equalsIgnoreCase("Classified")) {
+            this.classificationDropBox.setSelectedIndex(2);
+        }
+        if (classification.equalsIgnoreCase("Secret")) {
+            this.classificationDropBox.setSelectedIndex(3);
+        }
+        if (classification.equalsIgnoreCase("Top Secret")) {
+            this.classificationDropBox.setSelectedIndex(4);
+        }
+        if (classification.equalsIgnoreCase("Confediential")) {
+            this.classificationDropBox.setSelectedIndex(5);
+        }
+    }
+
+    /**
+     * Returns the convoy mission number
+     *
+     * @return this.missionNumberTextField.getText()
+     */
+    public String getMissionNumber() {
+        return this.missionNumberTextField.getText();
+    }
+
+    /**
+     * Sets the mission number
+     *
+     * @param missionNumber
+     */
+    public void setMissionNumber(String missionNumber) {
+        missionNumberTextField.setText(missionNumber);
+    }
+
+    /**
+     * Returns the beginning location of the convoy in the left mission
+     * information panel
+     *
+     * @return this.fromTextField.getText()
+     */
+    public String getFrom() {
+        return this.fromTextField.getText();
+    }
+
+    /**
+     * Returns the destination of the convoy in the left mission information
+     * panel
+     *
+     * @return this.toTextField.getText()
+     */
+    public String getTo() {
+        return this.toTextField.getText();
+    }
+
+    /**
+     * Returns the additional information of the left mission information panel
+     *
+     * @return this.additionalText.getText()
+     */
+    public String getAdditionalText() {
+        return this.additionalText.getText();
+    }
+
+    /**
+     * Sets the beginning location of the convoy in the left mission information
+     * panel
+     *
+     * @param from
+     */
+    public void setFrom(String from) {
+        this.fromTextField.setText(from);
+    }
+
+    /**
+     * Sets destination of the convoy in the left mission information panel
+     *
+     * @param to
+     */
+    public void setTo(String to) {
+        this.toTextField.setText(to);
+    }
+
+    /**
+     * Sets the additional information of the left mission information panel
+     *
+     * @param text
+     */
+    public void setAdditionalText(String text) {
+        this.additionalText.setText(text);
+    }
+
+    /**
+     * Sets the image of the unit patch
+     *
+     * @param icon the image as a icon
+     */
+    public void setIcon(ImageIcon icon) {
+        imageLabel.setText("");
+        imageLabel.setIcon(icon);
+    }
+
+    /**
+     * Gets the width of the label where the image goes
+     *
+     * @return this.imageLabel.getWidth()
+     */
+    public int getIconWidth() {
+        return this.imageLabel.getWidth();
+    }
+
+    /**
+     * Gets the height of the label where the image goes
+     *
+     * @return this.imageLabel.getHeight()
+     */
+    public int getIconHeight() {
+        return this.imageLabel.getHeight();
+    }
+
+    /**
+     * Gets icon of the label where the image goes
+     *
+     * @return this.imageLabel.getIcon()
+     */
+    public Icon getIcon() {
+        return this.imageLabel.getIcon();
+    }
+
+    /**
+     * Sets the path of the directory where the unit patch image is located
+     *
+     * @param path
+     */
+    public void setImagePath(String path) {
+        this.imagePath = path;
+    }
+
+    /**
+     * Gets the path of the directory where the unit patch image is located
+     *
+     * @return this.imagePath
+     */
+    public String getImagePath() {
+        return this.imagePath;
+    }
+
+    /**
+     * Sets and formats the fonts on the left mission information panel
+     */
     private void doFonts() {
         try {
             Font captureItFont = Font.createFont(Font.TRUETYPE_FONT, getClass().getResourceAsStream("/convoy/resources/fonts/captureIt.ttf"));
@@ -151,11 +215,9 @@ public class LeftMissionInfoPanel extends javax.swing.JPanel {
             missionNumberLabel.setFont(captureItFont);
             fromLabel.setFont(captureItFont);
             toLabel.setFont(captureItFont);
-
         } catch (FontFormatException | IOException ex) {
             //ex.printStackTrace();
         }
-
     }
 
     /**
@@ -177,7 +239,7 @@ public class LeftMissionInfoPanel extends javax.swing.JPanel {
         fromTextField = new javax.swing.JTextField();
         toLabel = new javax.swing.JLabel();
         toTextField = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
+        imageLabel = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         additionalText = new javax.swing.JTextArea();
 
@@ -198,24 +260,18 @@ public class LeftMissionInfoPanel extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(194, 178, 128));
 
-        classificationDropBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "For Official Use Only", "Unclassified", "Classified", "Secret" }));
+        classificationDropBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "FOR OFFICIAL USE ONLY", "UNCLASSIFIED", "CLASSIFIED", "SECRET", "TOP SECRET", "CONFEDIENTAL" }));
 
         missionNumberLabel.setText("Mission #");
 
         fromLabel.setText("From: ");
 
-        fromTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fromTextFieldActionPerformed(evt);
-            }
-        });
-
         toLabel.setText("To: ");
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/convoy/resources/images/2id.png"))); // NOI18N
-        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+        imageLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/convoy/resources/images/2id.png"))); // NOI18N
+        imageLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jLabel1MousePressed(evt);
+                imageLabelMousePressed(evt);
             }
         });
 
@@ -240,7 +296,7 @@ public class LeftMissionInfoPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 575, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addComponent(imageLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
@@ -274,46 +330,38 @@ public class LeftMissionInfoPanel extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(toTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(toLabel)))
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(imageLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(20, 20, 20)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void fromTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fromTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_fromTextFieldActionPerformed
-
-    private void jLabel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MousePressed
+    /**
+     * <p>
+     * Sets the unit patch image for the convoy when the user clicks on the
+     * image. User selects an image file from the desired directory. The file
+     * extensions can only be .jpg, .jpeg, .png, .gif. The file is resized and
+     * the location of the file is stored.
+     * </p>
+     *
+     * @param evt click image
+     */
+    private void imageLabelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imageLabelMousePressed
         try {
             FileDialog loadFile = null;
             loadFile = new FileDialog(loadFile, "Choose an Image", FileDialog.LOAD);
-            //loadFile.set
             loadFile.setFile("*.jpg;*.jpeg;*.png;*.gif");
-            //loadFile.setDirectory("C:\\");
             loadFile.setVisible(true);
-            //imageName = loadFile.getFile();
-
             if (loadFile.getFile() != null) {
-
                 File file = new File(loadFile.getFile());
-
                 URL url = null;
                 try {
                     url = new URL("file:\\" + loadFile.getDirectory() + file);
-
                     this.setImagePath(loadFile.getDirectory() + file);
-
                 } catch (MalformedURLException ex) {
                     Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                //String y = url.toString();
-                //String x = (url.toString().substring(6,9));
-                //String fileLocation = y.replace(x,"");
-                //String fileLocation = loadFile.getDirectory()+file;
-                //String url2 = new String("file:\\"+loadFile.getDirectory()+file);
-                //System.out.print(url);
                 Image img = null;
                 try {
                     if (url != null) {
@@ -323,24 +371,23 @@ public class LeftMissionInfoPanel extends javax.swing.JPanel {
                 } catch (IOException ex) {
                     Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
                 }
-
                 if (img != null) {
                     Image finalImage = img.getScaledInstance(202, 168, java.awt.Image.SCALE_SMOOTH); // getScaledInstance(width, hieght, algorithm)
                     ImageIcon icon = new ImageIcon(finalImage);
                     this.setIcon(icon);
-                } 
+                }
             }
         } catch (Exception ex) {
-            ;
+            //ex.printStackTrace();
         }
-    }//GEN-LAST:event_jLabel1MousePressed
+    }//GEN-LAST:event_imageLabelMousePressed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea additionalText;
     private javax.swing.JComboBox classificationDropBox;
     private javax.swing.JLabel fromLabel;
     private javax.swing.JTextField fromTextField;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel imageLabel;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
@@ -351,4 +398,3 @@ public class LeftMissionInfoPanel extends javax.swing.JPanel {
     private javax.swing.JTextField toTextField;
     // End of variables declaration//GEN-END:variables
 }
-

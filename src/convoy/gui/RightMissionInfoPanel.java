@@ -1,164 +1,275 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package convoy.gui;
 
-import convoy.objects.MaximumSizeFilter;
-import convoy.objects.Radio;
 import java.awt.*;
 import java.io.IOException;
 import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.text.AbstractDocument;
 
+import convoy.objects.MaximumSizeFilter;
+import convoy.objects.Radio;
+
 /**
+ * @author Mike Moye <mtm5313@psu.edu>
+ * @version 1.0
+ * @since 2014-02-27
  *
- * @author MTM5313
+ * <p>
+ * This class is used to create right mission information panel.
+ * </p>
  */
 public class RightMissionInfoPanel extends javax.swing.JPanel {
 
-    private int addFreqCount = 1;
+    private int addFreqCount = 1; //counts the number of channels in the radio
 
     /**
      * Creates new form rightMissionInfoPanel
      */
     public RightMissionInfoPanel() {
-
         initComponents();
         doFonts();
         doFreqs();
-
     }
 
+    /**
+     * Gets the convoy commander
+     *
+     * @return this.ccTextField.getText()
+     */
     public String getCC() {
         return this.ccTextField.getText();
     }
 
+    /**
+     * Gets the convoy assistant commander
+     *
+     * @return this.accTextField.getText()
+     */
     public String getACC() {
         return this.accTextField.getText();
     }
 
+    /**
+     * Gets the convoy staging area
+     *
+     * @return this.stagingAreaTextField.getText()
+     */
     public String getStagingArea() {
         return this.stagingAreaTextField.getText();
     }
 
+    /**
+     * Gets the beginning location of the convoy in the right mission
+     * information panel
+     *
+     * @return this.fromTextField.getText()
+     */
     public String getFrom() {
         return this.fromTextField.getText();
     }
 
+    /**
+     * Gets the destination of the convoy in the right mission information panel
+     *
+     * @return this.toTextField.getText()
+     */
     public String getTo() {
         return this.toTextField.getText();
     }
 
+    /**
+     * Gets the link up time of the beginning location
+     *
+     * @return this.fromLinkUpTextField.getText()
+     */
     public String getFromLU() {
         return this.fromLinkUpTextField.getText();
     }
 
+    /**
+     * Gets the link up time of the destination
+     *
+     * @return this.toTextField.getText()
+     */
     public String getToLU() {
         return this.toTextField.getText();
     }
 
+    /**
+     * Gets the SP time of the beginning location
+     *
+     * @return this.fromSPTextField.getText()
+     */
     public String getFromSP() {
         return this.fromSPTextField.getText();
     }
 
+    /**
+     * Gets the SP time of the destination
+     *
+     * @return this.toSPTextField.getText()
+     */
     public String getToSP() {
         return this.toSPTextField.getText();
     }
-    
+
+    /**
+     * Gets the additional information in the right mission information panel
+     *
+     * @return this.additonalText.getText()
+     */
     public String getAddtionalText() {
-        return this.jTextArea1.getText();
+        return this.additonalText.getText();
     }
-    
+
+    /**
+     * Sets the additional information in the right mission information panel
+     *
+     * @param text text to be set
+     */
     public void setAddtionalText(String text) {
-       this.jTextArea1.setText(text);
+        this.additonalText.setText(text);
     }
-    
+
+    /**
+     * Set the convoy commander
+     *
+     * @param cc convoy commander
+     */
     public void setCC(String cc) {
         this.ccTextField.setText(cc);
     }
 
+    /**
+     * Set the assistant convoy commander
+     *
+     * @param acc assistant convoy commander
+     */
     public void setACC(String acc) {
         this.accTextField.setText(acc);
     }
 
+    /**
+     * Sets the convoy staging area
+     *
+     * @param stagingArea
+     */
     public void setStagingArea(String stagingArea) {
         this.stagingAreaTextField.setText(stagingArea);
     }
 
+    /**
+     * Sets the beginning location of the right mission information panel
+     *
+     * @param from
+     */
     public void setFrom(String from) {
         this.fromTextField.setText(from);
     }
 
+    /**
+     * Sets the destination of the right information panel
+     *
+     * @param to
+     */
     public void setTo(String to) {
         this.toTextField.setText(to);
     }
 
+    /**
+     * Sets the link up time of the beginning location
+     *
+     * @param fromLU
+     */
     public void setFromLU(String fromLU) {
         this.fromLinkUpTextField.setText(fromLU);
     }
 
+    /**
+     * Sets the link up time of the destination
+     *
+     * @param toLU
+     */
     public void setToLU(String toLU) {
         this.toTextField.setText(toLU);
     }
 
+    /**
+     * Sets the SP time of the beginning location
+     *
+     * @param fromSP
+     */
     public void setFromSP(String fromSP) {
         this.fromSPTextField.setText(fromSP);
     }
 
+    /**
+     * Sets the SP time of the destination
+     *
+     * @param toSP
+     */
     public void setToSP(String toSP) {
         this.toSPTextField.setText(toSP);
     }
 
+    /**
+     * Gets the name and frequency of all the channels in the radio
+     *
+     * @return freqs
+     */
     public ArrayList<Radio> getFreqs() {
 
         ArrayList<Radio> freqs = new ArrayList();
-        
-        try{
 
-        if (this.channelOneName.getText() != null && this.channelOneFreq.getText() != null) {
-            freqs.add(new Radio(this.channelOneName.getText(), this.channelOneFreq.getText()));
-        } else {
+        try {
+            if (this.channelOneName.getText() != null && this.channelOneFreq.getText() != null) {
+                freqs.add(new Radio(this.channelOneName.getText(), this.channelOneFreq.getText()));
+            } else {
+                freqs.add(new Radio("", ""));
+            }
+            if (this.channelTwoName.getText() != null && this.channelTwoFreq.getText() != null) {
+                freqs.add(new Radio(this.channelTwoName.getText(), this.channelTwoFreq.getText()));
+            } else {
+                freqs.add(new Radio("", ""));
+            }
+            if (this.channelThreeName.getText() != null && this.channelThreeFreq.getText() != null) {
+                freqs.add(new Radio(this.channelThreeName.getText(), this.channelThreeFreq.getText()));
+            } else {
+                freqs.add(new Radio("", ""));
+            }
+            if (this.channelFourName.getText() != null && this.channelFourFreq.getText() != null) {
+                freqs.add(new Radio(this.channelFourName.getText(), this.channelFourFreq.getText()));
+            } else {
+                freqs.add(new Radio("", ""));
+            }
+            if (this.channelFiveName.getText() != null && this.channelFiveFreq.getText() != null) {
+                freqs.add(new Radio(this.channelFiveName.getText(), this.channelFiveFreq.getText()));
+            } else {
+                freqs.add(new Radio("", ""));
+            }
+            if (this.channelSixName.getText() != null && this.channelSixFreq.getText() != null) {
+                freqs.add(new Radio(this.channelSixName.getText(), this.channelSixFreq.getText()));
+            }
+        } catch (Exception ex) {
+            //ex.printStackTrace();
             freqs.add(new Radio("", ""));
         }
-        if (this.channelTwoName.getText() != null && this.channelTwoFreq.getText() != null) {
-            freqs.add(new Radio(this.channelTwoName.getText(), this.channelTwoFreq.getText()));
-        } else {
-            freqs.add(new Radio("", ""));
-        }
-        if (this.channelThreeName.getText() != null && this.channelThreeFreq.getText() != null) {
-            freqs.add(new Radio(this.channelThreeName.getText(), this.channelThreeFreq.getText()));
-        } else {
-            freqs.add(new Radio("", ""));
-        }
-        if (this.channelFourName.getText() != null && this.channelFourFreq.getText() != null) {
-            freqs.add(new Radio(this.channelFourName.getText(), this.channelFourFreq.getText()));
-        } else {
-            freqs.add(new Radio("", ""));
-        }
-        if (this.channelFiveName.getText() != null && this.channelFiveFreq.getText() != null) {
-            freqs.add(new Radio(this.channelFiveName.getText(), this.channelFiveFreq.getText()));
-        } else {
-            freqs.add(new Radio("", ""));
-        }
-        if (this.channelSixName.getText() != null && this.channelSixFreq.getText() != null) {
-            freqs.add(new Radio(this.channelSixName.getText(), this.channelSixFreq.getText()));
-        }
-        }catch(Exception ex){
-            ex.printStackTrace();
-            freqs.add(new Radio("", ""));
-        }
-
         return freqs;
     }
-    
-    public String getAdditionalText(){
-        return this.jTextArea1.getText();        
+
+    /**
+     * Get the additional text of the right mission information panel
+     *
+     * @return this.additonalText.getText()
+     */
+    public String getAdditionalText() {
+        return this.additonalText.getText();
     }
 
+    /**
+     * hides the channels
+     */
     private void doFreqs() {
-
         channelOneLabel.setVisible(false);
         channelOneName.setVisible(false);
         channelOneFreq.setVisible(false);
@@ -177,13 +288,13 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
         channelSixLabel.setVisible(false);
         channelSixName.setVisible(false);
         channelSixFreq.setVisible(false);
-
     }
 
+    /**
+     * Sets and formats the fonts on the right mission information panel
+     */
     private void doFonts() {
-
         try {
-
             Font captureItFont = Font.createFont(Font.TRUETYPE_FONT, getClass().getResourceAsStream("/convoy/resources/fonts/captureIt.ttf"));
             captureItFont = captureItFont.deriveFont(Font.ITALIC, 12f);
 
@@ -197,11 +308,9 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
             toLinkUpLabel.setFont(captureItFont);
             stagingAreaLabel.setFont(captureItFont);
             freqLabel.setFont(captureItFont);
-
         } catch (FontFormatException | IOException ex) {
             //ex.printStackTrace();
         }
-
     }
 
     /**
@@ -232,7 +341,7 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
         toSPLabel = new javax.swing.JLabel();
         fromSPTextField = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        additonalText = new javax.swing.JTextArea();
         freqPanel = new javax.swing.JPanel();
         freqLabel = new javax.swing.JLabel();
         addFreqLabel = new javax.swing.JLabel();
@@ -275,17 +384,17 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
 
         toSPLabel.setText("SP -");
 
-        jTextArea1.setColumns(50);
-        jTextArea1.setRows(5);
-        jTextArea1.setText("Additional Information Goes Here");
-        jScrollPane1.setViewportView(jTextArea1);
+        additonalText.setColumns(50);
+        additonalText.setRows(5);
+        additonalText.setText("Additional Information Goes Here");
+        jScrollPane1.setViewportView(additonalText);
         jScrollPane1.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 
-        AbstractDocument pDoc=(AbstractDocument)jTextArea1.getDocument();
+        AbstractDocument pDoc=(AbstractDocument)additonalText.getDocument();
 
         pDoc.setDocumentFilter(new MaximumSizeFilter(5, 125));
 
-        jTextArea1.setMargin(new Insets(5,5,5,5));
+        additonalText.setMargin(new Insets(5,5,5,5));
 
         freqPanel.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -490,7 +599,14 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+     * <p>
+     * Adds channels to the freqs table. The user must enter a frequency name
+     * and the frequency entered must be a float.
+     * </p>
+     *
+     * @param evt click add freq label
+     */
     private void addFreqLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addFreqLabelMouseClicked
         try {
             java.net.URL imgURL = getClass().getResource("/convoy/resources/images/radioFrequencyIcon.png");
@@ -505,17 +621,11 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
             response = JOptionPane.showConfirmDialog(this, stuff, "Add New Freq", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, icon);
             freqName.requestFocus();
             if (response == JOptionPane.CANCEL_OPTION) {
-
             } else {
-
                 if (freqName.getText().equalsIgnoreCase("")) {
-
                     JOptionPane.showMessageDialog(this, "Please provide a frequency name.");
-
                 } else if (!Float.isNaN(Float.parseFloat(freq.getText()))) {
-
                     if (response == JOptionPane.OK_OPTION && addFreqCount == 1) {
-
                         channelOneLabel.setVisible(true);
                         channelOneName.setVisible(true);
                         channelOneFreq.setVisible(true);
@@ -528,7 +638,6 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
                         repaint();
                         revalidate();
                     } else if (response == JOptionPane.OK_OPTION && addFreqCount == 2) {
-
                         channelTwoLabel.setVisible(true);
                         channelTwoName.setVisible(true);
                         channelTwoFreq.setVisible(true);
@@ -537,9 +646,7 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
                         channelTwoFreq.setText(freq.getText());
 
                         addFreqCount++;
-
                     } else if (response == JOptionPane.OK_OPTION && addFreqCount == 3) {
-
                         channelThreeLabel.setVisible(true);
                         channelThreeName.setVisible(true);
                         channelThreeFreq.setVisible(true);
@@ -552,7 +659,6 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
                         repaint();
                         revalidate();
                     } else if (response == JOptionPane.OK_OPTION && addFreqCount == 4) {
-
                         channelFourLabel.setVisible(true);
                         channelFourName.setVisible(true);
                         channelFourFreq.setVisible(true);
@@ -565,7 +671,6 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
                         repaint();
                         revalidate();
                     } else if (response == JOptionPane.OK_OPTION && addFreqCount == 5) {
-
                         channelFiveLabel.setVisible(true);
                         channelFiveName.setVisible(true);
                         channelFiveFreq.setVisible(true);
@@ -578,7 +683,6 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
                         repaint();
                         revalidate();
                     } else if (response == JOptionPane.OK_OPTION && addFreqCount == 6) {
-
                         channelSixLabel.setVisible(true);
                         channelSixName.setVisible(true);
                         channelSixFreq.setVisible(true);
@@ -593,11 +697,10 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
                         repaint();
                         revalidate();
                     }
-
                 }
             }
         } catch (HeadlessException | NumberFormatException ex) {
-            ex.printStackTrace();
+            //ex.printStackTrace();
             JOptionPane.showMessageDialog(this, "The frequency must be within a valid range.");
         }
     }//GEN-LAST:event_addFreqLabelMouseClicked
@@ -606,6 +709,7 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
     private javax.swing.JLabel accLabel;
     private javax.swing.JTextField accTextField;
     private javax.swing.JLabel addFreqLabel;
+    private javax.swing.JTextArea additonalText;
     private javax.swing.JLabel ccLabel;
     private javax.swing.JTextField ccTextField;
     private javax.swing.JTextField channelFiveFreq;
@@ -635,7 +739,6 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
     private javax.swing.JTextField fromSPTextField;
     private javax.swing.JTextField fromTextField;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel stagingAreaLabel;
     private javax.swing.JTextField stagingAreaTextField;
     private javax.swing.JLabel toLabel;

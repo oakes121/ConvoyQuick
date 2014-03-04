@@ -1,64 +1,72 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package convoy.gui;
+
+import java.awt.*;
+import java.io.*;
+import java.net.MalformedURLException;
+import java.net.URL;
+import javax.imageio.ImageIO;
+import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 import convoy.objects.Mission;
 import convoy.pdf.*;
-import java.awt.Cursor;
-
-import java.awt.FileDialog;
-import java.awt.Image;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.imageio.ImageIO;
-import javax.swing.BorderFactory;
-import javax.swing.ImageIcon;
-import javax.swing.JFileChooser;
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
+ * @author Mike Moye <mtm5313@psu.edu>
+ * @version 1.0
+ * @since 2014-02-27
  *
- * @author dizoo548
+ * <p>
+ * This class is used to create the Main Window.
+ * </p>
  */
 public final class MainWindow extends javax.swing.JFrame {
 
     private static final MainWindow frame = new MainWindow();
 
-    
-    String missionNumberText;
+    String missionNumberText; //mission number used to save convoy file
 
     /**
-     * Creates new form mainWindow
+     * <p>
+     * Creates new form mainWindow Used for default when no data needs to be
+     * loaded
+     * </p>
      */
     public MainWindow() {
-       
         initComponents();
-        makeSelectPanelsTransparent();
-        doMainWindowFont();
-        setMainWindowButtonColor();
-        picturePanel2 = new PicturePanel("/convoy/resources/images/camo.jpg");
-        revalidate();
-        repaint();
-
+        
         missionNumberPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
         additionalInfoPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        
-         this.leftMissionInfoPanel1.setImagePath(getClass().getResource("/convoy/resources/images/2id.png").getPath().substring(1).replace("/", "\\"));
 
-
+        this.leftMissionInfoPanel1.setImagePath(getClass().getResource("/convoy/resources/images/2id.png").getPath().substring(1).replace("/", "\\"));
+        revalidate();
+        repaint();
     }
 
+    /**
+     * <p>
+     * Creates new form mainWindow Used when loading a previously saved convoy
+     * file
+     * </p>
+     *
+     * @param missionNumber
+     * @param classification
+     * @param stagingArea
+     * @param acc
+     * @param cc
+     * @param fromLinkUpTime
+     * @param fromSPTime
+     * @param leftFrom
+     * @param rightFrom
+     * @param leftTo
+     * @param rightTo
+     * @param toLinkUpTime
+     * @param toSPTime
+     * @param leftAdditionalText
+     * @param rightAdditionalText
+     * @param additionalText
+     * @param unitPatch
+     */
     public MainWindow(String missionNumber,
             String classification,
             String stagingArea,
@@ -76,16 +84,8 @@ public final class MainWindow extends javax.swing.JFrame {
             String rightAdditionalText,
             String additionalText,
             String unitPatch) {
-        //this.imagePath = getClass().getResource("/convoy/resources/images/2id.png").getPath().substring(1).replace("/", "\\");
-
         initComponents();
-        makeSelectPanelsTransparent();
-        doMainWindowFont();
-        setMainWindowButtonColor();
-        picturePanel2 = new PicturePanel("/convoy/resources/images/camo.jpg");
-        revalidate();
-        repaint();
-
+        
         missionNumberPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
         additionalInfoPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
 
@@ -109,19 +109,20 @@ public final class MainWindow extends javax.swing.JFrame {
         Image img = new ImageIcon(unitPatch).getImage().getScaledInstance(202, 168, java.awt.Image.SCALE_SMOOTH);
 
         this.leftMissionInfoPanel1.setIcon(new ImageIcon(img));
+
+        revalidate();
+        repaint();
     }
 
-    public void makeSelectPanelsTransparent() {
-        missionNumberPanel.setOpaque(false);
-        additionalInfoPanel.setOpaque(false);
-    }
-
+    /**
+     * displays and set the attribute and properties of the main window frame
+     */
     public void display() {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // added 
-        frame.setTitle("Convoy QuicMaink - Convoy documentation creator to help save lives");
+        frame.setTitle("Convoy Quick - Convoy documentation creator to help save lives");
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setIconImage(new ImageIcon(getClass().getResource("/convoy/resources/images/humveeIcon.png")).getImage());
         frame.setVisible(true);
@@ -149,10 +150,10 @@ public final class MainWindow extends javax.swing.JFrame {
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
         newMenuItem = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        loadMenuItem = new javax.swing.JMenuItem();
+        saveMenuItem = new javax.swing.JMenuItem();
         finalizeMenu = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
+        printMenuItem = new javax.swing.JMenuItem();
         editMenu = new javax.swing.JMenu();
         wateMarkMenu = new javax.swing.JMenuItem();
         helpMenu = new javax.swing.JMenu();
@@ -227,23 +228,23 @@ public final class MainWindow extends javax.swing.JFrame {
         });
         fileMenu.add(newMenuItem);
 
-        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem1.setText("<html><strong>Load</strong></html>");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        loadMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, java.awt.event.InputEvent.CTRL_MASK));
+        loadMenuItem.setText("<html><strong>Load</strong></html>");
+        loadMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                loadMenuItemActionPerformed(evt);
             }
         });
-        fileMenu.add(jMenuItem1);
+        fileMenu.add(loadMenuItem);
 
-        jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem2.setText("<html><strong>Save</strong></html>");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        saveMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
+        saveMenuItem.setText("<html><strong>Save</strong></html>");
+        saveMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                saveMenuItemActionPerformed(evt);
             }
         });
-        fileMenu.add(jMenuItem2);
+        fileMenu.add(saveMenuItem);
 
         finalizeMenu.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F, java.awt.event.InputEvent.CTRL_MASK));
         finalizeMenu.setText("<html><strong>Finalize</strong></html>");
@@ -254,14 +255,14 @@ public final class MainWindow extends javax.swing.JFrame {
         });
         fileMenu.add(finalizeMenu);
 
-        jMenuItem4.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem4.setText("<html><strong>Print</strong></html>");
-        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+        printMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
+        printMenuItem.setText("<html><strong>Print</strong></html>");
+        printMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem4ActionPerformed(evt);
+                printMenuItemActionPerformed(evt);
             }
         });
-        fileMenu.add(jMenuItem4);
+        fileMenu.add(printMenuItem);
 
         menuBar.add(fileMenu);
 
@@ -305,8 +306,12 @@ public final class MainWindow extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * create a new blank main window window form
+     *
+     * @param evt click file -> new menu item
+     */
     private void newMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newMenuItemActionPerformed
-
         int response = JOptionPane.showConfirmDialog(null, "Are you sure you want to start a new convoy?\nAll unsaved data will be lost!", "New Convoy?", JOptionPane.YES_NO_OPTION);
         if (response == JOptionPane.YES_OPTION) {
             this.setVisible(false);
@@ -321,8 +326,17 @@ public final class MainWindow extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_newMenuItemActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-
+    /**
+     * <p>
+     * Loads a previously saved convoy. The user selects a convoy file to be
+     * loaded. The convoy file must have the file extension .conx, After the
+     * user selects the convoy file a new main window frame is displayed with
+     * the selected convoy file loaded.
+     * </p>
+     *
+     * @param evt click file -> load menu item
+     */
+    private void loadMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadMenuItemActionPerformed
         String missionNumber = null;
         String classification = null;
         String stagingArea = null;
@@ -343,7 +357,6 @@ public final class MainWindow extends javax.swing.JFrame {
 
         int response = JOptionPane.showConfirmDialog(null, "Are you sure you want to load a convoy?\n All unsaved data will be lost.", "Load Convoy?", JOptionPane.YES_NO_OPTION);
         if (response == JOptionPane.YES_OPTION) {
-
             JFileChooser chooser = new JFileChooser();
             chooser.setAcceptAllFileFilterUsed(false);
             chooser.addChoosableFileFilter((new FileNameExtensionFilter("Convoy Quick Files", "conx")));
@@ -352,7 +365,6 @@ public final class MainWindow extends javax.swing.JFrame {
 
             int option = chooser.showOpenDialog(null);
             if (option == JFileChooser.APPROVE_OPTION) {
-
                 try {
                     BufferedReader br;
                     File file = chooser.getSelectedFile();
@@ -361,7 +373,6 @@ public final class MainWindow extends javax.swing.JFrame {
 
                     br = new BufferedReader(new FileReader(file));
                     while ((line = br.readLine()) != null) {
-
                         // use comma as separator
                         String[] mission = line.split(cvsSplitBy);
 
@@ -381,7 +392,6 @@ public final class MainWindow extends javax.swing.JFrame {
                         leftAdditionalText = mission[13];
                         rightAdditionalText = mission[14];
                         unitPatch = mission[16];
-
                     }
 
                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -411,73 +421,65 @@ public final class MainWindow extends javax.swing.JFrame {
                     mainWindow.toFront();
                     repaint();
                     revalidate();
-
                 } catch (IOException ex) {
-
                 } finally {
                     this.setCursor(Cursor.getDefaultCursor());
                 }
             }
         }
-
-        /*int response = JOptionPane.showConfirmDialog(null, "Are you sure you want to load a convoy?\nAll unsaved data will be lost!", "New Convoy?", JOptionPane.YES_NO_OPTION);
-         if (response == JOptionPane.YES_OPTION) {
-         //To load a previously saved convoy
-         FileDialog loadFile;
-         loadFile = new FileDialog(this, "Choose a file", FileDialog.LOAD);
-         loadFile.setDirectory("src/convoy/save");
-         loadFile.setVisible(true);
-         }*/
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
-
+    }//GEN-LAST:event_loadMenuItemActionPerformed
+    /**
+     * Displays the about information dialog pop up
+     *
+     * @param evt click help -> about menu item
+     */
     private void aboutMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutMenuItemActionPerformed
-
         Object[] stuff = {new ImageIcon(getClass().getResource("/convoy/resources/images/logo.png")), "About Content Goes Here"};
-
         JOptionPane.showMessageDialog(null, stuff, "About", JOptionPane.INFORMATION_MESSAGE, null);
-
     }//GEN-LAST:event_aboutMenuItemActionPerformed
 
+    /**
+     * Displays the help information dialog pop up
+     *
+     * @param evt click help -> help menu item
+     */
     private void helpMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpMenuItemActionPerformed
-
         JOptionPane.showMessageDialog(null, "Help Content Goes Here", "Help", JOptionPane.QUESTION_MESSAGE, null);
-
-
     }//GEN-LAST:event_helpMenuItemActionPerformed
 
+    /**
+     * <p>
+     * Finalizes the convoy. Prompts the user for the location to store the pdf.
+     * Creates the pdf in the desired location. If user doesn't provide a file
+     * name the file will be stored as Untitled.pdf.
+     * </p>
+     *
+     * @param evt click file -> finalize menu item
+     */
     private void finalizeMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finalizeMenuActionPerformed
-
         int response = JOptionPane.showConfirmDialog(null, "Are you sure you want to finalize the convoy?", "Finalize Convoy?", JOptionPane.YES_NO_OPTION);
         if (response == JOptionPane.YES_OPTION) {
 
             JFileChooser chooser = new JFileChooser();
-            //chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
             chooser.setAcceptAllFileFilterUsed(false);
             chooser.addChoosableFileFilter((new FileNameExtensionFilter("PDF Files", "pdf")));
-            //chooser.setFileFilter(ff);
 
             missionNumberText = this.leftMissionInfoPanel1.getMissionNumber();
 
             if (missionNumberText.equalsIgnoreCase("")) {
-
                 missionNumberText = "Untitled";
-
             }
 
             chooser.setSelectedFile(new File(missionNumberText));
             chooser.setCurrentDirectory(new File(System.getProperty("user.home") + "\\My Documents"));
-            //chooser
 
             int option = chooser.showSaveDialog(null);
             if (option == JFileChooser.APPROVE_OPTION) {
-
                 try {
-
                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 
                     GenerateHtml gh = new GenerateHtml();
 
-                    //System.out.print(this.rightMissionInfoPanel2.getFreqs().get(0).getFreq());
                     gh.generateHtml(
                             this.leftMissionInfoPanel1.getImagePath(),
                             this.leftMissionInfoPanel1.getClassification(),
@@ -503,45 +505,40 @@ public final class MainWindow extends javax.swing.JFrame {
                     cp.createPDF();
 
                 } catch (Exception ex) {
-
                 } finally {
                     this.setCursor(Cursor.getDefaultCursor());
                 }
             }
         }
-
     }//GEN-LAST:event_finalizeMenuActionPerformed
 
-    @SuppressWarnings("empty-statement")
+    /**
+     * <p>
+     * Sets the unit patch image for the convoy. User selects an image file from
+     * the desired directory. The file extensions can only be .jpg, .jpeg, .png,
+     * .gif. The file is resized and the location of the file is stored.
+     * </p>
+     *
+     * @param evt click edit -> unit patch menu item
+     */
     private void wateMarkMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_wateMarkMenuActionPerformed
         try {
             FileDialog loadFile;
             loadFile = new FileDialog(this, "Choose an Image", FileDialog.LOAD);
-            //loadFile.set
             loadFile.setFile("*.jpg;*.jpeg;*.png;*.gif");
-            //loadFile.setDirectory("C:\\");
             loadFile.setVisible(true);
-            //imageName = loadFile.getFile();
 
             if (loadFile.getFile() != null) {
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                 File file = new File(loadFile.getFile());
-                
+
                 URL url = null;
                 try {
                     url = new URL("file:\\" + loadFile.getDirectory() + file);
-
                     this.leftMissionInfoPanel1.setImagePath(loadFile.getDirectory() + file);
-
                 } catch (MalformedURLException ex) {
-                    Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
+                    //Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                //String y = url.toString();
-                //String x = (url.toString().substring(6,9));
-                //String fileLocation = y.replace(x,"");
-                //String fileLocation = loadFile.getDirectory()+file;
-                //String url2 = new String("file:\\"+loadFile.getDirectory()+file);
-                //System.out.print(url);
                 Image img = null;
                 try {
                     if (url != null) {
@@ -549,7 +546,7 @@ public final class MainWindow extends javax.swing.JFrame {
                     } else {
                     }
                 } catch (IOException ex) {
-                    Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
+                    //Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
                 }
 
                 if (img != null) {
@@ -557,41 +554,43 @@ public final class MainWindow extends javax.swing.JFrame {
                     ImageIcon icon = new ImageIcon(finalImage);
                     this.leftMissionInfoPanel1.setIcon(icon);
                 }
-                
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
             }
         } catch (Exception ex) {
-            ;
+            //ex.printStackTrace();
         }
 
     }//GEN-LAST:event_wateMarkMenuActionPerformed
 
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+    /**
+     * <p>
+     * Does the same as the finalize menu item does execpt this methiod will
+     * open the pdf in the default pdf application opener and open that
+     * applications print dialog.
+     * </p>
+     *
+     * @param evt click file -> print menu item
+     */
+    private void printMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printMenuItemActionPerformed
 
         int response = JOptionPane.showConfirmDialog(null, "Are you sure you want to print the convoy?", "Print Convoy?", JOptionPane.YES_NO_OPTION);
         if (response == JOptionPane.YES_OPTION) {
             JFileChooser chooser = new JFileChooser();
-            //chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
             chooser.setAcceptAllFileFilterUsed(false);
             chooser.addChoosableFileFilter((new FileNameExtensionFilter("PDF Files", "pdf")));
-            //chooser.setFileFilter(ff);
 
             missionNumberText = this.leftMissionInfoPanel1.getMissionNumber();
 
             if (missionNumberText.equalsIgnoreCase("")) {
-
                 missionNumberText = "Untitled";
-
             }
 
             chooser.setSelectedFile(new File(missionNumberText));
             chooser.setCurrentDirectory(new File(System.getProperty("user.home") + "\\My Documents"));
-            //chooser
 
             int option = chooser.showSaveDialog(null);
             if (option == JFileChooser.APPROVE_OPTION) {
                 try {
-
                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 
                     GenerateHtml gh = new GenerateHtml();
@@ -621,7 +620,6 @@ public final class MainWindow extends javax.swing.JFrame {
                     cp.createPDFPrint();
 
                 } catch (Exception ex) {
-
                 } finally {
                     try {
                         this.setCursor(Cursor.getDefaultCursor());
@@ -635,11 +633,18 @@ public final class MainWindow extends javax.swing.JFrame {
                 }
             }
         }
+    }//GEN-LAST:event_printMenuItemActionPerformed
 
-
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
-
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    /**
+     * <p>
+     * Saves the convoy. Creates a file with the .conx extension and with a
+     * filename of the mission number. The file stores the byte code of all the
+     * attributes of the convoy.
+     * </p>
+     *
+     * @param evt click file -> save menu item
+     */
+    private void saveMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveMenuItemActionPerformed
         Mission mission = new Mission(this.leftMissionInfoPanel1.getMissionNumber(),
                 this.rightMissionInfoPanel2.getStagingArea(),
                 this.leftMissionInfoPanel1.getTo(),
@@ -663,15 +668,16 @@ public final class MainWindow extends javax.swing.JFrame {
             Save sf = new Save(mission);
             sf.save();
         } catch (Exception ex) {
-            //JOptionPane.showMessageDialog(this, "Mission failed to save, please try agian.");
         } finally {
             this.setCursor(Cursor.getDefaultCursor());
         }
 
 
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_saveMenuItemActionPerformed
 
     /**
+     * The Main method
+     *
      * @param args the command line arguments
      */
     public static void main(String args[]) {
@@ -688,7 +694,7 @@ public final class MainWindow extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            //java.util.logging.Logger.getLogger(MainWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -701,39 +707,6 @@ public final class MainWindow extends javax.swing.JFrame {
         });
     }
 
-    @SuppressWarnings("empty-statement")
-    private void doMainWindowFont() {
-        try {
-
-            //Font topSecretFont = Font.createFont(Font.TRUETYPE_FONT, getClass().getResourceAsStream("/convoy/resources/fonts/topSecret.ttf"));
-            //Font captureItFont = Font.createFont(Font.TRUETYPE_FONT, getClass().getResourceAsStream("/convoy/resources/fonts/captureIt.ttf"));
-            //captureItFont = captureItFont.deriveFont(Font.ITALIC, 15f);
-            //finalizeLabel.setFont(captureItFont);
-            //mainMenuLabel.setFont(captureItFont);
-            //printLabel.setFont(captureItFont);
-            //saveLabel.setFont(captureItFont);
-        } catch (Exception ex) {
-            ;
-        }
-
-    }
-
-    private void setMainWindowButtonColor() {
-
-        //Color desertStormColor = new  Color(194, 178, 128);
-       /*
-         finalizePanel.setBackground(desertStormColor);
-         mainMenuPanel.setBackground(desertStormColor);
-         printPanel.setBackground(desertStormColor);
-         savePanel.setBackground(desertStormColor);
-       
-         finalizePanel.setBorder(new BevelBorder(BevelBorder.RAISED));
-         mainMenuPanel.setBorder(new BevelBorder(BevelBorder.RAISED));
-         printPanel.setBorder(new BevelBorder(BevelBorder.RAISED));
-         savePanel.setBorder(new BevelBorder(BevelBorder.RAISED));
-         */
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem aboutMenuItem;
     private javax.swing.JPanel additionalInfoPanel;
@@ -743,16 +716,16 @@ public final class MainWindow extends javax.swing.JFrame {
     private javax.swing.JMenuItem finalizeMenu;
     private javax.swing.JMenu helpMenu;
     private javax.swing.JMenuItem helpMenuItem;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JPanel jPanel2;
     private convoy.gui.LeftMissionInfoPanel leftMissionInfoPanel1;
+    private javax.swing.JMenuItem loadMenuItem;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JPanel missionNumberPanel;
     private javax.swing.JMenuItem newMenuItem;
     private convoy.gui.PicturePanel picturePanel2;
+    private javax.swing.JMenuItem printMenuItem;
     private convoy.gui.RightMissionInfoPanel rightMissionInfoPanel2;
+    private javax.swing.JMenuItem saveMenuItem;
     private convoy.gui.VehicleGrid vehicleGrid1;
     private javax.swing.JMenuItem wateMarkMenu;
     // End of variables declaration//GEN-END:variables

@@ -1,68 +1,29 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package convoy.gui;
 
-import convoy.objects.Mission;
-import java.awt.AlphaComposite;
-import java.awt.Color;
-import java.awt.Cursor;
-import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.image.BufferedImage;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
-import javax.swing.JFileChooser;
-import javax.swing.JOptionPane;
-import javax.swing.SwingConstants;
+import java.awt.*;
+import java.io.*;
+import javax.swing.*;
 import javax.swing.border.BevelBorder;
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
+import convoy.objects.Mission;
+
 /**
+ * @author Mike Moye <mtm5313@psu.edu>
+ * @version 1.0
+ * @since 2014-02-27
  *
- * @author dizoo548
+ * <p>
+ * This class is to create the Main Menu.
+ * </p>
  */
 public class MainMenu extends javax.swing.JFrame {
 
-    private static MainMenu frame = new MainMenu();
+    private static final MainMenu frame = new MainMenu();
     protected static Mission mission;
-
     private BufferedImage image;
-
-    protected void paintComponent(Graphics g) {
-        this.paintComponent(g);
-        int x = (this.getWidth() - image.getWidth(null)) / 2;
-        int y = (this.getHeight() - image.getHeight(null)) / 2;
-
-        BufferedImage tmpImg = new BufferedImage(image.getWidth(), image.getHeight(),
-                BufferedImage.TYPE_INT_ARGB);
-        Graphics2D g2d = (Graphics2D) tmpImg.getGraphics();
-        g2d.setComposite(AlphaComposite.SrcOver.derive(0.3f));
-        // set the transparency level in range 0.0f - 1.0f 
-        g2d.drawImage(image, 0, 0, null);
-        image = tmpImg;
-
-        g.drawImage(image, x, y, null); // see javadoc for more info on the parameters            
-    }
-
-    /**
-     * Method used to load an image
-     *
-     * @param imageName the file path of the image to be loaded
-     */
-    private void loadImage() {
-        try {
-            image = ImageIO.read(getClass().getResource("/convoy/resources/images/humveeWithGun.jpg"));
-        } catch (IOException ex) {
-        }
-    }
 
     /**
      * Creates new form MainMenu
@@ -76,18 +37,42 @@ public class MainMenu extends javax.swing.JFrame {
         loadImage();
         repaint();
         revalidate();
-
         newProjectPanel.requestFocus();
-
     }
 
+    /**
+     * Sets the background image of the main menu
+     *
+     * @param g abstract graphics
+     */
+    protected void paintComponent(Graphics g) {
+        this.paintComponent(g);
+        int x = (this.getWidth() - image.getWidth(null)) / 2;
+        int y = (this.getHeight() - image.getHeight(null)) / 2;
+        g.drawImage(image, x, y, null); // see javadoc for more info on the parameters            
+    }
+
+    /**
+     * Method used to load an image.
+     *
+     * @param imageName the file path of the image to be loaded
+     */
+    private void loadImage() {
+        try {
+            image = ImageIO.read(getClass().getResource("/convoy/resources/images/humveeWithGun.jpg"));
+        } catch (IOException ex) {
+        }
+    }
+
+    /**
+     * displays and set the attribute and properties of the main menu frame
+     */
     public void display() {
         frame.setVisible(true);
         frame.setLocationRelativeTo(null);
         frame.setTitle("Convoy Quick - Convoy documentation creator to help save lives");
         frame.setExtendedState(MainMenu.MAXIMIZED_BOTH);
         frame.setResizable(false);
-        //frame.setUndecorated(true); 
     }
 
     /**
@@ -221,38 +206,64 @@ public class MainMenu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Button animation when the mouse is over the new button
+     *
+     * @param evt mouse over
+     */
     private void newProjectPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newProjectPanelMouseEntered
-
         newProjectPanel.setBorder(new BevelBorder(BevelBorder.LOWERED));
-
     }//GEN-LAST:event_newProjectPanelMouseEntered
 
+    /**
+     * Button animation when the mouse is over the load button
+     *
+     * @param evt mouse over
+     */
     private void loadProjectPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loadProjectPanelMouseEntered
-
         loadProjectPanel.setBorder(new BevelBorder(BevelBorder.LOWERED));
-
     }//GEN-LAST:event_loadProjectPanelMouseEntered
 
+    /**
+     * Button animation when the mouse is out of the load button
+     *
+     * @param evt mouse out
+     */
     private void loadProjectPanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loadProjectPanelMouseExited
-
         loadProjectPanel.setBorder(new BevelBorder(BevelBorder.RAISED));
-
     }//GEN-LAST:event_loadProjectPanelMouseExited
 
+    /**
+     * Button animation when the mouse is out of the new button
+     *
+     * @param evt mouse out
+     */
     private void newProjectPanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newProjectPanelMouseExited
-
         newProjectPanel.setBorder(new BevelBorder(BevelBorder.RAISED));
-
     }//GEN-LAST:event_newProjectPanelMouseExited
 
+    /**
+     * Hides main menu and shows main window frame
+     *
+     * @param evt click new button
+     */
     private void newProjectPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newProjectPanelMouseClicked
         this.setVisible(false);
         mainWindow = new MainWindow();
         mainWindow.display();
     }//GEN-LAST:event_newProjectPanelMouseClicked
 
+    /**
+     * <p>
+     * Loads a previously saved convoy. The user selects a convoy file to be
+     * loaded. The convoy file must have the file extension .conx, After the
+     * user selects the convoy file the main menu frame is hidden and a new main
+     * window frame is displayed with the selected convoy file loaded.
+     * </p>
+     *
+     * @param evt click load button
+     */
     private void loadProjectPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loadProjectPanelMouseClicked
-
         String missionNumber = null;
         String classification = null;
         String stagingArea = null;
@@ -279,7 +290,6 @@ public class MainMenu extends javax.swing.JFrame {
 
         int option = chooser.showOpenDialog(null);
         if (option == JFileChooser.APPROVE_OPTION) {
-
             try {
                 BufferedReader br;
                 File file = chooser.getSelectedFile();
@@ -288,34 +298,31 @@ public class MainMenu extends javax.swing.JFrame {
 
                 br = new BufferedReader(new FileReader(file));
                 while ((line = br.readLine()) != null) {
-
                     // use comma as separator
-                    String[] mission = line.split(cvsSplitBy);
+                    String[] missionText = line.split(cvsSplitBy);
 
-                    missionNumber = mission[0];
-                    classification = mission[1];
-                    stagingArea = mission[2];
-                    acc = mission[3];
-                    cc = mission[4];
-                    fromLinkUpTime = mission[5];
-                    fromSPTime = mission[6];
-                    leftFrom = mission[7];
-                    rightFrom = mission[8];
-                    leftTo = mission[9];
-                    rightTo = mission[10];
-                    toLinkUpTime = mission[11];
-                    toSPTime = mission[12];
-                    leftAdditionalText = mission[13];
-                    rightAdditionalText = mission[14];
-                    additionalText = mission[15];
-                    unitPatch = mission[16];
-
+                    missionNumber = missionText[0];
+                    classification = missionText[1];
+                    stagingArea = missionText[2];
+                    acc = missionText[3];
+                    cc = missionText[4];
+                    fromLinkUpTime = missionText[5];
+                    fromSPTime = missionText[6];
+                    leftFrom = missionText[7];
+                    rightFrom = missionText[8];
+                    leftTo = missionText[9];
+                    rightTo = missionText[10];
+                    toLinkUpTime = missionText[11];
+                    toSPTime = missionText[12];
+                    leftAdditionalText = missionText[13];
+                    rightAdditionalText = missionText[14];
+                    additionalText = missionText[15];
+                    unitPatch = missionText[16];
                 }
-
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 
                 this.setVisible(false);
-                MainWindow mainWindow = new MainWindow(missionNumber,
+                mainWindow = new MainWindow(missionNumber,
                         classification,
                         stagingArea,
                         acc,
@@ -330,10 +337,10 @@ public class MainMenu extends javax.swing.JFrame {
                         toSPTime,
                         leftAdditionalText,
                         rightAdditionalText,
-                        additionalText, 
+                        additionalText,
                         unitPatch);
                 mainWindow.setVisible(true);
-                mainWindow.setTitle("Convoy QuicMaink - Convoy documentation creator to help save lives");
+                mainWindow.setTitle("Convoy Quick - Convoy documentation creator to help save lives");
                 mainWindow.setIconImage(new ImageIcon(getClass().getResource("/convoy/resources/images/humveeIcon.png")).getImage());
                 mainWindow.setExtendedState(MainWindow.MAXIMIZED_BOTH);
                 mainWindow.toFront();
@@ -341,15 +348,15 @@ public class MainMenu extends javax.swing.JFrame {
                 revalidate();
 
             } catch (IOException ex) {
-
             } finally {
                 this.setCursor(Cursor.getDefaultCursor());
             }
         }
-
     }//GEN-LAST:event_loadProjectPanelMouseClicked
 
     /**
+     * The Main method
+     *
      * @param args the command line arguments
      */
     public static void main(String args[]) {
@@ -365,28 +372,25 @@ public class MainMenu extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(MainMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new MainMenu().display();
             }
         });
     }
 
+    /**
+     * Sets and formats the fonts on the in the main menu
+     */
     private void doMainMenuFont() {
         try {
-
             Font topSecretFont = Font.createFont(Font.TRUETYPE_FONT, getClass().getResourceAsStream("/convoy/resources/fonts/topSecret.ttf"));
             topSecretFont = topSecretFont.deriveFont(Font.BOLD, 96f);
             mainMenuTitle.setHorizontalAlignment(SwingConstants.CENTER);
@@ -397,15 +401,15 @@ public class MainMenu extends javax.swing.JFrame {
 
             newProjectLabel.setFont(captureItFont);
             loadProjectLabel.setFont(captureItFont);
-
-        } catch (Exception ex) {
-            ex.printStackTrace();;
+        } catch (FontFormatException | IOException ex) {
+            //ex.printStackTrace();;
         }
-
     }
 
+    /**
+     * Sets the button colors to desert storm
+     */
     private void setMainMenuButtonColor() {
-
         Color desertStormColor = new Color(194, 178, 128);
 
         newProjectPanel.setBackground(desertStormColor);
@@ -413,7 +417,6 @@ public class MainMenu extends javax.swing.JFrame {
 
         newProjectPanel.setBorder(new BevelBorder(BevelBorder.RAISED));
         loadProjectPanel.setBorder(new BevelBorder(BevelBorder.RAISED));
-
     }
 
     private MainWindow mainWindow;

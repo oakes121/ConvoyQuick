@@ -174,7 +174,7 @@ public class GenerateHtml {
 
         String classificationColor;
 
-        if (classification.equalsIgnoreCase("SECRET")) {
+        if (classification.equalsIgnoreCase("SECRET") || classification.equalsIgnoreCase("TOP SECRET") || classification.equalsIgnoreCase("CONFEDIENTAL")) {
             classificationColor = "red";
         } else {
             classificationColor = "black";
