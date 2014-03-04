@@ -389,8 +389,9 @@ public final class MainWindow extends javax.swing.JFrame {
                         rightTo = mission[10];
                         toLinkUpTime = mission[11];
                         toSPTime = mission[12];
-                        leftAdditionalText = mission[13];
-                        rightAdditionalText = mission[14];
+                        leftAdditionalText = mission[13].replaceAll("'t'", "\t").replaceAll("'r'", "\r").replaceAll("'n'", "\n");
+                        rightAdditionalText = mission[14].replaceAll("'t'", "\t").replaceAll("'r'", "\r").replaceAll("'n'", "\n");
+                        additionalText = mission[15].replaceAll("'t'", "\t").replaceAll("'r'", "\r").replaceAll("'n'", "\n");
                         unitPatch = mission[16];
                     }
 
@@ -667,7 +668,8 @@ public final class MainWindow extends javax.swing.JFrame {
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             Save sf = new Save(mission);
             sf.save();
-        } catch (Exception ex) {
+        } catch (Exception ex) {            
+            ex.printStackTrace();
         } finally {
             this.setCursor(Cursor.getDefaultCursor());
         }

@@ -59,10 +59,10 @@ public class Save {
             saveData += mission.getRightTo() + ",";
             saveData += mission.getToLinkUpTime() + ",";
             saveData += mission.getToSPTime() + ",";
-            saveData += mission.getLeftAdditionalInfo() + ",";
-            saveData += mission.getRightAdditionalInfo() + ",";
-            saveData += mission.getAdditionalInfo() + ",";
-            saveData += mission.getUnitPatch();
+            saveData += mission.getLeftAdditionalInfo().replaceAll("\\t", "'t'").replaceAll("\\r", "'r'").replaceAll("\\n", "'n'") + ",";
+            saveData += mission.getRightAdditionalInfo().replaceAll("\\t", "'t'").replaceAll("\\r", "'r'").replaceAll("\\n", "'n'") + ",";
+            saveData += mission.getAdditionalInfo().replaceAll("\\t", "'t'").replaceAll("\\r", "'r'").replaceAll("\\n", "'n'") + ",";
+            saveData += "file:\\" + mission.getUnitPatch();
 
             byte[] dataToWrite = saveData.getBytes("UTF8");
             //String str = new String(dataToWrite, "UTF8");
@@ -71,6 +71,7 @@ public class Save {
                 out.write(dataToWrite);
             }
         } catch (IOException e) {
+            e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Mission failed to save, please try again.");
         }
     }

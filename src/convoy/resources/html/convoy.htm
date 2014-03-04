@@ -59,7 +59,7 @@
             padding-top: 10px;
             padding-bottom: 10px;
         }
-        #classification{              text-align: center;              font-weight: bold;              font-size: 24pt;              color: black;         }
+        #classification{              text-align: center;              font-weight: bold;              font-size: 24pt;              color: red;         }
         .driver{             color: LimeGreen;         }
         .midBorder {
             border-top: red solid 5px;
@@ -77,30 +77,30 @@
                     <table id="leftMissionInfoTable">
                         <!-- left mission info table //-->
                         <tr>
-                            <td colspan="3" id="classification">FOR OFFICIAL USE ONLY</td>
+                            <td colspan="3" id="classification">SECRET</td>
                         </tr>
                         <tr>
-                            <td class="picCell" colspan="1" rowspan="4" id="unitPatch"><img src="file:\C:\Users\dizoo548\Netbeans\ConvoyQuick\build\classes\convoy\resources\images\2id.png" alt="unitPatch"/></td>
+                            <td class="picCell" colspan="1" rowspan="4" id="unitPatch"><img src="file:\C:\Users\dizoo548\Pictures\poExpediteReport.png" alt="unitPatch"/></td>
                         </tr>
                         <tr>
                             <td class="label">Mission #</td>
-                            <td class="data" id="misisonNumber"></td>
+                            <td class="data" id="misisonNumber">operationRedWing0001</td>
                         </tr>
                         <tr>
                             <td class="label">FROM:</td>
-                            <td class="data" id="leftFrom"></td>
+                            <td class="data" id="leftFrom">AP/EA</td>
                         </tr>
                         <tr>
                             <td class="label">To:</td>
-                            <td class="data" id="leftTo"></td>
+                            <td class="data" id="leftTo">Ft. A.P. </td>
                         </tr>
                         <tr>
-                            <td class="additionalText" colspan="3" id="leftAdditionaInfo">
-                                <pre>
-Additional Information Goes Here
-</pre>
-                            </td>
-                        </tr>
+                                     <td class="additionalText" colspan="3" id="leftAdditionaInfo">
+                                         <pre>
+Hill: 06/07/02+02
+                                         </pre>
+                                     </td>
+                                 </tr>
                     </table>
                     <!-- end left mission info table //-->
                 </td>
@@ -110,37 +110,60 @@ Additional Information Goes Here
                         <tr>
                             <!-- cc and acc row //-->
                             <td class="label">CC -</td>
-                            <td class="data" colspan="2" id="cc"></td>
+                            <td class="data" colspan="2" id="cc">PANTHER 6 – 1SG SOMETHIN</td>
                             <td class="label">ACC -</td>
-                            <td class="data" colspan="2" id="acc"></td>
+                            <td class="data" colspan="2" id="acc">PANTHER 7 – MSG  DUMASS</td>
                         </tr>
                         <tr>
                             <!-- staging area row //-->
                             <td class="label">Staging Area -</td>
-                            <td class="data" colspan="5" id="stagingArea"></td>
+                            <td class="data" colspan="5" id="stagingArea">Edgewood Motor Vehicle Line</td>
                         </tr>
                         <tr>
                             <!-- from l/u sp //-->
                             <td class="label">From -</td>
-                            <td class="data" id="rightFrom"></td>
+                            <td class="data" id="rightFrom">Edgewood</td>
                             <td class="label">L/U -</td>
-                            <td class="data" id="fromLu"></td>
+                            <td class="data" id="fromLu">XXXXXXZMAR14</td>
                             <td class="label">SP -</td>
-                            <td class="data" id="fromSP"></td>
+                            <td class="data" id="fromSP">XXXXXXZMAR14</td>
                         </tr>
                         <tr>
                             <!-- to l/u sp//-->
                             <td class="label">To -</td>
-                            <td class="data" id="rightTo"></td>
+                            <td class="data" id="rightTo">Fort AP Hill</td>
                             <td class="label">L/U -</td>
-                            <td class="data" id="toLu"></td>
+                            <td class="data" id="toLu">Fort AP Hill</td>
                             <td class="label">SP -</td>
-                            <td class="data" id="toSP"></td>
+                            <td class="data" id="toSP">XXXXXXZMAR14</td>
                         </tr>
-                        <tr>
+                           <tr>
+                            <!-- frequency row //-->
+                            <td colspan="6">
+                                 <table id="freqTable">
+                                    <!-- frequency table //-->
+                                    <tr>
+                                        <td class="label" colspan="6">Frequencys -</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="label">CH1:</td>
+                                        <td class="data" id="ch1Name">Internal Frequency</td>
+                                        <td class="data" id="ch1Freq">000</td>
+                                        <td class="label">CH2:</td>
+                                        <td class="data" id="ch2Name">Alternate/Eagle Main FSC:TOC</td>
+                                        <td class="data" id="ch2Freq">000</td>
+                                    </tr>
+                                </table>
+                                <!-- end frequency table //-->
+                            </td>
+                        </tr>
+             <tr>
                             <td class="additionalText" colspan="6">
                                 <pre>
-Additional Information Goes Here</pre>
+Battle Spaces:  	
+	AP Hill TOC OPS Net:		CH 2: 30.075 FM	
+	Ground to Air Net:		CH 5: 139.4625 VHF	
+	Range Control AP Hill:		CH 3: XX.XXX FM                                 </pre>
                             </td>
                         </tr>
                     </table>

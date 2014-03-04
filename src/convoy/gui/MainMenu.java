@@ -100,14 +100,14 @@ public class MainMenu extends javax.swing.JFrame {
 
         newProjectPanel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 0, 0), null, new java.awt.Color(0, 0, 0)));
         newProjectPanel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                newProjectPanelMouseClicked(evt);
-            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 newProjectPanelMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 newProjectPanelMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                newProjectPanelMousePressed(evt);
             }
         });
 
@@ -135,14 +135,14 @@ public class MainMenu extends javax.swing.JFrame {
 
         loadProjectPanel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 0, 0), null, new java.awt.Color(0, 0, 0)));
         loadProjectPanel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                loadProjectPanelMouseClicked(evt);
-            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 loadProjectPanelMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 loadProjectPanelMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                loadProjectPanelMousePressed(evt);
             }
         });
 
@@ -241,18 +241,18 @@ public class MainMenu extends javax.swing.JFrame {
     private void newProjectPanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newProjectPanelMouseExited
         newProjectPanel.setBorder(new BevelBorder(BevelBorder.RAISED));
     }//GEN-LAST:event_newProjectPanelMouseExited
-
+           
     /**
      * Hides main menu and shows main window frame
      *
      * @param evt click new button
      */
-    private void newProjectPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newProjectPanelMouseClicked
+    private void newProjectPanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newProjectPanelMousePressed
         this.setVisible(false);
         mainWindow = new MainWindow();
         mainWindow.display();
-    }//GEN-LAST:event_newProjectPanelMouseClicked
-
+    }//GEN-LAST:event_newProjectPanelMousePressed
+    
     /**
      * <p>
      * Loads a previously saved convoy. The user selects a convoy file to be
@@ -263,7 +263,7 @@ public class MainMenu extends javax.swing.JFrame {
      *
      * @param evt click load button
      */
-    private void loadProjectPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loadProjectPanelMouseClicked
+    private void loadProjectPanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loadProjectPanelMousePressed
         String missionNumber = null;
         String classification = null;
         String stagingArea = null;
@@ -314,9 +314,9 @@ public class MainMenu extends javax.swing.JFrame {
                     rightTo = missionText[10];
                     toLinkUpTime = missionText[11];
                     toSPTime = missionText[12];
-                    leftAdditionalText = missionText[13];
-                    rightAdditionalText = missionText[14];
-                    additionalText = missionText[15];
+                    leftAdditionalText = missionText[13].replaceAll("'t'", "\t").replaceAll("'r'", "\r").replaceAll("'n'", "\n");
+                    rightAdditionalText = missionText[14].replaceAll("'t'", "\t").replaceAll("'r'", "\r").replaceAll("'n'", "\n");
+                    additionalText = missionText[15].replaceAll("'t'", "\t").replaceAll("'r'", "\r").replaceAll("'n'", "\n");
                     unitPatch = missionText[16];
                 }
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -352,7 +352,7 @@ public class MainMenu extends javax.swing.JFrame {
                 this.setCursor(Cursor.getDefaultCursor());
             }
         }
-    }//GEN-LAST:event_loadProjectPanelMouseClicked
+    }//GEN-LAST:event_loadProjectPanelMousePressed
 
     /**
      * The Main method

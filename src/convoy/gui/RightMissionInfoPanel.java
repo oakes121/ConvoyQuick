@@ -118,7 +118,7 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
      *
      * @return this.additonalText.getText()
      */
-    public String getAddtionalText() {
+    public String getAdditionalText() {
         return this.additonalText.getText();
     }
 
@@ -255,15 +255,6 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
             freqs.add(new Radio("", ""));
         }
         return freqs;
-    }
-
-    /**
-     * Get the additional text of the right mission information panel
-     *
-     * @return this.additonalText.getText()
-     */
-    public String getAdditionalText() {
-        return this.additonalText.getText();
     }
 
     /**
