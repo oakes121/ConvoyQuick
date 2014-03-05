@@ -9,6 +9,7 @@ import java.awt.image.BufferedImage;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import convoy.objects.Mission;
+import java.util.ArrayList;
 
 /**
  * @author Mike Moye <mtm5313@psu.edu>
@@ -21,6 +22,8 @@ import convoy.objects.Mission;
  */
 public class MainMenu extends javax.swing.JFrame {
 
+    private int mainWindowCount = 0;
+    private ArrayList<MainWindow> mainWindows = new ArrayList<MainWindow>();
     private static final MainMenu frame = new MainMenu();
     protected static Mission mission;
     private BufferedImage image;
@@ -38,6 +41,47 @@ public class MainMenu extends javax.swing.JFrame {
         repaint();
         revalidate();
         newProjectPanel.requestFocus();
+    }
+    
+    public void transferInformation(MainWindow mw) {
+        String missionNumber, from, to, additionalText, cC, aCC, stagingArea, from2, to2, 
+                fromLU, toLU, fromSP, toSP, additionalText2;
+        ImageIcon icon;
+        
+        missionNumber = mainWindows.get(0).leftMissionInfoPanel1.getMissionNumber();
+        from = mainWindows.get(0).leftMissionInfoPanel1.getFrom();
+        to = mainWindows.get(0).leftMissionInfoPanel1.getTo();
+        additionalText = mainWindows.get(0).leftMissionInfoPanel1.getAdditionalText();
+        icon = (ImageIcon) mainWindows.get(0).leftMissionInfoPanel1.getIcon();
+   
+        cC = mainWindows.get(0).rightMissionInfoPanel2.getCC();
+        aCC = mainWindows.get(0).rightMissionInfoPanel2.getACC();
+        stagingArea = mainWindows.get(0).rightMissionInfoPanel2.getStagingArea();
+        from2 = mainWindows.get(0).rightMissionInfoPanel2.getFrom();
+        to2 = mainWindows.get(0).rightMissionInfoPanel2.getTo();
+        fromLU = mainWindows.get(0).rightMissionInfoPanel2.getFromLU();
+        toLU = mainWindows.get(0).rightMissionInfoPanel2.getToLU();
+        fromSP = mainWindows.get(0).rightMissionInfoPanel2.getFromSP();
+        toSP = mainWindows.get(0).rightMissionInfoPanel2.getToSP();
+        additionalText2 = mainWindows.get(0).rightMissionInfoPanel2.getAdditionalText();
+        
+        mw.leftMissionInfoPanel1.setMissionNumber(missionNumber);
+        mw.leftMissionInfoPanel1.setFrom(from);
+        mw.leftMissionInfoPanel1.setTo(to);
+        mw.leftMissionInfoPanel1.setAdditionalText(additionalText);
+        mw.leftMissionInfoPanel1.setIcon((ImageIcon) icon);
+        
+        mw.rightMissionInfoPanel2.setCC(cC);
+        mw.rightMissionInfoPanel2.setACC(aCC);
+        mw.rightMissionInfoPanel2.setStagingArea(stagingArea);
+        mw.rightMissionInfoPanel2.setFrom(from2);
+        mw.rightMissionInfoPanel2.setTo(to2);
+        mw.rightMissionInfoPanel2.setFromLU(fromLU);
+        mw.rightMissionInfoPanel2.setToLU(toLU);
+        mw.rightMissionInfoPanel2.setFromSP(fromSP);
+        mw.rightMissionInfoPanel2.setToSP(toSP);
+        mw.rightMissionInfoPanel2.setAddtionalText(additionalText2);
+        
     }
 
     /**
@@ -249,8 +293,8 @@ public class MainMenu extends javax.swing.JFrame {
      */
     private void newProjectPanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newProjectPanelMousePressed
         this.setVisible(false);
-        mainWindow = new MainWindow();
-        mainWindow.display();
+        mainWindows.add(new MainWindow());
+        mainWindows.get(0).display();
     }//GEN-LAST:event_newProjectPanelMousePressed
     
     /**

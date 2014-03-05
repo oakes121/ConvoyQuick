@@ -22,7 +22,7 @@ import convoy.pdf.*;
  */
 public final class MainWindow extends javax.swing.JFrame {
 
-    private static final MainWindow frame = new MainWindow();
+    //private static final MainWindow frame = new MainWindow();
 
     String missionNumberText; //mission number used to save convoy file
 
@@ -118,14 +118,14 @@ public final class MainWindow extends javax.swing.JFrame {
      * displays and set the attribute and properties of the main window frame
      */
     public void display() {
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.pack();
-        frame.setLocationRelativeTo(null);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // added 
-        frame.setTitle("Convoy Quick - Convoy documentation creator to help save lives");
-        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        frame.setIconImage(new ImageIcon(getClass().getResource("/convoy/resources/images/humveeIcon.png")).getImage());
-        frame.setVisible(true);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        pack();
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // added 
+        setTitle("Convoy Quick - Convoy documentation creator to help save lives");
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
+        setIconImage(new ImageIcon(getClass().getResource("/convoy/resources/images/humveeIcon.png")).getImage());
+        setVisible(true);
         revalidate();
         repaint();
     }
@@ -719,16 +719,16 @@ public final class MainWindow extends javax.swing.JFrame {
     private javax.swing.JMenu helpMenu;
     private javax.swing.JMenuItem helpMenuItem;
     private javax.swing.JPanel jPanel2;
-    private convoy.gui.LeftMissionInfoPanel leftMissionInfoPanel1;
+    protected convoy.gui.LeftMissionInfoPanel leftMissionInfoPanel1;
     private javax.swing.JMenuItem loadMenuItem;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JPanel missionNumberPanel;
     private javax.swing.JMenuItem newMenuItem;
     private convoy.gui.PicturePanel picturePanel2;
     private javax.swing.JMenuItem printMenuItem;
-    private convoy.gui.RightMissionInfoPanel rightMissionInfoPanel2;
+    protected convoy.gui.RightMissionInfoPanel rightMissionInfoPanel2;
     private javax.swing.JMenuItem saveMenuItem;
-    private convoy.gui.VehicleGrid vehicleGrid1;
+    protected convoy.gui.VehicleGrid vehicleGrid1;
     private javax.swing.JMenuItem wateMarkMenu;
     // End of variables declaration//GEN-END:variables
 }
