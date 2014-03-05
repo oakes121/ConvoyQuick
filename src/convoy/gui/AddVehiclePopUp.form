@@ -283,26 +283,17 @@
               </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="personnel2Field">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Commander Name"/>
-              </Properties>
               <Events>
                 <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="personnel2FieldFocusGained"/>
               </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="personnel3Field">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Passenger Name"/>
-              </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="personnel3FieldActionPerformed"/>
                 <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="personnel3FieldFocusGained"/>
               </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="personnel4Field">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Passenger Name"/>
-              </Properties>
               <Events>
                 <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="personnel4FieldFocusGained"/>
               </Events>
@@ -459,25 +450,16 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="vehicleInfo1Field">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Bumper Number"/>
-              </Properties>
               <Events>
                 <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="vehicleInfo1FieldFocusGained"/>
               </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="vehicleInfo2Field">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Callsign"/>
-              </Properties>
               <Events>
                 <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="vehicleInfo2FieldFocusGained"/>
               </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="vehicleInfo3Field">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Additional Information"/>
-              </Properties>
               <Events>
                 <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="vehicleInfo3FieldFocusGained"/>
               </Events>
