@@ -61,6 +61,7 @@ public class CreateVehiclePopUp extends javax.swing.JFrame {
         enterVehicleField = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         numberOfSeatsComboBox = new javax.swing.JComboBox();
+        jLabel3 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         selectImageButton = new javax.swing.JButton();
@@ -95,6 +96,9 @@ public class CreateVehiclePopUp extends javax.swing.JFrame {
             }
         });
 
+        jLabel3.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel3.setText("*");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -108,7 +112,9 @@ public class CreateVehiclePopUp extends javax.swing.JFrame {
                         .addComponent(numberOfSeatsComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel4)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(enterVehicleField, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(10, 10, 10))
         );
@@ -118,7 +124,8 @@ public class CreateVehiclePopUp extends javax.swing.JFrame {
                 .addGap(67, 67, 67)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(enterVehicleField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel3))
                 .addGap(20, 20, 20)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(numberOfSeatsComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -218,7 +225,7 @@ public class CreateVehiclePopUp extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLayeredPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 706, Short.MAX_VALUE)
+            .addComponent(jLayeredPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 731, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -301,8 +308,14 @@ public class CreateVehiclePopUp extends javax.swing.JFrame {
         System.out.print(vehicleName);
         
         if (url == null){
-            JOptionPane.showMessageDialog(null, "Select an Image and write an name", "Alert Message", JOptionPane.WARNING_MESSAGE);
+            if ("".equals(enterVehicleField.getText())){
+                JOptionPane.showMessageDialog(null, "Select an a name", "Alert Message", JOptionPane.WARNING_MESSAGE);
+            }
+            JOptionPane.showMessageDialog(null, "Select an Image", "Alert Message", JOptionPane.WARNING_MESSAGE);
         }
+         else if ("".equals(enterVehicleField.getText())){
+                JOptionPane.showMessageDialog(null, "Select an a name", "Alert Message", JOptionPane.WARNING_MESSAGE);
+            }
           /*
          if(vehicleName == null){
             JOptionPane.showMessageDialog(null, "Enter Vehicle name", "Alert Message", JOptionPane.WARNING_MESSAGE);
@@ -371,6 +384,7 @@ public class CreateVehiclePopUp extends javax.swing.JFrame {
     public javax.swing.JTextField enterVehicleField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLayeredPane jLayeredPane1;
