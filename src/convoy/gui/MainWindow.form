@@ -82,6 +82,17 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="printMenuItemActionPerformed"/>
               </Events>
             </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="exitMenuItem">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="12" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Exit"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="exitMenuItemActionPerformed"/>
+              </Events>
+            </MenuItem>
           </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="editMenu">
@@ -197,7 +208,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <Component id="missionNumberPanel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-                  <Component id="vehicleGrid1" pref="219" max="32767" attributes="0"/>
+                  <Component id="vehicleGrid1" pref="262" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
                   <Component id="additionalInfoPanel" min="-2" max="-2" attributes="0"/>
               </Group>
@@ -215,8 +226,14 @@
           <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBoxLayout"/>
           <SubComponents>
             <Component class="convoy.gui.LeftMissionInfoPanel" name="leftMissionInfoPanel1">
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="4"/>
+              </AuxValues>
             </Component>
             <Component class="convoy.gui.RightMissionInfoPanel" name="rightMissionInfoPanel2">
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="4"/>
+              </AuxValues>
             </Component>
           </SubComponents>
         </Container>
@@ -246,6 +263,9 @@
           </SubComponents>
         </Container>
         <Component class="convoy.gui.VehicleGrid" name="vehicleGrid1">
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="4"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>
