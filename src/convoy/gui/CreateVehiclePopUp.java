@@ -297,14 +297,17 @@ public class CreateVehiclePopUp extends javax.swing.JFrame {
 
     private void addVehicleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addVehicleButtonActionPerformed
         // TODO add your handling code here:
+        vehicleName = enterVehicleField.getText();
+        System.out.print(vehicleName);
+        
         if (url == null){
-            JOptionPane.showMessageDialog(null, "Select an Image", "Alert Message", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Select an Image and write an name", "Alert Message", JOptionPane.WARNING_MESSAGE);
         }
-            /*
-        else if(enterVehicleField.getText() == null){
+          /*
+         if(vehicleName == null){
             JOptionPane.showMessageDialog(null, "Enter Vehicle name", "Alert Message", JOptionPane.WARNING_MESSAGE);
         }
-            */
+*/            
         else{
         addVehicleObject.setVehicleName(enterVehicleField.getText());
         addVehicleObject.setNumberOfSeats(numberOfSeats);
