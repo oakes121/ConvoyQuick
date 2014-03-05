@@ -308,12 +308,12 @@ public class CreateVehiclePopUp extends javax.swing.JFrame {
         System.out.print(vehicleName);
         
         if (url == null){
-            if ("".equals(enterVehicleField.getText())){
+            if ("Enter Vehicle Name".equals(enterVehicleField.getText()) || "".equals(enterVehicleField.getText())){
                 JOptionPane.showMessageDialog(null, "Select an a name", "Alert Message", JOptionPane.WARNING_MESSAGE);
             }
             JOptionPane.showMessageDialog(null, "Select an Image", "Alert Message", JOptionPane.WARNING_MESSAGE);
         }
-         else if ("".equals(enterVehicleField.getText())){
+         else if ("Enter Vehicle Name".equals(enterVehicleField.getText()) || "".equals(enterVehicleField.getText())){
                 JOptionPane.showMessageDialog(null, "Select an a name", "Alert Message", JOptionPane.WARNING_MESSAGE);
             }
           /*
