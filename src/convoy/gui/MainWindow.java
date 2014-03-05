@@ -154,6 +154,7 @@ public final class MainWindow extends javax.swing.JFrame {
         saveMenuItem = new javax.swing.JMenuItem();
         finalizeMenu = new javax.swing.JMenuItem();
         printMenuItem = new javax.swing.JMenuItem();
+        exitMenuItem = new javax.swing.JMenuItem();
         editMenu = new javax.swing.JMenu();
         wateMarkMenu = new javax.swing.JMenuItem();
         helpMenu = new javax.swing.JMenu();
@@ -208,7 +209,7 @@ public final class MainWindow extends javax.swing.JFrame {
             .addGroup(picturePanel2Layout.createSequentialGroup()
                 .addComponent(missionNumberPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(1, 1, 1)
-                .addComponent(vehicleGrid1, javax.swing.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE)
+                .addComponent(vehicleGrid1, javax.swing.GroupLayout.DEFAULT_SIZE, 262, Short.MAX_VALUE)
                 .addGap(1, 1, 1)
                 .addComponent(additionalInfoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -263,6 +264,15 @@ public final class MainWindow extends javax.swing.JFrame {
             }
         });
         fileMenu.add(printMenuItem);
+
+        exitMenuItem.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        exitMenuItem.setText("Exit");
+        exitMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exitMenuItemActionPerformed(evt);
+            }
+        });
+        fileMenu.add(exitMenuItem);
 
         menuBar.add(fileMenu);
 
@@ -677,6 +687,10 @@ public final class MainWindow extends javax.swing.JFrame {
 
     }//GEN-LAST:event_saveMenuItemActionPerformed
 
+    private void exitMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuItemActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_exitMenuItemActionPerformed
+
     /**
      * The Main method
      *
@@ -714,6 +728,7 @@ public final class MainWindow extends javax.swing.JFrame {
     private javax.swing.JPanel additionalInfoPanel;
     private convoy.gui.AdditionalTextPanel additionalTextPanel1;
     private javax.swing.JMenu editMenu;
+    private javax.swing.JMenuItem exitMenuItem;
     private javax.swing.JMenu fileMenu;
     private javax.swing.JMenuItem finalizeMenu;
     private javax.swing.JMenu helpMenu;
