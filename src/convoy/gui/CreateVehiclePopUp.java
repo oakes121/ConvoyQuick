@@ -11,6 +11,9 @@ import java.io.File;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import java.awt.*;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -343,6 +346,23 @@ public class CreateVehiclePopUp extends javax.swing.JFrame {
         addVehicleObject = obj1;
     }
 
+    public void createFile (){
+        PrintWriter writer = null;
+        try {
+            writer = new PrintWriter("VehicleInformation", "UTF-8");
+            writer.println("The first line");
+            
+            writer.close();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(CreateVehiclePopUp.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (UnsupportedEncodingException ex) {
+            Logger.getLogger(CreateVehiclePopUp.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            writer.close();
+        }
+    }
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -369,12 +389,14 @@ public class CreateVehiclePopUp extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(CreateVehiclePopUp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+CreateVehiclePopUp obj5 = new CreateVehiclePopUp(); 
+            obj5.createFile(); 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new CreateVehiclePopUp().setVisible(true);
             }
+            
         });
     }
 
