@@ -300,7 +300,6 @@ public class VehicleGrid extends javax.swing.JPanel implements ActionListener, K
                     
                     --vehicleCount;
                     --trueCount;
-                    //--expNumberOfVehicles;
                     
                     panelHolder.add(new JPanel());
                     panelHolder.get(15).setBackground((new java.awt.Color(255, 255, 255)));
