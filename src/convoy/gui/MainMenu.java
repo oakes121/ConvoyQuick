@@ -142,7 +142,7 @@ public class MainMenu extends javax.swing.JFrame {
 
         picturePanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        newProjectPanel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 0, 0), null, new java.awt.Color(0, 0, 0)));
+        newProjectPanel.setBorder(new javax.swing.border.SoftBevelBorder(0, null, new java.awt.Color(0, 0, 0), null, new java.awt.Color(0, 0, 0)));
         newProjectPanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 newProjectPanelMouseEntered(evt);
@@ -177,7 +177,7 @@ public class MainMenu extends javax.swing.JFrame {
         mainMenuTitle.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         mainMenuTitle.setText("Convoy Quick");
 
-        loadProjectPanel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 0, 0), null, new java.awt.Color(0, 0, 0)));
+        loadProjectPanel.setBorder(new javax.swing.border.SoftBevelBorder(0, null, new java.awt.Color(0, 0, 0), null, new java.awt.Color(0, 0, 0)));
         loadProjectPanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 loadProjectPanelMouseEntered(evt);

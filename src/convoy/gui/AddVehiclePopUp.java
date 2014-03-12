@@ -11,7 +11,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
-
+import org.jdesktop.xswingx.PromptSupport;
+        
 /**
  *
  * @author Siddharth
@@ -31,6 +32,7 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
     public AddVehiclePopUp() {
 
         initComponents();
+        addHintsToFields();
         newVehiclePanel = new VehiclePanel();
         this.setLocationRelativeTo(null); //centers frame
         this.setTitle("Add a New Vehicle"); //adds title
@@ -106,6 +108,11 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
                 vehicleNameFieldActionPerformed(evt);
             }
         });
+        vehicleNameField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                vehicleNameFieldFocusGained(evt);
+            }
+        });
 
         imageLabel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -144,7 +151,6 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
 
         jLabel2.setText("PERSONNEL");
 
-        personnel1Field.setText("Driver Name");
         personnel1Field.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 personnel1FieldActionPerformed(evt);
@@ -156,14 +162,12 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
             }
         });
 
-        personnel2Field.setText("Commander Name");
         personnel2Field.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 personnel2FieldFocusGained(evt);
             }
         });
 
-        personnel3Field.setText("Passenger Name");
         personnel3Field.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 personnel3FieldActionPerformed(evt);
@@ -175,7 +179,6 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
             }
         });
 
-        personnel4Field.setText("Passenger Name");
         personnel4Field.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 personnel4FieldFocusGained(evt);
@@ -275,21 +278,18 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
 
         jLabel3.setText("VEHICLE INFORMATION");
 
-        vehicleInfo1Field.setText("Bumper Number");
         vehicleInfo1Field.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 vehicleInfo1FieldFocusGained(evt);
             }
         });
 
-        vehicleInfo2Field.setText("Callsign");
         vehicleInfo2Field.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 vehicleInfo2FieldFocusGained(evt);
             }
         });
 
-        vehicleInfo3Field.setText("Additional Information");
         vehicleInfo3Field.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 vehicleInfo3FieldFocusGained(evt);
@@ -413,6 +413,17 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public void addHintsToFields(){
+        PromptSupport.setPrompt("Search vehicle", vehicleNameField);
+        PromptSupport.setPrompt("Driver Name", personnel1Field);
+        PromptSupport.setPrompt("Commander Name", personnel2Field);
+        PromptSupport.setPrompt("Passenger Name", personnel3Field);
+        PromptSupport.setPrompt("Passenger Name", personnel4Field);
+        PromptSupport.setPrompt("Bumper Number", vehicleInfo1Field);
+        PromptSupport.setPrompt("Bumper Number", vehicleInfo2Field);
+        PromptSupport.setPrompt("Call Sign", vehicleInfo3Field);
+        
+    }
     private void createEditButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createEditButtonActionPerformed
         // TODO add your handling code here:
         CreateVehiclePopUp createVehicle = new CreateVehiclePopUp();
@@ -484,6 +495,11 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
         // TODO add your handling code here:
         vehicleInfo3Field.setText("");
     }//GEN-LAST:event_vehicleInfo3FieldFocusGained
+
+    private void vehicleNameFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_vehicleNameFieldFocusGained
+        // TODO add your handling code here:
+        vehicleNameField.setText("");
+    }//GEN-LAST:event_vehicleNameFieldFocusGained
 
     public void setObject(VehicleGrid vehicleGrid) {
         vehicleGridObj = vehicleGrid;
