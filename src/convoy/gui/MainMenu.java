@@ -22,16 +22,17 @@ import java.util.ArrayList;
  */
 public class MainMenu extends javax.swing.JFrame {
 
-    private int mainWindowCount = 0;
+    protected int mainWindowCount = 0;
+    protected int currentMainWindow = 0;
     private ArrayList<MainWindow> mainWindows = new ArrayList<MainWindow>();
-    private static final MainMenu frame = new MainMenu();
+    private static  MainMenu frame = MainMenu.getInstance();
     protected static Mission mission;
     private BufferedImage image;
 
     /**
      * Creates new form MainMenu
      */
-    public MainMenu() {
+    private MainMenu() {
         mission = Mission.getInstance();
         initComponents();
         doMainMenuFont();
@@ -41,6 +42,15 @@ public class MainMenu extends javax.swing.JFrame {
         repaint();
         revalidate();
         newProjectPanel.requestFocus();
+    }
+    
+    public static MainMenu getInstance() {
+        // if uniqueInstance is null, instantiate it to new Mission()
+        if (frame == null) {
+            frame = new MainMenu();
+        }        
+        
+        return frame;
     }
     
     public void transferInformation(MainWindow mw) {
@@ -82,6 +92,37 @@ public class MainMenu extends javax.swing.JFrame {
         mw.rightMissionInfoPanel2.setToSP(toSP);
         mw.rightMissionInfoPanel2.setAddtionalText(additionalText2);
         
+    }
+    
+    /**
+     * newMainWindow creates a new MainWindow
+     */
+    public void newMainWindow() {
+        mainWindows.get(mainWindowCount++).setVisible(false);
+        mainWindows.add(new MainWindow());
+        currentMainWindow++;
+        transferInformation(mainWindows.get(mainWindowCount));
+        mainWindows.get(mainWindowCount).showLeftArrow();
+        mainWindows.get(mainWindowCount).display();
+    }
+    
+    /**
+     * accessMainWindowToTheRight() allows user to access the mainWindow screen to the right
+     */
+    public void accessMainWindowToTheRight() {
+        mainWindows.get(currentMainWindow++).setVisible(false);
+        mainWindows.get(currentMainWindow).showLeftArrow();
+        mainWindows.get(currentMainWindow).display(); 
+        
+    }
+    
+    /**
+     * accessMainWindowToTheLeft() allows user to access the mainWindow screen to the left
+     */
+    public void accessMainWindowToTheLeft() {        
+        mainWindows.get(currentMainWindow--).setVisible(false);
+        mainWindows.get(currentMainWindow).showRightArrow();
+        mainWindows.get(currentMainWindow).display();
     }
 
     /**
@@ -401,7 +442,7 @@ public class MainMenu extends javax.swing.JFrame {
     /**
      * The Main method
      *
-     * @param args the command line arguments
+     * @param args the comainMenuand line arguments
      */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

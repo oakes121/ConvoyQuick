@@ -28,6 +28,7 @@ public class VehicleGrid extends javax.swing.JPanel implements ActionListener, K
     private static final int MAX_VEHICLES = 16;
     private int expNumberOfVehicles = MAX_VEHICLES;          
     
+    private MainWindow mainWindow;
     private final AddNewVehiclePanel addNewVehiclePanel1;
     private AddVehiclePopUp addVehiclePopUp; 
     private ArrayList<VehiclePanel> vehiclePanelArray;     // array to hold all vehiclePanels
@@ -72,6 +73,54 @@ public class VehicleGrid extends javax.swing.JPanel implements ActionListener, K
         panelHolder.get(0).add(addNewVehiclePanel1);
         reDraw();
         
+    }
+    
+    /**
+     * createPlaceHolderPanelGrid() method uses panelHolder to create a 2 x 16 grid of blank panels that 
+     *  will dynamically increase as vehiclePanels are added to each blank panel
+     */
+    private void createPlaceHolderPanelGrid() {
+        
+        for(int m = 0; m < 16; m++) {
+            if (m >= 8) {
+                gbc.gridx = m - 8;
+                gbc.gridy = 1; 
+            }
+            else {  
+                gbc.gridx = m;  
+                gbc.gridy = 0;
+            }
+                panelHolder.add(new JPanel());
+                panelHolder.get(m).setBackground((new java.awt.Color(255, 255, 255)));
+                add(panelHolder.get(m), gbc);
+        }
+        
+    }
+    
+    /**
+     * reDraw() removes all elements from the panel and draws elements from the 
+     *  panelHolder array 
+     */
+    private void reDraw() {
+        
+        this.removeAll();
+        gbc = new GridBagConstraints();
+        
+        for(int m = 0; m < panelHolder.size(); m++) {
+            if (m >= 8) {
+                gbc.gridx = m - 8;
+                gbc.gridy = 1; 
+            }
+            else {  
+                gbc.gridx = m;  
+                gbc.gridy = 0;
+            }
+            
+            add(panelHolder.get(m), gbc);
+        }
+        
+        revalidate();
+        repaint();
     }
     
     /**
@@ -142,33 +191,22 @@ public class VehicleGrid extends javax.swing.JPanel implements ActionListener, K
     }
     
     /**
-     * createPlaceHolderPanelGrid() method uses panelHolder to create a 2 x 16 grid of blank panels that 
-     *  will dynamically increase as vehiclePanels are added to each blank panel
+     * clearBorders() method clears the borders of all VehiclePanel's in vehiclePanelArray
      */
-    private void createPlaceHolderPanelGrid() {
+    private void clearBorders() {
         
-        for(int m = 0; m < 16; m++) {
-            if (m >= 8) {
-                gbc.gridx = m - 8;
-                gbc.gridy = 1; 
-            }
-            else {  
-                gbc.gridx = m;  
-                gbc.gridy = 0;
-            }
-                panelHolder.add(new JPanel());
-                panelHolder.get(m).setBackground((new java.awt.Color(255, 255, 255)));
-                add(panelHolder.get(m), gbc);
+        for (int i = 0; i < vehiclePanelArray.size(); i++) {
+            vehiclePanelArray.get(i).setBorder(BorderFactory.createMatteBorder(0, 0, 0, 0, Color.GREEN)); 
         }
         
     }
-    
+        
     /**
      * addVehiclePanel() adds a vehiclePanel to the next available blank panel
      *  in the placeHolder array panel Grid
      * @param addVehiclePanel 
      */
-    private void addVehiclePanel(VehiclePanel vp) {
+    protected void addVehiclePanel(VehiclePanel vp) {
         if (vehicleCount < 16) {            
             
             vp.addMouseListener(this);
@@ -184,11 +222,19 @@ public class VehicleGrid extends javax.swing.JPanel implements ActionListener, K
             panelHolder.get(vehicleCount).add(addNewVehiclePanel1);
         }
         else
-            //JOptionPane.showMessageDialog(this, "You cannot add anymore"  , " vehicle Count", JOptionPane.WARNING_MESSAGE);
+            mainWindow.showRightArrow();
         
         revalidate();
         repaint();
-    }    
+    }   
+    
+    public void replaceAddNewVehiclePanel(VehiclePanel vp) {
+            
+        addVehiclePanel(vp);
+       
+        revalidate();
+        repaint();
+    }
 
     /**
      * swapPanel() methods swaps the position of two selected VehiclePanels within the grid
@@ -235,37 +281,7 @@ public class VehicleGrid extends javax.swing.JPanel implements ActionListener, K
             pos1 = pos2 = -1;
         }                
     }
-    
-    /**
-     * clearBorders() method clears the borders of all VehiclePanel's in vehiclePanelArray
-     */
-    private void clearBorders() {
-        
-        for (int i = 0; i < vehiclePanelArray.size(); i++) {
-            vehiclePanelArray.get(i).setBorder(BorderFactory.createMatteBorder(0, 0, 0, 0, Color.GREEN)); 
-        }
-        
-    }
    
-    
-    /**
-     * This method is called from within the constructor to initialize the form.
-     * WARNING: Do NOT modify this code. The content of this method is always
-     * regenerated by the Form Editor.
-     */
-    @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
-
-        setBackground(new java.awt.Color(255, 255, 255));
-        setPreferredSize(new java.awt.Dimension(1724, 300));
-        setLayout(new java.awt.GridLayout(1, 0));
-    }// </editor-fold>//GEN-END:initComponents
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    // End of variables declaration//GEN-END:variables
-
-    
     /**
      * getVehiclePanelArray() method returns vehiclePanelArray
      * @return vehiclePanelArray
@@ -315,31 +331,28 @@ public class VehicleGrid extends javax.swing.JPanel implements ActionListener, K
         }        
     }
     
-    /**
-     * reDraw() removes all elements from the panel and draws elements from the 
-     *  panelHolder array 
-     */
-    private void reDraw() {
-        
-        this.removeAll();
-        gbc = new GridBagConstraints();
-        
-        for(int m = 0; m < panelHolder.size(); m++) {
-            if (m >= 8) {
-                gbc.gridx = m - 8;
-                gbc.gridy = 1; 
-            }
-            else {  
-                gbc.gridx = m;  
-                gbc.gridy = 0;
-            }
-            
-            add(panelHolder.get(m), gbc);
-        }
-        
-        revalidate();
-        repaint();
+    public void setMainWindow(MainWindow mw) {
+        mainWindow = mw;
     }
+    
+    
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        setBackground(new java.awt.Color(255, 255, 255));
+        setPreferredSize(new java.awt.Dimension(1724, 300));
+        setLayout(new java.awt.GridLayout(1, 0));
+    }// </editor-fold>//GEN-END:initComponents
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    // End of variables declaration//GEN-END:variables
+
     
     @Override
     public void keyTyped(KeyEvent e) {
@@ -348,26 +361,8 @@ public class VehicleGrid extends javax.swing.JPanel implements ActionListener, K
             deletePanel();
         }        
     }
-
-    public void replaceAddNewVehiclePanel(VehiclePanel vp) {
-            
-        addVehiclePanel(vp);
-
-        columnCount++;
-         
-        /*
-        if (columnCount == 8) {
-            rowCount = 1;
-            columnCount = 0;
-            
-        } */
-        
-        revalidate();
-        repaint();
-    }
     
-    @Override
-    
+    @Override    
     public void mousePressed(MouseEvent e) {
          // handles vehiclePanelArray elements
         try {
