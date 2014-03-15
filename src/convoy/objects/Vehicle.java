@@ -8,7 +8,7 @@ public class Vehicle implements Serializable {
 
     private String bumperNumber;
     private String callSign;
-    private String equipment;
+    private String additionalInfo;    
     private int numberOfPersonnel;
     private Personnel driver;
     private Personnel vehicleCommander;
@@ -20,12 +20,11 @@ public class Vehicle implements Serializable {
  */
     public Vehicle() {
         passengers = new ArrayList<>();
-        driver = new Personnel("The", "Driver", "Driver", "");
+        driver = new Personnel("Driver", "", "");
         this.bumperNumber = "";
         this.callSign = "";
-        this.equipment = null;
+        this.additionalInfo = null;
         this.vehicleCommander = null;
-
     }
 
     /**
@@ -39,31 +38,31 @@ public class Vehicle implements Serializable {
         passengers = new ArrayList<>();
         this.bumperNumber = bumperNumber;
         this.callSign = callSign;
-        this.equipment = null;
+        this.additionalInfo = null;
         this.vehicleCommander = null;
 
     }
 
     /**
-     * Constructor Vehicle(int bumperNumber, String callSign, String equipment,
-     * int numberOfPersonnel, Personnel driver, Personnel vehicleCommander,
-     * Image vehicleImage, ArrayList<Personnel> passengers) creates specified
+     * Constructor Vehicle(int bumperNumber, String callSign, String additionalInfo,
+ int numberOfPersonnel, Personnel driver, Personnel vehicleCommander,
+ Image vehicleImage, ArrayList<Personnel> passengers) creates specified
      * vehicle
      *
      * @param bumperNumber vehicle bumper number
      * @param callSign vehicle call sign
-     * @param equipment vehicle equipment
+     * @param additionalInfo vehicle additionalInfo
      * @param numberOfPersonnel number of persons in vehicle
      * @param driver driver of vehicle
      * @param vehicleCommander commander of vehicle
      * @param vehicleImage image of vehicle
      * @param passengers all other passengers in vehicle
      */
-    public Vehicle(String bumperNumber, String callSign, String equipment, int numberOfPersonnel, Personnel driver, Personnel vehicleCommander, Image vehicleImage, ArrayList<Personnel> passengers) {
+    public Vehicle(String bumperNumber, String callSign, String additionalInfo, int numberOfPersonnel, Personnel driver, Personnel vehicleCommander, Image vehicleImage, ArrayList<Personnel> passengers) {
 
         this.bumperNumber = bumperNumber;
         this.callSign = callSign;
-        this.equipment = equipment;
+        this.additionalInfo = additionalInfo;
         this.numberOfPersonnel = numberOfPersonnel;
         this.driver = driver;
         this.vehicleCommander = vehicleCommander;
@@ -95,13 +94,13 @@ public class Vehicle implements Serializable {
     }
 
     /**
-     * Method setEquipment(String equipment) sets vehicle equipment
+     * Method setadditionalInfo(String additionalInfo) sets vehicle additionalInfo
      *
-     * @param equipment vehicle equipment
+     * @param additionalInfo vehicle additionalInfo
      */
-    public void setEquipment(String equipment) {
+    public void setAdditionalInfo(String additionalInfo) {
 
-        this.equipment = equipment;
+        this.additionalInfo = additionalInfo;
 
     }
 
@@ -122,9 +121,9 @@ public class Vehicle implements Serializable {
      *
      * @param driver vehicle driver
      */
-    public void setDriver(Personnel driver) {
+    public void setDriver(String name) {
 
-        this.driver = driver;
+        this.driver.setName(name);
 
     }
 
@@ -165,12 +164,11 @@ public class Vehicle implements Serializable {
 
     /**
      * addPassengers(Personnel passengers) adds passengers to vehicle
-     * @param passenger passenger to be added
-     * @return passengers.add(passenger) whether or not passenger was added
+     * @param String passenger name
      */
-    public boolean addPassengers(Personnel passenger) {
+    public void addPassengers(String Name) {
 
-        return passengers.add(passenger);
+        passengers.add(new Personnel(Name, "", ""));
 
     }
 
@@ -197,13 +195,13 @@ public class Vehicle implements Serializable {
     }
 
     /**
-     * Method getEquipment() gets vehicle equipment
+     * Method getadditionalInfo() gets vehicle additionalInfo
      *
-     * @return this.equipment returns vehicle equipment
+     * @return this.additionalInfo returns vehicle additionalInfo
      */
-    public String getEquipment() {
+    public String getAdditionalInfo() {
 
-        return this.equipment;
+        return this.additionalInfo;
 
     }
 
@@ -225,7 +223,7 @@ public class Vehicle implements Serializable {
      */
     public String getDriverName() {
 
-        return driver.getFirstName() + " "+ driver.getLastName();
+        return driver.getName();
     }
 
     /**

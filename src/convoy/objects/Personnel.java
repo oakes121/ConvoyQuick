@@ -4,8 +4,7 @@ import java.io.Serializable;
 
 public class Personnel implements Serializable {
     
-    private String firstName;
-    private String lastName;
+    private String name;
     private String rank;
     private String type;
     
@@ -20,15 +19,13 @@ public class Personnel implements Serializable {
     
     /**
      * Constructor Personnel(String fName, String lName, String rank, String type) creates specified personnel
-     * @param fName person's first name
-     * @param lName person's last name
+     * @param name person's first name
      * @param rank person's rank
      * @param type person's type
      */    
-    public Personnel(String fName, String lName, String rank, String type) {
+    public Personnel(String name, String rank, String type) {
         
-        this.firstName = fName;
-        this.lastName = lName;
+        this.name = name;
         this.rank = rank;
         this.type = type;
         
@@ -38,22 +35,10 @@ public class Personnel implements Serializable {
      * Method setFirstName(String fName) sets person's first name
      * @param fName person's first name
      */
-    public void setFirstName(String fName) {
-        
-        this.firstName = fName;
-        
+    public void setName(String name) {
+        this.name = name;
     }
-    
-    /**
-     * Method setLastName(String lName) sets person's last name
-     * @param lName person's last name
-     */
-    public void setLastName(String lName) {
-        
-        this.lastName = lName;
-        
-    }
-    
+      
     /**
      * Method setRank(String rank) sets person's rank
      * @param rank person's rank 
@@ -78,19 +63,9 @@ public class Personnel implements Serializable {
      * Method getFirstName() get person's first name
      * @return firstName returns person's first name
      */
-    public String getFirstName() {
+    public String getName() {
         
-        return firstName;
-        
-    }
-    
-    /**
-     * Method getLastName() get person's last name
-     * @return lastName returns person's last name
-     */
-    public String getLastName() {
-        
-        return lastName;
+        return name;
         
     }
     

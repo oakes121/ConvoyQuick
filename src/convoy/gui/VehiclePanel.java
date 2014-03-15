@@ -29,7 +29,7 @@ import javax.swing.SwingConstants;
  */
 public class VehiclePanel extends javax.swing.JPanel {
 
-    private Mission mission = Mission.getInstance();
+    
     private static int vehicleCount = 0;
     private String imageName;
     private URL url;
@@ -43,9 +43,7 @@ public class VehiclePanel extends javax.swing.JPanel {
         initComponents();
         doMainMenuFont();
         setTransparent();
-
-        mission.addVehicle(new Vehicle());
-        setDriverName();
+        
         ++vehicleCount;
         //loadImage();
         deleteButton.setMargin(new Insets(0, 0, 0, 0));
@@ -71,12 +69,6 @@ public class VehiclePanel extends javax.swing.JPanel {
 
     public JButton getDeleteButton() {
         return deleteButton;
-    }
-
-    public void setDriverName() {
-        String driverName;
-        driverName = mission.getVehicleAtIndex(vehicleCount).getDriverName();
-        driverLabel.setText(driverName + " " + vehicleCount);
     }
     
     public String getDriverName() {
@@ -113,6 +105,32 @@ public class VehiclePanel extends javax.swing.JPanel {
     public void setAdditionalInfo(String additionalInfo){
         additionalInfoField.setText(additionalInfo);
     }
+    
+    public void batchVehicleSet(Vehicle v) {
+        v.setBumperNumber(bumperNumberLabel.getText());
+        v.setCallSign(callSignLabel.getText());        
+        v.setDriver(driverLabel.getText());
+        
+        if (!additionalInfoField.getText().equals("")) 
+            v.setAdditionalInfo(additionalInfoField.getText());
+        
+        if (!passenger1Label.getText().equals(""))
+            v.addPassengers(passenger1Label.getText());
+        
+        if (!passenger2Label.getText().equals(""))
+            v.addPassengers(passenger2Label.getText());
+        
+        if (!passenger3Label.getText().equals(""))
+            v.addPassengers(passenger3Label.getText());
+        
+    }
+    
+    public void batchVehicleGet(Vehicle v) {
+        
+       
+    }
+    
+    
 
     private void doMainMenuFont() {
         try {

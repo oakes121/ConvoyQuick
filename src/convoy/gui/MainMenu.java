@@ -1,5 +1,6 @@
 package convoy.gui;
 
+import convoy.loadsave.Load;
 import java.awt.*;
 import java.io.*;
 import javax.swing.*;
@@ -9,6 +10,7 @@ import java.awt.image.BufferedImage;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import convoy.objects.Mission;
+import convoy.objects.Vehicle;
 import java.util.ArrayList;
 
 /**
@@ -94,6 +96,10 @@ public class MainMenu extends javax.swing.JFrame {
         
     }
     
+    public ArrayList<MainWindow> getMainWindows() {
+        return mainWindows;
+    }
+    
     /**
      * newMainWindow creates a new MainWindow
      */
@@ -138,9 +144,9 @@ public class MainMenu extends javax.swing.JFrame {
     }
 
     /**
-     * Method used to load an image.
+     * Method used to loadProject an image.
      *
-     * @param imageName the file path of the image to be loaded
+     * @param imageName the file path of the image to be loadProjected
      */
     private void loadImage() {
         try {
@@ -301,7 +307,7 @@ public class MainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_newProjectPanelMouseEntered
 
     /**
-     * Button animation when the mouse is over the load button
+     * Button animation when the mouse is over the loadProject button
      *
      * @param evt mouse over
      */
@@ -310,7 +316,7 @@ public class MainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_loadProjectPanelMouseEntered
 
     /**
-     * Button animation when the mouse is out of the load button
+     * Button animation when the mouse is out of the loadProject button
      *
      * @param evt mouse out
      */
@@ -340,103 +346,18 @@ public class MainMenu extends javax.swing.JFrame {
     
     /**
      * <p>
-     * Loads a previously saved convoy. The user selects a convoy file to be
-     * loaded. The convoy file must have the file extension .conx, After the
-     * user selects the convoy file the main menu frame is hidden and a new main
-     * window frame is displayed with the selected convoy file loaded.
-     * </p>
+ Loads a previously saved convoy. The user selects a convoy file to be
+ loadProjected. The convoy file must have the file extension .conx, After the
+ user selects the convoy file the main menu frame is hidden and a new main
+ window frame is displayed with the selected convoy file loadProjected.
+ </p>
      *
-     * @param evt click load button
+     * @param evt click loadProject button
      */
     private void loadProjectPanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loadProjectPanelMousePressed
-        String missionNumber = null;
-        String classification = null;
-        String stagingArea = null;
-        String acc = null;
-        String cc = null;
-        String fromLinkUpTime = null;
-        String fromSPTime = null;
-        String leftFrom = null;
-        String rightFrom = null;
-        String leftTo = null;
-        String rightTo = null;
-        String toLinkUpTime = null;
-        String toSPTime = null;
-        String leftAdditionalText = null;
-        String rightAdditionalText = null;
-        String additionalText = null;
-        String unitPatch = null;
-
-        JFileChooser chooser = new JFileChooser();
-        chooser.setAcceptAllFileFilterUsed(false);
-        chooser.addChoosableFileFilter((new FileNameExtensionFilter("Convoy Quick Files", "conx")));
-        chooser.setSelectedFile(new File("*.conx"));
-        chooser.setCurrentDirectory(new File("src/convoy/convoy"));
-
-        int option = chooser.showOpenDialog(null);
-        if (option == JFileChooser.APPROVE_OPTION) {
-            try {
-                BufferedReader br;
-                File file = chooser.getSelectedFile();
-                String line;
-                String cvsSplitBy = ",";
-
-                br = new BufferedReader(new FileReader(file));
-                while ((line = br.readLine()) != null) {
-                    // use comma as separator
-                    String[] missionText = line.split(cvsSplitBy);
-
-                    missionNumber = missionText[0];
-                    classification = missionText[1];
-                    stagingArea = missionText[2];
-                    acc = missionText[3];
-                    cc = missionText[4];
-                    fromLinkUpTime = missionText[5];
-                    fromSPTime = missionText[6];
-                    leftFrom = missionText[7];
-                    rightFrom = missionText[8];
-                    leftTo = missionText[9];
-                    rightTo = missionText[10];
-                    toLinkUpTime = missionText[11];
-                    toSPTime = missionText[12];
-                    leftAdditionalText = missionText[13].replaceAll("'t'", "\t").replaceAll("'r'", "\r").replaceAll("'n'", "\n");
-                    rightAdditionalText = missionText[14].replaceAll("'t'", "\t").replaceAll("'r'", "\r").replaceAll("'n'", "\n");
-                    additionalText = missionText[15].replaceAll("'t'", "\t").replaceAll("'r'", "\r").replaceAll("'n'", "\n");
-                    unitPatch = missionText[16];
-                }
-                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-
-                this.setVisible(false);
-                mainWindow = new MainWindow(missionNumber,
-                        classification,
-                        stagingArea,
-                        acc,
-                        cc,
-                        fromLinkUpTime,
-                        fromSPTime,
-                        leftFrom,
-                        rightFrom,
-                        leftTo,
-                        rightTo,
-                        toLinkUpTime,
-                        toSPTime,
-                        leftAdditionalText,
-                        rightAdditionalText,
-                        additionalText,
-                        unitPatch);
-                mainWindow.setVisible(true);
-                mainWindow.setTitle("Convoy Quick - Convoy documentation creator to help save lives");
-                mainWindow.setIconImage(new ImageIcon(getClass().getResource("/convoy/resources/images/humveeIcon.png")).getImage());
-                mainWindow.setExtendedState(MainWindow.MAXIMIZED_BOTH);
-                mainWindow.toFront();
-                repaint();
-                revalidate();
-
-            } catch (IOException ex) {
-            } finally {
-                this.setCursor(Cursor.getDefaultCursor());
-            }
-        }
+        Load load = new Load();
+        load.loadProject();
+       
     }//GEN-LAST:event_loadProjectPanelMousePressed
 
     /**

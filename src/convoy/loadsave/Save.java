@@ -3,12 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package convoy.pdf;
+package convoy.loadsave;
 
+import convoy.gui.MainMenu;
 import convoy.objects.Mission;
+import convoy.objects.Vehicle;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -25,6 +29,8 @@ public class Save {
 
     private File file;
     private final Mission mission;
+    private MainMenu mainMenu = MainMenu.getInstance();
+    private ArrayList<ArrayList<Vehicle>> mainWindowVehicles = new ArrayList<>();;
 
     /**
      * Constructor that grabs the mission obj from the convoy and save the
@@ -74,5 +80,32 @@ public class Save {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Mission failed to save, please try again.");
         }
+        
+        saveVehicles();
+    }
+    
+    public void saveVehicles() {
+        
+        for (int i = 0; i < mainMenu.getMainWindows().size(); i++){
+            mainWindowVehicles.add(new ArrayList<Vehicle>());
+            
+            for (int j = 0; j < mainMenu.getMainWindows().get(i).getVehicleGrid().getVehiclePanelArray().size(); j++){
+                
+                Vehicle v = new Vehicle();
+                
+                mainMenu.getMainWindows().get(i).getVehicleGrid().getVehiclePanelArray().get(j).batchVehicleSet(v);
+                
+                mainWindowVehicles.get(i).add(v);
+            }
+            
+            try {
+                FileOutputStream fileOut =
+                        new FileOutputStream("src/convoy/convoy/" + mission.getMissionNumber() +  "_vehicles.conx");
+                ObjectOutputStream out = new ObjectOutputStream(fileOut);
+                out.writeObject(mainWindowVehicles);
+                out.close();
+                fileOut.close();
+            } catch (IOException e) {}
+        }        
     }
 }
