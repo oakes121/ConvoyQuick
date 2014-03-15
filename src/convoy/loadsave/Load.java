@@ -96,11 +96,7 @@ public class Load {
 
                 // clears arraylist of MainWindows
                 if (mainMenu.getMainWindows().size() != 0) {
-                    for (int i = 0; i < mainMenu.getMainWindows().size(); i++) {
-                        mainMenu.getMainWindows().get(i).setVisible(false);
-                    }                    
-                    mainMenu.getMainWindows().clear();
-                    mainMenu.resetCounters();
+                    mainMenu.clearMainWindows();
                 }
                 
                 mainMenu.getMainWindows().add(new MainWindow(missionNumber,

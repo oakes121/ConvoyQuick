@@ -140,6 +140,7 @@ public final class MainWindow extends javax.swing.JFrame {
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         setIconImage(new ImageIcon(getClass().getResource("/convoy/resources/images/humveeIcon.png")).getImage());
         setVisible(true);
+        toFront();
         revalidate();
         repaint();
     }
@@ -380,15 +381,9 @@ public final class MainWindow extends javax.swing.JFrame {
     private void newMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newMenuItemActionPerformed
         int response = JOptionPane.showConfirmDialog(null, "Are you sure you want to start a new convoy?\nAll unsaved data will be lost!", "New Convoy?", JOptionPane.YES_NO_OPTION);
         if (response == JOptionPane.YES_OPTION) {
-            this.setVisible(false);
-            MainWindow mainWindow = new MainWindow();
-            mainWindow.setVisible(true);
-            mainWindow.setTitle("Convoy QuicMaink - Convoy documentation creator to help save lives");
-            mainWindow.setIconImage(new ImageIcon(getClass().getResource("/convoy/resources/images/humveeIcon.png")).getImage());
-            mainWindow.setExtendedState(MainWindow.MAXIMIZED_BOTH);
-            mainWindow.toFront();
-            repaint();
-            revalidate();
+            mainMenu.clearMainWindows();
+            mainMenu.getMainWindows().add(new MainWindow());
+            mainMenu.getMainWindows().get(0).display();
         }
     }//GEN-LAST:event_newMenuItemActionPerformed
 

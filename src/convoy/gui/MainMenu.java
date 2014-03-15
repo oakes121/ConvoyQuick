@@ -14,9 +14,9 @@ import convoy.objects.Vehicle;
 import java.util.ArrayList;
 
 /**
- * @author Mike Moye <mtm5313@psu.edu>
+ * @author Mike Moye <mtm5313@psu.edu> / Oakes Isaac <oki5001@psu.edu
  * @version 1.0
- * @since 2014-02-27
+ * @since 2014-03-15
  *
  * <p>
  * This class is to create the Main Menu.
@@ -128,7 +128,11 @@ public class MainMenu extends javax.swing.JFrame {
         
     }
     
-    public void resetCounters() {
+    public void clearMainWindows() {
+        for (int i = 0; i < mainWindows.size(); i++) 
+            mainWindows.get(i).setVisible(false);
+                           
+        mainWindows.clear();                    
         mainWindowCount = 0;
         currentMainWindow = 0;
     }
