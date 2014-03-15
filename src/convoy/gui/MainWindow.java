@@ -663,8 +663,8 @@ public final class MainWindow extends javax.swing.JFrame {
 
     private void rightArrowMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rightArrowMousePressed
         // TODO add your handling code here:
-        if (mainMenu.mainWindowCount == mainMenu.currentMainWindow) {            
-            mainMenu.newMainWindow();        }
+        if (mainMenu.mainWindowCount == mainMenu.currentMainWindow)            
+            mainMenu.newMainWindow(true);       
         else
             mainMenu.accessMainWindowToTheRight();
     }//GEN-LAST:event_rightArrowMousePressed

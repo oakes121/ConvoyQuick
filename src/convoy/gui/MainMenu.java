@@ -103,24 +103,42 @@ public class MainMenu extends javax.swing.JFrame {
     /**
      * newMainWindow creates a new MainWindow
      */
-    public void newMainWindow() {
-        mainWindows.get(mainWindowCount).setVisible(false);
+    public void newMainWindow(boolean display) {
+        if (display)
+            mainWindows.get(mainWindowCount).setVisible(false);
+        
         mainWindowCount++;
         mainWindows.add(new MainWindow());
         currentMainWindow++;
         transferInformation(mainWindows.get(mainWindowCount));
         mainWindows.get(mainWindowCount).showLeftArrow();
-        mainWindows.get(mainWindowCount).display();
+        
+        if (display)
+            mainWindows.get(mainWindowCount).display();
     }
     
     /**
      * accessMainWindowToTheRight() allows user to access the mainWindow screen to the right
      */
     public void accessMainWindowToTheRight() {
-        mainWindows.get(currentMainWindow++).setVisible(false);
+        mainWindows.get(currentMainWindow).setVisible(false);
+        currentMainWindow++;
         mainWindows.get(currentMainWindow).showLeftArrow();
         mainWindows.get(currentMainWindow).display(); 
         
+    }
+    
+    public void resetCounters() {
+        mainWindowCount = 0;
+        currentMainWindow = 0;
+    }
+    
+    public int getCurrentMainWindow() {
+        return currentMainWindow;
+    }
+    
+    public void setCurrentMainWindow(int count) {
+        currentMainWindow = 0;
     }
     
     /**

@@ -100,6 +100,7 @@ public class Load {
                         mainMenu.getMainWindows().get(i).setVisible(false);
                     }                    
                     mainMenu.getMainWindows().clear();
+                    mainMenu.resetCounters();
                 }
                 
                 mainMenu.getMainWindows().add(new MainWindow(missionNumber,
@@ -145,10 +146,11 @@ public class Load {
             fileIn.close();
             
             
+            
             for (int i = 0; i < mainWindowVehicles.size(); i++) {
                 
                 if (i > 0) 
-                    mainMenu.newMainWindow();
+                    mainMenu.newMainWindow(false);
                 
                 mainMenu.getMainWindows().get(i).getVehicleGrid().setMainWindow(mainMenu.getMainWindows().get(i));
                 
@@ -159,6 +161,9 @@ public class Load {
                     mainMenu.getMainWindows().get(i).getVehicleGrid().replaceAddNewVehiclePanel(vp);
                 }
             }
+            
+            mainMenu.setCurrentMainWindow(0);
+            mainMenu.getMainWindows().get(0).display();
             
         }
         catch(Exception exc){
