@@ -43,7 +43,9 @@ public class Save {
     }
 
     /**
-     * Saves convoy into a file
+     * <p>
+     * save() Saves convoy into a file named after the mission number with the extension ".conx"
+     * <p>
      */
     public void save() {
         if (mission.getMissionNumber().equalsIgnoreCase("")) {
@@ -84,6 +86,10 @@ public class Save {
         saveVehicles();
     }
     
+    /**
+     * saveVehicles() Saves vehicles within the convoy into a file named after the mission number with 
+     *  the extension "_vehicles.conx"
+     */
     public void saveVehicles() {
         
         for (int i = 0; i < mainMenu.getMainWindows().size(); i++){
@@ -93,19 +99,21 @@ public class Save {
                 
                 Vehicle v = new Vehicle();
                 
-                mainMenu.getMainWindows().get(i).getVehicleGrid().getVehiclePanelArray().get(j).batchVehicleSet(v);
+                mainMenu.getMainWindows().get(i).getVehicleGrid().getVehiclePanelArray().get(j).batchVehicleGet(v);
                 
                 mainWindowVehicles.get(i).add(v);
+                
+                //JOptionPane.showMessageDialog(mainMenu, mainWindowVehicles.get(i).get(j).getDriverName() + " ");
             }
-            
-            try {
-                FileOutputStream fileOut =
-                        new FileOutputStream("src/convoy/convoy/" + mission.getMissionNumber() +  "_vehicles.conx");
-                ObjectOutputStream out = new ObjectOutputStream(fileOut);
-                out.writeObject(mainWindowVehicles);
-                out.close();
-                fileOut.close();
-            } catch (IOException e) {}
-        }        
+        }  
+        try {
+            FileOutputStream fileOut =
+                    new FileOutputStream("src/convoy/convoy/" + mission.getMissionNumber() +  "_vehicles.conx");
+            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+            out.writeObject(mainWindowVehicles);
+            out.close();
+            fileOut.close();
+        } catch (IOException e) {}
+        
     }
 }

@@ -626,7 +626,7 @@ public final class MainWindow extends javax.swing.JFrame {
      * @param evt click file -> save menu item
      */
     private void saveMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveMenuItemActionPerformed
-        Mission mission = new Mission(this.leftMissionInfoPanel1.getMissionNumber(),
+        Mission mission = Mission.getInstance(this.leftMissionInfoPanel1.getMissionNumber(),
                 this.rightMissionInfoPanel2.getStagingArea(),
                 this.leftMissionInfoPanel1.getTo(),
                 this.rightMissionInfoPanel2.getTo(),
@@ -663,9 +663,7 @@ public final class MainWindow extends javax.swing.JFrame {
 
     private void rightArrowMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rightArrowMousePressed
         // TODO add your handling code here:
-        //JOptionPane.showMessageDialog(this, "Wats good");
-        if (mainMenu.mainWindowCount == mainMenu.currentMainWindow) {
-            JOptionPane.showMessageDialog(this, "Wats good");
+        if (mainMenu.mainWindowCount == mainMenu.currentMainWindow) {            
             mainMenu.newMainWindow();        }
         else
             mainMenu.accessMainWindowToTheRight();

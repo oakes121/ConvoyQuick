@@ -207,6 +207,7 @@ public class VehicleGrid extends javax.swing.JPanel implements ActionListener, K
      * @param addVehiclePanel 
      */
     protected void addVehiclePanel(VehiclePanel vp) {
+        
         if (vehicleCount < 16) {            
             
             vp.addMouseListener(this);
@@ -218,11 +219,13 @@ public class VehicleGrid extends javax.swing.JPanel implements ActionListener, K
             panelHolder.get(vehicleCount).add(vehiclePanelArray.get(vehicleCount));
             
             ++vehicleCount;
+            //JOptionPane.showMessageDialog(mainWindow, " " + vehicleCount);
             
-            panelHolder.get(vehicleCount).add(addNewVehiclePanel1);
+            if (vehicleCount < 16)
+                panelHolder.get(vehicleCount).add(addNewVehiclePanel1);
+            else
+                mainWindow.showRightArrow();
         }
-        else
-            mainWindow.showRightArrow();
         
         revalidate();
         repaint();

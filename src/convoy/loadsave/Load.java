@@ -2,29 +2,41 @@ package convoy.loadsave;
 
 import convoy.gui.MainMenu;
 import convoy.gui.MainWindow;
+import convoy.gui.VehiclePanel;
+import convoy.objects.Vehicle;
 import java.awt.Cursor;
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.util.ArrayList;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
+ * @author Oakes Isaac <oki5001@psu.edu>
+ * @version 1.0
+ * @since 2014-03-14
  *
- * @author Oakes
+ * <p>
+ * This class is used to load the convoy. 
+ * </p>
  */
 public class Load {
     
-    public MainMenu mainMenu = MainMenu.getInstance();
+    private MainMenu mainMenu = MainMenu.getInstance();
+    String missionNumber = null;
     
-    public Load() {
-        
-    }
     
+    /**
+     * loadProject() loads a file that with the file extension ".conx"
+     */
     public void loadProject() {
         
-        String missionNumber = null;
+        
         String classification = null;
         String stagingArea = null;
         String acc = null;
@@ -107,14 +119,53 @@ public class Load {
                         rightAdditionalText,
                         additionalText,
                         unitPatch));
-                mainMenu.getMainWindows().get(0).display();     
+                mainMenu.getMainWindows().get(0).display();   
+                
+                loadVehicles();
+                
+                
                
 
-            } catch (IOException ex) {
-            } finally {
-                //this.setCursor(Cursor.getDefaultCursor());
-            }
+            } catch (IOException ex) {} finally { /*this.setCursor(Cursor.getDefaultCursor());*/ }
         }
+    }
+   
+    /**
+     * loadProject() loads a file that with the file extension "_vehicles.conx"
+     */
+    public void loadVehicles() {      
+        
+        ArrayList<ArrayList<Vehicle>> mainWindowVehicles = new ArrayList<>();
+        
+        try{            
+            FileInputStream fileIn = new FileInputStream("src/convoy/convoy/" + missionNumber +  "_vehicles.conx");
+            ObjectInputStream in = new ObjectInputStream(fileIn);
+            mainWindowVehicles = (ArrayList<ArrayList<Vehicle>>) in.readObject();
+            in.close();
+            fileIn.close();
+            
+            
+            for (int i = 0; i < mainWindowVehicles.size(); i++) {
+                
+                if (i > 0) 
+                    mainMenu.newMainWindow();
+                
+                mainMenu.getMainWindows().get(i).getVehicleGrid().setMainWindow(mainMenu.getMainWindows().get(i));
+                
+                for (int j = 0; j < mainWindowVehicles.get(i).size(); j++) {
+                    //JOptionPane.showMessageDialog(mainMenu, mainWindowVehicles.get(0).get(1).getDriverName() + " ");
+                    VehiclePanel vp = new VehiclePanel();
+                    vp.batchVehicleSet(mainWindowVehicles.get(i).get(j));
+                    mainMenu.getMainWindows().get(i).getVehicleGrid().replaceAddNewVehiclePanel(vp);
+                }
+            }
+            
+        }
+        catch(Exception exc){
+            exc.printStackTrace(); // If there was an error, print the info.
+            JOptionPane.showMessageDialog(mainMenu, "You messed up");
+        }
+        
     }
     
 }

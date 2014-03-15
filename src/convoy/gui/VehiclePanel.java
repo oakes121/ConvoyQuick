@@ -106,7 +106,13 @@ public class VehiclePanel extends javax.swing.JPanel {
         additionalInfoField.setText(additionalInfo);
     }
     
-    public void batchVehicleSet(Vehicle v) {
+    /**
+     * batchVehicleGet(Vehicle v) sets bumperNumber, callSign, driver and all
+     *  passengers in v according to the values in the corresponding JLabels. 
+     * @param v the vehicle object that will be receiving the values from the 
+     *  various JLabels associated with this class
+     */
+    public void batchVehicleGet(Vehicle v) {
         v.setBumperNumber(bumperNumberLabel.getText());
         v.setCallSign(callSignLabel.getText());        
         v.setDriver(driverLabel.getText());
@@ -125,10 +131,28 @@ public class VehiclePanel extends javax.swing.JPanel {
         
     }
     
-    public void batchVehicleGet(Vehicle v) {
+    /**
+     * batchVehcileSet(Vehicle v) gets bumperNumber, callSign, driver and all
+     *  passengers according from v 
+     * @param v the vehicle object that will be receiving the values from the 
+     *  various JLabels associated with this class
+     */
+    public void batchVehicleSet(Vehicle v) {
+        bumperNumberLabel.setText(v.getBumperNumber());
+        callSignLabel.setText(v.getCallSign());
+        driverLabel.setText(v.getDriverName());
         
-       
+        if (v.getPassengers().size() >= 1)
+            passenger1Label.setText(v.getPassengers().get(0).getName());
+        
+        if (v.getPassengers().size() >= 2)
+            passenger2Label.setText(v.getPassengers().get(1).getName());
+        
+        if (v.getPassengers().size() >= 3)
+            passenger3Label.setText(v.getPassengers().get(2).getName());
     }
+    
+   
     
     
 

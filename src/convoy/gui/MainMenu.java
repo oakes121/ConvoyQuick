@@ -104,7 +104,8 @@ public class MainMenu extends javax.swing.JFrame {
      * newMainWindow creates a new MainWindow
      */
     public void newMainWindow() {
-        mainWindows.get(mainWindowCount++).setVisible(false);
+        mainWindows.get(mainWindowCount).setVisible(false);
+        mainWindowCount++;
         mainWindows.add(new MainWindow());
         currentMainWindow++;
         transferInformation(mainWindows.get(mainWindowCount));
@@ -357,6 +358,7 @@ public class MainMenu extends javax.swing.JFrame {
     private void loadProjectPanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loadProjectPanelMousePressed
         Load load = new Load();
         load.loadProject();
+        setVisible(false);
        
     }//GEN-LAST:event_loadProjectPanelMousePressed
 

@@ -6,8 +6,7 @@ import java.util.ArrayList;
 
 public class Mission implements Serializable {
 
-    private static Mission uniqueInstance;            
-    private static String constructorUsed;
+    private static Mission uniqueInstance;  
     private String missionNumber;                    // The designated mission name for the convoy
     private Classification missionClassification;    // The classification of the mission 
     private Time missionLinkUpTime;                  // The meeting time of the convoy 
@@ -36,7 +35,7 @@ public class Mission implements Serializable {
      *  constructor Mission() initializes all class variables
      */
     private Mission() {
-        constructorUsed = "default";
+        
         missionNumber = "Misson Number";
         leftTo = "";
         rightTo = "";
@@ -78,7 +77,7 @@ public class Mission implements Serializable {
      * @param dTS int value representing seconds use to instantiate
      * missionDepartureTime
      */
-    public  Mission(    String missionNumber, 
+    private Mission(    String missionNumber, 
                         String missionStagingArea,
                         String leftTo, 
                         String rightTo, 
@@ -95,10 +94,10 @@ public class Mission implements Serializable {
                         String right,
                         String text,
                         String unitPatch) {
-        constructorUsed = "alt1"; 
+         
         this.missionNumber = missionNumber;
         this.missionStagingArea = missionStagingArea;
-        this.unitName = unitName;
+        //this.unitName = unitName;
         this.leftTo = leftTo;
         this.rightTo = rightTo;
         this.leftFrom = leftFrom;
@@ -134,11 +133,8 @@ public class Mission implements Serializable {
             uniqueInstance = new Mission();
         }
         
-        // if constructorUsed is set to "alt1" then return uniqueInstance else return null
-        if (constructorUsed.equals("default")) 
-            return uniqueInstance;
-        
-        return null;
+        return uniqueInstance;
+       
     }
     
     /**
@@ -153,19 +149,21 @@ public class Mission implements Serializable {
      * @param missionNumber int value that missionNumber will be set to
      * @param missionStagingArea string value that missionStagingArea will be
      * set to
-     * @param unitName string value that unitName will be set to
-     * @param lUH int value representing hours use to instantiate
-     * missionLinkUpTime
-     * @param lUM int value representing minutes use to instantiate
-     * missionLinkUpTime
-     * @param lUS int value representing seconds use to instantiate
-     * missionLinkUpTime
-     * @param dTH int value representing hours use to instantiate
-     * missionDepartureTime
-     * @param dTM int value representing minutes use to instantiate
-     * missionDepartureTime
-     * @param dTS int value representing seconds use to instantiate
-     * missionDepartureTime
+     * @param leftTo
+     * @param rightTo
+     * @param leftFrom
+     * @param rightFrom
+     * @param cc
+     * @param acc
+     * @param fromLinkUpTime
+     * @param fromSPTime
+     * @param toLinkUpTime
+     * @param toSPTime
+     * @param classification
+     * @param leftAdditionalText
+     * @param rightAdditionalText
+     * @param additionalText
+     * @param unitPatch
      * @return 
      */
     public static synchronized Mission getInstance( String missionNumber, 
@@ -187,16 +185,10 @@ public class Mission implements Serializable {
                                                     String unitPatch) {
         
         // if uniqueInstance is null, instantiate it to new Mission()
-        if (uniqueInstance == null) {
-            uniqueInstance = new Mission(   missionNumber, missionStagingArea, leftTo, rightTo, leftFrom, rightFrom,
+        uniqueInstance = new Mission(   missionNumber, missionStagingArea, leftTo, rightTo, leftFrom, rightFrom,
             cc, acc, fromLinkUpTime, fromSPTime, toLinkUpTime, toSPTime, classification,leftAdditionalText, rightAdditionalText, additionalText, unitPatch);
-        }
-        
-        // if constructorUsed is set to "alt1" then return uniqueInstance else return null
-        if (constructorUsed.equals("alt1")) 
-            return uniqueInstance;
-        
-        return null;
+           
+        return uniqueInstance;        
     }
 		
 	
