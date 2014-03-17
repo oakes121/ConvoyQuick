@@ -330,7 +330,7 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="freqLabel">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Frequencys - "/>
+            <Property name="text" type="java.lang.String" value="Frequencies - "/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="addFreqLabel">

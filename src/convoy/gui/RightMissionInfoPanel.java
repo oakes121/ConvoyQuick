@@ -389,7 +389,7 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
 
         freqPanel.setBackground(new java.awt.Color(255, 255, 255));
 
-        freqLabel.setText("Frequencys - ");
+        freqLabel.setText("Frequencies - ");
 
         addFreqLabel.setForeground(new java.awt.Color(0, 51, 255));
         addFreqLabel.setText("<HTML><U>+ Add Freq</U></HTML>");
