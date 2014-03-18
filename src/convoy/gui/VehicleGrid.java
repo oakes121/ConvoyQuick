@@ -221,15 +221,24 @@ public class VehicleGrid extends javax.swing.JPanel implements ActionListener, K
             ++vehicleCount;
             //JOptionPane.showMessageDialog(mainWindow, " " + vehicleCount);
             
-            if (vehicleCount < 16)
-                panelHolder.get(vehicleCount).add(addNewVehiclePanel1);
-            else
-                mainWindow.showRightArrow();
+            update();
+            
         }
         
         revalidate();
         repaint();
     }   
+    
+    /**
+     * update() draws either an addNewVehiclePanel to the grid if vehicleCount < 16
+     *  else class mainWindow.showRightArrow
+     */
+    private void update() {
+        if (vehicleCount < 16)
+                panelHolder.get(vehicleCount).add(addNewVehiclePanel1);
+            else
+                mainWindow.showRightArrow();
+    }
     
     public void replaceAddNewVehiclePanel(VehiclePanel vp) {
             
@@ -322,7 +331,7 @@ public class VehicleGrid extends javax.swing.JPanel implements ActionListener, K
                     
                     panelHolder.add(new JPanel());
                     panelHolder.get(15).setBackground((new java.awt.Color(255, 255, 255)));
-                    
+                    update();
                     reDraw();
                     
                     revalidate();
