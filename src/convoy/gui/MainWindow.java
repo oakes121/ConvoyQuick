@@ -290,6 +290,7 @@ public final class MainWindow extends javax.swing.JFrame {
         saveMenuItem = new javax.swing.JMenuItem();
         finalizeMenu = new javax.swing.JMenuItem();
         printMenuItem = new javax.swing.JMenuItem();
+        templatesMenuItem = new javax.swing.JMenuItem();
         exitMenuItem = new javax.swing.JMenuItem();
         editMenu = new javax.swing.JMenu();
         wateMarkMenu = new javax.swing.JMenuItem();
@@ -362,9 +363,7 @@ public final class MainWindow extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(picturePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(picturePanel2Layout.createSequentialGroup()
-                                        .addGap(0, 0, 0)
-                                        .addComponent(rightArrow)))))
+                                    .addComponent(rightArrow))))
                         .addContainerGap())))
         );
         picturePanel2Layout.setVerticalGroup(
@@ -440,6 +439,15 @@ public final class MainWindow extends javax.swing.JFrame {
         });
         fileMenu.add(printMenuItem);
 
+        templatesMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.CTRL_MASK));
+        templatesMenuItem.setText("<html><strong>Templates</strong></html>");
+        templatesMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                templatesMenuItemActionPerformed(evt);
+            }
+        });
+        fileMenu.add(templatesMenuItem);
+
         exitMenuItem.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         exitMenuItem.setText("Exit");
         exitMenuItem.addActionListener(new java.awt.event.ActionListener() {
@@ -451,7 +459,7 @@ public final class MainWindow extends javax.swing.JFrame {
 
         menuBar.add(fileMenu);
 
-        editMenu.setText("<html>\n<strong>Edit</strong>\n</html>");
+        editMenu.setText("<html> <strong>Edit</strong> </html>");
 
         wateMarkMenu.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_W, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
         wateMarkMenu.setText("<html><strong>Unit Patch</strong></html>");
@@ -519,10 +527,14 @@ public final class MainWindow extends javax.swing.JFrame {
         int response = JOptionPane.showConfirmDialog(null, "Are you sure you want to load a convoy?\n All unsaved data will be lost.", "Load Convoy?", JOptionPane.YES_NO_OPTION);
        
         if (response == JOptionPane.YES_OPTION) {
-            this.setVisible(false);
             Load load = new Load();
-            load.loadProject();            
+            load.loadProject();         
+            if (load.getIsLoaded())
+                setVisible(false);
         }
+        
+        
+        
     }//GEN-LAST:event_loadMenuItemActionPerformed
     /**
      * Displays the about information dialog pop up
@@ -804,6 +816,16 @@ public final class MainWindow extends javax.swing.JFrame {
         
         updateArrows();
     }//GEN-LAST:event_leftArrowMousePressed
+
+    private void templatesMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_templatesMenuItemActionPerformed
+        // TODO add your handling code here:
+        try {
+        Desktop.getDesktop().open(new File("C:\\"));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+    }//GEN-LAST:event_templatesMenuItemActionPerformed
     
     /**
      * showRightArrow() makes it so that the right arrow appear 
@@ -889,6 +911,7 @@ public final class MainWindow extends javax.swing.JFrame {
     private javax.swing.JLabel rightArrow;
     protected convoy.gui.RightMissionInfoPanel rightMissionInfoPanel2;
     private javax.swing.JMenuItem saveMenuItem;
+    private javax.swing.JMenuItem templatesMenuItem;
     protected convoy.gui.VehicleGrid vehicleGrid1;
     private javax.swing.JMenuItem wateMarkMenu;
     // End of variables declaration//GEN-END:variables

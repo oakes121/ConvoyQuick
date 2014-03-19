@@ -29,8 +29,10 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 public class Load {
     
     private MainMenu mainMenu = MainMenu.getInstance();
+    private MainWindow mainWindow = null;
     String missionNumber = null;
     private int option;
+    private boolean isLoaded = false;
     
     
     /**
@@ -99,7 +101,7 @@ public class Load {
 
                 
                                 
-                MainWindow mainWindow = new MainWindow(missionNumber,
+                 mainWindow = new MainWindow(missionNumber,
                         classification,
                         stagingArea,
                         acc,
@@ -118,10 +120,14 @@ public class Load {
                         unitPatch);
                
                 
+                
                 mainMenu.setMainWindow(mainWindow);
                 mainMenu.getMainWindow().display();
                 
                 loadVehicles();
+                
+                if (mainWindow != null) 
+                    isLoaded = true;
                 
                 
                
@@ -132,6 +138,10 @@ public class Load {
    
     public int getOption() {
         return option;
+    }
+    
+    public boolean getIsLoaded() {
+        return isLoaded;
     }
     
     /**
