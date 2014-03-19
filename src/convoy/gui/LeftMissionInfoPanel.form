@@ -53,14 +53,14 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="jScrollPane3" pref="575" max="32767" attributes="0"/>
+          <Group type="102" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="jScrollPane3" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
                       <Component id="imageLabel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="fromLabel" min="-2" max="-2" attributes="0"/>
@@ -68,13 +68,13 @@
                                   <Component id="toLabel" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="fromTextField" pref="300" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="fromTextField" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="toTextField" max="32767" attributes="0"/>
                                   <Component id="missionNumberTextField" max="32767" attributes="0"/>
-                                  <Component id="toTextField" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
-                          <Component id="classificationDropBox" pref="363" max="32767" attributes="0"/>
+                          <Component id="classificationDropBox" min="-2" pref="300" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
