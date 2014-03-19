@@ -30,7 +30,7 @@ public class Save {
     private File file;
     private final Mission mission;
     private MainMenu mainMenu = MainMenu.getInstance();
-    private ArrayList<ArrayList<Vehicle>> mainWindowVehicles = new ArrayList<>();;
+    private ArrayList<ArrayList<Vehicle>> vehicleGridsVehicles = new ArrayList<>();;
 
     /**
      * Constructor that grabs the mission obj from the convoy and save the
@@ -71,6 +71,8 @@ public class Save {
             saveData += mission.getRightAdditionalInfo().replaceAll("\\t", "'t'").replaceAll("\\r", "'r'").replaceAll("\\n", "'n'") + ",";
             saveData += mission.getAdditionalInfo().replaceAll("\\t", "'t'").replaceAll("\\r", "'r'").replaceAll("\\n", "'n'") + ",";
             saveData += "file:\\" + mission.getUnitPatch();
+            
+            JOptionPane.showMessageDialog(mainMenu, mission.getUnitPatch());
 
             byte[] dataToWrite = saveData.getBytes("UTF8");
             //String str = new String(dataToWrite, "UTF8");
@@ -92,25 +94,26 @@ public class Save {
      */
     public void saveVehicles() {
         
-        for (int i = 0; i < mainMenu.getMainWindows().size(); i++){
-            mainWindowVehicles.add(new ArrayList<Vehicle>());
+        for (int i = 0; i < mainMenu.getMainWindow().getVehicleGrids().size(); i++){
+            vehicleGridsVehicles.add(new ArrayList<Vehicle>());
             
-            for (int j = 0; j < mainMenu.getMainWindows().get(i).getVehicleGrid().getVehiclePanelArray().size(); j++){
+            for (int j = 0; j < mainMenu.getMainWindow().getVehicleGrids().get(i).getVehiclePanelArray().size(); j++){
                 
                 Vehicle v = new Vehicle();
                 
-                mainMenu.getMainWindows().get(i).getVehicleGrid().getVehiclePanelArray().get(j).batchVehicleGet(v);
+                //JOptionPane.showMessageDialog(mainMenu, mainMenu.getMainWindow().getVehicleGrids().get(i).getVehiclePanelArray().get(j).getDriverName());
+                mainMenu.getMainWindow().getVehicleGrids().get(i).getVehiclePanelArray().get(j).batchVehicleGet(v);
                 
-                mainWindowVehicles.get(i).add(v);
+                vehicleGridsVehicles.get(i).add(v);
                 
-                //JOptionPane.showMessageDialog(mainMenu, mainWindowVehicles.get(i).get(j).getDriverName() + " ");
+                //JOptionPane.showMessageDialog(mainMenu, vehicleGridsVehicles.get(i).get(j).getDriverName() + " ");
             }
         }  
         try {
             FileOutputStream fileOut =
                     new FileOutputStream("src/convoy/convoy/" + mission.getMissionNumber() +  "_vehicles.conx");
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
-            out.writeObject(mainWindowVehicles);
+            out.writeObject(vehicleGridsVehicles);
             out.close();
             fileOut.close();
         } catch (IOException e) {}

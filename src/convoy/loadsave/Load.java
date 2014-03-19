@@ -2,6 +2,7 @@ package convoy.loadsave;
 
 import convoy.gui.MainMenu;
 import convoy.gui.MainWindow;
+import convoy.gui.VehicleGrid;
 import convoy.gui.VehiclePanel;
 import convoy.objects.Vehicle;
 import java.awt.Cursor;
@@ -29,6 +30,7 @@ public class Load {
     
     private MainMenu mainMenu = MainMenu.getInstance();
     String missionNumber = null;
+    private int option;
     
     
     /**
@@ -60,7 +62,7 @@ public class Load {
         chooser.setSelectedFile(new File("*.conx"));
         chooser.setCurrentDirectory(new File("src/convoy/convoy"));
 
-        int option = chooser.showOpenDialog(null);
+        option = chooser.showOpenDialog(null);
         if (option == JFileChooser.APPROVE_OPTION) {
             try {
                 BufferedReader br;
@@ -90,16 +92,14 @@ public class Load {
                     rightAdditionalText = missionText[14].replaceAll("'t'", "\t").replaceAll("'r'", "\r").replaceAll("'n'", "\n");
                     additionalText = missionText[15].replaceAll("'t'", "\t").replaceAll("'r'", "\r").replaceAll("'n'", "\n");
                     unitPatch = missionText[16];
+                    
                 }
                 
                 //this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 
-                // clears arraylist of MainWindows
-                if (mainMenu.getMainWindows().size() != 0) {
-                    mainMenu.clearMainWindows();
-                }
                 
-                mainMenu.getMainWindows().add(new MainWindow(missionNumber,
+                                
+                MainWindow mainWindow = new MainWindow(missionNumber,
                         classification,
                         stagingArea,
                         acc,
@@ -115,8 +115,11 @@ public class Load {
                         leftAdditionalText,
                         rightAdditionalText,
                         additionalText,
-                        unitPatch));
-                mainMenu.getMainWindows().get(0).display();   
+                        unitPatch);
+               
+                
+                mainMenu.setMainWindow(mainWindow);
+                mainMenu.getMainWindow().display();
                 
                 loadVehicles();
                 
@@ -127,44 +130,49 @@ public class Load {
         }
     }
    
+    public int getOption() {
+        return option;
+    }
+    
     /**
      * loadProject() loads a file that with the file extension "_vehicles.conx"
      */
     public void loadVehicles() {      
         
-        ArrayList<ArrayList<Vehicle>> mainWindowVehicles = new ArrayList<>();
+        ArrayList<ArrayList<Vehicle>> vehicleGridsVehicles = new ArrayList<>();
         
         try{            
             FileInputStream fileIn = new FileInputStream("src/convoy/convoy/" + missionNumber +  "_vehicles.conx");
             ObjectInputStream in = new ObjectInputStream(fileIn);
-            mainWindowVehicles = (ArrayList<ArrayList<Vehicle>>) in.readObject();
+            vehicleGridsVehicles = (ArrayList<ArrayList<Vehicle>>) in.readObject();
             in.close();
             fileIn.close();
             
             
             
-            for (int i = 0; i < mainWindowVehicles.size(); i++) {
+            for (int i = 0; i < vehicleGridsVehicles.size(); i++) {
                 
-                if (i > 0) 
-                    mainMenu.newMainWindow(false);
+                if (i > 0) {
+                    mainMenu.getMainWindow().newVehicleGrid();
+                }
+                    
                 
-                mainMenu.getMainWindows().get(i).getVehicleGrid().setMainWindow(mainMenu.getMainWindows().get(i));
-                
-                for (int j = 0; j < mainWindowVehicles.get(i).size(); j++) {
-                    //JOptionPane.showMessageDialog(mainMenu, mainWindowVehicles.get(0).get(1).getDriverName() + " ");
+                for (int j = 0; j < vehicleGridsVehicles.get(i).size(); j++) {
+                    //JOptionPane.showMessageDialog(mainMenu, vehicleGridsVehicles.get(0).get(1).getDriverName() + " ");
                     VehiclePanel vp = new VehiclePanel();
-                    vp.batchVehicleSet(mainWindowVehicles.get(i).get(j));
-                    mainMenu.getMainWindows().get(i).getVehicleGrid().replaceAddNewVehiclePanel(vp);
+                    vp.batchVehicleSet(vehicleGridsVehicles.get(i).get(j));
+                    mainMenu.getMainWindow().getVehicleGrids().get(i).replaceAddNewVehiclePanel(vp);
+                    mainMenu.getMainWindow().getVehicleGrids().get(i).setMainWindow(mainMenu.getMainWindow());
+                    
                 }
             }
             
-            mainMenu.setCurrentMainWindow(0);
-            mainMenu.getMainWindows().get(0).display();
+            mainMenu.getMainWindow().showFirstVehicleGrid();
             
         }
         catch(Exception exc){
             exc.printStackTrace(); // If there was an error, print the info.
-            JOptionPane.showMessageDialog(mainMenu, "You messed up");
+            //JOptionPane.showMessageDialog(mainMenu, "You messed up");
         }
         
     }

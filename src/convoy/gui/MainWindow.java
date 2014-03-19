@@ -12,6 +12,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 
 import convoy.objects.Mission;
 import convoy.pdf.*;
+import java.util.ArrayList;
 
 /**
  * @author Mike Moye <mtm5313@psu.edu>
@@ -28,6 +29,9 @@ public final class MainWindow extends javax.swing.JFrame {
 
     private String missionNumberText; //mission number used to save convoy file
     private MainMenu mainMenu = MainMenu.getInstance();
+    private ArrayList<VehicleGrid> vehicleGrids = new ArrayList<>();
+    private int vehicleGridCount = 0;
+    private int currentVehicleGrid = 0;
 
     /**
      * <p>
@@ -37,6 +41,8 @@ public final class MainWindow extends javax.swing.JFrame {
      */
     public MainWindow() {
         initComponents();
+        vehicleGrids.add(vehicleGrid1);
+        
         vehicleGrid1.setMainWindow(this);
         missionNumberPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
         additionalInfoPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
@@ -92,6 +98,7 @@ public final class MainWindow extends javax.swing.JFrame {
             String additionalText,
             String unitPatch) {
         initComponents();
+        vehicleGrids.add(vehicleGrid1);
         
         missionNumberPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
         additionalInfoPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
@@ -143,6 +150,117 @@ public final class MainWindow extends javax.swing.JFrame {
         toFront();
         revalidate();
         repaint();
+    }
+    
+    public void reDrawVehicleGrid (VehicleGrid vg) {
+        
+        javax.swing.GroupLayout picturePanel2Layout = new javax.swing.GroupLayout(picturePanel2);
+        
+        picturePanel2.setLayout(picturePanel2Layout);
+        picturePanel2Layout.setHorizontalGroup(
+            picturePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(picturePanel2Layout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addGroup(picturePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(missionNumberPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addGroup(picturePanel2Layout.createSequentialGroup()
+                        .addGroup(picturePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(additionalInfoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(picturePanel2Layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(leftArrow, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(vg, javax.swing.GroupLayout.PREFERRED_SIZE, 1141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(picturePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(picturePanel2Layout.createSequentialGroup()
+                                        .addGap(0, 0, 0)
+                                        .addComponent(rightArrow)))))
+                        .addContainerGap())))
+        );
+        picturePanel2Layout.setVerticalGroup(
+            picturePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(picturePanel2Layout.createSequentialGroup()
+                .addComponent(missionNumberPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(picturePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(picturePanel2Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 124, Short.MAX_VALUE)
+                        .addComponent(rightArrow)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 124, Short.MAX_VALUE))
+                    .addGroup(picturePanel2Layout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addComponent(vg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(1, 1, 1))
+                    .addGroup(picturePanel2Layout.createSequentialGroup()
+                        .addGap(119, 119, 119)
+                        .addComponent(leftArrow, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addComponent(additionalInfoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        //getContentPane().add(picturePanel2);
+    }
+    
+    public void newVehicleGrid() {
+        vehicleGrids.add(new VehicleGrid());
+            vehicleGridCount++;
+            currentVehicleGrid++;
+            vehicleGrids.get(currentVehicleGrid).setMainWindow(this);
+    }
+    
+    public void showFirstVehicleGrid() {
+        currentVehicleGrid = 0;
+        this.reDrawVehicleGrid(vehicleGrids.get(0));
+        
+        updateArrows();
+    }
+    
+    private void updateArrows() {
+        
+        hideLeftArrow();
+        hideRightArrow();
+        
+        if (currentVehicleGrid == vehicleGridCount) {
+            if (vehicleGridCount > 0) {
+                showLeftArrow();
+            }
+        }
+        
+        if (currentVehicleGrid < vehicleGridCount) {
+            if (currentVehicleGrid == 0) {
+                showRightArrow();
+            }
+            
+            if (currentVehicleGrid > 0) {
+                showRightArrow();
+                showLeftArrow();
+                
+            }
+        }
+        
+        revalidate();
+        repaint();
+    }
+    
+    public ArrayList<VehicleGrid> getVehicleGrids() {
+        return vehicleGrids;
+    }
+    
+    public void setVehicleGrids(ArrayList<VehicleGrid> vgs) {
+        
+        picturePanel2.remove(vehicleGrids.get(currentVehicleGrid));
+        vehicleGrids = vgs;
+        
+        vehicleGridCount = vgs.size();
+        currentVehicleGrid = 0;
+        reDrawVehicleGrid(vehicleGrids.get(vehicleGridCount)); 
+     
+        
+        //vehicleGrids.get(currentVehicleGrid).setMainWindow(this);
+              
     }
 
     /**
@@ -381,9 +499,9 @@ public final class MainWindow extends javax.swing.JFrame {
     private void newMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newMenuItemActionPerformed
         int response = JOptionPane.showConfirmDialog(null, "Are you sure you want to start a new convoy?\nAll unsaved data will be lost!", "New Convoy?", JOptionPane.YES_NO_OPTION);
         if (response == JOptionPane.YES_OPTION) {
-            mainMenu.clearMainWindows();
-            mainMenu.getMainWindows().add(new MainWindow());
-            mainMenu.getMainWindows().get(0).display();
+            this.setVisible(false);
+            mainMenu.setMainWindow(new MainWindow());
+            mainMenu.getMainWindow().display();
         }
     }//GEN-LAST:event_newMenuItemActionPerformed
 
@@ -399,7 +517,9 @@ public final class MainWindow extends javax.swing.JFrame {
      */
     private void loadMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadMenuItemActionPerformed
         int response = JOptionPane.showConfirmDialog(null, "Are you sure you want to load a convoy?\n All unsaved data will be lost.", "Load Convoy?", JOptionPane.YES_NO_OPTION);
+       
         if (response == JOptionPane.YES_OPTION) {
+            this.setVisible(false);
             Load load = new Load();
             load.loadProject();            
         }
@@ -658,15 +778,31 @@ public final class MainWindow extends javax.swing.JFrame {
 
     private void rightArrowMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rightArrowMousePressed
         // TODO add your handling code here:
-        if (mainMenu.mainWindowCount == mainMenu.currentMainWindow)            
-            mainMenu.newMainWindow(true);       
-        else
-            mainMenu.accessMainWindowToTheRight();
+        
+        
+        if (currentVehicleGrid == vehicleGridCount) {
+            picturePanel2.remove(vehicleGrids.get(currentVehicleGrid));
+            newVehicleGrid();
+            reDrawVehicleGrid(vehicleGrids.get(vehicleGridCount));            
+        } else {
+            picturePanel2.remove(vehicleGrids.get(currentVehicleGrid));
+            currentVehicleGrid++;
+            reDrawVehicleGrid(vehicleGrids.get(currentVehicleGrid));              
+        }
+        
+        
+        updateArrows();
+        
+        
     }//GEN-LAST:event_rightArrowMousePressed
 
     private void leftArrowMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_leftArrowMousePressed
         // TODO add your handling code here:
-        mainMenu.accessMainWindowToTheLeft();
+        picturePanel2.remove(vehicleGrids.get(currentVehicleGrid));
+        currentVehicleGrid--;
+        reDrawVehicleGrid(vehicleGrids.get(currentVehicleGrid));    
+        
+        updateArrows();
     }//GEN-LAST:event_leftArrowMousePressed
     
     /**

@@ -24,10 +24,8 @@ import java.util.ArrayList;
  */
 public class MainMenu extends javax.swing.JFrame {
 
-    protected int mainWindowCount = 0;
-    protected int currentMainWindow = 0;
-    private ArrayList<MainWindow> mainWindows = new ArrayList<MainWindow>();
     private static  MainMenu frame = MainMenu.getInstance();
+    private static MainWindow mainWindow;
     protected static Mission mission;
     private BufferedImage image;
 
@@ -53,106 +51,16 @@ public class MainMenu extends javax.swing.JFrame {
         }        
         
         return frame;
+    }    
+    
+    public MainWindow getMainWindow() {
+        return mainWindow;
     }
     
-    public void transferInformation(MainWindow mw) {
-        String missionNumber, from, to, additionalText, cC, aCC, stagingArea, from2, to2, 
-                fromLU, toLU, fromSP, toSP, additionalText2;
-        ImageIcon icon;
-        
-        missionNumber = mainWindows.get(0).leftMissionInfoPanel1.getMissionNumber();
-        from = mainWindows.get(0).leftMissionInfoPanel1.getFrom();
-        to = mainWindows.get(0).leftMissionInfoPanel1.getTo();
-        additionalText = mainWindows.get(0).leftMissionInfoPanel1.getAdditionalText();
-        icon = (ImageIcon) mainWindows.get(0).leftMissionInfoPanel1.getIcon();
-   
-        cC = mainWindows.get(0).rightMissionInfoPanel2.getCC();
-        aCC = mainWindows.get(0).rightMissionInfoPanel2.getACC();
-        stagingArea = mainWindows.get(0).rightMissionInfoPanel2.getStagingArea();
-        from2 = mainWindows.get(0).rightMissionInfoPanel2.getFrom();
-        to2 = mainWindows.get(0).rightMissionInfoPanel2.getTo();
-        fromLU = mainWindows.get(0).rightMissionInfoPanel2.getFromLU();
-        toLU = mainWindows.get(0).rightMissionInfoPanel2.getToLU();
-        fromSP = mainWindows.get(0).rightMissionInfoPanel2.getFromSP();
-        toSP = mainWindows.get(0).rightMissionInfoPanel2.getToSP();
-        additionalText2 = mainWindows.get(0).rightMissionInfoPanel2.getAdditionalText();
-        
-        mw.leftMissionInfoPanel1.setMissionNumber(missionNumber);
-        mw.leftMissionInfoPanel1.setFrom(from);
-        mw.leftMissionInfoPanel1.setTo(to);
-        mw.leftMissionInfoPanel1.setAdditionalText(additionalText);
-        mw.leftMissionInfoPanel1.setIcon((ImageIcon) icon);
-        
-        mw.rightMissionInfoPanel2.setCC(cC);
-        mw.rightMissionInfoPanel2.setACC(aCC);
-        mw.rightMissionInfoPanel2.setStagingArea(stagingArea);
-        mw.rightMissionInfoPanel2.setFrom(from2);
-        mw.rightMissionInfoPanel2.setTo(to2);
-        mw.rightMissionInfoPanel2.setFromLU(fromLU);
-        mw.rightMissionInfoPanel2.setToLU(toLU);
-        mw.rightMissionInfoPanel2.setFromSP(fromSP);
-        mw.rightMissionInfoPanel2.setToSP(toSP);
-        mw.rightMissionInfoPanel2.setAddtionalText(additionalText2);
-        
+    public void setMainWindow(MainWindow mw) {
+        mainWindow = mw;
     }
     
-    public ArrayList<MainWindow> getMainWindows() {
-        return mainWindows;
-    }
-    
-    /**
-     * newMainWindow creates a new MainWindow
-     */
-    public void newMainWindow(boolean display) {
-        if (display)
-            mainWindows.get(mainWindowCount).setVisible(false);
-        
-        mainWindowCount++;
-        mainWindows.add(new MainWindow());
-        currentMainWindow++;
-        transferInformation(mainWindows.get(mainWindowCount));
-        mainWindows.get(mainWindowCount).showLeftArrow();
-        
-        if (display)
-            mainWindows.get(mainWindowCount).display();
-    }
-    
-    /**
-     * accessMainWindowToTheRight() allows user to access the mainWindow screen to the right
-     */
-    public void accessMainWindowToTheRight() {
-        mainWindows.get(currentMainWindow).setVisible(false);
-        currentMainWindow++;
-        mainWindows.get(currentMainWindow).showLeftArrow();
-        mainWindows.get(currentMainWindow).display(); 
-        
-    }
-    
-    public void clearMainWindows() {
-        for (int i = 0; i < mainWindows.size(); i++) 
-            mainWindows.get(i).setVisible(false);
-                           
-        mainWindows.clear();                    
-        mainWindowCount = 0;
-        currentMainWindow = 0;
-    }
-    
-    public int getCurrentMainWindow() {
-        return currentMainWindow;
-    }
-    
-    public void setCurrentMainWindow(int count) {
-        currentMainWindow = 0;
-    }
-    
-    /**
-     * accessMainWindowToTheLeft() allows user to access the mainWindow screen to the left
-     */
-    public void accessMainWindowToTheLeft() {        
-        mainWindows.get(currentMainWindow--).setVisible(false);
-        mainWindows.get(currentMainWindow).showRightArrow();
-        mainWindows.get(currentMainWindow).display();
-    }
 
     /**
      * Sets the background image of the main menu
@@ -363,8 +271,8 @@ public class MainMenu extends javax.swing.JFrame {
      */
     private void newProjectPanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newProjectPanelMousePressed
         this.setVisible(false);
-        mainWindows.add(new MainWindow());
-        mainWindows.get(0).display();
+        mainWindow = new MainWindow();
+        mainWindow.display();
     }//GEN-LAST:event_newProjectPanelMousePressed
     
     /**
@@ -378,10 +286,14 @@ public class MainMenu extends javax.swing.JFrame {
      * @param evt click loadProject button
      */
     private void loadProjectPanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loadProjectPanelMousePressed
+        
         Load load = new Load();
         load.loadProject();
-        setVisible(false);
        
+        if (load.getOption() == JFileChooser.APPROVE_OPTION) {
+            setVisible(false);
+        }
+        
     }//GEN-LAST:event_loadProjectPanelMousePressed
 
     /**
@@ -449,7 +361,6 @@ public class MainMenu extends javax.swing.JFrame {
         loadProjectPanel.setBorder(new BevelBorder(BevelBorder.RAISED));
     }
 
-    private MainWindow mainWindow;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel loadProjectLabel;
     private javax.swing.JPanel loadProjectPanel;

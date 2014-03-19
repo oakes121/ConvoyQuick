@@ -62,7 +62,7 @@ public class VehiclePanel extends javax.swing.JPanel {
             repaint();
 
         } catch (Exception ex) {
-            Logger.getLogger(CreateVehiclePopUp.class.getName()).log(Level.SEVERE, null, ex);
+            //Logger.getLogger(CreateVehiclePopUp.class.getName()).log(Level.SEVERE, null, ex);
             //System.out.print("Image Error");
         }
     }
