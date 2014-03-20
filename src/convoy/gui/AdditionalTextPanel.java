@@ -56,7 +56,7 @@ public class AdditionalTextPanel extends javax.swing.JPanel {
 
         addtionalText.setColumns(20);
         addtionalText.setRows(5);
-        addtionalText.setText("Additional Text Goes Here");
+        addtionalText.setText("Additional Information Goes Here");
         jScrollPane1.setViewportView(addtionalText);
         jScrollPane1.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 

@@ -12,6 +12,8 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 
 import convoy.objects.Mission;
 import convoy.pdf.*;
+import java.net.URLDecoder;
+import java.nio.file.Files;
 import java.util.ArrayList;
 
 /**
@@ -26,7 +28,6 @@ import java.util.ArrayList;
 public final class MainWindow extends javax.swing.JFrame {
 
     //private static final MainWindow frame = new MainWindow();
-
     private String missionNumberText; //mission number used to save convoy file
     private MainMenu mainMenu = MainMenu.getInstance();
     private ArrayList<VehicleGrid> vehicleGrids = new ArrayList<>();
@@ -35,32 +36,32 @@ public final class MainWindow extends javax.swing.JFrame {
 
     /**
      * <p>
- Creates new form mainWindow Used for default when no data needs to be
- loadProjected
- </p>
+     * Creates new form mainWindow Used for default when no data needs to be
+     * loadProjected
+     * </p>
      */
     public MainWindow() {
         initComponents();
         vehicleGrids.add(vehicleGrid1);
-        
+
         vehicleGrid1.setMainWindow(this);
         missionNumberPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
         additionalInfoPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
 
         this.leftMissionInfoPanel1.setImagePath(getClass().getResource("/convoy/resources/images/2id.png").getPath().substring(1).replace("/", "\\"));
-        
+
         this.rightArrow.setVisible(false);
         this.leftArrow.setVisible(false);
-        
+
         revalidate();
         repaint();
     }
 
     /**
      * <p>
- Creates new form mainWindow Used when loadProjecting a previously saved convoy
- file
- </p>
+     * Creates new form mainWindow Used when loadProjecting a previously saved
+     * convoy file
+     * </p>
      *
      * @param missionNumber
      * @param classification
@@ -70,9 +71,7 @@ public final class MainWindow extends javax.swing.JFrame {
      * @param fromLinkUpTime
      * @param fromSPTime
      * @param leftFrom
-     * @param rightFrom
      * @param leftTo
-     * @param rightTo
      * @param toLinkUpTime
      * @param toSPTime
      * @param leftAdditionalText
@@ -88,9 +87,9 @@ public final class MainWindow extends javax.swing.JFrame {
             String fromLinkUpTime,
             String fromSPTime,
             String leftFrom,
-            String rightFrom,
+            //String rightFrom,
             String leftTo,
-            String rightTo,
+            //String rightTo,
             String toLinkUpTime,
             String toSPTime,
             String leftAdditionalText,
@@ -99,7 +98,7 @@ public final class MainWindow extends javax.swing.JFrame {
             String unitPatch) {
         initComponents();
         vehicleGrids.add(vehicleGrid1);
-        
+
         missionNumberPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
         additionalInfoPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
 
@@ -111,10 +110,10 @@ public final class MainWindow extends javax.swing.JFrame {
         this.rightMissionInfoPanel2.setCC(cc);
         this.rightMissionInfoPanel2.setACC(acc);
         this.rightMissionInfoPanel2.setStagingArea(stagingArea);
-        this.rightMissionInfoPanel2.setFrom(rightFrom);
+        //this.rightMissionInfoPanel2.setFrom(rightFrom);
         this.rightMissionInfoPanel2.setFromLU(fromLinkUpTime);
         this.rightMissionInfoPanel2.setFromSP(fromSPTime);
-        this.rightMissionInfoPanel2.setTo(rightTo);
+        //this.rightMissionInfoPanel2.setTo(rightTo);
         this.rightMissionInfoPanel2.setToLU(toLinkUpTime);
         this.rightMissionInfoPanel2.setToSP(toSPTime);
         this.rightMissionInfoPanel2.setAddtionalText(rightAdditionalText);
@@ -123,14 +122,14 @@ public final class MainWindow extends javax.swing.JFrame {
         Image img = new ImageIcon(unitPatch).getImage().getScaledInstance(202, 168, java.awt.Image.SCALE_SMOOTH);
 
         this.leftMissionInfoPanel1.setIcon(new ImageIcon(img));
-        
+
         this.rightArrow.setVisible(false);
         this.leftArrow.setVisible(false);
 
         revalidate();
         repaint();
     }
-    
+
     public VehicleGrid getVehicleGrid() {
         return vehicleGrid1;
     }
@@ -151,116 +150,114 @@ public final class MainWindow extends javax.swing.JFrame {
         revalidate();
         repaint();
     }
-    
-    public void reDrawVehicleGrid (VehicleGrid vg) {
-        
+
+    public void reDrawVehicleGrid(VehicleGrid vg) {
+
         javax.swing.GroupLayout picturePanel2Layout = new javax.swing.GroupLayout(picturePanel2);
-        
+
         picturePanel2.setLayout(picturePanel2Layout);
         picturePanel2Layout.setHorizontalGroup(
-            picturePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(picturePanel2Layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addGroup(picturePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(missionNumberPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addGroup(picturePanel2Layout.createSequentialGroup()
+                picturePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(picturePanel2Layout.createSequentialGroup()
+                        .addGap(0, 0, 0)
                         .addGroup(picturePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(additionalInfoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(picturePanel2Layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(leftArrow, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(vg, javax.swing.GroupLayout.PREFERRED_SIZE, 1141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(picturePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(picturePanel2Layout.createSequentialGroup()
-                                        .addGap(0, 0, 0)
-                                        .addComponent(rightArrow)))))
-                        .addContainerGap())))
+                                .addComponent(missionNumberPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                .addGroup(picturePanel2Layout.createSequentialGroup()
+                                        .addGroup(picturePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(additionalInfoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addGroup(picturePanel2Layout.createSequentialGroup()
+                                                        .addGap(10, 10, 10)
+                                                        .addComponent(leftArrow, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                        .addComponent(vg, javax.swing.GroupLayout.PREFERRED_SIZE, 1141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                        .addGroup(picturePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addGroup(picturePanel2Layout.createSequentialGroup()
+                                                                        .addGap(0, 0, 0)
+                                                                        .addComponent(rightArrow)))))
+                                        .addContainerGap())))
         );
         picturePanel2Layout.setVerticalGroup(
-            picturePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(picturePanel2Layout.createSequentialGroup()
-                .addComponent(missionNumberPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(picturePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(picturePanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 124, Short.MAX_VALUE)
-                        .addComponent(rightArrow)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 124, Short.MAX_VALUE))
-                    .addGroup(picturePanel2Layout.createSequentialGroup()
-                        .addGap(1, 1, 1)
-                        .addComponent(vg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(1, 1, 1))
-                    .addGroup(picturePanel2Layout.createSequentialGroup()
-                        .addGap(119, 119, 119)
-                        .addComponent(leftArrow, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addComponent(additionalInfoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                picturePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(picturePanel2Layout.createSequentialGroup()
+                        .addComponent(missionNumberPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(picturePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(picturePanel2Layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 124, Short.MAX_VALUE)
+                                        .addComponent(rightArrow)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 124, Short.MAX_VALUE))
+                                .addGroup(picturePanel2Layout.createSequentialGroup()
+                                        .addGap(1, 1, 1)
+                                        .addComponent(vg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGap(1, 1, 1))
+                                .addGroup(picturePanel2Layout.createSequentialGroup()
+                                        .addGap(119, 119, 119)
+                                        .addComponent(leftArrow, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(additionalInfoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         //getContentPane().add(picturePanel2);
     }
-    
+
     public void newVehicleGrid() {
         vehicleGrids.add(new VehicleGrid());
-            vehicleGridCount++;
-            currentVehicleGrid++;
-            vehicleGrids.get(currentVehicleGrid).setMainWindow(this);
+        vehicleGridCount++;
+        currentVehicleGrid++;
+        vehicleGrids.get(currentVehicleGrid).setMainWindow(this);
     }
-    
+
     public void showFirstVehicleGrid() {
         currentVehicleGrid = 0;
         this.reDrawVehicleGrid(vehicleGrids.get(0));
-        
+
         updateArrows();
     }
-    
+
     private void updateArrows() {
-        
+
         hideLeftArrow();
         hideRightArrow();
-        
+
         if (currentVehicleGrid == vehicleGridCount) {
             if (vehicleGridCount > 0) {
                 showLeftArrow();
             }
         }
-        
+
         if (currentVehicleGrid < vehicleGridCount) {
             if (currentVehicleGrid == 0) {
                 showRightArrow();
             }
-            
+
             if (currentVehicleGrid > 0) {
                 showRightArrow();
                 showLeftArrow();
-                
+
             }
         }
-        
+
         revalidate();
         repaint();
     }
-    
+
     public ArrayList<VehicleGrid> getVehicleGrids() {
         return vehicleGrids;
     }
-    
+
     public void setVehicleGrids(ArrayList<VehicleGrid> vgs) {
-        
+
         picturePanel2.remove(vehicleGrids.get(currentVehicleGrid));
         vehicleGrids = vgs;
-        
+
         vehicleGridCount = vgs.size();
         currentVehicleGrid = 0;
-        reDrawVehicleGrid(vehicleGrids.get(vehicleGridCount)); 
-     
-        
+        reDrawVehicleGrid(vehicleGrids.get(vehicleGridCount));
+
         //vehicleGrids.get(currentVehicleGrid).setMainWindow(this);
-              
     }
 
     /**
@@ -312,7 +309,7 @@ public final class MainWindow extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAutoRequestFocus(false);
         setBackground(new java.awt.Color(255, 255, 255));
-        setMinimumSize(new java.awt.Dimension(1000, 800));
+        setMinimumSize(new java.awt.Dimension(1300, 800));
         getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.LINE_AXIS));
 
         picturePanel2.setBackground(new java.awt.Color(194, 178, 128));
@@ -372,18 +369,19 @@ public final class MainWindow extends javax.swing.JFrame {
                 .addComponent(missionNumberPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(picturePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(picturePanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 124, Short.MAX_VALUE)
-                        .addComponent(rightArrow)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 124, Short.MAX_VALUE))
-                    .addGroup(picturePanel2Layout.createSequentialGroup()
                         .addGap(1, 1, 1)
                         .addComponent(vehicleGrid1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(1, 1, 1))
                     .addGroup(picturePanel2Layout.createSequentialGroup()
-                        .addGap(119, 119, 119)
-                        .addComponent(leftArrow, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(picturePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(picturePanel2Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(124, 124, 124)
+                                .addComponent(rightArrow))
+                            .addGroup(picturePanel2Layout.createSequentialGroup()
+                                .addGap(119, 119, 119)
+                                .addComponent(leftArrow, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addComponent(additionalInfoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -421,8 +419,8 @@ public final class MainWindow extends javax.swing.JFrame {
         });
         fileMenu.add(saveMenuItem);
 
-        finalizeMenu.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F, java.awt.event.InputEvent.CTRL_MASK));
-        finalizeMenu.setText("<html><strong>Finalize</strong></html>");
+        finalizeMenu.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_X, java.awt.event.InputEvent.CTRL_MASK));
+        finalizeMenu.setText("<html><strong>Export to PDF</strong></html>");
         finalizeMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 finalizeMenuActionPerformed(evt);
@@ -515,26 +513,26 @@ public final class MainWindow extends javax.swing.JFrame {
 
     /**
      * <p>
- Loads a previously saved convoy. The user selects a convoy file to be
- loadProjected. The convoy file must have the file extension .conx, After the
- user selects the convoy file a new main window frame is displayed with
- the selected convoy file loadProjected.
- </p>
+     * Loads a previously saved convoy. The user selects a convoy file to be
+     * loadProjected. The convoy file must have the file extension .conx, After
+     * the user selects the convoy file a new main window frame is displayed
+     * with the selected convoy file loadProjected.
+     * </p>
      *
      * @param evt click file -> loadProject menu item
      */
     private void loadMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadMenuItemActionPerformed
         int response = JOptionPane.showConfirmDialog(null, "Are you sure you want to load a convoy?\n All unsaved data will be lost.", "Load Convoy?", JOptionPane.YES_NO_OPTION);
-       
+
         if (response == JOptionPane.YES_OPTION) {
             Load load = new Load();
-            load.loadProject();         
-            if (load.getIsLoaded())
+            load.loadProject();
+            if (load.getIsLoaded()) {
                 setVisible(false);
+            }
         }
-        
-        
-        
+
+
     }//GEN-LAST:event_loadMenuItemActionPerformed
     /**
      * Displays the about information dialog pop up
@@ -565,7 +563,7 @@ public final class MainWindow extends javax.swing.JFrame {
      * @param evt click file -> finalize menu item
      */
     private void finalizeMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finalizeMenuActionPerformed
-        int response = JOptionPane.showConfirmDialog(null, "Are you sure you want to finalize the convoy?", "Finalize Convoy?", JOptionPane.YES_NO_OPTION);
+        int response = JOptionPane.showConfirmDialog(null, "Are you sure you want to export the convoy?", "Export Convoy?", JOptionPane.YES_NO_OPTION);
         if (response == JOptionPane.YES_OPTION) {
 
             JFileChooser chooser = new JFileChooser();
@@ -598,8 +596,8 @@ public final class MainWindow extends javax.swing.JFrame {
                             this.rightMissionInfoPanel2.getCC(),
                             this.rightMissionInfoPanel2.getACC(),
                             this.rightMissionInfoPanel2.getStagingArea(),
-                            this.rightMissionInfoPanel2.getFrom(),
-                            this.rightMissionInfoPanel2.getTo(),
+                            //this.rightMissionInfoPanel2.getFrom(),
+                            //this.rightMissionInfoPanel2.getTo(),
                             this.rightMissionInfoPanel2.getFromLU(),
                             this.rightMissionInfoPanel2.getToLU(),
                             this.rightMissionInfoPanel2.getFromSP(),
@@ -620,6 +618,31 @@ public final class MainWindow extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_finalizeMenuActionPerformed
 
+    private static void copyFile(File source, File dest)throws IOException {
+        
+        Files.copy(source.toPath(), dest.toPath());
+         
+    }
+    
+    public static String getProgramPath() throws UnsupportedEncodingException {
+      URL url = convoy.gui.MainMenu.class.getProtectionDomain().getCodeSource().getLocation();
+      String jarPath = URLDecoder.decode(url.getFile(), "UTF-8");
+      String parentPath = new File(jarPath).getParentFile().getPath();
+      return parentPath;
+   }
+    private String getPath(){ 
+    String path = null;
+        try {
+            path = getProgramPath();
+        } catch (UnsupportedEncodingException ex) {
+            //Logger.getLogger(Save.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+         String fileSeparator = System.getProperty("file.separator");
+         String newDir = path + fileSeparator + "images" + fileSeparator;
+         return newDir;
+   }
+    
     /**
      * <p>
      * Sets the unit patch image for the convoy. User selects an image file from
@@ -643,14 +666,17 @@ public final class MainWindow extends javax.swing.JFrame {
                 URL url = null;
                 try {
                     url = new URL("file:\\" + loadFile.getDirectory() + file);
-                    this.leftMissionInfoPanel1.setImagePath(loadFile.getDirectory() + file);
+                    
+                    copyFile(new File(loadFile.getDirectory() + file), new File(getPath() + file));
+                    
+                    this.leftMissionInfoPanel1.setImagePath(getPath() + file);
                 } catch (MalformedURLException ex) {
                     //Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 Image img = null;
                 try {
                     if (url != null) {
-                        img = ImageIO.read(url);
+                        img = ImageIO.read(new File(getPath() + file));
                     } else {
                     }
                 } catch (IOException ex) {
@@ -713,8 +739,8 @@ public final class MainWindow extends javax.swing.JFrame {
                             this.rightMissionInfoPanel2.getCC(),
                             this.rightMissionInfoPanel2.getACC(),
                             this.rightMissionInfoPanel2.getStagingArea(),
-                            this.rightMissionInfoPanel2.getFrom(),
-                            this.rightMissionInfoPanel2.getTo(),
+                            //this.rightMissionInfoPanel2.getFrom(),
+                            //this.rightMissionInfoPanel2.getTo(),
                             this.rightMissionInfoPanel2.getFromLU(),
                             this.rightMissionInfoPanel2.getToLU(),
                             this.rightMissionInfoPanel2.getFromSP(),
@@ -753,12 +779,13 @@ public final class MainWindow extends javax.swing.JFrame {
      * @param evt click file -> save menu item
      */
     private void saveMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveMenuItemActionPerformed
-        Mission mission = Mission.getInstance(this.leftMissionInfoPanel1.getMissionNumber(),
+        Mission mission;
+        mission = Mission.getInstance(this.leftMissionInfoPanel1.getMissionNumber(),
                 this.rightMissionInfoPanel2.getStagingArea(),
                 this.leftMissionInfoPanel1.getTo(),
-                this.rightMissionInfoPanel2.getTo(),
+                //this.rightMissionInfoPanel2.getTo(),
                 this.leftMissionInfoPanel1.getFrom(),
-                this.rightMissionInfoPanel2.getFrom(),
+                //this.rightMissionInfoPanel2.getFrom(),
                 this.rightMissionInfoPanel2.getCC(),
                 this.rightMissionInfoPanel2.getACC(),
                 this.rightMissionInfoPanel2.getFromLU(),
@@ -775,8 +802,8 @@ public final class MainWindow extends javax.swing.JFrame {
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             Save sf = new Save(mission);
             sf.save();
-        } catch (Exception ex) {            
-            ex.printStackTrace();
+        } catch (Exception ex) {
+            //ex.printStackTrace();
         } finally {
             this.setCursor(Cursor.getDefaultCursor());
         }
@@ -785,77 +812,79 @@ public final class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_saveMenuItemActionPerformed
 
     private void exitMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuItemActionPerformed
-        System.exit(0);
+        
+        int response = JOptionPane.showConfirmDialog(null, "Are you sure you want to exit?\n All unsaved data will be lost.", "Exit?", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+
+        if (response == JOptionPane.YES_OPTION) {
+        System.exit(0);        
+        }
     }//GEN-LAST:event_exitMenuItemActionPerformed
 
     private void rightArrowMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rightArrowMousePressed
         // TODO add your handling code here:
-        
-        
+
         if (currentVehicleGrid == vehicleGridCount) {
             picturePanel2.remove(vehicleGrids.get(currentVehicleGrid));
             newVehicleGrid();
-            reDrawVehicleGrid(vehicleGrids.get(vehicleGridCount));            
+            reDrawVehicleGrid(vehicleGrids.get(vehicleGridCount));
         } else {
             picturePanel2.remove(vehicleGrids.get(currentVehicleGrid));
             currentVehicleGrid++;
-            reDrawVehicleGrid(vehicleGrids.get(currentVehicleGrid));              
+            reDrawVehicleGrid(vehicleGrids.get(currentVehicleGrid));
         }
-        
-        
+
         updateArrows();
-        
-        
+
+
     }//GEN-LAST:event_rightArrowMousePressed
 
     private void leftArrowMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_leftArrowMousePressed
         // TODO add your handling code here:
         picturePanel2.remove(vehicleGrids.get(currentVehicleGrid));
         currentVehicleGrid--;
-        reDrawVehicleGrid(vehicleGrids.get(currentVehicleGrid));    
-        
+        reDrawVehicleGrid(vehicleGrids.get(currentVehicleGrid));
+
         updateArrows();
     }//GEN-LAST:event_leftArrowMousePressed
 
     private void templatesMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_templatesMenuItemActionPerformed
         // TODO add your handling code here:
         try {
-        Desktop.getDesktop().open(new File("C:\\"));
-        } catch (Exception e) {
-            e.printStackTrace();
+            Desktop.getDesktop().open(new File("C:\\"));
+        } catch (IOException e) {
+            //e.printStackTrace();
         }
-        
+
     }//GEN-LAST:event_templatesMenuItemActionPerformed
-    
+
     /**
-     * showRightArrow() makes it so that the right arrow appear 
+     * showRightArrow() makes it so that the right arrow appear
      */
-    public void showRightArrow(){
-        this.rightArrow.setVisible(true);              
+    public void showRightArrow() {
+        this.rightArrow.setVisible(true);
     }
-    
+
     /**
-     * showLeftArrow() makes it so that the left arrow appear 
+     * showLeftArrow() makes it so that the left arrow appear
      */
-    public void showLeftArrow(){
-        this.leftArrow.setVisible(true);              
+    public void showLeftArrow() {
+        this.leftArrow.setVisible(true);
     }
-    
+
     /**
-     * hideRightArrow() makes it so that the right arrow disappears 
+     * hideRightArrow() makes it so that the right arrow disappears
      */
-    public void hideRightArrow(){
-        this.rightArrow.setVisible(false);              
+    public void hideRightArrow() {
+        this.rightArrow.setVisible(false);
     }
-    
+
     /**
-     * hideLeftArrow() makes it so that the left arrow disappears 
+     * hideLeftArrow() makes it so that the left arrow disappears
      */
-    public void hideLeftArrow(){
-        this.leftArrow.setVisible(false);              
+    public void hideLeftArrow() {
+        this.leftArrow.setVisible(false);
     }
-    
-    
+
     /**
      * The Main method
      *

@@ -53,10 +53,10 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jScrollPane3" max="32767" attributes="0"/>
+                  <Component id="jScrollPane3" pref="498" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
                       <Component id="imageLabel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -70,14 +70,15 @@
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="1" attributes="0">
                                   <Component id="fromTextField" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="toTextField" max="32767" attributes="0"/>
                                   <Component id="missionNumberTextField" max="32767" attributes="0"/>
+                                  <Component id="toTextField" max="32767" attributes="0"/>
                               </Group>
                           </Group>
-                          <Component id="classificationDropBox" min="-2" pref="300" max="-2" attributes="0"/>
+                          <Component id="classificationDropBox" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -140,14 +141,14 @@
     </Component>
     <Component class="javax.swing.JLabel" name="fromLabel">
       <Properties>
-        <Property name="text" type="java.lang.String" value="From: "/>
+        <Property name="text" type="java.lang.String" value="Start Point: "/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="fromTextField">
     </Component>
     <Component class="javax.swing.JLabel" name="toLabel">
       <Properties>
-        <Property name="text" type="java.lang.String" value="To: "/>
+        <Property name="text" type="java.lang.String" value="Rally Point: "/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="toTextField">
@@ -181,7 +182,7 @@
             <Property name="text" type="java.lang.String" value="Additional Information Goes Here"/>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="jScrollPane3.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);&#xa;&#xa;AbstractDocument pDoc=(AbstractDocument)additionalText.getDocument();&#xa;&#xa;pDoc.setDocumentFilter(new MaximumSizeFilter(2, 100));&#xa;&#xa;additionalText.setMargin(new Insets(5,5,5,5));"/>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="jScrollPane3.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);&#xa;&#xa;AbstractDocument pDoc=(AbstractDocument)additionalText.getDocument();&#xa;&#xa;pDoc.setDocumentFilter(new MaximumSizeFilter(2, 50));&#xa;&#xa;additionalText.setMargin(new Insets(5,5,5,5));"/>
           </AuxValues>
         </Component>
       </SubComponents>

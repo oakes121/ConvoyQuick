@@ -12,6 +12,9 @@ import javax.swing.*;
 import javax.swing.text.AbstractDocument;
 
 import convoy.objects.MaximumSizeFilter;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.nio.file.Files;
 
 /**
  * @author Mike Moye <mtm5313@psu.edu>
@@ -264,9 +267,9 @@ public class LeftMissionInfoPanel extends javax.swing.JPanel {
 
         missionNumberLabel.setText("Mission #");
 
-        fromLabel.setText("From: ");
+        fromLabel.setText("Start Point: ");
 
-        toLabel.setText("To: ");
+        toLabel.setText("Rally Point: ");
 
         imageLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/convoy/resources/images/2id.png"))); // NOI18N
         imageLabel.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -283,7 +286,7 @@ public class LeftMissionInfoPanel extends javax.swing.JPanel {
 
         AbstractDocument pDoc=(AbstractDocument)additionalText.getDocument();
 
-        pDoc.setDocumentFilter(new MaximumSizeFilter(2, 100));
+        pDoc.setDocumentFilter(new MaximumSizeFilter(2, 50));
 
         additionalText.setMargin(new Insets(5,5,5,5));
 
@@ -294,7 +297,7 @@ public class LeftMissionInfoPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 498, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(imageLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -307,9 +310,10 @@ public class LeftMissionInfoPanel extends javax.swing.JPanel {
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(fromTextField, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(toTextField)
-                                    .addComponent(missionNumberTextField)))
-                            .addComponent(classificationDropBox, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addComponent(missionNumberTextField)
+                                    .addComponent(toTextField)))
+                            .addComponent(classificationDropBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -337,6 +341,33 @@ public class LeftMissionInfoPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    private static void copyFile(File source, File dest)throws IOException {
+        
+        Files.copy(source.toPath(), dest.toPath());
+         
+    }
+    
+    public static String getProgramPath() throws UnsupportedEncodingException {
+      URL url = convoy.gui.MainMenu.class.getProtectionDomain().getCodeSource().getLocation();
+      String jarPath = URLDecoder.decode(url.getFile(), "UTF-8");
+      String parentPath = new File(jarPath).getParentFile().getPath();
+      return parentPath;
+   }
+    private String getPath(){ 
+    String path = null;
+        try {
+            path = getProgramPath();
+        } catch (UnsupportedEncodingException ex) {
+            //Logger.getLogger(Save.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+         String fileSeparator = System.getProperty("file.separator");
+         String newDir = path + fileSeparator + "images" + fileSeparator;
+         return newDir;
+   }
+    
+    
     /**
      * <p>
      * Sets the unit patch image for the convoy when the user clicks on the
@@ -353,29 +384,37 @@ public class LeftMissionInfoPanel extends javax.swing.JPanel {
             loadFile = new FileDialog(loadFile, "Choose an Image", FileDialog.LOAD);
             loadFile.setFile("*.jpg;*.jpeg;*.png;*.gif");
             loadFile.setVisible(true);
+
             if (loadFile.getFile() != null) {
+                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                 File file = new File(loadFile.getFile());
+
                 URL url = null;
                 try {
                     url = new URL("file:\\" + loadFile.getDirectory() + file);
-                    this.setImagePath(loadFile.getDirectory() + file);
+                    
+                    copyFile(new File(loadFile.getDirectory() + file), new File(getPath() + file));
+                    
+                    this.setImagePath(getPath() + file);
                 } catch (MalformedURLException ex) {
-                    Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
+                    //Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 Image img = null;
                 try {
                     if (url != null) {
-                        img = ImageIO.read(url);
+                        img = ImageIO.read(new File(getPath() + file));
                     } else {
                     }
                 } catch (IOException ex) {
-                    Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
+                    //Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
                 }
+
                 if (img != null) {
                     Image finalImage = img.getScaledInstance(202, 168, java.awt.Image.SCALE_SMOOTH); // getScaledInstance(width, hieght, algorithm)
                     ImageIcon icon = new ImageIcon(finalImage);
                     this.setIcon(icon);
                 }
+                this.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
             }
         } catch (Exception ex) {
             //ex.printStackTrace();

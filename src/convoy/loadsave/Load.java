@@ -2,8 +2,8 @@ package convoy.loadsave;
 
 import convoy.gui.MainMenu;
 import convoy.gui.MainWindow;
-import convoy.gui.VehicleGrid;
 import convoy.gui.VehiclePanel;
+import static convoy.loadsave.Save.getProgramPath;
 import convoy.objects.Vehicle;
 import java.awt.Cursor;
 import java.io.BufferedReader;
@@ -12,9 +12,11 @@ import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.io.UnsupportedEncodingException;
+import java.net.URL;
+import java.net.URLDecoder;
 import java.util.ArrayList;
 import javax.swing.JFileChooser;
-import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
@@ -23,24 +25,22 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  * @since 2014-03-14
  *
  * <p>
- * This class is used to load the convoy. 
+ * This class is used to load the convoy.
  * </p>
  */
 public class Load {
-    
+
     private MainMenu mainMenu = MainMenu.getInstance();
     private MainWindow mainWindow = null;
     String missionNumber = null;
     private int option;
     private boolean isLoaded = false;
-    
-    
+
     /**
      * loadProject() loads a file that with the file extension ".conx"
      */
     public void loadProject() {
-        
-        
+
         String classification = null;
         String stagingArea = null;
         String acc = null;
@@ -48,9 +48,9 @@ public class Load {
         String fromLinkUpTime = null;
         String fromSPTime = null;
         String leftFrom = null;
-        String rightFrom = null;
+        //String rightFrom = null;
         String leftTo = null;
-        String rightTo = null;
+        //String rightTo = null;
         String toLinkUpTime = null;
         String toSPTime = null;
         String leftAdditionalText = null;
@@ -58,11 +58,11 @@ public class Load {
         String additionalText = null;
         String unitPatch = null;
 
-        JFileChooser chooser = new JFileChooser();
+        JFileChooser chooser = new JFileChooser(getPath());
         chooser.setAcceptAllFileFilterUsed(false);
         chooser.addChoosableFileFilter((new FileNameExtensionFilter("Convoy Quick Files", "conx")));
         chooser.setSelectedFile(new File("*.conx"));
-        chooser.setCurrentDirectory(new File("src/convoy/convoy"));
+        //chooser.setCurrentDirectory(new File(getPath()));
 
         option = chooser.showOpenDialog(null);
         if (option == JFileChooser.APPROVE_OPTION) {
@@ -85,23 +85,20 @@ public class Load {
                     fromLinkUpTime = missionText[5];
                     fromSPTime = missionText[6];
                     leftFrom = missionText[7];
-                    rightFrom = missionText[8];
-                    leftTo = missionText[9];
-                    rightTo = missionText[10];
-                    toLinkUpTime = missionText[11];
-                    toSPTime = missionText[12];
-                    leftAdditionalText = missionText[13].replaceAll("'t'", "\t").replaceAll("'r'", "\r").replaceAll("'n'", "\n");
-                    rightAdditionalText = missionText[14].replaceAll("'t'", "\t").replaceAll("'r'", "\r").replaceAll("'n'", "\n");
-                    additionalText = missionText[15].replaceAll("'t'", "\t").replaceAll("'r'", "\r").replaceAll("'n'", "\n");
-                    unitPatch = missionText[16];
-                    
-                }
-                
-                //this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                    //rightFrom = missionText[8];
+                    leftTo = missionText[8];
+                    //rightTo = missionText[10];
+                    toLinkUpTime = missionText[9];
+                    toSPTime = missionText[10];
+                    leftAdditionalText = missionText[11].replaceAll("'t'", "\t").replaceAll("'r'", "\r").replaceAll("'n'", "\n");
+                    rightAdditionalText = missionText[12].replaceAll("'t'", "\t").replaceAll("'r'", "\r").replaceAll("'n'", "\n");
+                    additionalText = missionText[13].replaceAll("'t'", "\t").replaceAll("'r'", "\r").replaceAll("'n'", "\n");
+                    unitPatch = missionText[14];
 
-                
-                                
-                 mainWindow = new MainWindow(missionNumber,
+                }
+
+                //mainWindow.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                mainWindow = new MainWindow(missionNumber,
                         classification,
                         stagingArea,
                         acc,
@@ -109,82 +106,97 @@ public class Load {
                         fromLinkUpTime,
                         fromSPTime,
                         leftFrom,
-                        rightFrom,
+                        //rightFrom,
                         leftTo,
-                        rightTo,
+                        //rightTo,
                         toLinkUpTime,
                         toSPTime,
                         leftAdditionalText,
                         rightAdditionalText,
                         additionalText,
                         unitPatch);
-               
-                
-                
+
                 mainMenu.setMainWindow(mainWindow);
                 mainMenu.getMainWindow().display();
-                
-                loadVehicles();
-                
-                if (mainWindow != null) 
-                    isLoaded = true;
-                
-                
-               
 
-            } catch (IOException ex) {} finally { /*this.setCursor(Cursor.getDefaultCursor());*/ }
+                //JOptionPane.showMessageDialog(mainWindow, unitPatch);
+                loadVehicles();
+
+                if (mainWindow != null) {
+                    isLoaded = true;
+                }
+
+            } catch (IOException ex) {
+            } finally { //mainWindow.setCursor(Cursor.getDefaultCursor());
+            }
         }
     }
-   
+
     public int getOption() {
         return option;
     }
-    
+
     public boolean getIsLoaded() {
         return isLoaded;
     }
-    
+
     /**
      * loadProject() loads a file that with the file extension "_vehicles.conx"
      */
-    public void loadVehicles() {      
-        
+    public void loadVehicles() {
+
         ArrayList<ArrayList<Vehicle>> vehicleGridsVehicles = new ArrayList<>();
-        
-        try{            
-            FileInputStream fileIn = new FileInputStream("src/convoy/convoy/" + missionNumber +  "_vehicles.conx");
+
+        try {
+            FileInputStream fileIn = new FileInputStream(getPath() + missionNumber + "_vehicles.conx");
             ObjectInputStream in = new ObjectInputStream(fileIn);
             vehicleGridsVehicles = (ArrayList<ArrayList<Vehicle>>) in.readObject();
             in.close();
             fileIn.close();
-            
-            
-            
+
             for (int i = 0; i < vehicleGridsVehicles.size(); i++) {
-                
+
                 if (i > 0) {
                     mainMenu.getMainWindow().newVehicleGrid();
                 }
-                    
-                
+
                 for (int j = 0; j < vehicleGridsVehicles.get(i).size(); j++) {
                     //JOptionPane.showMessageDialog(mainMenu, vehicleGridsVehicles.get(0).get(1).getDriverName() + " ");
                     VehiclePanel vp = new VehiclePanel();
                     vp.batchVehicleSet(vehicleGridsVehicles.get(i).get(j));
                     mainMenu.getMainWindow().getVehicleGrids().get(i).replaceAddNewVehiclePanel(vp);
                     mainMenu.getMainWindow().getVehicleGrids().get(i).setMainWindow(mainMenu.getMainWindow());
-                    
+
                 }
             }
-            
+
             mainMenu.getMainWindow().showFirstVehicleGrid();
-            
-        }
-        catch(Exception exc){
+
+        } catch (Exception exc) {
             exc.printStackTrace(); // If there was an error, print the info.
             //JOptionPane.showMessageDialog(mainMenu, "You messed up");
         }
-        
+
     }
-    
+
+    public static String getProgramPath() throws UnsupportedEncodingException {
+        URL url = convoy.gui.MainMenu.class.getProtectionDomain().getCodeSource().getLocation();
+        String jarPath = URLDecoder.decode(url.getFile(), "UTF-8");
+        String parentPath = new File(jarPath).getParentFile().getPath();
+        return parentPath;
+    }
+
+    private String getPath() {
+        String path = null;
+        try {
+            path = getProgramPath();
+        } catch (UnsupportedEncodingException ex) {
+            //Logger.getLogger(Save.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        String fileSeparator = System.getProperty("file.separator");
+        String newDir = path + fileSeparator + "convoys" + fileSeparator;
+        return newDir;
+    }
+
 }

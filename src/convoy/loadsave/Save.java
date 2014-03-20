@@ -6,13 +6,19 @@
 package convoy.loadsave;
 
 import convoy.gui.MainMenu;
+import static convoy.gui.MainMenu.getProgramPath;
 import convoy.objects.Mission;
 import convoy.objects.Vehicle;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
+import java.io.UnsupportedEncodingException;
+import java.net.URL;
+import java.net.URLDecoder;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -30,8 +36,8 @@ public class Save {
     private File file;
     private final Mission mission;
     private MainMenu mainMenu = MainMenu.getInstance();
-    private ArrayList<ArrayList<Vehicle>> vehicleGridsVehicles = new ArrayList<>();;
-
+    private ArrayList<ArrayList<Vehicle>> vehicleGridsVehicles = new ArrayList<>();
+    
     /**
      * Constructor that grabs the mission obj from the convoy and save the
      * information in a file.
@@ -48,10 +54,11 @@ public class Save {
      * <p>
      */
     public void save() {
+        
         if (mission.getMissionNumber().equalsIgnoreCase("")) {
             JOptionPane.showMessageDialog(null, "Please enter the mission number.");
         } else {
-            file = new File("src/convoy/convoy/" + mission.getMissionNumber() + ".conx");
+            file = new File(getPath() + mission.getMissionNumber() + ".conx");
         }
         try {
             String saveData = mission.getMissionNumber() + ",";
@@ -62,17 +69,17 @@ public class Save {
             saveData += mission.getFromLinkUpTime() + ",";
             saveData += mission.getFromSPTime() + ",";
             saveData += mission.getLeftFrom() + ",";
-            saveData += mission.getRightFrom() + ",";
+            //saveData += mission.getRightFrom() + ",";
             saveData += mission.getLeftTo() + ",";
-            saveData += mission.getRightTo() + ",";
+            //saveData += mission.getRightTo() + ",";
             saveData += mission.getToLinkUpTime() + ",";
             saveData += mission.getToSPTime() + ",";
             saveData += mission.getLeftAdditionalInfo().replaceAll("\\t", "'t'").replaceAll("\\r", "'r'").replaceAll("\\n", "'n'") + ",";
             saveData += mission.getRightAdditionalInfo().replaceAll("\\t", "'t'").replaceAll("\\r", "'r'").replaceAll("\\n", "'n'") + ",";
             saveData += mission.getAdditionalInfo().replaceAll("\\t", "'t'").replaceAll("\\r", "'r'").replaceAll("\\n", "'n'") + ",";
-            saveData += "file:\\" + mission.getUnitPatch();
+            saveData += mission.getUnitPatch();
             
-            JOptionPane.showMessageDialog(mainMenu, mission.getUnitPatch());
+            //JOptionPane.showMessageDialog(mainMenu, mission.getUnitPatch());
 
             byte[] dataToWrite = saveData.getBytes("UTF8");
             //String str = new String(dataToWrite, "UTF8");
@@ -86,6 +93,8 @@ public class Save {
         }
         
         saveVehicles();
+        
+        JOptionPane.showMessageDialog(null, "Mission saved successfully.");
     }
     
     /**
@@ -110,8 +119,11 @@ public class Save {
             }
         }  
         try {
-            FileOutputStream fileOut =
-                    new FileOutputStream("src/convoy/convoy/" + mission.getMissionNumber() +  "_vehicles.conx");
+            
+            
+         
+            FileOutputStream fileOut;
+            fileOut = new FileOutputStream(getPath() + mission.getMissionNumber() +  "_vehicles.conx");
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
             out.writeObject(vehicleGridsVehicles);
             out.close();
@@ -119,4 +131,23 @@ public class Save {
         } catch (IOException e) {}
         
     }
+    
+    public static String getProgramPath() throws UnsupportedEncodingException {
+      URL url = convoy.gui.MainMenu.class.getProtectionDomain().getCodeSource().getLocation();
+      String jarPath = URLDecoder.decode(url.getFile(), "UTF-8");
+      String parentPath = new File(jarPath).getParentFile().getPath();
+      return parentPath;
+   }
+   private String getPath(){ 
+    String path = null;
+        try {
+            path = getProgramPath();
+        } catch (UnsupportedEncodingException ex) {
+            //Logger.getLogger(Save.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+         String fileSeparator = System.getProperty("file.separator");
+         String newDir = path + fileSeparator + "convoys" + fileSeparator;
+         return newDir;
+   }
 }

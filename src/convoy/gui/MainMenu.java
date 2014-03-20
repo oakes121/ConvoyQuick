@@ -7,11 +7,9 @@ import javax.swing.*;
 import javax.swing.border.BevelBorder;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
-import javax.swing.filechooser.FileNameExtensionFilter;
-
 import convoy.objects.Mission;
-import convoy.objects.Vehicle;
-import java.util.ArrayList;
+import java.net.URL;
+import java.net.URLDecoder;
 
 /**
  * @author Mike Moye <mtm5313@psu.edu> / Oakes Isaac <oki5001@psu.edu
@@ -33,6 +31,9 @@ public class MainMenu extends javax.swing.JFrame {
      * Creates new form MainMenu
      */
     private MainMenu() {
+        createSaveDirectory();
+        createImageDirectory();
+        createHtmlDirectory();
         mission = Mission.getInstance();
         initComponents();
         doMainMenuFont();
@@ -370,4 +371,65 @@ public class MainMenu extends javax.swing.JFrame {
     private convoy.gui.PicturePanel picturePanel1;
     // End of variables declaration//GEN-END:variables
 
+    private void createSaveDirectory(){       
+        String path = null;
+        try {
+            path = getProgramPath();
+        } catch (UnsupportedEncodingException ex) {
+            //Logger.getLogger(Save.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+         String fileSeparator = System.getProperty("file.separator");
+         String newDir = path + fileSeparator + "convoys" + fileSeparator;
+         //JOptionPane.showMessageDialog(null, newDir);
+
+         File file = new File(newDir);
+         file.mkdir();
+         
+    }
+    
+    private void createImageDirectory(){
+    
+        String path = null;
+        try {
+            path = getProgramPath();
+        } catch (UnsupportedEncodingException ex) {
+            //Logger.getLogger(Save.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+         String fileSeparator = System.getProperty("file.separator");
+         String newDir = path + fileSeparator + "images" + fileSeparator;
+         //JOptionPane.showMessageDialog(null, newDir);
+
+         File file = new File(newDir);
+         file.mkdir();
+         
+    }
+    
+    private void createHtmlDirectory(){
+    
+        String path = null;
+        try {
+            path = getProgramPath();
+        } catch (UnsupportedEncodingException ex) {
+            //Logger.getLogger(Save.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+         String fileSeparator = System.getProperty("file.separator");
+         String newDir = path + fileSeparator + "html" + fileSeparator;
+         //JOptionPane.showMessageDialog(null, newDir);
+
+         File file = new File(newDir);
+         file.mkdir();
+         
+    }
+    
+    public static String getProgramPath() throws UnsupportedEncodingException {
+      URL url = convoy.gui.MainMenu.class.getProtectionDomain().getCodeSource().getLocation();
+      String jarPath = URLDecoder.decode(url.getFile(), "UTF-8");
+      String parentPath = new File(jarPath).getParentFile().getPath();
+      return parentPath;
+   }
+    
+    
 }

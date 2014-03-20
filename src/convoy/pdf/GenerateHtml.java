@@ -4,6 +4,9 @@ import java.io.*;
 import java.util.ArrayList;
 
 import convoy.objects.Radio;
+import java.net.URL;
+import java.net.URLDecoder;
+import javax.swing.JOptionPane;
 
 /**
  * @author Mike Moye <mtm5313@psu.edu>
@@ -40,8 +43,6 @@ public class GenerateHtml {
      * @param cc
      * @param acc
      * @param stagingArea
-     * @param rightFrom
-     * @param rightTo
      * @param fromLU
      * @param toLU
      * @param fromSP
@@ -59,8 +60,8 @@ public class GenerateHtml {
             String cc,
             String acc,
             String stagingArea,
-            String rightFrom,
-            String rightTo,
+            //String rightFrom,
+            //String rightTo,
             String fromLU,
             String toLU,
             String fromSP,
@@ -169,7 +170,7 @@ public class GenerateHtml {
                     + "                        </tr>\n";
         }
 
-        if (rightAdditionalText.equalsIgnoreCase("")) {
+        if (rightAdditionalText.equalsIgnoreCase("") || rightAdditionalText.equalsIgnoreCase("Additional Information Goes Here")) {
             rightAdditionalText = "";
         } else {
             rightAdditionalText = "             <tr>\n"
@@ -181,7 +182,7 @@ public class GenerateHtml {
                     + "                        </tr>\n";
         }
 
-        if (leftAdditionalText.equalsIgnoreCase("")) {
+        if (leftAdditionalText.equalsIgnoreCase("") || leftAdditionalText.equalsIgnoreCase("Additional Information Goes Here")) {
             leftAdditionalText = "";
         } else {
             leftAdditionalText = "                        <tr>\n"
@@ -193,7 +194,7 @@ public class GenerateHtml {
                     + "                                 </tr>\n";
         }
 
-        if (additionalText.equalsIgnoreCase("")) {
+        if (additionalText.equalsIgnoreCase("Additional Information Goes Here") || additionalText.equalsIgnoreCase("Additional Information Goes Here")) {
             additionalText = "";
         } else {
             additionalText = "            <tr class=\"rows\">\n"
@@ -211,14 +212,20 @@ public class GenerateHtml {
         }
 
         try {
-            File f = new File("src\\convoy\\resources\\html\\convoy.htm");
+            JOptionPane.showMessageDialog(null, getPath());
+            File f = null;
+            try{
+                 f = new File(getPath() + "convoy.html");
+            }catch(Exception ex){
+                
+            }finally{
+            
             try (BufferedWriter bw = new BufferedWriter(new FileWriter(f))) {
                 bw.write("<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\"\n"
                         + "\"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\">\n"
                         + "<html xmlns=\"http://www.w3.org/1999/xhtml\">\n"
                         + "\n"
                         + "<head>\n"
-                        + "    <script type=\"text/javascript\" src=\"../javascript/jquery-latest.min.js\"></script>\n"
                         + "    <title></title>\n"
                         + "    <style type=\"text/css\">\n"
                         + "        body {\n"
@@ -232,15 +239,25 @@ public class GenerateHtml {
                         + "            font-size: 14pt;\n"
                         + "        }\n"
                         + "        td {\n"
-                        + "            //border: 1px solid #000;\n"
+                        + "            border: 1px solid #000;\n"
                         + "            background-color: white;\n"
                         + "        }\n"
                         + "        .label {\n"
                         + "            font-weight: bold;\n"
                         + "            font-family: capture;\n"
                         + "        }\n"
+                        + "        .leftLabel {\n"
+                        + "            font-weight: bold;\n"
+                        + "            font-family: capture;\n"
+                        + "            text-align: center;\n"
+                        + "        }\n"
                         + "        .data {\n"
-                        + "            text-align: left;\n"
+                        + "             font-weight: normal;\n"
+                        + "             text-align: left;\n"
+                        + "        }\n"
+                        + "        .leftData {\n"
+                        + "             font-weight: normal;\n"
+                        + "             text-align: center;\n"
                         + "        }\n"
                         + "        #freqTable {\n"
                         + "            border: 0;\n"
@@ -290,6 +307,9 @@ public class GenerateHtml {
                         + "             max-width:52px;"
                         + "             width:52px;"
                         + "         }"
+                        + "        .3rdOfPicHeight{"
+                        + "             height: 56px"
+                        + "         }"
                         + "    </style>\n"
                         + "</head>\n"
                         + "\n"
@@ -309,16 +329,16 @@ public class GenerateHtml {
                         + "                            <td class=\"picCell\" colspan=\"1\" rowspan=\"4\" id=\"unitPatch\"><img src=\"" + "file:\\" + watermark + "\" alt=\"unitPatch\"/></td>\n"
                         + "                        </tr>\n"
                         + "                        <tr>\n"
-                        + "                            <td class=\"label\">Mission #</td>\n"
-                        + "                            <td class=\"data\" id=\"misisonNumber\">" + missionNumber + "</td>\n"
+                        + "                            <td class=\"leftLabel\">Mission #</td>\n"
+                        + "                            <td class=\"leftData\" id=\"misisonNumber\">" + missionNumber + "</td>\n"
                         + "                        </tr>\n"
                         + "                        <tr>\n"
-                        + "                            <td class=\"label\">FROM:</td>\n"
-                        + "                            <td class=\"data\" id=\"leftFrom\">" + leftFrom + "</td>\n"
+                        + "                            <td class=\"leftLabel\">Start Point:</td>\n"
+                        + "                            <td class=\"leftData\" id=\"leftFrom\">" + leftFrom + "</td>\n"
                         + "                        </tr>\n"
                         + "                        <tr>\n"
-                        + "                            <td class=\"label\">To:</td>\n"
-                        + "                            <td class=\"data\" id=\"leftTo\">" + leftTo + "</td>\n"
+                        + "                            <td class=\"leftLabel\">Rally Point:</td>\n"
+                        + "                            <td class=\"leftData\" id=\"leftTo\">" + leftTo + "</td>\n"
                         + "                        </tr>\n"
                         + leftAdditionalText
                         + "                    </table>\n"
@@ -329,33 +349,22 @@ public class GenerateHtml {
                         + "                        <!-- right mission info table //-->\n"
                         + "                        <tr>\n"
                         + "                            <!-- cc and acc row //-->\n"
-                        + "                            <td class=\"label\">CC -</td>\n"
-                        + "                            <td class=\"data\" colspan=\"2\" id=\"cc\">" + cc + "</td>\n"
-                        + "                            <td class=\"label\">ACC -</td>\n"
-                        + "                            <td class=\"data\" colspan=\"2\" id=\"acc\">" + acc + "</td>\n"
+                        + "                            <td class=\"label\">CC:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class=\"data\">" + cc + "</span></td>\n"
+                        + "                            <td class=\"label\">ACC:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class=\"data\">" + acc + "</span></td>\n"
                         + "                        </tr>\n"
                         + "                        <tr>\n"
                         + "                            <!-- staging area row //-->\n"
-                        + "                            <td class=\"label\">Staging Area -</td>\n"
-                        + "                            <td class=\"data\" colspan=\"5\" id=\"stagingArea\">" + stagingArea + "</td>\n"
+                        + "                            <td class=\"label\" colspan=\"2\">Staging Area:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class=\"data\">" + stagingArea + "</span></td>\n"
                         + "                        </tr>\n"
                         + "                        <tr>\n"
                         + "                            <!-- from l/u sp //-->\n"
-                        + "                            <td class=\"label\">From -</td>\n"
-                        + "                            <td class=\"data\" id=\"rightFrom\">" + rightFrom + "</td>\n"
-                        + "                            <td class=\"label\">L/U -</td>\n"
-                        + "                            <td class=\"data\" id=\"fromLu\">" + fromLU + "</td>\n"
-                        + "                            <td class=\"label\">SP -</td>\n"
-                        + "                            <td class=\"data\" id=\"fromSP\">" + fromSP + "</td>\n"
+                        + "                            <td class=\"label\">Start Point Linkup Time:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class=\"data\">" + fromLU + "</span></td>\n"
+                        + "                            <td class=\"label\">Start Point SP Time:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class=\"data\">" + fromSP + "</span></td>\n"
                         + "                        </tr>\n"
                         + "                        <tr>\n"
                         + "                            <!-- to l/u sp//-->\n"
-                        + "                            <td class=\"label\">To -</td>\n"
-                        + "                            <td class=\"data\" id=\"rightTo\">" + rightTo + "</td>\n"
-                        + "                            <td class=\"label\">L/U -</td>\n"
-                        + "                            <td class=\"data\" id=\"toLu\">" + toLU + "</td>\n"
-                        + "                            <td class=\"label\">SP -</td>\n"
-                        + "                            <td class=\"data\" id=\"toSP\">" + toSP + "</td>\n"
+                        + "                            <td class=\"label\">Rally Point Linkup Time:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class=\"data\">" + toLU + "</span></td>\n"
+                        + "                            <td class=\"label\">Rally Point SP Time:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class=\"data\">" + toSP + "</span></td>\n"
                         + "                        </tr>\n"
                         + radio
                         + rightAdditionalText
@@ -1007,6 +1016,8 @@ public class GenerateHtml {
                         + "</body>\n"
                         + "\n"
                         + "</html>");
+                
+            }
 
                 //Desktop.getDesktop().browse(f.toURI()); open html file in default browser.
             }
@@ -1014,4 +1025,25 @@ public class GenerateHtml {
             //ex.printStackTrace();
         }
     }
+    
+    
+    
+    public static String getProgramPath() throws UnsupportedEncodingException {
+      URL url = convoy.gui.MainMenu.class.getProtectionDomain().getCodeSource().getLocation();
+      String jarPath = URLDecoder.decode(url.getFile(), "UTF-8");
+      String parentPath = new File(jarPath).getParentFile().getPath();
+      return parentPath;
+   }
+    private String getPath(){ 
+    String path = null;
+        try {
+            path = getProgramPath();
+        } catch (UnsupportedEncodingException ex) {
+            //Logger.getLogger(Save.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+         String fileSeparator = System.getProperty("file.separator");
+         String newDir = path + fileSeparator + "html" + fileSeparator;
+         return newDir;
+   }
 }

@@ -4,7 +4,9 @@
   <NonVisualComponents>
     <Container class="javax.swing.JLayeredPane" name="jLayeredPane1">
 
-      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JLayeredPaneSupportLayout"/>
+      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
+        <Property name="useNullLayout" type="boolean" value="true"/>
+      </Layout>
     </Container>
   </NonVisualComponents>
   <Properties>
@@ -32,61 +34,46 @@
               <Group type="103" groupAlignment="1" max="-2" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="ccLabel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="ccTextField" min="-2" pref="342" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                      <Component id="ccTextField" min="-2" pref="250" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                       <Component id="accLabel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="accTextField" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                      <Component id="accTextField" min="-2" pref="250" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="stagingAreaLabel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                       <Component id="stagingAreaTextField" max="32767" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                              <Component id="fromLabel" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="toLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="fromTextField" pref="200" max="32767" attributes="0"/>
-                          <Component id="toTextField" max="32767" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="fromLinkUpLabel" min="-2" pref="42" max="-2" attributes="0"/>
-                          <Component id="toLinkUpLabel" min="-2" pref="40" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="fromLinkUpTextField" pref="150" max="32767" attributes="0"/>
-                          <Component id="toLinkUpTextField" max="32767" attributes="0"/>
-                      </Group>
+                  <Group type="102" alignment="1" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="toSPLabel" min="-2" max="-2" attributes="0"/>
+                              <Component id="toLinkUpLabel" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                              <Component id="toLinkUpTextField" max="32767" attributes="0"/>
                           </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                              <Component id="fromSPLabel" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="fromLinkUpLabel" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                              <Component id="fromLinkUpTextField" min="-2" pref="200" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="toSPTextField" min="-2" pref="150" max="-2" attributes="0"/>
-                          <Component id="fromSPTextField" min="-2" pref="150" max="-2" attributes="0"/>
+                          <Component id="fromSPLabel" min="-2" max="-2" attributes="0"/>
+                          <Component id="toSPLabel" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="toSPTextField" min="-2" pref="200" max="-2" attributes="0"/>
+                          <Component id="fromSPTextField" min="-2" pref="200" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Component id="jScrollPane1" alignment="1" max="32767" attributes="0"/>
-                  <Component id="freqPanel" alignment="0" pref="671" max="32767" attributes="0"/>
+                  <Component id="freqPanel" alignment="0" pref="0" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -107,17 +94,13 @@
               </Group>
               <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="fromLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="fromSPLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="fromLinkUpTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="fromLinkUpLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="fromTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="fromSPTextField" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="toLabel" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                  <Component id="toTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="toLinkUpLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="toLinkUpTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="toSPLabel" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -126,7 +109,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="freqPanel" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
-              <Component id="jScrollPane1" pref="75" max="32767" attributes="0"/>
+              <Component id="jScrollPane1" pref="77" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -135,63 +118,70 @@
   <SubComponents>
     <Component class="javax.swing.JLabel" name="ccLabel">
       <Properties>
-        <Property name="text" type="java.lang.String" value="CC - "/>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tahoma" size="11" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="CC : "/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="ccTextField">
     </Component>
     <Component class="javax.swing.JLabel" name="accLabel">
       <Properties>
-        <Property name="text" type="java.lang.String" value="ACC - "/>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tahoma" size="11" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="ACC: "/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="accTextField">
     </Component>
     <Component class="javax.swing.JLabel" name="stagingAreaLabel">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Staging Area - "/>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tahoma" size="11" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Staging Area: "/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="stagingAreaTextField">
-    </Component>
-    <Component class="javax.swing.JLabel" name="fromLabel">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="From - "/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="toSPTextField">
     </Component>
     <Component class="javax.swing.JLabel" name="fromLinkUpLabel">
       <Properties>
-        <Property name="text" type="java.lang.String" value="L/U -"/>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tahoma" size="11" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Start Point Linkup Time:"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="toTextField">
     </Component>
     <Component class="javax.swing.JLabel" name="fromSPLabel">
       <Properties>
-        <Property name="text" type="java.lang.String" value="SP -"/>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tahoma" size="11" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Start Point SP Time:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="fromLinkUpTextField">
     </Component>
-    <Component class="javax.swing.JLabel" name="toLabel">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="To -"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="fromTextField">
-    </Component>
     <Component class="javax.swing.JLabel" name="toLinkUpLabel">
       <Properties>
-        <Property name="text" type="java.lang.String" value="L/U -"/>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tahoma" size="11" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Rally Point Linkup Time:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="toLinkUpTextField">
     </Component>
     <Component class="javax.swing.JLabel" name="toSPLabel">
       <Properties>
-        <Property name="text" type="java.lang.String" value="SP -"/>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tahoma" size="11" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Rally Point SP Time:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="fromSPTextField">
@@ -210,7 +200,7 @@
             <Property name="text" type="java.lang.String" value="Additional Information Goes Here"/>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="jScrollPane1.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);&#xa;&#xa;AbstractDocument pDoc=(AbstractDocument)additonalText.getDocument();&#xa;&#xa;pDoc.setDocumentFilter(new MaximumSizeFilter(5, 125));&#xa;&#xa;additonalText.setMargin(new Insets(5,5,5,5));"/>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="jScrollPane1.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);&#xa;&#xa;AbstractDocument pDoc=(AbstractDocument)additonalText.getDocument();&#xa;&#xa;pDoc.setDocumentFilter(new MaximumSizeFilter(5, 60));&#xa;&#xa;additonalText.setMargin(new Insets(5,5,5,5));"/>
             <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JTextArea()"/>
           </AuxValues>
         </Component>
@@ -242,15 +232,14 @@
                                   <Component id="channelOneLabel" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                                   <Component id="channelOneName" min="-2" pref="100" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="channelFourLabel" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                                   <Component id="channelFourName" min="-2" pref="100" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                               </Group>
                           </Group>
+                          <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="channelFourFreq" pref="58" max="32767" attributes="0"/>
                               <Component id="channelOneFreq" max="32767" attributes="0"/>

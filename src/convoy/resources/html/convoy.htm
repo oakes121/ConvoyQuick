@@ -17,15 +17,25 @@
             font-size: 14pt;
         }
         td {
-            //border: 1px solid #000;
+            border: 1px solid #000;
             background-color: white;
         }
         .label {
             font-weight: bold;
             font-family: capture;
         }
+        .leftLabel {
+            font-weight: bold;
+            font-family: capture;
+            text-align: center;
+        }
         .data {
-            text-align: left;
+             font-weight: normal;
+             text-align: left;
+        }
+        .leftData {
+             font-weight: normal;
+             text-align: center;
         }
         #freqTable {
             border: 0;
@@ -80,24 +90,25 @@
                             <td colspan="3" id="classification">FOR OFFICIAL USE ONLY</td>
                         </tr>
                         <tr>
-                            <td class="picCell" colspan="1" rowspan="4" id="unitPatch"><img src="file:\null" alt="unitPatch"/></td>
+                            <td class="picCell" colspan="1" rowspan="4" id="unitPatch"><img src="file:\C:\Users\dizoo548\Java%20Development\Netbeans\ConvoyQuick\build\classes\convoy\resources\images\2id.png" alt="unitPatch"/></td>
                         </tr>
                         <tr>
-                            <td class="label">Mission #</td>
-                            <td class="data" id="misisonNumber">testMissionNumber0001</td>
+                            <td class="leftLabel">Mission #</td>
+                            <td class="leftData" id="misisonNumber"></td>
                         </tr>
                         <tr>
-                            <td class="label">FROM:</td>
-                            <td class="data" id="leftFrom"></td>
+                            <td class="leftLabel">Start Point:</td>
+                            <td class="leftData" id="leftFrom"></td>
                         </tr>
                         <tr>
-                            <td class="label">To:</td>
-                            <td class="data" id="leftTo"></td>
+                            <td class="leftLabel">Rally Point:</td>
+                            <td class="leftData" id="leftTo"></td>
                         </tr>
                         <tr>
                                      <td class="additionalText" colspan="3" id="leftAdditionaInfo">
                                          <pre>
-Additional Information Goes Here
+Additional Information Goes Heredsafasdfsdfsdddddd
+Additional Information Goes Heredsafasdfsdfsdddddd
                                          </pre>
                                      </td>
                                  </tr>
@@ -109,39 +120,22 @@ Additional Information Goes Here
                         <!-- right mission info table //-->
                         <tr>
                             <!-- cc and acc row //-->
-                            <td class="label">CC -</td>
-                            <td class="data" colspan="2" id="cc"></td>
-                            <td class="label">ACC -</td>
-                            <td class="data" colspan="2" id="acc"></td>
+                            <td class="label">CC:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="data"></span></td>
+                            <td class="label">ACC:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="data"></span></td>
                         </tr>
                         <tr>
                             <!-- staging area row //-->
-                            <td class="label">Staging Area -</td>
-                            <td class="data" colspan="5" id="stagingArea"></td>
+                            <td class="label" colspan="2">Staging Area:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="data"></span></td>
                         </tr>
                         <tr>
                             <!-- from l/u sp //-->
-                            <td class="label">From -</td>
-                            <td class="data" id="rightFrom"></td>
-                            <td class="label">L/U -</td>
-                            <td class="data" id="fromLu"></td>
-                            <td class="label">SP -</td>
-                            <td class="data" id="fromSP"></td>
+                            <td class="label">Start Point Linkup Time:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="data"></span></td>
+                            <td class="label">Start Point SP Time:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="data"></span></td>
                         </tr>
                         <tr>
                             <!-- to l/u sp//-->
-                            <td class="label">To -</td>
-                            <td class="data" id="rightTo"></td>
-                            <td class="label">L/U -</td>
-                            <td class="data" id="toLu"></td>
-                            <td class="label">SP -</td>
-                            <td class="data" id="toSP"></td>
-                        </tr>
-             <tr>
-                            <td class="additionalText" colspan="6">
-                                <pre>
-Additional Information Goes Here                                 </pre>
-                            </td>
+                            <td class="label">Rally Point Linkup Time:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="data"></span></td>
+                            <td class="label">Rally Point SP Time:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="data"></span></td>
                         </tr>
                     </table>
                     <!-- end right mission info table //-->
@@ -170,7 +164,7 @@ Additional Information Goes Here                                 </pre>
                                             </tr>
 
                                             <tr>
-                                                <td><img src="file:\C:\Users\mtm5313\NetBeans\ConvoyQuick\ConvoyQuick\build\classes\convoy\resources\images\vehicles\defaultHumvee.png" alt="vehicle" /></td>
+                                                <td><img src="file:\C:\Users\dizoo548\Java%20Development\Netbeans\ConvoyQuick\build\classes\convoy\resources\images\vehicles\defaultHumvee.png" alt="vehicle" /></td>
                                             </tr>
 
                                             <tr>
@@ -207,7 +201,7 @@ Additional Information Goes Here                                 </pre>
                                             </tr>
 
                                             <tr>
-                                                <td><img src="file:\C:\Users\mtm5313\NetBeans\ConvoyQuick\ConvoyQuick\build\classes\convoy\resources\images\vehicles\highBack.png" alt="vehicle" /></td>
+                                                <td><img src="file:\C:\Users\dizoo548\Java%20Development\Netbeans\ConvoyQuick\build\classes\convoy\resources\images\vehicles\highBack.png" alt="vehicle" /></td>
                                             </tr>
 
                                             <tr>
@@ -244,7 +238,7 @@ Additional Information Goes Here                                 </pre>
                                             </tr>
 
                                             <tr>
-                                                <td><img src="file:\C:\Users\mtm5313\NetBeans\ConvoyQuick\ConvoyQuick\build\classes\convoy\resources\images\vehicles\highBack.png" alt="vehicle" /></td>
+                                                <td><img src="file:\C:\Users\dizoo548\Java%20Development\Netbeans\ConvoyQuick\build\classes\convoy\resources\images\vehicles\highBack.png" alt="vehicle" /></td>
                                             </tr>
 
                                             <tr>
@@ -281,7 +275,7 @@ Additional Information Goes Here                                 </pre>
                                             </tr>
 
                                             <tr>
-                                                <td><img src="file:\C:\Users\mtm5313\NetBeans\ConvoyQuick\ConvoyQuick\build\classes\convoy\resources\images\vehicles\defaulthumvee.png" alt="vehicle" /></td>
+                                                <td><img src="file:\C:\Users\dizoo548\Java%20Development\Netbeans\ConvoyQuick\build\classes\convoy\resources\images\vehicles\defaulthumvee.png" alt="vehicle" /></td>
                                             </tr>
 
                                             <tr>
@@ -318,7 +312,7 @@ Additional Information Goes Here                                 </pre>
                                             </tr>
 
                                             <tr>
-                                                <td><img src="file:\C:\Users\mtm5313\NetBeans\ConvoyQuick\ConvoyQuick\build\classes\convoy\resources\images\vehicles\highBack.png" alt="vehicle" /></td>
+                                                <td><img src="file:\C:\Users\dizoo548\Java%20Development\Netbeans\ConvoyQuick\build\classes\convoy\resources\images\vehicles\highBack.png" alt="vehicle" /></td>
                                             </tr>
 
                                             <tr>
@@ -355,7 +349,7 @@ Additional Information Goes Here                                 </pre>
                                             </tr>
 
                                             <tr>
-                                                <td><img src="file:\C:\Users\mtm5313\NetBeans\ConvoyQuick\ConvoyQuick\build\classes\convoy\resources\images\vehicles\highBack.png" alt="vehicle" /></td>
+                                                <td><img src="file:\C:\Users\dizoo548\Java%20Development\Netbeans\ConvoyQuick\build\classes\convoy\resources\images\vehicles\highBack.png" alt="vehicle" /></td>
                                             </tr>
 
                                             <tr>
@@ -392,7 +386,7 @@ Additional Information Goes Here                                 </pre>
                                             </tr>
 
                                             <tr>
-                                                <td><img src="file:\C:\Users\mtm5313\NetBeans\ConvoyQuick\ConvoyQuick\build\classes\convoy\resources\images\vehicles\highBack.png" alt="vehicle" /></td>
+                                                <td><img src="file:\C:\Users\dizoo548\Java%20Development\Netbeans\ConvoyQuick\build\classes\convoy\resources\images\vehicles\highBack.png" alt="vehicle" /></td>
                                             </tr>
 
                                             <tr>
@@ -429,7 +423,7 @@ Additional Information Goes Here                                 </pre>
                                             </tr>
 
                                             <tr>
-                                                <td><img src="file:\C:\Users\mtm5313\NetBeans\ConvoyQuick\ConvoyQuick\build\classes\convoy\resources\images\vehicles\defaultHumvee.png" alt="vehicle" /></td>
+                                                <td><img src="file:\C:\Users\dizoo548\Java%20Development\Netbeans\ConvoyQuick\build\classes\convoy\resources\images\vehicles\defaultHumvee.png" alt="vehicle" /></td>
                                             </tr>
 
                                             <tr>
@@ -471,7 +465,7 @@ Additional Information Goes Here                                 </pre>
                                             </tr>
 
                                             <tr>
-                                                <td><img src="file:\C:\Users\mtm5313\NetBeans\ConvoyQuick\ConvoyQuick\build\classes\convoy\resources\images\vehicles\defaultHumvee.png" alt="vehicle" /></td>
+                                                <td><img src="file:\C:\Users\dizoo548\Java%20Development\Netbeans\ConvoyQuick\build\classes\convoy\resources\images\vehicles\defaultHumvee.png" alt="vehicle" /></td>
                                             </tr>
 
                                             <tr>
@@ -508,7 +502,7 @@ Additional Information Goes Here                                 </pre>
                                             </tr>
 
                                             <tr>
-                                                <td><img src="file:\C:\Users\mtm5313\NetBeans\ConvoyQuick\ConvoyQuick\build\classes\convoy\resources\images\vehicles\defaultHumvee.png" alt="vehicle" /></td>
+                                                <td><img src="file:\C:\Users\dizoo548\Java%20Development\Netbeans\ConvoyQuick\build\classes\convoy\resources\images\vehicles\defaultHumvee.png" alt="vehicle" /></td>
                                             </tr>
 
                                             <tr>
@@ -545,7 +539,7 @@ Additional Information Goes Here                                 </pre>
                                             </tr>
 
                                             <tr>
-                                                <td><img src="file:\C:\Users\mtm5313\NetBeans\ConvoyQuick\ConvoyQuick\build\classes\convoy\resources\images\vehicles\highBack.png" alt="vehicle" /></td>
+                                                <td><img src="file:\C:\Users\dizoo548\Java%20Development\Netbeans\ConvoyQuick\build\classes\convoy\resources\images\vehicles\highBack.png" alt="vehicle" /></td>
                                             </tr>
 
                                             <tr>
@@ -582,7 +576,7 @@ Additional Information Goes Here                                 </pre>
                                             </tr>
 
                                             <tr>
-                                                <td><img src="file:\C:\Users\mtm5313\NetBeans\ConvoyQuick\ConvoyQuick\build\classes\convoy\resources\images\vehicles\lmtv.png"  alt="vehicle" /></td>
+                                                <td><img src="file:\C:\Users\dizoo548\Java%20Development\Netbeans\ConvoyQuick\build\classes\convoy\resources\images\vehicles\lmtv.png"  alt="vehicle" /></td>
                                             </tr>
 
                                             <tr>
@@ -619,7 +613,7 @@ Additional Information Goes Here                                 </pre>
                                             </tr>
 
                                             <tr>
-                                                <td><img src="file:\C:\Users\mtm5313\NetBeans\ConvoyQuick\ConvoyQuick\build\classes\convoy\resources\images\vehicles\lmtv.png"  alt="vehicle" /></td>
+                                                <td><img src="file:\C:\Users\dizoo548\Java%20Development\Netbeans\ConvoyQuick\build\classes\convoy\resources\images\vehicles\lmtv.png"  alt="vehicle" /></td>
                                             </tr>
 
                                             <tr>
@@ -656,7 +650,7 @@ Additional Information Goes Here                                 </pre>
                                             </tr>
 
                                             <tr>
-                                                <td><img src="file:\C:\Users\mtm5313\NetBeans\ConvoyQuick\ConvoyQuick\build\classes\convoy\resources\images\vehicles\trailer.png"  alt="vehicle" /></td>
+                                                <td><img src="file:\C:\Users\dizoo548\Java%20Development\Netbeans\ConvoyQuick\build\classes\convoy\resources\images\vehicles\trailer.png"  alt="vehicle" /></td>
                                             </tr>
 
                                             <tr>
@@ -693,7 +687,7 @@ Additional Information Goes Here                                 </pre>
                                             </tr>
 
                                             <tr>
-                                                <td><img src="file:\C:\Users\mtm5313\NetBeans\ConvoyQuick\ConvoyQuick\build\classes\convoy\resources\images\vehicles\trailer.png"  alt="vehicle" /></td>
+                                                <td><img src="file:\C:\Users\dizoo548\Java%20Development\Netbeans\ConvoyQuick\build\classes\convoy\resources\images\vehicles\trailer.png"  alt="vehicle" /></td>
                                             </tr>
 
                                             <tr>
@@ -730,7 +724,7 @@ Additional Information Goes Here                                 </pre>
                                             </tr>
 
                                             <tr>
-                                                <td><img src="file:\C:\Users\mtm5313\NetBeans\ConvoyQuick\ConvoyQuick\build\classes\convoy\resources\images\vehicles\rigger.png"  alt="vehicle" /></td>
+                                                <td><img src="file:\C:\Users\dizoo548\Java%20Development\Netbeans\ConvoyQuick\build\classes\convoy\resources\images\vehicles\rigger.png"  alt="vehicle" /></td>
                                             </tr>
 
                                             <tr>
@@ -752,10 +746,6 @@ Additional Information Goes Here                                 </pre>
                         </tr>
                     </table>
                 </td>
-            </tr>
-            <tr class="rows">
-                <!-- second row //-->
-                <td class="additionalText" colspan="3">Additional Text Goes Here</td>
             </tr>
         </table>
     </div>

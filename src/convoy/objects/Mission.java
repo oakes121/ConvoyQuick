@@ -38,9 +38,9 @@ public class Mission implements Serializable {
         
         missionNumber = "Misson Number";
         leftTo = "";
-        rightTo = "";
+        //rightTo = "";
         leftFrom = "";
-        rightFrom = "";
+        //rightFrom = "";
         missionStagingArea = "Staging Area";
         unitName = "Unit Name";
         vehicles = new ArrayList<>();
@@ -80,9 +80,9 @@ public class Mission implements Serializable {
     private Mission(    String missionNumber, 
                         String missionStagingArea,
                         String leftTo, 
-                        String rightTo, 
+                        //String rightTo, 
                         String leftFrom, 
-                        String rightFrom, 
+                        //String rightFrom, 
                         String cc, 
                         String acc, 
                         String fromLinkUpTime, 
@@ -99,9 +99,9 @@ public class Mission implements Serializable {
         this.missionStagingArea = missionStagingArea;
         //this.unitName = unitName;
         this.leftTo = leftTo;
-        this.rightTo = rightTo;
+        //this.rightTo = rightTo;
         this.leftFrom = leftFrom;
-        this.rightFrom = rightFrom;
+        //this.rightFrom = rightFrom;
         vehicles = new ArrayList<>();
         people = new ArrayList<>();
         attachments = new Attachments();
@@ -169,9 +169,9 @@ public class Mission implements Serializable {
     public static synchronized Mission getInstance( String missionNumber, 
                                                     String missionStagingArea, 
                                                     String leftTo, 
-                                                    String rightTo, 
+                                                    //String rightTo, 
                                                     String leftFrom, 
-                                                    String rightFrom, 
+                                                    //String rightFrom, 
                                                     String cc, 
                                                     String acc, 
                                                     String fromLinkUpTime, 
@@ -185,7 +185,7 @@ public class Mission implements Serializable {
                                                     String unitPatch) {
         
         // if uniqueInstance is null, instantiate it to new Mission()
-        uniqueInstance = new Mission(   missionNumber, missionStagingArea, leftTo, rightTo, leftFrom, rightFrom,
+        uniqueInstance = new Mission(   missionNumber, missionStagingArea, leftTo, leftFrom,
             cc, acc, fromLinkUpTime, fromSPTime, toLinkUpTime, toSPTime, classification,leftAdditionalText, rightAdditionalText, additionalText, unitPatch);
            
         return uniqueInstance;        
