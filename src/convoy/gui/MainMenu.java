@@ -39,7 +39,6 @@ public class MainMenu extends javax.swing.JFrame {
         doMainMenuFont();
         setMainMenuButtonColor();
         setMainMenuButtonColor();
-        loadImage();
         repaint();
         revalidate();
         newProjectPanel.requestFocus();
@@ -62,31 +61,6 @@ public class MainMenu extends javax.swing.JFrame {
         mainWindow = mw;
     }
     
-
-    /**
-     * Sets the background image of the main menu
-     *
-     * @param g abstract graphics
-     */
-    protected void paintComponent(Graphics g) {
-        this.paintComponent(g);
-        int x = (this.getWidth() - image.getWidth(null)) / 2;
-        int y = (this.getHeight() - image.getHeight(null)) / 2;
-        g.drawImage(image, x, y, null); // see javadoc for more info on the parameters            
-    }
-
-    /**
-     * Method used to loadProject an image.
-     *
-     * @param imageName the file path of the image to be loadProjected
-     */
-    private void loadImage() {
-        try {
-            image = ImageIO.read(getClass().getResource("/convoy/resources/images/humveeWithGun.jpg"));
-        } catch (IOException ex) {
-        }
-    }
-
     /**
      * displays and set the attribute and properties of the main menu frame
      */
@@ -121,7 +95,7 @@ public class MainMenu extends javax.swing.JFrame {
 
         picturePanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        newProjectPanel.setBorder(new javax.swing.border.SoftBevelBorder(0, null, new java.awt.Color(0, 0, 0), null, new java.awt.Color(0, 0, 0)));
+        newProjectPanel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 0, 0), null, new java.awt.Color(0, 0, 0)));
         newProjectPanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 newProjectPanelMouseEntered(evt);
@@ -156,7 +130,7 @@ public class MainMenu extends javax.swing.JFrame {
         mainMenuTitle.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         mainMenuTitle.setText("Convoy Quick");
 
-        loadProjectPanel.setBorder(new javax.swing.border.SoftBevelBorder(0, null, new java.awt.Color(0, 0, 0), null, new java.awt.Color(0, 0, 0)));
+        loadProjectPanel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 0, 0), null, new java.awt.Color(0, 0, 0)));
         loadProjectPanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 loadProjectPanelMouseEntered(evt);

@@ -850,7 +850,7 @@ public final class MainWindow extends javax.swing.JFrame {
     private void templatesMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_templatesMenuItemActionPerformed
         // TODO add your handling code here:
         try {
-            Desktop.getDesktop().open(new File("C:\\"));
+            Desktop.getDesktop().open(new File("src/convoy/templates"));
         } catch (IOException e) {
             //e.printStackTrace();
         }

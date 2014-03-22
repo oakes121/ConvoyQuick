@@ -47,7 +47,8 @@
         </Property>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new convoy.gui.PicturePanel(&quot;/convoy/resources/images/humveeWithGun.jpg&quot;)"/>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new convoy.gui.PicturePanel(&quot;/convoy/resources/images/humveeWithGun.jpg&quot;);"/>
+        <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="MainMenu_picturePanel1"/>
       </AuxValues>
 
       <Layout>

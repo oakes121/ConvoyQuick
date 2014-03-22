@@ -48,7 +48,13 @@ public class PicturePanel extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.drawImage(image, 0, 0, null); // see javadoc for more info on the parameters            
+        int x = 0, y = 0;
+        if(image == null){        
+        }else{
+        x = (this.getWidth() - image.getWidth(null)) / 2;
+        y = (this.getHeight() - image.getHeight(null)) / 2;
+        }
+        g.drawImage(image, x, y, null); // see javadoc for more info on the parameters            
     }
     
     /**
