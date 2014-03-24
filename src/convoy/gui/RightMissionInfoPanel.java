@@ -286,7 +286,7 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
      */
     private void doFonts() {
         try {
-            Font captureItFont = Font.createFont(Font.TRUETYPE_FONT, getClass().getResourceAsStream("/convoy/resources/fonts/captureIt.ttf"));
+            Font captureItFont = Font.createFont(Font.TRUETYPE_FONT, getClass().getResourceAsStream("/convoy/resources/fonts/lucidaGrande.ttf"));
             captureItFont = captureItFont.deriveFont(Font.ITALIC, 12f);
 
             accLabel.setFont(captureItFont);
