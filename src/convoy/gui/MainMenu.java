@@ -85,6 +85,8 @@ public class MainMenu extends javax.swing.JFrame {
         newProjectPanel = new javax.swing.JPanel();
         newProjectLabel = new javax.swing.JLabel();
         mainMenuTitle = new javax.swing.JLabel();
+        templateProjectPanel = new javax.swing.JPanel();
+        templateLabel = new javax.swing.JLabel();
         loadProjectPanel = new javax.swing.JPanel();
         loadProjectLabel = new javax.swing.JLabel();
 
@@ -97,7 +99,7 @@ public class MainMenu extends javax.swing.JFrame {
 
         picturePanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        newProjectPanel.setBorder(new javax.swing.border.SoftBevelBorder(0, null, new java.awt.Color(0, 0, 0), null, new java.awt.Color(0, 0, 0)));
+        newProjectPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 5));
         newProjectPanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 newProjectPanelMouseEntered(evt);
@@ -132,7 +134,39 @@ public class MainMenu extends javax.swing.JFrame {
         mainMenuTitle.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         mainMenuTitle.setText("Convoy Quick");
 
-        loadProjectPanel.setBorder(new javax.swing.border.SoftBevelBorder(0, null, new java.awt.Color(0, 0, 0), null, new java.awt.Color(0, 0, 0)));
+        templateProjectPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 5));
+        templateProjectPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                templateProjectPanelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                templateProjectPanelMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                templateProjectPanelMousePressed(evt);
+            }
+        });
+
+        templateLabel.setText("Templates");
+
+        javax.swing.GroupLayout templateProjectPanelLayout = new javax.swing.GroupLayout(templateProjectPanel);
+        templateProjectPanel.setLayout(templateProjectPanelLayout);
+        templateProjectPanelLayout.setHorizontalGroup(
+            templateProjectPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(templateProjectPanelLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(templateLabel)
+                .addContainerGap(30, Short.MAX_VALUE))
+        );
+        templateProjectPanelLayout.setVerticalGroup(
+            templateProjectPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(templateProjectPanelLayout.createSequentialGroup()
+                .addGap(41, 41, 41)
+                .addComponent(templateLabel)
+                .addContainerGap(45, Short.MAX_VALUE))
+        );
+
+        loadProjectPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 5));
         loadProjectPanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 loadProjectPanelMouseEntered(evt);
@@ -154,7 +188,7 @@ public class MainMenu extends javax.swing.JFrame {
             .addGroup(loadProjectPanelLayout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addComponent(loadProjectLabel)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
         loadProjectPanelLayout.setVerticalGroup(
             loadProjectPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -169,11 +203,13 @@ public class MainMenu extends javax.swing.JFrame {
         picturePanel1Layout.setHorizontalGroup(
             picturePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(picturePanel1Layout.createSequentialGroup()
-                .addGap(120, 120, 120)
+                .addGap(300, 300, 300)
                 .addComponent(newProjectPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 1003, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 280, Short.MAX_VALUE)
+                .addComponent(templateProjectPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 280, Short.MAX_VALUE)
                 .addComponent(loadProjectPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(120, 120, 120))
+                .addGap(300, 300, 300))
             .addGroup(picturePanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(mainMenuTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -187,6 +223,7 @@ public class MainMenu extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 617, Short.MAX_VALUE)
                 .addGroup(picturePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(newProjectPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(templateProjectPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(loadProjectPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30))
         );
@@ -211,7 +248,7 @@ public class MainMenu extends javax.swing.JFrame {
      * @param evt mouse over
      */
     private void newProjectPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newProjectPanelMouseEntered
-        newProjectPanel.setBorder(new BevelBorder(BevelBorder.LOWERED));
+        //newProjectPanel.setBorder(new BevelBorder(BevelBorder.LOWERED));
     }//GEN-LAST:event_newProjectPanelMouseEntered
 
     /**
@@ -219,18 +256,18 @@ public class MainMenu extends javax.swing.JFrame {
      *
      * @param evt mouse over
      */
-    private void loadProjectPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loadProjectPanelMouseEntered
-        loadProjectPanel.setBorder(new BevelBorder(BevelBorder.LOWERED));
-    }//GEN-LAST:event_loadProjectPanelMouseEntered
+    private void templateProjectPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_templateProjectPanelMouseEntered
+        //loadProjectPanel.setBorder(new BevelBorder(BevelBorder.LOWERED));
+    }//GEN-LAST:event_templateProjectPanelMouseEntered
 
     /**
      * Button animation when the mouse is out of the loadProject button
      *
      * @param evt mouse out
      */
-    private void loadProjectPanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loadProjectPanelMouseExited
-        loadProjectPanel.setBorder(new BevelBorder(BevelBorder.RAISED));
-    }//GEN-LAST:event_loadProjectPanelMouseExited
+    private void templateProjectPanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_templateProjectPanelMouseExited
+        //loadProjectPanel.setBorder(new BevelBorder(BevelBorder.RAISED));
+    }//GEN-LAST:event_templateProjectPanelMouseExited
 
     /**
      * Button animation when the mouse is out of the new button
@@ -238,7 +275,7 @@ public class MainMenu extends javax.swing.JFrame {
      * @param evt mouse out
      */
     private void newProjectPanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newProjectPanelMouseExited
-        newProjectPanel.setBorder(new BevelBorder(BevelBorder.RAISED));
+        //newProjectPanel.setBorder(new BevelBorder(BevelBorder.RAISED));
     }//GEN-LAST:event_newProjectPanelMouseExited
            
     /**
@@ -262,15 +299,31 @@ public class MainMenu extends javax.swing.JFrame {
      *
      * @param evt click loadProject button
      */
-    private void loadProjectPanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loadProjectPanelMousePressed
+    private void templateProjectPanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_templateProjectPanelMousePressed
         
+        try {
+            Desktop.getDesktop().open(new File("src/convoy/templates"));
+        } catch (IOException e) {
+            //e.printStackTrace();
+        }
+        
+    }//GEN-LAST:event_templateProjectPanelMousePressed
+
+    private void loadProjectPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loadProjectPanelMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_loadProjectPanelMouseEntered
+
+    private void loadProjectPanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loadProjectPanelMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_loadProjectPanelMouseExited
+
+    private void loadProjectPanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loadProjectPanelMousePressed
         Load load = new Load();
         load.loadProject();
        
         if (load.getOption() == JFileChooser.APPROVE_OPTION) {
             setVisible(false);
         }
-        
     }//GEN-LAST:event_loadProjectPanelMousePressed
 
     /**
@@ -316,9 +369,10 @@ public class MainMenu extends javax.swing.JFrame {
             mainMenuTitle.setFont(topSecretFont);
 
             Font captureItFont = Font.createFont(Font.TRUETYPE_FONT, getClass().getResourceAsStream("/convoy/resources/fonts/captureIt.ttf"));
-            captureItFont = captureItFont.deriveFont(Font.BOLD, 48f);
+            captureItFont = captureItFont.deriveFont(Font.BOLD, 24f);
 
             newProjectLabel.setFont(captureItFont);
+            templateLabel.setFont(captureItFont);
             loadProjectLabel.setFont(captureItFont);
         } catch (FontFormatException | IOException ex) {
             //ex.printStackTrace();;
@@ -332,10 +386,11 @@ public class MainMenu extends javax.swing.JFrame {
         Color desertStormColor = new Color(194, 178, 128);
 
         newProjectPanel.setBackground(desertStormColor);
+        templateProjectPanel.setBackground(desertStormColor);
         loadProjectPanel.setBackground(desertStormColor);
 
-        newProjectPanel.setBorder(new BevelBorder(BevelBorder.RAISED));
-        loadProjectPanel.setBorder(new BevelBorder(BevelBorder.RAISED));
+        //newProjectPanel.setBorder(new BevelBorder(BevelBorder.RAISED));
+        //loadProjectPanel.setBorder(new BevelBorder(BevelBorder.RAISED));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -345,6 +400,8 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JLabel newProjectLabel;
     private javax.swing.JPanel newProjectPanel;
     private convoy.gui.PicturePanel picturePanel1;
+    private javax.swing.JLabel templateLabel;
+    private javax.swing.JPanel templateProjectPanel;
     // End of variables declaration//GEN-END:variables
 
     private void createSaveDirectory(){       

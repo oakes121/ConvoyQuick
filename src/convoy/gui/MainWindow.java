@@ -372,7 +372,7 @@ public final class MainWindow extends javax.swing.JFrame {
                 .addGroup(picturePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(picturePanel2Layout.createSequentialGroup()
                         .addGap(1, 1, 1)
-                        .addComponent(vehicleGrid1, javax.swing.GroupLayout.DEFAULT_SIZE, 316, Short.MAX_VALUE)
+                        .addComponent(vehicleGrid1, javax.swing.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE)
                         .addGap(1, 1, 1))
                     .addGroup(picturePanel2Layout.createSequentialGroup()
                         .addGroup(picturePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
