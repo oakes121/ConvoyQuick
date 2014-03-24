@@ -5,7 +5,12 @@
  */
 package convoy.gui;
 
+import java.awt.Cursor;
+import java.awt.FileDialog;
 import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -28,6 +33,8 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
     private String numberOfSeats;
     private URL imageUrl;
     private Image img;
+    private Image finalImage;
+    private URL url;
 
     public AddVehiclePopUp() {
 
@@ -115,6 +122,11 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
         });
 
         imageLabel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        imageLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                imageLabelMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -501,6 +513,28 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
         vehicleNameField.setText("");
     }//GEN-LAST:event_vehicleNameFieldFocusGained
 
+    private void imageLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imageLabelMouseClicked
+        // TODO add your handling code here:
+        try {
+            FileDialog loadFile;
+            loadFile = new FileDialog(this, "Choose an Image", FileDialog.LOAD);
+            loadFile.setFile("*.jpg;*.jpeg;*.png;*.gif");
+            loadFile.setVisible(true);
+            
+            File file = new File(loadFile.getFile());
+            url = new URL("file:\\" + loadFile.getDirectory() + file);
+             img = ImageIO.read(url);
+            finalImage =  img.getScaledInstance(268, 209, java.awt.Image.SCALE_SMOOTH);
+             ImageIcon icon = new ImageIcon(finalImage);
+            imageLabel.setIcon(icon);
+            revalidate();
+            repaint();
+            
+        } catch (Exception ex) {
+            //ex.printStackTrace();
+        }   
+    }//GEN-LAST:event_imageLabelMouseClicked
+
     public void setObject(VehicleGrid vehicleGrid) {
         vehicleGridObj = vehicleGrid;
     }
@@ -533,7 +567,7 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
     public void modifyPopUp() {
 
         vehicleNameField.setText(vehicleName);
-        setImage();
+        //setImage();
         switch (numberOfSeats) {
             
             case "1":
@@ -619,7 +653,7 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
                 jLabel7.setVisible(true);
                 jLabel8.setVisible(true);
     }
-
+/*
     public void setImage() {
 
         try {
@@ -637,6 +671,7 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
             System.out.print("Image Error");
         }
     }
+    */
 
     /**
      * @param args the command line arguments
