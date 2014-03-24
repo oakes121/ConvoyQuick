@@ -53,6 +53,7 @@ public class VehicleGrid extends javax.swing.JPanel implements ActionListener, K
      * Creates new form VehicleGrid
      */
     public VehicleGrid() {
+        this.setToolTipText("Click on the 'Add New Vehicle' panel to create and add vehicles to vehicle grid");
         addKeyListener(this);
         this.setFocusable(true);
         addNewVehiclePanel1 = new AddNewVehiclePanel();
@@ -60,6 +61,7 @@ public class VehicleGrid extends javax.swing.JPanel implements ActionListener, K
         panelHolder = new ArrayList<>();
         
         addNewVehiclePanel1.addMouseListener(this);
+        addNewVehiclePanel1.setToolTipText("Click this panel to create and add vehicle to vehicle grid.");
         
         initializeFlags();
         initComponents();
