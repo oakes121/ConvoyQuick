@@ -63,6 +63,7 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         imageLabel = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         personnel1Field = new javax.swing.JTextField();
@@ -111,12 +112,17 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
             }
         });
 
+        jLabel12.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel12.setText("*");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addContainerGap()
+                .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -131,7 +137,9 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
                 .addGap(52, 52, 52)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(imageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(imageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel12))
                 .addGap(92, 92, 92))
         );
 
@@ -391,7 +399,7 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLayeredPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 765, Short.MAX_VALUE)
+            .addComponent(jLayeredPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 769, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -425,30 +433,32 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
 
     private void addVehicleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addVehicleButtonActionPerformed
         // TODO add your handling code here:
-        addValuesToVehiclePanel();
+        //addValuesToVehiclePanel();
         System.out.println("Adding New Vehicle");
        // vehicleGridObj.replaceAddNewVehiclePanel(newVehiclePanel);
-        
-        if ( url== null){
-           if ( "".equals(personnel1Field.getText()) && "".equals(personnel2Field.getText()) && "".equals(vehicleInfo1Field.getText()) && "".equals(vehicleInfo2Field.getText())){
-               JOptionPane.showMessageDialog(null, "Please Enter all the Required Field", "Alert Message", JOptionPane.WARNING_MESSAGE);
-           }
-           
+        if (url == null){
+            JOptionPane.showMessageDialog(null, "Please Enter all the Required Fields", "Alert Message", JOptionPane.WARNING_MESSAGE);
         }
-        
-        else if ( url != null){
-           if ( "".equals(personnel1Field.getText()) && "".equals(personnel2Field.getText()) && "".equals(vehicleInfo1Field.getText()) && "".equals(vehicleInfo2Field.getText())){
-               JOptionPane.showMessageDialog(null, "Please Enter all the Required Field", "Alert Message", JOptionPane.WARNING_MESSAGE);
-           }
-           
-        }  
+        else if ("".equals(personnel1Field.getText())){
+            JOptionPane.showMessageDialog(null, "Please Enter all the Required Fields", "Alert Message", JOptionPane.WARNING_MESSAGE);
+        }
+        else if ("".equals(personnel2Field.getText())){
+            JOptionPane.showMessageDialog(null, "Please Enter all the Required Fields", "Alert Message", JOptionPane.WARNING_MESSAGE);
+        }
+        else if ("".equals(vehicleInfo1Field.getText())){
+            JOptionPane.showMessageDialog(null, "Please Enter all the Required Fields", "Alert Message", JOptionPane.WARNING_MESSAGE);
+        }
+        else if ("".equals(vehicleInfo2Field.getText())){
+            JOptionPane.showMessageDialog(null, "Please Enter all the Required Fields", "Alert Message", JOptionPane.WARNING_MESSAGE);
+        }
+          
   
         else{
             vehicleGridObj.replaceAddNewVehiclePanel(newVehiclePanel);
             this.setVisible(false);
         }
         
-        
+        addValuesToVehiclePanel();
         
     }//GEN-LAST:event_addVehicleButtonActionPerformed
 
@@ -696,6 +706,7 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
