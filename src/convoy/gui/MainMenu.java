@@ -12,7 +12,7 @@ import java.net.URL;
 import java.net.URLDecoder;
 
 /**
- * @author Mike Moye <mtm5313@psu.edu> / Oakes Isaac <oki5001@psu.edu
+ * @author Mike Moye <mtm5313@psu.edu> / Oakes Isaac <oki5001@psu.edu>
  * @version 1.0
  * @since 2014-03-15
  *
