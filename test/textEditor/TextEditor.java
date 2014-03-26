@@ -793,8 +793,18 @@ public class TextEditor extends javax.swing.JFrame {
 
         textEditorPanel = new javax.swing.JPanel();
         scrollPane = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jTextArea1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jTextArea1MousePressed(evt);
+            }
+        });
+        scrollPane.setViewportView(jTextArea1);
 
         javax.swing.GroupLayout textEditorPanelLayout = new javax.swing.GroupLayout(textEditorPanel);
         textEditorPanel.setLayout(textEditorPanelLayout);
@@ -804,7 +814,10 @@ public class TextEditor extends javax.swing.JFrame {
         );
         textEditorPanelLayout.setVerticalGroup(
             textEditorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(scrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, textEditorPanelLayout.createSequentialGroup()
+                .addContainerGap(72, Short.MAX_VALUE)
+                .addComponent(scrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(88, 88, 88))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -826,6 +839,10 @@ public class TextEditor extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jTextArea1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextArea1MousePressed
+        HTMLDocumentEditor editor = new HTMLDocumentEditor();
+    }//GEN-LAST:event_jTextArea1MousePressed
 
     /**
      * @param args the command line arguments
@@ -864,6 +881,7 @@ public class TextEditor extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JScrollPane scrollPane;
     private javax.swing.JPanel textEditorPanel;
     // End of variables declaration//GEN-END:variables
