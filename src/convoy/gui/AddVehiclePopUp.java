@@ -16,6 +16,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import org.jdesktop.xswingx.PromptSupport;
         
 /**
@@ -60,9 +61,7 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
 
         jLayeredPane1 = new javax.swing.JLayeredPane();
         jPanel1 = new javax.swing.JPanel();
-        createEditButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        vehicleNameField = new javax.swing.JTextField();
         imageLabel = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -100,27 +99,11 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        createEditButton.setText("Create/Edit");
-        createEditButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                createEditButtonActionPerformed(evt);
-            }
-        });
-
         jLabel1.setText("VEHICLE SELECTION");
 
-        vehicleNameField.setText("Search vehicle");
-        vehicleNameField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                vehicleNameFieldActionPerformed(evt);
-            }
-        });
-        vehicleNameField.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                vehicleNameFieldFocusGained(evt);
-            }
-        });
-
+        imageLabel.setFont(new java.awt.Font("Lucida Fax", 1, 18)); // NOI18N
+        imageLabel.setText("       Click to add Image");
+        imageLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
         imageLabel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         imageLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -136,27 +119,20 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
                 .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(181, 181, 181))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(vehicleNameField, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(createEditButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 268, Short.MAX_VALUE)
-                            .addComponent(imageLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(imageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(20, 20, 20))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(52, 52, 52)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(vehicleNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(imageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(60, 60, 60)
-                .addComponent(createEditButton)
-                .addContainerGap(54, Short.MAX_VALUE))
+                .addGap(92, 92, 92))
         );
 
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -397,7 +373,7 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jLayeredPane1Layout.createSequentialGroup()
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(20, 20, 20)
                         .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -426,26 +402,16 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     public void addHintsToFields(){
-        PromptSupport.setPrompt("Search vehicle", vehicleNameField);
+       // PromptSupport.setPrompt("Search vehicle", vehicleNameField);
         PromptSupport.setPrompt("Driver Name", personnel1Field);
         PromptSupport.setPrompt("Commander Name", personnel2Field);
         PromptSupport.setPrompt("Passenger Name", personnel3Field);
         PromptSupport.setPrompt("Passenger Name", personnel4Field);
         PromptSupport.setPrompt("Bumper Number", vehicleInfo1Field);
-        PromptSupport.setPrompt("Bumper Number", vehicleInfo2Field);
-        PromptSupport.setPrompt("Call Sign", vehicleInfo3Field);
+        PromptSupport.setPrompt("Call Sign", vehicleInfo2Field);
+        PromptSupport.setPrompt("Additional Information", vehicleInfo3Field);
         
     }
-    private void createEditButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createEditButtonActionPerformed
-        // TODO add your handling code here:
-        CreateVehiclePopUp createVehicle = new CreateVehiclePopUp();
-        createVehicle.setObject(this);
-        createVehicle.setVisible(true);
-        //this.hide();
-        createVehicle.show();
-
-    }//GEN-LAST:event_createEditButtonActionPerformed
-
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox2ActionPerformed
@@ -461,17 +427,34 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
         // TODO add your handling code here:
         addValuesToVehiclePanel();
         System.out.println("Adding New Vehicle");
-        vehicleGridObj.replaceAddNewVehiclePanel(newVehiclePanel);
-        this.setVisible(false);
+       // vehicleGridObj.replaceAddNewVehiclePanel(newVehiclePanel);
+        
+        if ( url== null){
+           if ( "".equals(personnel1Field.getText()) && "".equals(personnel2Field.getText()) && "".equals(vehicleInfo1Field.getText()) && "".equals(vehicleInfo2Field.getText())){
+               JOptionPane.showMessageDialog(null, "Please Enter all the Required Field", "Alert Message", JOptionPane.WARNING_MESSAGE);
+           }
+           
+        }
+        
+        else if ( url != null){
+           if ( "".equals(personnel1Field.getText()) && "".equals(personnel2Field.getText()) && "".equals(vehicleInfo1Field.getText()) && "".equals(vehicleInfo2Field.getText())){
+               JOptionPane.showMessageDialog(null, "Please Enter all the Required Field", "Alert Message", JOptionPane.WARNING_MESSAGE);
+           }
+           
+        }  
+  
+        else{
+            vehicleGridObj.replaceAddNewVehiclePanel(newVehiclePanel);
+            this.setVisible(false);
+        }
+        
+        
+        
     }//GEN-LAST:event_addVehicleButtonActionPerformed
 
     private void personnel1FieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_personnel1FieldActionPerformed
 
     }//GEN-LAST:event_personnel1FieldActionPerformed
-
-    private void vehicleNameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vehicleNameFieldActionPerformed
-        vehicleNameField.setText("");
-    }//GEN-LAST:event_vehicleNameFieldActionPerformed
 
     private void personnel3FieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_personnel3FieldActionPerformed
         //personnel3Field.setText(vehicleName);
@@ -507,11 +490,6 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
         // TODO add your handling code here:
         vehicleInfo3Field.setText("");
     }//GEN-LAST:event_vehicleInfo3FieldFocusGained
-
-    private void vehicleNameFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_vehicleNameFieldFocusGained
-        // TODO add your handling code here:
-        vehicleNameField.setText("");
-    }//GEN-LAST:event_vehicleNameFieldFocusGained
 
     private void imageLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imageLabelMouseClicked
         // TODO add your handling code here:
@@ -566,7 +544,7 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
 
     public void modifyPopUp() {
 
-        vehicleNameField.setText(vehicleName);
+        //vehicleNameField.setText(vehicleName);
         //setImage();
         switch (numberOfSeats) {
             
@@ -711,7 +689,6 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addVehicleButton;
     private javax.swing.JButton cancelButton;
-    private javax.swing.JButton createEditButton;
     private javax.swing.JLabel imageLabel;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JComboBox jComboBox2;
@@ -738,6 +715,5 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
     private javax.swing.JTextField vehicleInfo1Field;
     private javax.swing.JTextField vehicleInfo2Field;
     private javax.swing.JTextField vehicleInfo3Field;
-    private javax.swing.JTextField vehicleNameField;
     // End of variables declaration//GEN-END:variables
 }
