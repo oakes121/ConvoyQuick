@@ -27,10 +27,10 @@ package convoy.textEditor.com.metaphaseeditor;
  * @author Rudolf Visagie
  */
 public enum SpellCheckDictionaryVersion {
-    STRICT_UK("/com/metaphaseeditor/spellcheck/dictionary/eng_uk_strict.zip"),
-    LIBERAL_UK("/com/metaphaseeditor/spellcheck/dictionary/eng_uk_liberal.zip"),
-    STRICT_US("/com/metaphaseeditor/spellcheck/dictionary/eng_us_strict.zip"),
-    LIBERAL_US("/com/metaphaseeditor/spellcheck/dictionary/eng_us_liberal.zip"),
+    STRICT_UK("/textEditor/com/metaphaseeditor/spellcheck/dictionary/eng_uk_strict.zip"),
+    LIBERAL_UK("/textEditor/com/metaphaseeditor/spellcheck/dictionary/eng_uk_liberal.zip"),
+    STRICT_US("/textEditor/com/metaphaseeditor/spellcheck/dictionary/eng_us_strict.zip"),
+    LIBERAL_US("/textEditor/com/metaphaseeditor/spellcheck/dictionary/eng_us_liberal.zip"),
     CUSTOM(null);
 
     private String filename;

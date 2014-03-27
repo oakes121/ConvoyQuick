@@ -8,6 +8,7 @@ import javax.swing.text.AbstractDocument;
 
 import convoy.objects.MaximumSizeFilter;
 import convoy.objects.Radio;
+import convoy.textEditor.com.metaphaseeditor.MetaphaseEditor;
 
 /**
  * @author Mike Moye <mtm5313@psu.edu>
@@ -18,7 +19,7 @@ import convoy.objects.Radio;
  * This class is used to create right mission information panel.
  * </p>
  */
-public class RightMissionInfoPanel extends javax.swing.JPanel {
+public class RightMissionInfoPanel extends javax.swing.JPanel {    
 
     private int addFreqCount = 1; //counts the number of channels in the radio
 
@@ -119,7 +120,7 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
      * @return this.additonalText.getText()
      */
     public String getAdditionalText() {
-        return this.additonalText.getText();
+        return this.metaphaseEditor2.getDocument();
     }
 
     /**
@@ -128,7 +129,7 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
      * @param text text to be set
      */
     public void setAddtionalText(String text) {
-        this.additonalText.setText(text);
+        this.metaphaseEditor2.setDocument(text);
     }
 
     /**
@@ -335,8 +336,6 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
         toLinkUpTextField = new javax.swing.JTextField();
         toSPLabel = new javax.swing.JLabel();
         fromSPTextField = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        additonalText = new javax.swing.JTextArea();
         freqPanel = new javax.swing.JPanel();
         freqLabel = new javax.swing.JLabel();
         addFreqLabel = new javax.swing.JLabel();
@@ -364,6 +363,7 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
         removeFreq4 = new javax.swing.JLabel();
         removeFreq5 = new javax.swing.JLabel();
         removeFreq6 = new javax.swing.JLabel();
+        metaphaseEditor2 = new convoy.textEditor.com.metaphaseeditor.MetaphaseEditor();
 
         setBackground(new java.awt.Color(194, 178, 128));
 
@@ -388,17 +388,11 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
         toSPLabel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         toSPLabel.setText("Rally Point SP Time:");
 
-        additonalText.setColumns(50);
-        additonalText.setRows(5);
-        additonalText.setText("Additional Information Goes Here");
-        jScrollPane1.setViewportView(additonalText);
-        jScrollPane1.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
-
-        AbstractDocument pDoc=(AbstractDocument)additonalText.getDocument();
-
-        pDoc.setDocumentFilter(new MaximumSizeFilter(5, 60));
-
-        additonalText.setMargin(new Insets(5,5,5,5));
+        fromSPTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fromSPTextFieldActionPerformed(evt);
+            }
+        });
 
         freqPanel.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -451,61 +445,60 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
                     .addGroup(freqPanelLayout.createSequentialGroup()
                         .addComponent(freqLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(addFreqLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(addFreqLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(freqPanelLayout.createSequentialGroup()
                         .addGroup(freqPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(removeFreq1)
                             .addComponent(removeFreq4))
+                        .addGap(5, 5, 5)
+                        .addGroup(freqPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(channelFourLabel)
+                            .addComponent(channelOneLabel))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(freqPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, freqPanelLayout.createSequentialGroup()
-                                .addComponent(channelOneLabel)
-                                .addGap(10, 10, 10)
-                                .addComponent(channelOneName, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(freqPanelLayout.createSequentialGroup()
-                                .addComponent(channelFourLabel)
-                                .addGap(10, 10, 10)
-                                .addComponent(channelFourName, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(10, 10, 10)
+                            .addComponent(channelFourName, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(channelOneName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(5, 5, 5)
                         .addGroup(freqPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(channelFourFreq, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE)
-                            .addComponent(channelOneFreq))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(freqPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(removeFreq2)
-                            .addComponent(removeFreq5))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(freqPanelLayout.createSequentialGroup()
+                                .addComponent(channelOneFreq, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(10, 10, 10)
+                                .addComponent(removeFreq2)
+                                .addGap(5, 5, 5)
+                                .addComponent(channelTwoLabel))
+                            .addGroup(freqPanelLayout.createSequentialGroup()
+                                .addComponent(channelFourFreq, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(10, 10, 10)
+                                .addComponent(removeFreq5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(channelFiveLabel)))
+                        .addGap(5, 5, 5)
+                        .addGroup(freqPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(channelTwoName, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(channelFiveName, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(5, 5, 5)
                         .addGroup(freqPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(freqPanelLayout.createSequentialGroup()
-                                .addComponent(channelTwoLabel)
-                                .addGap(10, 10, 10)
-                                .addComponent(channelTwoName, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(10, 10, 10)
-                                .addComponent(channelTwoFreq, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(removeFreq3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(channelThreeLabel)
-                                .addGap(10, 10, 10)
-                                .addComponent(channelThreeName, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(freqPanelLayout.createSequentialGroup()
-                                .addComponent(channelFiveLabel)
-                                .addGap(10, 10, 10)
-                                .addComponent(channelFiveName, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(10, 10, 10)
                                 .addComponent(channelFiveFreq, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGap(10, 10, 10)
                                 .addComponent(removeFreq6)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(channelSixLabel)
+                                .addComponent(channelSixLabel))
+                            .addGroup(freqPanelLayout.createSequentialGroup()
+                                .addComponent(channelTwoFreq, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(10, 10, 10)
-                                .addComponent(channelSixName, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(freqPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(channelSixFreq, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
-                            .addComponent(channelThreeFreq))
-                        .addGap(78, 78, 78))))
+                                .addComponent(removeFreq3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(channelThreeLabel)))
+                        .addGap(5, 5, 5)
+                        .addGroup(freqPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(channelThreeName, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(channelSixName, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(5, 5, 5)
+                        .addGroup(freqPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(channelThreeFreq, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(channelSixFreq, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         freqPanelLayout.setVerticalGroup(
             freqPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -517,38 +510,37 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
                 .addGroup(freqPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(removeFreq1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(freqPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(channelOneLabel)
-                        .addComponent(channelTwoLabel)
-                        .addComponent(channelThreeLabel))
-                    .addGroup(freqPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(channelOneFreq)
                         .addComponent(channelOneName)
                         .addComponent(channelTwoName)
                         .addComponent(channelTwoFreq)
                         .addComponent(channelThreeName)
-                        .addComponent(channelThreeFreq))
-                    .addGroup(freqPanelLayout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addComponent(removeFreq3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(channelThreeFreq)
+                        .addComponent(channelTwoLabel)
+                        .addComponent(channelThreeLabel)
+                        .addComponent(channelOneLabel))
                     .addGroup(freqPanelLayout.createSequentialGroup()
                         .addComponent(removeFreq2)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(removeFreq3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(freqPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(freqPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(freqPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(freqPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(channelFourName)
-                        .addComponent(channelFourFreq)
+                        .addComponent(channelFourFreq))
+                    .addGroup(freqPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(channelFiveName)
-                        .addComponent(channelFiveFreq)
+                        .addComponent(channelFiveLabel)
+                        .addComponent(channelFiveFreq))
+                    .addGroup(freqPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(channelSixName)
                         .addComponent(channelSixFreq)
-                        .addGroup(freqPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(removeFreq6, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(freqPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(channelFourLabel)
-                                .addComponent(channelFiveLabel)
-                                .addComponent(channelSixLabel)
-                                .addComponent(removeFreq4))))
+                        .addComponent(channelSixLabel))
+                    .addGroup(freqPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(removeFreq6, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(freqPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(channelFourLabel)
+                            .addComponent(removeFreq4)))
                     .addComponent(removeFreq5))
                 .addContainerGap())
         );
@@ -557,42 +549,54 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(stagingAreaLabel)
+                                .addGap(18, 18, 18)
+                                .addComponent(stagingAreaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 597, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(10, 10, 10)
+                                        .addComponent(toLinkUpLabel)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(toLinkUpTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(10, 10, 10)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(ccLabel)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(ccTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(fromLinkUpLabel)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(fromLinkUpTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(fromSPLabel)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(fromSPTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(accLabel)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(accTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(toSPLabel)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(toSPTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addContainerGap())
+                    .addComponent(metaphaseEditor2, javax.swing.GroupLayout.PREFERRED_SIZE, 711, javax.swing.GroupLayout.PREFERRED_SIZE)))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addComponent(ccLabel)
-                        .addGap(20, 20, 20)
-                        .addComponent(ccTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(accLabel)
-                        .addGap(20, 20, 20)
-                        .addComponent(accTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addComponent(stagingAreaLabel)
-                        .addGap(20, 20, 20)
-                        .addComponent(stagingAreaTextField))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(toLinkUpLabel)
-                                .addGap(20, 20, 20)
-                                .addComponent(toLinkUpTextField))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(fromLinkUpLabel)
-                                .addGap(20, 20, 20)
-                                .addComponent(fromLinkUpTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(18, 18, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(fromSPLabel)
-                            .addComponent(toSPLabel))
-                        .addGap(20, 20, 20)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(toSPTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(fromSPTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jScrollPane1)
-                    .addComponent(freqPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addGap(10, 10, 10))
+                .addComponent(freqPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -621,9 +625,9 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
                     .addComponent(toSPTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(freqPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(4, 4, 4)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(metaphaseEditor2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5))
         );
     }// </editor-fold>//GEN-END:initComponents
     /**
@@ -751,11 +755,14 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
                         addFreqCount--;
     }//GEN-LAST:event_removeFreq1MousePressed
 
+    private void fromSPTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fromSPTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fromSPTextFieldActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel accLabel;
     private javax.swing.JTextField accTextField;
     private javax.swing.JLabel addFreqLabel;
-    private javax.swing.JTextArea additonalText;
     private javax.swing.JLabel ccLabel;
     private javax.swing.JTextField ccTextField;
     private javax.swing.JTextField channelFiveFreq;
@@ -783,7 +790,7 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
     private javax.swing.JLabel fromSPLabel;
     private javax.swing.JTextField fromSPTextField;
     private javax.swing.JLayeredPane jLayeredPane1;
-    private javax.swing.JScrollPane jScrollPane1;
+    private convoy.textEditor.com.metaphaseeditor.MetaphaseEditor metaphaseEditor2;
     private javax.swing.JLabel removeFreq1;
     private javax.swing.JLabel removeFreq2;
     private javax.swing.JLabel removeFreq3;

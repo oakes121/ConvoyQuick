@@ -1,7 +1,7 @@
 /**
  * Metaphase Editor - WYSIWYG HTML Editor Component
  * Copyright (C) 2010  Rudolf Visagie
- * Full text of license can be found in com/metaphaseeditor/LICENSE.txt
+ * Full text of license can be found in /textEditor/com/metaphaseeditor/LICENSE.txt
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -28,9 +28,9 @@ import convoy.textEditor.com.metaphaseeditor.action.FindReplaceAction;
 import convoy.textEditor.com.metaphaseeditor.action.FormatAction;
 import convoy.textEditor.com.metaphaseeditor.action.IncreaseIndentAction;
 import convoy.textEditor.com.metaphaseeditor.action.RemoveAttributesAction;
-//import com.swabunga.spell.engine.SpellDictionary;
-//import com.swabunga.spell.engine.SpellDictionaryHashMap;
-//import com.swabunga.spell.swing.JTextComponentSpellChecker;
+import com.swabunga.spell.engine.SpellDictionary;
+import com.swabunga.spell.engine.SpellDictionaryHashMap;
+import com.swabunga.spell.swing.JTextComponentSpellChecker;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
@@ -38,11 +38,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.Enumeration;
@@ -91,8 +93,8 @@ import javax.swing.undo.UndoManager;
  */
 public class MetaphaseEditorPanel extends javax.swing.JPanel {
     
-    //private JTextComponentSpellChecker spellChecker = null;
-    //private SpellDictionary dictionary = null;
+    private JTextComponentSpellChecker spellChecker = null;
+    private SpellDictionary dictionary = null;
     private JTextArea htmlTextArea;
     private boolean htmlSourceMode = false;    
     private SpecialCharacterDialog specialCharacterDialog = new SpecialCharacterDialog(null, true);
@@ -242,119 +244,119 @@ public class MetaphaseEditorPanel extends javax.swing.JPanel {
         findReplaceAction = new FindReplaceAction("Find/Replace", htmlTextPane);
         /*
         cutButton.setAction(cutAction);
-        cutButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("textEditor/com/metaphaseeditor/icons/cut.png")));
+        cutButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/convoy/textEditor/com/metaphaseeditor/icons/cut.png")));
         cutButton.setText("");
         cutButton.setToolTipText("Cut");
 
         copyButton.setAction(copyAction);
-        copyButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("textEditor/com/metaphaseeditor/icons/copy.png")));
+        copyButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/convoy/textEditor/com/metaphaseeditor/icons/copy.png")));
         copyButton.setText("");
         copyButton.setToolTipText("Copy");
 
         pasteButton.setAction(pasteAction);
-        pasteButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("textEditor/com/metaphaseeditor/icons/paste.png")));
+        pasteButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/convoy/textEditor/com/metaphaseeditor/icons/paste.png")));
         pasteButton.setText("");
         pasteButton.setToolTipText("Paste");
 
         undoButton.setAction(undoAction);
-        undoButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("textEditor/com/metaphaseeditor/icons/undo.png")));
+        undoButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/convoy/textEditor/com/metaphaseeditor/icons/undo.png")));
         undoButton.setText("");
         undoButton.setToolTipText("Undo");
 
         redoButton.setAction(redoAction);
-        redoButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("textEditor/com/metaphaseeditor/icons/redo.png")));
+        redoButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/convoy/textEditor/com/metaphaseeditor/icons/redo.png")));
         redoButton.setText("");
         redoButton.setToolTipText("Redo");
 
         findButton.setAction(findReplaceAction);
-        findButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("textEditor/com/metaphaseeditor/icons/find.png")));
+        findButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/convoy/textEditor/com/metaphaseeditor/icons/find.png")));
         findButton.setText("");
         findButton.setToolTipText("Find");
 
         replaceButton.setAction(findReplaceAction);
-        replaceButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("textEditor/com/metaphaseeditor/icons/replace.png")));
+        replaceButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/convoy/textEditor/com/metaphaseeditor/icons/replace.png")));
         replaceButton.setText("");
         replaceButton.setToolTipText("Replace");
 
         clearFormattingButton.setAction(new ClearFormattingAction(this, "Remove Format"));
-        clearFormattingButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("textEditor/com/metaphaseeditor/icons/removeformat.png")));
+        clearFormattingButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/convoy/textEditor/com/metaphaseeditor/icons/removeformat.png")));
         clearFormattingButton.setText("");
         clearFormattingButton.setToolTipText("Remove Format");
         */
         boldButton.setAction(new HTMLEditorKit.BoldAction());
-        boldButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("textEditor/com/metaphaseeditor/icons/bold.png")));
+        boldButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/convoy/textEditor/com/metaphaseeditor/icons/bold.png")));
         boldButton.setText("");
         boldButton.setToolTipText("Bold");
 
         italicButton.setAction(new HTMLEditorKit.ItalicAction());
-        italicButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("textEditor/com/metaphaseeditor/icons/italic.png")));
+        italicButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/convoy/textEditor/com/metaphaseeditor/icons/italic.png")));
         italicButton.setText("");
         italicButton.setToolTipText("Italic");
 
         underlineButton.setAction(new HTMLEditorKit.UnderlineAction());
-        underlineButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("textEditor/com/metaphaseeditor/icons/underline.png")));
+        underlineButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/convoy/textEditor/com/metaphaseeditor/icons/underline.png")));
         underlineButton.setText("");
         underlineButton.setToolTipText("Underline");
 
         strikethroughButton.setAction(new StrikeThroughAction());
-        strikethroughButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("textEditor/com/metaphaseeditor/icons/strikethrough.png")));
+        strikethroughButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/convoy/textEditor/com/metaphaseeditor/icons/strikethrough.png")));
         strikethroughButton.setText("");
         strikethroughButton.setToolTipText("Strike Through");
         /*
         subscriptButton.setAction(new SubscriptAction());
-        subscriptButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("textEditor/com/metaphaseeditor/icons/subscript.png")));
+        subscriptButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/convoy/textEditor/com/metaphaseeditor/icons/subscript.png")));
         subscriptButton.setText("");
         subscriptButton.setToolTipText("Subscript");
         
         superscriptButton.setAction(new SuperscriptAction());
-        superscriptButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("textEditor/com/metaphaseeditor/icons/superscript.png")));
+        superscriptButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/convoy/textEditor/com/metaphaseeditor/icons/superscript.png")));
         superscriptButton.setText("");
         superscriptButton.setToolTipText("Superscript");
         */
         //TODO: change increase and decrease indent to add inner <li> when inside bulleted or numbered list
         increaseIndentButton.setAction(new IncreaseIndentAction("Increase Indent", this));
-        increaseIndentButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("textEditor/com/metaphaseeditor/icons/incindent.png")));
+        increaseIndentButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/convoy/textEditor/com/metaphaseeditor/icons/incindent.png")));
         increaseIndentButton.setText("");
         increaseIndentButton.setToolTipText("Increase Indent");
 
         decreaseIndentButton.setAction(new DecreaseIndentAction("Decrease Indent", this));
-        decreaseIndentButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("textEditor/com/metaphaseeditor/icons/decindent.png")));
+        decreaseIndentButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/convoy/textEditor/com/metaphaseeditor/icons/decindent.png")));
         decreaseIndentButton.setText("");
         decreaseIndentButton.setToolTipText("Decrease Indent");
         /*
         blockQuoteButton.setAction(new FormatAction(this, "Block Quote", Tag.BLOCKQUOTE));
-        blockQuoteButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("textEditor/com/metaphaseeditor/icons/blockquote.png")));
+        blockQuoteButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/convoy/textEditor/com/metaphaseeditor/icons/blockquote.png")));
         blockQuoteButton.setText("");
         blockQuoteButton.setToolTipText("Block Quote");
         */
         leftJustifyButton.setAction(new HTMLEditorKit.AlignmentAction("Left Align",StyleConstants.ALIGN_LEFT));
-        leftJustifyButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("textEditor/com/metaphaseeditor/icons/leftjustify.png")));
+        leftJustifyButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/convoy/textEditor/com/metaphaseeditor/icons/leftjustify.png")));
         leftJustifyButton.setText("");
         leftJustifyButton.setToolTipText("Left Justify");
 
         centerJustifyButton.setAction(new HTMLEditorKit.AlignmentAction("Center Align",StyleConstants.ALIGN_CENTER));
-        centerJustifyButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("textEditor/com/metaphaseeditor/icons/centerjustify.png")));
+        centerJustifyButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/convoy/textEditor/com/metaphaseeditor/icons/centerjustify.png")));
         centerJustifyButton.setText("");
         centerJustifyButton.setToolTipText("Center Justify");
 
         rightJustifyButton.setAction(new HTMLEditorKit.AlignmentAction("Left Align",StyleConstants.ALIGN_RIGHT));
-        rightJustifyButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("textEditor/com/metaphaseeditor/icons/rightjustify.png")));
+        rightJustifyButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/convoy/textEditor/com/metaphaseeditor/icons/rightjustify.png")));
         rightJustifyButton.setText("");
         rightJustifyButton.setToolTipText("Right Justify");
 
         blockJustifyButton.setAction(new HTMLEditorKit.AlignmentAction("Justified Align",StyleConstants.ALIGN_JUSTIFIED));
-        blockJustifyButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("textEditor/com/metaphaseeditor/icons/blockjustify.png")));
+        blockJustifyButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/convoy/textEditor/com/metaphaseeditor/icons/blockjustify.png")));
         blockJustifyButton.setText("");
         blockJustifyButton.setToolTipText("Block Justify");
         /*
         unlinkButton.setAction(new UnlinkAction(this, "Unlink"));
-        unlinkButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("textEditor/com/metaphaseeditor/icons/unlink.png")));
+        unlinkButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/convoy/textEditor/com/metaphaseeditor/icons/unlink.png")));
         unlinkButton.setText("");
         unlinkButton.setToolTipText("Unlink");
         
         //TODO: horizontal rule - doesn't insert correctly if within anything other than P, ie. TD or H1
         insertHorizontalLineButton.setAction(new HTMLEditorKit.InsertHTMLTextAction("Insert Horizontal Line", "<hr/>", Tag.P, Tag.HR, Tag.BODY, Tag.HR));
-        insertHorizontalLineButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("textEditor/com/metaphaseeditor/icons/horizontalline.png")));
+        insertHorizontalLineButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/convoy/textEditor/com/metaphaseeditor/icons/horizontalline.png")));
         insertHorizontalLineButton.setText("");
         insertHorizontalLineButton.setToolTipText("Insert Horizontal Line");
         */
@@ -398,17 +400,17 @@ public class MetaphaseEditorPanel extends javax.swing.JPanel {
         cutMenuItem.setAction(cutAction);
         cutMenuItem.setText("Cut");
         cutMenuItem.setMnemonic('C');
-        cutMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("textEditor/com/metaphaseeditor/icons/cut.png")));
+        cutMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/convoy/textEditor/com/metaphaseeditor/icons/cut.png")));
         JMenuItem copyMenuItem = new JMenuItem();
         copyMenuItem.setAction(copyAction);
         copyMenuItem.setText("Copy");
         copyMenuItem.setMnemonic('o');
-        copyMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("textEditor/com/metaphaseeditor/icons/copy.png")));
+        copyMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/convoy/textEditor/com/metaphaseeditor/icons/copy.png")));
         JMenuItem pasteMenuItem = new JMenuItem();
         pasteMenuItem.setAction(pasteAction);
         pasteMenuItem.setText("Paste");
         pasteMenuItem.setMnemonic('P');
-        pasteMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("textEditor/com/metaphaseeditor/icons/paste.png")));
+        pasteMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/convoy/textEditor/com/metaphaseeditor/icons/paste.png")));
         contextMenu.add(cutMenuItem);
         contextMenu.add(copyMenuItem);
         contextMenu.add(pasteMenuItem);
@@ -418,13 +420,13 @@ public class MetaphaseEditorPanel extends javax.swing.JPanel {
 
 	startNewDocument();
 
-        initSpellChecker();
+        //initSpellChecker();
     }
 
     // The following two methods allow us to find an
     // action provided by the editor kit by its name.
     private void createEditorKitActionTable() {
-        editorKitActions = new Hashtable<Object, Action>();
+        editorKitActions = new Hashtable<Object, Action>(); 
         Action[] actionsArray = editorKit.getActions();
         for (int i = 0; i < actionsArray.length; i++) {
             Action a = actionsArray[i];
@@ -480,30 +482,32 @@ public class MetaphaseEditorPanel extends javax.swing.JPanel {
         textColorButton = new javax.swing.JButton();
         backgroundColorButton = new javax.swing.JButton();
         aboutButton = new javax.swing.JButton();
+        paragraphFormatComboBox = new javax.swing.JComboBox();
+        fontComboBox = new javax.swing.JComboBox();
+        fontSizeComboBox = new javax.swing.JComboBox();
         justificationPanel = new javax.swing.JPanel();
         leftJustifyButton = new javax.swing.JButton();
         centerJustifyButton = new javax.swing.JButton();
         blockJustifyButton = new javax.swing.JButton();
         rightJustifyButton = new javax.swing.JButton();
-        paragraphFormatComboBox = new javax.swing.JComboBox();
-        fontComboBox = new javax.swing.JComboBox();
-        fontSizeComboBox = new javax.swing.JComboBox();
         mainScrollPane = new javax.swing.JScrollPane();
         htmlTextPane = new javax.swing.JTextPane();
+
+        toolbarPanel.setPreferredSize(new java.awt.Dimension(700, 58));
 
         textEffectPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         textEffectPanel.setPreferredSize(new java.awt.Dimension(122, 29));
 
-        boldButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/metaphaseeditor/icons/bold.png"))); // NOI18N
+        boldButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/convoy/textEditor/com/metaphaseeditor/icons/bold.png"))); // NOI18N
         boldButton.setToolTipText("Bold");
 
-        italicButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/metaphaseeditor/icons/italic.png"))); // NOI18N
+        italicButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/convoy/textEditor/com/metaphaseeditor/icons/italic.png"))); // NOI18N
         italicButton.setToolTipText("Italic");
 
-        strikethroughButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/metaphaseeditor/icons/strikethrough.png"))); // NOI18N
+        strikethroughButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/convoy/textEditor/com/metaphaseeditor/icons/strikethrough.png"))); // NOI18N
         strikethroughButton.setToolTipText("Strike Through");
 
-        underlineButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/metaphaseeditor/icons/underline.png"))); // NOI18N
+        underlineButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/convoy/textEditor/com/metaphaseeditor/icons/underline.png"))); // NOI18N
         underlineButton.setToolTipText("Underline");
 
         javax.swing.GroupLayout textEffectPanelLayout = new javax.swing.GroupLayout(textEffectPanel);
@@ -511,28 +515,28 @@ public class MetaphaseEditorPanel extends javax.swing.JPanel {
         textEffectPanelLayout.setHorizontalGroup(
             textEffectPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(textEffectPanelLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
                 .addComponent(boldButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(20, 20, 20)
                 .addComponent(italicButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(20, 20, 20)
                 .addComponent(underlineButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(strikethroughButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addComponent(strikethroughButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10))
         );
         textEffectPanelLayout.setVerticalGroup(
             textEffectPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(textEffectPanelLayout.createSequentialGroup()
-                .addGroup(textEffectPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(boldButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(italicButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(underlineButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(strikethroughButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+            .addGroup(textEffectPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(italicButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(underlineButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(strikethroughButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(boldButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         listPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        insertRemoveBulletedListButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/metaphaseeditor/icons/bulletlist.png"))); // NOI18N
+        insertRemoveBulletedListButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/convoy/textEditor/com/metaphaseeditor/icons/bulletlist.png"))); // NOI18N
         insertRemoveBulletedListButton.setToolTipText("Insert/Remove Bulleted List");
         insertRemoveBulletedListButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -540,7 +544,7 @@ public class MetaphaseEditorPanel extends javax.swing.JPanel {
             }
         });
 
-        insertRemoveNumberedListButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/metaphaseeditor/icons/numberlist.png"))); // NOI18N
+        insertRemoveNumberedListButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/convoy/textEditor/com/metaphaseeditor/icons/numberlist.png"))); // NOI18N
         insertRemoveNumberedListButton.setToolTipText("Insert/Remove Numbered List");
         insertRemoveNumberedListButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -553,10 +557,11 @@ public class MetaphaseEditorPanel extends javax.swing.JPanel {
         listPanelLayout.setHorizontalGroup(
             listPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(listPanelLayout.createSequentialGroup()
-                .addGap(0, 0, 0)
+                .addContainerGap()
                 .addComponent(insertRemoveNumberedListButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(insertRemoveBulletedListButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addComponent(insertRemoveBulletedListButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10))
         );
         listPanelLayout.setVerticalGroup(
             listPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -567,13 +572,13 @@ public class MetaphaseEditorPanel extends javax.swing.JPanel {
         blockPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         blockPanel.setPreferredSize(new java.awt.Dimension(122, 29));
 
-        decreaseIndentButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/metaphaseeditor/icons/decindent.png"))); // NOI18N
+        decreaseIndentButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/convoy/textEditor/com/metaphaseeditor/icons/decindent.png"))); // NOI18N
         decreaseIndentButton.setToolTipText("Decrease Indent");
 
-        increaseIndentButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/metaphaseeditor/icons/incindent.png"))); // NOI18N
+        increaseIndentButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/convoy/textEditor/com/metaphaseeditor/icons/incindent.png"))); // NOI18N
         increaseIndentButton.setToolTipText("Increase Indent");
 
-        textColorButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/metaphaseeditor/icons/textcolor.png"))); // NOI18N
+        textColorButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/convoy/textEditor/com/metaphaseeditor/icons/textcolor.png"))); // NOI18N
         textColorButton.setToolTipText("Text Color");
         textColorButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -581,7 +586,7 @@ public class MetaphaseEditorPanel extends javax.swing.JPanel {
             }
         });
 
-        backgroundColorButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/metaphaseeditor/icons/backgroundcolor.png"))); // NOI18N
+        backgroundColorButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/convoy/textEditor/com/metaphaseeditor/icons/backgroundcolor.png"))); // NOI18N
         backgroundColorButton.setToolTipText("Background Color");
         backgroundColorButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -589,8 +594,8 @@ public class MetaphaseEditorPanel extends javax.swing.JPanel {
             }
         });
 
-        aboutButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/metaphaseeditor/icons/about.png"))); // NOI18N
-        aboutButton.setToolTipText("About Metaphase Editor");
+        aboutButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/convoy/textEditor/com/metaphaseeditor/icons/about.png"))); // NOI18N
+        aboutButton.setToolTipText("Help");
         aboutButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 aboutButtonActionPerformed(evt);
@@ -602,16 +607,16 @@ public class MetaphaseEditorPanel extends javax.swing.JPanel {
         blockPanelLayout.setHorizontalGroup(
             blockPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(blockPanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(decreaseIndentButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(increaseIndentButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(10, 10, 10)
                 .addComponent(textColorButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(10, 10, 10)
                 .addComponent(backgroundColorButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(aboutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(10, 10, 10)
+                .addComponent(aboutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         blockPanelLayout.setVerticalGroup(
             blockPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -622,46 +627,7 @@ public class MetaphaseEditorPanel extends javax.swing.JPanel {
                     .addComponent(textColorButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(backgroundColorButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(aboutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-        );
-
-        justificationPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        justificationPanel.setPreferredSize(new java.awt.Dimension(122, 29));
-
-        leftJustifyButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/metaphaseeditor/icons/leftjustify.png"))); // NOI18N
-        leftJustifyButton.setToolTipText("Left Justify");
-
-        centerJustifyButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/metaphaseeditor/icons/centerjustify.png"))); // NOI18N
-        centerJustifyButton.setToolTipText("Center Justify");
-
-        blockJustifyButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/metaphaseeditor/icons/blockjustify.png"))); // NOI18N
-        blockJustifyButton.setToolTipText("Block Justify");
-
-        rightJustifyButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/metaphaseeditor/icons/rightjustify.png"))); // NOI18N
-        rightJustifyButton.setToolTipText("Right Justify");
-
-        javax.swing.GroupLayout justificationPanelLayout = new javax.swing.GroupLayout(justificationPanel);
-        justificationPanel.setLayout(justificationPanelLayout);
-        justificationPanelLayout.setHorizontalGroup(
-            justificationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(justificationPanelLayout.createSequentialGroup()
-                .addComponent(leftJustifyButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(centerJustifyButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(rightJustifyButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(blockJustifyButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        justificationPanelLayout.setVerticalGroup(
-            justificationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(justificationPanelLayout.createSequentialGroup()
-                .addGroup(justificationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(leftJustifyButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(centerJustifyButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(rightJustifyButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(blockJustifyButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addGap(0, 0, 0))
         );
 
         paragraphFormatComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Heading 1", "Heading 2", "Heading 3", "Heading 4", "Heading 5", "Heading 6", "Formatted", "Address", "Normal (DIV)" }));
@@ -688,42 +654,80 @@ public class MetaphaseEditorPanel extends javax.swing.JPanel {
             }
         });
 
+        justificationPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        justificationPanel.setPreferredSize(new java.awt.Dimension(122, 29));
+
+        leftJustifyButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/convoy/textEditor/com/metaphaseeditor/icons/leftjustify.png"))); // NOI18N
+        leftJustifyButton.setToolTipText("Left Justify");
+
+        centerJustifyButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/convoy/textEditor/com/metaphaseeditor/icons/centerjustify.png"))); // NOI18N
+        centerJustifyButton.setToolTipText("Center Justify");
+
+        blockJustifyButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/convoy/textEditor/com/metaphaseeditor/icons/blockjustify.png"))); // NOI18N
+        blockJustifyButton.setToolTipText("Block Justify");
+
+        rightJustifyButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/convoy/textEditor/com/metaphaseeditor/icons/rightjustify.png"))); // NOI18N
+        rightJustifyButton.setToolTipText("Right Justify");
+
+        javax.swing.GroupLayout justificationPanelLayout = new javax.swing.GroupLayout(justificationPanel);
+        justificationPanel.setLayout(justificationPanelLayout);
+        justificationPanelLayout.setHorizontalGroup(
+            justificationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(justificationPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(leftJustifyButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(centerJustifyButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(rightJustifyButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(blockJustifyButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10))
+        );
+        justificationPanelLayout.setVerticalGroup(
+            justificationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(leftJustifyButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(centerJustifyButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(rightJustifyButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(blockJustifyButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+
         javax.swing.GroupLayout toolbarPanelLayout = new javax.swing.GroupLayout(toolbarPanel);
         toolbarPanel.setLayout(toolbarPanelLayout);
         toolbarPanelLayout.setHorizontalGroup(
             toolbarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(toolbarPanelLayout.createSequentialGroup()
-                .addComponent(paragraphFormatComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(fontComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(fontSizeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-            .addGroup(toolbarPanelLayout.createSequentialGroup()
-                .addComponent(textEffectPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(listPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(blockPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(justificationPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, toolbarPanelLayout.createSequentialGroup()
+                .addGroup(toolbarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(textEffectPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
+                    .addComponent(paragraphFormatComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(35, 35, 35)
+                .addGroup(toolbarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(toolbarPanelLayout.createSequentialGroup()
+                        .addComponent(listPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(35, 35, 35)
+                        .addComponent(justificationPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(fontComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(35, 35, 35)
+                .addGroup(toolbarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(fontSizeComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(blockPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 174, Short.MAX_VALUE))
+                .addGap(0, 0, 0))
         );
         toolbarPanelLayout.setVerticalGroup(
             toolbarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(toolbarPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(toolbarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(listPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(textEffectPanel, 0, 0, Short.MAX_VALUE)
-                    .addComponent(blockPanel, javax.swing.GroupLayout.Alignment.TRAILING, 0, 0, Short.MAX_VALUE)
-                    .addComponent(justificationPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                .addGroup(toolbarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(toolbarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(justificationPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(listPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(textEffectPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(blockPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(5, 5, 5)
                 .addGroup(toolbarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(paragraphFormatComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(fontComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(fontSizeComboBox))
-                .addGap(0, 0, 0))
+                    .addComponent(fontSizeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fontComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(paragraphFormatComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(4, 4, 4))
         );
 
         htmlTextPane.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -748,15 +752,18 @@ public class MetaphaseEditorPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(toolbarPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(mainScrollPane)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(toolbarPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 700, Short.MAX_VALUE)
+                    .addComponent(mainScrollPane)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(toolbarPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(mainScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(mainScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -882,25 +889,6 @@ public class MetaphaseEditorPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_htmlTextPaneKeyTyped
 
-    private void aboutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutButtonActionPerformed
-        AboutDialog aboutDialog = new AboutDialog(null, true);
-        aboutDialog.setVisible(true);
-    }//GEN-LAST:event_aboutButtonActionPerformed
-
-    private void backgroundColorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backgroundColorButtonActionPerformed
-        Color color = JColorChooser.showDialog(null, "Text Color", null);
-        if (color != null) {
-            new BackgroundColorAction(color).actionPerformed(evt);
-        }
-    }//GEN-LAST:event_backgroundColorButtonActionPerformed
-
-    private void textColorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textColorButtonActionPerformed
-        Color color = JColorChooser.showDialog(null, "Text Color", null);
-        if (color != null) {
-            new StyledEditorKit.ForegroundAction("Color",color).actionPerformed(evt);
-        }
-    }//GEN-LAST:event_textColorButtonActionPerformed
-
     private void fontSizeComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fontSizeComboBoxActionPerformed
         FontSize fontSize = (FontSize)fontSizeComboBox.getSelectedItem();
         if (fontSize != null && fontSize.getSize() != -1) {
@@ -931,13 +919,32 @@ public class MetaphaseEditorPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_paragraphFormatComboBoxActionPerformed
 
-    private void insertRemoveBulletedListButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertRemoveBulletedListButtonActionPerformed
-        new HTMLEditorKit.InsertHTMLTextAction("Insert Bulleted List", "<ul><li></li></ul>", Tag.BODY, Tag.UL).actionPerformed(evt);
-    }//GEN-LAST:event_insertRemoveBulletedListButtonActionPerformed
+    private void aboutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutButtonActionPerformed
+        AboutDialog aboutDialog = new AboutDialog(null, true);
+        aboutDialog.setVisible(true);
+    }//GEN-LAST:event_aboutButtonActionPerformed
+
+    private void backgroundColorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backgroundColorButtonActionPerformed
+        Color color = JColorChooser.showDialog(null, "Text Color", null);
+        if (color != null) {
+            new BackgroundColorAction(color).actionPerformed(evt);
+        }
+    }//GEN-LAST:event_backgroundColorButtonActionPerformed
+
+    private void textColorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textColorButtonActionPerformed
+        Color color = JColorChooser.showDialog(null, "Text Color", null);
+        if (color != null) {
+            new StyledEditorKit.ForegroundAction("Color",color).actionPerformed(evt);
+        }
+    }//GEN-LAST:event_textColorButtonActionPerformed
 
     private void insertRemoveNumberedListButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertRemoveNumberedListButtonActionPerformed
         new HTMLEditorKit.InsertHTMLTextAction("Insert Bulleted List", "<ol><li></li></ol>", Tag.BODY, Tag.OL).actionPerformed(evt);
     }//GEN-LAST:event_insertRemoveNumberedListButtonActionPerformed
+
+    private void insertRemoveBulletedListButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertRemoveBulletedListButtonActionPerformed
+        new HTMLEditorKit.InsertHTMLTextAction("Insert Bulleted List", "<ul><li></li></ul>", Tag.BODY, Tag.UL).actionPerformed(evt);
+    }//GEN-LAST:event_insertRemoveBulletedListButtonActionPerformed
 
     private void setToolbarFocusActionListener(JComponent component) {
         Component[] vComponents = component.getComponents();
@@ -1004,8 +1011,8 @@ public class MetaphaseEditorPanel extends javax.swing.JPanel {
             }
             zipInputStream = new ZipInputStream(inputStream);
             zipInputStream.getNextEntry();
-            //dictionary = new SpellDictionaryHashMap(new BufferedReader(new InputStreamReader(zipInputStream)));
-            //spellChecker = new JTextComponentSpellChecker(dictionary, null, "Check Spelling");
+            dictionary = new SpellDictionaryHashMap(new BufferedReader(new InputStreamReader(zipInputStream)));
+            spellChecker = new JTextComponentSpellChecker(dictionary, null, "Check Spelling");
         } catch (FileNotFoundException e) {
             throw new MetaphaseEditorException(e.getMessage(), e);
         } catch (IOException e) {

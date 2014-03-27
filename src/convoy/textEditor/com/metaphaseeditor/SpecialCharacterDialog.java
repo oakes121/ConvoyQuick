@@ -40,7 +40,7 @@ public class SpecialCharacterDialog extends javax.swing.JDialog {
     public SpecialCharacterDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        setIconImage(new javax.swing.ImageIcon(getClass().getResource("/com/metaphaseeditor/icons/metaphase16x16.png")).getImage());
+        //setIconImage(new javax.swing.ImageIcon(getClass().getResource("/textEditor/com/metaphaseeditor/icons/metaphase16x16.png")).getImage());
 
         setLocationRelativeTo(null);
         

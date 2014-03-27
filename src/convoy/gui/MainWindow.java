@@ -309,14 +309,14 @@ public final class MainWindow extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAutoRequestFocus(false);
         setBackground(new java.awt.Color(255, 255, 255));
-        setMaximumSize(new java.awt.Dimension(1300, 800));
-        setMinimumSize(new java.awt.Dimension(1300, 800));
-        setPreferredSize(new java.awt.Dimension(1300, 800));
+        setMaximumSize(new java.awt.Dimension(1500, 800));
+        setMinimumSize(new java.awt.Dimension(1450, 800));
+        setPreferredSize(new java.awt.Dimension(1450, 800));
         getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.LINE_AXIS));
 
         picturePanel2.setBackground(new java.awt.Color(194, 178, 128));
 
-        missionNumberPanel.setBackground(new java.awt.Color(255, 255, 255));
+        missionNumberPanel.setBackground(new java.awt.Color(194, 178, 128));
         missionNumberPanel.setLayout(new javax.swing.BoxLayout(missionNumberPanel, javax.swing.BoxLayout.LINE_AXIS));
         missionNumberPanel.add(leftMissionInfoPanel1);
         missionNumberPanel.add(rightMissionInfoPanel2);
