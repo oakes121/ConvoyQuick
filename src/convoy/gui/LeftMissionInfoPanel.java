@@ -280,7 +280,9 @@ public class LeftMissionInfoPanel extends javax.swing.JPanel {
         toLabel.setText("Rally Point: ");
 
         imageLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/convoy/resources/images/2id.png"))); // NOI18N
+        imageLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
         imageLabel.setToolTipText("Click to change the Unit Patch");
+        imageLabel.setBorder(null);
         imageLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 imageLabelMousePressed(evt);
@@ -318,11 +320,8 @@ public class LeftMissionInfoPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(imageLabel)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, 0)
-                        .addComponent(imageLabel))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, 0)
                         .addComponent(classificationDropBox, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(5, 5, 5)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
