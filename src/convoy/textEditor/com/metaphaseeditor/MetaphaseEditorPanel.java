@@ -493,8 +493,12 @@ public class MetaphaseEditorPanel extends javax.swing.JPanel {
         mainScrollPane = new javax.swing.JScrollPane();
         htmlTextPane = new javax.swing.JTextPane();
 
+        setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+
+        toolbarPanel.setBackground(new java.awt.Color(194, 178, 128));
         toolbarPanel.setPreferredSize(new java.awt.Dimension(700, 58));
 
+        textEffectPanel.setBackground(new java.awt.Color(194, 178, 128));
         textEffectPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         textEffectPanel.setPreferredSize(new java.awt.Dimension(122, 29));
 
@@ -527,13 +531,13 @@ public class MetaphaseEditorPanel extends javax.swing.JPanel {
         );
         textEffectPanelLayout.setVerticalGroup(
             textEffectPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(textEffectPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(italicButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(underlineButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(strikethroughButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(italicButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(underlineButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(strikethroughButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addComponent(boldButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
+        listPanel.setBackground(new java.awt.Color(194, 178, 128));
         listPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         insertRemoveBulletedListButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/convoy/textEditor/com/metaphaseeditor/icons/bulletlist.png"))); // NOI18N
@@ -569,6 +573,7 @@ public class MetaphaseEditorPanel extends javax.swing.JPanel {
             .addComponent(insertRemoveNumberedListButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
+        blockPanel.setBackground(new java.awt.Color(194, 178, 128));
         blockPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         blockPanel.setPreferredSize(new java.awt.Dimension(122, 29));
 
@@ -654,6 +659,7 @@ public class MetaphaseEditorPanel extends javax.swing.JPanel {
             }
         });
 
+        justificationPanel.setBackground(new java.awt.Color(194, 178, 128));
         justificationPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         justificationPanel.setPreferredSize(new java.awt.Dimension(122, 29));
 
@@ -723,13 +729,15 @@ public class MetaphaseEditorPanel extends javax.swing.JPanel {
                         .addComponent(textEffectPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(blockPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(5, 5, 5)
-                .addGroup(toolbarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(fontSizeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(fontComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(paragraphFormatComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(toolbarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(paragraphFormatComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(toolbarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(fontSizeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(fontComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(4, 4, 4))
         );
 
+        htmlTextPane.setText("Additional Information Goes Here");
         htmlTextPane.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 htmlTextPaneMouseClicked(evt);
