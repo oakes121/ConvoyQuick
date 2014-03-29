@@ -382,7 +382,20 @@ public class VehicleGrid extends javax.swing.JPanel implements ActionListener, K
         try {
             for (int i = 0; i < vehiclePanelArray.size() ; i++) {
                 if (e.getSource() == vehiclePanelArray.get(i)) {  
+                    
+                    if (e.getClickCount() == 2) {
+                        JOptionPane.showMessageDialog(this, "2 Chainzz");
+                        EditVehiclePopUp evpu = new EditVehiclePopUp();
+                        evpu.setObject(vehiclePanelArray.get(i));
+                        evpu.setInitImage();
+                        evpu.setVisible(true);
+                        evpu.toFront();                        
+                    }
+                                             
                     setFlag(i);
+                    
+                    
+                    
                     break;
                 }
             }

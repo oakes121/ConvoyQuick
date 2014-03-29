@@ -17,6 +17,7 @@ import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -51,7 +52,11 @@ public class VehiclePanel extends javax.swing.JPanel {
         revalidate();
         repaint();
     }
-
+    
+    public Icon getImageIcon() {
+        return imageLabel.getIcon();
+    }
+    
     public void setImage(Image img) {
         try {
 
@@ -150,11 +155,7 @@ public class VehiclePanel extends javax.swing.JPanel {
         
         if (v.getPassengers().size() >= 3)
             passenger3Label.setText(v.getPassengers().get(2).getName());
-    }
-    
-   
-    
-    
+    } 
 
     private void doMainMenuFont() {
         try {
