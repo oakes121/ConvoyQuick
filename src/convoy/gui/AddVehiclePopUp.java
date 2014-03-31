@@ -466,19 +466,22 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
                 vehicleGridObj.storeAddVehiclePopUp(this);
 
                 isCreateMode = false;
-                isEditMode = true;
+                
 
                 addVehicleButton.setText("Apply Changes");
 
             }
 
             addValuesToVehiclePanel(newVehiclePanel);
-        }
+        }        
+        
         
         if (isEditMode) {
             addValuesToVehiclePanel(vehicleGridObj.getVehiclePanelArray().get(editVehicleCounter));
             this.setVisible(false);
         }
+        
+        isEditMode = true;
         
     }//GEN-LAST:event_addVehicleButtonActionPerformed
 
