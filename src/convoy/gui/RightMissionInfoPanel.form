@@ -36,10 +36,10 @@
                               <Component id="ccLabel" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="ccTextField" min="-2" pref="250" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                               <Component id="accLabel" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="accTextField" min="-2" pref="214" max="-2" attributes="0"/>
+                              <Component id="accTextField" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
                               <Component id="stagingAreaLabel" min="-2" max="-2" attributes="0"/>
