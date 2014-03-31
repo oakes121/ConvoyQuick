@@ -93,13 +93,13 @@ public class MainMenu extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
         setIconImage(new ImageIcon(getClass().getResource("/convoy/resources/images/humveeIcon.png")).getImage());
-        setMaximumSize(new java.awt.Dimension(1459, 829));
         setMinimumSize(new java.awt.Dimension(1459, 829));
         setName("mainWindow"); // NOI18N
 
         picturePanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         newProjectPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 5));
+        newProjectPanel.setCursor(new Cursor(Cursor.HAND_CURSOR));
         newProjectPanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 newProjectPanelMouseEntered(evt);
@@ -135,6 +135,7 @@ public class MainMenu extends javax.swing.JFrame {
         mainMenuTitle.setText("Convoy Quick");
 
         templateProjectPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 5));
+        templateProjectPanel.setCursor(new Cursor(Cursor.HAND_CURSOR));
         templateProjectPanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 templateProjectPanelMouseEntered(evt);
@@ -167,6 +168,7 @@ public class MainMenu extends javax.swing.JFrame {
         );
 
         loadProjectPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 5));
+        loadProjectPanel.setCursor(new Cursor(Cursor.HAND_CURSOR));
         loadProjectPanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 loadProjectPanelMouseEntered(evt);
