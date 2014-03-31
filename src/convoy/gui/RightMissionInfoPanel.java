@@ -399,6 +399,7 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
         freqLabel.setText("Frequencies - ");
 
         addFreqLabel.setForeground(new java.awt.Color(0, 51, 255));
+        addFreqLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
         addFreqLabel.setText("<HTML><U>+ Add Freq</U></HTML>");
         addFreqLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -591,7 +592,7 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
                     .addComponent(metaphaseEditor2, javax.swing.GroupLayout.PREFERRED_SIZE, 711, javax.swing.GroupLayout.PREFERRED_SIZE)))
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addComponent(freqPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 681, Short.MAX_VALUE)
+                .addComponent(freqPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
