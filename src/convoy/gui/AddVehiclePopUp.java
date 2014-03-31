@@ -36,9 +36,12 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
     private Image img;
     private Image finalImage;
     private URL url;
+    private boolean isCreateMode = true;
+    private boolean isEditMode = false;
+    private int editVehicleCounter = 0;
 
     public AddVehiclePopUp() {
-
+        
         initComponents();
         addHintsToFields();
         newVehiclePanel = new VehiclePanel();
@@ -437,29 +440,45 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
         //addValuesToVehiclePanel();
         System.out.println("Adding New Vehicle");
        // vehicleGridObj.replaceAddNewVehiclePanel(newVehiclePanel);
-        if (url == null){
-            JOptionPane.showMessageDialog(null, "Please Enter all the Required Fields", "Alert Message", JOptionPane.WARNING_MESSAGE);
-        }
-        else if ("".equals(personnel1Field.getText())){
-            JOptionPane.showMessageDialog(null, "Please Enter all the Required Fields", "Alert Message", JOptionPane.WARNING_MESSAGE);
-        }
-        else if ("".equals(personnel2Field.getText())){
-            JOptionPane.showMessageDialog(null, "Please Enter all the Required Fields", "Alert Message", JOptionPane.WARNING_MESSAGE);
-        }
-        else if ("".equals(vehicleInfo1Field.getText())){
-            JOptionPane.showMessageDialog(null, "Please Enter all the Required Fields", "Alert Message", JOptionPane.WARNING_MESSAGE);
-        }
-        else if ("".equals(vehicleInfo2Field.getText())){
-            JOptionPane.showMessageDialog(null, "Please Enter all the Required Fields", "Alert Message", JOptionPane.WARNING_MESSAGE);
-        }
-          
-  
-        else{
-            vehicleGridObj.replaceAddNewVehiclePanel(newVehiclePanel);
-            this.setVisible(false);
+        
+        if (isCreateMode) {
+            if (url == null){
+                JOptionPane.showMessageDialog(null, "Please Enter all the Required Fields", "Alert Message", JOptionPane.WARNING_MESSAGE);
+            }
+            else if ("".equals(personnel1Field.getText())){
+                JOptionPane.showMessageDialog(null, "Please Enter all the Required Fields", "Alert Message", JOptionPane.WARNING_MESSAGE);
+            }
+            else if ("".equals(personnel2Field.getText())){
+                JOptionPane.showMessageDialog(null, "Please Enter all the Required Fields", "Alert Message", JOptionPane.WARNING_MESSAGE);
+            }
+            else if ("".equals(vehicleInfo1Field.getText())){
+                JOptionPane.showMessageDialog(null, "Please Enter all the Required Fields", "Alert Message", JOptionPane.WARNING_MESSAGE);
+            }
+            else if ("".equals(vehicleInfo2Field.getText())){
+                JOptionPane.showMessageDialog(null, "Please Enter all the Required Fields", "Alert Message", JOptionPane.WARNING_MESSAGE);
+            }
+
+
+            else{
+
+                vehicleGridObj.replaceAddNewVehiclePanel(newVehiclePanel);
+                this.setVisible(false);
+                vehicleGridObj.storeAddVehiclePopUp(this);
+
+                isCreateMode = false;
+                isEditMode = true;
+
+                addVehicleButton.setText("Apply Changes");
+
+            }
+
+            addValuesToVehiclePanel(newVehiclePanel);
         }
         
-        addValuesToVehiclePanel();
+        if (isEditMode) {
+            addValuesToVehiclePanel(vehicleGridObj.getVehiclePanelArray().get(editVehicleCounter));
+            this.setVisible(false);
+        }
         
     }//GEN-LAST:event_addVehicleButtonActionPerformed
 
@@ -524,6 +543,10 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
         }   
     }//GEN-LAST:event_imageLabelMouseClicked
 
+    public void setEditVehicleCounter(int counter) {
+        editVehicleCounter = counter;
+    }
+    
     public void setObject(VehicleGrid vehicleGrid) {
         vehicleGridObj = vehicleGrid;
     }
@@ -540,19 +563,19 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
         imageUrl = imgUrl;
     }
 
-    public void addValuesToVehiclePanel() {
+    public void addValuesToVehiclePanel(VehiclePanel vp) {
         
-        newVehiclePanel.setDriverName(personnel1Field.getText());
-        newVehiclePanel.setPassenger1(personnel2Field.getText());
-        newVehiclePanel.setPassenger2(personnel3Field.getText());
-        newVehiclePanel.setPassenger3(personnel4Field.getText());
-        newVehiclePanel.setBumperNumber(vehicleInfo1Field.getText());
-        newVehiclePanel.setCallSign(vehicleInfo2Field.getText());
-        newVehiclePanel.setAdditionalInfo(vehicleInfo3Field.getText());
-        newVehiclePanel.setImage(img);
-      
-        }
+        vp.setDriverName(personnel1Field.getText());
+        vp.setPassenger1(personnel2Field.getText());
+        vp.setPassenger2(personnel3Field.getText());
+        vp.setPassenger3(personnel4Field.getText());
+        vp.setBumperNumber(vehicleInfo1Field.getText());
+        vp.setCallSign(vehicleInfo2Field.getText());
+        vp.setAdditionalInfo(vehicleInfo3Field.getText());
+        vp.setImage(img);
+    }
 
+    
     public void modifyPopUp() {
 
         //vehicleNameField.setText(vehicleName);

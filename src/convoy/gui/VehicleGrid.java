@@ -35,6 +35,9 @@ public class VehicleGrid extends javax.swing.JPanel implements ActionListener, K
     private ArrayList<JPanel> panelHolder;                 // array used to create a grid of blank jPanels
     private ArrayList<Boolean> vehiclePanelClickedFlags;   // array used as a flag for each element in vehiclePanelArray
                                                            //  andpanelHolder when a vehiclePanle is clicked
+    
+    private ArrayList<AddVehiclePopUp> addVehiclePopUpArray;
+    
     private GridBagConstraints gbc = new GridBagConstraints ();    // constraints used to control the layout of the grid
     private int trueCount = 0;                             // number of vehicle panels selected
     private int vehicleCount = 0;                          // count of vehicles in vehiclePanelArray
@@ -56,9 +59,12 @@ public class VehicleGrid extends javax.swing.JPanel implements ActionListener, K
         this.setToolTipText("Click on the 'Add New Vehicle' panel to create and add vehicles to vehicle grid.");
         addKeyListener(this);
         this.setFocusable(true);
+        
         addNewVehiclePanel1 = new AddNewVehiclePanel();
         vehiclePanelArray = new ArrayList<>();
         panelHolder = new ArrayList<>();
+        addVehiclePopUpArray = new ArrayList<>();
+        
         
         addNewVehiclePanel1.addMouseListener(this);
         addNewVehiclePanel1.setToolTipText("Click this panel to create and add vehicle to vehicle grid.");
@@ -97,6 +103,15 @@ public class VehicleGrid extends javax.swing.JPanel implements ActionListener, K
                 add(panelHolder.get(m), gbc);
         }
         
+    }
+    
+    /**
+     * storeAddVehiclePopUp(AddVehiclePopUp avpp) stores AddVehiclePops as 
+     *  VehiclePanels are added to the VehicleGrid
+     * @param avpp AddVehiclePopUp object that will be stored to the VehicleGrid
+     */
+    public void storeAddVehiclePopUp(AddVehiclePopUp avpp) {
+        addVehiclePopUpArray.add(avpp);
     }
     
     /**
@@ -326,6 +341,7 @@ public class VehicleGrid extends javax.swing.JPanel implements ActionListener, K
                     vehiclePanelArray.get(indicator).removeMouseListener(this);
                     panelHolder.remove(indicator);
                     vehiclePanelArray.remove(indicator);
+                    addVehiclePopUpArray.remove(indicator);
                     vehiclePanelClickedFlags.get(indicator).setTruthValue(false);
                     
                     --vehicleCount;
@@ -384,17 +400,13 @@ public class VehicleGrid extends javax.swing.JPanel implements ActionListener, K
                 if (e.getSource() == vehiclePanelArray.get(i)) {  
                     
                     if (e.getClickCount() == 2) {
-                        JOptionPane.showMessageDialog(this, "2 Chainzz");
-                        EditVehiclePopUp evpu = new EditVehiclePopUp();
-                        evpu.setObject(vehiclePanelArray.get(i));
-                        evpu.setInitImage();
-                        evpu.setVisible(true);
-                        evpu.toFront();                        
+                        //JOptionPane.showMessageDialog(this, "2 Chainzz");
+                        addVehiclePopUpArray.get(i).setVisible(true);
+                        addVehiclePopUpArray.get(i).setEditVehicleCounter(i);
+                        
                     }
                                              
                     setFlag(i);
-                    
-                    
                     
                     break;
                 }
