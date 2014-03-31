@@ -218,6 +218,9 @@ public class LeftMissionInfoPanel extends javax.swing.JPanel {
             missionNumberLabel.setFont(captureItFont);
             fromLabel.setFont(captureItFont);
             toLabel.setFont(captureItFont);
+            
+            classificationDropBox.setRenderer(new HighLightRowRenderer(classificationDropBox.getRenderer()));            
+            
         } catch (FontFormatException | IOException ex) {
             //ex.printStackTrace();
         }
@@ -264,6 +267,11 @@ public class LeftMissionInfoPanel extends javax.swing.JPanel {
 
         classificationDropBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "FOR OFFICIAL USE ONLY", "UNCLASSIFIED", "CLASSIFIED", "SECRET", "TOP SECRET", "CONFEDIENTAL" }));
         classificationDropBox.setToolTipText("Click to Select Mission Classification");
+        classificationDropBox.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                classificationDropBoxItemStateChanged(evt);
+            }
+        });
 
         missionNumberTextField.setToolTipText("Enter Mission Number");
 
@@ -341,33 +349,32 @@ public class LeftMissionInfoPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    
-    private static void copyFile(File source, File dest)throws IOException {
-        
+    private static void copyFile(File source, File dest) throws IOException {
+
         Files.copy(source.toPath(), dest.toPath());
-         
+
     }
-    
+
     public static String getProgramPath() throws UnsupportedEncodingException {
-      URL url = convoy.gui.MainMenu.class.getProtectionDomain().getCodeSource().getLocation();
-      String jarPath = URLDecoder.decode(url.getFile(), "UTF-8");
-      String parentPath = new File(jarPath).getParentFile().getPath();
-      return parentPath;
-   }
-    private String getPath(){ 
-    String path = null;
+        URL url = convoy.gui.MainMenu.class.getProtectionDomain().getCodeSource().getLocation();
+        String jarPath = URLDecoder.decode(url.getFile(), "UTF-8");
+        String parentPath = new File(jarPath).getParentFile().getPath();
+        return parentPath;
+    }
+
+    private String getPath() {
+        String path = null;
         try {
             path = getProgramPath();
         } catch (UnsupportedEncodingException ex) {
             //Logger.getLogger(Save.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-         String fileSeparator = System.getProperty("file.separator");
-         String newDir = path + fileSeparator + "images" + fileSeparator;
-         return newDir;
-   }
-    
-    
+        String fileSeparator = System.getProperty("file.separator");
+        String newDir = path + fileSeparator + "images" + fileSeparator;
+        return newDir;
+    }
+
     /**
      * <p>
      * Sets the unit patch image for the convoy when the user clicks on the
@@ -392,9 +399,9 @@ public class LeftMissionInfoPanel extends javax.swing.JPanel {
                 URL url = null;
                 try {
                     url = new URL("file:\\" + loadFile.getDirectory() + file);
-                    
+
                     copyFile(new File(loadFile.getDirectory() + file), new File(getPath() + file));
-                    
+
                     this.setImagePath(getPath() + file);
                 } catch (MalformedURLException ex) {
                     //Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
@@ -425,6 +432,12 @@ public class LeftMissionInfoPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_fromTextFieldActionPerformed
 
+    private void classificationDropBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_classificationDropBoxItemStateChanged
+        if(classificationDropBox.getSelectedIndex() >= 3){
+            classificationDropBox.setForeground(Color.RED);
+        }
+    }//GEN-LAST:event_classificationDropBoxItemStateChanged
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox classificationDropBox;
     private javax.swing.JLabel fromLabel;
@@ -439,4 +452,29 @@ public class LeftMissionInfoPanel extends javax.swing.JPanel {
     private javax.swing.JLabel toLabel;
     private javax.swing.JTextField toTextField;
     // End of variables declaration//GEN-END:variables
+}
+
+class HighLightRowRenderer implements ListCellRenderer {
+
+    private final ListCellRenderer delegate;
+    private int height = -1;
+
+    public HighLightRowRenderer(ListCellRenderer delegate) {
+        this.delegate = delegate;
+    }
+
+    @Override
+    public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
+        Component component = delegate.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
+        Dimension size = component.getPreferredSize();
+        
+        if (index >= 3){
+            component.setForeground(Color.RED);
+            if (component instanceof JLabel) {
+                ((JLabel) component).setHorizontalTextPosition(JLabel.CENTER);
+            }
+        }
+                       
+        return component;
+    }
 }

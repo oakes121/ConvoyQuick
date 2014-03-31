@@ -25,6 +25,8 @@ public class EditVehiclePopUp extends javax.swing.JFrame {
      */
     public EditVehiclePopUp() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        this.setTitle("Edit Vehicle");
     }
 
     public void setInitImage() {     
@@ -78,6 +80,7 @@ public class EditVehiclePopUp extends javax.swing.JFrame {
         cancelButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setIconImage(new ImageIcon(getClass().getResource("/convoy/resources/images/humveeIcon.png")).getImage());
 
         jLayeredPane1.setBackground(new java.awt.Color(194, 178, 128));
         jLayeredPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
