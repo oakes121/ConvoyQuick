@@ -120,7 +120,7 @@ public class LeftMissionInfoPanel extends javax.swing.JPanel {
      * @return this.additionalText.getText()
      */
     public String getAdditionalText() {
-        return this.metaphaseEditor1.getDocument();
+        return this.additionalTextPanel1.getAdditionalText();
     }
 
     /**
@@ -148,7 +148,7 @@ public class LeftMissionInfoPanel extends javax.swing.JPanel {
      * @param text
      */
     public void setAdditionalText(String text) {
-        this.metaphaseEditor1.setDocument(text);
+        this.additionalTextPanel1.setAdditionalText(text);
     }
 
     /**
@@ -246,7 +246,7 @@ public class LeftMissionInfoPanel extends javax.swing.JPanel {
         toLabel = new javax.swing.JLabel();
         toTextField = new javax.swing.JTextField();
         imageLabel = new javax.swing.JLabel();
-        metaphaseEditor1 = new convoy.textEditor.com.metaphaseeditor.MetaphaseEditor();
+        additionalTextPanel1 = new convoy.gui.AdditionalTextPanel();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -298,51 +298,62 @@ public class LeftMissionInfoPanel extends javax.swing.JPanel {
             }
         });
 
-        metaphaseEditor1.setPreferredSize(new java.awt.Dimension(712, 200));
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(imageLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(classificationDropBox, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(additionalTextPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(fromLabel)
-                            .addComponent(missionNumberLabel)
-                            .addComponent(toLabel))
+                        .addComponent(imageLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(fromTextField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(toTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(missionNumberTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-            .addComponent(metaphaseEditor1, javax.swing.GroupLayout.PREFERRED_SIZE, 641, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(fromLabel)
+                                    .addComponent(missionNumberLabel)
+                                    .addComponent(toLabel))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addComponent(toTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 338, Short.MAX_VALUE)
+                                            .addComponent(fromTextField)))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(missionNumberTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(classificationDropBox, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(8, 8, 8)))
+                .addGap(15, 15, 15))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(imageLabel)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
                         .addComponent(classificationDropBox, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(5, 5, 5)
+                        .addGap(20, 20, 20)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(missionNumberTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(missionNumberLabel))
-                        .addGap(10, 10, 10)
+                        .addGap(20, 20, 20)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(fromTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(fromLabel))
-                        .addGap(10, 10, 10)
+                        .addGap(20, 20, 20)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(toTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(toLabel))))
-                .addGap(7, 7, 7)
-                .addComponent(metaphaseEditor1, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
-                .addGap(0, 0, 0))
+                            .addComponent(toLabel)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(imageLabel)))
+                .addGap(20, 20, 20)
+                .addComponent(additionalTextPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -436,6 +447,7 @@ public class LeftMissionInfoPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_classificationDropBoxItemStateChanged
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private convoy.gui.AdditionalTextPanel additionalTextPanel1;
     private javax.swing.JComboBox classificationDropBox;
     private javax.swing.JLabel fromLabel;
     private javax.swing.JTextField fromTextField;
@@ -443,7 +455,6 @@ public class LeftMissionInfoPanel extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
-    private convoy.textEditor.com.metaphaseeditor.MetaphaseEditor metaphaseEditor1;
     private javax.swing.JLabel missionNumberLabel;
     private javax.swing.JTextField missionNumberTextField;
     private javax.swing.JLabel toLabel;
