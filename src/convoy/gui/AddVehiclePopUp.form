@@ -277,24 +277,16 @@
             <Component class="javax.swing.JTextField" name="personnel1Field">
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="personnel1FieldActionPerformed"/>
-                <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="personnel1FieldFocusGained"/>
               </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="personnel2Field">
-              <Events>
-                <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="personnel2FieldFocusGained"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="personnel3Field">
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="personnel3FieldActionPerformed"/>
-                <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="personnel3FieldFocusGained"/>
               </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="personnel4Field">
-              <Events>
-                <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="personnel4FieldFocusGained"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JComboBox" name="jComboBox2">
               <Properties>
@@ -448,19 +440,10 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="vehicleInfo1Field">
-              <Events>
-                <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="vehicleInfo1FieldFocusGained"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="vehicleInfo2Field">
-              <Events>
-                <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="vehicleInfo2FieldFocusGained"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="vehicleInfo3Field">
-              <Events>
-                <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="vehicleInfo3FieldFocusGained"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel9">
               <Properties>
