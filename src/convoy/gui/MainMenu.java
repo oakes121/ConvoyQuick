@@ -34,6 +34,8 @@ public class MainMenu extends javax.swing.JFrame {
         createSaveDirectory();
         createImageDirectory();
         createHtmlDirectory();
+        createTemplatesDirectory();
+        createVehicleImageDirectory();
         mission = Mission.getInstance();
         initComponents();
         doMainMenuFont();
@@ -452,6 +454,42 @@ public class MainMenu extends javax.swing.JFrame {
 
          String fileSeparator = System.getProperty("file.separator");
          String newDir = path + fileSeparator + "html" + fileSeparator;
+         //JOptionPane.showMessageDialog(null, newDir);
+
+         File file = new File(newDir);
+         file.mkdir();
+         
+    }
+    
+    private void createTemplatesDirectory(){
+    
+        String path = null;
+        try {
+            path = getProgramPath();
+        } catch (UnsupportedEncodingException ex) {
+            //Logger.getLogger(Save.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+         String fileSeparator = System.getProperty("file.separator");
+         String newDir = path + fileSeparator + "templates" + fileSeparator;
+         //JOptionPane.showMessageDialog(null, newDir);
+
+         File file = new File(newDir);
+         file.mkdir();
+         
+    }
+    
+    private void createVehicleImageDirectory(){
+    
+        String path = null;
+        try {
+            path = getProgramPath();
+        } catch (UnsupportedEncodingException ex) {
+            //Logger.getLogger(Save.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+         String fileSeparator = System.getProperty("file.separator");
+         String newDir = path + fileSeparator + "vehicleImages" + fileSeparator;
          //JOptionPane.showMessageDialog(null, newDir);
 
          File file = new File(newDir);
