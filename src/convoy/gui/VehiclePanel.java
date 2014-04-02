@@ -76,8 +76,52 @@ public class VehiclePanel extends javax.swing.JPanel {
         return deleteButton;
     }
     
+    /**
+     * String getDriverName() returns string in driverLabel
+     * @return driverLabel.getText()
+     */
     public String getDriverName() {
         return driverLabel.getText();
+    }
+    
+    /**
+     * getPassenger1() returns string in passenger1Label
+     * @return passenger1Label.getText()
+     */
+    public String getPassenger1() {
+        return passenger1Label.getText();
+    }
+    
+    /**
+     * getPassenger2() returns string in passenger2Label
+     * @return passenger2Label.getText()
+     */
+    public String getPassenger2() {
+        return passenger2Label.getText();
+    }
+    
+    /**
+     * getPassenger3() returns string in passenger3Label
+     * @return passenger3Label.getText()
+     */
+    public String getPassenger3() {
+        return passenger3Label.getText();
+    }
+    
+    /**
+     * getBumperNumber() returns string in bumperNumberLabel
+     * @return bumperNumberLabel.getText()
+     */
+    public String getBumperNumber() {
+        return bumperNumberLabel.getText();
+    }
+
+    /**
+     * setCallSign() returns string in callSignLabel
+     * @return callSignLabel.getText()
+     */
+    public String setCallSign() {
+        return callSignLabel.getText();
     }
 
     public void setDriverName(String driverName) {

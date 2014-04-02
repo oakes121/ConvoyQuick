@@ -60,6 +60,7 @@ public class VehicleGrid extends javax.swing.JPanel implements ActionListener, K
         addKeyListener(this);
         this.setFocusable(true);
         
+        
         addNewVehiclePanel1 = new AddNewVehiclePanel();
         vehiclePanelArray = new ArrayList<>();
         panelHolder = new ArrayList<>();
