@@ -5,6 +5,7 @@
 package convoy.gui;
 
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
@@ -62,6 +63,7 @@ public class VehicleGrid extends javax.swing.JPanel implements ActionListener, K
         
         
         addNewVehiclePanel1 = new AddNewVehiclePanel();
+        addNewVehiclePanel1.setCursor(new Cursor(Cursor.HAND_CURSOR));
         vehiclePanelArray = new ArrayList<>();
         panelHolder = new ArrayList<>();
         addVehiclePopUpArray = new ArrayList<>();
