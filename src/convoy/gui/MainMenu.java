@@ -10,6 +10,9 @@ import java.awt.image.BufferedImage;
 import convoy.objects.Mission;
 import java.net.URL;
 import java.net.URLDecoder;
+import java.nio.file.Files;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * @author Mike Moye <mtm5313@psu.edu> / Oakes Isaac <oki5001@psu.edu>
@@ -36,6 +39,11 @@ public class MainMenu extends javax.swing.JFrame {
         createHtmlDirectory();
         createTemplatesDirectory();
         createVehicleImageDirectory();
+        try {
+            copyTemplates();
+        } catch (IOException ex) {
+            Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
+        }
         mission = Mission.getInstance();
         initComponents();
         doMainMenuFont();
@@ -496,6 +504,71 @@ public class MainMenu extends javax.swing.JFrame {
          file.mkdir();
          
     }
+    
+     private static void copyFile(File source, File dest)throws IOException {
+        
+        Files.copy(source.toPath(), dest.toPath());
+         
+    }
+     
+     public static void copyFolder(File src, File dest)
+    	throws IOException{
+ 
+    	if(src.isDirectory()){
+ 
+    		//if directory not exists, create it
+    		if(!dest.exists()){
+    		   dest.mkdir();
+    		   System.out.println("Directory copied from " 
+                              + src + "  to " + dest);
+    		}
+ 
+    		//list all the directory contents
+    		String files[] = src.list();
+ 
+    		for (String file : files) {
+    		   //construct the src and dest file structure
+    		   File srcFile = new File(src, file);
+    		   File destFile = new File(dest, file);
+    		   //recursive copy
+    		   copyFolder(srcFile,destFile);
+    		}
+ 
+    	}else{
+    		//if file, then copy it
+    		//Use bytes stream to support all file types
+    		InputStream in = new FileInputStream(src);
+    	        OutputStream out = new FileOutputStream(dest); 
+ 
+    	        byte[] buffer = new byte[1024];
+ 
+    	        int length;
+    	        //copy the file content in bytes 
+    	        while ((length = in.read(buffer)) > 0){
+    	    	   out.write(buffer, 0, length);
+    	        }
+ 
+    	        in.close();
+    	        out.close();
+    	        System.out.println("File copied from " + src + " to " + dest);
+    	}
+    }
+     
+     private void copyTemplates() throws IOException{
+         
+         
+         copyFolder(new File(getClass().getResource("/convoy/resources/images/vehicles").getPath()), new File(getProgramPath()));
+         
+         //System.out.print(getClass().getResource("/convoy/resources/images/2id.png").getFile());
+         
+         
+        //try {
+            //copyFile(new File(getClass().getResource("/convoy/resources/images/humvee.jpg").getFile()), new File(getProgramPath() ));
+        //} catch (UnsupportedEncodingException ex) {
+            //Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
+        //}
+         
+     }
     
     public static String getProgramPath() throws UnsupportedEncodingException {
       URL url = convoy.gui.MainMenu.class.getProtectionDomain().getCodeSource().getLocation();

@@ -156,32 +156,10 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
                 personnel1FieldActionPerformed(evt);
             }
         });
-        personnel1Field.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                personnel1FieldFocusGained(evt);
-            }
-        });
-
-        personnel2Field.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                personnel2FieldFocusGained(evt);
-            }
-        });
 
         personnel3Field.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 personnel3FieldActionPerformed(evt);
-            }
-        });
-        personnel3Field.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                personnel3FieldFocusGained(evt);
-            }
-        });
-
-        personnel4Field.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                personnel4FieldFocusGained(evt);
             }
         });
 
@@ -277,24 +255,6 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel3.setText("VEHICLE INFORMATION");
-
-        vehicleInfo1Field.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                vehicleInfo1FieldFocusGained(evt);
-            }
-        });
-
-        vehicleInfo2Field.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                vehicleInfo2FieldFocusGained(evt);
-            }
-        });
-
-        vehicleInfo3Field.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                vehicleInfo3FieldFocusGained(evt);
-            }
-        });
 
         jLabel9.setForeground(new java.awt.Color(255, 0, 0));
         jLabel9.setText("*");
@@ -443,19 +403,19 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
         
         if (isCreateMode) {
             if (url == null){
-                JOptionPane.showMessageDialog(null, "Please Enter all the Required Fields", "Alert Message", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Please enter required fields", "Alert Message", JOptionPane.WARNING_MESSAGE);
             }
             else if ("".equals(personnel1Field.getText())){
-                JOptionPane.showMessageDialog(null, "Please Enter all the Required Fields", "Alert Message", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Please enter required fields", "Alert Message", JOptionPane.WARNING_MESSAGE);
             }
             else if ("".equals(personnel2Field.getText())){
-                JOptionPane.showMessageDialog(null, "Please Enter all the Required Fields", "Alert Message", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Please enter required fields", "Alert Message", JOptionPane.WARNING_MESSAGE);
             }
             else if ("".equals(vehicleInfo1Field.getText())){
-                JOptionPane.showMessageDialog(null, "Please Enter all the Required Fields", "Alert Message", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Please enter required fields", "Alert Message", JOptionPane.WARNING_MESSAGE);
             }
             else if ("".equals(vehicleInfo2Field.getText())){
-                JOptionPane.showMessageDialog(null, "Please Enter all the Required Fields", "Alert Message", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Please enter required fields", "Alert Message", JOptionPane.WARNING_MESSAGE);
             }
 
 
@@ -492,37 +452,6 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
     private void personnel3FieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_personnel3FieldActionPerformed
         //personnel3Field.setText(vehicleName);
     }//GEN-LAST:event_personnel3FieldActionPerformed
-
-    private void personnel1FieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_personnel1FieldFocusGained
-        personnel1Field.setText("");
-    }//GEN-LAST:event_personnel1FieldFocusGained
-
-    private void personnel2FieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_personnel2FieldFocusGained
-        personnel2Field.setText("");
-    }//GEN-LAST:event_personnel2FieldFocusGained
-
-    private void personnel3FieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_personnel3FieldFocusGained
-        personnel3Field.setText("");
-    }//GEN-LAST:event_personnel3FieldFocusGained
-
-    private void personnel4FieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_personnel4FieldFocusGained
-        personnel4Field.setText("");
-    }//GEN-LAST:event_personnel4FieldFocusGained
-
-    private void vehicleInfo1FieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_vehicleInfo1FieldFocusGained
-        // TODO add your handling code here:
-        vehicleInfo1Field.setText("");
-    }//GEN-LAST:event_vehicleInfo1FieldFocusGained
-
-    private void vehicleInfo2FieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_vehicleInfo2FieldFocusGained
-        // TODO add your handling code here:
-        vehicleInfo2Field.setText("");
-    }//GEN-LAST:event_vehicleInfo2FieldFocusGained
-
-    private void vehicleInfo3FieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_vehicleInfo3FieldFocusGained
-        // TODO add your handling code here:
-        vehicleInfo3Field.setText("");
-    }//GEN-LAST:event_vehicleInfo3FieldFocusGained
 
     private void imageLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imageLabelMouseClicked
         // TODO add your handling code here:
