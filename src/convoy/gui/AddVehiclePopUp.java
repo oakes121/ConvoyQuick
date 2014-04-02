@@ -403,19 +403,19 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
         
         if (isCreateMode) {
             if (url == null){
-                JOptionPane.showMessageDialog(null, "Please Enter all the Required Fields", "Alert Message", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Please enter required fields", "Alert Message", JOptionPane.WARNING_MESSAGE);
             }
             else if ("".equals(personnel1Field.getText())){
-                JOptionPane.showMessageDialog(null, "Please Enter all the Required Fields", "Alert Message", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Please enter required fields", "Alert Message", JOptionPane.WARNING_MESSAGE);
             }
             else if ("".equals(personnel2Field.getText())){
-                JOptionPane.showMessageDialog(null, "Please Enter all the Required Fields", "Alert Message", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Please enter required fields", "Alert Message", JOptionPane.WARNING_MESSAGE);
             }
             else if ("".equals(vehicleInfo1Field.getText())){
-                JOptionPane.showMessageDialog(null, "Please Enter all the Required Fields", "Alert Message", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Please enter required fields", "Alert Message", JOptionPane.WARNING_MESSAGE);
             }
             else if ("".equals(vehicleInfo2Field.getText())){
-                JOptionPane.showMessageDialog(null, "Please Enter all the Required Fields", "Alert Message", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Please enter required fields", "Alert Message", JOptionPane.WARNING_MESSAGE);
             }
 
 
