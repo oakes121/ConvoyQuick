@@ -42,6 +42,9 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
     private boolean isCreateMode = true;
     private boolean isEditMode = false;
     private int editVehicleCounter = 0;
+    public boolean medic = false;
+    public boolean cc = false;
+    public boolean acc = false;
 
     public AddVehiclePopUp() {
         
@@ -188,6 +191,11 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
         });
 
         jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select Type", "CC", "ACC", "Medic", "Passenger" }));
+        jComboBox3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox3ActionPerformed(evt);
+            }
+        });
 
         jLabel4.setForeground(new java.awt.Color(255, 0, 0));
         jLabel4.setText("*1");
@@ -203,6 +211,11 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
         jLabel8.setText("Driver");
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select Type", "CC", "ACC", "Medic", "Passenger" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
 
         jLabel11.setForeground(new java.awt.Color(255, 0, 0));
         jLabel11.setText("* Required");
@@ -401,10 +414,6 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
         PromptSupport.setPrompt("Additional Information", vehicleInfo3Field);
         
     }
-    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox2ActionPerformed
-
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
         // TODO add your handling code here:
         //dispose();
@@ -492,6 +501,56 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
             //ex.printStackTrace();
         }   
     }//GEN-LAST:event_imageLabelMouseClicked
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+        if (jComboBox1.getSelectedIndex() == 1){
+            medic = true;
+        }
+        else if (jComboBox1.getSelectedIndex() == 2){
+            cc = true;
+        }
+        else if (jComboBox1.getSelectedIndex() == 3){
+            acc = true;
+        }
+        else if (jComboBox1.getSelectedIndex() == 0){
+             JOptionPane.showMessageDialog(null, "Please select passenger type.", "Alert Message", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+        // TODO add your handling code here:
+        
+         if (jComboBox1.getSelectedIndex() == 1){
+            medic = true;
+        }
+        else if (jComboBox1.getSelectedIndex() == 2){
+            cc = true;
+        }
+        else if (jComboBox1.getSelectedIndex() == 3){
+            acc = true;
+        }
+        else if (jComboBox1.getSelectedIndex() == 0){
+             JOptionPane.showMessageDialog(null, "Please select passenger type.", "Alert Message", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_jComboBox2ActionPerformed
+
+    private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
+        // TODO add your handling code here:
+        
+         if (jComboBox1.getSelectedIndex() == 1){
+            medic = true;
+        }
+        else if (jComboBox1.getSelectedIndex() == 2){
+            cc = true;
+        }
+        else if (jComboBox1.getSelectedIndex() == 3){
+            acc = true;
+        }
+        else if (jComboBox1.getSelectedIndex() == 0){
+             JOptionPane.showMessageDialog(null, "Please select passenger type.", "Alert Message", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_jComboBox3ActionPerformed
 
     public void setEditVehicleCounter(int counter) {
         editVehicleCounter = counter;
