@@ -568,58 +568,63 @@ public final class MainWindow extends javax.swing.JFrame {
      * @param evt click file -> finalize menu item
      */
     private void finalizeMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finalizeMenuActionPerformed
-        int response = JOptionPane.showConfirmDialog(null, "Are you sure you want to export the convoy?", "Export Convoy?", JOptionPane.YES_NO_OPTION);
-        if (response == JOptionPane.YES_OPTION) {
+        if (this.vehicleGrids.get(0).getVehicleCount() >= 2) {
+            int response = JOptionPane.showConfirmDialog(null, "Are you sure you want to export the convoy?", "Export Convoy?", JOptionPane.YES_NO_OPTION);
+            if (response == JOptionPane.YES_OPTION) {
 
-            JFileChooser chooser = new JFileChooser();
-            chooser.setAcceptAllFileFilterUsed(false);
-            chooser.addChoosableFileFilter((new FileNameExtensionFilter("PDF Files", "pdf")));
+                JFileChooser chooser = new JFileChooser();
+                chooser.setAcceptAllFileFilterUsed(false);
+                chooser.addChoosableFileFilter((new FileNameExtensionFilter("PDF Files", "pdf")));
 
-            missionNumberText = this.leftMissionInfoPanel1.getMissionNumber();
+                missionNumberText = this.leftMissionInfoPanel1.getMissionNumber();
 
-            if (missionNumberText.equalsIgnoreCase("")) {
-                missionNumberText = "Untitled";
-            }
+                if (missionNumberText.equalsIgnoreCase("")) {
+                    missionNumberText = "Untitled";
+                }
 
-            chooser.setSelectedFile(new File(missionNumberText));
-            chooser.setCurrentDirectory(new File(System.getProperty("user.home") + "\\My Documents"));
+                chooser.setSelectedFile(new File(missionNumberText));
+                chooser.setCurrentDirectory(new File(System.getProperty("user.home") + "\\My Documents"));
 
-            int option = chooser.showSaveDialog(null);
-            if (option == JFileChooser.APPROVE_OPTION) {
-                try {
-                    this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                int option = chooser.showSaveDialog(null);
+                if (option == JFileChooser.APPROVE_OPTION) {
+                    try {
+                        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 
-                    GenerateHtml gh = new GenerateHtml();
+                        GenerateHtml gh = new GenerateHtml();
 
-                    gh.generateHtml(
-                            this.leftMissionInfoPanel1.getImagePath(),
-                            this.leftMissionInfoPanel1.getClassification(),
-                            this.leftMissionInfoPanel1.getMissionNumber(),
-                            this.leftMissionInfoPanel1.getFrom(),
-                            this.leftMissionInfoPanel1.getTo(),
-                            this.leftMissionInfoPanel1.getAdditionalText(),
-                            this.rightMissionInfoPanel2.getCC(),
-                            this.rightMissionInfoPanel2.getACC(),
-                            this.rightMissionInfoPanel2.getStagingArea(),
-                            //this.rightMissionInfoPanel2.getFrom(),
-                            //this.rightMissionInfoPanel2.getTo(),
-                            this.rightMissionInfoPanel2.getFromLU(),
-                            this.rightMissionInfoPanel2.getToLU(),
-                            this.rightMissionInfoPanel2.getFromSP(),
-                            this.rightMissionInfoPanel2.getToSP(),
-                            this.rightMissionInfoPanel2.getFreqs(),
-                            this.rightMissionInfoPanel2.getAdditionalText(),
-                            this.additionalTextPanel1.getAdditionalText()
-                    );
+                        gh.generateHtml(
+                                this.leftMissionInfoPanel1.getImagePath(),
+                                this.leftMissionInfoPanel1.getClassification(),
+                                this.leftMissionInfoPanel1.getMissionNumber(),
+                                this.leftMissionInfoPanel1.getFrom(),
+                                this.leftMissionInfoPanel1.getTo(),
+                                this.leftMissionInfoPanel1.getAdditionalText(),
+                                this.rightMissionInfoPanel2.getCC(),
+                                this.rightMissionInfoPanel2.getACC(),
+                                this.rightMissionInfoPanel2.getStagingArea(),
+                                //this.rightMissionInfoPanel2.getFrom(),
+                                //this.rightMissionInfoPanel2.getTo(),
+                                this.rightMissionInfoPanel2.getFromLU(),
+                                this.rightMissionInfoPanel2.getToLU(),
+                                this.rightMissionInfoPanel2.getFromSP(),
+                                this.rightMissionInfoPanel2.getToSP(),
+                                this.rightMissionInfoPanel2.getFreqs(),
+                                this.rightMissionInfoPanel2.getAdditionalText(),
+                                this.additionalTextPanel1.getAdditionalText()
+                        );
 
-                    Create cp = new Create(chooser.getSelectedFile().getPath());
-                    cp.createPDF();
+                        Create cp = new Create(chooser.getSelectedFile().getPath());
+                        cp.createPDF();
 
-                } catch (Exception ex) {
-                } finally {
-                    this.setCursor(Cursor.getDefaultCursor());
+                    } catch (Exception ex) {
+                    } finally {
+                        this.setCursor(Cursor.getDefaultCursor());
+                    }
                 }
             }
+        }
+        else {
+            JOptionPane.showMessageDialog(this, "You need to add at least 2 vehicles in order to finalize the convoy!");
         }
     }//GEN-LAST:event_finalizeMenuActionPerformed
 
