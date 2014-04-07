@@ -7,6 +7,7 @@ package convoy.gui;
 import convoy.objects.Mission;
 import convoy.objects.Personnel;
 import convoy.objects.Vehicle;
+import java.awt.Color;
 import java.awt.FileDialog;
 import java.awt.Font;
 import java.awt.Image;
@@ -35,6 +36,12 @@ public class VehiclePanel extends javax.swing.JPanel {
     private String imageName;
     private URL url;
     private Image finalImage;
+    private AddVehiclePopUp addVehicleObj; 
+    public boolean medic = addVehicleObj.medic;
+    private boolean cc = addVehicleObj.cc;
+    private boolean acc = addVehicleObj.acc;
+    private Image img; 
+    private ImageIcon imgIcon;
 
     /**
      * Creates new form VehiclePanel
@@ -49,6 +56,10 @@ public class VehiclePanel extends javax.swing.JPanel {
         //loadImage();
         deleteButton.setMargin(new Insets(0, 0, 0, 0));
         deleteButton.setBorder(null);
+         img.getClass().getResource("/convoy/resources/icons/steeringWheel.png");
+            finalImage =  img.getScaledInstance(268, 209, java.awt.Image.SCALE_SMOOTH);
+             ImageIcon icon = new ImageIcon(finalImage);
+            driverWheelLabel.setIcon(icon);
         revalidate();
         repaint();
     }
@@ -71,7 +82,8 @@ public class VehiclePanel extends javax.swing.JPanel {
             //System.out.print("Image Error");
         }
     }
-
+    
+ 
     public JButton getDeleteButton() {
         return deleteButton;
     }
@@ -90,6 +102,7 @@ public class VehiclePanel extends javax.swing.JPanel {
      */
     public String getPassenger1() {
         return passenger1Label.getText();
+        
     }
     
     /**
@@ -130,6 +143,7 @@ public class VehiclePanel extends javax.swing.JPanel {
 
     public void setPassenger1(String passenger1) {
         passenger1Label.setText(passenger1);
+       // setPassengerType();
     }
 
     public void setPassenger2(String passenger2) {
@@ -239,6 +253,7 @@ public class VehiclePanel extends javax.swing.JPanel {
         imageLabel = new javax.swing.JLabel();
         additionalInfoField = new javax.swing.JTextField();
         deleteButton = new javax.swing.JButton();
+        driverWheelLabel = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(194, 178, 128));
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(194, 178, 128)));
@@ -316,13 +331,16 @@ public class VehiclePanel extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, componentPanelLayout.createSequentialGroup()
                 .addGroup(componentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(additionalInfoField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(passenger3Label, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(passenger2Label, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(passenger1Label, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(driverLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(bumperNumberLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(callSignLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(picturePanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(picturePanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, componentPanelLayout.createSequentialGroup()
+                        .addGroup(componentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(passenger3Label, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE)
+                            .addComponent(passenger2Label, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(passenger1Label, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(driverLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(0, 0, 0))
         );
         componentPanelLayout.setVerticalGroup(
@@ -362,15 +380,18 @@ public class VehiclePanel extends javax.swing.JPanel {
             }
         });
 
+        driverWheelLabel.setText("jLabel1");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(0, 10, Short.MAX_VALUE)
+                .addGap(0, 26, Short.MAX_VALUE)
                 .addComponent(componentPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 11, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(driverWheelLabel))
+            .addGroup(layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -378,8 +399,13 @@ public class VehiclePanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(2, 2, 2)
-                .addComponent(componentPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(2, 2, 2)
+                        .addComponent(componentPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(driverWheelLabel))))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -394,6 +420,7 @@ public class VehiclePanel extends javax.swing.JPanel {
     private javax.swing.JPanel componentPanel;
     private javax.swing.JButton deleteButton;
     private javax.swing.JLabel driverLabel;
+    private javax.swing.JLabel driverWheelLabel;
     private javax.swing.JLabel imageLabel;
     private javax.swing.JLabel passenger1Label;
     private javax.swing.JLabel passenger2Label;
