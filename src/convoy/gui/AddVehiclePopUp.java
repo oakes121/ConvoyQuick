@@ -17,6 +17,9 @@ import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import org.jdesktop.xswingx.PromptSupport;
         
 /**
@@ -45,12 +48,26 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
         initComponents();
         addHintsToFields();
         newVehiclePanel = new VehiclePanel();
+        initDocumentListeners();
         this.setLocationRelativeTo(null); //centers frame
         this.setTitle("Add a New Vehicle"); //adds title
         this.setIconImage(new ImageIcon(getClass().getResource("/convoy/resources/images/humveeIcon.png")).getImage());
         this.setResizable(false);
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
+    }
+    
+    /**
+     * initDocumentListeners()limits the all text field input to 20 characters
+     */
+    public void initDocumentListeners() {
+        personnel1Field.setDocument(new JTextFieldLimit(20));  
+        personnel2Field.setDocument(new JTextFieldLimit(20));  
+        personnel3Field.setDocument(new JTextFieldLimit(20));
+        personnel4Field.setDocument(new JTextFieldLimit(20));
+        vehicleInfo1Field.setDocument(new JTextFieldLimit(20));
+        vehicleInfo2Field.setDocument(new JTextFieldLimit(20));
+        vehicleInfo3Field.setDocument(new JTextFieldLimit(20));
     }
 
     /**

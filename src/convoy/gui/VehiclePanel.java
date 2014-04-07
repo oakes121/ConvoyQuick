@@ -31,7 +31,7 @@ import javax.swing.SwingConstants;
 public class VehiclePanel extends javax.swing.JPanel {
 
     
-    private static int vehicleCount = 0;
+    private static int maxTextfieldLength = 20;
     private String imageName;
     private URL url;
     private Image finalImage;
@@ -45,7 +45,7 @@ public class VehiclePanel extends javax.swing.JPanel {
         doMainMenuFont();
         setTransparent();
         
-        ++vehicleCount;
+        
         //loadImage();
         deleteButton.setMargin(new Insets(0, 0, 0, 0));
         deleteButton.setBorder(null);
