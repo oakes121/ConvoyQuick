@@ -36,13 +36,14 @@ public class VehiclePanel extends javax.swing.JPanel {
     private String imageName;
     private URL url;
     private Image finalImage;
+    /*
     private AddVehiclePopUp addVehicleObj; 
     public boolean medic = addVehicleObj.medic;
     private boolean cc = addVehicleObj.cc;
     private boolean acc = addVehicleObj.acc;
     private Image img; 
     private ImageIcon imgIcon;
-
+*/
     /**
      * Creates new form VehiclePanel
      */
@@ -51,15 +52,17 @@ public class VehiclePanel extends javax.swing.JPanel {
         initComponents();
         doMainMenuFont();
         setTransparent();
-        
-        
-        //loadImage();
-        deleteButton.setMargin(new Insets(0, 0, 0, 0));
-        deleteButton.setBorder(null);
-         img.getClass().getResource("/convoy/resources/icons/steeringWheel.png");
+        /*
+           img.getClass().getResource("/convoy/resources/icons/steeringWheel.png");
             finalImage =  img.getScaledInstance(268, 209, java.awt.Image.SCALE_SMOOTH);
              ImageIcon icon = new ImageIcon(finalImage);
             driverWheelLabel.setIcon(icon);
+        */
+        //loadImage();
+        deleteButton.setMargin(new Insets(0, 0, 0, 0));
+        deleteButton.setBorder(null);
+        
+      
         revalidate();
         repaint();
     }
