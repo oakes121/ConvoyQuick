@@ -441,7 +441,8 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
             this.setVisible(false);
         }
         
-        isEditMode = true;
+        if (!isCreateMode)
+            isEditMode = true;
         
     }//GEN-LAST:event_addVehicleButtonActionPerformed
 
