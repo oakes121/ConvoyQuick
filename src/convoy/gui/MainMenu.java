@@ -77,9 +77,9 @@ public class MainMenu extends javax.swing.JFrame {
     public void display() {
         frame.setVisible(true);
         frame.setLocationRelativeTo(null);
-        frame.setTitle("Convoy Quick - Convoy documentation creator to help save lives");
-        frame.setExtendedState(MainMenu.MAXIMIZED_BOTH);
-        frame.setResizable(true);
+        //frame.setTitle("Convoy Quick - Convoy documentation creator to help save lives");
+        //frame.setExtendedState(MainMenu.MAXIMIZED_BOTH);
+        //frame.setResizable(true);
     }
 
     /**
@@ -100,7 +100,7 @@ public class MainMenu extends javax.swing.JFrame {
         loadProjectPanel = new javax.swing.JPanel();
         loadProjectLabel = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
         setIconImage(new ImageIcon(getClass().getResource("/convoy/resources/images/humveeIcon.png")).getImage());
         setMinimumSize(new java.awt.Dimension(1459, 829));
@@ -557,10 +557,22 @@ public class MainMenu extends javax.swing.JFrame {
      
      private void copyTemplates() throws IOException{
          
+         //URL url = convoy.gui.MainMenu.class.getProtectionDomain().getClassLoader().getResource("/resources/images/vehicles");
+      //String jarPath = URLDecoder.decode(url.getFile(), "UTF-8");
+      //String parentPath = new File(jarPath).getParentFile().getPath();
+        
+      
          
-         copyFolder(new File(getClass().getResource("/convoy/resources/images/vehicles").getPath()), new File(getProgramPath()));
+          //System.out.print();
+         //JOptionPane.showConfirmDialog(this, parentPath);
+         try{
+         //copyFolder(new File(parentPath.substring(1).replace("%20", " ")), new File(getProgramPath() + "\\vehicleImages"));
+         //copyFolder(new File(getClass().getResource("/convoy/resources/templates").getPath().substring(1).replace("%20", " ")), new File(getProgramPath() + "\\templates"));
          
-         //System.out.print(getClass().getResource("/convoy/resources/images/2id.png").getFile());
+         //System.out.print(getClass().getResource("/convoy/resources/images/vehicles").getPath().substring(1).replace("%20", " "));
+         }catch(Exception ex){
+                     JOptionPane.showConfirmDialog(this, ex);
+         }
          
          
         //try {

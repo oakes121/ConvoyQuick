@@ -29,7 +29,7 @@ public final class MainWindow extends javax.swing.JFrame {
 
     //private static final MainWindow frame = new MainWindow();
     private String missionNumberText; //mission number used to save convoy file
-    private MainMenu mainMenu = MainMenu.getInstance();
+    private SplashScreen mainMenu = SplashScreen.getInstance();
     private ArrayList<VehicleGrid> vehicleGrids = new ArrayList<>();
     private int vehicleGridCount = 0;
     private int currentVehicleGrid = 0;
@@ -312,15 +312,15 @@ public final class MainWindow extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAutoRequestFocus(false);
         setBackground(new java.awt.Color(255, 255, 255));
-        setMaximumSize(new java.awt.Dimension(1450, 800));
         setMinimumSize(new java.awt.Dimension(1400, 800));
-        setPreferredSize(new java.awt.Dimension(1450, 800));
         getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.LINE_AXIS));
 
         picturePanel2.setBackground(new java.awt.Color(194, 178, 128));
 
         missionNumberPanel.setBackground(new java.awt.Color(194, 178, 128));
         missionNumberPanel.setLayout(new javax.swing.BoxLayout(missionNumberPanel, javax.swing.BoxLayout.LINE_AXIS));
+
+        leftMissionInfoPanel1.setPreferredSize(new java.awt.Dimension(650, 308));
         missionNumberPanel.add(leftMissionInfoPanel1);
         missionNumberPanel.add(rightMissionInfoPanel2);
 
@@ -387,7 +387,7 @@ public final class MainWindow extends javax.swing.JFrame {
                             .addGroup(picturePanel2Layout.createSequentialGroup()
                                 .addGap(119, 119, 119)
                                 .addComponent(leftArrow, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 112, Short.MAX_VALUE)))
                 .addComponent(additionalInfoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
