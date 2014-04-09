@@ -78,6 +78,8 @@ public class SplashScreen extends JWindow{
     }
     
     public SplashScreen(){
+        
+        initComponents();
         createSaveDirectory();
         createImageDirectory();
         createHtmlDirectory();
@@ -88,7 +90,7 @@ public class SplashScreen extends JWindow{
         } catch (IOException ex) {
             Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
         }
-        initComponents();
+        
     }
     
     public static void main(String args[]){
@@ -96,14 +98,13 @@ public class SplashScreen extends JWindow{
         SplashScreen ssb = new SplashScreen();             
         ssb.showSplash();
             try {
-                Thread.sleep(1000);
+                Thread.sleep(100);
             } catch (InterruptedException ex) {
                 Logger.getLogger(SplashScreen.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         finally{
-        mainWindow = new MainWindow();
-        
+        mainWindow = new MainWindow();        
         mainWindow.setVisible(true);
                 
     }  
@@ -159,7 +160,7 @@ public class SplashScreen extends JWindow{
 
     // Set the window's bounds, centering the window
     int width = 1000;
-    int height = 750;
+    int height = 800;
     Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
     int x = (screen.width - width) / 2;
     int y = (screen.height - height) / 2;
@@ -348,7 +349,7 @@ public class SplashScreen extends JWindow{
           //System.out.print();
          //JOptionPane.showConfirmDialog(this, parentPath);
          try{
-         //copyFolder(getClass().getResource("/convoy/resources/templates").getPath().substring(1).replace("%20", " ")), new File(getProgramPath() + "\\vehicleImages"));
+         copyFolder(new File(getClass().getResource("/convoy/resources/images/vehicles").getPath().substring(1).replace("%20", " ")), new File(getProgramPath() + "\\vehicleImages"));
          copyFolder(new File(getClass().getResource("/convoy/resources/templates").getPath().substring(1).replace("%20", " ")), new File(getProgramPath() + "\\templates"));
          
          //System.out.print(getClass().getResource("/convoy/resources/images/vehicles").getPath().substring(1).replace("%20", " "));

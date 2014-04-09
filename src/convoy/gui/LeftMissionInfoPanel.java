@@ -348,9 +348,9 @@ public class LeftMissionInfoPanel extends javax.swing.JPanel {
                             .addComponent(toTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(toLabel)))
                     .addComponent(imageLabel))
-                .addGap(18, 18, 18)
+                .addGap(26, 26, 26)
                 .addComponent(additionalTextPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(5, 5, 5))
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
