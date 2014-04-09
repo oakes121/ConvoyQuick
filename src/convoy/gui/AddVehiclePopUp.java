@@ -507,52 +507,19 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
-        if (jComboBox1.getSelectedIndex() == 1){
-            medic = true;
-        }
-        else if (jComboBox1.getSelectedIndex() == 2){
-            cc = true;
-        }
-        else if (jComboBox1.getSelectedIndex() == 3){
-            acc = true;
-        }
-        else if (jComboBox1.getSelectedIndex() == 0){
-             JOptionPane.showMessageDialog(null, "Please select passenger type.", "Alert Message", JOptionPane.WARNING_MESSAGE);
-        }
+      
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
         // TODO add your handling code here:
         
-         if (jComboBox1.getSelectedIndex() == 1){
-            medic = true;
-        }
-        else if (jComboBox1.getSelectedIndex() == 2){
-            cc = true;
-        }
-        else if (jComboBox1.getSelectedIndex() == 3){
-            acc = true;
-        }
-        else if (jComboBox1.getSelectedIndex() == 0){
-             JOptionPane.showMessageDialog(null, "Please select passenger type.", "Alert Message", JOptionPane.WARNING_MESSAGE);
-        }
+        
     }//GEN-LAST:event_jComboBox2ActionPerformed
 
     private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
         // TODO add your handling code here:
         
-         if (jComboBox1.getSelectedIndex() == 1){
-            medic = true;
-        }
-        else if (jComboBox1.getSelectedIndex() == 2){
-            cc = true;
-        }
-        else if (jComboBox1.getSelectedIndex() == 3){
-            acc = true;
-        }
-        else if (jComboBox1.getSelectedIndex() == 0){
-             JOptionPane.showMessageDialog(null, "Please select passenger type.", "Alert Message", JOptionPane.WARNING_MESSAGE);
-        }
+       
     }//GEN-LAST:event_jComboBox3ActionPerformed
 
     public void setEditVehicleCounter(int counter) {
