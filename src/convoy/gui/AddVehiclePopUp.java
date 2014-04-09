@@ -37,6 +37,7 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
     private String numberOfSeats;
     private URL imageUrl;
     private Image img;
+    private Image driverImageIcon;
     private Image finalImage;
     private URL url;
     private boolean isCreateMode = true;
@@ -584,8 +585,36 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
         vp.setCallSign(vehicleInfo2Field.getText());
         vp.setAdditionalInfo(vehicleInfo3Field.getText());
         vp.setImage(img);
+        
+         // These conditional statements are used if any of the combo box selects medic as their passenger type
+        if (jComboBox1.getSelectedIndex() == 3){
+            vp.setPassenger1Layout();
+        }
+        else if (jComboBox2.getSelectedIndex() == 3){
+            vp.setPassenger2Layout();
+        }
+        else if (jComboBox3.getSelectedIndex() == 3){
+            vp.setPassenger3Layout();
+        }
+      // End of medic conditional statements
+        
     }
 
+    
+    // This method gets the driver Icon from the resources folder
+    public void getDriverIcon(){
+       
+        try { 
+             URL url = getClass().getResource("convoy/resources/icons/medic.png");
+            img = ImageIO.read(url);
+            driverImageIcon = img.getScaledInstance(50, 50, java.awt.Image.SCALE_SMOOTH);
+            
+        } catch (IOException ex) {
+            Logger.getLogger(AddVehiclePopUp.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    
     
     public void modifyPopUp() {
 
