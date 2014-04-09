@@ -37,11 +37,11 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="ccLabel" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="ccTextField" min="-2" pref="250" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                              <Component id="ccTextField" min="-2" pref="300" max="-2" attributes="0"/>
+                              <EmptySpace pref="21" max="32767" attributes="0"/>
                               <Component id="accLabel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="accTextField" max="32767" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="accTextField" min="-2" pref="300" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
                               <Component id="stagingAreaLabel" min="-2" max="-2" attributes="0"/>
@@ -87,7 +87,7 @@
                   </Group>
               </Group>
           </Group>
-          <Component id="metaphaseEditor2" pref="712" max="32767" attributes="0"/>
+          <Component id="metaphaseEditor2" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -123,7 +123,7 @@
               <Component id="freqPanel" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="metaphaseEditor2" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

@@ -42,6 +42,14 @@ public final class MainWindow extends javax.swing.JFrame {
      */
     public MainWindow() {
         initComponents();
+        
+        this.setLocationRelativeTo(null); 
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // added 
+        this.setTitle("Convoy Quick - Convoy documentation creator to help save lives");
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        this.setIconImage(new ImageIcon(getClass().getResource("/convoy/resources/images/humveeIcon.png")).getImage());
+        
+        
         vehicleGrids.add(vehicleGrid1);
 
         vehicleGrid1.setMainWindow(this);
@@ -100,6 +108,13 @@ public final class MainWindow extends javax.swing.JFrame {
             String additionalText,
             String unitPatch) {
         initComponents();
+        
+        this.setLocationRelativeTo(null); 
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // added 
+        this.setTitle("Convoy Quick - Convoy documentation creator to help save lives");
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        this.setIconImage(new ImageIcon(getClass().getResource("/convoy/resources/images/humveeIcon.png")).getImage());
+               
         vehicleGrids.add(vehicleGrid1);
 
         missionNumberPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));

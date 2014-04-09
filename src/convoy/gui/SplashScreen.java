@@ -96,11 +96,7 @@ public class SplashScreen extends JWindow{
         }
         finally{
         mainWindow = new MainWindow();
-        mainWindow.setLocationRelativeTo(null); 
-        mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // added 
-        mainWindow.setTitle("Convoy Quick - Convoy documentation creator to help save lives");
-        mainWindow.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        //mainWindow.setIconImage(new ImageIcon(getClass().getResource("/convoy/resources/images/humveeIcon.png")).getImage());
+        
         mainWindow.setVisible(true);
                 
     }  
