@@ -581,10 +581,10 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
         if (jComboBox1.getSelectedIndex() == 3){
             vp.setPassenger1Layout();
         }
-        else if (jComboBox2.getSelectedIndex() == 3){
+         if (jComboBox2.getSelectedIndex() == 3){
             vp.setPassenger2Layout();
         }
-        else if (jComboBox3.getSelectedIndex() == 3){
+         if (jComboBox3.getSelectedIndex() == 3){
             vp.setPassenger3Layout();
         }
       // End of medic conditional statements
