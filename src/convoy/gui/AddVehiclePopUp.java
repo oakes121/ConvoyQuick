@@ -5,13 +5,16 @@
  */
 package convoy.gui;
 
+import static convoy.gui.MainWindow.getProgramPath;
 import java.awt.Cursor;
 import java.awt.FileDialog;
 import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.file.Files;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
@@ -482,7 +485,26 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
     private void personnel3FieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_personnel3FieldActionPerformed
         //personnel3Field.setText(vehicleName);
     }//GEN-LAST:event_personnel3FieldActionPerformed
+    
+    private String getPath(){ 
+    String path = null;
+        try {
+            path = getProgramPath();
+        } catch (UnsupportedEncodingException ex) {
+            //Logger.getLogger(Save.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
+         String fileSeparator = System.getProperty("file.separator");
+         String newDir = path + fileSeparator + "images" + fileSeparator;
+         return newDir;
+   }
+    
+    private static void copyFile(File source, File dest)throws IOException {
+        
+        Files.copy(source.toPath(), dest.toPath());
+         
+    }
+    
     private void imageLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imageLabelMouseClicked
         // TODO add your handling code here:
         try {
@@ -493,6 +515,8 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
             
             File file = new File(loadFile.getFile());
             url = new URL("file:\\" + loadFile.getDirectory() + file);
+            
+            copyFile(new File(loadFile.getDirectory() + file), new File(getPath() + file));
              img = ImageIO.read(url);
             finalImage =  img.getScaledInstance(268, 209, java.awt.Image.SCALE_SMOOTH);
              ImageIcon icon = new ImageIcon(finalImage);

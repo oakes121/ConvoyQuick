@@ -43,12 +43,13 @@ import javax.swing.SwingConstants;
  */
 public class SplashScreen extends JWindow{
     
-    private static  SplashScreen frame = SplashScreen.getInstance();
+    //private static  SplashScreen frame = SplashScreen.getInstance();
+    private static SplashScreen ssb = new SplashScreen();  
     private static MainWindow mainWindow;
     //protected static Mission mission;
     
     
-    
+    /*
     public static SplashScreen getInstance() {
         // if uniqueInstance is null, instantiate it to new Mission()
         //if (frame == null) {
@@ -57,6 +58,7 @@ public class SplashScreen extends JWindow{
         
         return frame;
     }    
+    */
     
     public MainWindow getMainWindow() {
         return mainWindow;
@@ -70,8 +72,8 @@ public class SplashScreen extends JWindow{
      * displays and set the attribute and properties of the main menu frame
      */
     public void display() {
-        frame.setVisible(true);
-        frame.setLocationRelativeTo(null);
+        //frame.setVisible(true);
+        //frame.setLocationRelativeTo(null);
         //frame.setTitle("Convoy Quick - Convoy documentation creator to help save lives");
         //frame.setExtendedState(MainMenu.MAXIMIZED_BOTH);
         //frame.setResizable(true);
@@ -85,17 +87,13 @@ public class SplashScreen extends JWindow{
         createHtmlDirectory();
         createTemplatesDirectory();
         createVehicleImageDirectory();
-        try {
-            copyTemplates();
-        } catch (IOException ex) {
-            Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        
         
     }
     
     public static void main(String args[]){
         try{
-        SplashScreen ssb = new SplashScreen();             
+                   
         ssb.showSplash();
             try {
                 Thread.sleep(100);
@@ -106,6 +104,8 @@ public class SplashScreen extends JWindow{
         finally{
         mainWindow = new MainWindow();        
         mainWindow.setVisible(true);
+        
+        ssb.dispose();
                 
     }  
     }

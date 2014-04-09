@@ -30,7 +30,7 @@ public final class MainWindow extends javax.swing.JFrame {
 
     //private static final MainWindow frame = new MainWindow();
     private String missionNumberText; //mission number used to save convoy file
-    private SplashScreen mainMenu = SplashScreen.getInstance();
+    private SplashScreen mainMenu = new SplashScreen();
     private ArrayList<VehicleGrid> vehicleGrids = new ArrayList<>();
     private int vehicleGridCount = 0;
     private int currentVehicleGrid = 0;
