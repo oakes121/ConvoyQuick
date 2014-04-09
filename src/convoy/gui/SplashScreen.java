@@ -26,8 +26,6 @@ import java.io.UnsupportedEncodingException;
 import java.net.URL;
 import java.net.URLDecoder;
 import java.nio.file.Files;
-import java.util.Timer;
-import java.util.TimerTask;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.BorderFactory;
@@ -80,7 +78,16 @@ public class SplashScreen extends JWindow{
     }
     
     public SplashScreen(){
-        
+        createSaveDirectory();
+        createImageDirectory();
+        createHtmlDirectory();
+        createTemplatesDirectory();
+        createVehicleImageDirectory();
+        try {
+            copyTemplates();
+        } catch (IOException ex) {
+            Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
+        }
         initComponents();
     }
     
@@ -341,8 +348,8 @@ public class SplashScreen extends JWindow{
           //System.out.print();
          //JOptionPane.showConfirmDialog(this, parentPath);
          try{
-         //copyFolder(new File(parentPath.substring(1).replace("%20", " ")), new File(getProgramPath() + "\\vehicleImages"));
-         //copyFolder(new File(getClass().getResource("/convoy/resources/templates").getPath().substring(1).replace("%20", " ")), new File(getProgramPath() + "\\templates"));
+         //copyFolder(getClass().getResource("/convoy/resources/templates").getPath().substring(1).replace("%20", " ")), new File(getProgramPath() + "\\vehicleImages"));
+         copyFolder(new File(getClass().getResource("/convoy/resources/templates").getPath().substring(1).replace("%20", " ")), new File(getProgramPath() + "\\templates"));
          
          //System.out.print(getClass().getResource("/convoy/resources/images/vehicles").getPath().substring(1).replace("%20", " "));
          }catch(Exception ex){
