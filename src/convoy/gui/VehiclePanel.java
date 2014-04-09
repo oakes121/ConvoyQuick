@@ -489,15 +489,15 @@ public class VehiclePanel extends javax.swing.JPanel {
     
     void setPassenger1Layout() {
         passenger1Label.setForeground(Color.red);
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    //    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 void setPassenger2Layout() {
         passenger2Label.setForeground(Color.red);
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+      //  throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 void setPassenger3Layout() {
         passenger3Label.setForeground(Color.red);
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     
