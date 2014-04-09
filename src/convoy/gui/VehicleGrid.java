@@ -306,7 +306,9 @@ public class VehicleGrid extends javax.swing.JPanel implements ActionListener, K
             
             Collections.swap(vehiclePanelClickedFlags, pos1, pos2);
             Collections.swap(vehiclePanelArray, pos1, pos2);
-            Collections.swap(panelHolder, pos1, pos2);        
+            Collections.swap(panelHolder, pos1, pos2);    
+            Collections.swap(addVehiclePopUpArray, pos1, pos2);
+            
             removeAll();
             reDraw();
             
