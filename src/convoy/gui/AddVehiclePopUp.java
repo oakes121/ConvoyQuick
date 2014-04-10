@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLDecoder;
 import java.nio.file.Files;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -486,17 +487,11 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
         //personnel3Field.setText(vehicleName);
     }//GEN-LAST:event_personnel3FieldActionPerformed
     
-    private String getPath(){ 
-    String path = null;
-        try {
-            path = getProgramPath();
-        } catch (UnsupportedEncodingException ex) {
-            //Logger.getLogger(Save.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-         String fileSeparator = System.getProperty("file.separator");
-         String newDir = path + fileSeparator + "images" + fileSeparator;
-         return newDir;
+    public static String getProgramPath() throws UnsupportedEncodingException {
+      URL url = convoy.gui.MainMenu.class.getProtectionDomain().getCodeSource().getLocation();
+      String jarPath = URLDecoder.decode(url.getFile(), "UTF-8");
+      String parentPath = new File(jarPath).getParentFile().getPath();
+      return parentPath;
    }
     
     private static void copyFile(File source, File dest)throws IOException {
@@ -512,20 +507,22 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
             loadFile = new FileDialog(this, "Choose an Image", FileDialog.LOAD);
             loadFile.setFile("*.jpg;*.jpeg;*.png;*.gif");
             loadFile.setVisible(true);
-            
+            loadFile.setDirectory(getProgramPath() + "\\conx\\images\\vehicles\\");
             File file = new File(loadFile.getFile());
             url = new URL("file:\\" + loadFile.getDirectory() + file);
             
-            copyFile(new File(loadFile.getDirectory() + file), new File(getPath() + file));
+            copyFile(new File(loadFile.getDirectory() + file), new File(getProgramPath() + "\\conx\\images\\vehicles\\" + file));
+            
              img = ImageIO.read(url);
             finalImage =  img.getScaledInstance(268, 209, java.awt.Image.SCALE_SMOOTH);
              ImageIcon icon = new ImageIcon(finalImage);
             imageLabel.setIcon(icon);
+            //jLabel1.setIcon(icon);
             revalidate();
             repaint();
             
-        } catch (Exception ex) {
-            //ex.printStackTrace();
+        } catch (IOException ex) {
+            ex.printStackTrace();
         }   
     }//GEN-LAST:event_imageLabelMouseClicked
 

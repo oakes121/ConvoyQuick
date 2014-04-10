@@ -656,18 +656,6 @@ public final class MainWindow extends javax.swing.JFrame {
       String parentPath = new File(jarPath).getParentFile().getPath();
       return parentPath;
    }
-    private String getPath(){ 
-    String path = null;
-        try {
-            path = getProgramPath();
-        } catch (UnsupportedEncodingException ex) {
-            //Logger.getLogger(Save.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-         String fileSeparator = System.getProperty("file.separator");
-         String newDir = path + fileSeparator + "images" + fileSeparator;
-         return newDir;
-   }
     
     /**
      * <p>
@@ -682,6 +670,7 @@ public final class MainWindow extends javax.swing.JFrame {
         try {
             FileDialog loadFile;
             loadFile = new FileDialog(this, "Choose an Image", FileDialog.LOAD);
+            loadFile.setDirectory(getProgramPath() + "\\conx\\images\\unit patches\\");
             loadFile.setFile("*.jpg;*.jpeg;*.png;*.gif");
             loadFile.setVisible(true);
 
@@ -693,16 +682,16 @@ public final class MainWindow extends javax.swing.JFrame {
                 try {
                     url = new URL("file:\\" + loadFile.getDirectory() + file);
                     
-                    copyFile(new File(loadFile.getDirectory() + file), new File(getPath() + file));
+                    copyFile(new File(loadFile.getDirectory() + file), new File(getProgramPath() + "\\conx\\images\\unit patches\\" + file));
                     
-                    this.leftMissionInfoPanel1.setImagePath(getPath() + file);
+                    this.leftMissionInfoPanel1.setImagePath(getProgramPath() + "\\conx\\images\\unit patches\\" + file);
                 } catch (MalformedURLException ex) {
                     //Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 Image img = null;
                 try {
                     if (url != null) {
-                        img = ImageIO.read(new File(getPath() + file));
+                        img = ImageIO.read(new File(getProgramPath() + "\\conx\\images\\unit patches\\" + file));
                     } else {
                     }
                 } catch (IOException ex) {
@@ -876,7 +865,7 @@ public final class MainWindow extends javax.swing.JFrame {
     private void templatesMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_templatesMenuItemActionPerformed
         // TODO add your handling code here:
         try {
-            Desktop.getDesktop().open(new File(getProgramPath() + "\\templates"));
+            Desktop.getDesktop().open(new File(getProgramPath() + "\\conx\\templates"));
         } catch (IOException e) {
             //e.printStackTrace();
         }

@@ -106,12 +106,10 @@
                       <Component id="bumperNumberLabel" alignment="0" max="32767" attributes="0"/>
                       <Component id="picturePanel" alignment="0" max="32767" attributes="0"/>
                       <Component id="additionalInfoField" alignment="0" max="32767" attributes="0"/>
-                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="passenger3Label" alignment="0" pref="71" max="32767" attributes="0"/>
-                          <Component id="passenger2Label" alignment="0" max="32767" attributes="0"/>
-                          <Component id="passenger1Label" alignment="0" max="32767" attributes="0"/>
-                          <Component id="driverLabel" alignment="0" max="32767" attributes="0"/>
-                      </Group>
+                      <Component id="passenger3Label" alignment="0" max="32767" attributes="0"/>
+                      <Component id="passenger2Label" alignment="0" max="32767" attributes="0"/>
+                      <Component id="passenger1Label" alignment="0" max="32767" attributes="0"/>
+                      <Component id="driverLabel" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
