@@ -498,6 +498,10 @@ void setPassenger3Layout() {
         passenger3Label.setForeground(Color.red);
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    public String getCallSign() {
+        return callSignLabel.getText();
+    }
     
     
     

@@ -1,11 +1,11 @@
 package convoy.pdf;
 
-import java.io.*;
-import java.util.ArrayList;
-
+import convoy.gui.VehicleGrid;
 import convoy.objects.Radio;
+import java.io.*;
 import java.net.URL;
 import java.net.URLDecoder;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -50,6 +50,7 @@ public class GenerateHtml {
      * @param freqs
      * @param rightAdditionalText
      * @param additionalText
+     * @param vehicleGrid
      */
     public void generateHtml(String watermark,
             String classification,
@@ -68,7 +69,8 @@ public class GenerateHtml {
             String toSP,
             ArrayList<Radio> freqs,
             String rightAdditionalText,
-            String additionalText) {
+            String additionalText,
+            VehicleGrid vehicleGrid) {
 
         String radio = "";
 
@@ -212,10 +214,12 @@ public class GenerateHtml {
         }
 
         try {
-            JOptionPane.showMessageDialog(null, getPath());
             File f = null;
             try{
-                 f = new File(getPath() + "convoy.html");
+                 f = new File(getProgramPath() + "\\conx\\html\\convoy.html");
+                 
+                 System.out.print(f);
+                 
             }catch(Exception ex){
                 
             }finally{
@@ -380,23 +384,23 @@ public class GenerateHtml {
                         + "                            <td class=\"vehicle\">"
                         + "                                     <table>\n"
                         + "                                            <tr>\n"
-                        + "                                                <td class=\"driver\">DRIVER</td>\n"
+                        + "                                                <td class=\"driver\">" + vehicleGrid.getVehiclePanelArray().get(0).getDriverName() + "</td>\n"
                         + "                                            </tr>\n"
                         + "\n"
                         + "                                            <tr>\n"
-                        + "                                                <td>PASSENGER</td>\n"
+                        + "                                                <td>" + vehicleGrid.getVehiclePanelArray().get(0).getPassenger1() + "</td>\n"
                         + "                                            </tr>\n"
                         + "\n"
                         + "                                            <tr>\n"
-                        + "                                                <td>PASSENGER</td>\n"
+                        + "                                                <td>" + vehicleGrid.getVehiclePanelArray().get(0).getPassenger2() + "</td>\n"
                         + "                                            </tr>\n"
                         + "\n"
                         + "                                            <tr>\n"
-                        + "                                                <td>PASSENGER</td>\n"
+                        + "                                                <td>" + vehicleGrid.getVehiclePanelArray().get(0).getPassenger3() + "</td>\n"
                         + "                                            </tr>\n"
                         + "\n"
                         + "                                            <tr>\n"
-                        + "                                                <td><img src=\"" + "file:\\" + getClass().getResource("/convoy/resources/images/vehicles/defaultHumvee.png").getPath().substring(1).replace("/", "\\") + "\" alt=\"vehicle\" /></td>\n"
+                        + "                                                <td><img src=\"" + "file:\\" + vehicleGrid.getVehiclePanelArray().get(0).getImageIcon() + "\" alt=\"vehicle\" /></td>\n"
                         + "                                            </tr>\n"
                         + "\n"
                         + "                                            <tr>\n"
@@ -404,11 +408,11 @@ public class GenerateHtml {
                         + "                                            </tr>\n"
                         + "\n"
                         + "                                            <tr>\n"
-                        + "                                                <td>HHC1</td>\n"
+                        + "                                                <td>" + vehicleGrid.getVehiclePanelArray().get(0).getBumperNumber() + "</td>\n"
                         + "                                            </tr>\n"
                         + "\n"
                         + "                                            <tr>\n"
-                        + "                                                <td>FIREWIRE 6</td>\n"
+                        + "                                                <td>" + vehicleGrid.getVehiclePanelArray().get(0).getCallSign() + "</td>\n"
                         + "                                            </tr>\n"
                         + "\n"
                         + "                                            <tr>\n"
@@ -419,23 +423,23 @@ public class GenerateHtml {
                         + "                            <td class=\"vehicle\">"
                         + "                                     <table>\n"
                         + "                                            <tr>\n"
-                        + "                                                <td class=\"driver\">DRIVER</td>\n"
+                        + "                                                <td class=\"driver\">" + vehicleGrid.getVehiclePanelArray().get(1).getDriverName() + "</td>\n"
                         + "                                            </tr>\n"
                         + "\n"
                         + "                                            <tr>\n"
-                        + "                                                <td>PASSENGER</td>\n"
+                        + "                                                <td>" + vehicleGrid.getVehiclePanelArray().get(1).getPassenger1() + "</td>\n"
                         + "                                            </tr>\n"
                         + "\n"
                         + "                                            <tr>\n"
-                        + "                                                <td>PASSENGER</td>\n"
+                        + "                                                <td>" + vehicleGrid.getVehiclePanelArray().get(1).getPassenger2() + "</td>\n"
                         + "                                            </tr>\n"
                         + "\n"
                         + "                                            <tr>\n"
-                        + "                                                <td>PASSENGER</td>\n"
+                        + "                                                <td>" + vehicleGrid.getVehiclePanelArray().get(1).getPassenger3() + "</td>\n"
                         + "                                            </tr>\n"
                         + "\n"
                         + "                                            <tr>\n"
-                        + "                                                <td><img src=\"" + "file:\\" + getClass().getResource("/convoy/resources/images/vehicles/highBack.png").getPath().substring(1).replace("/", "\\") + "\" alt=\"vehicle\" /></td>\n"
+                        + "                                                <td><img src=\"" + "file:\\" + vehicleGrid.getVehiclePanelArray().get(1).getImageIcon() + "\" alt=\"vehicle\" /></td>\n"
                         + "                                            </tr>\n"
                         + "\n"
                         + "                                            <tr>\n"
@@ -443,11 +447,11 @@ public class GenerateHtml {
                         + "                                            </tr>\n"
                         + "\n"
                         + "                                            <tr>\n"
-                        + "                                                <td>HHC 2</td>\n"
+                        + "                                                <td>" + vehicleGrid.getVehiclePanelArray().get(1).getBumperNumber() + "</td>\n"
                         + "                                            </tr>\n"
                         + "\n"
                         + "                                            <tr>\n"
-                        + "                                                <td>FIREWIRE 5</td>\n"
+                        + "                                                <td>" + vehicleGrid.getVehiclePanelArray().get(1).getCallSign() + "</td>\n"
                         + "                                            </tr>\n"
                         + "\n"
                         + "                                            <tr>\n"
@@ -1033,17 +1037,5 @@ public class GenerateHtml {
       String jarPath = URLDecoder.decode(url.getFile(), "UTF-8");
       String parentPath = new File(jarPath).getParentFile().getPath();
       return parentPath;
-   }
-    private String getPath(){ 
-    String path = null;
-        try {
-            path = getProgramPath();
-        } catch (UnsupportedEncodingException ex) {
-            //Logger.getLogger(Save.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-         String fileSeparator = System.getProperty("file.separator");
-         String newDir = path + fileSeparator + "html" + fileSeparator;
-         return newDir;
    }
 }

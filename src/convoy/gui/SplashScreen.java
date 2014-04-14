@@ -324,12 +324,12 @@ public class SplashScreen extends JWindow {
           //System.out.print();
         //JOptionPane.showConfirmDialog(this, parentPath);
         try {
-            copyFolder(new File(getClass().getResource("/convoy/resources/images/vehicles").getPath().substring(1).replace("%20", " ")), new File(getProgramPath() + "\\vehicleImages"));
-            copyFolder(new File(getClass().getResource("/convoy/resources/templates").getPath().substring(1).replace("%20", " ")), new File(getProgramPath() + "\\templates"));
+            //copyFolder(new File(getClass().getResource("/convoy/resources/images/vehicles").getPath().substring(1).replace("%20", " ")), new File(getProgramPath() + "\\vehicleImages"));
+            //copyFolder(new File(getClass().getResource("/convoy/resources/templates").getPath().substring(1).replace("%20", " ")), new File(getProgramPath() + "\\templates"));
 
             //System.out.print(getClass().getResource("/convoy/resources/images/vehicles").getPath().substring(1).replace("%20", " "));
         } catch (Exception ex) {
-            JOptionPane.showConfirmDialog(this, ex);
+            //JOptionPane.showConfirmDialog(this, ex);
         }
 
         //try {

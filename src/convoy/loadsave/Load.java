@@ -39,7 +39,7 @@ public class Load {
     /**
      * loadProject() loads a file that with the file extension ".conx"
      */
-    public void loadProject() {
+    public void loadProject() throws UnsupportedEncodingException {
 
         String classification = null;
         String stagingArea = null;
@@ -58,7 +58,7 @@ public class Load {
         String additionalText = null;
         String unitPatch = null;
 
-        JFileChooser chooser = new JFileChooser(getPath());
+        JFileChooser chooser = new JFileChooser(getProgramPath() + "\\conx\\saves\\");
         chooser.setAcceptAllFileFilterUsed(false);
         chooser.addChoosableFileFilter((new FileNameExtensionFilter("Convoy Quick Files", "conx")));
         chooser.setSelectedFile(new File("*.conx"));
@@ -76,9 +76,11 @@ public class Load {
                 while ((line = br.readLine()) != null) {
                     // use comma as separator
                     String[] missionText = line.split(cvsSplitBy);
-
+                    
                     missionNumber = missionText[0];
+                    if(classification != null){
                     classification = missionText[1];
+                    }else{classification = " ";}
                     stagingArea = missionText[2];
                     acc = missionText[3];
                     cc = missionText[4];
@@ -148,7 +150,7 @@ public class Load {
         ArrayList<ArrayList<Vehicle>> vehicleGridsVehicles = new ArrayList<>();
 
         try {
-            FileInputStream fileIn = new FileInputStream(getPath() + missionNumber + "_vehicles.conx");
+            FileInputStream fileIn = new FileInputStream(getProgramPath() + "\\conx\\saves\\" + missionNumber + "_vehicles.conx");
             ObjectInputStream in = new ObjectInputStream(fileIn);
             vehicleGridsVehicles = (ArrayList<ArrayList<Vehicle>>) in.readObject();
             in.close();
@@ -185,18 +187,6 @@ public class Load {
         String parentPath = new File(jarPath).getParentFile().getPath();
         return parentPath;
     }
-
-    private String getPath() {
-        String path = null;
-        try {
-            path = getProgramPath();
-        } catch (UnsupportedEncodingException ex) {
-            //Logger.getLogger(Save.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        String fileSeparator = System.getProperty("file.separator");
-        String newDir = path + fileSeparator + "convoys" + fileSeparator;
-        return newDir;
-    }
+    
 
 }

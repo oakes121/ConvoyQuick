@@ -1,5 +1,6 @@
 package convoy.gui;
 
+import static convoy.gui.MainWindow.getProgramPath;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
@@ -395,31 +396,25 @@ public class LeftMissionInfoPanel extends javax.swing.JPanel {
         try {
             FileDialog loadFile = null;
             loadFile = new FileDialog(loadFile, "Choose an Image", FileDialog.LOAD);
+            loadFile.setDirectory(getProgramPath() + "\\conx\\images\\unit patches\\");
             loadFile.setFile("*.jpg;*.jpeg;*.png;*.gif");
             loadFile.setVisible(true);
 
             if (loadFile.getFile() != null) {
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                 File file = new File(loadFile.getFile());
-
+                loadFile.setDirectory(getProgramPath() + "\\conx\\images\\unit patches\\");
                 URL url = null;
-                try {
-                    url = new URL("file:\\" + loadFile.getDirectory() + file);
+                url = new URL("file:\\" + loadFile.getDirectory() + file);
 
-                    copyFile(new File(loadFile.getDirectory() + file), new File(getPath() + file));
+                copyFile(new File(loadFile.getDirectory() + file), new File(getProgramPath() + "\\conx\\images\\unit patches\\" + file));
 
-                    this.setImagePath(getPath() + file);
-                } catch (MalformedURLException ex) {
-                    //Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                this.setImagePath(getProgramPath() + "\\conx\\images\\unit patches\\" + file);
+
                 Image img = null;
-                try {
-                    if (url != null) {
-                        img = ImageIO.read(new File(getPath() + file));
-                    } else {
-                    }
-                } catch (IOException ex) {
-                    //Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
+                if (url != null) {
+                    img = ImageIO.read(new File(getProgramPath() + "\\conx\\images\\unit patches\\" + file));
+                } else {
                 }
 
                 if (img != null) {
@@ -429,7 +424,7 @@ public class LeftMissionInfoPanel extends javax.swing.JPanel {
                 }
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
             }
-        } catch (Exception ex) {
+        } catch (IOException ex) {
             //ex.printStackTrace();
         }
     }//GEN-LAST:event_imageLabelMousePressed

@@ -16,6 +16,8 @@ import convoy.pdf.*;
 import java.net.URLDecoder;
 import java.nio.file.Files;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * @author Mike Moye <mtm5313@psu.edu>
@@ -43,14 +45,13 @@ public final class MainWindow extends javax.swing.JFrame {
      */
     public MainWindow() {
         initComponents();
-        
-        this.setLocationRelativeTo(null); 
+
+        this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // added 
         this.setTitle("Convoy Quick - Convoy documentation creator to help save lives");
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.setIconImage(new ImageIcon(getClass().getResource("/convoy/resources/images/humveeIcon.png")).getImage());
-        
-        
+
         vehicleGrids.add(vehicleGrid1);
 
         vehicleGrid1.setMainWindow(this);
@@ -58,10 +59,10 @@ public final class MainWindow extends javax.swing.JFrame {
         additionalInfoPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
 
         this.leftMissionInfoPanel1.setImagePath(getClass().getResource("/convoy/resources/images/2id.png").getPath().substring(1).replace("/", "\\"));
-        
+
         this.leftMissionInfoPanel1.setAdditionalText("Additional Text Goes Here");
         this.rightMissionInfoPanel2.setAddtionalText("Additional Text Goes Here");
-        
+
         this.rightArrow.setVisible(false);
         this.leftArrow.setVisible(false);
 
@@ -109,13 +110,13 @@ public final class MainWindow extends javax.swing.JFrame {
             String additionalText,
             String unitPatch) {
         initComponents();
-        
-        this.setLocationRelativeTo(null); 
+
+        this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // added 
         this.setTitle("Convoy Quick - Convoy documentation creator to help save lives");
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.setIconImage(new ImageIcon(getClass().getResource("/convoy/resources/images/humveeIcon.png")).getImage());
-               
+
         vehicleGrids.add(vehicleGrid1);
 
         missionNumberPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
@@ -546,10 +547,14 @@ public final class MainWindow extends javax.swing.JFrame {
         int response = JOptionPane.showConfirmDialog(null, "Are you sure you want to load a convoy?\n All unsaved data will be lost.", "Load Convoy?", JOptionPane.YES_NO_OPTION);
 
         if (response == JOptionPane.YES_OPTION) {
-            Load load = new Load();
-            load.loadProject();
-            if (load.getIsLoaded()) {
-                setVisible(false);
+            try {
+                Load load = new Load();
+                load.loadProject();
+                if (load.getIsLoaded()) {
+                    setVisible(false);
+                }
+            } catch (UnsupportedEncodingException ex) {
+                Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
 
@@ -584,6 +589,37 @@ public final class MainWindow extends javax.swing.JFrame {
      * @param evt click file -> finalize menu item
      */
     private void finalizeMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finalizeMenuActionPerformed
+        
+        Mission mission;
+        mission = Mission.getInstance(this.leftMissionInfoPanel1.getMissionNumber(),
+                this.rightMissionInfoPanel2.getStagingArea(),
+                this.leftMissionInfoPanel1.getTo(),
+                //this.rightMissionInfoPanel2.getTo(),
+                this.leftMissionInfoPanel1.getFrom(),
+                //this.rightMissionInfoPanel2.getFrom(),
+                this.rightMissionInfoPanel2.getCC(),
+                this.rightMissionInfoPanel2.getACC(),
+                this.rightMissionInfoPanel2.getFromLU(),
+                this.rightMissionInfoPanel2.getFromSP(),
+                this.rightMissionInfoPanel2.getToLU(),
+                this.rightMissionInfoPanel2.getToSP(),
+                this.leftMissionInfoPanel1.getClassification(),
+                this.leftMissionInfoPanel1.getAdditionalText(),
+                this.rightMissionInfoPanel2.getAdditionalText(),
+                this.additionalTextPanel1.getAdditionalText(),
+                this.leftMissionInfoPanel1.getImagePath()
+        );
+        try {
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            Save sf = new Save(mission);
+            sf.save();
+        } catch (Exception ex) {
+            //ex.printStackTrace();
+        } finally {
+            this.setCursor(Cursor.getDefaultCursor());
+        }
+        
+        
         if (this.vehicleGrids.get(0).getVehicleCount() >= 2) {
             int response = JOptionPane.showConfirmDialog(null, "Are you sure you want to export the convoy?", "Export Convoy?", JOptionPane.YES_NO_OPTION);
             if (response == JOptionPane.YES_OPTION) {
@@ -626,7 +662,8 @@ public final class MainWindow extends javax.swing.JFrame {
                                 this.rightMissionInfoPanel2.getToSP(),
                                 this.rightMissionInfoPanel2.getFreqs(),
                                 this.rightMissionInfoPanel2.getAdditionalText(),
-                                this.additionalTextPanel1.getAdditionalText()
+                                this.additionalTextPanel1.getAdditionalText(),
+                                this.vehicleGrids.get(0)
                         );
 
                         Create cp = new Create(chooser.getSelectedFile().getPath());
@@ -638,25 +675,24 @@ public final class MainWindow extends javax.swing.JFrame {
                     }
                 }
             }
-        }
-        else {
+        } else {
             JOptionPane.showMessageDialog(this, "You need to add at least 2 vehicles in order to finalize the convoy!");
         }
     }//GEN-LAST:event_finalizeMenuActionPerformed
 
-    private static void copyFile(File source, File dest)throws IOException {
-        
+    private static void copyFile(File source, File dest) throws IOException {
+
         Files.copy(source.toPath(), dest.toPath());
-         
+
     }
-    
+
     public static String getProgramPath() throws UnsupportedEncodingException {
-      URL url = convoy.gui.MainMenu.class.getProtectionDomain().getCodeSource().getLocation();
-      String jarPath = URLDecoder.decode(url.getFile(), "UTF-8");
-      String parentPath = new File(jarPath).getParentFile().getPath();
-      return parentPath;
-   }
-    
+        URL url = convoy.gui.MainMenu.class.getProtectionDomain().getCodeSource().getLocation();
+        String jarPath = URLDecoder.decode(url.getFile(), "UTF-8");
+        String parentPath = new File(jarPath).getParentFile().getPath();
+        return parentPath;
+    }
+
     /**
      * <p>
      * Sets the unit patch image for the convoy. User selects an image file from
@@ -677,25 +713,18 @@ public final class MainWindow extends javax.swing.JFrame {
             if (loadFile.getFile() != null) {
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                 File file = new File(loadFile.getFile());
-
+                loadFile.setDirectory(getProgramPath() + "\\conx\\images\\unit patches\\");
                 URL url = null;
-                try {
-                    url = new URL("file:\\" + loadFile.getDirectory() + file);
-                    
-                    copyFile(new File(loadFile.getDirectory() + file), new File(getProgramPath() + "\\conx\\images\\unit patches\\" + file));
-                    
-                    this.leftMissionInfoPanel1.setImagePath(getProgramPath() + "\\conx\\images\\unit patches\\" + file);
-                } catch (MalformedURLException ex) {
-                    //Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                url = new URL("file:\\" + loadFile.getDirectory() + file);
+
+                copyFile(new File(loadFile.getDirectory() + file), new File(getProgramPath() + "\\conx\\images\\unit patches\\" + file));
+
+                this.leftMissionInfoPanel1.setImagePath(getProgramPath() + "\\conx\\images\\unit patches\\" + file);
+
                 Image img = null;
-                try {
-                    if (url != null) {
-                        img = ImageIO.read(new File(getProgramPath() + "\\conx\\images\\unit patches\\" + file));
-                    } else {
-                    }
-                } catch (IOException ex) {
-                    //Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
+                if (url != null) {
+                    img = ImageIO.read(new File(getProgramPath() + "\\conx\\images\\unit patches\\" + file));
+                } else {
                 }
 
                 if (img != null) {
@@ -705,7 +734,7 @@ public final class MainWindow extends javax.swing.JFrame {
                 }
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
             }
-        } catch (Exception ex) {
+        } catch (IOException ex) {
             //ex.printStackTrace();
         }
 
@@ -762,7 +791,9 @@ public final class MainWindow extends javax.swing.JFrame {
                             this.rightMissionInfoPanel2.getToSP(),
                             this.rightMissionInfoPanel2.getFreqs(),
                             this.rightMissionInfoPanel2.getAdditionalText(),
-                            this.additionalTextPanel1.getAdditionalText()
+                            this.additionalTextPanel1.getAdditionalText(),
+                            this.vehicleGrids.get(0)
+                            
                     );
 
                     Create cp = new Create(chooser.getSelectedFile().getPath());
@@ -827,11 +858,11 @@ public final class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_saveMenuItemActionPerformed
 
     private void exitMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuItemActionPerformed
-        
+
         int response = JOptionPane.showConfirmDialog(null, "Are you sure you want to exit?\n All unsaved data will be lost.", "Exit?", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
 
         if (response == JOptionPane.YES_OPTION) {
-        System.exit(0);        
+            System.exit(0);
         }
     }//GEN-LAST:event_exitMenuItemActionPerformed
 
@@ -865,7 +896,7 @@ public final class MainWindow extends javax.swing.JFrame {
     private void templatesMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_templatesMenuItemActionPerformed
         // TODO add your handling code here:
         try {
-            Desktop.getDesktop().open(new File(getProgramPath() + "\\conx\\templates"));
+            Desktop.getDesktop().open(new File(getProgramPath() + "\\conx\\templates\\"));
         } catch (IOException e) {
             //e.printStackTrace();
         }

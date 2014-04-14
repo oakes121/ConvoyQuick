@@ -25,7 +25,7 @@ import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import org.jdesktop.xswingx.PromptSupport;
-        
+
 /**
  *
  * @author Siddharth
@@ -52,7 +52,7 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
     public boolean acc = false;
 
     public AddVehiclePopUp() {
-        
+
         initComponents();
         addHintsToFields();
         newVehiclePanel = new VehiclePanel();
@@ -64,13 +64,13 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
     }
-    
+
     /**
      * initDocumentListeners()limits the all text field input to 20 characters
      */
     public void initDocumentListeners() {
-        personnel1Field.setDocument(new JTextFieldLimit(20));  
-        personnel2Field.setDocument(new JTextFieldLimit(20));  
+        personnel1Field.setDocument(new JTextFieldLimit(20));
+        personnel2Field.setDocument(new JTextFieldLimit(20));
         personnel3Field.setDocument(new JTextFieldLimit(20));
         personnel4Field.setDocument(new JTextFieldLimit(20));
         vehicleInfo1Field.setDocument(new JTextFieldLimit(20));
@@ -410,8 +410,8 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public void addHintsToFields(){
-       // PromptSupport.setPrompt("Search vehicle", vehicleNameField);
+    public void addHintsToFields() {
+        // PromptSupport.setPrompt("Search vehicle", vehicleNameField);
         PromptSupport.setPrompt("Driver Name", personnel1Field);
         PromptSupport.setPrompt("Commander Name", personnel2Field);
         PromptSupport.setPrompt("Passenger Name", personnel3Field);
@@ -419,7 +419,7 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
         PromptSupport.setPrompt("Bumper Number", vehicleInfo1Field);
         PromptSupport.setPrompt("Call Sign", vehicleInfo2Field);
         PromptSupport.setPrompt("Additional Information", vehicleInfo3Field);
-        
+
     }
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
         // TODO add your handling code here:
@@ -433,50 +433,42 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
         //addValuesToVehiclePanel();
         System.out.println("Adding New Vehicle");
        // vehicleGridObj.replaceAddNewVehiclePanel(newVehiclePanel);
-        
+
         if (isCreateMode) {
-            if (url == null){
+            if (url == null) {
                 JOptionPane.showMessageDialog(null, "Please enter required fields", "Alert Message", JOptionPane.WARNING_MESSAGE);
-            }
-            else if ("".equals(personnel1Field.getText())){
+            } else if ("".equals(personnel1Field.getText())) {
                 JOptionPane.showMessageDialog(null, "Please enter required fields", "Alert Message", JOptionPane.WARNING_MESSAGE);
-            }
-            else if ("".equals(personnel2Field.getText())){
+            } else if ("".equals(personnel2Field.getText())) {
                 JOptionPane.showMessageDialog(null, "Please enter required fields", "Alert Message", JOptionPane.WARNING_MESSAGE);
-            }
-            else if ("".equals(vehicleInfo1Field.getText())){
+            } else if ("".equals(vehicleInfo1Field.getText())) {
                 JOptionPane.showMessageDialog(null, "Please enter required fields", "Alert Message", JOptionPane.WARNING_MESSAGE);
-            }
-            else if ("".equals(vehicleInfo2Field.getText())){
+            } else if ("".equals(vehicleInfo2Field.getText())) {
                 JOptionPane.showMessageDialog(null, "Please enter required fields", "Alert Message", JOptionPane.WARNING_MESSAGE);
-            }
-
-
-            else{
+            } else {
 
                 vehicleGridObj.replaceAddNewVehiclePanel(newVehiclePanel);
                 this.setVisible(false);
                 vehicleGridObj.storeAddVehiclePopUp(this);
 
                 isCreateMode = false;
-                
 
                 addVehicleButton.setText("Apply Changes");
 
             }
 
             addValuesToVehiclePanel(newVehiclePanel);
-        }        
-        
-        
+        }
+
         if (isEditMode) {
             addValuesToVehiclePanel(vehicleGridObj.getVehiclePanelArray().get(editVehicleCounter));
             this.setVisible(false);
         }
-        
-        if (!isCreateMode)
+
+        if (!isCreateMode) {
             isEditMode = true;
-        
+        }
+
     }//GEN-LAST:event_addVehicleButtonActionPerformed
 
     private void personnel1FieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_personnel1FieldActionPerformed
@@ -486,67 +478,79 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
     private void personnel3FieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_personnel3FieldActionPerformed
         //personnel3Field.setText(vehicleName);
     }//GEN-LAST:event_personnel3FieldActionPerformed
-    
+
     public static String getProgramPath() throws UnsupportedEncodingException {
-      URL url = convoy.gui.MainMenu.class.getProtectionDomain().getCodeSource().getLocation();
-      String jarPath = URLDecoder.decode(url.getFile(), "UTF-8");
-      String parentPath = new File(jarPath).getParentFile().getPath();
-      return parentPath;
-   }
-    
-    private static void copyFile(File source, File dest)throws IOException {
-        
-        Files.copy(source.toPath(), dest.toPath());
-         
+        URL url = convoy.gui.MainMenu.class.getProtectionDomain().getCodeSource().getLocation();
+        String jarPath = URLDecoder.decode(url.getFile(), "UTF-8");
+        String parentPath = new File(jarPath).getParentFile().getPath();
+        return parentPath;
     }
-    
+
+    private static void copyFile(File source, File dest) throws IOException {
+
+        Files.copy(source.toPath(), dest.toPath());
+
+    }
+
     private void imageLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imageLabelMouseClicked
         // TODO add your handling code here:
         try {
+
             FileDialog loadFile;
             loadFile = new FileDialog(this, "Choose an Image", FileDialog.LOAD);
-            loadFile.setFile("*.jpg;*.jpeg;*.png;*.gif");
-            loadFile.setVisible(true);
+            loadFile.setFile("*.jpg;*.jpeg;*.png;*.gif");            
             loadFile.setDirectory(getProgramPath() + "\\conx\\images\\vehicles\\");
-            File file = new File(loadFile.getFile());
-            url = new URL("file:\\" + loadFile.getDirectory() + file);
+            loadFile.setVisible(true);
+            try{File file = new File(loadFile.getFile());
+            if(file.exists() || file != null) {
+                    url = new URL("file:\\" + loadFile.getDirectory() + file);
+                
+                    copyFile(new File(loadFile.getDirectory() + file), new File(getProgramPath() + "\\conx\\images\\vehicles\\" + file));
+                
+                try {
+                    img = ImageIO.read(url);
+                    finalImage = img.getScaledInstance(268, 209, java.awt.Image.SCALE_SMOOTH);
+                ImageIcon icon = new ImageIcon(finalImage);
+                imageLabel.setIcon(icon);
+                //jLabel1.setIcon(icon);
+                revalidate();
+                repaint();
+                } catch (IOException ex) {
+                    Logger.getLogger(AddVehiclePopUp.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+            } else {
+            }
+            }
+            catch(Exception ex){
+                
+            }
+        }catch(IOException ex){
             
-            copyFile(new File(loadFile.getDirectory() + file), new File(getProgramPath() + "\\conx\\images\\vehicles\\" + file));
-            
-             img = ImageIO.read(url);
-            finalImage =  img.getScaledInstance(268, 209, java.awt.Image.SCALE_SMOOTH);
-             ImageIcon icon = new ImageIcon(finalImage);
-            imageLabel.setIcon(icon);
-            //jLabel1.setIcon(icon);
-            revalidate();
-            repaint();
-            
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }   
+        }
     }//GEN-LAST:event_imageLabelMouseClicked
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
-      
+
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
         // TODO add your handling code here:
-        
-        
+
+
     }//GEN-LAST:event_jComboBox2ActionPerformed
 
     private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
         // TODO add your handling code here:
-        
-       
+
+
     }//GEN-LAST:event_jComboBox3ActionPerformed
 
     public void setEditVehicleCounter(int counter) {
         editVehicleCounter = counter;
     }
-    
+
     public void setObject(VehicleGrid vehicleGrid) {
         vehicleGridObj = vehicleGrid;
     }
@@ -564,7 +568,7 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
     }
 
     public void addValuesToVehiclePanel(VehiclePanel vp) {
-        
+
         vp.setDriverName(personnel1Field.getText());
         vp.setPassenger1(personnel2Field.getText());
         vp.setPassenger2(personnel3Field.getText());
@@ -573,43 +577,40 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
         vp.setCallSign(vehicleInfo2Field.getText());
         vp.setAdditionalInfo(vehicleInfo3Field.getText());
         vp.setImage(img);
-        
-         // These conditional statements are used if any of the combo box selects medic as their passenger type
-        if (jComboBox1.getSelectedIndex() == 3){
+
+        // These conditional statements are used if any of the combo box selects medic as their passenger type
+        if (jComboBox1.getSelectedIndex() == 3) {
             vp.setPassenger1Layout();
         }
-         if (jComboBox2.getSelectedIndex() == 3){
+        if (jComboBox2.getSelectedIndex() == 3) {
             vp.setPassenger2Layout();
         }
-         if (jComboBox3.getSelectedIndex() == 3){
+        if (jComboBox3.getSelectedIndex() == 3) {
             vp.setPassenger3Layout();
         }
       // End of medic conditional statements
-        
+
     }
 
-    
     // This method gets the driver Icon from the resources folder
-    public void getDriverIcon(){
-       
-        try { 
-             URL url = getClass().getResource("convoy/resources/icons/medic.png");
+    public void getDriverIcon() {
+
+        try {
+            URL url = getClass().getResource("convoy/resources/icons/medic.png");
             img = ImageIO.read(url);
             driverImageIcon = img.getScaledInstance(50, 50, java.awt.Image.SCALE_SMOOTH);
-            
+
         } catch (IOException ex) {
             Logger.getLogger(AddVehiclePopUp.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    
-    
+
     public void modifyPopUp() {
 
         //vehicleNameField.setText(vehicleName);
         //setImage();
         switch (numberOfSeats) {
-            
+
             case "1":
                 setAllFieldsVisible();
                 personnel2Field.setVisible(false);
@@ -625,7 +626,7 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
                 jLabel6.setVisible(false);
                 jLabel7.setVisible(false);
                 break;
-            
+
             case "2":
                 setAllFieldsVisible();
                 personnel3Field.setVisible(false);
@@ -637,7 +638,7 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
                 jLabel6.setVisible(false);
                 jLabel7.setVisible(false);
                 break;
-            
+
             case "3":
                 setAllFieldsVisible();
                 personnel4Field.setVisible(false);
@@ -645,11 +646,11 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
                 jComboBox3.setVisible(false);
                 jLabel7.setVisible(false);
                 break;
-            
+
             case "4":
                 setAllFieldsVisible();
                 break;
-            
+
             case "5":
                 setAllFieldsVisible();
                 //Keep a roster
@@ -677,41 +678,41 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
         }
 
     }
-    
-    public void setAllFieldsVisible(){
-                jPanel2.setVisible(true);
-                personnel1Field.setVisible(true);
-                personnel2Field.setVisible(true);
-                personnel3Field.setVisible(true);
-                personnel4Field.setVisible(true);
-                jComboBox1.setVisible(true);
-                jComboBox2.setVisible(true);
-                jComboBox3.setVisible(true);
-                jLabel4.setVisible(true);
-                jLabel5.setVisible(true);
-                jLabel6.setVisible(true);
-                jLabel7.setVisible(true);
-                jLabel8.setVisible(true);
+
+    public void setAllFieldsVisible() {
+        jPanel2.setVisible(true);
+        personnel1Field.setVisible(true);
+        personnel2Field.setVisible(true);
+        personnel3Field.setVisible(true);
+        personnel4Field.setVisible(true);
+        jComboBox1.setVisible(true);
+        jComboBox2.setVisible(true);
+        jComboBox3.setVisible(true);
+        jLabel4.setVisible(true);
+        jLabel5.setVisible(true);
+        jLabel6.setVisible(true);
+        jLabel7.setVisible(true);
+        jLabel8.setVisible(true);
     }
-/*
-    public void setImage() {
+    /*
+     public void setImage() {
 
-        try {
+     try {
 
-            img = ImageIO.read(imageUrl);
-            img = img.getScaledInstance(268, 209, java.awt.Image.SCALE_SMOOTH);
+     img = ImageIO.read(imageUrl);
+     img = img.getScaledInstance(268, 209, java.awt.Image.SCALE_SMOOTH);
 
-            ImageIcon icon = new ImageIcon(img);
-            imageLabel.setIcon(icon);
+     ImageIcon icon = new ImageIcon(img);
+     imageLabel.setIcon(icon);
 
-            revalidate();
-            repaint();
-        } catch (Exception ex) {
-            Logger.getLogger(AddVehiclePopUp.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.print("Image Error");
-        }
-    }
-    */
+     revalidate();
+     repaint();
+     } catch (Exception ex) {
+     Logger.getLogger(AddVehiclePopUp.class.getName()).log(Level.SEVERE, null, ex);
+     System.out.print("Image Error");
+     }
+     }
+     */
 
     /**
      * @param args the command line arguments

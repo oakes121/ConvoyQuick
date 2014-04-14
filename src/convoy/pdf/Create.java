@@ -4,6 +4,9 @@ import java.awt.Desktop;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URL;
+import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -65,8 +68,8 @@ public class Create {
      * @throws Exception
      */
     public void createPDF() throws Exception {
-        String root = "src\\convoy\\resources\\html";
-        String input = "convoy.htm";  // need to be charset utf-8 
+        String root = getProgramPath() + "\\convox\\html\\";
+        String input = "convoy.html";  // need to be charset utf-8 
         htmlToPdfFile(new File(root, input),
                 new File(location + ".pdf"));
         open(new File(location + ".pdf"));
@@ -78,8 +81,8 @@ public class Create {
      * @throws Exception
      */
     public void createPDFPrint() throws Exception {
-        String root = "src\\convoy\\resources\\html";
-        String input = "convoy.htm";  // need to be charset utf-8 
+        String root = getProgramPath() + "\\convox\\html\\";
+        String input = "convoy.html";  // need to be charset utf-8 
         htmlToPdfFile(new File(root, input),
                 new File(location + ".pdf"));
     }
@@ -126,4 +129,11 @@ public class Create {
             out.flush();
         }
     }
+    
+    public static String getProgramPath() throws UnsupportedEncodingException {
+      URL url = convoy.gui.MainMenu.class.getProtectionDomain().getCodeSource().getLocation();
+      String jarPath = URLDecoder.decode(url.getFile(), "UTF-8");
+      String parentPath = new File(jarPath).getParentFile().getPath();
+      return parentPath;
+   }
 }
