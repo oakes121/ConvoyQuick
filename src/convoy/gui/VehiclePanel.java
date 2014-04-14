@@ -34,7 +34,7 @@ public class VehiclePanel extends javax.swing.JPanel {
     
     private static int maxTextfieldLength = 20;
     private String imageName;
-    private URL url;
+    private String iconPath;
     private Image finalImage;
     private Image img;
     /*
@@ -72,7 +72,21 @@ public class VehiclePanel extends javax.swing.JPanel {
         return imageLabel.getIcon();
     }
     
+    /**
+     * setIconPath(String newPath) sets the file path for the imageLabel icon
+     * @param newPath the file path that iconPath will be set to
+     */
+    public void setIconPath(String newPath) {
+        iconPath = newPath;
+    }
     
+    /**
+     * getIconPath() returns iconPath
+     * @return iconPath
+     */
+    public String getIconPath() {
+        return iconPath;
+    }
     
     
    
@@ -336,6 +350,7 @@ public class VehiclePanel extends javax.swing.JPanel {
         v.setBumperNumber(bumperNumberLabel.getText());
         v.setCallSign(callSignLabel.getText());        
         v.setDriver(driverLabel.getText());
+        v.setVehicleIcon(imageLabel.getIcon());
         
         if (!additionalInfoField.getText().equals("")) 
             v.setAdditionalInfo(additionalInfoField.getText());
@@ -361,6 +376,7 @@ public class VehiclePanel extends javax.swing.JPanel {
         bumperNumberLabel.setText(v.getBumperNumber());
         callSignLabel.setText(v.getCallSign());
         driverLabel.setText(v.getDriverName());
+        imageLabel.setIcon(v.getVehicleIcon());
         
         if (v.getPassengers().size() >= 1)
             passenger1Label.setText(v.getPassengers().get(0).getName());

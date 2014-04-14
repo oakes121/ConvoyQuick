@@ -123,7 +123,7 @@ public class Save {
         try {
          
             FileOutputStream fileOut;
-            fileOut = new FileOutputStream(getProgramPath() + "\\conx\\saves\\" + mission.getMissionNumber() +  "_vehicles.conx");
+            fileOut = new FileOutputStream(getProgramPath() + "\\conx\\saves\\" + mission.getMissionNumber() +  "_vehicles.conv");
             try (ObjectOutputStream out = new ObjectOutputStream(fileOut)) {
                 out.writeObject(vehicleGridsVehicles);
             }

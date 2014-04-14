@@ -3,6 +3,7 @@ package convoy.objects;
 import java.awt.Image;
 import java.io.Serializable;
 import java.util.ArrayList;
+import javax.swing.Icon;
 
 public class Vehicle implements Serializable {
 
@@ -12,7 +13,7 @@ public class Vehicle implements Serializable {
     private int numberOfPersonnel;
     private Personnel driver;
     private Personnel vehicleCommander;
-    private Image vehicleImage;
+    private Icon vehicleIcon;
     private ArrayList<Personnel> passengers;
 
     /**
@@ -46,7 +47,7 @@ public class Vehicle implements Serializable {
     /**
      * Constructor Vehicle(int bumperNumber, String callSign, String additionalInfo,
  int numberOfPersonnel, Personnel driver, Personnel vehicleCommander,
- Image vehicleImage, ArrayList<Personnel> passengers) creates specified
+ Image vehicleIcon, ArrayList<Personnel> passengers) creates specified
      * vehicle
      *
      * @param bumperNumber vehicle bumper number
@@ -55,10 +56,10 @@ public class Vehicle implements Serializable {
      * @param numberOfPersonnel number of persons in vehicle
      * @param driver driver of vehicle
      * @param vehicleCommander commander of vehicle
-     * @param vehicleImage image of vehicle
+     * @param vehicleIcon image of vehicle
      * @param passengers all other passengers in vehicle
      */
-    public Vehicle(String bumperNumber, String callSign, String additionalInfo, int numberOfPersonnel, Personnel driver, Personnel vehicleCommander, Image vehicleImage, ArrayList<Personnel> passengers) {
+    public Vehicle(String bumperNumber, String callSign, String additionalInfo, int numberOfPersonnel, Personnel driver, Personnel vehicleCommander, Icon vehicleIcon, ArrayList<Personnel> passengers) {
 
         this.bumperNumber = bumperNumber;
         this.callSign = callSign;
@@ -66,7 +67,7 @@ public class Vehicle implements Serializable {
         this.numberOfPersonnel = numberOfPersonnel;
         this.driver = driver;
         this.vehicleCommander = vehicleCommander;
-        this.vehicleImage = vehicleImage;
+        this.vehicleIcon = vehicleIcon;
         this.passengers = passengers;
 
     }
@@ -144,9 +145,9 @@ public class Vehicle implements Serializable {
      *
      * @param image vehicle image
      */
-    public void setVehicleImage(Image image) {
+    public void setVehicleIcon(Icon image) {
 
-        this.vehicleImage = image;
+        this.vehicleIcon = image;
 
     }
 
@@ -238,13 +239,13 @@ public class Vehicle implements Serializable {
     }
 
     /**
-     * Method getVehicleImage() gets image of the vehicle
+     * Method getVehicleIcon() gets image of the vehicle
      *
-     * @return this.vehicleImage return the vehicle image
+     * @return this.vehicleIcon return the vehicle image
      */
-    public Image getVehicleImage() {
+    public Icon getVehicleIcon() {
 
-        return this.vehicleImage;
+        return this.vehicleIcon;
 
     }
 

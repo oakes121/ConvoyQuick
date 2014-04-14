@@ -150,7 +150,7 @@ public class Load {
         ArrayList<ArrayList<Vehicle>> vehicleGridsVehicles = new ArrayList<>();
 
         try {
-            FileInputStream fileIn = new FileInputStream(getProgramPath() + "\\conx\\saves\\" + missionNumber + "_vehicles.conx");
+            FileInputStream fileIn = new FileInputStream(getProgramPath() + "\\conx\\saves\\" + missionNumber + "_vehicles.conv");
             ObjectInputStream in = new ObjectInputStream(fileIn);
             vehicleGridsVehicles = (ArrayList<ArrayList<Vehicle>>) in.readObject();
             in.close();
