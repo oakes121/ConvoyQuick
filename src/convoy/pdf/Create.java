@@ -68,7 +68,7 @@ public class Create {
      * @throws Exception
      */
     public void createPDF() throws Exception {
-        String root = getProgramPath() + "\\convox\\html\\";
+        String root = getProgramPath() + "\\conx\\html\\";
         String input = "convoy.html";  // need to be charset utf-8 
         htmlToPdfFile(new File(root, input),
                 new File(location + ".pdf"));
@@ -81,7 +81,7 @@ public class Create {
      * @throws Exception
      */
     public void createPDFPrint() throws Exception {
-        String root = getProgramPath() + "\\convox\\html\\";
+        String root = getProgramPath() + "\\conx\\html\\";
         String input = "convoy.html";  // need to be charset utf-8 
         htmlToPdfFile(new File(root, input),
                 new File(location + ".pdf"));

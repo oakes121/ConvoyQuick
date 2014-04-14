@@ -4,7 +4,9 @@
   <NonVisualComponents>
     <Container class="javax.swing.JLayeredPane" name="jLayeredPane1">
 
-      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JLayeredPaneSupportLayout"/>
+      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
+        <Property name="useNullLayout" type="boolean" value="true"/>
+      </Layout>
     </Container>
   </NonVisualComponents>
   <Properties>
@@ -56,7 +58,7 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="fromLinkUpLabel" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="fromLinkUpTextField" min="-2" pref="180" max="-2" attributes="0"/>
+                                      <Component id="fromLinkUpTextField" min="-2" pref="200" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace max="32767" attributes="0"/>
@@ -64,9 +66,9 @@
                                   <Component id="toSPLabel" alignment="1" min="-2" max="-2" attributes="0"/>
                                   <Component id="fromSPLabel" alignment="1" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="fromSPTextField" pref="180" max="32767" attributes="0"/>
+                                  <Component id="fromSPTextField" pref="200" max="32767" attributes="0"/>
                                   <Component id="toSPTextField" max="32767" attributes="0"/>
                               </Group>
                           </Group>

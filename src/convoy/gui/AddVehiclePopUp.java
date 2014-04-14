@@ -139,8 +139,8 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
         imageLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
         imageLabel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         imageLabel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                imageLabelMouseClicked(evt);
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                imageLabelMousePressed(evt);
             }
         });
 
@@ -194,18 +194,8 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
         });
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select Type", "CC", "ACC", "Medic", "Passenger" }));
-        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox2ActionPerformed(evt);
-            }
-        });
 
         jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select Type", "CC", "ACC", "Medic", "Passenger" }));
-        jComboBox3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox3ActionPerformed(evt);
-            }
-        });
 
         jLabel4.setForeground(new java.awt.Color(255, 0, 0));
         jLabel4.setText("*1");
@@ -221,11 +211,6 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
         jLabel8.setText("Driver");
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select Type", "CC", "ACC", "Medic", "Passenger" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
-            }
-        });
 
         jLabel11.setForeground(new java.awt.Color(255, 0, 0));
         jLabel11.setText("* Required");
@@ -434,7 +419,7 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
     private void addVehicleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addVehicleButtonActionPerformed
         // TODO add your handling code here:
         //addValuesToVehiclePanel();
-        System.out.println("Adding New Vehicle");
+        //System.out.println("Adding New Vehicle");
         getMedicIcon();
         getDriverIcon();
         getCCIcon();
@@ -519,8 +504,24 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
 
     }
 
-    private void imageLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imageLabelMouseClicked
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
+
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+        // TODO add your handling code here:
+
+
+    }//GEN-LAST:event_jComboBox2ActionPerformed
+
+    private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
+        // TODO add your handling code here:
+
+
+    }//GEN-LAST:event_jComboBox3ActionPerformed
+
+    private void imageLabelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imageLabelMousePressed
         try {
 
             FileDialog loadFile;
@@ -556,24 +557,7 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
         }catch(IOException ex){
             
         }
-    }//GEN-LAST:event_imageLabelMouseClicked
-
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_jComboBox1ActionPerformed
-
-    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
-        // TODO add your handling code here:
-
-
-    }//GEN-LAST:event_jComboBox2ActionPerformed
-
-    private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
-        // TODO add your handling code here:
-
-
-    }//GEN-LAST:event_jComboBox3ActionPerformed
+    }//GEN-LAST:event_imageLabelMousePressed
 
     public void setEditVehicleCounter(int counter) {
         editVehicleCounter = counter;

@@ -589,7 +589,9 @@ public final class MainWindow extends javax.swing.JFrame {
      * @param evt click file -> finalize menu item
      */
     private void finalizeMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finalizeMenuActionPerformed
-        
+        if("".equals(this.leftMissionInfoPanel1.getMissionNumber())){
+            JOptionPane.showMessageDialog(this, "Please enter a Mission Number.");
+        }else{
         Mission mission;
         mission = Mission.getInstance(this.leftMissionInfoPanel1.getMissionNumber(),
                 this.rightMissionInfoPanel2.getStagingArea(),
@@ -677,6 +679,7 @@ public final class MainWindow extends javax.swing.JFrame {
             }
         } else {
             JOptionPane.showMessageDialog(this, "You need to add at least 2 vehicles in order to finalize the convoy!");
+        }
         }
     }//GEN-LAST:event_finalizeMenuActionPerformed
 
