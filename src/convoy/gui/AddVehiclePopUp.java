@@ -533,7 +533,8 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
                     url = new URL("file:\\" + loadFile.getDirectory() + file);
                 
                     copyFile(new File(loadFile.getDirectory() + file), new File(getProgramPath() + "\\conx\\images\\vehicles\\" + file));
-                
+                    newVehiclePanel.setIconPath(getProgramPath() + "\\conx\\images\\vehicles\\" + file);
+                    
                 try {
                     img = ImageIO.read(url);
                     finalImage = img.getScaledInstance(268, 209, java.awt.Image.SCALE_SMOOTH);
