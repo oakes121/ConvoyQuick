@@ -382,6 +382,12 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
         fromSPLabel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         fromSPLabel.setText("Start Point SP Time:");
 
+        fromLinkUpTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fromLinkUpTextFieldActionPerformed(evt);
+            }
+        });
+
         toLinkUpLabel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         toLinkUpLabel.setText("Rally Point Linkup Time:");
 
@@ -589,14 +595,14 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(fromLinkUpLabel)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(fromLinkUpTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)))
-                                .addGap(0, 0, Short.MAX_VALUE)
+                                        .addComponent(fromLinkUpTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(toSPLabel)
+                                    .addComponent(toSPLabel, javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(fromSPLabel, javax.swing.GroupLayout.Alignment.TRAILING))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGap(5, 5, 5)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(fromSPTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                                    .addComponent(fromSPTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
                                     .addComponent(toSPTextField))))
                         .addGap(10, 10, 10))
                     .addGroup(layout.createSequentialGroup()
@@ -772,6 +778,10 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
     private void channelThreeFreqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_channelThreeFreqActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_channelThreeFreqActionPerformed
+
+    private void fromLinkUpTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fromLinkUpTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fromLinkUpTextFieldActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel accLabel;
