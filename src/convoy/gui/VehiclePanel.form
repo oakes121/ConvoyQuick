@@ -65,9 +65,7 @@
                   <Component id="componentPanel" alignment="1" min="-2" max="-2" attributes="0"/>
                   <Component id="deleteButton" alignment="1" min="-2" pref="13" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="driverWheelLabel" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="17" max="32767" attributes="0"/>
+              <EmptySpace pref="38" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -75,16 +73,8 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <Component id="deleteButton" min="-2" pref="13" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                      <Component id="componentPanel" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-                      <Component id="driverWheelLabel" min="-2" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
+              <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+              <Component id="componentPanel" min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -100,18 +90,34 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                      <Component id="callSignLabel" alignment="0" max="32767" attributes="0"/>
-                      <Component id="bumperNumberLabel" alignment="0" max="32767" attributes="0"/>
-                      <Component id="picturePanel" alignment="0" max="32767" attributes="0"/>
-                      <Component id="additionalInfoField" alignment="0" max="32767" attributes="0"/>
-                      <Component id="passenger3Label" alignment="0" max="32767" attributes="0"/>
-                      <Component id="passenger2Label" alignment="0" max="32767" attributes="0"/>
-                      <Component id="passenger1Label" alignment="0" max="32767" attributes="0"/>
-                      <Component id="driverLabel" alignment="0" max="32767" attributes="0"/>
+              <Group type="102" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="callSignLabel" alignment="0" max="32767" attributes="0"/>
+                          <Component id="bumperNumberLabel" alignment="0" max="32767" attributes="0"/>
+                          <Component id="additionalInfoField" alignment="0" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                              <Component id="passenger3Label" alignment="0" pref="73" max="32767" attributes="0"/>
+                              <Component id="passenger2Label" alignment="0" max="32767" attributes="0"/>
+                              <Component id="passenger1Label" alignment="0" max="32767" attributes="0"/>
+                              <Component id="driverLabel" alignment="0" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="driverWheelLabel" min="-2" max="-2" attributes="0"/>
+                              <Component id="iconLabel1" min="-2" max="-2" attributes="0"/>
+                              <Component id="iconLabel2" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="iconLabel3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="0" attributes="0">
+                  <Component id="picturePanel" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -119,14 +125,26 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="driverLabel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
-                  <Component id="passenger1Label" min="-2" pref="12" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
-                  <Component id="passenger2Label" min="-2" pref="12" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="passenger3Label" min="-2" pref="9" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="driverLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="driverWheelLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="passenger1Label" alignment="3" min="-2" pref="12" max="-2" attributes="0"/>
+                      <Component id="iconLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="passenger2Label" alignment="3" min="-2" pref="12" max="-2" attributes="0"/>
+                      <Component id="iconLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="iconLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="passenger3Label" alignment="3" min="-2" pref="11" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                   <Component id="picturePanel" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
                   <Component id="bumperNumberLabel" min="-2" pref="12" max="-2" attributes="0"/>
@@ -297,6 +315,26 @@
             </Property>
           </Properties>
         </Component>
+        <Component class="javax.swing.JLabel" name="driverWheelLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="jLabel1"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="iconLabel1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="jLabel1"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="iconLabel2">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="jLabel2"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="iconLabel3">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="jLabel3"/>
+          </Properties>
+        </Component>
       </SubComponents>
     </Container>
     <Component class="javax.swing.JButton" name="deleteButton">
@@ -319,11 +357,6 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deleteButtonActionPerformed"/>
       </Events>
-    </Component>
-    <Component class="javax.swing.JLabel" name="driverWheelLabel">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jLabel1"/>
-      </Properties>
     </Component>
   </SubComponents>
 </Form>

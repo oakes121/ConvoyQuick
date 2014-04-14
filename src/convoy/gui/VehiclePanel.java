@@ -78,13 +78,16 @@ public class VehiclePanel extends javax.swing.JPanel {
    
     
     // This method sets the Convoy Commander Image if passenger type is convoy commander
-    public void setDriverIcon (){
+    // This method sets the Convoy Commander Image if passenger type is convoy commander
+    public void setDriverIcon (Image img){
         
-      try{   
+      try{  
+          /*
             URL url = getClass().getResource("convoy/resources/icons/steeringWheel.png");
             img = ImageIO.read(url);
-            finalImage = img.getScaledInstance(50, 50, java.awt.Image.SCALE_SMOOTH);
-            ImageIcon icon = new ImageIcon(finalImage);
+          */
+             Image driverImage = img;//.getScaledInstance(50, 50, java.awt.Image.SCALE_SMOOTH);
+            ImageIcon icon = new ImageIcon(driverImage);
             driverWheelLabel.setIcon(icon);
             revalidate();
             repaint();
@@ -97,6 +100,126 @@ public class VehiclePanel extends javax.swing.JPanel {
     }
     
     
+    // This method sets the medic Image if passenger type is medic
+    public void setMedicIcon (Image img, int x){
+        
+      try{  
+          /*
+            URL url = getClass().getResource("convoy/resources/icons/steeringWheel.png");
+            img = ImageIO.read(url);
+          */
+            
+            int labelNumber = x;
+            Image medicImage = img;//.getScaledInstance(50, 50, java.awt.Image.SCALE_SMOOTH);
+            ImageIcon icon = new ImageIcon(medicImage);
+            
+            if (labelNumber == 1 ){
+            iconLabel1.setVisible(true);
+            iconLabel1.setIcon(icon);
+             }
+            if (labelNumber == 2){
+                iconLabel2.setVisible(true);
+                iconLabel2.setIcon(icon);
+            }
+             if (labelNumber == 3){
+                iconLabel3.setVisible(true);
+                iconLabel3.setIcon(icon);
+            }
+            revalidate();
+            repaint();
+      }
+      catch (Exception ex){  
+      }   
+    }
+    
+    //This method removes the medic icon from the label
+    public void removeMedicIcon(int x){
+         int labelNumber = x;
+        if (labelNumber == 1){
+            iconLabel1.setVisible(false);
+        }
+        if (labelNumber == 2){
+            iconLabel2.setVisible(false);
+        }
+        if (labelNumber == 3){
+            iconLabel3.setVisible(false);
+        }
+    }
+    
+    // This method sets the CC Image if passenger type is Convoy Commander
+    public void setCCIcon (Image img, int x){
+        
+      try{  
+          /*
+            URL url = getClass().getResource("convoy/resources/icons/steeringWheel.png");
+            img = ImageIO.read(url);
+          */
+            int labelNumber = x;
+            Image ccImage = img;//.getScaledInstance(50, 50, java.awt.Image.SCALE_SMOOTH);
+            ImageIcon icon = new ImageIcon(ccImage);
+            if (labelNumber == 1){
+            iconLabel1.setVisible(true);
+            iconLabel1.setIcon(icon);
+            }
+            if (labelNumber == 2){
+                iconLabel2.setVisible(true);
+                iconLabel2.setIcon(icon);
+            }
+             if (labelNumber == 3){
+                iconLabel3.setVisible(true);
+                iconLabel3.setIcon(icon);
+            }
+            revalidate();
+            repaint();
+      }
+      catch (Exception ex){ 
+      }  
+    }
+    
+       //This method removes the CC icon from the label
+    public void removeIconImage(int x){
+         int labelNumber = x;
+        if (labelNumber == 1){
+            iconLabel1.setVisible(false);
+        }
+        if (labelNumber == 2){
+            iconLabel2.setVisible(false);
+        }
+         if (labelNumber == 3){
+            iconLabel3.setVisible(false);
+        }
+    }
+    
+    
+       // This method sets the ACC Image if passenger type is Convoy Commander
+    public void setACCIcon (Image img, int x){
+        
+      try{  
+          /*
+            URL url = getClass().getResource("convoy/resources/icons/steeringWheel.png");
+            img = ImageIO.read(url);
+          */
+            int labelNumber = x;
+            Image accImage = img;//.getScaledInstance(50, 50, java.awt.Image.SCALE_SMOOTH);
+            ImageIcon icon = new ImageIcon(accImage);
+            if (labelNumber == 1){
+            iconLabel1.setVisible(true);
+            iconLabel1.setIcon(icon);
+            }
+            if (labelNumber == 2){
+                iconLabel2.setVisible(true);
+                iconLabel2.setIcon(icon);
+            }
+             if (labelNumber == 3){
+                iconLabel3.setVisible(true);
+                iconLabel3.setIcon(icon);
+            }
+            revalidate();
+            repaint();
+      }
+      catch (Exception ex){ 
+      }  
+    }
     
     
     public void setImage(Image img) {
@@ -113,6 +236,9 @@ public class VehiclePanel extends javax.swing.JPanel {
             //System.out.print("Image Error");
         }
     }
+    
+    
+   
     
  
     public JButton getDeleteButton() {
@@ -285,8 +411,11 @@ public class VehiclePanel extends javax.swing.JPanel {
         picturePanel = new javax.swing.JPanel();
         imageLabel = new javax.swing.JLabel();
         additionalInfoField = new javax.swing.JTextField();
-        deleteButton = new javax.swing.JButton();
         driverWheelLabel = new javax.swing.JLabel();
+        iconLabel1 = new javax.swing.JLabel();
+        iconLabel2 = new javax.swing.JLabel();
+        iconLabel3 = new javax.swing.JLabel();
+        deleteButton = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -382,34 +511,61 @@ public class VehiclePanel extends javax.swing.JPanel {
         additionalInfoField.setText("Additional Info");
         additionalInfoField.setPreferredSize(new java.awt.Dimension(59, 13));
 
+        driverWheelLabel.setText("jLabel1");
+
+        iconLabel1.setText("jLabel1");
+
+        iconLabel2.setText("jLabel2");
+
+        iconLabel3.setText("jLabel3");
+
         javax.swing.GroupLayout componentPanelLayout = new javax.swing.GroupLayout(componentPanel);
         componentPanel.setLayout(componentPanelLayout);
         componentPanelLayout.setHorizontalGroup(
             componentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(componentPanelLayout.createSequentialGroup()
-                .addGroup(componentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(callSignLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(bumperNumberLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(picturePanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(additionalInfoField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(passenger3Label, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(passenger2Label, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(passenger1Label, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(driverLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(componentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(componentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(callSignLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(bumperNumberLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(additionalInfoField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(componentPanelLayout.createSequentialGroup()
+                        .addGroup(componentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(passenger3Label, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)
+                            .addComponent(passenger2Label, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(passenger1Label, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(driverLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addGroup(componentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(driverWheelLabel)
+                            .addComponent(iconLabel1)
+                            .addComponent(iconLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(iconLabel3))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(componentPanelLayout.createSequentialGroup()
+                .addComponent(picturePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(48, 48, 48))
         );
         componentPanelLayout.setVerticalGroup(
             componentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(componentPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(driverLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(4, 4, 4)
-                .addComponent(passenger1Label, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(3, 3, 3)
-                .addComponent(passenger2Label, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(passenger3Label, javax.swing.GroupLayout.PREFERRED_SIZE, 9, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(3, 3, 3)
+                .addGroup(componentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(driverLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(driverWheelLabel))
+                .addGap(2, 2, 2)
+                .addGroup(componentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(passenger1Label, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(iconLabel1))
+                .addGap(1, 1, 1)
+                .addGroup(componentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(passenger2Label, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(iconLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(componentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(iconLabel3)
+                    .addComponent(passenger3Label, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(25, 25, 25)
                 .addComponent(picturePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(1, 1, 1)
                 .addComponent(bumperNumberLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -435,8 +591,6 @@ public class VehiclePanel extends javax.swing.JPanel {
             }
         });
 
-        driverWheelLabel.setText("jLabel1");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -446,21 +600,14 @@ public class VehiclePanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(componentPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(deleteButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(driverWheelLabel)
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addComponent(componentPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addComponent(driverWheelLabel))))
+                .addGap(2, 2, 2)
+                .addComponent(componentPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -476,6 +623,9 @@ public class VehiclePanel extends javax.swing.JPanel {
     private javax.swing.JButton deleteButton;
     private javax.swing.JLabel driverLabel;
     private javax.swing.JLabel driverWheelLabel;
+    private javax.swing.JLabel iconLabel1;
+    private javax.swing.JLabel iconLabel2;
+    private javax.swing.JLabel iconLabel3;
     private javax.swing.JLabel imageLabel;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -496,6 +646,21 @@ void setPassenger2Layout() {
     }
 void setPassenger3Layout() {
         passenger3Label.setForeground(Color.red);
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    void setPassenger1LayoutToBlack() {
+        passenger1Label.setForeground(Color.black);
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+     void setPassenger2LayoutToBlack() {
+        passenger2Label.setForeground(Color.black);
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+      void setPassenger3LayoutToBlack() {
+        passenger3Label.setForeground(Color.black);
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
