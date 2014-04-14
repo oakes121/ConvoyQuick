@@ -38,7 +38,7 @@
       <Color blue="80" green="b2" red="c2" type="rgb"/>
     </Property>
     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[650, 360]"/>
+      <Dimension value="[600, 360]"/>
     </Property>
   </Properties>
   <AuxValues>
@@ -56,35 +56,41 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="additionalTextPanel1" max="32767" attributes="0"/>
-                  </Group>
+          <Group type="102" attributes="0">
+              <Component id="imageLabel" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <Component id="imageLabel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="fromLabel" min="-2" max="-2" attributes="0"/>
+                          <Component id="missionNumberLabel" min="-2" max="-2" attributes="0"/>
+                          <Component id="toLabel" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="fromLabel" min="-2" max="-2" attributes="0"/>
-                                  <Component id="missionNumberLabel" min="-2" max="-2" attributes="0"/>
-                                  <Component id="toLabel" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="separate" max="32767" attributes="0"/>
-                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="fromTextField" alignment="0" pref="355" max="32767" attributes="0"/>
-                                  <Component id="missionNumberTextField" max="32767" attributes="0"/>
-                                  <Component id="toTextField" max="32767" attributes="0"/>
+                                  <Component id="missionNumberTextField" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="fromTextField" alignment="1" max="32767" attributes="0"/>
                               </Group>
                           </Group>
-                          <Component id="classificationDropBox" min="-2" pref="431" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                              <Component id="toTextField" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Component id="classificationDropBox" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="additionalTextPanel1" pref="448" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
