@@ -132,7 +132,7 @@
             <MenuItem class="javax.swing.JMenuItem" name="helpMenuItem">
               <Properties>
                 <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
-                  <KeyStroke key="Ctrl+H"/>
+                  <KeyStroke key="F1"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;strong&gt;Help&lt;/strong&gt;&lt;/html&gt;"/>
               </Properties>
@@ -247,7 +247,7 @@
                                   <Component id="leftArrow" min="-2" pref="64" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace pref="112" max="32767" attributes="0"/>
+                          <EmptySpace pref="41" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <Component id="additionalInfoPanel" min="-2" max="-2" attributes="0"/>

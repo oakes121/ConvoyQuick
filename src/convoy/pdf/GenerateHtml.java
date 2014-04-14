@@ -400,7 +400,7 @@ public class GenerateHtml {
                         + "                                            </tr>\n"
                         + "\n"
                         + "                                            <tr>\n"
-                        + "                                                <td><img src=\"" + "file:\\" + vehicleGrid.getVehiclePanelArray().get(0).getImageIcon() + "\" alt=\"vehicle\" /></td>\n"
+                        + "                                                <td><img src=\"" + vehicleGrid.getVehiclePanelArray().get(0).getImageIcon() + "\" alt=\"vehicle\" /></td>\n"
                         + "                                            </tr>\n"
                         + "\n"
                         + "                                            <tr>\n"
