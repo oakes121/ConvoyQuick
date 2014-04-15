@@ -315,7 +315,7 @@ public class GenerateHtml {
                  
                  //System.out.print(f);
                  
-            }catch(Exception ex){
+            }catch(UnsupportedEncodingException ex){
                 
             }finally{
             

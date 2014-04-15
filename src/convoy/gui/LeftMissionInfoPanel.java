@@ -39,6 +39,7 @@ public class LeftMissionInfoPanel extends javax.swing.JPanel {
         super();
         initComponents();
         doFonts();
+        classificationDropBox.setOpaque(true);
         setLayout(this.getLayout());
     }
 
@@ -274,6 +275,19 @@ public class LeftMissionInfoPanel extends javax.swing.JPanel {
                 classificationDropBoxItemStateChanged(evt);
             }
         });
+        classificationDropBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                classificationDropBoxActionPerformed(evt);
+            }
+        });
+        classificationDropBox.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                classificationDropBoxFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                classificationDropBoxFocusLost(evt);
+            }
+        });
 
         missionNumberTextField.setToolTipText("Enter Mission Number");
 
@@ -436,8 +450,38 @@ public class LeftMissionInfoPanel extends javax.swing.JPanel {
     private void classificationDropBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_classificationDropBoxItemStateChanged
         if(classificationDropBox.getSelectedIndex() >= 3){
             classificationDropBox.setForeground(Color.RED);
+        }else{
+            classificationDropBox.setForeground(Color.BLACK);
         }
     }//GEN-LAST:event_classificationDropBoxItemStateChanged
+
+    private void classificationDropBoxFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_classificationDropBoxFocusLost
+        
+        System.out.print(classificationDropBox.getSelectedIndex());
+        
+        
+        if(classificationDropBox.getSelectedIndex() >= 3){
+            classificationDropBox.setForeground(Color.RED);
+        }else{
+            classificationDropBox.setForeground(Color.BLACK);
+        }
+    }//GEN-LAST:event_classificationDropBoxFocusLost
+
+    private void classificationDropBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_classificationDropBoxActionPerformed
+        if(classificationDropBox.getSelectedIndex() >= 3){
+            classificationDropBox.setForeground(Color.RED);
+        }else{
+            classificationDropBox.setForeground(Color.BLACK);
+        }
+    }//GEN-LAST:event_classificationDropBoxActionPerformed
+
+    private void classificationDropBoxFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_classificationDropBoxFocusGained
+        if(classificationDropBox.getSelectedIndex() >= 3){
+            classificationDropBox.setForeground(Color.RED);
+        }else{
+            classificationDropBox.setForeground(Color.BLACK);
+        }
+    }//GEN-LAST:event_classificationDropBoxFocusGained
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private convoy.gui.AdditionalTextPanel additionalTextPanel1;
@@ -467,13 +511,15 @@ class HighLightRowRenderer implements ListCellRenderer {
     @Override
     public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
         Component component = delegate.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
-        Dimension size = component.getPreferredSize();
+        //Dimension size = component.getPreferredSize();
         
         if (index >= 3){
             component.setForeground(Color.RED);
             if (component instanceof JLabel) {
                 ((JLabel) component).setHorizontalTextPosition(JLabel.CENTER);
             }
+        }else{
+           component.setForeground(Color.BLACK); 
         }
                        
         return component;
