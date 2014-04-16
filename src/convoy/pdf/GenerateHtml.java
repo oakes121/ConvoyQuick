@@ -7,7 +7,6 @@ import java.net.URL;
 import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.Date;
-import javax.swing.JOptionPane;
 
 /**
  * @author Mike Moye <mtm5313@psu.edu>
@@ -359,7 +358,7 @@ public class GenerateHtml {
                         + "        }\n"
                         + "        .leftData {\n"
                         + "             font-weight: normal;\n"
-                        + "             text-align: center;\n"
+                        + "             text-align: left;\n"
                         + "        }\n"
                         + "        #freqTable {\n"
                         + "            border: 0;\n"
