@@ -3,6 +3,7 @@ package convoy.objects;
 import java.io.Serializable;
 import java.sql.Time;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Mission implements Serializable {
 
@@ -22,10 +23,10 @@ public class Mission implements Serializable {
     private String rightFrom;
     private String cc;
     private String acc;
-    private String fromLinkUpTime;
-    private String fromSPTime;
-    private String toLinkUpTime;
-    private String toSPTime;
+    private Date fromLinkUpTime;
+    private Date fromSPTime;
+    private Date toLinkUpTime;
+    private Date toSPTime;
     private String classification;
     private String leftAdditionalText;
     private String rightAdditionalText;
@@ -85,10 +86,10 @@ public class Mission implements Serializable {
                         //String rightFrom, 
                         String cc, 
                         String acc, 
-                        String fromLinkUpTime, 
-                        String fromSPTime, 
-                        String toLinkUpTime, 
-                        String toSPTime,
+                        Date fromLinkUpTime, 
+                        Date fromSPTime, 
+                        Date toLinkUpTime, 
+                        Date toSPTime,
                         String classification,
                         String left,
                         String right,
@@ -174,10 +175,10 @@ public class Mission implements Serializable {
                                                     //String rightFrom, 
                                                     String cc, 
                                                     String acc, 
-                                                    String fromLinkUpTime, 
-                                                    String fromSPTime, 
-                                                    String toLinkUpTime, 
-                                                    String toSPTime,
+                                                    Date fromLinkUpTime, 
+                                                    Date fromSPTime, 
+                                                    Date toLinkUpTime, 
+                                                    Date toSPTime,
                                                     String classification,
                                                     String leftAdditionalText,
                                                     String rightAdditionalText,
@@ -449,16 +450,16 @@ public class Mission implements Serializable {
     public String getACC(){
         return this.acc;        
     }
-    public String getFromLinkUpTime(){
+    public Date getFromLinkUpTime(){
         return this.fromLinkUpTime;        
     }
-    public String getFromSPTime(){
+    public Date getFromSPTime(){
         return this.fromSPTime;        
     }
-    public String getToLinkUpTime(){
+    public Date getToLinkUpTime(){
         return this.toLinkUpTime;        
     }
-    public String getToSPTime(){
+    public Date getToSPTime(){
         return this.toSPTime;        
     }
     public String getClassification(){

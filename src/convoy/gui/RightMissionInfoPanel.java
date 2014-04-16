@@ -1,14 +1,18 @@
 package convoy.gui;
 
-import java.awt.*;
-import java.io.IOException;
-import java.util.ArrayList;
-import javax.swing.*;
-import javax.swing.text.AbstractDocument;
-
 import convoy.objects.MaximumSizeFilter;
 import convoy.objects.Radio;
 import convoy.textEditor.com.metaphaseeditor.MetaphaseEditor;
+import java.awt.*;
+import java.beans.PropertyVetoException;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.*;
+import javax.swing.text.AbstractDocument;
+
 
 /**
  * @author Mike Moye <mtm5313@psu.edu>
@@ -83,8 +87,8 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
      *
      * @return this.fromLinkUpTextField.getText()
      */
-    public String getFromLU() {
-        return this.fromLinkUpTextField.getText();
+    public Date getFromLU() {
+       return this.startPointLinkup.getDate();
     }
 
     /**
@@ -92,8 +96,8 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
      *
      * @return this.toTextField.getText()
      */
-    public String getToLU() {
-        return this.toLinkUpTextField.getText();
+    public Date getToLU() {
+        return this.rallyPointLinkup.getDate();
     }
 
     /**
@@ -101,8 +105,8 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
      *
      * @return this.fromSPTextField.getText()
      */
-    public String getFromSP() {
-        return this.fromSPTextField.getText();
+    public Date getFromSP() {
+        return this.startPointSP.getDate();
     }
 
     /**
@@ -110,8 +114,8 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
      *
      * @return this.toSPTextField.getText()
      */
-    public String getToSP() {
-        return this.toSPTextField.getText();
+    public Date getToSP() {
+        return this.rallyPointSP.getDate();
     }
 
     /**
@@ -182,8 +186,12 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
      *
      * @param fromLU
      */
-    public void setFromLU(String fromLU) {
-        this.fromLinkUpTextField.setText(fromLU);
+    public void setFromLU(Date fromLU) {
+        try {
+            this.startPointLinkup.setDate(fromLU);
+        } catch (PropertyVetoException ex) {
+            Logger.getLogger(RightMissionInfoPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -191,8 +199,12 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
      *
      * @param toLU
      */
-    public void setToLU(String toLU) {
-        this.toLinkUpTextField.setText(toLU);
+    public void setToLU(Date toLU) {
+        try {
+            this.rallyPointLinkup.setDate(toLU);
+        } catch (PropertyVetoException ex) {
+            Logger.getLogger(RightMissionInfoPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -200,8 +212,12 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
      *
      * @param fromSP
      */
-    public void setFromSP(String fromSP) {
-        this.fromSPTextField.setText(fromSP);
+    public void setFromSP(Date fromSP) {
+        try {
+            this.startPointSP.setDate(fromSP);
+        } catch (PropertyVetoException ex) {
+            Logger.getLogger(RightMissionInfoPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -209,8 +225,12 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
      *
      * @param toSP
      */
-    public void setToSP(String toSP) {
-        this.toSPTextField.setText(toSP);
+    public void setToSP(Date toSP) {
+        try {
+            this.rallyPointSP.setDate(toSP);
+        } catch (PropertyVetoException ex) {
+            Logger.getLogger(RightMissionInfoPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -328,14 +348,10 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
         accTextField = new javax.swing.JTextField();
         stagingAreaLabel = new javax.swing.JLabel();
         stagingAreaTextField = new javax.swing.JTextField();
-        toSPTextField = new javax.swing.JTextField();
         fromLinkUpLabel = new javax.swing.JLabel();
         fromSPLabel = new javax.swing.JLabel();
-        fromLinkUpTextField = new javax.swing.JTextField();
         toLinkUpLabel = new javax.swing.JLabel();
-        toLinkUpTextField = new javax.swing.JTextField();
         toSPLabel = new javax.swing.JLabel();
-        fromSPTextField = new javax.swing.JTextField();
         freqPanel = new javax.swing.JPanel();
         freqLabel = new javax.swing.JLabel();
         addFreqLabel = new javax.swing.JLabel();
@@ -364,6 +380,18 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
         removeFreq5 = new javax.swing.JLabel();
         removeFreq6 = new javax.swing.JLabel();
         metaphaseEditor2 = new convoy.textEditor.com.metaphaseeditor.MetaphaseEditor();
+        startPointLinkUpTimeComoboBox = new javax.swing.JComboBox();
+        rallyPointLinkUpTimeComoboBox = new javax.swing.JComboBox();
+        startPointSPTimeComoboBox = new javax.swing.JComboBox();
+        rallyPointSPTimeComoboBox = new javax.swing.JComboBox();
+        startPointLinkup = new com.michaelbaranov.microba.calendar.DatePicker();
+        rallyPointLinkup = new com.michaelbaranov.microba.calendar.DatePicker();
+        startPointSP = new com.michaelbaranov.microba.calendar.DatePicker();
+        rallyPointSP = new com.michaelbaranov.microba.calendar.DatePicker();
+        timePicker2 = new convoy.gui.TimePicker();
+        timePicker3 = new convoy.gui.TimePicker();
+        timePicker4 = new convoy.gui.TimePicker();
+        timePicker5 = new convoy.gui.TimePicker();
 
         setBackground(new java.awt.Color(194, 178, 128));
 
@@ -382,23 +410,11 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
         fromSPLabel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         fromSPLabel.setText("Start Point SP Time:");
 
-        fromLinkUpTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fromLinkUpTextFieldActionPerformed(evt);
-            }
-        });
-
         toLinkUpLabel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         toLinkUpLabel.setText("Rally Point Linkup Time:");
 
         toSPLabel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         toSPLabel.setText("Rally Point SP Time:");
-
-        fromSPTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fromSPTextFieldActionPerformed(evt);
-            }
-        });
 
         freqPanel.setBackground(new java.awt.Color(255, 255, 255));
         freqPanel.setMaximumSize(new java.awt.Dimension(637, 64));
@@ -565,6 +581,14 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
                 .addGap(0, 0, 0))
         );
 
+        startPointLinkUpTimeComoboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Local", "Zulu" }));
+
+        rallyPointLinkUpTimeComoboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Local", "Zulu" }));
+
+        startPointSPTimeComoboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Local", "Zulu" }));
+
+        rallyPointSPTimeComoboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Local", "Zulu" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -587,28 +611,46 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(stagingAreaTextField))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(toLinkUpLabel)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(toLinkUpTextField))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(fromLinkUpLabel)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(fromLinkUpTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(startPointLinkup, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(toLinkUpLabel)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(rallyPointLinkup, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(6, 6, 6)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(toSPLabel, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(fromSPLabel, javax.swing.GroupLayout.Alignment.TRAILING))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(fromSPTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                                    .addComponent(toSPTextField))))
+                                    .addComponent(timePicker3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(timePicker2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(13, 13, 13)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(startPointLinkUpTimeComoboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(rallyPointLinkUpTimeComoboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(toSPLabel)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(rallyPointSP, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(timePicker5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(rallyPointSPTimeComoboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(fromSPLabel)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(startPointSP, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(timePicker4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(startPointSPTimeComoboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addGap(10, 10, 10))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(freqPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addContainerGap())))
-            .addComponent(metaphaseEditor2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addComponent(metaphaseEditor2, javax.swing.GroupLayout.DEFAULT_SIZE, 785, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -624,17 +666,31 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
                     .addComponent(stagingAreaLabel)
                     .addComponent(stagingAreaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(5, 5, 5)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(fromSPLabel)
-                    .addComponent(fromLinkUpTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(fromLinkUpLabel)
-                    .addComponent(fromSPTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(6, 6, 6)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(toLinkUpLabel)
-                    .addComponent(toLinkUpTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(toSPLabel)
-                    .addComponent(toSPTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(fromSPLabel)
+                        .addComponent(fromLinkUpLabel)
+                        .addComponent(startPointLinkUpTimeComoboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(startPointLinkup, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(startPointSP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(timePicker2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(startPointSPTimeComoboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(timePicker4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(rallyPointLinkup, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(toLinkUpLabel)
+                                .addComponent(rallyPointSPTimeComoboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(timePicker3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(rallyPointLinkUpTimeComoboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(toSPLabel))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(rallyPointSP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(timePicker5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(freqPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -767,10 +823,6 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
                         addFreqCount--;
     }//GEN-LAST:event_removeFreq1MousePressed
 
-    private void fromSPTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fromSPTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_fromSPTextFieldActionPerformed
-
     private void channelOneNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_channelOneNameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_channelOneNameActionPerformed
@@ -778,10 +830,6 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
     private void channelThreeFreqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_channelThreeFreqActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_channelThreeFreqActionPerformed
-
-    private void fromLinkUpTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fromLinkUpTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_fromLinkUpTextFieldActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel accLabel;
@@ -810,11 +858,13 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
     private javax.swing.JLabel freqLabel;
     private javax.swing.JPanel freqPanel;
     private javax.swing.JLabel fromLinkUpLabel;
-    private javax.swing.JTextField fromLinkUpTextField;
     private javax.swing.JLabel fromSPLabel;
-    private javax.swing.JTextField fromSPTextField;
     private javax.swing.JLayeredPane jLayeredPane1;
     private convoy.textEditor.com.metaphaseeditor.MetaphaseEditor metaphaseEditor2;
+    private javax.swing.JComboBox rallyPointLinkUpTimeComoboBox;
+    private com.michaelbaranov.microba.calendar.DatePicker rallyPointLinkup;
+    private com.michaelbaranov.microba.calendar.DatePicker rallyPointSP;
+    private javax.swing.JComboBox rallyPointSPTimeComoboBox;
     private javax.swing.JLabel removeFreq1;
     private javax.swing.JLabel removeFreq2;
     private javax.swing.JLabel removeFreq3;
@@ -823,9 +873,15 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
     private javax.swing.JLabel removeFreq6;
     private javax.swing.JLabel stagingAreaLabel;
     private javax.swing.JTextField stagingAreaTextField;
+    private javax.swing.JComboBox startPointLinkUpTimeComoboBox;
+    private com.michaelbaranov.microba.calendar.DatePicker startPointLinkup;
+    private com.michaelbaranov.microba.calendar.DatePicker startPointSP;
+    private javax.swing.JComboBox startPointSPTimeComoboBox;
+    private convoy.gui.TimePicker timePicker2;
+    private convoy.gui.TimePicker timePicker3;
+    private convoy.gui.TimePicker timePicker4;
+    private convoy.gui.TimePicker timePicker5;
     private javax.swing.JLabel toLinkUpLabel;
-    private javax.swing.JTextField toLinkUpTextField;
     private javax.swing.JLabel toSPLabel;
-    private javax.swing.JTextField toSPTextField;
     // End of variables declaration//GEN-END:variables
 }

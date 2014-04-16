@@ -3,21 +3,21 @@ package convoy.gui;
 import static convoy.gui.SplashScreen.getProgramPath;
 import convoy.loadsave.Load;
 import convoy.loadsave.Save;
+import convoy.objects.Mission;
+import convoy.pdf.*;
 import java.awt.*;
 import java.io.*;
 import java.net.MalformedURLException;
 import java.net.URL;
-import javax.imageio.ImageIO;
-import javax.swing.*;
-import javax.swing.filechooser.FileNameExtensionFilter;
-
-import convoy.objects.Mission;
-import convoy.pdf.*;
 import java.net.URLDecoder;
 import java.nio.file.Files;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  * @author Mike Moye <mtm5313@psu.edu>
@@ -97,14 +97,14 @@ public final class MainWindow extends javax.swing.JFrame {
             String stagingArea,
             String acc,
             String cc,
-            String fromLinkUpTime,
-            String fromSPTime,
+            Date fromLinkUpTime,
+            Date fromSPTime,
             String leftFrom,
             //String rightFrom,
             String leftTo,
             //String rightTo,
-            String toLinkUpTime,
-            String toSPTime,
+            Date toLinkUpTime,
+            Date toSPTime,
             String leftAdditionalText,
             String rightAdditionalText,
             String additionalText,

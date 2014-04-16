@@ -448,6 +448,8 @@ public class LeftMissionInfoPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_fromTextFieldActionPerformed
 
     private void classificationDropBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_classificationDropBoxItemStateChanged
+        //System.out.print(classificationDropBox.getSelectedIndex());
+        
         if(classificationDropBox.getSelectedIndex() >= 3){
             classificationDropBox.setForeground(Color.RED);
         }else{
@@ -457,7 +459,7 @@ public class LeftMissionInfoPanel extends javax.swing.JPanel {
 
     private void classificationDropBoxFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_classificationDropBoxFocusLost
         
-        System.out.print(classificationDropBox.getSelectedIndex());
+        //System.out.print(classificationDropBox.getSelectedIndex());
         
         
         if(classificationDropBox.getSelectedIndex() >= 3){
@@ -468,6 +470,9 @@ public class LeftMissionInfoPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_classificationDropBoxFocusLost
 
     private void classificationDropBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_classificationDropBoxActionPerformed
+        
+        //System.out.print(classificationDropBox.getSelectedIndex());
+        
         if(classificationDropBox.getSelectedIndex() >= 3){
             classificationDropBox.setForeground(Color.RED);
         }else{

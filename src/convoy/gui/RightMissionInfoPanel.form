@@ -49,27 +49,48 @@
                               <Component id="stagingAreaTextField" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="toLinkUpLabel" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="toLinkUpTextField" max="32767" attributes="0"/>
-                                  </Group>
+                              <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="fromLinkUpLabel" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="fromLinkUpTextField" min="-2" pref="200" max="-2" attributes="0"/>
+                                      <Component id="startPointLinkup" min="-2" pref="100" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="toLinkUpLabel" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="rallyPointLinkup" min="-2" pref="101" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="toSPLabel" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="fromSPLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="timePicker3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="timePicker2" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="fromSPTextField" pref="200" max="32767" attributes="0"/>
-                                  <Component id="toSPTextField" max="32767" attributes="0"/>
+                              <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="startPointLinkUpTimeComoboBox" min="-2" max="-2" attributes="0"/>
+                                  <Component id="rallyPointLinkUpTimeComoboBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="toSPLabel" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="rallyPointSP" min="-2" pref="101" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="timePicker5" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="rallyPointSPTimeComoboBox" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="fromSPLabel" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="startPointSP" min="-2" pref="100" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="timePicker4" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="startPointSPTimeComoboBox" min="-2" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
                           </Group>
                       </Group>
@@ -81,7 +102,7 @@
                   </Group>
               </Group>
           </Group>
-          <Component id="metaphaseEditor2" pref="0" max="32767" attributes="0"/>
+          <Component id="metaphaseEditor2" pref="785" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -100,18 +121,38 @@
                   <Component id="stagingAreaTextField" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="fromSPLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="fromLinkUpTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="fromLinkUpLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="fromSPTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="fromSPLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="fromLinkUpLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="startPointLinkUpTimeComoboBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="startPointLinkup" min="-2" max="-2" attributes="0"/>
+                  <Component id="startPointSP" min="-2" max="-2" attributes="0"/>
+                  <Component id="timePicker2" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="startPointSPTimeComoboBox" min="-2" max="-2" attributes="0"/>
+                  <Component id="timePicker4" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="toLinkUpLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="toLinkUpTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="toSPLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="toSPTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                          <Component id="rallyPointLinkup" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="toLinkUpLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="rallyPointSPTimeComoboBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Component id="timePicker3" alignment="1" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                      <Component id="rallyPointLinkUpTimeComoboBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="toSPLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                      <Component id="rallyPointSP" min="-2" max="-2" attributes="0"/>
+                      <Component id="timePicker5" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="freqPanel" max="-2" attributes="0"/>
@@ -153,8 +194,6 @@
     </Component>
     <Component class="javax.swing.JTextField" name="stagingAreaTextField">
     </Component>
-    <Component class="javax.swing.JTextField" name="toSPTextField">
-    </Component>
     <Component class="javax.swing.JLabel" name="fromLinkUpLabel">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -171,11 +210,6 @@
         <Property name="text" type="java.lang.String" value="Start Point SP Time:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="fromLinkUpTextField">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="fromLinkUpTextFieldActionPerformed"/>
-      </Events>
-    </Component>
     <Component class="javax.swing.JLabel" name="toLinkUpLabel">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -184,8 +218,6 @@
         <Property name="text" type="java.lang.String" value="Rally Point Linkup Time:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="toLinkUpTextField">
-    </Component>
     <Component class="javax.swing.JLabel" name="toSPLabel">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -193,11 +225,6 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Rally Point SP Time:"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="fromSPTextField">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="fromSPTextFieldActionPerformed"/>
-      </Events>
     </Component>
     <Container class="javax.swing.JPanel" name="freqPanel">
       <Properties>
@@ -472,6 +499,62 @@
       </SubComponents>
     </Container>
     <Component class="convoy.textEditor.com.metaphaseeditor.MetaphaseEditor" name="metaphaseEditor2">
+    </Component>
+    <Component class="javax.swing.JComboBox" name="startPointLinkUpTimeComoboBox">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="2">
+            <StringItem index="0" value="Local"/>
+            <StringItem index="1" value="Zulu"/>
+          </StringArray>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="rallyPointLinkUpTimeComoboBox">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="2">
+            <StringItem index="0" value="Local"/>
+            <StringItem index="1" value="Zulu"/>
+          </StringArray>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="startPointSPTimeComoboBox">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="2">
+            <StringItem index="0" value="Local"/>
+            <StringItem index="1" value="Zulu"/>
+          </StringArray>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="rallyPointSPTimeComoboBox">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="2">
+            <StringItem index="0" value="Local"/>
+            <StringItem index="1" value="Zulu"/>
+          </StringArray>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="com.michaelbaranov.microba.calendar.DatePicker" name="startPointLinkup">
+    </Component>
+    <Component class="com.michaelbaranov.microba.calendar.DatePicker" name="rallyPointLinkup">
+    </Component>
+    <Component class="com.michaelbaranov.microba.calendar.DatePicker" name="startPointSP">
+    </Component>
+    <Component class="com.michaelbaranov.microba.calendar.DatePicker" name="rallyPointSP">
+    </Component>
+    <Component class="convoy.gui.TimePicker" name="timePicker2">
+    </Component>
+    <Component class="convoy.gui.TimePicker" name="timePicker3">
+    </Component>
+    <Component class="convoy.gui.TimePicker" name="timePicker4">
+    </Component>
+    <Component class="convoy.gui.TimePicker" name="timePicker5">
     </Component>
   </SubComponents>
 </Form>

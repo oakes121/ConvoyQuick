@@ -6,6 +6,7 @@ import java.io.*;
 import java.net.URL;
 import java.net.URLDecoder;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.JOptionPane;
 
 /**
@@ -63,10 +64,10 @@ public class GenerateHtml {
             String stagingArea,
             //String rightFrom,
             //String rightTo,
-            String fromLU,
-            String toLU,
-            String fromSP,
-            String toSP,
+            Date fromLU,
+            Date toLU,
+            Date fromSP,
+            Date toSP,
             ArrayList<Radio> freqs,
             String rightAdditionalText,
             String additionalText,

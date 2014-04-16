@@ -493,6 +493,7 @@ public class MetaphaseEditorPanel extends javax.swing.JPanel {
         htmlTextPane = new javax.swing.JTextPane();
 
         setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        setPreferredSize(new java.awt.Dimension(760, 160));
 
         toolbarPanel.setBackground(new java.awt.Color(194, 178, 128));
         toolbarPanel.setPreferredSize(new java.awt.Dimension(700, 58));

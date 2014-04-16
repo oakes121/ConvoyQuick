@@ -34,6 +34,7 @@ public class MainMenu extends javax.swing.JFrame {
      * Creates new form MainMenu
      */
     private MainMenu() {
+        /*
         createSaveDirectory();
         createImageDirectory();
         createHtmlDirectory();
@@ -52,6 +53,7 @@ public class MainMenu extends javax.swing.JFrame {
         repaint();
         revalidate();
         newProjectPanel.requestFocus();
+        */
     }
     
     public static MainMenu getInstance() {
