@@ -65,7 +65,7 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
         this.setIconImage(new ImageIcon(getClass().getResource("/convoy/resources/images/humveeIcon.png")).getImage());
         this.setResizable(false);
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-
+        
     }
 
     /**
@@ -445,13 +445,13 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Please select the passenger type", "Alert Message", JOptionPane.WARNING_MESSAGE); 
             
          }
-           else if (jComboBox2.getSelectedIndex() == 0){
+           else if (!(personnel3Field.getText().equals("")) && jComboBox2.getSelectedIndex() == 0 ){
              //vp.setPassenger1LayoutToBlack();
              //vp.removeIconImage(1);
             JOptionPane.showMessageDialog(null, "Please select the passenger type", "Alert Message", JOptionPane.WARNING_MESSAGE); 
             
          }
-           else if (jComboBox3.getSelectedIndex() == 0){
+           else if (!(personnel4Field.getText().equals("")) && jComboBox3.getSelectedIndex() == 0){
              //vp.setPassenger1LayoutToBlack();
              //vp.removeIconImage(1);
             JOptionPane.showMessageDialog(null, "Please select the passenger type", "Alert Message", JOptionPane.WARNING_MESSAGE); 
