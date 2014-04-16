@@ -65,6 +65,8 @@ public final class MainWindow extends javax.swing.JFrame {
 
         this.rightArrow.setVisible(false);
         this.leftArrow.setVisible(false);
+        
+        deleteCurrentVehiclePage.setEnabled(false);
 
         revalidate();
         repaint();
@@ -241,11 +243,20 @@ public final class MainWindow extends javax.swing.JFrame {
 
         hideLeftArrow();
         hideRightArrow();
+        
+        if (currentVehicleGrid == 0)
+            deleteCurrentVehiclePage.setEnabled(false);
+        else
+            deleteCurrentVehiclePage.setEnabled(true);        
+        
 
         if (currentVehicleGrid == vehicleGridCount) {
             if (vehicleGridCount > 0) {
                 showLeftArrow();
             }
+            
+            if (vehicleGrids.get(currentVehicleGrid).getVehicleCount() == 16) 
+                showRightArrow();
         }
 
         if (currentVehicleGrid < vehicleGridCount) {
@@ -311,6 +322,7 @@ public final class MainWindow extends javax.swing.JFrame {
         exitMenuItem = new javax.swing.JMenuItem();
         editMenu = new javax.swing.JMenu();
         wateMarkMenu = new javax.swing.JMenuItem();
+        deleteCurrentVehiclePage = new javax.swing.JMenuItem();
         helpMenu = new javax.swing.JMenu();
         helpMenuItem = new javax.swing.JMenuItem();
         aboutMenuItem = new javax.swing.JMenuItem();
@@ -404,7 +416,7 @@ public final class MainWindow extends javax.swing.JFrame {
                             .addGroup(picturePanel2Layout.createSequentialGroup()
                                 .addGap(119, 119, 119)
                                 .addComponent(leftArrow, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)))
                 .addComponent(additionalInfoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -489,6 +501,16 @@ public final class MainWindow extends javax.swing.JFrame {
             }
         });
         editMenu.add(wateMarkMenu);
+
+        deleteCurrentVehiclePage.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_DELETE, java.awt.event.InputEvent.CTRL_MASK));
+        deleteCurrentVehiclePage.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        deleteCurrentVehiclePage.setText("Delete Current Vehicle Page");
+        deleteCurrentVehiclePage.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteCurrentVehiclePageActionPerformed(evt);
+            }
+        });
+        editMenu.add(deleteCurrentVehiclePage);
 
         menuBar.add(editMenu);
 
@@ -876,12 +898,14 @@ public final class MainWindow extends javax.swing.JFrame {
             picturePanel2.remove(vehicleGrids.get(currentVehicleGrid));
             newVehicleGrid();
             reDrawVehicleGrid(vehicleGrids.get(vehicleGridCount));
+            deleteCurrentVehiclePage.setEnabled(true);
         } else {
             picturePanel2.remove(vehicleGrids.get(currentVehicleGrid));
             currentVehicleGrid++;
             reDrawVehicleGrid(vehicleGrids.get(currentVehicleGrid));
         }
 
+        //JOptionPane.showMessageDialog(this, " cvg" + currentVehicleGrid + "   vgc" + vehicleGridCount);
         updateArrows();
 
 
@@ -893,6 +917,7 @@ public final class MainWindow extends javax.swing.JFrame {
         currentVehicleGrid--;
         reDrawVehicleGrid(vehicleGrids.get(currentVehicleGrid));
 
+        //JOptionPane.showMessageDialog(this, " cvg" + currentVehicleGrid + "   vgc" + vehicleGridCount);
         updateArrows();
     }//GEN-LAST:event_leftArrowMousePressed
 
@@ -905,6 +930,30 @@ public final class MainWindow extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_templatesMenuItemActionPerformed
+
+    private void deleteCurrentVehiclePageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteCurrentVehiclePageActionPerformed
+        // TODO add your handling code here:
+        
+        int answer = JOptionPane.showConfirmDialog(this, "Are you sure that you want to delete this page of vehicles?", "Confirmation", JOptionPane.WARNING_MESSAGE);
+        if (answer == 0) {
+            picturePanel2.remove(vehicleGrids.get(currentVehicleGrid));
+            currentVehicleGrid--;
+            reDrawVehicleGrid(vehicleGrids.get(currentVehicleGrid));  
+            vehicleGridCount--;
+            updateArrows();
+        
+            vehicleGrids.remove(currentVehicleGrid+1);
+            
+            //JOptionPane.showMessageDialog(this, " cvg" + currentVehicleGrid + "   vgc" + vehicleGridCount );
+            updateArrows();
+            
+            revalidate();
+            repaint();
+        }
+        
+        
+        
+    }//GEN-LAST:event_deleteCurrentVehiclePageActionPerformed
 
     /**
      * showRightArrow() makes it so that the right arrow appear
@@ -970,6 +1019,7 @@ public final class MainWindow extends javax.swing.JFrame {
     private javax.swing.JMenuItem aboutMenuItem;
     private javax.swing.JPanel additionalInfoPanel;
     private convoy.gui.AdditionalTextPanel additionalTextPanel1;
+    private javax.swing.JMenuItem deleteCurrentVehiclePage;
     private javax.swing.JMenu editMenu;
     private javax.swing.JMenuItem exitMenuItem;
     private javax.swing.JMenu fileMenu;

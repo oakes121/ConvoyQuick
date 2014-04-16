@@ -42,10 +42,6 @@ public class VehicleGrid extends javax.swing.JPanel implements ActionListener, K
     private GridBagConstraints gbc = new GridBagConstraints ();    // constraints used to control the layout of the grid
     private int trueCount = 0;                             // number of vehicle panels selected
     private int vehicleCount = 0;                          // count of vehicles in vehiclePanelArray
-    private int columnCount = 0;                           // the column that a vehiclePanel will be added to in the 
-                                                           //  placeHolder grid
-    private int rowCount = 0;                              // the row that a vehiclePanel will be added to in the 
-                                                           //  placeHolder grid
     
     private int indicator = -1;                            // indicicates what element from the three arrays to remove
                                                            //  when deletePanel is called
@@ -203,11 +199,10 @@ public class VehicleGrid extends javax.swing.JPanel implements ActionListener, K
         
         if (flag == 1)
             vehiclePanelArray.get(counter).setBorder(BorderFactory.createMatteBorder(
-                                    3, 3, 3, 3, Color.red));
+                                    2, 2, 2, 2, Color.red));
         
         else if (flag == 0)
-            vehiclePanelArray.get(counter).setBorder(BorderFactory.createMatteBorder(
-                                    0, 0, 0, 0, Color.red));
+            vehiclePanelArray.get(counter).setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
     }
     
     /**
@@ -216,7 +211,7 @@ public class VehicleGrid extends javax.swing.JPanel implements ActionListener, K
     private void clearBorders() {
         
         for (int i = 0; i < vehiclePanelArray.size(); i++) {
-            vehiclePanelArray.get(i).setBorder(BorderFactory.createMatteBorder(0, 0, 0, 0, Color.GREEN)); 
+            vehiclePanelArray.get(i).setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
         }
         
     }
@@ -298,7 +293,7 @@ public class VehicleGrid extends javax.swing.JPanel implements ActionListener, K
             
             vehiclePanelArray.get(pos1).setBorder(BorderFactory.createMatteBorder(0, 0, 0, 0, Color.GREEN));
             vehiclePanelArray.get(pos2).setBorder(BorderFactory.createMatteBorder(0, 0, 0, 0, Color.GREEN));
-            vehiclePanelArray.get(pos1).setBorder(BorderFactory.createMatteBorder(3, 3, 3, 3, Color.GREEN)); 
+            vehiclePanelArray.get(pos1).setBorder(BorderFactory.createMatteBorder(2, 2, 2, 2, Color.GREEN)); 
             
             vehiclePanelClickedFlags.get(pos1).setTruthValue(false);
             vehiclePanelClickedFlags.get(pos2).setTruthValue(false);
@@ -429,7 +424,7 @@ public class VehicleGrid extends javax.swing.JPanel implements ActionListener, K
             addVehiclePopUp.setObject(this);
             
             
-            //replaceAddNewVehiclePanel();  
+            //replaceAddNewVehiclePanel(new VehiclePanel());  
         }
     }
 
