@@ -65,13 +65,13 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
         this.setIconImage(new ImageIcon(getClass().getResource("/convoy/resources/images/humveeIcon.png")).getImage());
         this.setResizable(false);
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        
+
     }
 
     /**
      * initDocumentListeners()limits the all text field input to 20 characters
      */
-    public void initDocumentListeners() {
+    private void initDocumentListeners() {
         personnel1Field.setDocument(new JTextFieldLimit(20));
         personnel2Field.setDocument(new JTextFieldLimit(20));
         personnel3Field.setDocument(new JTextFieldLimit(20));
@@ -398,12 +398,12 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public void addHintsToFields() {
+    private void addHintsToFields() {
         // PromptSupport.setPrompt("Search vehicle", vehicleNameField);
         PromptSupport.setPrompt("Driver Name", personnel1Field);
-        PromptSupport.setPrompt("Commander Name", personnel2Field);
-        PromptSupport.setPrompt("Passenger Name", personnel3Field);
-        PromptSupport.setPrompt("Passenger Name", personnel4Field);
+        PromptSupport.setPrompt("Personnel 2 Name", personnel2Field);
+        PromptSupport.setPrompt("Personnel 3 Name", personnel3Field);
+        PromptSupport.setPrompt("Personnel 4 Name", personnel4Field);
         PromptSupport.setPrompt("Bumper Number", vehicleInfo1Field);
         PromptSupport.setPrompt("Call Sign", vehicleInfo2Field);
         PromptSupport.setPrompt("Additional Information", vehicleInfo3Field);
@@ -424,40 +424,10 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
         getDriverIcon();
         getCCIcon();
         getACCIcon();
-       // vehicleGridObj.replaceAddNewVehiclePanel(newVehiclePanel);
+        // vehicleGridObj.replaceAddNewVehiclePanel(newVehiclePanel);
 
         if (isCreateMode) {
-            if (url == null) {
-                JOptionPane.showMessageDialog(null, "Please enter required fields", "Alert Message", JOptionPane.WARNING_MESSAGE);
-            } else if ("".equals(personnel1Field.getText())) {
-                JOptionPane.showMessageDialog(null, "Please enter required fields", "Alert Message", JOptionPane.WARNING_MESSAGE);
-            } else if ("".equals(personnel2Field.getText())) {
-                JOptionPane.showMessageDialog(null, "Please enter required fields", "Alert Message", JOptionPane.WARNING_MESSAGE);
-            } else if ("".equals(vehicleInfo1Field.getText())) {
-                JOptionPane.showMessageDialog(null, "Please enter required fields", "Alert Message", JOptionPane.WARNING_MESSAGE);
-            } else if ("".equals(vehicleInfo2Field.getText())) {
-                JOptionPane.showMessageDialog(null, "Please enter required fields", "Alert Message", JOptionPane.WARNING_MESSAGE);
-                
-            }
-           else if (jComboBox1.getSelectedIndex() == 0){
-             //vp.setPassenger1LayoutToBlack();
-             //vp.removeIconImage(1);
-            JOptionPane.showMessageDialog(null, "Please select the passenger type", "Alert Message", JOptionPane.WARNING_MESSAGE); 
-            
-         }
-           else if (!(personnel3Field.getText().equals("")) && jComboBox2.getSelectedIndex() == 0 ){
-             //vp.setPassenger1LayoutToBlack();
-             //vp.removeIconImage(1);
-            JOptionPane.showMessageDialog(null, "Please select the passenger type", "Alert Message", JOptionPane.WARNING_MESSAGE); 
-            
-         }
-           else if (!(personnel4Field.getText().equals("")) && jComboBox3.getSelectedIndex() == 0){
-             //vp.setPassenger1LayoutToBlack();
-             //vp.removeIconImage(1);
-            JOptionPane.showMessageDialog(null, "Please select the passenger type", "Alert Message", JOptionPane.WARNING_MESSAGE); 
-            
-         }
-            else {
+            if (validateVehicleInfo()) {
 
                 vehicleGridObj.replaceAddNewVehiclePanel(newVehiclePanel);
                 this.setVisible(false);
@@ -467,9 +437,24 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
 
                 addVehicleButton.setText("Apply Changes");
 
-            }
+                addValuesToVehiclePanel(newVehiclePanel);
+                /*
+                 else if (!(personnel3Field.getText().equals("")) && jComboBox2.getSelectedIndex() == 0 ){
+                 //vp.setPassenger1LayoutToBlack();
+                 //vp.removeIconImage(1);
+                 JOptionPane.showMessageDialog(null, "Please select the passenger type", "Alert Message", JOptionPane.WARNING_MESSAGE); 
+            
+                 }
+                 else if (!(personnel4Field.getText().equals("")) && jComboBox3.getSelectedIndex() == 0){
+                 //vp.setPassenger1LayoutToBlack();
+                 //vp.removeIconImage(1);
+                 JOptionPane.showMessageDialog(null, "Please select the passenger type", "Alert Message", JOptionPane.WARNING_MESSAGE); 
+            
+                 }
+                 */
+            } else {
 
-            addValuesToVehiclePanel(newVehiclePanel);
+            }
         }
 
         if (isEditMode) {
@@ -482,6 +467,46 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_addVehicleButtonActionPerformed
+
+    private boolean validateVehicleInfo() {
+        if (url == null) {
+            JOptionPane.showMessageDialog(null, "Please add a vehicle image.", "Alert Message", JOptionPane.WARNING_MESSAGE);
+            return false;
+        } else if ("".equals(personnel1Field.getText())) {
+            JOptionPane.showMessageDialog(null, "Please enter the driver's name.", "Alert Message", JOptionPane.WARNING_MESSAGE);
+            return false;
+        } else if ("".equals(personnel2Field.getText())) {
+            JOptionPane.showMessageDialog(null, "Please enter Personnel 2 name.", "Alert Message", JOptionPane.WARNING_MESSAGE);
+            return false;
+        } else if (jComboBox1.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(null, "Please select Personnel 2 type.", "Alert Message", JOptionPane.WARNING_MESSAGE);
+            return false;
+        } else if ("".equals(vehicleInfo1Field.getText())) {
+            JOptionPane.showMessageDialog(null, "Please enter the bumper number.", "Alert Message", JOptionPane.WARNING_MESSAGE);
+            return false;
+        } else if ("".equals(vehicleInfo2Field.getText())) {
+            JOptionPane.showMessageDialog(null, "Please enter the call sign.", "Alert Message", JOptionPane.WARNING_MESSAGE);
+            return false;
+        }else if (!"".equals(personnel3Field.getText()) && jComboBox2.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(null, "Please select Personnel 3 type.", "Alert Message", JOptionPane.WARNING_MESSAGE);
+            return false;
+        }else if (!"".equals(personnel4Field.getText()) && jComboBox3.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(null, "Please select Personnel 4 type.", "Alert Message", JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
+        else if ("".equals(personnel3Field.getText()) && jComboBox2.getSelectedIndex() != 0) {
+            JOptionPane.showMessageDialog(null, "Please enter Personnel 3 name.", "Alert Message", JOptionPane.WARNING_MESSAGE);
+            jComboBox2.setSelectedIndex(0);
+            return false;
+        }else if ("".equals(personnel4Field.getText()) && jComboBox3.getSelectedIndex() != 0) {
+            JOptionPane.showMessageDialog(null, "Please enter Personnel 4 name.", "Alert Message", JOptionPane.WARNING_MESSAGE);
+            jComboBox3.setSelectedIndex(0);
+            return false;
+        }else {
+            return true;
+        }
+
+    }
 
     private void personnel1FieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_personnel1FieldActionPerformed
 
@@ -509,12 +534,6 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
-    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
-        // TODO add your handling code here:
-
-
-    }//GEN-LAST:event_jComboBox2ActionPerformed
-
     private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
         // TODO add your handling code here:
 
@@ -526,36 +545,36 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
 
             FileDialog loadFile;
             loadFile = new FileDialog(this, "Choose an Image", FileDialog.LOAD);
-            loadFile.setFile("*.jpg;*.jpeg;*.png;*.gif");            
+            loadFile.setFile("*.jpg;*.jpeg;*.png;*.gif");
             loadFile.setDirectory(getProgramPath() + "\\conx\\images\\vehicles\\");
             loadFile.setVisible(true);
-            try{File file = new File(loadFile.getFile());
-            if(file.exists() || file != null) {
+            try {
+                File file = new File(loadFile.getFile());
+                if (file.exists() || file != null) {
                     url = new URL("file:\\" + loadFile.getDirectory() + file);
-                
+
                     copyFile(new File(loadFile.getDirectory() + file), new File(getProgramPath() + "\\conx\\images\\vehicles\\" + file));
                     newVehiclePanel.setIconPath(getProgramPath() + "\\conx\\images\\vehicles\\" + file);
-                    
-                try {
-                    img = ImageIO.read(url);
-                    finalImage = img.getScaledInstance(268, 209, java.awt.Image.SCALE_SMOOTH);
-                ImageIcon icon = new ImageIcon(finalImage);
-                imageLabel.setIcon(icon);
-                //jLabel1.setIcon(icon);
-                revalidate();
-                repaint();
-                } catch (IOException ex) {
-                    Logger.getLogger(AddVehiclePopUp.class.getName()).log(Level.SEVERE, null, ex);
+
+                    try {
+                        img = ImageIO.read(url);
+                        finalImage = img.getScaledInstance(268, 209, java.awt.Image.SCALE_SMOOTH);
+                        ImageIcon icon = new ImageIcon(finalImage);
+                        imageLabel.setIcon(icon);
+                        //jLabel1.setIcon(icon);
+                        revalidate();
+                        repaint();
+                    } catch (IOException ex) {
+                        Logger.getLogger(AddVehiclePopUp.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+
+                } else {
                 }
-                
-            } else {
+            } catch (Exception ex) {
+
             }
-            }
-            catch(Exception ex){
-                
-            }
-        }catch(IOException ex){
-            
+        } catch (IOException ex) {
+
         }
     }//GEN-LAST:event_imageLabelMousePressed
 
@@ -580,7 +599,7 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
     }
 
     public void addValuesToVehiclePanel(VehiclePanel vp) {
-        
+
         vp.setDriverName(personnel1Field.getText());
         vp.setPassenger1(personnel2Field.getText());
         vp.setPassenger2(personnel3Field.getText());
@@ -590,129 +609,121 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
         vp.setAdditionalInfo(vehicleInfo3Field.getText());
         vp.setImage(img);
         vp.setDriverIcon(driverImageIcon);
-       
-        
+
         //These conditional statements set the CC label to the passenger
-         if (jComboBox1.getSelectedIndex() == 1){
+        if (jComboBox1.getSelectedIndex() == 1) {
             vp.setCCIcon(ccImageIcon, 1);
         }
 
-          if (jComboBox2.getSelectedIndex() == 1){
+        if (jComboBox2.getSelectedIndex() == 1) {
             vp.setCCIcon(ccImageIcon, 2);
         }
-           if (jComboBox3.getSelectedIndex() == 1){
+        if (jComboBox3.getSelectedIndex() == 1) {
             vp.setCCIcon(ccImageIcon, 3);
         }
-           /*
-           //These Conditional statements remove the CC icons
-            if (jComboBox1.getSelectedIndex() != 1){
-             vp.setPassenger1LayoutToBlack();
-             vp.removeCCIcon(1);
+        /*
+         //These Conditional statements remove the CC icons
+         if (jComboBox1.getSelectedIndex() != 1){
+         vp.setPassenger1LayoutToBlack();
+         vp.removeCCIcon(1);
          }
-              if (jComboBox2.getSelectedIndex() != 1){
-             vp.setPassenger1LayoutToBlack();
-             vp.removeCCIcon(2);
+         if (jComboBox2.getSelectedIndex() != 1){
+         vp.setPassenger1LayoutToBlack();
+         vp.removeCCIcon(2);
          }
-                if (jComboBox3.getSelectedIndex() != 1){
-             vp.setPassenger1LayoutToBlack();
-             vp.removeCCIcon(3);
+         if (jComboBox3.getSelectedIndex() != 1){
+         vp.setPassenger1LayoutToBlack();
+         vp.removeCCIcon(3);
          }
-        //End of CC conditiional Statments
-        */
-        
-         // These conditional statements are used if any of the combo box selects medic as their passenger type
-        if (jComboBox1.getSelectedIndex() == 3){
+         //End of CC conditiional Statments
+         */
+
+        // These conditional statements are used if any of the combo box selects medic as their passenger type
+        if (jComboBox1.getSelectedIndex() == 3) {
             vp.setPassenger1Layout();
-             vp.setMedicIcon(medicImageIcon, 1);
+            vp.setMedicIcon(medicImageIcon, 1);
         }
-         if (jComboBox2.getSelectedIndex() == 3){
+        if (jComboBox2.getSelectedIndex() == 3) {
             vp.setPassenger2Layout();
-             vp.setMedicIcon(medicImageIcon,2);
+            vp.setMedicIcon(medicImageIcon, 2);
         }
-         if (jComboBox3.getSelectedIndex() == 3){
+        if (jComboBox3.getSelectedIndex() == 3) {
             vp.setPassenger3Layout();
-             vp.setMedicIcon(medicImageIcon,3);
+            vp.setMedicIcon(medicImageIcon, 3);
         }
-         
-         if (jComboBox1.getSelectedIndex() == 4){
-             vp.setPassenger1LayoutToBlack();
-             vp.removeIconImage(1);
-         }
-         if (jComboBox2.getSelectedIndex() == 4){
-             vp.setPassenger2LayoutToBlack();
-             vp.removeIconImage(2);
-         }
-         if(jComboBox3.getSelectedIndex() == 4){
-             vp.setPassenger3LayoutToBlack();
-             vp.removeIconImage(3);
-         }
-         
-         
-         
-         /*
+
+        if (jComboBox1.getSelectedIndex() == 4) {
+            vp.setPassenger1LayoutToBlack();
+            vp.removeIconImage(1);
+        }
+        if (jComboBox2.getSelectedIndex() == 4) {
+            vp.setPassenger2LayoutToBlack();
+            vp.removeIconImage(2);
+        }
+        if (jComboBox3.getSelectedIndex() == 4) {
+            vp.setPassenger3LayoutToBlack();
+            vp.removeIconImage(3);
+        }
+
+        /*
          if (jComboBox2.getSelectedIndex() == 0){
-             //vp.setPassenger2LayoutToBlack();
-             //vp.removeIconImage(2);
-             JOptionPane.showMessageDialog(null, "Please select the passenger type", "Alert Message", JOptionPane.WARNING_MESSAGE);
-             this.setVisible(true);
+         //vp.setPassenger2LayoutToBlack();
+         //vp.removeIconImage(2);
+         JOptionPane.showMessageDialog(null, "Please select the passenger type", "Alert Message", JOptionPane.WARNING_MESSAGE);
+         this.setVisible(true);
          }
          if (jComboBox3.getSelectedIndex() == 0){
-             //vp.setPassenger3LayoutToBlack();
-             //vp.removeIconImage(3);
-           JOptionPane.showMessageDialog(null, "Please select the passenger type", "Alert Message", JOptionPane.WARNING_MESSAGE);  
-           this.setVisible(true);
+         //vp.setPassenger3LayoutToBlack();
+         //vp.removeIconImage(3);
+         JOptionPane.showMessageDialog(null, "Please select the passenger type", "Alert Message", JOptionPane.WARNING_MESSAGE);  
+         this.setVisible(true);
          }
          
-        */
-         
-         
-         
+         */
          // Begin Test 041120141659
          /*
          if (!jComboBox1.getSelectedItem().toString().contains("Medic")){
-             vp.setPassenger1LayoutToBlack();
-             vp.removeMedicIcon(1);
+         vp.setPassenger1LayoutToBlack();
+         vp.removeMedicIcon(1);
          }
          if (!jComboBox2.getSelectedItem().toString().contains("Medic")){
-             vp.setPassenger1LayoutToBlack();
-             vp.removeMedicIcon(1);
+         vp.setPassenger1LayoutToBlack();
+         vp.removeMedicIcon(1);
          }
          if (!jComboBox3.getSelectedItem().toString().contains("Medic")){
-             vp.setPassenger1LayoutToBlack();
-             vp.removeMedicIcon(1);
+         vp.setPassenger1LayoutToBlack();
+         vp.removeMedicIcon(1);
          }
          */
          // End Test
-         
-         /*
+        /*
          // These conditional statemens are used to remove medic icons
          if (jComboBox1.getSelectedIndex() != 3){
-             vp.setPassenger1LayoutToBlack();
-             vp.removeMedicIcon(1);
+         vp.setPassenger1LayoutToBlack();
+         vp.removeMedicIcon(1);
          }
          if (jComboBox2.getSelectedIndex() != 3){
-             vp.setPassenger2LayoutToBlack();
-             vp.removeMedicIcon(2);
+         vp.setPassenger2LayoutToBlack();
+         vp.removeMedicIcon(2);
          }
          if (jComboBox3.getSelectedIndex() != 3){
-             vp.setPassenger3LayoutToBlack();
-             vp.removeMedicIcon(3);
+         vp.setPassenger3LayoutToBlack();
+         vp.removeMedicIcon(3);
          }
-      // End of medic conditional statements
+         // End of medic conditional statements
          
-       */ 
-         
-         // These Conditional statements are used to add ACC icon
-         if (jComboBox1.getSelectedIndex() == 2){
-             vp.setACCIcon(accImageIcon, 1);
+         */
+        // These Conditional statements are used to add ACC icon
+        if (jComboBox1.getSelectedIndex() == 2) {
+            vp.setACCIcon(accImageIcon, 1);
         }
-         if (jComboBox2.getSelectedIndex() == 2){
-             vp.setACCIcon(accImageIcon,2);
+        if (jComboBox2.getSelectedIndex() == 2) {
+            vp.setACCIcon(accImageIcon, 2);
         }
-         if (jComboBox3.getSelectedIndex() == 2){
-             vp.setACCIcon(accImageIcon,3);
+        if (jComboBox3.getSelectedIndex() == 2) {
+            vp.setACCIcon(accImageIcon, 3);
         }
-      
+
     }
 
     // This method gets the driver Icon from the resources folder
@@ -720,53 +731,53 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
 
         try {
             //URL url = getClass().getResource("./convoy/resources/icons/steeringWheel.png");
-            Image iconImage = ImageIO.read(new File(getProgramPath()+"\\conx\\images\\icons\\steeringWheel.png"));
+            Image iconImage = ImageIO.read(new File(getProgramPath() + "\\conx\\images\\icons\\steeringWheel.png"));
             driverImageIcon = iconImage.getScaledInstance(17, 17, java.awt.Image.SCALE_SMOOTH);
 
         } catch (IOException ex) {
             Logger.getLogger(AddVehiclePopUp.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    
+
     //This method gets the medic icon from the resources folder 
-   public void getMedicIcon(){
-       try{
-           //URL url = getClass().getClassLoader().getResource("./conx/images/icons/medic.png");
-           Image iconImage = ImageIO.read(new File(getProgramPath()+"\\conx\\images\\icons\\medic.png"));
-           //System.out.print(iconImage);
-           medicImageIcon = iconImage.getScaledInstance(20, 20, java.awt.Image.SCALE_SMOOTH);
-           
-       }catch (IOException ex){
-           Logger.getLogger(AddVehiclePopUp.class.getName()).log(Level.SEVERE, null, ex);
-       }
-   }
-    
-      //This method gets the Convoy Commander icon from the resources folder 
-   public void getCCIcon(){
-       try{
-           //URL url = getClass().getClassLoader().getResource("./conx/images/icons/cc.png");
-           Image iconImage = ImageIO.read(new File(getProgramPath()+"\\conx\\images\\icons\\ccIcon.png"));
-          // Image iconImage = ImageIO.read(url);
-           ccImageIcon = iconImage.getScaledInstance(17, 17, java.awt.Image.SCALE_SMOOTH);
-           
-       }catch (IOException ex){
-           Logger.getLogger(AddVehiclePopUp.class.getName()).log(Level.SEVERE, null, ex);
-       }
-   }
-   
-      //This method gets the Convoy Commander icon from the resources folder 
-   public void getACCIcon(){
-       try{
-           //URL url = getClass().getClassLoader().getResource("./conx/images/icons/acc.png");
-           Image iconImage = ImageIO.read(new File(getProgramPath()+"\\conx\\images\\icons\\accIcon.png"));
-           //Image iconImage = ImageIO.read(url);
-           accImageIcon = iconImage.getScaledInstance(17, 17, java.awt.Image.SCALE_SMOOTH);
-           
-       }catch (IOException ex){
-           Logger.getLogger(AddVehiclePopUp.class.getName()).log(Level.SEVERE, null, ex);
-       }
-   }
+    public void getMedicIcon() {
+        try {
+            //URL url = getClass().getClassLoader().getResource("./conx/images/icons/medic.png");
+            Image iconImage = ImageIO.read(new File(getProgramPath() + "\\conx\\images\\icons\\medic.png"));
+            //System.out.print(iconImage);
+            medicImageIcon = iconImage.getScaledInstance(20, 20, java.awt.Image.SCALE_SMOOTH);
+
+        } catch (IOException ex) {
+            Logger.getLogger(AddVehiclePopUp.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    //This method gets the Convoy Commander icon from the resources folder 
+    public void getCCIcon() {
+        try {
+            //URL url = getClass().getClassLoader().getResource("./conx/images/icons/cc.png");
+            Image iconImage = ImageIO.read(new File(getProgramPath() + "\\conx\\images\\icons\\ccIcon.png"));
+            // Image iconImage = ImageIO.read(url);
+            ccImageIcon = iconImage.getScaledInstance(17, 17, java.awt.Image.SCALE_SMOOTH);
+
+        } catch (IOException ex) {
+            Logger.getLogger(AddVehiclePopUp.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    //This method gets the Convoy Commander icon from the resources folder 
+    public void getACCIcon() {
+        try {
+            //URL url = getClass().getClassLoader().getResource("./conx/images/icons/acc.png");
+            Image iconImage = ImageIO.read(new File(getProgramPath() + "\\conx\\images\\icons\\accIcon.png"));
+            //Image iconImage = ImageIO.read(url);
+            accImageIcon = iconImage.getScaledInstance(17, 17, java.awt.Image.SCALE_SMOOTH);
+
+        } catch (IOException ex) {
+            Logger.getLogger(AddVehiclePopUp.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
     public void modifyPopUp() {
 
         //vehicleNameField.setText(vehicleName);
