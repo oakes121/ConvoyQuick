@@ -36,6 +36,22 @@ public final class MainWindow extends javax.swing.JFrame {
     private ArrayList<VehicleGrid> vehicleGrids = new ArrayList<>();
     private int vehicleGridCount = 0;
     private int currentVehicleGrid = 0;
+    
+    private static boolean cc = false;
+    private static boolean acc = false;
+    
+    public static boolean getCC(){
+        return cc;
+    }
+    public static boolean getACC(){
+        return acc;
+    }
+    public static void setCC(boolean xCC){
+        cc = xCC;
+    }
+    public static void setACC(boolean xACC){
+        acc = xACC;
+    }
 
     /**
      * <p>
