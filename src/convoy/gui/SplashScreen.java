@@ -92,7 +92,7 @@ public class SplashScreen extends JWindow {
             }
         } finally {
 
-            //ssb.dispose();
+            ssb.dispose();
             mainWindow = new MainWindow();
             mainWindow.setVisible(true);
 
