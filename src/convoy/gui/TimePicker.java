@@ -19,18 +19,32 @@ import javax.swing.border.EmptyBorder;
  */
 public class TimePicker extends JPanel{
     
+    private JSpinner timeSpinner = new JSpinner( new SpinnerDateModel() );
+    private JSpinner.DateEditor timeEditor = new JSpinner.DateEditor(timeSpinner, "HH:mm");
+    
+    public static void main(String[] args){
+        //System.out.print(timeEditor.getTextField().getText());
+    }
+    
     public TimePicker(){
         this.add(buildTimePicker());
         this.setBorder(new EmptyBorder(0, 0, 0, 0) );
         this.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
     }
     
+    public void setTime(Date time){
+        timeEditor.getTextField().setValue(time);
+    }
+    
+    public String getTime(){
+        return timeEditor.getTextField().getText();
+    }
+    
     private JSpinner buildTimePicker(){        
-        JSpinner timeSpinner = new JSpinner( new SpinnerDateModel() );
-        JSpinner.DateEditor timeEditor = new JSpinner.DateEditor(timeSpinner, "HH:mm");
+       
         timeSpinner.setEditor(timeEditor);
         timeSpinner.setValue(new Date());
-        
+                
         return timeSpinner;
         
     }   

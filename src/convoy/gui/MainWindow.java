@@ -1,13 +1,11 @@
 package convoy.gui;
 
-import static convoy.gui.SplashScreen.getProgramPath;
 import convoy.loadsave.Load;
 import convoy.loadsave.Save;
 import convoy.objects.Mission;
 import convoy.pdf.*;
 import java.awt.*;
 import java.io.*;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLDecoder;
 import java.nio.file.Files;
@@ -187,6 +185,7 @@ public final class MainWindow extends javax.swing.JFrame {
         toFront();
         revalidate();
         repaint();
+        
     }
 
     public void reDrawVehicleGrid(VehicleGrid vg) {
@@ -643,6 +642,10 @@ public final class MainWindow extends javax.swing.JFrame {
                 this.rightMissionInfoPanel2.getFromSP(),
                 this.rightMissionInfoPanel2.getToLU(),
                 this.rightMissionInfoPanel2.getToSP(),
+                this.rightMissionInfoPanel2.getStartLinkUpTime(),
+                this.rightMissionInfoPanel2.getStartSPTime(),
+                this.rightMissionInfoPanel2.getRallyLinkUpTime(),
+                this.rightMissionInfoPanel2.getRallySPTime(),
                 this.leftMissionInfoPanel1.getClassification(),
                 this.leftMissionInfoPanel1.getAdditionalText(),
                 this.rightMissionInfoPanel2.getAdditionalText(),
@@ -694,12 +697,14 @@ public final class MainWindow extends javax.swing.JFrame {
                                 this.rightMissionInfoPanel2.getCC(),
                                 this.rightMissionInfoPanel2.getACC(),
                                 this.rightMissionInfoPanel2.getStagingArea(),
-                                //this.rightMissionInfoPanel2.getFrom(),
-                                //this.rightMissionInfoPanel2.getTo(),
                                 this.rightMissionInfoPanel2.getFromLU(),
                                 this.rightMissionInfoPanel2.getToLU(),
                                 this.rightMissionInfoPanel2.getFromSP(),
                                 this.rightMissionInfoPanel2.getToSP(),
+                                this.rightMissionInfoPanel2.getStartLinkUpTime(),
+                                this.rightMissionInfoPanel2.getStartSPTime(),
+                                this.rightMissionInfoPanel2.getRallyLinkUpTime(),
+                                this.rightMissionInfoPanel2.getRallySPTime(),
                                 this.rightMissionInfoPanel2.getFreqs(),
                                 this.rightMissionInfoPanel2.getAdditionalText(),
                                 this.additionalTextPanel1.getAdditionalText(),
@@ -824,12 +829,14 @@ public final class MainWindow extends javax.swing.JFrame {
                             this.rightMissionInfoPanel2.getCC(),
                             this.rightMissionInfoPanel2.getACC(),
                             this.rightMissionInfoPanel2.getStagingArea(),
-                            //this.rightMissionInfoPanel2.getFrom(),
-                            //this.rightMissionInfoPanel2.getTo(),
                             this.rightMissionInfoPanel2.getFromLU(),
                             this.rightMissionInfoPanel2.getToLU(),
                             this.rightMissionInfoPanel2.getFromSP(),
-                            this.rightMissionInfoPanel2.getToSP(),
+                            this.rightMissionInfoPanel2.getToSP(),                            
+                            this.rightMissionInfoPanel2.getStartLinkUpTime(),
+                            this.rightMissionInfoPanel2.getStartSPTime(),
+                            this.rightMissionInfoPanel2.getRallyLinkUpTime(),
+                            this.rightMissionInfoPanel2.getRallySPTime(),
                             this.rightMissionInfoPanel2.getFreqs(),
                             this.rightMissionInfoPanel2.getAdditionalText(),
                             this.additionalTextPanel1.getAdditionalText(),
@@ -878,7 +885,11 @@ public final class MainWindow extends javax.swing.JFrame {
                 this.rightMissionInfoPanel2.getFromLU(),
                 this.rightMissionInfoPanel2.getFromSP(),
                 this.rightMissionInfoPanel2.getToLU(),
-                this.rightMissionInfoPanel2.getToSP(),
+                this.rightMissionInfoPanel2.getToSP(),                
+                this.rightMissionInfoPanel2.getStartLinkUpTime(),
+                this.rightMissionInfoPanel2.getStartSPTime(),
+                this.rightMissionInfoPanel2.getRallyLinkUpTime(),
+                this.rightMissionInfoPanel2.getRallySPTime(),
                 this.leftMissionInfoPanel1.getClassification(),
                 this.leftMissionInfoPanel1.getAdditionalText(),
                 this.rightMissionInfoPanel2.getAdditionalText(),
@@ -966,8 +977,6 @@ public final class MainWindow extends javax.swing.JFrame {
             revalidate();
             repaint();
         }
-        
-        
         
     }//GEN-LAST:event_deleteCurrentVehiclePageActionPerformed
 

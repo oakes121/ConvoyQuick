@@ -5,6 +5,7 @@ import convoy.objects.Radio;
 import java.io.*;
 import java.net.URL;
 import java.net.URLDecoder;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -26,7 +27,7 @@ public class GenerateHtml {
      */
     public GenerateHtml() {
     }
-
+    
     /**
      * <p>
      * This method is used to generate the HTML and CSS. It grabs all the
@@ -67,14 +68,20 @@ public class GenerateHtml {
             Date toLU,
             Date fromSP,
             Date toSP,
+            String fromLUTime,
+            String toLUTime,
+            String fromSPTime,
+            String toSPTime,
             ArrayList<Radio> freqs,
             String rightAdditionalText,
             String additionalText,
             VehicleGrid vehicleGrid) {
         
+        try{
+        
         String[] vehicles = new String[16];
         
-        System.out.print(rightAdditionalText.replace("<html>", "").replace("<head>", "").replace("<body>", "").replace("</html>", "").replace("</head>", "").replace("</body>", "").replace("\n", ""));
+        //System.out.print(rightAdditionalText.replace("<html>", "").replace("<head>", "").replace("<body>", "").replace("</html>", "").replace("</head>", "").replace("</body>", "").replace("\n", ""));
         
         for(int v=0; v<vehicles.length; v++){
             vehicles[v] = "                                     <table>\n"
@@ -467,13 +474,13 @@ public class GenerateHtml {
                         + "                        </tr>\n"
                         + "                        <tr>\n"
                         + "                            <!-- from l/u sp //-->\n"
-                        + "                            <td class=\"label\">Start Point Linkup Time:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class=\"data\">" + fromLU + "</span></td>\n"
-                        + "                            <td class=\"label\">Start Point SP Time:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class=\"data\">" + fromSP + "</span></td>\n"
+                        + "                            <td class=\"label\">Start Point Linkup Time:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class=\"data\">" + fromLU.toString().substring(8,10) + fromLUTime.replace(":", "") + fromLU.toString().substring(4,7).toUpperCase() + new SimpleDateFormat("yy").format(fromLU) + "</span></td>\n"
+                        + "                            <td class=\"label\">Start Point SP Time:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class=\"data\">" + fromSP.toString().substring(8,10) + fromSPTime.replace(":", "") + fromSP.toString().substring(4,7).toUpperCase() + new SimpleDateFormat("yy").format(fromSP) + "</span></td>\n"
                         + "                        </tr>\n"
                         + "                        <tr>\n"
                         + "                            <!-- to l/u sp//-->\n"
-                        + "                            <td class=\"label\">Rally Point Linkup Time:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class=\"data\">" + toLU + "</span></td>\n"
-                        + "                            <td class=\"label\">Rally Point SP Time:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class=\"data\">" + toSP + "</span></td>\n"
+                        + "                            <td class=\"label\">Rally Point Linkup Time:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class=\"data\">" + toLU.toString().substring(8,10) + toLUTime.replace(":", "") + toLU.toString().substring(4,7).toUpperCase() + new SimpleDateFormat("yy").format(toLU) + "</span></td>\n"
+                        + "                            <td class=\"label\">Rally Point SP Time:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class=\"data\">" + toSP.toString().substring(8,10) + toSPTime.replace(":", "") + toSP.toString().substring(4,7).toUpperCase() + new SimpleDateFormat("yy").format(toSP) + "</span></td>\n"
                         + "                        </tr>\n"
                         + radio
                         + rightAdditionalText
@@ -556,6 +563,9 @@ public class GenerateHtml {
             }
         } catch (IOException ex) {
             //ex.printStackTrace();
+        }
+        }catch(Exception ex){
+            ex.printStackTrace();
         }
     }
     public static String getProgramPath() throws UnsupportedEncodingException {

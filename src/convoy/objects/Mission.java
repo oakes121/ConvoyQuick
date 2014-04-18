@@ -23,10 +23,14 @@ public class Mission implements Serializable {
     private String rightFrom;
     private String cc;
     private String acc;
-    private Date fromLinkUpTime;
-    private Date fromSPTime;
-    private Date toLinkUpTime;
-    private Date toSPTime;
+    private Date fromLinkUpDate;
+    private Date fromSPDate;
+    private Date toLinkUpDate;
+    private Date toSPDate;
+    private String fromLinkUpTime;
+    private String fromSPTime;
+    private String toLinkUpTime;
+    private String toSPTime;
     private String classification;
     private String leftAdditionalText;
     private String rightAdditionalText;
@@ -80,16 +84,18 @@ public class Mission implements Serializable {
      */
     private Mission(    String missionNumber, 
                         String missionStagingArea,
-                        String leftTo, 
-                        //String rightTo, 
-                        String leftFrom, 
-                        //String rightFrom, 
+                        String leftTo,  
+                        String leftFrom,                         
                         String cc, 
                         String acc, 
-                        Date fromLinkUpTime, 
-                        Date fromSPTime, 
-                        Date toLinkUpTime, 
-                        Date toSPTime,
+                        Date fromLinkUpDate, 
+                        Date fromSPDate, 
+                        Date toLinkUpDate, 
+                        Date toSPDate,
+                        String fromLinkUpTime, 
+                        String fromSPTime, 
+                        String toLinkUpTime, 
+                        String toSPTime,
                         String classification,
                         String left,
                         String right,
@@ -111,15 +117,19 @@ public class Mission implements Serializable {
         //missionDepartureTime = new Time(dTH, dTM, dTS);
         this.cc = cc;
         this.acc = acc;
-        this.fromLinkUpTime = fromLinkUpTime;
-        this.toLinkUpTime = toLinkUpTime;
-        this.fromSPTime = fromSPTime;
-        this.toSPTime = toSPTime;
+        this.fromLinkUpDate = fromLinkUpDate;
+        this.toLinkUpDate = toLinkUpDate;
+        this.fromSPDate = fromSPDate;
+        this.toSPDate = toSPDate;
         this.classification = classification;
         this.leftAdditionalText = left;
         this.rightAdditionalText = right;
         this.additionalText = text;
         this.unitPatch = unitPatch;
+        this.fromLinkUpTime = fromLinkUpTime;
+        this.fromSPTime = fromSPTime;
+        this.toLinkUpTime = toLinkUpTime;
+        this.toSPTime = toSPTime;
     }
     
     /**
@@ -151,9 +161,7 @@ public class Mission implements Serializable {
      * @param missionStagingArea string value that missionStagingArea will be
      * set to
      * @param leftTo
-     * @param rightTo
      * @param leftFrom
-     * @param rightFrom
      * @param cc
      * @param acc
      * @param fromLinkUpTime
@@ -175,10 +183,14 @@ public class Mission implements Serializable {
                                                     //String rightFrom, 
                                                     String cc, 
                                                     String acc, 
-                                                    Date fromLinkUpTime, 
-                                                    Date fromSPTime, 
-                                                    Date toLinkUpTime, 
-                                                    Date toSPTime,
+                                                    Date fromLinkUpDate, 
+                                                    Date fromSPDate, 
+                                                    Date toLinkUpDate, 
+                                                    Date toSPDate,
+                                                    String fromLinkUpTime, 
+                                                    String fromSPTime, 
+                                                    String toLinkUpTime, 
+                                                    String toSPTime,
                                                     String classification,
                                                     String leftAdditionalText,
                                                     String rightAdditionalText,
@@ -187,7 +199,7 @@ public class Mission implements Serializable {
         
         // if uniqueInstance is null, instantiate it to new Mission()
         uniqueInstance = new Mission(   missionNumber, missionStagingArea, leftTo, leftFrom,
-            cc, acc, fromLinkUpTime, fromSPTime, toLinkUpTime, toSPTime, classification,leftAdditionalText, rightAdditionalText, additionalText, unitPatch);
+            cc, acc, fromLinkUpDate, fromSPDate, toLinkUpDate, toSPDate, fromLinkUpTime, fromSPTime, toLinkUpTime, toSPTime, classification,leftAdditionalText, rightAdditionalText, additionalText, unitPatch);
            
         return uniqueInstance;        
     }
@@ -233,8 +245,7 @@ public class Mission implements Serializable {
     
     /**
      * Method addVehicle(Vehicle vehicle) adds vehicle
-     * @param vehicle vehicle to be added
-     * @return vehicles.add(vehicle) returns whether or not vehicle was added
+     * @param newVehicle
      */
     public void addVehicle(Vehicle newVehicle) {
         vehicles.add(newVehicle);        
@@ -266,7 +277,7 @@ public class Mission implements Serializable {
     /**
      * Method setNumberOfPersonnel(int numberOfPersonnel) sets this.numberOfPersonnel
      * to numberOfPersonnel
-     * @param numberOfPersonnel int value that this.numberOfPersonnel is set to
+     * @param leftTo
      */
     public void setLeftTo(String leftTo) {
         this.leftTo = leftTo;
@@ -279,7 +290,6 @@ public class Mission implements Serializable {
     /**
      * Method setNumberOfVehicles(int numberOfVehicles) sets this.numberOfVehicles
      * to numberOfVehicles
-     * @param numberOfVehicles int value that this.numberOfVehicles is set to
      */
     public void setRightTo(String rightTo) {
         this.rightTo = rightTo;
@@ -450,17 +460,30 @@ public class Mission implements Serializable {
     public String getACC(){
         return this.acc;        
     }
+    public Date getFromLinkUpDate(){
+        return this.fromLinkUpDate;        
+    }
+    public Date getFromSPDate(){
+        return this.fromSPDate;        
+    }
+    public Date getToLinkUpDate(){
+        return this.toLinkUpDate;        
+    }
+    public Date getToSPDate(){
+        return this.toSPDate;        
+    }
+    
     public Date getFromLinkUpTime(){
-        return this.fromLinkUpTime;        
+        return this.fromLinkUpDate;        
     }
     public Date getFromSPTime(){
-        return this.fromSPTime;        
+        return this.fromSPDate;        
     }
     public Date getToLinkUpTime(){
-        return this.toLinkUpTime;        
+        return this.toLinkUpDate;        
     }
-    public Date getToSPTime(){
-        return this.toSPTime;        
+    public Date getToSTime(){
+        return this.toSPDate;        
     }
     public String getClassification(){
         return this.classification;        

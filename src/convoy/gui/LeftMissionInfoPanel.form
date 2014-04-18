@@ -38,7 +38,7 @@
       <Color blue="80" green="b2" red="c2" type="rgb"/>
     </Property>
     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[600, 360]"/>
+      <Dimension value="[600, 400]"/>
     </Property>
   </Properties>
   <AuxValues>
@@ -57,6 +57,7 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
               <Component id="imageLabel" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -64,7 +65,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="fromLabel" min="-2" max="-2" attributes="0"/>
                           <Component id="missionNumberLabel" min="-2" max="-2" attributes="0"/>
-                          <Component id="toLabel" min="-2" max="-2" attributes="0"/>
+                          <Component id="toLabel" alignment="1" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -75,14 +76,13 @@
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
-                      <Component id="classificationDropBox" max="32767" attributes="0"/>
+                      <Component id="classificationDropBox" pref="368" max="32767" attributes="0"/>
                       <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                   </Group>
               </Group>
           </Group>
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="additionalTextPanel1" pref="448" max="32767" attributes="0"/>
+          <Group type="102" alignment="1" attributes="0">
+              <Component id="leftAdditionalTextPanel1" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -92,29 +92,29 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <Component id="classificationDropBox" min="-2" pref="50" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                      <EmptySpace pref="37" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="missionNumberTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="missionNumberLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="missionNumberTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                      <EmptySpace pref="36" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="fromTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="fromLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="fromTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="toTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="toLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="37" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="toTextField" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="toLabel" alignment="1" min="-2" pref="20" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <Component id="imageLabel" min="-2" pref="190" max="-2" attributes="0"/>
+                  <Component id="imageLabel" alignment="0" min="-2" pref="190" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="additionalTextPanel1" min="-2" pref="118" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="leftAdditionalTextPanel1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -146,6 +146,9 @@
     </Component>
     <Component class="javax.swing.JTextField" name="missionNumberTextField">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tahoma" size="14" style="1"/>
+        </Property>
         <Property name="toolTipText" type="java.lang.String" value="Enter Mission Number"/>
       </Properties>
     </Component>
@@ -160,6 +163,11 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="fromTextField">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tahoma" size="14" style="1"/>
+        </Property>
+      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="fromTextFieldActionPerformed"/>
       </Events>
@@ -170,6 +178,14 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="toTextField">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tahoma" size="14" style="1"/>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="toTextFieldActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="imageLabel">
       <Properties>
@@ -177,15 +193,20 @@
           <Image iconType="3" name="/convoy/resources/images/2id.png"/>
         </Property>
         <Property name="toolTipText" type="java.lang.String" value="Click to change the Unit Patch"/>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-          <Connection code="null" type="code"/>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+            <EtchetBorder>
+              <Color PropertyName="highlight" blue="0" green="0" red="0" type="rgb"/>
+              <Color PropertyName="shadow" blue="cc" green="cc" red="cc" type="rgb"/>
+            </EtchetBorder>
+          </Border>
         </Property>
       </Properties>
       <Events>
         <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="imageLabelMousePressed"/>
       </Events>
     </Component>
-    <Component class="convoy.gui.AdditionalTextPanel" name="additionalTextPanel1">
+    <Component class="convoy.gui.LeftAdditionalTextPanel" name="leftAdditionalTextPanel1">
     </Component>
   </SubComponents>
 </Form>

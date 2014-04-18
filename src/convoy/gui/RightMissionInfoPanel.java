@@ -1,8 +1,6 @@
 package convoy.gui;
 
-import convoy.objects.MaximumSizeFilter;
 import convoy.objects.Radio;
-import convoy.textEditor.com.metaphaseeditor.MetaphaseEditor;
 import java.awt.*;
 import java.beans.PropertyVetoException;
 import java.io.IOException;
@@ -11,7 +9,6 @@ import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.*;
-import javax.swing.text.AbstractDocument;
 
 
 /**
@@ -231,6 +228,22 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
         } catch (PropertyVetoException ex) {
             Logger.getLogger(RightMissionInfoPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    public String getStartLinkUpTime(){
+        return timePicker2.getTime();
+    }
+    
+    public String getStartSPTime(){
+        return timePicker4.getTime();
+    }
+    
+    public String getRallyLinkUpTime(){
+        return timePicker3.getTime();
+    }
+    
+    public String getRallySPTime(){
+        return timePicker5.getTime();
     }
 
     /**
