@@ -541,6 +541,9 @@
       </Properties>
     </Component>
     <Component class="com.michaelbaranov.microba.calendar.DatePicker" name="startPointLinkup">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+      </AuxValues>
     </Component>
     <Component class="com.michaelbaranov.microba.calendar.DatePicker" name="rallyPointLinkup">
     </Component>
@@ -549,6 +552,9 @@
     <Component class="com.michaelbaranov.microba.calendar.DatePicker" name="rallyPointSP">
     </Component>
     <Component class="convoy.gui.TimePicker" name="timePicker2">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+      </AuxValues>
     </Component>
     <Component class="convoy.gui.TimePicker" name="timePicker3">
     </Component>

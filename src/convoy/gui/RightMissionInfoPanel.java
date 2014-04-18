@@ -10,7 +10,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.*;
 
-
 /**
  * @author Mike Moye <mtm5313@psu.edu>
  * @version 1.0
@@ -20,7 +19,7 @@ import javax.swing.*;
  * This class is used to create right mission information panel.
  * </p>
  */
-public class RightMissionInfoPanel extends javax.swing.JPanel {    
+public class RightMissionInfoPanel extends javax.swing.JPanel {
 
     private int addFreqCount = 1; //counts the number of channels in the radio
 
@@ -67,25 +66,23 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
      * @return this.fromTextField.getText()
      */
     //public String getFrom() {
-        //return this.fromTextField.getText();
+    //return this.fromTextField.getText();
     //}
-
     /**
      * Gets the destination of the convoy in the right mission information panel
      *
      * @return this.toTextField.getText()
      */
     //public String getTo() {
-        //return this.toTextField.getText();
+    //return this.toTextField.getText();
     //}
-
     /**
      * Gets the link up time of the beginning location
      *
      * @return this.fromLinkUpTextField.getText()
      */
     public Date getFromLU() {
-       return this.startPointLinkup.getDate();
+        return this.startPointLinkup.getDate();
     }
 
     /**
@@ -166,18 +163,16 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
      * @param from
      */
     //public void setFrom(String from) {
-        //this.fromTextField.setText(from);
+    //this.fromTextField.setText(from);
     //}
-
     /**
      * Sets the destination of the right information panel
      *
      * @param to
      */
     //public void setTo(String to) {
-        //this.toTextField.setText(to);
+    //this.toTextField.setText(to);
     //}
-
     /**
      * Sets the link up time of the beginning location
      *
@@ -229,21 +224,37 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
             Logger.getLogger(RightMissionInfoPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    public String getStartLinkUpTime(){
-        return timePicker2.getTime();
+
+    public String getStartLinkUpTime() {
+        if (startPointLinkUpTimeComoboBox.getSelectedIndex() == 0) {
+            return timePicker2.getTime();
+        } else {
+            return timePicker2.getTime() + "Z";
+        }
     }
-    
-    public String getStartSPTime(){
-        return timePicker4.getTime();
+
+    public String getStartSPTime() {
+        if (this.startPointSPTimeComoboBox.getSelectedIndex() == 0) {
+            return timePicker4.getTime();
+        } else {
+            return timePicker4.getTime() + "Z";
+        }
     }
-    
-    public String getRallyLinkUpTime(){
-        return timePicker3.getTime();
+
+    public String getRallyLinkUpTime() {
+        if (this.rallyPointLinkUpTimeComoboBox.getSelectedIndex() == 0) {
+            return timePicker3.getTime();
+        } else {
+            return timePicker3.getTime() + "Z";
+        }
     }
-    
-    public String getRallySPTime(){
-        return timePicker5.getTime();
+
+    public String getRallySPTime() {
+        if (this.rallyPointSPTimeComoboBox.getSelectedIndex() == 0) {
+            return timePicker5.getTime();
+        } else {
+            return timePicker5.getTime() + "Z";
+        }
     }
 
     /**
@@ -313,7 +324,7 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
         channelSixLabel.setVisible(false);
         channelSixName.setVisible(false);
         channelSixFreq.setVisible(false);
-        
+
         removeFreq1.setVisible(false);
         removeFreq2.setVisible(false);
         removeFreq3.setVisible(false);
@@ -744,7 +755,7 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
 
                         channelOneName.setText(freqName.getText());
                         channelOneFreq.setText(freq.getText());
-                        
+
                         removeFreq1.setVisible(true);
 
                         addFreqCount++;
@@ -768,7 +779,7 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
 
                         channelThreeName.setText(freqName.getText());
                         channelThreeFreq.setText(freq.getText());
-                        
+
                         removeFreq3.setVisible(true);
 
                         addFreqCount++;
@@ -782,7 +793,7 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
 
                         channelFourName.setText(freqName.getText());
                         channelFourFreq.setText(freq.getText());
-                        
+
                         removeFreq4.setVisible(true);
 
                         addFreqCount++;
@@ -796,7 +807,7 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
 
                         channelFiveName.setText(freqName.getText());
                         channelFiveFreq.setText(freq.getText());
-                        
+
                         removeFreq5.setVisible(true);
 
                         addFreqCount++;
@@ -812,7 +823,7 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
                         channelSixFreq.setText(freq.getText());
 
                         addFreqLabel.setVisible(false);
-                        
+
                         removeFreq6.setVisible(true);
 
                         addFreqCount++;
@@ -829,11 +840,11 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_addFreqLabelMouseClicked
 
     private void removeFreq1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_removeFreq1MousePressed
-                        channelOneLabel.setVisible(false);
-                        channelOneName.setVisible(false);
-                        channelOneFreq.setVisible(false);
-                        removeFreq1.setVisible(false);
-                        addFreqCount--;
+        channelOneLabel.setVisible(false);
+        channelOneName.setVisible(false);
+        channelOneFreq.setVisible(false);
+        removeFreq1.setVisible(false);
+        addFreqCount--;
     }//GEN-LAST:event_removeFreq1MousePressed
 
     private void channelOneNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_channelOneNameActionPerformed
@@ -887,10 +898,10 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
     private javax.swing.JLabel stagingAreaLabel;
     private javax.swing.JTextField stagingAreaTextField;
     private javax.swing.JComboBox startPointLinkUpTimeComoboBox;
-    private com.michaelbaranov.microba.calendar.DatePicker startPointLinkup;
+    private static com.michaelbaranov.microba.calendar.DatePicker startPointLinkup;
     private com.michaelbaranov.microba.calendar.DatePicker startPointSP;
     private javax.swing.JComboBox startPointSPTimeComoboBox;
-    private convoy.gui.TimePicker timePicker2;
+    private static convoy.gui.TimePicker timePicker2;
     private convoy.gui.TimePicker timePicker3;
     private convoy.gui.TimePicker timePicker4;
     private convoy.gui.TimePicker timePicker5;
