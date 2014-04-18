@@ -5,14 +5,12 @@
  */
 package convoy.gui;
 
-import static convoy.gui.MainWindow.getProgramPath;
 import java.awt.Cursor;
 import java.awt.FileDialog;
 import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLDecoder;
 import java.nio.file.Files;
@@ -21,9 +19,6 @@ import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
 import org.jdesktop.xswingx.PromptSupport;
 
 /**
@@ -194,8 +189,18 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
         });
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select Type", "CC", "ACC", "Medic", "Passenger" }));
+        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox2ActionPerformed(evt);
+            }
+        });
 
         jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select Type", "CC", "ACC", "Medic", "Passenger" }));
+        jComboBox3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox3ActionPerformed(evt);
+            }
+        });
 
         jLabel4.setForeground(new java.awt.Color(255, 0, 0));
         jLabel4.setText("*1");
@@ -211,6 +216,11 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
         jLabel8.setText("Driver");
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select Type", "CC", "ACC", "Medic", "Passenger" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
 
         jLabel11.setForeground(new java.awt.Color(255, 0, 0));
         jLabel11.setText("* Required");
@@ -438,20 +448,7 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
                 addVehicleButton.setText("Apply Changes");
 
                 addValuesToVehiclePanel(newVehiclePanel);
-                /*
-                 else if (!(personnel3Field.getText().equals("")) && jComboBox2.getSelectedIndex() == 0 ){
-                 //vp.setPassenger1LayoutToBlack();
-                 //vp.removeIconImage(1);
-                 JOptionPane.showMessageDialog(null, "Please select the passenger type", "Alert Message", JOptionPane.WARNING_MESSAGE); 
-            
-                 }
-                 else if (!(personnel4Field.getText().equals("")) && jComboBox3.getSelectedIndex() == 0){
-                 //vp.setPassenger1LayoutToBlack();
-                 //vp.removeIconImage(1);
-                 JOptionPane.showMessageDialog(null, "Please select the passenger type", "Alert Message", JOptionPane.WARNING_MESSAGE); 
-            
-                 }
-                 */
+                
             } else {
 
             }
@@ -503,6 +500,26 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
             jComboBox3.setSelectedIndex(0);
             return false;
         }else {
+            
+            if(jComboBox1.getSelectedIndex() == 1){
+                MainWindow.setCC(true);
+            }
+            if(jComboBox1.getSelectedIndex() == 2){
+                MainWindow.setACC(true);
+            }
+            if(jComboBox2.getSelectedIndex() == 1){
+                MainWindow.setCC(true);
+            }
+            if(jComboBox2.getSelectedIndex() == 2){
+                MainWindow.setACC(true);
+            }
+            if(jComboBox3.getSelectedIndex() == 1){
+                MainWindow.setCC(true);
+            }
+            if(jComboBox3.getSelectedIndex() == 2){
+                MainWindow.setACC(true);
+            }
+            
             return true;
         }
 
@@ -530,13 +547,27 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
     }
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
-
+        if(jComboBox1.getSelectedIndex() == 1 && MainWindow.getCC()){
+            JOptionPane.showMessageDialog(null, "The Convoy Commander has already been assigned.", "Alert Message", JOptionPane.WARNING_MESSAGE);
+            jComboBox1.setSelectedIndex(0);
+        }
+        if(jComboBox1.getSelectedIndex() == 2 && MainWindow.getACC()){
+            JOptionPane.showMessageDialog(null, "The Assitant Convoy Commander has already been assigned.", "Alert Message", JOptionPane.WARNING_MESSAGE);
+            jComboBox1.setSelectedIndex(0);
+        }
+        
+        
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
-        // TODO add your handling code here:
-
+        if(jComboBox3.getSelectedIndex() == 1 && MainWindow.getCC()){
+            JOptionPane.showMessageDialog(null, "The Convoy Commander has already been assigned.", "Alert Message", JOptionPane.WARNING_MESSAGE);
+            jComboBox3.setSelectedIndex(0);
+        }
+        if(jComboBox3.getSelectedIndex() == 2 && MainWindow.getACC()){
+            JOptionPane.showMessageDialog(null, "The Assitant Convoy Commander has already been assigned.", "Alert Message", JOptionPane.WARNING_MESSAGE);
+            jComboBox3.setSelectedIndex(0);
+        }
 
     }//GEN-LAST:event_jComboBox3ActionPerformed
 
@@ -570,13 +601,24 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
 
                 } else {
                 }
-            } catch (Exception ex) {
+            } catch (IOException ex) {
 
             }
-        } catch (IOException ex) {
+        } catch (UnsupportedEncodingException ex) {
 
         }
     }//GEN-LAST:event_imageLabelMousePressed
+
+    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+        if(jComboBox2.getSelectedIndex() == 1 && MainWindow.getCC()){
+            JOptionPane.showMessageDialog(null, "The Convoy Commander has already been assigned.", "Alert Message", JOptionPane.WARNING_MESSAGE);
+            jComboBox2.setSelectedIndex(0);
+        }
+        if(jComboBox2.getSelectedIndex() == 2 && MainWindow.getACC()){
+            JOptionPane.showMessageDialog(null, "The Assitant Convoy Commander has already been assigned.", "Alert Message", JOptionPane.WARNING_MESSAGE);
+            jComboBox2.setSelectedIndex(0);
+        }
+    }//GEN-LAST:event_jComboBox2ActionPerformed
 
     public void setEditVehicleCounter(int counter) {
         editVehicleCounter = counter;
@@ -903,19 +945,14 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AddVehiclePopUp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AddVehiclePopUp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AddVehiclePopUp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(AddVehiclePopUp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new AddVehiclePopUp().setVisible(true);
             }
