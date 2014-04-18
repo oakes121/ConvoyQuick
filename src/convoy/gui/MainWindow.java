@@ -504,7 +504,7 @@ public final class MainWindow extends javax.swing.JFrame {
 
         deleteCurrentVehiclePage.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_DELETE, java.awt.event.InputEvent.CTRL_MASK));
         deleteCurrentVehiclePage.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        deleteCurrentVehiclePage.setText("Delete Current Vehicle Page");
+        deleteCurrentVehiclePage.setText("Delete Current Vehicle Grid");
         deleteCurrentVehiclePage.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deleteCurrentVehiclePageActionPerformed(evt);
