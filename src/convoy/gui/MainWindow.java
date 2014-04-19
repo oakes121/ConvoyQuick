@@ -1,5 +1,6 @@
 package convoy.gui;
 
+import static convoy.gui.LeftMissionInfoPanel.getProgramPath;
 import convoy.loadsave.Load;
 import convoy.loadsave.Save;
 import convoy.objects.Mission;
@@ -816,38 +817,38 @@ public final class MainWindow extends javax.swing.JFrame {
      */
     private void wateMarkMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_wateMarkMenuActionPerformed
         try {
-            FileDialog loadFile;
-            loadFile = new FileDialog(this, "Choose an Image", FileDialog.LOAD);
+
+            FileDialog loadFile = null;
+            loadFile = new FileDialog(loadFile, "Choose an Image", FileDialog.LOAD);
             loadFile.setDirectory(getProgramPath() + "\\conx\\images\\unit patches\\");
             loadFile.setFile("*.jpg;*.jpeg;*.png;*.gif");
             loadFile.setVisible(true);
-
-            if (loadFile.getFile() != null) {
-                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            try {
                 File file = new File(loadFile.getFile());
-                loadFile.setDirectory(getProgramPath() + "\\conx\\images\\unit patches\\");
-                URL url = null;
-                url = new URL("file:\\" + loadFile.getDirectory() + file);
+                if (file.exists() || file != null) {
+                    URL url = new URL("file:\\" + loadFile.getDirectory() + file);
 
-                copyFile(new File(loadFile.getDirectory() + file), new File(getProgramPath() + "\\conx\\images\\unit patches\\" + file));
+                    copyFile(new File(loadFile.getDirectory() + file), new File(getProgramPath() + "\\conx\\images\\unit patches\\" + file));
+                    this.leftMissionInfoPanel1.setImagePath(getProgramPath() + "\\conx\\images\\unit patches\\" + file);
 
-                this.leftMissionInfoPanel1.setImagePath(getProgramPath() + "\\conx\\images\\unit patches\\" + file);
+                    try {
+                        Image img = ImageIO.read(url);
+                        Image finalImage = img.getScaledInstance(196, 162, java.awt.Image.SCALE_SMOOTH);
+                        ImageIcon icon = new ImageIcon(finalImage);
+                        this.leftMissionInfoPanel1.setIcon(icon);
+                        revalidate();
+                        repaint();
+                    } catch (IOException ex) {
+                        Logger.getLogger(AddVehiclePopUp.class.getName()).log(Level.SEVERE, null, ex);
+                    }
 
-                Image img = null;
-                if (url != null) {
-                    img = ImageIO.read(new File(getProgramPath() + "\\conx\\images\\unit patches\\" + file));
                 } else {
                 }
+            } catch (IOException ex) {
 
-                if (img != null) {
-                    Image finalImage = img.getScaledInstance(202, 168, java.awt.Image.SCALE_SMOOTH); // getScaledInstance(width, hieght, algorithm)
-                    ImageIcon icon = new ImageIcon(finalImage);
-                    this.leftMissionInfoPanel1.setIcon(icon);
-                }
-                this.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
             }
-        } catch (IOException ex) {
-            //ex.printStackTrace();
+        } catch (UnsupportedEncodingException ex) {
+
         }
 
     }//GEN-LAST:event_wateMarkMenuActionPerformed

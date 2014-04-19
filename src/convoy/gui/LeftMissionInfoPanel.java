@@ -1,5 +1,6 @@
 package convoy.gui;
 
+import static convoy.gui.AddVehiclePopUp.getProgramPath;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
@@ -9,6 +10,8 @@ import javax.swing.*;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.nio.file.Files;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * @author Mike Moye <mtm5313@psu.edu>
@@ -20,7 +23,7 @@ import java.nio.file.Files;
  * the main window.
  * </p>
  */
-public class LeftMissionInfoPanel extends javax.swing.JPanel{
+public class LeftMissionInfoPanel extends javax.swing.JPanel {
 
     private String imagePath; //directory path of the unit patch
 
@@ -51,7 +54,7 @@ public class LeftMissionInfoPanel extends javax.swing.JPanel{
      * @param classification the classification to be set
      */
     public void setClassification(int classification) {
-        this.classificationDropBox.setSelectedIndex(classification);        
+        this.classificationDropBox.setSelectedIndex(classification);
     }
 
     /**
@@ -196,9 +199,9 @@ public class LeftMissionInfoPanel extends javax.swing.JPanel{
             missionNumberLabel.setFont(captureItFont);
             fromLabel.setFont(captureItFont);
             toLabel.setFont(captureItFont);
-            
-            classificationDropBox.setRenderer(new HighLightRowRenderer(classificationDropBox.getRenderer()));            
-            
+
+            classificationDropBox.setRenderer(new HighLightRowRenderer(classificationDropBox.getRenderer()));
+
         } catch (FontFormatException | IOException ex) {
             //ex.printStackTrace();
         }
@@ -350,11 +353,11 @@ public class LeftMissionInfoPanel extends javax.swing.JPanel{
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private static void copyFile(File source, File dest){
-        try{
-        Files.copy(source.toPath(), dest.toPath());
-        }catch(IOException ex){
-            //ex.printStackTrace();
+    private static void copyFile(File source, File dest) {
+        try {
+            Files.copy(source.toPath(), dest.toPath());
+        } catch (IOException ex) {
+            ex.printStackTrace();
             //fileAlreadyExist
         }
 
@@ -378,39 +381,40 @@ public class LeftMissionInfoPanel extends javax.swing.JPanel{
      * @param evt click image
      */
     private void imageLabelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imageLabelMousePressed
+
         try {
+
             FileDialog loadFile = null;
             loadFile = new FileDialog(loadFile, "Choose an Image", FileDialog.LOAD);
             loadFile.setDirectory(getProgramPath() + "\\conx\\images\\unit patches\\");
             loadFile.setFile("*.jpg;*.jpeg;*.png;*.gif");
             loadFile.setVisible(true);
-
-            if (loadFile.getFile() != null) {
-                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            try {
                 File file = new File(loadFile.getFile());
-                loadFile.setDirectory(getProgramPath() + "\\conx\\images\\unit patches\\");
-                URL url = null;
-                url = new URL("file:\\" + loadFile.getDirectory() + file);
+                if (file.exists() || file != null) {
+                    URL url = new URL("file:\\" + loadFile.getDirectory() + file);
 
-                copyFile(new File(loadFile.getDirectory() + file), new File(getProgramPath() + "\\conx\\images\\unit patches\\" + file));
+                    copyFile(new File(loadFile.getDirectory() + file), new File(getProgramPath() + "\\conx\\images\\unit patches\\" + file));
+                    this.setImagePath(getProgramPath() + "\\conx\\images\\unit patches\\" + file);
 
-                this.setImagePath(getProgramPath() + "\\conx\\images\\unit patches\\" + file);
+                    try {
+                        Image img = ImageIO.read(url);
+                        Image finalImage = img.getScaledInstance(196, 162, java.awt.Image.SCALE_SMOOTH);
+                        ImageIcon icon = new ImageIcon(finalImage);
+                        this.setIcon(icon);
+                        revalidate();
+                        repaint();
+                    } catch (IOException ex) {
+                        Logger.getLogger(AddVehiclePopUp.class.getName()).log(Level.SEVERE, null, ex);
+                    }
 
-                Image img = null;
-                if (url != null) {
-                    img = ImageIO.read(new File(getProgramPath() + "\\conx\\images\\unit patches\\" + file));
                 } else {
                 }
+            } catch (IOException ex) {
 
-                if (img != null) {
-                    Image finalImage = img.getScaledInstance(196, 162, java.awt.Image.SCALE_SMOOTH); // getScaledInstance(width, hieght, algorithm)
-                    ImageIcon icon = new ImageIcon(finalImage);
-                    this.setIcon(icon);
-                }
-                this.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
             }
-        } catch (IOException ex) {
-            //ex.printStackTrace();
+        } catch (UnsupportedEncodingException ex) {
+
         }
     }//GEN-LAST:event_imageLabelMousePressed
 
@@ -420,41 +424,38 @@ public class LeftMissionInfoPanel extends javax.swing.JPanel{
 
     private void classificationDropBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_classificationDropBoxItemStateChanged
         //System.out.print(classificationDropBox.getSelectedIndex());
-        
-        if(classificationDropBox.getSelectedIndex() >= 3){
+
+        if (classificationDropBox.getSelectedIndex() >= 3) {
             classificationDropBox.setForeground(Color.RED);
-        }else{
+        } else {
             classificationDropBox.setForeground(Color.BLACK);
         }
     }//GEN-LAST:event_classificationDropBoxItemStateChanged
 
     private void classificationDropBoxFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_classificationDropBoxFocusLost
-        
+
         //System.out.print(classificationDropBox.getSelectedIndex());
-        
-        
-        if(classificationDropBox.getSelectedIndex() >= 3){
+        if (classificationDropBox.getSelectedIndex() >= 3) {
             classificationDropBox.setForeground(Color.RED);
-        }else{
+        } else {
             classificationDropBox.setForeground(Color.BLACK);
         }
     }//GEN-LAST:event_classificationDropBoxFocusLost
 
     private void classificationDropBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_classificationDropBoxActionPerformed
-        
+
         //System.out.print(classificationDropBox.getSelectedIndex());
-        
-        if(classificationDropBox.getSelectedIndex() >= 3){
+        if (classificationDropBox.getSelectedIndex() >= 3) {
             classificationDropBox.setForeground(Color.RED);
-        }else{
+        } else {
             classificationDropBox.setForeground(Color.BLACK);
         }
     }//GEN-LAST:event_classificationDropBoxActionPerformed
 
     private void classificationDropBoxFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_classificationDropBoxFocusGained
-        if(classificationDropBox.getSelectedIndex() >= 3){
+        if (classificationDropBox.getSelectedIndex() >= 3) {
             classificationDropBox.setForeground(Color.RED);
-        }else{
+        } else {
             classificationDropBox.setForeground(Color.BLACK);
         }
     }//GEN-LAST:event_classificationDropBoxFocusGained
@@ -492,16 +493,16 @@ class HighLightRowRenderer implements ListCellRenderer {
     public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
         Component component = delegate.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
         //Dimension size = component.getPreferredSize();
-        
-        if (index >= 3){
+
+        if (index >= 3) {
             component.setForeground(Color.RED);
             if (component instanceof JLabel) {
                 ((JLabel) component).setHorizontalTextPosition(JLabel.CENTER);
             }
-        }else{
-           component.setForeground(Color.BLACK); 
+        } else {
+            component.setForeground(Color.BLACK);
         }
-                       
+
         return component;
     }
 }
