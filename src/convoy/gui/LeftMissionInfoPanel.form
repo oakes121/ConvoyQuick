@@ -129,7 +129,7 @@
             <StringItem index="2" value="CLASSIFIED"/>
             <StringItem index="3" value="SECRET"/>
             <StringItem index="4" value="TOP SECRET"/>
-            <StringItem index="5" value="CONFEDIENTAL"/>
+            <StringItem index="5" value="CONFIDENTAL"/>
           </StringArray>
         </Property>
         <Property name="toolTipText" type="java.lang.String" value="Click to Select Mission Classification"/>

@@ -57,6 +57,7 @@ public class LeftAdditionalTextPanel extends javax.swing.JPanel {
         addtionalText.setColumns(20);
         addtionalText.setRows(5);
         addtionalText.setText("Additional Information Goes Here");
+        addtionalText.setPreferredSize(new java.awt.Dimension(260, 20));
         jScrollPane1.setViewportView(addtionalText);
         jScrollPane1.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 

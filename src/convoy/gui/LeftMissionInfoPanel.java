@@ -41,8 +41,8 @@ public class LeftMissionInfoPanel extends javax.swing.JPanel{
      *
      * @return classificationDropBox.getSelectedItem().toString().toUpperCase()
      */
-    public String getClassification() {
-        return this.classificationDropBox.getSelectedItem().toString().toUpperCase();
+    public int getClassification() {
+        return this.classificationDropBox.getSelectedIndex();
     }
 
     /**
@@ -50,25 +50,8 @@ public class LeftMissionInfoPanel extends javax.swing.JPanel{
      *
      * @param classification the classification to be set
      */
-    public void setClassification(String classification) {
-        if (classification.equalsIgnoreCase("For official use only")) {
-            this.classificationDropBox.setSelectedIndex(0);
-        }
-        if (classification.equalsIgnoreCase("Unclassified")) {
-            this.classificationDropBox.setSelectedIndex(1);
-        }
-        if (classification.equalsIgnoreCase("Classified")) {
-            this.classificationDropBox.setSelectedIndex(2);
-        }
-        if (classification.equalsIgnoreCase("Secret")) {
-            this.classificationDropBox.setSelectedIndex(3);
-        }
-        if (classification.equalsIgnoreCase("Top Secret")) {
-            this.classificationDropBox.setSelectedIndex(4);
-        }
-        if (classification.equalsIgnoreCase("Confediential")) {
-            this.classificationDropBox.setSelectedIndex(5);
-        }
+    public void setClassification(int classification) {
+        this.classificationDropBox.setSelectedIndex(classification);        
     }
 
     /**
@@ -261,7 +244,7 @@ public class LeftMissionInfoPanel extends javax.swing.JPanel{
         setBackground(new java.awt.Color(194, 178, 128));
         setPreferredSize(new java.awt.Dimension(600, 400));
 
-        classificationDropBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "FOR OFFICIAL USE ONLY", "UNCLASSIFIED", "CLASSIFIED", "SECRET", "TOP SECRET", "CONFEDIENTAL" }));
+        classificationDropBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "FOR OFFICIAL USE ONLY", "UNCLASSIFIED", "CLASSIFIED", "SECRET", "TOP SECRET", "CONFIDENTAL" }));
         classificationDropBox.setToolTipText("Click to Select Mission Classification");
         classificationDropBox.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {

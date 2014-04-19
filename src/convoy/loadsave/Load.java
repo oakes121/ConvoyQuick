@@ -47,106 +47,7 @@ public class Load {
      *
      * @throws java.io.UnsupportedEncodingException
      */
-    /*
-     public void loadProject() throws UnsupportedEncodingException {
-     /*
-     String classification = null;
-     String stagingArea = null;
-     String acc = null;
-     String cc = null;
-     String fromLinkUpTime = null;
-     String fromSPTime = null;
-     String leftFrom = null;
-     //String rightFrom = null;
-     String leftTo = null;
-     //String rightTo = null;
-     String toLinkUpTime = null;
-     String toSPTime = null;
-     String leftAdditionalText = null;
-     String rightAdditionalText = null;
-     String additionalText = null;
-     String unitPatch = null;
-        
-        
-     JFileChooser chooser = new JFileChooser(getProgramPath() + "\\conx\\saves\\");
-     chooser.setAcceptAllFileFilterUsed(false);
-     chooser.addChoosableFileFilter((new FileNameExtensionFilter("Convoy Quick Files", "conx")));
-     chooser.setSelectedFile(new File("*.conx"));
-     //chooser.setCurrentDirectory(new File(getPath()));
-
-     option = chooser.showOpenDialog(null);
-     if (option == JFileChooser.APPROVE_OPTION) {
-     try {
-                
-                
-     BufferedReader br;
-     File file = chooser.getSelectedFile();
-     String line;
-     String cvsSplitBy = ",";
-
-     br = new BufferedReader(new FileReader(file));
-     while ((line = br.readLine()) != null) {
-     // use comma as separator
-     String[] missionText = line.split(cvsSplitBy);
-                    
-     missionNumber = missionText[0];
-     if(classification != null){
-     classification = missionText[1];
-     }else{classification = " ";}
-     stagingArea = missionText[2];
-     acc = missionText[3];
-     cc = missionText[4];
-     //fromLinkUpTime = missionText[5];
-     //fromSPTime = missionText[6];
-     leftFrom = missionText[7];
-     //rightFrom = missionText[8];
-     leftTo = missionText[8];
-     //rightTo = missionText[10];
-     //toLinkUpTime = missionText[9];
-     //toSPTime = missionText[10];
-     leftAdditionalText = missionText[11].replaceAll("'t'", "\t").replaceAll("'r'", "\r").replaceAll("'n'", "\n");
-     rightAdditionalText = missionText[12].replaceAll("'t'", "\t").replaceAll("'r'", "\r").replaceAll("'n'", "\n");
-     additionalText = missionText[13].replaceAll("'t'", "\t").replaceAll("'r'", "\r").replaceAll("'n'", "\n");
-     unitPatch = missionText[14];
-                    
-     }
-
-     mainWindow.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-     mainWindow = new MainWindow(missionNumber,
-     classification,
-     stagingArea,
-     acc,
-     cc,
-     new Date(fromLinkUpTime),
-     new Date(fromSPTime),
-     leftFrom,
-     //rightFrom,
-     leftTo,
-     //rightTo,
-     new Date(toLinkUpTime),
-     new Date(toSPTime),
-     leftAdditionalText,
-     rightAdditionalText,
-     additionalText,
-     unitPatch);
-
-     mainMenu.setMainWindow(mainWindow);
-     mainMenu.getMainWindow().display();
-
-     //JOptionPane.showMessageDialog(mainWindow, unitPatch);
-     loadVehicles();
-
-     if (mainWindow != null) {
-     isLoaded = true;
-     }
-
-     } catch (IOException ex) {
-     } finally { mainWindow.setCursor(Cursor.getDefaultCursor());
-     }
-     }
-     }
-
-     */
+    
     public void loadProject() {
         try {
             JFileChooser chooser = new JFileChooser(getProgramPath() + "\\conx\\saves\\");
@@ -176,6 +77,14 @@ public class Load {
                         mission.getLeftTo(),
                         mission.getToLinkUpDate(),
                         mission.getToSPDate(),
+                        mission.getFromLinkUpTime(),
+                        mission.getFromSPTime(),
+                        mission.getToLinkUpTime(),
+                        mission.getToSTime(),
+                        mission.getFromSPTimeZone(),
+                        mission.getFromSPTimeZone(),
+                        mission.getToLinkUpTimeZone(),
+                        mission.getToSPTimeZone(),
                         mission.getLeftAdditionalInfo(),
                         mission.getRightAdditionalInfo(),
                         mission.getAdditionalInfo(),

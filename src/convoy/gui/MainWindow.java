@@ -66,7 +66,7 @@ public final class MainWindow extends javax.swing.JFrame {
             
             this.setLocationRelativeTo(null);
             this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // added
-            this.setTitle("Convoy Quick - Convoy documentation creator to help save lives");
+            this.setTitle("Convoy Quick - Convoy Documentation Creator To Help Save Lives");
             this.setExtendedState(JFrame.MAXIMIZED_BOTH);
             this.setIconImage(new ImageIcon(getClass().getResource("/convoy/resources/images/humveeIcon.png")).getImage());
             
@@ -124,7 +124,7 @@ public final class MainWindow extends javax.swing.JFrame {
      * @param unitPatch
      */
     public MainWindow(String missionNumber,
-            String classification,
+            int classification,
             String stagingArea,
             String acc,
             String cc,
@@ -134,6 +134,14 @@ public final class MainWindow extends javax.swing.JFrame {
             String leftTo,
             Date toLinkUpDate,
             Date toSPDate,
+            String startLinkUpTime,
+            String startSPTime,
+            String rallyLinkUpTime,
+            String rallySPTime,
+            int startLinkUpTimeZone,
+            int startSPTimeZone,
+            int rallyLinkUpTimeZone,
+            int rallySPTimeZone,
             String leftAdditionalText,
             String rightAdditionalText,
             String additionalText,
@@ -153,28 +161,41 @@ public final class MainWindow extends javax.swing.JFrame {
             additionalInfoPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
             
             this.leftMissionInfoPanel1.setMissionNumber(missionNumber);
+            
             this.leftMissionInfoPanel1.setClassification(classification);
+            
             this.leftMissionInfoPanel1.setFrom(leftFrom);
             this.leftMissionInfoPanel1.setTo(leftTo);
-            this.leftMissionInfoPanel1.setAdditionalText(leftAdditionalText);
+            
             this.rightMissionInfoPanel2.setCC(cc);
             this.rightMissionInfoPanel2.setACC(acc);
+            
             this.rightMissionInfoPanel2.setStagingArea(stagingArea);
-            //this.rightMissionInfoPanel2.setFrom(rightFrom);
+            
             this.rightMissionInfoPanel2.setFromLU(fromLinkUpDate);
             this.rightMissionInfoPanel2.setFromSP(fromSPDate);
-            //this.rightMissionInfoPanel2.setTo(rightTo);
             this.rightMissionInfoPanel2.setToLU(toLinkUpDate);
             this.rightMissionInfoPanel2.setToSP(toSPDate);
+            
+            this.leftMissionInfoPanel1.setAdditionalText(leftAdditionalText);
             this.rightMissionInfoPanel2.setAddtionalText(rightAdditionalText);
             this.additionalTextPanel1.setAdditionalText(additionalText);
+            
+            this.rightMissionInfoPanel2.setStartLinkUpTime(startLinkUpTime);
+            this.rightMissionInfoPanel2.setStartSPTime(startSPTime);
+            this.rightMissionInfoPanel2.setRallyLinkUpTime(rallyLinkUpTime);
+            this.rightMissionInfoPanel2.setRallySPTime(rallySPTime);
+            
+            this.rightMissionInfoPanel2.setStartLinkupTimeZone(startLinkUpTimeZone);
+            this.rightMissionInfoPanel2.setStartSPTimZone(startSPTimeZone);
+            this.rightMissionInfoPanel2.setRallyLinkUpTimeZone(rallyLinkUpTimeZone);
+            this.rightMissionInfoPanel2.setRallSPTimeZone(rallySPTimeZone);
             
             //Image img = new ImageIcon(unitPatch).getImage().getScaledInstance(202, 168, java.awt.Image.SCALE_SMOOTH);
             
             this.leftMissionInfoPanel1.setImagePath(unitPatch);
             
-            Image img = null;
-                img = ImageIO.read(new File(unitPatch));
+            Image img = ImageIO.read(new File(unitPatch));
             
             if (img != null) {
                 Image finalImage = img.getScaledInstance(196, 162, java.awt.Image.SCALE_SMOOTH); // getScaledInstance(width, hieght, algorithm)
@@ -766,7 +787,7 @@ public final class MainWindow extends javax.swing.JFrame {
                     }
                 }
             } else {
-                JOptionPane.showMessageDialog(this, "You need to add at least 2 vehicles in order to finalize the convoy!");
+                JOptionPane.showMessageDialog(this, "You need to add at least 2 vehicles in order to Export the convoy!");
             }
         }
     }//GEN-LAST:event_finalizeMenuActionPerformed

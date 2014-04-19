@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 class Classification implements Serializable {
 
-    private String type;
+    private int type;
     private String status;
 
     /**
@@ -12,7 +12,7 @@ class Classification implements Serializable {
      */
     public Classification() {
 
-        type = "default";
+        type = 0;
         status = "For Official Use Only";
 
     }
@@ -24,7 +24,7 @@ class Classification implements Serializable {
      * @param type classification type
      * @param status classification status
      */
-    public Classification(String type, String status) {
+    public Classification(int type, String status) {
 
         this.type = type;
         this.status = status;
@@ -36,7 +36,7 @@ class Classification implements Serializable {
      *
      * @param type classification type
      */
-    public void setType(String type) {
+    public void setType(int type) {
 
         this.type = type;
 
@@ -58,7 +58,7 @@ class Classification implements Serializable {
      *
      * @return this.type returns classification type
      */
-    public String getType() {
+    public int getType() {
 
         return this.type;
 

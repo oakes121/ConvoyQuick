@@ -32,8 +32,12 @@ public class TimePicker extends JPanel{
         this.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
     }
     
-    public void setTime(Date time){
-        timeEditor.getTextField().setValue(time);
+    public void setTime(String time){
+        try{
+        timeEditor.getTextField().setText(time.replace("Z", ""));
+        }catch(Exception x){
+            x.printStackTrace();
+        }
     }
     
     public String getTime(){

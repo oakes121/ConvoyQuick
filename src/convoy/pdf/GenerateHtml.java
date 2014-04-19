@@ -30,19 +30,18 @@ public class GenerateHtml {
     public GenerateHtml() {
     }
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         //TimeZone timezone = TimeZone.getTimeZone(TimeZone.getDefault().getID());
         //System.out.print((timezone.getOffset(Calendar.ZONE_OFFSET) / 3600000));
-    }    
-    
+    }
+
     private String getlocale() {
 
         TimeZone timezone = TimeZone.getTimeZone(TimeZone.getDefault().getID());
 
         int localZone = (timezone.getOffset(Calendar.ZONE_OFFSET) / 3600000);
-        
-        System.out.print(localZone);
 
+        //System.out.print(localZone);
         if (localZone == -12) {
             return "Y";
         }
@@ -152,7 +151,7 @@ public class GenerateHtml {
      * @param vehicleGrid
      */
     public void generateHtml(String watermark,
-            String classification,
+            int classification,
             String missionNumber,
             String leftFrom,
             String leftTo,
@@ -160,8 +159,6 @@ public class GenerateHtml {
             String cc,
             String acc,
             String stagingArea,
-            //String rightFrom,
-            //String rightTo,
             Date fromLU,
             Date toLU,
             Date fromSP,
@@ -180,22 +177,43 @@ public class GenerateHtml {
             if (!"Z".equals(fromLUTime.substring(fromLUTime.length() - 1))) {
                 fromLUTime = fromLUTime + getlocale();
             }
-            
+
             if (!"Z".equals(toLUTime.substring(toLUTime.length() - 1))) {
                 toLUTime = toLUTime + getlocale();
             }
-            
+
             if (!"Z".equals(fromSPTime.substring(fromSPTime.length() - 1))) {
                 fromSPTime = fromSPTime + getlocale();
             }
-            
+
             if (!"Z".equals(toSPTime.substring(toSPTime.length() - 1))) {
                 toSPTime = toSPTime + getlocale();
             }
 
+            String xClassification = "";
+
+            if (classification == 0) {
+                xClassification = "FOR OFFICIAL USE ONLY";
+            }
+            if (classification == 1) {
+                xClassification = "UNCLASSIFIED";
+            }
+            if (classification == 2) {
+                xClassification = "CLASSIFIED";
+            }
+            if (classification == 3) {
+                xClassification = "SECRET";
+            }
+            if (classification == 4) {
+                xClassification = "TOP SECRET";
+            }
+            if (classification == 5) {
+                xClassification = "CONFEDENTIAL";
+            }
+
             String[] vehicles = new String[16];
 
-        //System.out.print(rightAdditionalText.replace("<html>", "").replace("<head>", "").replace("<body>", "").replace("</html>", "").replace("</head>", "").replace("</body>", "").replace("\n", ""));
+            //System.out.print(rightAdditionalText.replace("<html>", "").replace("<head>", "").replace("<body>", "").replace("</html>", "").replace("</head>", "").replace("</body>", "").replace("\n", ""));
             for (int v = 0; v < vehicles.length; v++) {
                 vehicles[v] = "                                     <table>\n"
                         + "                                            <tr>\n"
@@ -421,7 +439,7 @@ public class GenerateHtml {
 
             String classificationColor;
 
-            if (classification.equalsIgnoreCase("SECRET") || classification.equalsIgnoreCase("TOP SECRET") || classification.equalsIgnoreCase("CONFEDIENTAL")) {
+            if (xClassification.equalsIgnoreCase("SECRET") || xClassification.equalsIgnoreCase("TOP SECRET") || xClassification.equalsIgnoreCase("CONFEDIENTAL")) {
                 classificationColor = "red";
             } else {
                 classificationColor = "black";
@@ -432,7 +450,7 @@ public class GenerateHtml {
                 try {
                     f = new File(getProgramPath() + "\\conx\\html\\convoy.html");
 
-                 //System.out.print(f);
+                    //System.out.print(f);
                 } catch (UnsupportedEncodingException ex) {
 
                 } finally {
@@ -550,7 +568,7 @@ public class GenerateHtml {
                                 + "                    <table id=\"leftMissionInfoTable\">\n"
                                 + "                        <!-- left mission info table //-->\n"
                                 + "                        <tr>\n"
-                                + "                            <td colspan=\"3\" id=\"classification\">" + classification + "</td>\n"
+                                + "                            <td colspan=\"3\" id=\"classification\">" + xClassification + "</td>\n"
                                 + "                        </tr>\n"
                                 + "                        <tr>\n"
                                 + "                            <td class=\"picCell\" colspan=\"1\" rowspan=\"4\" id=\"unitPatch\"><img src=\"" + "file:\\" + watermark + "\" alt=\"unitPatch\"/></td>\n"

@@ -50,6 +50,9 @@
             <Property name="columns" type="int" value="20"/>
             <Property name="rows" type="int" value="5"/>
             <Property name="text" type="java.lang.String" value="Additional Information Goes Here"/>
+            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[260, 20]"/>
+            </Property>
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="jScrollPane1.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);&#xa;&#xa;AbstractDocument pDoc=(AbstractDocument)addtionalText.getDocument();&#xa;&#xa;        pDoc.setDocumentFilter(new MaximumSizeFilter(2, 250));&#xa;addtionalText.setMargin(new Insets(5,5,5,5));"/>

@@ -9,7 +9,7 @@ public class Mission implements Serializable {
 
     private static Mission uniqueInstance;  
     private String missionNumber;                    // The designated mission name for the convoy
-    private Classification missionClassification;    // The classification of the mission 
+    private int classification;    // The classification of the mission 
     private Time missionLinkUpTime;                  // The meeting time of the convoy 
     private Time missionDepartureTime;               // The departure time of the convoy
     private String missionStagingArea;               // The meeting location of the convoy 
@@ -35,7 +35,6 @@ public class Mission implements Serializable {
     private int fromSPTimeZone; 
     private int toLinkUpTimeZone; 
     private int toSPTimeZone;
-    private String classification;
     private String leftAdditionalText;
     private String rightAdditionalText;
     private String additionalText;
@@ -47,15 +46,13 @@ public class Mission implements Serializable {
         
         missionNumber = "Misson Number";
         leftTo = "";
-        //rightTo = "";
         leftFrom = "";
-        //rightFrom = "";
         missionStagingArea = "Staging Area";
         unitName = "Unit Name";
         vehicles = new ArrayList<>();
         people = new ArrayList<>();
         attachments = new Attachments();
-        missionClassification = new Classification();
+        classification = 0;
         missionLinkUpTime = new Time(7, 0, 0);
         missionDepartureTime = new Time(7, 30, 0);
     }
@@ -104,7 +101,7 @@ public class Mission implements Serializable {
                         int fromSPTimeZone, 
                         int toLinkUpTimeZone, 
                         int toSPTimeZone,
-                        String classification,
+                        int classification,
                         String left,
                         String right,
                         String text,
@@ -112,17 +109,12 @@ public class Mission implements Serializable {
          
         this.missionNumber = missionNumber;
         this.missionStagingArea = missionStagingArea;
-        //this.unitName = unitName;
         this.leftTo = leftTo;
-        //this.rightTo = rightTo;
         this.leftFrom = leftFrom;
-        //this.rightFrom = rightFrom;
         vehicles = new ArrayList<>();
         people = new ArrayList<>();
         attachments = new Attachments();
-        missionClassification = new Classification();
-        //missionLinkUpTime = new Time(lUH, lUM, lUS);
-        //missionDepartureTime = new Time(dTH, dTM, dTS);
+        this.classification = classification;
         this.cc = cc;
         this.acc = acc;
         this.fromLinkUpDate = fromLinkUpDate;
@@ -194,10 +186,8 @@ public class Mission implements Serializable {
      */
     public static synchronized Mission getInstance( String missionNumber, 
                                                     String missionStagingArea, 
-                                                    String leftTo, 
-                                                    //String rightTo, 
-                                                    String leftFrom, 
-                                                    //String rightFrom, 
+                                                    String leftTo,  
+                                                    String leftFrom,  
                                                     String cc, 
                                                     String acc, 
                                                     Date fromLinkUpDate, 
@@ -212,7 +202,7 @@ public class Mission implements Serializable {
                                                     int fromSPTimeZone, 
                                                     int toLinkUpTimeZone, 
                                                     int toSPTimeZone,
-                                                    String classification,
+                                                    int classification,
                                                     String leftAdditionalText,
                                                     String rightAdditionalText,
                                                     String additionalText,
@@ -327,8 +317,8 @@ public class Mission implements Serializable {
      * @param classification Classification value that this.missionClassification
      * is set to
      */
-    public void setMissionClassification(Classification classification) {
-        this.missionClassification = classification;
+    public void setMissionClassification(int classification) {
+        this.classification = classification;
     }
 
     /**
@@ -418,8 +408,8 @@ public class Mission implements Serializable {
      * Method getMissionClassification() will return missionClassification
      * @return missionClassification
      */
-    public Classification getMissionClassification() {
-        return missionClassification;
+    public int getMissionClassification() {
+        return classification;
     }
 
     /**
@@ -516,10 +506,10 @@ public class Mission implements Serializable {
     public int getToLinkUpTimeZone(){
         return this.toLinkUpTimeZone;        
     }
-    public int getToSTimeZonezone(){
+    public int getToSPTimeZone(){
         return this.toSPTimeZone;        
     }
-    public String getClassification(){
+    public int getClassification(){
         return this.classification;        
     }
     public String getLeftAdditionalInfo(){
