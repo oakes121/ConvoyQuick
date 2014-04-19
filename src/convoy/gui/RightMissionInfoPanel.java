@@ -256,7 +256,23 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
             return timePicker5.getTime() + "Z";
         }
     }
-
+    
+    public int getStartLinkupTimeZone(){
+        return this.startPointLinkUpTimeComoboBox.getSelectedIndex();
+    }
+    
+    public int getStartSPTimZone(){
+        return this.startPointSPTimeComoboBox.getSelectedIndex();
+    }
+    
+    public int getRallyLinkUpTimeZone(){
+        return this.rallyPointLinkUpTimeComoboBox.getSelectedIndex();
+    }
+    
+    public int getRallSPTimeZone(){
+        return this.rallyPointSPTimeComoboBox.getSelectedIndex();
+    }
+    
     /**
      * Gets the name and frequency of all the channels in the radio
      *

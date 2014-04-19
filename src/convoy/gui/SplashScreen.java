@@ -5,15 +5,11 @@
  */
 package convoy.gui;
 
-//import static convoy.gui.MainMenu.mission;
-import convoy.objects.Mission;
-import java.awt.BorderLayout;
+
 import java.awt.Color;
-import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.FontFormatException;
-import java.awt.Image;
 import java.awt.Toolkit;
 import java.io.File;
 import java.io.FileInputStream;
@@ -24,17 +20,11 @@ import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.URL;
 import java.net.URLDecoder;
-import java.nio.file.Files;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.BorderFactory;
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JWindow;
-import javax.swing.SwingConstants;
 
 /**
  *
@@ -92,35 +82,23 @@ public class SplashScreen extends JWindow {
             }
         } finally {
 
-            ssb.dispose();
+            ssb.setVisible(false);
             mainWindow = new MainWindow();
             mainWindow.setVisible(true);
 
         }
     }
 
-    private void initComponents() {
-
-        //javax.swing.JLabel mainMenuTitle = new javax.swing.JLabel();
-
-        //mainMenuTitle.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        //mainMenuTitle.setText("Convoy Quick");
-
-        //JLabel loadingBar = new JLabel();
-        //loadingBar.setIcon(new ImageIcon("/convoy/resources/images/loadingBar.gif"));
-        //loadingBar.setHorizontalAlignment(SwingConstants.CENTER);
+    @SuppressWarnings("empty-statement")
+    private void initComponents() {;
         Font topSecretFont = null;
         try {
             topSecretFont = Font.createFont(Font.TRUETYPE_FONT, getClass().getResourceAsStream("/convoy/resources/fonts/topSecret.ttf"));
-        } catch (FontFormatException ex) {
-            Logger.getLogger(SplashScreen.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
+        } catch (FontFormatException | IOException ex) {
             Logger.getLogger(SplashScreen.class.getName()).log(Level.SEVERE, null, ex);
         }
         topSecretFont = topSecretFont.deriveFont(Font.BOLD, 96f);
-        //mainMenuTitle.setHorizontalAlignment(SwingConstants.CENTER);
-        //mainMenuTitle.setFont(topSecretFont);
-
+        
         PicturePanel picturePanel1 = new PicturePanel("/convoy/resources/images/SplashScreen.gif");
 
         picturePanel1.setBackground(new java.awt.Color(194, 178, 128));
@@ -172,20 +150,18 @@ public class SplashScreen extends JWindow {
             }
 
         } else {
-    		//if file, then copy it
+            OutputStream out;
+            try ( //if file, then copy it
             //Use bytes stream to support all file types
-            InputStream in = new FileInputStream(src);
-            OutputStream out = new FileOutputStream(dest);
-
-            byte[] buffer = new byte[1024];
-
-            int length;
-            //copy the file content in bytes 
-            while ((length = in.read(buffer)) > 0) {
-                out.write(buffer, 0, length);
+                    InputStream in = new FileInputStream(src)) {
+                out = new FileOutputStream(dest);
+                byte[] buffer = new byte[1024];
+                int length;
+                //copy the file content in bytes
+                while ((length = in.read(buffer)) > 0) {
+                    out.write(buffer, 0, length);
+                }
             }
-
-            in.close();
             out.close();
             System.out.println("File copied from " + src + " to " + dest);
         }

@@ -333,11 +333,7 @@ public class MainMenu extends javax.swing.JFrame {
 
     private void loadProjectPanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loadProjectPanelMousePressed
         Load load = new Load();
-        try {
-            load.loadProject();
-        } catch (UnsupportedEncodingException ex) {
-            Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        load.loadProject();
     }//GEN-LAST:event_loadProjectPanelMousePressed
 
     /**

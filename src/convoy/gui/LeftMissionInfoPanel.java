@@ -1,18 +1,11 @@
 package convoy.gui;
 
-import static convoy.gui.MainWindow.getProgramPath;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.*;
-import javax.swing.text.AbstractDocument;
-
-import convoy.objects.MaximumSizeFilter;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.nio.file.Files;
@@ -27,7 +20,7 @@ import java.nio.file.Files;
  * the main window.
  * </p>
  */
-public class LeftMissionInfoPanel extends javax.swing.JPanel {
+public class LeftMissionInfoPanel extends javax.swing.JPanel{
 
     private String imagePath; //directory path of the unit patch
 
@@ -214,7 +207,7 @@ public class LeftMissionInfoPanel extends javax.swing.JPanel {
     private void doFonts() {
         try {
             Font captureItFont = Font.createFont(Font.TRUETYPE_FONT, getClass().getResourceAsStream("/convoy/resources/fonts/lucidaGrande.ttf"));
-            captureItFont = captureItFont.deriveFont(Font.BOLD, 24f);
+            captureItFont = captureItFont.deriveFont(Font.BOLD, 16f);
 
             classificationDropBox.setFont(captureItFont);
             missionNumberLabel.setFont(captureItFont);
@@ -312,7 +305,6 @@ public class LeftMissionInfoPanel extends javax.swing.JPanel {
             }
         });
 
-        imageLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/convoy/resources/images/2id.png"))); // NOI18N
         imageLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
         imageLabel.setToolTipText("Click to change the Unit Patch");
         imageLabel.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(0, 0, 0), new java.awt.Color(204, 204, 204)));
@@ -343,7 +335,7 @@ public class LeftMissionInfoPanel extends javax.swing.JPanel {
                             .addComponent(toTextField))
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(classificationDropBox, 0, 368, Short.MAX_VALUE)
+                        .addComponent(classificationDropBox, 0, 570, Short.MAX_VALUE)
                         .addGap(10, 10, 10))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(leftAdditionalTextPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -356,15 +348,15 @@ public class LeftMissionInfoPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(classificationDropBox, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(missionNumberLabel)
                             .addComponent(missionNumberTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(fromLabel)
                             .addComponent(fromTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(toTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(toLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -390,19 +382,6 @@ public class LeftMissionInfoPanel extends javax.swing.JPanel {
         String jarPath = URLDecoder.decode(url.getFile(), "UTF-8");
         String parentPath = new File(jarPath).getParentFile().getPath();
         return parentPath;
-    }
-
-    private String getPath() {
-        String path = null;
-        try {
-            path = getProgramPath();
-        } catch (UnsupportedEncodingException ex) {
-            //Logger.getLogger(Save.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        String fileSeparator = System.getProperty("file.separator");
-        String newDir = path + fileSeparator + "images" + fileSeparator;
-        return newDir;
     }
 
     /**

@@ -76,7 +76,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
-                      <Component id="classificationDropBox" pref="368" max="32767" attributes="0"/>
+                      <Component id="classificationDropBox" pref="570" max="32767" attributes="0"/>
                       <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -94,17 +94,17 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="classificationDropBox" min="-2" pref="50" max="-2" attributes="0"/>
-                      <EmptySpace pref="37" max="32767" attributes="0"/>
+                      <EmptySpace pref="45" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="missionNumberLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="missionNumberTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="36" max="32767" attributes="0"/>
+                      <EmptySpace pref="46" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="fromLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="fromTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="37" max="32767" attributes="0"/>
+                      <EmptySpace pref="45" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="toTextField" alignment="1" min="-2" max="-2" attributes="0"/>
                           <Component id="toLabel" alignment="1" min="-2" pref="20" max="-2" attributes="0"/>
@@ -189,9 +189,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="imageLabel">
       <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor" postCode="imageLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));">
-          <Image iconType="3" name="/convoy/resources/images/2id.png"/>
-        </Property>
+        <Property name="icon" postCode="imageLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));"/>
         <Property name="toolTipText" type="java.lang.String" value="Click to change the Unit Patch"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">

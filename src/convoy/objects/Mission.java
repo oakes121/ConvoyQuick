@@ -31,6 +31,10 @@ public class Mission implements Serializable {
     private String fromSPTime;
     private String toLinkUpTime;
     private String toSPTime;
+    private int fromLinkUpTimeZone; 
+    private int fromSPTimeZone; 
+    private int toLinkUpTimeZone; 
+    private int toSPTimeZone;
     private String classification;
     private String leftAdditionalText;
     private String rightAdditionalText;
@@ -96,6 +100,10 @@ public class Mission implements Serializable {
                         String fromSPTime, 
                         String toLinkUpTime, 
                         String toSPTime,
+                        int fromLinkUpTimeZone, 
+                        int fromSPTimeZone, 
+                        int toLinkUpTimeZone, 
+                        int toSPTimeZone,
                         String classification,
                         String left,
                         String right,
@@ -130,6 +138,11 @@ public class Mission implements Serializable {
         this.fromSPTime = fromSPTime;
         this.toLinkUpTime = toLinkUpTime;
         this.toSPTime = toSPTime;
+        this.toSPTimeZone = toSPTimeZone;
+        this.fromLinkUpTimeZone = fromLinkUpTimeZone;
+        this.fromSPTimeZone = fromSPTimeZone;
+        this.toLinkUpTimeZone = toLinkUpTimeZone;
+        this.toSPTimeZone = toSPTimeZone;
     }
     
     /**
@@ -164,6 +177,10 @@ public class Mission implements Serializable {
      * @param leftFrom
      * @param cc
      * @param acc
+     * @param fromLinkUpDate
+     * @param fromSPDate
+     * @param toLinkUpDate
+     * @param toSPDate
      * @param fromLinkUpTime
      * @param fromSPTime
      * @param toLinkUpTime
@@ -191,6 +208,10 @@ public class Mission implements Serializable {
                                                     String fromSPTime, 
                                                     String toLinkUpTime, 
                                                     String toSPTime,
+                                                    int fromLinkUpTimeZone, 
+                                                    int fromSPTimeZone, 
+                                                    int toLinkUpTimeZone, 
+                                                    int toSPTimeZone,
                                                     String classification,
                                                     String leftAdditionalText,
                                                     String rightAdditionalText,
@@ -199,7 +220,8 @@ public class Mission implements Serializable {
         
         // if uniqueInstance is null, instantiate it to new Mission()
         uniqueInstance = new Mission(   missionNumber, missionStagingArea, leftTo, leftFrom,
-            cc, acc, fromLinkUpDate, fromSPDate, toLinkUpDate, toSPDate, fromLinkUpTime, fromSPTime, toLinkUpTime, toSPTime, classification,leftAdditionalText, rightAdditionalText, additionalText, unitPatch);
+            cc, acc, fromLinkUpDate, fromSPDate, toLinkUpDate, toSPDate, fromLinkUpTime, fromSPTime, toLinkUpTime, toSPTime, fromLinkUpTimeZone, 
+            fromSPTimeZone, toLinkUpTimeZone, toSPTimeZone, classification,leftAdditionalText, rightAdditionalText, additionalText, unitPatch);
            
         return uniqueInstance;        
     }
@@ -473,17 +495,29 @@ public class Mission implements Serializable {
         return this.toSPDate;        
     }
     
-    public Date getFromLinkUpTime(){
-        return this.fromLinkUpDate;        
+    public String getFromLinkUpTime(){
+        return this.fromLinkUpTime;        
     }
-    public Date getFromSPTime(){
-        return this.fromSPDate;        
+    public String getFromSPTime(){
+        return this.fromSPTime;        
     }
-    public Date getToLinkUpTime(){
-        return this.toLinkUpDate;        
+    public String getToLinkUpTime(){
+        return this.toLinkUpTime;        
     }
-    public Date getToSTime(){
-        return this.toSPDate;        
+    public String getToSTime(){
+        return this.toSPTime;        
+    }
+    public int getFromLinkUpTimeZone(){
+        return this.fromLinkUpTimeZone;        
+    }
+    public int getFromSPTimeZone(){
+        return this.fromSPTimeZone;        
+    }
+    public int getToLinkUpTimeZone(){
+        return this.toLinkUpTimeZone;        
+    }
+    public int getToSTimeZonezone(){
+        return this.toSPTimeZone;        
     }
     public String getClassification(){
         return this.classification;        

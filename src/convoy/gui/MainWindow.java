@@ -34,20 +34,23 @@ public final class MainWindow extends javax.swing.JFrame {
     private ArrayList<VehicleGrid> vehicleGrids = new ArrayList<>();
     private int vehicleGridCount = 0;
     private int currentVehicleGrid = 0;
-    
+
     private static boolean cc = false;
     private static boolean acc = false;
-    
-    public static boolean getCC(){
+
+    public static boolean getCC() {
         return cc;
     }
-    public static boolean getACC(){
+
+    public static boolean getACC() {
         return acc;
     }
-    public static void setCC(boolean xCC){
+
+    public static void setCC(boolean xCC) {
         cc = xCC;
     }
-    public static void setACC(boolean xACC){
+
+    public static void setACC(boolean xACC) {
         acc = xACC;
     }
 
@@ -58,32 +61,44 @@ public final class MainWindow extends javax.swing.JFrame {
      * </p>
      */
     public MainWindow() {
-        initComponents();
-
-        this.setLocationRelativeTo(null);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // added 
-        this.setTitle("Convoy Quick - Convoy documentation creator to help save lives");
-        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        this.setIconImage(new ImageIcon(getClass().getResource("/convoy/resources/images/humveeIcon.png")).getImage());
-
-        vehicleGrids.add(vehicleGrid1);
-
-        vehicleGrid1.setMainWindow(this);
-        missionNumberPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        additionalInfoPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
-
-        this.leftMissionInfoPanel1.setImagePath(getClass().getResource("/convoy/resources/images/2id.png").getPath().substring(1).replace("/", "\\"));
-
-        this.leftMissionInfoPanel1.setAdditionalText("Additional Text Goes Here");
-        this.rightMissionInfoPanel2.setAddtionalText("Additional Text Goes Here");
-
-        this.rightArrow.setVisible(false);
-        this.leftArrow.setVisible(false);
-        
-        deleteCurrentVehiclePage.setEnabled(false);
-
-        revalidate();
-        repaint();
+        try {
+            initComponents();
+            
+            this.setLocationRelativeTo(null);
+            this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // added
+            this.setTitle("Convoy Quick - Convoy documentation creator to help save lives");
+            this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+            this.setIconImage(new ImageIcon(getClass().getResource("/convoy/resources/images/humveeIcon.png")).getImage());
+            
+            vehicleGrids.add(vehicleGrid1);
+            
+            vehicleGrid1.setMainWindow(this);
+            missionNumberPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
+            additionalInfoPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
+            
+            this.leftMissionInfoPanel1.setImagePath(getProgramPath() + "\\conx\\images\\unit patches\\Pennsylvania.png");
+            
+            Image img = ImageIO.read(new File(getProgramPath() + "\\conx\\images\\unit patches\\Pennsylvania.png"));
+            
+            Image finalImage = img.getScaledInstance(196, 162, java.awt.Image.SCALE_SMOOTH); // getScaledInstance(width, hieght, algorithm)
+            ImageIcon icon = new ImageIcon(finalImage);
+            this.leftMissionInfoPanel1.setIcon(icon);
+            
+            this.leftMissionInfoPanel1.setAdditionalText("Additional Text Goes Here");
+            this.rightMissionInfoPanel2.setAddtionalText("Additional Text Goes Here");
+            
+            this.rightArrow.setVisible(false);
+            this.leftArrow.setVisible(false);
+            
+            deleteCurrentVehiclePage.setEnabled(false);
+            
+            revalidate();
+            repaint();
+        } catch (UnsupportedEncodingException ex) {
+            Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -97,12 +112,12 @@ public final class MainWindow extends javax.swing.JFrame {
      * @param stagingArea
      * @param acc
      * @param cc
-     * @param fromLinkUpTime
-     * @param fromSPTime
+     * @param fromLinkUpDate
+     * @param fromSPDate
      * @param leftFrom
      * @param leftTo
-     * @param toLinkUpTime
-     * @param toSPTime
+     * @param toLinkUpDate
+     * @param toSPDate
      * @param leftAdditionalText
      * @param rightAdditionalText
      * @param additionalText
@@ -113,61 +128,84 @@ public final class MainWindow extends javax.swing.JFrame {
             String stagingArea,
             String acc,
             String cc,
-            Date fromLinkUpTime,
-            Date fromSPTime,
+            Date fromLinkUpDate,
+            Date fromSPDate,
             String leftFrom,
-            //String rightFrom,
             String leftTo,
-            //String rightTo,
-            Date toLinkUpTime,
-            Date toSPTime,
+            Date toLinkUpDate,
+            Date toSPDate,
             String leftAdditionalText,
             String rightAdditionalText,
             String additionalText,
             String unitPatch) {
-        initComponents();
-
-        this.setLocationRelativeTo(null);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // added 
-        this.setTitle("Convoy Quick - Convoy documentation creator to help save lives");
-        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        this.setIconImage(new ImageIcon(getClass().getResource("/convoy/resources/images/humveeIcon.png")).getImage());
-
-        vehicleGrids.add(vehicleGrid1);
-
-        missionNumberPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        additionalInfoPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
-
-        this.leftMissionInfoPanel1.setMissionNumber(missionNumber);
-        this.leftMissionInfoPanel1.setClassification(classification);
-        this.leftMissionInfoPanel1.setFrom(leftFrom);
-        this.leftMissionInfoPanel1.setTo(leftTo);
-        this.leftMissionInfoPanel1.setAdditionalText(leftAdditionalText);
-        this.rightMissionInfoPanel2.setCC(cc);
-        this.rightMissionInfoPanel2.setACC(acc);
-        this.rightMissionInfoPanel2.setStagingArea(stagingArea);
-        //this.rightMissionInfoPanel2.setFrom(rightFrom);
-        this.rightMissionInfoPanel2.setFromLU(fromLinkUpTime);
-        this.rightMissionInfoPanel2.setFromSP(fromSPTime);
-        //this.rightMissionInfoPanel2.setTo(rightTo);
-        this.rightMissionInfoPanel2.setToLU(toLinkUpTime);
-        this.rightMissionInfoPanel2.setToSP(toSPTime);
-        this.rightMissionInfoPanel2.setAddtionalText(rightAdditionalText);
-        this.additionalTextPanel1.setAdditionalText(additionalText);
-
-        Image img = new ImageIcon(unitPatch).getImage().getScaledInstance(202, 168, java.awt.Image.SCALE_SMOOTH);
-
-        this.leftMissionInfoPanel1.setIcon(new ImageIcon(img));
-
-        this.rightArrow.setVisible(false);
-        this.leftArrow.setVisible(false);
-
-        revalidate();
-        repaint();
+        try {
+            initComponents();
+            
+            this.setLocationRelativeTo(null);
+            this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // added
+            this.setTitle("Convoy Quick - Convoy documentation creator to help save lives");
+            this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+            this.setIconImage(new ImageIcon(getClass().getResource("/convoy/resources/images/humveeIcon.png")).getImage());
+            
+            vehicleGrids.add(vehicleGrid1);
+            
+            missionNumberPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
+            additionalInfoPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
+            
+            this.leftMissionInfoPanel1.setMissionNumber(missionNumber);
+            this.leftMissionInfoPanel1.setClassification(classification);
+            this.leftMissionInfoPanel1.setFrom(leftFrom);
+            this.leftMissionInfoPanel1.setTo(leftTo);
+            this.leftMissionInfoPanel1.setAdditionalText(leftAdditionalText);
+            this.rightMissionInfoPanel2.setCC(cc);
+            this.rightMissionInfoPanel2.setACC(acc);
+            this.rightMissionInfoPanel2.setStagingArea(stagingArea);
+            //this.rightMissionInfoPanel2.setFrom(rightFrom);
+            this.rightMissionInfoPanel2.setFromLU(fromLinkUpDate);
+            this.rightMissionInfoPanel2.setFromSP(fromSPDate);
+            //this.rightMissionInfoPanel2.setTo(rightTo);
+            this.rightMissionInfoPanel2.setToLU(toLinkUpDate);
+            this.rightMissionInfoPanel2.setToSP(toSPDate);
+            this.rightMissionInfoPanel2.setAddtionalText(rightAdditionalText);
+            this.additionalTextPanel1.setAdditionalText(additionalText);
+            
+            //Image img = new ImageIcon(unitPatch).getImage().getScaledInstance(202, 168, java.awt.Image.SCALE_SMOOTH);
+            
+            this.leftMissionInfoPanel1.setImagePath(unitPatch);
+            
+            Image img = null;
+                img = ImageIO.read(new File(unitPatch));
+            
+            if (img != null) {
+                Image finalImage = img.getScaledInstance(196, 162, java.awt.Image.SCALE_SMOOTH); // getScaledInstance(width, hieght, algorithm)
+                ImageIcon icon = new ImageIcon(finalImage);
+                this.leftMissionInfoPanel1.setIcon(icon);
+            }
+            
+            //this.leftMissionInfoPanel1.setIcon(new ImageIcon(img));
+            
+            this.rightArrow.setVisible(false);
+            this.leftArrow.setVisible(false);
+            
+            revalidate();
+            repaint();
+        } catch (UnsupportedEncodingException ex) {
+            Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public VehicleGrid getVehicleGrid() {
         return vehicleGrid1;
+    }
+
+    public LeftMissionInfoPanel getLeftMissionInfoPanel() {
+        return this.leftMissionInfoPanel1;
+    }
+
+    public RightMissionInfoPanel getRightMissionInfoPanel() {
+        return this.rightMissionInfoPanel2;
     }
 
     /**
@@ -185,7 +223,7 @@ public final class MainWindow extends javax.swing.JFrame {
         toFront();
         revalidate();
         repaint();
-        
+
     }
 
     public void reDrawVehicleGrid(VehicleGrid vg) {
@@ -258,20 +296,21 @@ public final class MainWindow extends javax.swing.JFrame {
 
         hideLeftArrow();
         hideRightArrow();
-        
-        if (currentVehicleGrid == 0)
+
+        if (currentVehicleGrid == 0) {
             deleteCurrentVehiclePage.setEnabled(false);
-        else
-            deleteCurrentVehiclePage.setEnabled(true);        
-        
+        } else {
+            deleteCurrentVehiclePage.setEnabled(true);
+        }
 
         if (currentVehicleGrid == vehicleGridCount) {
             if (vehicleGridCount > 0) {
                 showLeftArrow();
             }
-            
-            if (vehicleGrids.get(currentVehicleGrid).getVehicleCount() == 16) 
+
+            if (vehicleGrids.get(currentVehicleGrid).getVehicleCount() == 16) {
                 showRightArrow();
+            }
         }
 
         if (currentVehicleGrid < vehicleGridCount) {
@@ -581,21 +620,24 @@ public final class MainWindow extends javax.swing.JFrame {
      * @param evt click file -> loadProject menu item
      */
     private void loadMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadMenuItemActionPerformed
-        int response = JOptionPane.showConfirmDialog(null, "Are you sure you want to load a convoy?\n All unsaved data will be lost.", "Load Convoy?", JOptionPane.YES_NO_OPTION);
+        try {
+            
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 
-        if (response == JOptionPane.YES_OPTION) {
-            try {
+            int response = JOptionPane.showConfirmDialog(null, "Are you sure you want to load a convoy?\n All unsaved data will be lost.", "Load Convoy?", JOptionPane.YES_NO_OPTION);
+
+            if (response == JOptionPane.YES_OPTION) {
                 Load load = new Load();
                 load.loadProject();
                 if (load.getIsLoaded()) {
                     setVisible(false);
                 }
-            } catch (UnsupportedEncodingException ex) {
-                Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
             }
+        } catch (HeadlessException ex) {
+
+        } finally {
+            this.setCursor(Cursor.getDefaultCursor());
         }
-
-
     }//GEN-LAST:event_loadMenuItemActionPerformed
     /**
      * Displays the about information dialog pop up
@@ -626,103 +668,106 @@ public final class MainWindow extends javax.swing.JFrame {
      * @param evt click file -> finalize menu item
      */
     private void finalizeMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finalizeMenuActionPerformed
-        if("".equals(this.leftMissionInfoPanel1.getMissionNumber())){
+        if ("".equals(this.leftMissionInfoPanel1.getMissionNumber())) {
             JOptionPane.showMessageDialog(this, "Please enter a Mission Number.");
-        }else{
-        Mission mission;
-        mission = Mission.getInstance(this.leftMissionInfoPanel1.getMissionNumber(),
-                this.rightMissionInfoPanel2.getStagingArea(),
-                this.leftMissionInfoPanel1.getTo(),
-                //this.rightMissionInfoPanel2.getTo(),
-                this.leftMissionInfoPanel1.getFrom(),
-                //this.rightMissionInfoPanel2.getFrom(),
-                this.rightMissionInfoPanel2.getCC(),
-                this.rightMissionInfoPanel2.getACC(),
-                this.rightMissionInfoPanel2.getFromLU(),
-                this.rightMissionInfoPanel2.getFromSP(),
-                this.rightMissionInfoPanel2.getToLU(),
-                this.rightMissionInfoPanel2.getToSP(),
-                this.rightMissionInfoPanel2.getStartLinkUpTime(),
-                this.rightMissionInfoPanel2.getStartSPTime(),
-                this.rightMissionInfoPanel2.getRallyLinkUpTime(),
-                this.rightMissionInfoPanel2.getRallySPTime(),
-                this.leftMissionInfoPanel1.getClassification(),
-                this.leftMissionInfoPanel1.getAdditionalText(),
-                this.rightMissionInfoPanel2.getAdditionalText(),
-                this.additionalTextPanel1.getAdditionalText(),
-                this.leftMissionInfoPanel1.getImagePath()
-        );
-        try {
-            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            Save sf = new Save(mission);
-            sf.save();
-        } catch (Exception ex) {
-            //ex.printStackTrace();
-        } finally {
-            this.setCursor(Cursor.getDefaultCursor());
-        }
-        
-        
-        if (this.vehicleGrids.get(0).getVehicleCount() >= 2) {
-            int response = JOptionPane.showConfirmDialog(null, "Are you sure you want to export the convoy?", "Export Convoy?", JOptionPane.YES_NO_OPTION);
-            if (response == JOptionPane.YES_OPTION) {
+        } else {
+            Mission mission;
+            mission = Mission.getInstance(this.leftMissionInfoPanel1.getMissionNumber(),
+                    this.rightMissionInfoPanel2.getStagingArea(),
+                    this.leftMissionInfoPanel1.getTo(),
+                    //this.rightMissionInfoPanel2.getTo(),
+                    this.leftMissionInfoPanel1.getFrom(),
+                    //this.rightMissionInfoPanel2.getFrom(),
+                    this.rightMissionInfoPanel2.getCC(),
+                    this.rightMissionInfoPanel2.getACC(),
+                    this.rightMissionInfoPanel2.getFromLU(),
+                    this.rightMissionInfoPanel2.getFromSP(),
+                    this.rightMissionInfoPanel2.getToLU(),
+                    this.rightMissionInfoPanel2.getToSP(),
+                    this.rightMissionInfoPanel2.getStartLinkUpTime(),
+                    this.rightMissionInfoPanel2.getStartSPTime(),
+                    this.rightMissionInfoPanel2.getRallyLinkUpTime(),
+                    this.rightMissionInfoPanel2.getRallySPTime(),
+                    this.rightMissionInfoPanel2.getStartLinkupTimeZone(),
+                    this.rightMissionInfoPanel2.getStartSPTimZone(),
+                    this.rightMissionInfoPanel2.getRallyLinkUpTimeZone(),
+                    this.rightMissionInfoPanel2.getRallSPTimeZone(),
+                    this.leftMissionInfoPanel1.getClassification(),
+                    this.leftMissionInfoPanel1.getAdditionalText(),
+                    this.rightMissionInfoPanel2.getAdditionalText(),
+                    this.additionalTextPanel1.getAdditionalText(),
+                    this.leftMissionInfoPanel1.getImagePath()
+            );
+            try {
+                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                Save sf = new Save(mission);
+                sf.save();
+            } catch (Exception ex) {
+                //ex.printStackTrace();
+            } finally {
+                this.setCursor(Cursor.getDefaultCursor());
+            }
 
-                JFileChooser chooser = new JFileChooser();
-                chooser.setAcceptAllFileFilterUsed(false);
-                chooser.addChoosableFileFilter((new FileNameExtensionFilter("PDF Files", "pdf")));
+            if (this.vehicleGrids.get(0).getVehicleCount() >= 2) {
+                int response = JOptionPane.showConfirmDialog(null, "Are you sure you want to export the convoy?", "Export Convoy?", JOptionPane.YES_NO_OPTION);
+                if (response == JOptionPane.YES_OPTION) {
 
-                missionNumberText = this.leftMissionInfoPanel1.getMissionNumber();
+                    JFileChooser chooser = new JFileChooser();
+                    chooser.setAcceptAllFileFilterUsed(false);
+                    chooser.addChoosableFileFilter((new FileNameExtensionFilter("PDF Files", "pdf")));
 
-                if (missionNumberText.equalsIgnoreCase("")) {
-                    missionNumberText = "Untitled";
-                }
+                    missionNumberText = this.leftMissionInfoPanel1.getMissionNumber();
 
-                chooser.setSelectedFile(new File(missionNumberText));
-                chooser.setCurrentDirectory(new File(System.getProperty("user.home") + "\\My Documents"));
+                    if (missionNumberText.equalsIgnoreCase("")) {
+                        missionNumberText = "Untitled";
+                    }
 
-                int option = chooser.showSaveDialog(null);
-                if (option == JFileChooser.APPROVE_OPTION) {
-                    try {
-                        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                    chooser.setSelectedFile(new File(missionNumberText));
+                    chooser.setCurrentDirectory(new File(System.getProperty("user.home") + "\\My Documents"));
 
-                        GenerateHtml gh = new GenerateHtml();
+                    int option = chooser.showSaveDialog(null);
+                    if (option == JFileChooser.APPROVE_OPTION) {
+                        try {
+                            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 
-                        gh.generateHtml(
-                                this.leftMissionInfoPanel1.getImagePath(),
-                                this.leftMissionInfoPanel1.getClassification(),
-                                this.leftMissionInfoPanel1.getMissionNumber(),
-                                this.leftMissionInfoPanel1.getFrom(),
-                                this.leftMissionInfoPanel1.getTo(),
-                                this.leftMissionInfoPanel1.getAdditionalText(),
-                                this.rightMissionInfoPanel2.getCC(),
-                                this.rightMissionInfoPanel2.getACC(),
-                                this.rightMissionInfoPanel2.getStagingArea(),
-                                this.rightMissionInfoPanel2.getFromLU(),
-                                this.rightMissionInfoPanel2.getToLU(),
-                                this.rightMissionInfoPanel2.getFromSP(),
-                                this.rightMissionInfoPanel2.getToSP(),
-                                this.rightMissionInfoPanel2.getStartLinkUpTime(),
-                                this.rightMissionInfoPanel2.getStartSPTime(),
-                                this.rightMissionInfoPanel2.getRallyLinkUpTime(),
-                                this.rightMissionInfoPanel2.getRallySPTime(),
-                                this.rightMissionInfoPanel2.getFreqs(),
-                                this.rightMissionInfoPanel2.getAdditionalText(),
-                                this.additionalTextPanel1.getAdditionalText(),
-                                this.vehicleGrids.get(0)
-                        );
+                            GenerateHtml gh = new GenerateHtml();
 
-                        Create cp = new Create(chooser.getSelectedFile().getPath());
-                        cp.createPDF();
+                            gh.generateHtml(
+                                    this.leftMissionInfoPanel1.getImagePath(),
+                                    this.leftMissionInfoPanel1.getClassification(),
+                                    this.leftMissionInfoPanel1.getMissionNumber(),
+                                    this.leftMissionInfoPanel1.getFrom(),
+                                    this.leftMissionInfoPanel1.getTo(),
+                                    this.leftMissionInfoPanel1.getAdditionalText(),
+                                    this.rightMissionInfoPanel2.getCC(),
+                                    this.rightMissionInfoPanel2.getACC(),
+                                    this.rightMissionInfoPanel2.getStagingArea(),
+                                    this.rightMissionInfoPanel2.getFromLU(),
+                                    this.rightMissionInfoPanel2.getToLU(),
+                                    this.rightMissionInfoPanel2.getFromSP(),
+                                    this.rightMissionInfoPanel2.getToSP(),
+                                    this.rightMissionInfoPanel2.getStartLinkUpTime(),
+                                    this.rightMissionInfoPanel2.getStartSPTime(),
+                                    this.rightMissionInfoPanel2.getRallyLinkUpTime(),
+                                    this.rightMissionInfoPanel2.getRallySPTime(),
+                                    this.rightMissionInfoPanel2.getFreqs(),
+                                    this.rightMissionInfoPanel2.getAdditionalText(),
+                                    this.additionalTextPanel1.getAdditionalText(),
+                                    this.vehicleGrids.get(0)
+                            );
 
-                    } catch (Exception ex) {
-                    } finally {
-                        this.setCursor(Cursor.getDefaultCursor());
+                            Create cp = new Create(chooser.getSelectedFile().getPath());
+                            cp.createPDF();
+
+                        } catch (Exception ex) {
+                        } finally {
+                            this.setCursor(Cursor.getDefaultCursor());
+                        }
                     }
                 }
+            } else {
+                JOptionPane.showMessageDialog(this, "You need to add at least 2 vehicles in order to finalize the convoy!");
             }
-        } else {
-            JOptionPane.showMessageDialog(this, "You need to add at least 2 vehicles in order to finalize the convoy!");
-        }
         }
     }//GEN-LAST:event_finalizeMenuActionPerformed
 
@@ -832,7 +877,7 @@ public final class MainWindow extends javax.swing.JFrame {
                             this.rightMissionInfoPanel2.getFromLU(),
                             this.rightMissionInfoPanel2.getToLU(),
                             this.rightMissionInfoPanel2.getFromSP(),
-                            this.rightMissionInfoPanel2.getToSP(),                            
+                            this.rightMissionInfoPanel2.getToSP(),
                             this.rightMissionInfoPanel2.getStartLinkUpTime(),
                             this.rightMissionInfoPanel2.getStartSPTime(),
                             this.rightMissionInfoPanel2.getRallyLinkUpTime(),
@@ -841,7 +886,6 @@ public final class MainWindow extends javax.swing.JFrame {
                             this.rightMissionInfoPanel2.getAdditionalText(),
                             this.additionalTextPanel1.getAdditionalText(),
                             this.vehicleGrids.get(0)
-                            
                     );
 
                     Create cp = new Create(chooser.getSelectedFile().getPath());
@@ -885,11 +929,15 @@ public final class MainWindow extends javax.swing.JFrame {
                 this.rightMissionInfoPanel2.getFromLU(),
                 this.rightMissionInfoPanel2.getFromSP(),
                 this.rightMissionInfoPanel2.getToLU(),
-                this.rightMissionInfoPanel2.getToSP(),                
+                this.rightMissionInfoPanel2.getToSP(),
                 this.rightMissionInfoPanel2.getStartLinkUpTime(),
                 this.rightMissionInfoPanel2.getStartSPTime(),
                 this.rightMissionInfoPanel2.getRallyLinkUpTime(),
                 this.rightMissionInfoPanel2.getRallySPTime(),
+                this.rightMissionInfoPanel2.getStartLinkupTimeZone(),
+                this.rightMissionInfoPanel2.getStartSPTimZone(),
+                this.rightMissionInfoPanel2.getRallyLinkUpTimeZone(),
+                this.rightMissionInfoPanel2.getRallSPTimeZone(),
                 this.leftMissionInfoPanel1.getClassification(),
                 this.leftMissionInfoPanel1.getAdditionalText(),
                 this.rightMissionInfoPanel2.getAdditionalText(),
@@ -960,24 +1008,24 @@ public final class MainWindow extends javax.swing.JFrame {
 
     private void deleteCurrentVehiclePageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteCurrentVehiclePageActionPerformed
         // TODO add your handling code here:
-        
+
         int answer = JOptionPane.showConfirmDialog(this, "Are you sure that you want to delete this page of vehicles?", "Confirmation", JOptionPane.WARNING_MESSAGE);
         if (answer == 0) {
             picturePanel2.remove(vehicleGrids.get(currentVehicleGrid));
             currentVehicleGrid--;
-            reDrawVehicleGrid(vehicleGrids.get(currentVehicleGrid));  
+            reDrawVehicleGrid(vehicleGrids.get(currentVehicleGrid));
             vehicleGridCount--;
             updateArrows();
-        
-            vehicleGrids.remove(currentVehicleGrid+1);
-            
+
+            vehicleGrids.remove(currentVehicleGrid + 1);
+
             //JOptionPane.showMessageDialog(this, " cvg" + currentVehicleGrid + "   vgc" + vehicleGridCount );
             updateArrows();
-            
+
             revalidate();
             repaint();
         }
-        
+
     }//GEN-LAST:event_deleteCurrentVehiclePageActionPerformed
 
     /**

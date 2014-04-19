@@ -5,8 +5,6 @@
  */
 package convoy.loadsave;
 
-import convoy.gui.MainMenu;
-import static convoy.gui.MainMenu.getProgramPath;
 import convoy.gui.SplashScreen;
 import convoy.objects.Mission;
 import convoy.objects.Vehicle;
@@ -18,8 +16,6 @@ import java.io.UnsupportedEncodingException;
 import java.net.URL;
 import java.net.URLDecoder;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -38,7 +34,7 @@ public class Save {
     private final Mission mission;
     private SplashScreen mainMenu = SplashScreen.getInstance();
     private ArrayList<ArrayList<Vehicle>> vehicleGridsVehicles = new ArrayList<>();
-    
+
     /**
      * Constructor that grabs the mission obj from the convoy and save the
      * information in a file.
@@ -51,92 +47,120 @@ public class Save {
 
     /**
      * <p>
-     * save() Saves convoy into a file named after the mission number with the extension ".conx"
+     * save() Saves convoy into a file named after the mission number with the
+     * extension ".conx"
      * <p>
      * @throws java.lang.Exception
      */
-    public void save() throws Exception{
+    /*
+     public void save() throws Exception{
         
+     if (mission.getMissionNumber().equalsIgnoreCase("")) {
+     JOptionPane.showMessageDialog(null, "Please enter the mission number.");
+     } else {
+     file = new File(getProgramPath() + "\\conx\\saves\\" + mission.getMissionNumber() + ".conx");
+     }
+     try {
+     String saveData = mission.getMissionNumber() + ",";
+     saveData += mission.getClassification() + ",";
+     saveData += mission.getMissionstagingArea() + ",";
+     saveData += mission.getACC() + ",";
+     saveData += mission.getCC() + ",";
+     saveData += mission.getFromLinkUpDate() + ",";
+     saveData += mission.getFromSPDate() + ",";
+     saveData += mission.getLeftFrom() + ",";
+     //saveData += mission.getRightFrom() + ",";
+     saveData += mission.getLeftTo() + ",";
+     //saveData += mission.getRightTo() + ",";
+     saveData += mission.getToLinkUpDate() + ",";
+     saveData += mission.getToSPDate() + ",";
+     saveData += mission.getLeftAdditionalInfo().replaceAll("\\t", "'t'").replaceAll("\\r", "'r'").replaceAll("\\n", "'n'") + ",";
+     saveData += mission.getRightAdditionalInfo().replaceAll("\\t", "'t'").replaceAll("\\r", "'r'").replaceAll("\\n", "'n'") + ",";
+     saveData += mission.getAdditionalInfo().replaceAll("\\t", "'t'").replaceAll("\\r", "'r'").replaceAll("\\n", "'n'") + ",";
+     saveData += mission.getUnitPatch();
+            
+     //JOptionPane.showMessageDialog(mainMenu, mission.getUnitPatch());
+
+     byte[] dataToWrite = saveData.getBytes("UTF8");
+     //String str = new String(dataToWrite, "UTF8");
+     //System.out.print(str);
+     try (FileOutputStream out = new FileOutputStream(file)) {
+     out.write(dataToWrite);
+     }
+     } catch (IOException e) {
+     e.printStackTrace();
+     JOptionPane.showMessageDialog(null, "Mission failed to save, please try again.");
+     }
+        
+     saveVehicles();
+        
+     JOptionPane.showMessageDialog(null, "Mission saved successfully.");
+     }
+    
+     */
+    public void save() {
+
         if (mission.getMissionNumber().equalsIgnoreCase("")) {
             JOptionPane.showMessageDialog(null, "Please enter the mission number.");
         } else {
-            file = new File(getProgramPath() + "\\conx\\saves\\" + mission.getMissionNumber() + ".conx");
-        }
-        try {
-            String saveData = mission.getMissionNumber() + ",";
-            saveData += mission.getClassification() + ",";
-            saveData += mission.getMissionstagingArea() + ",";
-            saveData += mission.getACC() + ",";
-            saveData += mission.getCC() + ",";
-            saveData += mission.getFromLinkUpDate() + ",";
-            saveData += mission.getFromSPDate() + ",";
-            saveData += mission.getLeftFrom() + ",";
-            //saveData += mission.getRightFrom() + ",";
-            saveData += mission.getLeftTo() + ",";
-            //saveData += mission.getRightTo() + ",";
-            saveData += mission.getToLinkUpDate() + ",";
-            saveData += mission.getToSPDate() + ",";
-            saveData += mission.getLeftAdditionalInfo().replaceAll("\\t", "'t'").replaceAll("\\r", "'r'").replaceAll("\\n", "'n'") + ",";
-            saveData += mission.getRightAdditionalInfo().replaceAll("\\t", "'t'").replaceAll("\\r", "'r'").replaceAll("\\n", "'n'") + ",";
-            saveData += mission.getAdditionalInfo().replaceAll("\\t", "'t'").replaceAll("\\r", "'r'").replaceAll("\\n", "'n'") + ",";
-            saveData += mission.getUnitPatch();
-            
-            //JOptionPane.showMessageDialog(mainMenu, mission.getUnitPatch());
+            try {
 
-            byte[] dataToWrite = saveData.getBytes("UTF8");
-            //String str = new String(dataToWrite, "UTF8");
-            //System.out.print(str);
-            try (FileOutputStream out = new FileOutputStream(file)) {
-                out.write(dataToWrite);
+                FileOutputStream fileOut;
+                fileOut = new FileOutputStream(getProgramPath() + "\\conx\\saves\\" + mission.getMissionNumber() + ".conx");
+                try (ObjectOutputStream out = new ObjectOutputStream(fileOut)) {
+                    out.writeObject(mission);
+                }
+                fileOut.close();
+            } catch (IOException e) {
+
+            } finally {
+                saveVehicles();
+
+                JOptionPane.showMessageDialog(null, "Mission saved successfully.");
             }
-        } catch (IOException e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Mission failed to save, please try again.");
+
         }
-        
-        saveVehicles();
-        
-        JOptionPane.showMessageDialog(null, "Mission saved successfully.");
     }
-    
+
     /**
-     * saveVehicles() Saves vehicles within the convoy into a file named after the mission number with 
-     *  the extension "_vehicles.conx"
+     * saveVehicles() Saves vehicles within the convoy into a file named after
+     * the mission number with the extension "_vehicles.conx"
      */
     public void saveVehicles() {
-        
-        for (int i = 0; i < mainMenu.getMainWindow().getVehicleGrids().size(); i++){
+
+        for (int i = 0; i < mainMenu.getMainWindow().getVehicleGrids().size(); i++) {
             vehicleGridsVehicles.add(new ArrayList<Vehicle>());
-            
-            for (int j = 0; j < mainMenu.getMainWindow().getVehicleGrids().get(i).getVehiclePanelArray().size(); j++){
-                
+
+            for (int j = 0; j < mainMenu.getMainWindow().getVehicleGrids().get(i).getVehiclePanelArray().size(); j++) {
+
                 Vehicle v = new Vehicle();
-                
+
                 //JOptionPane.showMessageDialog(mainMenu, mainMenu.getMainWindow().getVehicleGrids().get(i).getVehiclePanelArray().get(j).getDriverName());
                 mainMenu.getMainWindow().getVehicleGrids().get(i).getVehiclePanelArray().get(j).batchVehicleGet(v);
-                
+
                 vehicleGridsVehicles.get(i).add(v);
-                
+
                 //JOptionPane.showMessageDialog(mainMenu, vehicleGridsVehicles.get(i).get(j).getDriverName() + " ");
             }
-        }  
+        }
         try {
-         
+
             FileOutputStream fileOut;
-            fileOut = new FileOutputStream(getProgramPath() + "\\conx\\saves\\" + mission.getMissionNumber() +  "_vehicles.conv");
+            fileOut = new FileOutputStream(getProgramPath() + "\\conx\\saves\\" + mission.getMissionNumber() + "_vehicles.conv");
             try (ObjectOutputStream out = new ObjectOutputStream(fileOut)) {
                 out.writeObject(vehicleGridsVehicles);
             }
             fileOut.close();
-        } catch (IOException e) {}
-        
+        } catch (IOException e) {
+        }
+
     }
-    
+
     public static String getProgramPath() throws UnsupportedEncodingException {
-      URL url = convoy.gui.MainMenu.class.getProtectionDomain().getCodeSource().getLocation();
-      String jarPath = URLDecoder.decode(url.getFile(), "UTF-8");
-      String parentPath = new File(jarPath).getParentFile().getPath();
-      return parentPath;
-   }
-   
+        URL url = convoy.gui.MainMenu.class.getProtectionDomain().getCodeSource().getLocation();
+        String jarPath = URLDecoder.decode(url.getFile(), "UTF-8");
+        String parentPath = new File(jarPath).getParentFile().getPath();
+        return parentPath;
+    }
+
 }
