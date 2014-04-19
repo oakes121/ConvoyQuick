@@ -156,9 +156,8 @@ public class Load {
             //chooser.setCurrentDirectory(new File(getPath()));
 
             option = chooser.showOpenDialog(null);
-            if (option == JFileChooser.APPROVE_OPTION) {              
-
-                System.out.print(chooser.getSelectedFile().getPath());
+            if (option == JFileChooser.APPROVE_OPTION) {
+                
                 FileInputStream fileIn = new FileInputStream(chooser.getSelectedFile().getPath());
                 ObjectInputStream in = new ObjectInputStream(fileIn);
                 mission = (Mission) in.readObject();
