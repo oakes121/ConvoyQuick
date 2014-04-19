@@ -57,32 +57,30 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="imageLabel" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="fromLabel" min="-2" max="-2" attributes="0"/>
-                          <Component id="missionNumberLabel" min="-2" max="-2" attributes="0"/>
-                          <Component id="toLabel" alignment="1" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="imageLabel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="missionNumberTextField" alignment="1" max="32767" attributes="0"/>
-                          <Component id="fromTextField" alignment="1" max="32767" attributes="0"/>
-                          <Component id="toTextField" max="32767" attributes="0"/>
+                          <Component id="classificationDropBox" max="32767" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="fromLabel" max="32767" attributes="0"/>
+                                  <Component id="missionNumberLabel" max="32767" attributes="0"/>
+                                  <Component id="toLabel" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="fromTextField" max="32767" attributes="0"/>
+                                  <Component id="missionNumberTextField" max="32767" attributes="0"/>
+                                  <Component id="toTextField" alignment="0" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" attributes="0">
-                      <Component id="classificationDropBox" pref="570" max="32767" attributes="0"/>
-                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="leftAdditionalTextPanel2" alignment="0" max="32767" attributes="0"/>
               </Group>
-          </Group>
-          <Group type="102" alignment="1" attributes="0">
-              <Component id="leftAdditionalTextPanel1" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -92,29 +90,29 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
+                  <Group type="102" attributes="0">
                       <Component id="classificationDropBox" min="-2" pref="50" max="-2" attributes="0"/>
-                      <EmptySpace pref="45" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="missionNumberLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="missionNumberTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="46" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="fromLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="fromTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="fromLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="45" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="toTextField" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Component id="toLabel" alignment="1" min="-2" pref="20" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="toLabel" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
+                          <Component id="toTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <Component id="imageLabel" alignment="0" min="-2" pref="190" max="-2" attributes="0"/>
+                  <Component id="imageLabel" min="-2" pref="190" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="leftAdditionalTextPanel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="32767" attributes="0"/>
+              <Component id="leftAdditionalTextPanel2" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -151,6 +149,9 @@
         </Property>
         <Property name="toolTipText" type="java.lang.String" value="Enter Mission Number"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="missionNumberTextFieldActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="missionNumberLabel">
       <Properties>
@@ -204,7 +205,7 @@
         <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="imageLabelMousePressed"/>
       </Events>
     </Component>
-    <Component class="convoy.gui.LeftAdditionalTextPanel" name="leftAdditionalTextPanel1">
+    <Component class="convoy.gui.LeftAdditionalTextPanel" name="leftAdditionalTextPanel2">
     </Component>
   </SubComponents>
 </Form>

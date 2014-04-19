@@ -8,6 +8,10 @@
         <Property name="useNullLayout" type="boolean" value="true"/>
       </Layout>
     </Container>
+    <Component class="convoy.textEditor.com.metaphaseeditor.MetaphaseEditor" name="metaphaseEditor1">
+    </Component>
+    <Component class="convoy.textEditor.com.metaphaseeditor.MetaphaseEditor" name="metaphaseEditor3">
+    </Component>
   </NonVisualComponents>
   <Properties>
     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -71,7 +75,7 @@
                                   <Component id="startPointLinkUpTimeComoboBox" min="-2" max="-2" attributes="0"/>
                                   <Component id="rallyPointLinkUpTimeComoboBox" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace pref="84" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="1" attributes="0">
                                   <Group type="102" alignment="1" attributes="0">
                                       <Component id="toSPLabel" min="-2" max="-2" attributes="0"/>
@@ -102,7 +106,7 @@
                   </Group>
               </Group>
           </Group>
-          <Component id="metaphaseEditor2" pref="785" max="32767" attributes="0"/>
+          <Component id="metaphaseEditor2" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -157,8 +161,8 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="freqPanel" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="metaphaseEditor2" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+              <Component id="metaphaseEditor2" min="-2" pref="115" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -498,8 +502,6 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="convoy.textEditor.com.metaphaseeditor.MetaphaseEditor" name="metaphaseEditor2">
-    </Component>
     <Component class="javax.swing.JComboBox" name="startPointLinkUpTimeComoboBox">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
@@ -561,6 +563,8 @@
     <Component class="convoy.gui.TimePicker" name="timePicker4">
     </Component>
     <Component class="convoy.gui.TimePicker" name="timePicker5">
+    </Component>
+    <Component class="convoy.textEditor.com.metaphaseeditor.MetaphaseEditor" name="metaphaseEditor2">
     </Component>
   </SubComponents>
 </Form>

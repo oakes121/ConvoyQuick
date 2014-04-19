@@ -414,6 +414,8 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jLayeredPane1 = new javax.swing.JLayeredPane();
+        metaphaseEditor1 = new convoy.textEditor.com.metaphaseeditor.MetaphaseEditor();
+        metaphaseEditor3 = new convoy.textEditor.com.metaphaseeditor.MetaphaseEditor();
         ccLabel = new javax.swing.JLabel();
         ccTextField = new javax.swing.JTextField();
         accLabel = new javax.swing.JLabel();
@@ -451,7 +453,6 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
         removeFreq4 = new javax.swing.JLabel();
         removeFreq5 = new javax.swing.JLabel();
         removeFreq6 = new javax.swing.JLabel();
-        metaphaseEditor2 = new convoy.textEditor.com.metaphaseeditor.MetaphaseEditor();
         startPointLinkUpTimeComoboBox = new javax.swing.JComboBox();
         rallyPointLinkUpTimeComoboBox = new javax.swing.JComboBox();
         startPointSPTimeComoboBox = new javax.swing.JComboBox();
@@ -464,6 +465,7 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
         timePicker3 = new convoy.gui.TimePicker();
         timePicker4 = new convoy.gui.TimePicker();
         timePicker5 = new convoy.gui.TimePicker();
+        metaphaseEditor2 = new convoy.textEditor.com.metaphaseeditor.MetaphaseEditor();
 
         setBackground(new java.awt.Color(194, 178, 128));
 
@@ -700,7 +702,7 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(startPointLinkUpTimeComoboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(rallyPointLinkUpTimeComoboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(toSPLabel)
@@ -722,7 +724,7 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(freqPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addContainerGap())))
-            .addComponent(metaphaseEditor2, javax.swing.GroupLayout.DEFAULT_SIZE, 785, Short.MAX_VALUE)
+            .addComponent(metaphaseEditor2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -766,8 +768,8 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(freqPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(metaphaseEditor2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(5, 5, 5))
+                .addComponent(metaphaseEditor2, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
     /**
@@ -932,7 +934,9 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
     private javax.swing.JLabel fromLinkUpLabel;
     private javax.swing.JLabel fromSPLabel;
     private javax.swing.JLayeredPane jLayeredPane1;
+    private convoy.textEditor.com.metaphaseeditor.MetaphaseEditor metaphaseEditor1;
     private convoy.textEditor.com.metaphaseeditor.MetaphaseEditor metaphaseEditor2;
+    private convoy.textEditor.com.metaphaseeditor.MetaphaseEditor metaphaseEditor3;
     private javax.swing.JComboBox rallyPointLinkUpTimeComoboBox;
     private com.michaelbaranov.microba.calendar.DatePicker rallyPointLinkup;
     private com.michaelbaranov.microba.calendar.DatePicker rallyPointSP;
