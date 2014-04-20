@@ -95,13 +95,12 @@
               <Component id="picturePanel" alignment="0" max="32767" attributes="0"/>
               <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="additionalInfoField" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="passenger3Label" alignment="0" pref="73" max="32767" attributes="0"/>
                               <Component id="passenger2Label" alignment="0" max="32767" attributes="0"/>
                               <Component id="passenger1Label" alignment="0" max="32767" attributes="0"/>
                               <Component id="driverLabel" alignment="0" max="32767" attributes="0"/>
+                              <Component id="passenger3Label" alignment="0" pref="73" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -111,9 +110,13 @@
                               <Component id="iconLabel3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="callSignLabel" alignment="0" pref="70" max="32767" attributes="0"/>
-                          <Component id="bumperNumberLabel" alignment="0" max="32767" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="additionalInfoField" alignment="0" min="-2" pref="70" max="-2" attributes="0"/>
+                              <Component id="bumperNumberLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="callSignLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
@@ -143,10 +146,10 @@
                       <Component id="iconLabel3" min="-2" max="-2" attributes="0"/>
                       <Component id="passenger3Label" alignment="0" min="-2" pref="11" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                   <Component id="picturePanel" max="32767" attributes="0"/>
-                  <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-                  <Component id="bumperNumberLabel" min="-2" pref="12" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                  <Component id="bumperNumberLabel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="callSignLabel" min="-2" pref="9" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
@@ -320,6 +323,9 @@
               <Dimension value="[59, 13]"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="additionalInfoFieldActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="driverWheelLabel">
         </Component>
