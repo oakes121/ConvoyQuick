@@ -10,11 +10,15 @@ public class Vehicle implements Serializable {
     private String bumperNumber;
     private String callSign;
     private String additionalInfo;    
+    private String iconPath;
     private int numberOfPersonnel;
     private Personnel driver;
     private Personnel vehicleCommander;
     private Icon vehicleIcon;
     private ArrayList<Personnel> passengers;
+    private int addVehiclePopUpJComboBox1Selection = 0;
+    private int addVehiclePopUpJComboBox2Selection = 0;
+    private int addVehiclePopUpJComboBox3Selection = 0;
 
     /**
      * Constructor Vehicle() sets default vehicle
@@ -162,6 +166,10 @@ public class Vehicle implements Serializable {
         this.passengers = passengers;
 
     }
+    
+    public void setIconPath(String newIconPath) {
+        iconPath = newIconPath;
+    }
 
     /**
      * addPassengers(Personnel passengers) adds passengers to vehicle
@@ -259,7 +267,29 @@ public class Vehicle implements Serializable {
         return this.passengers;
 
     }
-
+    
+    public String getIconPath() {
+        return iconPath;
+    }
+    
+    public void setSelections(int one, int two, int three) {
+        addVehiclePopUpJComboBox1Selection = one;
+        addVehiclePopUpJComboBox2Selection = two;
+        addVehiclePopUpJComboBox3Selection = three;
+    }
+    
+    public int getSelection1() {
+        return addVehiclePopUpJComboBox1Selection;
+    }
+    
+    public int getSelection2() {
+        return addVehiclePopUpJComboBox2Selection;
+    }
+    
+    public int getSelection3() {
+        return addVehiclePopUpJComboBox3Selection;
+    }
+    
     /**
      * removePassengers(Personnel passenger) removes passengers from vehicle
      * @param passenger passenger to be removed

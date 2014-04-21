@@ -11,6 +11,7 @@ import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLDecoder;
 import java.nio.file.Files;
@@ -583,6 +584,7 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
                 File file = new File(loadFile.getFile());
                 if (file.exists() || file != null) {
                     url = new URL("file:\\" + loadFile.getDirectory() + file);
+                    
 
                     copyFile(new File(loadFile.getDirectory() + file), new File(getProgramPath() + "\\conx\\images\\vehicles\\" + file));
                     newVehiclePanel.setIconPath(getProgramPath() + "\\conx\\images\\vehicles\\" + file);
@@ -819,6 +821,73 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
             Logger.getLogger(AddVehiclePopUp.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    public void getInfoFromVehiclePanel(VehiclePanel vp) {
+        personnel1Field.setText(vp.getDriverName());
+        personnel2Field.setText(vp.getPassenger1());
+        personnel3Field.setText(vp.getPassenger2());
+        personnel4Field.setText(vp.getPassenger3());
+        vehicleInfo1Field.setText(vp.getBumperNumber());
+        vehicleInfo2Field.setText(vp.getCallSign());
+        vehicleInfo3Field.setText(vp.getAdditonalInfo());
+        
+        URL theUrl;
+        try {
+            theUrl = new URL("file:\\" + vp.getIconPath());
+            
+            try {
+                img = ImageIO.read(theUrl);
+                finalImage = img.getScaledInstance(268, 209, java.awt.Image.SCALE_SMOOTH);
+                ImageIcon icon = new ImageIcon(finalImage);
+                imageLabel.setIcon(icon);
+                //jLabel1.setIcon(icon);
+                revalidate();
+                repaint();
+            } catch (IOException ex) {
+                Logger.getLogger(AddVehiclePopUp.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        } catch (MalformedURLException ex) {
+            Logger.getLogger(AddVehiclePopUp.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void setSelection1(int selec) {
+        jComboBox1.setSelectedIndex(selec);
+    }
+    
+    public void setSelection2(int selec) {
+        jComboBox3.setSelectedIndex(selec);
+    }
+    
+    public void setSelection3(int selec) {
+        jComboBox3.setSelectedIndex(selec);
+    }
+    
+    public void addVehicleButtonDoClick() {
+        MainWindow.setACC(false);
+        MainWindow.setCC(false);
+        isCreateMode = false;
+        isEditMode = true;
+        addVehicleButton.doClick();
+    }
+    
+  
+    
+    public int getSelection1() {
+        return jComboBox1.getSelectedIndex();
+    }
+    
+    public int getSelection2() {
+        return jComboBox2.getSelectedIndex();
+    }
+    
+    public int getSelection3() {
+        return jComboBox3.getSelectedIndex();
+    }
+    
+    
+    
 
     public void modifyPopUp() {
 

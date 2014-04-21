@@ -1,8 +1,7 @@
 package convoy.loadsave;
 
-import convoy.gui.MainMenu;
-import convoy.gui.MainWindow;
-import convoy.gui.VehiclePanel;
+
+import convoy.gui.*;
 import convoy.objects.Mission;
 import convoy.objects.Vehicle;
 import java.awt.Cursor;
@@ -35,7 +34,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  */
 public class Load {
 
-    private MainMenu mainMenu = MainMenu.getInstance();
+    private SplashScreen mainMenu = SplashScreen.getInstance();
     private MainWindow mainWindow = null;
     private Mission mission = null;
     private String missionNumber = null;
@@ -132,13 +131,26 @@ public class Load {
                 if (i > 0) {
                     mainMenu.getMainWindow().newVehicleGrid();
                 }
+                
+                mainMenu.getMainWindow().getVehicleGrids().get(i).setMainWindow(mainMenu.getMainWindow());
 
                 for (int j = 0; j < vehicleGridsVehicles.get(i).size(); j++) {
                     //JOptionPane.showMessageDialog(mainMenu, vehicleGridsVehicles.get(0).get(1).getDriverName() + " ");
                     VehiclePanel vp = new VehiclePanel();
                     vp.batchVehicleSet(vehicleGridsVehicles.get(i).get(j));
+                    
                     mainMenu.getMainWindow().getVehicleGrids().get(i).replaceAddNewVehiclePanel(vp);
-                    mainMenu.getMainWindow().getVehicleGrids().get(i).setMainWindow(mainMenu.getMainWindow());
+                    
+                    AddVehiclePopUp avpp = new AddVehiclePopUp();
+                    avpp.getInfoFromVehiclePanel(vp);
+                    avpp.setSelection1(vehicleGridsVehicles.get(i).get(j).getSelection1());
+                    avpp.setSelection2(vehicleGridsVehicles.get(i).get(j).getSelection2());
+                    avpp.setSelection3(vehicleGridsVehicles.get(i).get(j).getSelection3());     
+                    
+                    mainMenu.getMainWindow().getVehicleGrids().get(i).getAddVehiclePopUpArray().add(avpp);
+                    mainMenu.getMainWindow().getVehicleGrids().get(i).getAddVehiclePopUpArray().get(j).setObject(mainMenu.getMainWindow().getVehicleGrids().get(i));
+                    mainMenu.getMainWindow().getVehicleGrids().get(i).getAddVehiclePopUpArray().get(j).setEditVehicleCounter(j);
+                    mainMenu.getMainWindow().getVehicleGrids().get(i).getAddVehiclePopUpArray().get(j).addVehicleButtonDoClick();
 
                 }
             }

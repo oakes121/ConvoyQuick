@@ -362,19 +362,11 @@ public class VehiclePanel extends javax.swing.JPanel {
         v.setCallSign(callSignLabel.getText());        
         v.setDriver(driverLabel.getText());
         v.setVehicleIcon(imageLabel.getIcon());
-        
-        
-            v.setAdditionalInfo(additionalInfoField.getText());
-        
-        
-            v.addPassengers(passenger1Label.getText());
-        
-        
-            v.addPassengers(passenger2Label.getText());
-        
-        
-            v.addPassengers(passenger3Label.getText());
-        
+        v.setIconPath(iconPath);
+        v.setAdditionalInfo(additionalInfoField.getText());
+        v.addPassengers(passenger1Label.getText());
+        v.addPassengers(passenger2Label.getText());
+        v.addPassengers(passenger3Label.getText());
     }
     
     /**
@@ -389,6 +381,7 @@ public class VehiclePanel extends javax.swing.JPanel {
         driverLabel.setText(v.getDriverName());
         imageLabel.setIcon(v.getVehicleIcon());
         additionalInfoField.setText(v.getAdditionalInfo());
+        iconPath = v.getIconPath();
         
         if (v.getPassengers().size() >= 1)
             passenger1Label.setText(v.getPassengers().get(0).getName());
@@ -444,7 +437,7 @@ public class VehiclePanel extends javax.swing.JPanel {
       void setPassenger3LayoutToBlack() {
         passenger3Label.setForeground(Color.black);
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    }  
 
     /**
      * This method is called from within the constructor to initialize the form.

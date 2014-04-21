@@ -16,6 +16,8 @@ import java.io.UnsupportedEncodingException;
 import java.net.URL;
 import java.net.URLDecoder;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -126,17 +128,35 @@ public class Save {
      * saveVehicles() Saves vehicles within the convoy into a file named after
      * the mission number with the extension "_vehicles.conx"
      */
-    public void saveVehicles() {
+    public void saveVehicles()  {
 
+        File f;
+        try {
+            f = new File(getProgramPath() + "\\conx\\saves\\" + mission.getMissionNumber() + "_vehicles.conv");
+            if(f.exists()) {                
+                f.delete();
+                JOptionPane.showMessageDialog(mainMenu, "deleted");
+            }
+        } catch (UnsupportedEncodingException ex) {
+            Logger.getLogger(Save.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
         for (int i = 0; i < mainMenu.getMainWindow().getVehicleGrids().size(); i++) {
+            JOptionPane.showMessageDialog(mainMenu, "Saved page " + i);
             vehicleGridsVehicles.add(new ArrayList<Vehicle>());
 
             for (int j = 0; j < mainMenu.getMainWindow().getVehicleGrids().get(i).getVehiclePanelArray().size(); j++) {
 
                 Vehicle v = new Vehicle();
-
+                int selection1 = mainMenu.getMainWindow().getVehicleGrids().get(i).getAddVehiclePopUpArray().get(j).getSelection1();
+                int selection2 = mainMenu.getMainWindow().getVehicleGrids().get(i).getAddVehiclePopUpArray().get(j).getSelection2();
+                int selection3 = mainMenu.getMainWindow().getVehicleGrids().get(i).getAddVehiclePopUpArray().get(j).getSelection3();
+                v.setSelections(selection1, selection2, selection3);
                 //JOptionPane.showMessageDialog(mainMenu, mainMenu.getMainWindow().getVehicleGrids().get(i).getVehiclePanelArray().get(j).getDriverName());
                 mainMenu.getMainWindow().getVehicleGrids().get(i).getVehiclePanelArray().get(j).batchVehicleGet(v);
+                
+                
 
                 vehicleGridsVehicles.get(i).add(v);
 
@@ -147,11 +167,13 @@ public class Save {
 
             FileOutputStream fileOut;
             fileOut = new FileOutputStream(getProgramPath() + "\\conx\\saves\\" + mission.getMissionNumber() + "_vehicles.conv");
+            
             try (ObjectOutputStream out = new ObjectOutputStream(fileOut)) {
                 out.writeObject(vehicleGridsVehicles);
             }
             fileOut.close();
         } catch (IOException e) {
+            e.printStackTrace();
         }
 
     }

@@ -319,6 +319,9 @@ public class VehicleGrid extends javax.swing.JPanel implements ActionListener, K
         return vehiclePanelArray;        
     }
     
+    public ArrayList<AddVehiclePopUp> getAddVehiclePopUpArray() {
+        return addVehiclePopUpArray;
+    }
     /**
      * getVehicleCount() method returns vehicleCount
      * @return vehicleCount
