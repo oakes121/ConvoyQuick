@@ -338,6 +338,20 @@ public class VehicleGrid extends javax.swing.JPanel implements ActionListener, K
             if (vehiclePanelClickedFlags.get(i).getTruthValue() == true) {
                 int answer = JOptionPane.showConfirmDialog(this, "Are you sure that you want to delete this vehicle?", "Confirmation", JOptionPane.WARNING_MESSAGE);
                 if (answer == 0) {
+                    
+                    int index1 = addVehiclePopUpArray.get(indicator).jComboBox1.getSelectedIndex();
+                    int index2 = addVehiclePopUpArray.get(indicator).jComboBox2.getSelectedIndex();
+                    int index3 = addVehiclePopUpArray.get(indicator).jComboBox3.getSelectedIndex();
+                    
+                    if ((index1 == 1) || (index2 == 1) || (index3 == 1)) {
+                        MainWindow.setCC(false);
+                    }
+                    
+                    if ((index1 == 2) || (index2 == 2) || (index3 == 2)) {
+                        MainWindow.setACC(false);
+                    }
+                    
+                    
                     vehiclePanelArray.get(indicator).removeMouseListener(this);
                     panelHolder.remove(indicator);
                     vehiclePanelArray.remove(indicator);

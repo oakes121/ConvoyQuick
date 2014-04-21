@@ -368,6 +368,7 @@ public class VehiclePanel extends javax.swing.JPanel {
         callSignLabel.setText(v.getCallSign());
         driverLabel.setText(v.getDriverName());
         imageLabel.setIcon(v.getVehicleIcon());
+        additionalInfoField.setText(v.getAdditionalInfo());
         
         if (v.getPassengers().size() >= 1)
             passenger1Label.setText(v.getPassengers().get(0).getName());
@@ -445,11 +446,11 @@ public class VehiclePanel extends javax.swing.JPanel {
         callSignLabel = new javax.swing.JLabel();
         picturePanel = new javax.swing.JPanel();
         imageLabel = new javax.swing.JLabel();
-        additionalInfoField = new javax.swing.JTextField();
         driverWheelLabel = new javax.swing.JLabel();
         iconLabel1 = new javax.swing.JLabel();
         iconLabel2 = new javax.swing.JLabel();
         iconLabel3 = new javax.swing.JLabel();
+        additionalInfoField = new javax.swing.JLabel();
         deleteButton = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -549,14 +550,13 @@ public class VehiclePanel extends javax.swing.JPanel {
                 .addGap(6, 6, 6))
         );
 
-        additionalInfoField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        additionalInfoField.setBackground(new java.awt.Color(102, 102, 255));
+        additionalInfoField.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         additionalInfoField.setText("Additional Info");
-        additionalInfoField.setPreferredSize(new java.awt.Dimension(59, 13));
-        additionalInfoField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                additionalInfoFieldActionPerformed(evt);
-            }
-        });
+        additionalInfoField.setMaximumSize(new java.awt.Dimension(50, 11));
+        additionalInfoField.setMinimumSize(new java.awt.Dimension(50, 11));
+        additionalInfoField.setName(""); // NOI18N
+        additionalInfoField.setPreferredSize(new java.awt.Dimension(50, 11));
 
         javax.swing.GroupLayout componentPanelLayout = new javax.swing.GroupLayout(componentPanel);
         componentPanel.setLayout(componentPanelLayout);
@@ -564,26 +564,24 @@ public class VehiclePanel extends javax.swing.JPanel {
             componentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(picturePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(componentPanelLayout.createSequentialGroup()
+                .addGroup(componentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(passenger2Label, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(passenger1Label, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(driverLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(passenger3Label, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
                 .addGroup(componentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(componentPanelLayout.createSequentialGroup()
-                        .addGroup(componentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(passenger2Label, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(passenger1Label, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(driverLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(passenger3Label, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addGroup(componentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(driverWheelLabel)
-                            .addComponent(iconLabel1)
-                            .addComponent(iconLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(iconLabel3)))
-                    .addGroup(componentPanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(componentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(additionalInfoField, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(bumperNumberLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(callSignLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(driverWheelLabel)
+                    .addComponent(iconLabel1)
+                    .addComponent(iconLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(iconLabel3))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(componentPanelLayout.createSequentialGroup()
+                .addGroup(componentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(callSignLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(bumperNumberLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)
+                    .addComponent(additionalInfoField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         componentPanelLayout.setVerticalGroup(
             componentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -611,7 +609,7 @@ public class VehiclePanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(callSignLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 9, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(additionalInfoField, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(additionalInfoField, javax.swing.GroupLayout.PREFERRED_SIZE, 9, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -640,14 +638,14 @@ public class VehiclePanel extends javax.swing.JPanel {
                     .addComponent(deleteButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(componentPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10))))
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(2, 2, 2)
-                .addComponent(componentPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(componentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -655,12 +653,8 @@ public class VehiclePanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_deleteButtonActionPerformed
 
-    private void additionalInfoFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_additionalInfoFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_additionalInfoFieldActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField additionalInfoField;
+    private javax.swing.JLabel additionalInfoField;
     private javax.swing.JLabel bumperNumberLabel;
     private javax.swing.JLabel callSignLabel;
     private javax.swing.JPanel componentPanel;

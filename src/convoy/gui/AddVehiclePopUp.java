@@ -963,9 +963,9 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
     private javax.swing.JButton addVehicleButton;
     private javax.swing.JButton cancelButton;
     private javax.swing.JLabel imageLabel;
-    private javax.swing.JComboBox jComboBox1;
-    private javax.swing.JComboBox jComboBox2;
-    private javax.swing.JComboBox jComboBox3;
+    protected javax.swing.JComboBox jComboBox1;
+    protected javax.swing.JComboBox jComboBox2;
+    protected javax.swing.JComboBox jComboBox3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
