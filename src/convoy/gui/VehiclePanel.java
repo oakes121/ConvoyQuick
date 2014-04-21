@@ -68,6 +68,22 @@ public class VehiclePanel extends javax.swing.JPanel {
         repaint();
     }
     
+    public JLabel getDriverLabel() {
+        return driverLabel;
+    }
+    
+    public JLabel getPassengerLabel1() {
+        return this.passenger1Label;
+    }
+    
+    public JLabel getPassengerLabel2() {
+        return this.passenger2Label;
+    }
+    
+    public JLabel getPassengerLabel3() {
+        return this.passenger3Label;
+    }
+    
     public Icon getImageIcon() {
         return imageLabel.getIcon();
     }
@@ -454,6 +470,7 @@ public class VehiclePanel extends javax.swing.JPanel {
         iconLabel1 = new javax.swing.JLabel();
         iconLabel2 = new javax.swing.JLabel();
         iconLabel3 = new javax.swing.JLabel();
+        additionalInfoField1 = new javax.swing.JLabel();
         additionalInfoField = new javax.swing.JLabel();
         deleteButton = new javax.swing.JButton();
 
@@ -554,7 +571,16 @@ public class VehiclePanel extends javax.swing.JPanel {
                 .addGap(6, 6, 6))
         );
 
-        additionalInfoField.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        additionalInfoField1.setBackground(new java.awt.Color(102, 102, 255));
+        additionalInfoField1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        additionalInfoField1.setText("Additional Info");
+        additionalInfoField1.setMaximumSize(new java.awt.Dimension(50, 11));
+        additionalInfoField1.setMinimumSize(new java.awt.Dimension(50, 11));
+        additionalInfoField1.setName(""); // NOI18N
+        additionalInfoField1.setPreferredSize(new java.awt.Dimension(50, 11));
+
+        additionalInfoField.setBackground(new java.awt.Color(102, 102, 255));
+        additionalInfoField.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         additionalInfoField.setText("Additional Info");
         additionalInfoField.setMaximumSize(new java.awt.Dimension(50, 11));
         additionalInfoField.setMinimumSize(new java.awt.Dimension(50, 11));
@@ -583,7 +609,7 @@ public class VehiclePanel extends javax.swing.JPanel {
                 .addGroup(componentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(callSignLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(bumperNumberLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)
-                    .addComponent(additionalInfoField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(additionalInfoField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         componentPanelLayout.setVerticalGroup(
@@ -649,6 +675,7 @@ public class VehiclePanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel additionalInfoField;
+    private javax.swing.JLabel additionalInfoField1;
     private javax.swing.JLabel bumperNumberLabel;
     private javax.swing.JLabel callSignLabel;
     private javax.swing.JPanel componentPanel;
