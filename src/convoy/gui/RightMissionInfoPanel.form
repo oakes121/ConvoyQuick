@@ -4,9 +4,7 @@
   <NonVisualComponents>
     <Container class="javax.swing.JLayeredPane" name="jLayeredPane1">
 
-      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
-        <Property name="useNullLayout" type="boolean" value="true"/>
-      </Layout>
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JLayeredPaneSupportLayout"/>
     </Container>
     <Component class="convoy.textEditor.com.metaphaseeditor.MetaphaseEditor" name="metaphaseEditor1">
     </Component>
@@ -75,7 +73,7 @@
                                   <Component id="startPointLinkUpTimeComoboBox" min="-2" max="-2" attributes="0"/>
                                   <Component id="rallyPointLinkUpTimeComoboBox" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="84" max="32767" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="1" attributes="0">
                                   <Group type="102" alignment="1" attributes="0">
                                       <Component id="toSPLabel" min="-2" max="-2" attributes="0"/>
@@ -106,7 +104,7 @@
                   </Group>
               </Group>
           </Group>
-          <Component id="metaphaseEditor2" max="32767" attributes="0"/>
+          <Component id="metaphaseEditor2" pref="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
