@@ -354,9 +354,6 @@
           <Dimension value="[15, 22]"/>
         </Property>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deleteButtonActionPerformed"/>
-      </Events>
     </Component>
   </SubComponents>
 </Form>

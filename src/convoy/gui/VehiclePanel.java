@@ -290,6 +290,10 @@ public class VehiclePanel extends javax.swing.JPanel {
     public String getCallSign() {
         return callSignLabel.getText();
     }
+    
+    public String getAdditonalInfo() {
+        return additionalInfoField.getText();
+    }
 
     /**
      * setCallSign() returns string in callSignLabel
@@ -624,11 +628,6 @@ public class VehiclePanel extends javax.swing.JPanel {
         deleteButton.setText("X");
         deleteButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         deleteButton.setPreferredSize(new java.awt.Dimension(15, 22));
-        deleteButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                deleteButtonActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -650,10 +649,6 @@ public class VehiclePanel extends javax.swing.JPanel {
                 .addComponent(componentPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_deleteButtonActionPerformed
 
     private void additionalInfoFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_additionalInfoFieldActionPerformed
         // TODO add your handling code here:
