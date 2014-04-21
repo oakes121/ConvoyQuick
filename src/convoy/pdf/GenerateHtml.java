@@ -289,7 +289,7 @@ public class GenerateHtml {
                         + "                                            </tr>\n"
                         + "\n"
                         + "                                            <tr>\n"
-                        + "                                                <td></td>\n"
+                        + "                                                <td>" + vehicleGrid.getVehiclePanelArray().get(i).getAdditonalInfo() + "</td>\n"
                         + "                                            </tr>\n"
                         + "                                        </table>";
             }
@@ -535,7 +535,7 @@ public class GenerateHtml {
                                 + "              color: " + classificationColor + ";"
                                 + "         }\n"
                                 + "        .driver{"
-                                + "             color: LimeGreen;"
+                                + "             color: green;"
                                 + "         }\n"
                                 + "        .midBorder {\n"
                                 + "            border-top: red solid 5px;\n"

@@ -290,6 +290,10 @@ public class VehiclePanel extends javax.swing.JPanel {
     public String getCallSign() {
         return callSignLabel.getText();
     }
+    
+    public String getAdditonalInfo() {
+        return additionalInfoField.getText();
+    }
 
     /**
      * setCallSign() returns string in callSignLabel
@@ -481,14 +485,14 @@ public class VehiclePanel extends javax.swing.JPanel {
 
         componentPanel.setBackground(new java.awt.Color(255, 255, 255));
 
-        passenger1Label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        passenger1Label.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         passenger1Label.setText("Passenger");
         passenger1Label.setMaximumSize(new java.awt.Dimension(50, 11));
         passenger1Label.setMinimumSize(new java.awt.Dimension(50, 11));
         passenger1Label.setName(""); // NOI18N
         passenger1Label.setPreferredSize(new java.awt.Dimension(50, 11));
 
-        passenger3Label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        passenger3Label.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         passenger3Label.setText("Passenger");
         passenger3Label.setMaximumSize(new java.awt.Dimension(50, 11));
         passenger3Label.setMinimumSize(new java.awt.Dimension(50, 11));
@@ -496,7 +500,7 @@ public class VehiclePanel extends javax.swing.JPanel {
         passenger3Label.setPreferredSize(new java.awt.Dimension(50, 11));
 
         bumperNumberLabel.setBackground(new java.awt.Color(102, 102, 255));
-        bumperNumberLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        bumperNumberLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         bumperNumberLabel.setText("Bumper Number");
         bumperNumberLabel.setMaximumSize(new java.awt.Dimension(50, 11));
         bumperNumberLabel.setMinimumSize(new java.awt.Dimension(50, 11));
@@ -506,14 +510,14 @@ public class VehiclePanel extends javax.swing.JPanel {
         driverLabel.setBackground(new java.awt.Color(102, 102, 255));
         driverLabel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         driverLabel.setForeground(new java.awt.Color(0, 204, 0));
-        driverLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        driverLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         driverLabel.setText("Driver");
         driverLabel.setMaximumSize(new java.awt.Dimension(50, 11));
         driverLabel.setMinimumSize(new java.awt.Dimension(50, 11));
         driverLabel.setName(""); // NOI18N
         driverLabel.setPreferredSize(new java.awt.Dimension(50, 11));
 
-        passenger2Label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        passenger2Label.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         passenger2Label.setText("Passenger");
         passenger2Label.setMaximumSize(new java.awt.Dimension(50, 11));
         passenger2Label.setMinimumSize(new java.awt.Dimension(50, 11));
@@ -521,7 +525,7 @@ public class VehiclePanel extends javax.swing.JPanel {
         passenger2Label.setPreferredSize(new java.awt.Dimension(50, 11));
 
         callSignLabel.setBackground(new java.awt.Color(102, 102, 255));
-        callSignLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        callSignLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         callSignLabel.setText("Call Sign");
         callSignLabel.setMaximumSize(new java.awt.Dimension(50, 11));
         callSignLabel.setMinimumSize(new java.awt.Dimension(50, 11));
@@ -550,8 +554,7 @@ public class VehiclePanel extends javax.swing.JPanel {
                 .addGap(6, 6, 6))
         );
 
-        additionalInfoField.setBackground(new java.awt.Color(102, 102, 255));
-        additionalInfoField.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        additionalInfoField.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         additionalInfoField.setText("Additional Info");
         additionalInfoField.setMaximumSize(new java.awt.Dimension(50, 11));
         additionalInfoField.setMinimumSize(new java.awt.Dimension(50, 11));
@@ -622,11 +625,6 @@ public class VehiclePanel extends javax.swing.JPanel {
         deleteButton.setText("X");
         deleteButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         deleteButton.setPreferredSize(new java.awt.Dimension(15, 22));
-        deleteButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                deleteButtonActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -648,10 +646,6 @@ public class VehiclePanel extends javax.swing.JPanel {
                 .addComponent(componentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_deleteButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel additionalInfoField;
