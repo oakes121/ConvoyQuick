@@ -85,7 +85,7 @@ public final class MainWindow extends javax.swing.JFrame {
             ImageIcon icon = new ImageIcon(finalImage);
             this.leftMissionInfoPanel1.setIcon(icon);
             
-            this.leftMissionInfoPanel1.setAdditionalText("Additional Text Goes Here");
+            //this.leftMissionInfoPanel1.setAdditionalText("Additional Text Goes Here");
             this.rightMissionInfoPanel2.setAddtionalText("Additional Text Goes Here");
             
             this.rightArrow.setVisible(false);
@@ -474,7 +474,7 @@ public final class MainWindow extends javax.swing.JFrame {
                                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, 0)
                                 .addComponent(rightArrow, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap())))
+                        .addGap(0, 0, 0))))
         );
         picturePanel2Layout.setVerticalGroup(
             picturePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -490,7 +490,7 @@ public final class MainWindow extends javax.swing.JFrame {
                             .addGroup(picturePanel2Layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(129, 129, 129)
+                                .addGap(96, 96, 96)
                                 .addComponent(rightArrow, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(picturePanel2Layout.createSequentialGroup()
                                 .addGap(124, 124, 124)
