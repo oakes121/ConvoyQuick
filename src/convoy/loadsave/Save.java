@@ -143,7 +143,7 @@ public class Save {
         
         
         for (int i = 0; i < mainMenu.getMainWindow().getVehicleGrids().size(); i++) {
-            JOptionPane.showMessageDialog(mainMenu, "Saved page " + i);
+            //JOptionPane.showMessageDialog(mainMenu, "Saved page " + i);
             vehicleGridsVehicles.add(new ArrayList<Vehicle>());
 
             for (int j = 0; j < mainMenu.getMainWindow().getVehicleGrids().get(i).getVehiclePanelArray().size(); j++) {
@@ -152,6 +152,10 @@ public class Save {
                 int selection1 = mainMenu.getMainWindow().getVehicleGrids().get(i).getAddVehiclePopUpArray().get(j).getSelection1();
                 int selection2 = mainMenu.getMainWindow().getVehicleGrids().get(i).getAddVehiclePopUpArray().get(j).getSelection2();
                 int selection3 = mainMenu.getMainWindow().getVehicleGrids().get(i).getAddVehiclePopUpArray().get(j).getSelection3();
+                
+                JOptionPane.showMessageDialog(mainMenu, selection1 + " " + selection2 + " " + selection3 );
+
+                
                 v.setSelections(selection1, selection2, selection3);
                 //JOptionPane.showMessageDialog(mainMenu, mainMenu.getMainWindow().getVehicleGrids().get(i).getVehiclePanelArray().get(j).getDriverName());
                 mainMenu.getMainWindow().getVehicleGrids().get(i).getVehiclePanelArray().get(j).batchVehicleGet(v);

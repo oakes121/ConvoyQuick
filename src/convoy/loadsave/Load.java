@@ -48,6 +48,9 @@ public class Load {
      */
     
     public void loadProject() {
+        MainWindow.setACC(false);
+        MainWindow.setCC(false);
+        
         try {
             JFileChooser chooser = new JFileChooser(getProgramPath() + "\\conx\\saves\\");
             chooser.setAcceptAllFileFilterUsed(false);
@@ -135,17 +138,20 @@ public class Load {
                 mainMenu.getMainWindow().getVehicleGrids().get(i).setMainWindow(mainMenu.getMainWindow());
 
                 for (int j = 0; j < vehicleGridsVehicles.get(i).size(); j++) {
-                    //JOptionPane.showMessageDialog(mainMenu, vehicleGridsVehicles.get(0).get(1).getDriverName() + " ");
                     VehiclePanel vp = new VehiclePanel();
                     vp.batchVehicleSet(vehicleGridsVehicles.get(i).get(j));
                     
                     mainMenu.getMainWindow().getVehicleGrids().get(i).replaceAddNewVehiclePanel(vp);
                     
                     AddVehiclePopUp avpp = new AddVehiclePopUp();
+                    avpp.setCreateMode(false);
+                    avpp.setEditMode(true);
                     avpp.getInfoFromVehiclePanel(vp);
+
+                    
                     avpp.setSelection1(vehicleGridsVehicles.get(i).get(j).getSelection1());
                     avpp.setSelection2(vehicleGridsVehicles.get(i).get(j).getSelection2());
-                    avpp.setSelection3(vehicleGridsVehicles.get(i).get(j).getSelection3());     
+                    avpp.setSelection3(vehicleGridsVehicles.get(i).get(j).getSelection3());  
                     
                     mainMenu.getMainWindow().getVehicleGrids().get(i).getAddVehiclePopUpArray().add(avpp);
                     mainMenu.getMainWindow().getVehicleGrids().get(i).getAddVehiclePopUpArray().get(j).setObject(mainMenu.getMainWindow().getVehicleGrids().get(i));
@@ -159,7 +165,6 @@ public class Load {
 
         } catch (Exception exc) {
             exc.printStackTrace(); // If there was an error, print the info.
-            //JOptionPane.showMessageDialog(mainMenu, "You messed up");
         }
 
     }

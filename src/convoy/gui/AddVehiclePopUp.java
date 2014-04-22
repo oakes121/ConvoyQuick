@@ -852,27 +852,32 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
         }
     }
     
+    private void validationAfterSet(int selec) {
+        if (selec == 1)
+            MainWindow.setCC(true);
+        
+        if (selec == 2)
+            MainWindow.setACC(true);
+    }
+    
     public void setSelection1(int selec) {
         jComboBox1.setSelectedIndex(selec);
+        validationAfterSet(selec);        
     }
     
     public void setSelection2(int selec) {
-        jComboBox3.setSelectedIndex(selec);
+        jComboBox2.setSelectedIndex(selec);
+        validationAfterSet(selec);           
     }
     
     public void setSelection3(int selec) {
         jComboBox3.setSelectedIndex(selec);
+        validationAfterSet(selec);        
     }
     
     public void addVehicleButtonDoClick() {
-        MainWindow.setACC(false);
-        MainWindow.setCC(false);
-        isCreateMode = false;
-        isEditMode = true;
         addVehicleButton.doClick();
-    }
-    
-  
+    }    
     
     public int getSelection1() {
         return jComboBox1.getSelectedIndex();
@@ -886,6 +891,13 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
         return jComboBox3.getSelectedIndex();
     }
     
+    public void setCreateMode(boolean truth){
+        isCreateMode = truth;
+    }
+    
+    public void setEditMode(boolean truth) {
+        isEditMode = truth;
+    } 
     
     
 
