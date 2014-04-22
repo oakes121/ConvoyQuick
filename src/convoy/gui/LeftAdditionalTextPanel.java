@@ -4,6 +4,7 @@ import convoy.objects.MaximumSizeFilter;
 import java.awt.Insets;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.text.AbstractDocument;
+import org.jdesktop.xswingx.PromptSupport;
 
 /**
  * @author Mike Moye <mtm5313@psu.edu>
@@ -22,6 +23,9 @@ public class LeftAdditionalTextPanel extends javax.swing.JPanel {
      */
     public LeftAdditionalTextPanel() {
         initComponents();
+        addtionalText.setLineWrap(true);
+        PromptSupport.setPrompt("Additional Information Goes Here", addtionalText);
+        addtionalText.setText("");
     }
 
     /**
@@ -56,7 +60,6 @@ public class LeftAdditionalTextPanel extends javax.swing.JPanel {
 
         addtionalText.setColumns(20);
         addtionalText.setRows(5);
-        addtionalText.setText("Additional Information Goes Here");
         addtionalText.setPreferredSize(new java.awt.Dimension(260, 20));
         jScrollPane1.setViewportView(addtionalText);
         jScrollPane1.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);

@@ -797,6 +797,7 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
             } else {
                 if (freqName.getText().equalsIgnoreCase("")) {
                     JOptionPane.showMessageDialog(this, "Please provide a frequency name.");
+                    addFreqLabelMouseClicked(evt);
                 } else if (!Float.isNaN(Float.parseFloat(freq.getText()))) {
                     if (response == JOptionPane.OK_OPTION && addFreqCount == 1) {
                         channelOneLabel.setVisible(true);
