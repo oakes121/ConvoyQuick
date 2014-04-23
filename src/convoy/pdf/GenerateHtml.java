@@ -2,6 +2,7 @@ package convoy.pdf;
 
 import convoy.gui.VehicleGrid;
 import convoy.objects.Radio;
+import java.awt.Color;
 import java.io.*;
 import java.net.URL;
 import java.net.URLDecoder;
@@ -255,21 +256,38 @@ public class GenerateHtml {
             }
 
             for (int i = 0; i < vehicleGrid.getVehiclePanelArray().size(); i++) {
+                
+                
+                String passenger1 = "<td>" + vehicleGrid.getVehiclePanelArray().get(i).getPassenger1() + "</td>\n";
+                String passenger2 = "<td>" + vehicleGrid.getVehiclePanelArray().get(i).getPassenger2() + "</td>\n";
+                String passenger3 = "<td>" + vehicleGrid.getVehiclePanelArray().get(i).getPassenger3() + "</td>\n";
+                
+                if(vehicleGrid.getVehiclePanelArray().get(i).getPassengerLabel1().getForeground() == Color.RED){
+                    passenger1 = "<td class=\"red\">" + vehicleGrid.getVehiclePanelArray().get(i).getPassenger1() + "</td>\n";
+                }
+                if(vehicleGrid.getVehiclePanelArray().get(i).getPassengerLabel2().getForeground() == Color.RED){
+                    passenger2 = "<td class=\"red\">" + vehicleGrid.getVehiclePanelArray().get(i).getPassenger1() + "</td>\n";
+                }
+                if(vehicleGrid.getVehiclePanelArray().get(i).getPassengerLabel3().getForeground() == Color.RED){
+                    passenger3 = "<td class=\"red\">" + vehicleGrid.getVehiclePanelArray().get(i).getPassenger1() + "</td>\n";
+                }
+                
+                
                 vehicles[i] = "<table>\n"
                         + "                                            <tr>\n"
                         + "                                                <td class=\"driver\">" + vehicleGrid.getVehiclePanelArray().get(i).getDriverName() + "</td>\n"
                         + "                                            </tr>\n"
                         + "\n"
                         + "                                            <tr>\n"
-                        + "                                                <td>" + vehicleGrid.getVehiclePanelArray().get(i).getPassenger1() + "</td>\n"
+                        + passenger1
                         + "                                            </tr>\n"
                         + "\n"
                         + "                                            <tr>\n"
-                        + "                                                <td>" + vehicleGrid.getVehiclePanelArray().get(i).getPassenger2() + "</td>\n"
+                        + passenger2
                         + "                                            </tr>\n"
                         + "\n"
                         + "                                            <tr>\n"
-                        + "                                                <td>" + vehicleGrid.getVehiclePanelArray().get(i).getPassenger3() + "</td>\n"
+                        + passenger3
                         + "                                            </tr>\n"
                         + "\n"
                         + "                                            <tr>\n"
@@ -554,6 +572,9 @@ public class GenerateHtml {
                                 + "            border: 1px solid black;\n width: 100px;\n"
                                 + "             max-width: 100px;"
                                 + "             width: 100px;"
+                                + "        }\n"
+                                + "        .red{\n"
+                                + "            color: red;"
                                 + "        }\n"
                                 + "    </style>\n"
                                 + "</head>\n"
