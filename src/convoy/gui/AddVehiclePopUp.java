@@ -504,21 +504,38 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
             
             if(jComboBox1.getSelectedIndex() == 1){
                 MainWindow.setCC(true);
+            }else{
+                MainWindow.setCC(false);
             }
             if(jComboBox1.getSelectedIndex() == 2){
                 MainWindow.setACC(true);
             }
+            else{
+                MainWindow.setACC(false);
+            }
             if(jComboBox2.getSelectedIndex() == 1){
                 MainWindow.setCC(true);
+            }
+            else{
+                MainWindow.setCC(false);
             }
             if(jComboBox2.getSelectedIndex() == 2){
                 MainWindow.setACC(true);
             }
+            else{
+                MainWindow.setACC(false);
+            }
             if(jComboBox3.getSelectedIndex() == 1){
                 MainWindow.setCC(true);
             }
+            else{
+                MainWindow.setCC(false);
+            }
             if(jComboBox3.getSelectedIndex() == 2){
                 MainWindow.setACC(true);
+            }
+            else{
+                MainWindow.setACC(false);
             }
             
             return true;

@@ -472,8 +472,12 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
         ccLabel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         ccLabel.setText("CC : ");
 
+        ccTextField.setToolTipText("Convoy Commander");
+
         accLabel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         accLabel.setText("ACC: ");
+
+        accTextField.setToolTipText("Assistant Convoy Commander");
 
         stagingAreaLabel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         stagingAreaLabel.setText("Staging Area: ");
