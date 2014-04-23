@@ -79,9 +79,9 @@ public final class MainWindow extends javax.swing.JFrame {
             missionNumberPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
             additionalInfoPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
             
-            this.leftMissionInfoPanel1.setImagePath(getProgramPath() + "\\conx\\images\\unit patches\\Pennsylvania.png");
+            this.leftMissionInfoPanel1.setImagePath(getProgramPath() + "\\conx\\images\\unit patches\\Maryland.png");
             
-            Image img = ImageIO.read(new File(getProgramPath() + "\\conx\\images\\unit patches\\Pennsylvania.png"));
+            Image img = ImageIO.read(new File(getProgramPath() + "\\conx\\images\\unit patches\\Maryland.png"));
             
             Image finalImage = img.getScaledInstance(196, 162, java.awt.Image.SCALE_SMOOTH); // getScaledInstance(width, hieght, algorithm)
             ImageIcon icon = new ImageIcon(finalImage);
