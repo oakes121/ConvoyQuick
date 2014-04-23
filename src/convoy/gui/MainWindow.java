@@ -757,35 +757,13 @@ public final class MainWindow extends javax.swing.JFrame {
                     if (option == JFileChooser.APPROVE_OPTION) {
                         try {
                             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-
-                            GenerateHtml gh = new GenerateHtml();
-
-                            gh.generateHtml(
-                                    this.leftMissionInfoPanel1.getImagePath(),
-                                    this.leftMissionInfoPanel1.getClassification(),
-                                    this.leftMissionInfoPanel1.getMissionNumber(),
-                                    this.leftMissionInfoPanel1.getFrom(),
-                                    this.leftMissionInfoPanel1.getTo(),
-                                    this.leftMissionInfoPanel1.getAdditionalText(),
-                                    this.rightMissionInfoPanel2.getCC(),
-                                    this.rightMissionInfoPanel2.getACC(),
-                                    this.rightMissionInfoPanel2.getStagingArea(),
-                                    this.rightMissionInfoPanel2.getFromLU(),
-                                    this.rightMissionInfoPanel2.getToLU(),
-                                    this.rightMissionInfoPanel2.getFromSP(),
-                                    this.rightMissionInfoPanel2.getToSP(),
-                                    this.rightMissionInfoPanel2.getStartLinkUpTime(),
-                                    this.rightMissionInfoPanel2.getStartSPTime(),
-                                    this.rightMissionInfoPanel2.getRallyLinkUpTime(),
-                                    this.rightMissionInfoPanel2.getRallySPTime(),
-                                    this.rightMissionInfoPanel2.getFreqs(),
-                                    this.rightMissionInfoPanel2.getAdditionalText(),
-                                    this.additionalTextPanel1.getAdditionalText(),
-                                    this.vehicleGrids.get(0)
-                            );
-
-                            Create cp = new Create(chooser.getSelectedFile().getPath());
-                            cp.createPDF();
+                                
+                            for (VehicleGrid vehicleGrid : vehicleGrids) {
+                                GenerateHtml gh = new GenerateHtml();
+                                gh.generateHtml(this.leftMissionInfoPanel1.getImagePath(), this.leftMissionInfoPanel1.getClassification(), this.leftMissionInfoPanel1.getMissionNumber(), this.leftMissionInfoPanel1.getFrom(), this.leftMissionInfoPanel1.getTo(), this.leftMissionInfoPanel1.getAdditionalText(), this.rightMissionInfoPanel2.getCC(), this.rightMissionInfoPanel2.getACC(), this.rightMissionInfoPanel2.getStagingArea(), this.rightMissionInfoPanel2.getFromLU(), this.rightMissionInfoPanel2.getToLU(), this.rightMissionInfoPanel2.getFromSP(), this.rightMissionInfoPanel2.getToSP(), this.rightMissionInfoPanel2.getStartLinkUpTime(), this.rightMissionInfoPanel2.getStartSPTime(), this.rightMissionInfoPanel2.getRallyLinkUpTime(), this.rightMissionInfoPanel2.getRallySPTime(), this.rightMissionInfoPanel2.getFreqs(), this.rightMissionInfoPanel2.getAdditionalText(), this.additionalTextPanel1.getAdditionalText(), vehicleGrid);
+                                Create cp = new Create(chooser.getSelectedFile().getPath());
+                                cp.createPDF();
+                            }
 
                         } catch (Exception ex) {
                         } finally {
