@@ -135,7 +135,7 @@ public class Save {
             f = new File(getProgramPath() + "\\conx\\saves\\" + mission.getMissionNumber() + "_vehicles.conv");
             if(f.exists()) {                
                 f.delete();
-                JOptionPane.showMessageDialog(mainMenu, "deleted");
+                //JOptionPane.showMessageDialog(mainMenu, "deleted");
             }
         } catch (UnsupportedEncodingException ex) {
             Logger.getLogger(Save.class.getName()).log(Level.SEVERE, null, ex);
@@ -153,7 +153,7 @@ public class Save {
                 int selection2 = mainMenu.getMainWindow().getVehicleGrids().get(i).getAddVehiclePopUpArray().get(j).getSelection2();
                 int selection3 = mainMenu.getMainWindow().getVehicleGrids().get(i).getAddVehiclePopUpArray().get(j).getSelection3();
                 
-                JOptionPane.showMessageDialog(mainMenu, selection1 + " " + selection2 + " " + selection3 );
+                //JOptionPane.showMessageDialog(mainMenu, selection1 + " " + selection2 + " " + selection3 );
 
                 
                 v.setSelections(selection1, selection2, selection3);
