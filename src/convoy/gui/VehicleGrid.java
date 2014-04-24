@@ -36,9 +36,6 @@ public class VehicleGrid extends javax.swing.JPanel implements ActionListener, K
     private ArrayList<JPanel> panelHolder;                 // array used to create a grid of blank jPanels
     private ArrayList<Boolean> vehiclePanelClickedFlags;   // array used as a flag for each element in vehiclePanelArray
                                                            //  andpanelHolder when a vehiclePanle is clicked
-    
-    private ArrayList<AddVehiclePopUp> addVehiclePopUpArray;
-    
     private GridBagConstraints gbc = new GridBagConstraints ();    // constraints used to control the layout of the grid
     private int trueCount = 0;                             // number of vehicle panels selected
     private int vehicleCount = 0;                          // count of vehicles in vehiclePanelArray
@@ -62,9 +59,6 @@ public class VehicleGrid extends javax.swing.JPanel implements ActionListener, K
         addNewVehiclePanel1.setCursor(new Cursor(Cursor.HAND_CURSOR));
         vehiclePanelArray = new ArrayList<>();
         panelHolder = new ArrayList<>();
-        addVehiclePopUpArray = new ArrayList<>();
-        
-        
         addNewVehiclePanel1.addMouseListener(this);
         addNewVehiclePanel1.setToolTipText("Click this panel to create and add vehicle to vehicle grid.");
         
@@ -104,15 +98,7 @@ public class VehicleGrid extends javax.swing.JPanel implements ActionListener, K
         
     }
     
-    /**
-     * storeAddVehiclePopUp(AddVehiclePopUp avpp) stores AddVehiclePops as 
-     *  VehiclePanels are added to the VehicleGrid
-     * @param avpp AddVehiclePopUp object that will be stored to the VehicleGrid
-     */
-    public void storeAddVehiclePopUp(AddVehiclePopUp avpp) {
-        addVehiclePopUpArray.add(avpp);
-    }
-    
+   
     /**
      * reDraw() removes all elements from the panel and draws elements from the 
      *  panelHolder array 
@@ -302,8 +288,6 @@ public class VehicleGrid extends javax.swing.JPanel implements ActionListener, K
             Collections.swap(vehiclePanelClickedFlags, pos1, pos2);
             Collections.swap(vehiclePanelArray, pos1, pos2);
             Collections.swap(panelHolder, pos1, pos2);    
-            Collections.swap(addVehiclePopUpArray, pos1, pos2);
-            
             removeAll();
             reDraw();
             
@@ -319,9 +303,7 @@ public class VehicleGrid extends javax.swing.JPanel implements ActionListener, K
         return vehiclePanelArray;        
     }
     
-    public ArrayList<AddVehiclePopUp> getAddVehiclePopUpArray() {
-        return addVehiclePopUpArray;
-    }
+ 
     /**
      * getVehicleCount() method returns vehicleCount
      * @return vehicleCount
@@ -340,25 +322,11 @@ public class VehicleGrid extends javax.swing.JPanel implements ActionListener, K
         for (int i = 0; i<vehiclePanelClickedFlags.size(); i++ ) {
             if (vehiclePanelClickedFlags.get(i).getTruthValue() == true) {
                 int answer = JOptionPane.showConfirmDialog(this, "Are you sure that you want to delete this vehicle?", "Confirmation", JOptionPane.WARNING_MESSAGE);
-                if (answer == 0) {
-                    
-                    int index1 = addVehiclePopUpArray.get(indicator).jComboBox1.getSelectedIndex();
-                    int index2 = addVehiclePopUpArray.get(indicator).jComboBox2.getSelectedIndex();
-                    int index3 = addVehiclePopUpArray.get(indicator).jComboBox3.getSelectedIndex();
-                    
-                    if ((index1 == 1) || (index2 == 1) || (index3 == 1)) {
-                        MainWindow.setCC(false);
-                    }
-                    
-                    if ((index1 == 2) || (index2 == 2) || (index3 == 2)) {
-                        MainWindow.setACC(false);
-                    }
-                    
+                if (answer == 0) {                 
                     
                     vehiclePanelArray.get(indicator).removeMouseListener(this);
                     panelHolder.remove(indicator);
                     vehiclePanelArray.remove(indicator);
-                    addVehiclePopUpArray.remove(indicator);
                     vehiclePanelClickedFlags.get(indicator).setTruthValue(false);
                     
                     --vehicleCount;
@@ -417,10 +385,31 @@ public class VehicleGrid extends javax.swing.JPanel implements ActionListener, K
                 if (e.getSource() == vehiclePanelArray.get(i)) {  
                     
                     if (e.getClickCount() == 2) {
-                        //JOptionPane.showMessageDialog(this, "2 Chainzz");
-                        addVehiclePopUpArray.get(i).setVisible(true);
-                        addVehiclePopUpArray.get(i).setEditVehicleCounter(i);
                         
+                        AddVehiclePopUp avpp = new AddVehiclePopUp();
+                        avpp.setObject(this);
+                        avpp.setCreateMode(false);
+                        avpp.setEditMode(true);
+                        avpp.getInfoFromVehiclePanel(vehiclePanelArray.get(i));
+                        avpp.setEditVehicleCounter(i);                        
+                        
+                        if((vehiclePanelArray.get(i).getSelection1() == 1) ||
+                                (vehiclePanelArray.get(i).getSelection2() == 1) || 
+                                (vehiclePanelArray.get(i).getSelection3() == 1))
+                            MainWindow.setCC(false);
+                        
+                        
+                        if((vehiclePanelArray.get(i).getSelection1() == 2) ||
+                                (vehiclePanelArray.get(i).getSelection2() == 2) || 
+                                (vehiclePanelArray.get(i).getSelection3() == 2))
+                            MainWindow.setACC(false);
+                        
+                        avpp.setSelection1(vehiclePanelArray.get(i).getSelection1());
+                        avpp.setSelection2(vehiclePanelArray.get(i).getSelection2());
+                        avpp.setSelection3(vehiclePanelArray.get(i).getSelection3());
+                        
+                        avpp.setVisible(true);
+                      
                     }
                                              
                     setFlag(i);

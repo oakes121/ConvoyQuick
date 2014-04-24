@@ -66,6 +66,7 @@ public class Load {
                 mission = (Mission) in.readObject();
                 in.close();
                 fileIn.close();
+                //mainMenu.getMainWindow().dispose();
 
                 missionNumber = mission.getMissionNumber();
                 mainWindow = new MainWindow(missionNumber,
@@ -140,28 +141,25 @@ public class Load {
                 for (int j = 0; j < vehicleGridsVehicles.get(i).size(); j++) {
                     VehiclePanel vp = new VehiclePanel();
                     vp.batchVehicleSet(vehicleGridsVehicles.get(i).get(j));
+
+                    vp.setSelections(vehicleGridsVehicles.get(i).get(j).getSelection1(),
+                            vehicleGridsVehicles.get(i).get(j).getSelection2(),
+                            vehicleGridsVehicles.get(i).get(j).getSelection1());
                     
                     mainMenu.getMainWindow().getVehicleGrids().get(i).replaceAddNewVehiclePanel(vp);
                     
-                    AddVehiclePopUp avpp = new AddVehiclePopUp();
-                    avpp.setCreateMode(false);
-                    avpp.setEditMode(true);
-                    avpp.getInfoFromVehiclePanel(vp);
-
+                    AddVehiclePopUp avpp = new AddVehiclePopUp(vp, mainMenu.getMainWindow().getVehicleGrids().get(i),
+                            vehicleGridsVehicles.get(i).get(j).getSelection1(),
+                            vehicleGridsVehicles.get(i).get(j).getSelection2(),
+                            vehicleGridsVehicles.get(i).get(j).getSelection3(), j);
                     
-                    avpp.setSelection1(vehicleGridsVehicles.get(i).get(j).getSelection1());
-                    avpp.setSelection2(vehicleGridsVehicles.get(i).get(j).getSelection2());
-                    avpp.setSelection3(vehicleGridsVehicles.get(i).get(j).getSelection3());  
-                    
-                    mainMenu.getMainWindow().getVehicleGrids().get(i).getAddVehiclePopUpArray().add(avpp);
-                    mainMenu.getMainWindow().getVehicleGrids().get(i).getAddVehiclePopUpArray().get(j).setObject(mainMenu.getMainWindow().getVehicleGrids().get(i));
-                    mainMenu.getMainWindow().getVehicleGrids().get(i).getAddVehiclePopUpArray().get(j).setEditVehicleCounter(j);
-                    mainMenu.getMainWindow().getVehicleGrids().get(i).getAddVehiclePopUpArray().get(j).addVehicleButtonDoClick();
-
+                    //
                 }
             }
 
             mainMenu.getMainWindow().showFirstVehicleGrid();
+            //JOptionPane.showMessageDialog(mainMenu, mainMenu.getMainWindow().getVehicleGrids().get(0).getVehiclePanelArray().get(0).getIconPath());
+
 
         } catch (Exception exc) {
             exc.printStackTrace(); // If there was an error, print the info.

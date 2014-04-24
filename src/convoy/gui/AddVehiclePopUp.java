@@ -63,6 +63,21 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
     }
+    
+    public AddVehiclePopUp(VehiclePanel newVP, VehicleGrid vg, int selection1, int selection2, int selection3, int vehicleCount){
+        initComponents();
+        isCreateMode = false;
+        isEditMode = true;
+        newVehiclePanel = newVP;
+        editVehicleCounter = vehicleCount;
+        setObject(vg);
+        getInfoFromVehiclePanel(newVehiclePanel);      
+        setSelection1(selection1);
+        setSelection2(selection2);
+        setSelection3(selection3);
+       
+        addVehicleButton.doClick();
+    }
 
     /**
      * initDocumentListeners()limits the all text field input to 20 characters
@@ -440,30 +455,28 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
         if (isCreateMode) {
             if (validateVehicleInfo()) {
 
-                vehicleGridObj.replaceAddNewVehiclePanel(newVehiclePanel);
-                this.setVisible(false);
-                vehicleGridObj.storeAddVehiclePopUp(this);
-
-                isCreateMode = false;
-
-                addVehicleButton.setText("Apply Changes");
-
+                
+                newVehiclePanel.setSelections(jComboBox1.getSelectedIndex(),
+                    jComboBox2.getSelectedIndex(), jComboBox3.getSelectedIndex());    
+                
                 addValuesToVehiclePanel(newVehiclePanel);
                 
-            } else {
-
-            }
+                vehicleGridObj.replaceAddNewVehiclePanel(newVehiclePanel);
+                isCreateMode = false;
+                dispose();
+                //this.setVisible(false);
+                //vehicleGridObj.storeAddVehiclePopUp(this);
+            } 
         }
 
         if (isEditMode) {
+            
             addValuesToVehiclePanel(vehicleGridObj.getVehiclePanelArray().get(editVehicleCounter));
-            this.setVisible(false);
+            vehicleGridObj.getVehiclePanelArray().get(editVehicleCounter).setSelections(jComboBox1.getSelectedIndex(),
+                    jComboBox2.getSelectedIndex(), jComboBox3.getSelectedIndex());
+            
+            dispose();
         }
-
-        if (!isCreateMode) {
-            isEditMode = true;
-        }
-
     }//GEN-LAST:event_addVehicleButtonActionPerformed
 
     private boolean validateVehicleInfo() {
@@ -642,7 +655,7 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
         imageUrl = imgUrl;
     }
 
-    public void addValuesToVehiclePanel(VehiclePanel vp) {
+    private void addValuesToVehiclePanel(VehiclePanel vp) {
 
         vp.setDriverName(personnel1Field.getText());
         vp.setPassenger1(personnel2Field.getText());
@@ -839,8 +852,8 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
                 img = ImageIO.read(theUrl);
                 finalImage = img.getScaledInstance(268, 209, java.awt.Image.SCALE_SMOOTH);
                 ImageIcon icon = new ImageIcon(finalImage);
-                imageLabel.setIcon(icon);
-                //jLabel1.setIcon(icon);
+                imageLabel.setIcon(icon);       
+                addVehicleButton.setText("Apply Changes");
                 revalidate();
                 repaint();
             } catch (IOException ex) {

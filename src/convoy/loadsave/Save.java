@@ -117,14 +117,12 @@ public class Save {
 
             } finally {
                 saveVehicles();
-
-                JOptionPane.showMessageDialog(null, "Mission saved successfully.");
             }
 
         }
     }
 
-    /**
+  /**
      * saveVehicles() Saves vehicles within the convoy into a file named after
      * the mission number with the extension "_vehicles.conx"
      */
@@ -149,22 +147,19 @@ public class Save {
             for (int j = 0; j < mainMenu.getMainWindow().getVehicleGrids().get(i).getVehiclePanelArray().size(); j++) {
 
                 Vehicle v = new Vehicle();
-                int selection1 = mainMenu.getMainWindow().getVehicleGrids().get(i).getAddVehiclePopUpArray().get(j).getSelection1();
-                int selection2 = mainMenu.getMainWindow().getVehicleGrids().get(i).getAddVehiclePopUpArray().get(j).getSelection2();
-                int selection3 = mainMenu.getMainWindow().getVehicleGrids().get(i).getAddVehiclePopUpArray().get(j).getSelection3();
-                
+
+                int selection1 = mainMenu.getMainWindow().getVehicleGrids().get(i).getVehiclePanelArray().get(j).getSelection1();
+                int selection2 = mainMenu.getMainWindow().getVehicleGrids().get(i).getVehiclePanelArray().get(j).getSelection2();
+                int selection3 = mainMenu.getMainWindow().getVehicleGrids().get(i).getVehiclePanelArray().get(j).getSelection3();
+
                 //JOptionPane.showMessageDialog(mainMenu, selection1 + " " + selection2 + " " + selection3 );
 
-                
                 v.setSelections(selection1, selection2, selection3);
-                //JOptionPane.showMessageDialog(mainMenu, mainMenu.getMainWindow().getVehicleGrids().get(i).getVehiclePanelArray().get(j).getDriverName());
+                
                 mainMenu.getMainWindow().getVehicleGrids().get(i).getVehiclePanelArray().get(j).batchVehicleGet(v);
-                
-                
 
                 vehicleGridsVehicles.get(i).add(v);
 
-                //JOptionPane.showMessageDialog(mainMenu, vehicleGridsVehicles.get(i).get(j).getDriverName() + " ");
             }
         }
         try {
@@ -172,8 +167,11 @@ public class Save {
             FileOutputStream fileOut;
             fileOut = new FileOutputStream(getProgramPath() + "\\conx\\saves\\" + mission.getMissionNumber() + "_vehicles.conv");
             
+            
+            
             try (ObjectOutputStream out = new ObjectOutputStream(fileOut)) {
                 out.writeObject(vehicleGridsVehicles);
+                JOptionPane.showMessageDialog(null, "Mission saved successfully.");
             }
             fileOut.close();
         } catch (IOException e) {

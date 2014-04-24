@@ -37,6 +37,9 @@ public class VehiclePanel extends javax.swing.JPanel {
     private String iconPath;
     private Image finalImage;
     private Image img;
+    private int addVehiclePopUpJComboBox1Selection = 0;
+    private int addVehiclePopUpJComboBox2Selection = 0;
+    private int addVehiclePopUpJComboBox3Selection = 0;
     /*
     private AddVehiclePopUp addVehicleObj; 
     public boolean medic = addVehicleObj.medic;
@@ -438,6 +441,24 @@ public class VehiclePanel extends javax.swing.JPanel {
         passenger3Label.setForeground(Color.black);
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }  
+      
+      public void setSelections(int one, int two, int three) {
+        addVehiclePopUpJComboBox1Selection = one;
+        addVehiclePopUpJComboBox2Selection = two;
+        addVehiclePopUpJComboBox3Selection = three;
+    }
+    
+    public int getSelection1() {
+        return addVehiclePopUpJComboBox1Selection;
+    }
+    
+    public int getSelection2() {
+        return addVehiclePopUpJComboBox2Selection;
+    }
+    
+    public int getSelection3() {
+        return addVehiclePopUpJComboBox3Selection;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
