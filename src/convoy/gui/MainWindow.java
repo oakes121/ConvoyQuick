@@ -678,7 +678,12 @@ public final class MainWindow extends javax.swing.JFrame {
      * @param evt click help -> help menu item
      */
     private void helpMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpMenuItemActionPerformed
-        JOptionPane.showMessageDialog(null, "Help Content Goes Here", "Help", JOptionPane.QUESTION_MESSAGE, null);
+        HelpWindow g = new HelpWindow();
+       URL iconURL = getClass().getResource("/convoy/resources/images/humveeIcon.png");
+       ImageIcon icon = new ImageIcon(iconURL);
+       g.setIconImage(icon.getImage());
+        g.setLocationRelativeTo( null );
+        g.setVisible(true);
     }//GEN-LAST:event_helpMenuItemActionPerformed
 
     /**
