@@ -68,13 +68,13 @@ public class SplashScreen extends JWindow {
 
     public SplashScreen() {
 
-        initComponents();
-        
-         try {
+        try {
              UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
          }catch(Exception ex) {
              ex.printStackTrace();
          }
+        
+        initComponents();        
 
     }
 

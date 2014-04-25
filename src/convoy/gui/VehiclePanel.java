@@ -511,7 +511,7 @@ public class VehiclePanel extends javax.swing.JPanel {
         );
 
         setBackground(new java.awt.Color(255, 255, 255));
-        setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         setName(""); // NOI18N
 
         componentPanel.setBackground(new java.awt.Color(255, 255, 255));

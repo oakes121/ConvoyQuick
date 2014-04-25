@@ -188,7 +188,7 @@ public class VehicleGrid extends javax.swing.JPanel implements ActionListener, K
                                     2, 2, 2, 2, Color.red));
         
         else if (flag == 0)
-            vehiclePanelArray.get(counter).setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
+            vehiclePanelArray.get(counter).setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
     }
     
     /**
@@ -197,7 +197,7 @@ public class VehicleGrid extends javax.swing.JPanel implements ActionListener, K
     private void clearBorders() {
         
         for (int i = 0; i < vehiclePanelArray.size(); i++) {
-            vehiclePanelArray.get(i).setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
+            vehiclePanelArray.get(i).setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
         }
         
     }

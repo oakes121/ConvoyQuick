@@ -29,7 +29,8 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
     public RightMissionInfoPanel() {
         initComponents();
         doFonts();
-        doFreqs();
+        freqGrid1.setToolTipText("Click the blue text to add a new frequency.");
+        //doFreqs();
     }
 
     /**
@@ -305,15 +306,17 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
         this.rallyPointSPTimeComoboBox.setSelectedIndex(zone);
     }
     
+    
     /**
      * Gets the name and frequency of all the channels in the radio
      *
      * @return freqs
-     */
+     */ 
     public ArrayList<Radio> getFreqs() {
 
         ArrayList<Radio> freqs = new ArrayList();
 
+        /*
         try {
             if (this.channelOneName.getText() != null && this.channelOneFreq.getText() != null) {
                 freqs.add(new Radio(this.channelOneName.getText(), this.channelOneFreq.getText()));
@@ -346,13 +349,13 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
         } catch (Exception ex) {
             //ex.printStackTrace();
             freqs.add(new Radio("", ""));
-        }
+        } */
         return freqs;
     }
 
     /**
      * hides the channels
-     */
+     */ /*
     private void doFreqs() {
         channelOneLabel.setVisible(false);
         channelOneName.setVisible(false);
@@ -379,7 +382,7 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
         removeFreq4.setVisible(false);
         removeFreq5.setVisible(false);
         removeFreq6.setVisible(false);
-    }
+    } */
 
     /**
      * Sets and formats the fonts on the right mission information panel
@@ -398,7 +401,7 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
             toSPLabel.setFont(captureItFont);
             toLinkUpLabel.setFont(captureItFont);
             stagingAreaLabel.setFont(captureItFont);
-            freqLabel.setFont(captureItFont);
+            //freqLabel.setFont(captureItFont);
         } catch (FontFormatException | IOException ex) {
             //ex.printStackTrace();
         }
@@ -426,33 +429,6 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
         fromSPLabel = new javax.swing.JLabel();
         toLinkUpLabel = new javax.swing.JLabel();
         toSPLabel = new javax.swing.JLabel();
-        freqPanel = new javax.swing.JPanel();
-        freqLabel = new javax.swing.JLabel();
-        addFreqLabel = new javax.swing.JLabel();
-        channelOneLabel = new javax.swing.JLabel();
-        channelOneFreq = new javax.swing.JTextField();
-        channelOneName = new javax.swing.JTextField();
-        channelTwoLabel = new javax.swing.JLabel();
-        channelTwoName = new javax.swing.JTextField();
-        channelTwoFreq = new javax.swing.JTextField();
-        channelThreeLabel = new javax.swing.JLabel();
-        channelThreeName = new javax.swing.JTextField();
-        channelThreeFreq = new javax.swing.JTextField();
-        channelFourLabel = new javax.swing.JLabel();
-        channelFourName = new javax.swing.JTextField();
-        channelFourFreq = new javax.swing.JTextField();
-        channelFiveLabel = new javax.swing.JLabel();
-        channelFiveName = new javax.swing.JTextField();
-        channelFiveFreq = new javax.swing.JTextField();
-        channelSixLabel = new javax.swing.JLabel();
-        channelSixName = new javax.swing.JTextField();
-        channelSixFreq = new javax.swing.JTextField();
-        removeFreq1 = new javax.swing.JLabel();
-        removeFreq2 = new javax.swing.JLabel();
-        removeFreq3 = new javax.swing.JLabel();
-        removeFreq4 = new javax.swing.JLabel();
-        removeFreq5 = new javax.swing.JLabel();
-        removeFreq6 = new javax.swing.JLabel();
         startPointLinkUpTimeComoboBox = new javax.swing.JComboBox();
         rallyPointLinkUpTimeComoboBox = new javax.swing.JComboBox();
         startPointSPTimeComoboBox = new javax.swing.JComboBox();
@@ -466,6 +442,7 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
         timePicker4 = new convoy.gui.TimePicker();
         timePicker5 = new convoy.gui.TimePicker();
         metaphaseEditor2 = new convoy.textEditor.com.metaphaseeditor.MetaphaseEditor();
+        freqGrid1 = new convoy.gui.FreqGrid();
 
         setBackground(new java.awt.Color(194, 178, 128));
 
@@ -494,171 +471,6 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
         toSPLabel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         toSPLabel.setText("Rally Point SP Time:");
 
-        freqPanel.setBackground(new java.awt.Color(255, 255, 255));
-        freqPanel.setMaximumSize(new java.awt.Dimension(637, 64));
-
-        freqLabel.setText("Frequencies - ");
-
-        addFreqLabel.setForeground(new java.awt.Color(0, 51, 255));
-        addFreqLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        addFreqLabel.setText("<HTML><U>+ Add Freq</U></HTML>");
-        addFreqLabel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                addFreqLabelMouseClicked(evt);
-            }
-        });
-
-        channelOneLabel.setText("CH1: ");
-
-        channelOneName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                channelOneNameActionPerformed(evt);
-            }
-        });
-
-        channelTwoLabel.setText("CH2: ");
-
-        channelThreeLabel.setText("CH3: ");
-
-        channelThreeFreq.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                channelThreeFreqActionPerformed(evt);
-            }
-        });
-
-        channelFourLabel.setText("CH4: ");
-
-        channelFiveLabel.setText("CH5: ");
-
-        channelSixLabel.setText("CH6: ");
-
-        removeFreq1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/convoy/resources/images/removeFreq.png"))); // NOI18N
-        removeFreq1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                removeFreq1MousePressed(evt);
-            }
-        });
-
-        removeFreq2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/convoy/resources/images/removeFreq.png"))); // NOI18N
-
-        removeFreq3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/convoy/resources/images/removeFreq.png"))); // NOI18N
-
-        removeFreq4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/convoy/resources/images/removeFreq.png"))); // NOI18N
-
-        removeFreq5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/convoy/resources/images/removeFreq.png"))); // NOI18N
-
-        removeFreq6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/convoy/resources/images/removeFreq.png"))); // NOI18N
-
-        javax.swing.GroupLayout freqPanelLayout = new javax.swing.GroupLayout(freqPanel);
-        freqPanel.setLayout(freqPanelLayout);
-        freqPanelLayout.setHorizontalGroup(
-            freqPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(freqPanelLayout.createSequentialGroup()
-                .addGap(5, 5, 5)
-                .addGroup(freqPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(freqPanelLayout.createSequentialGroup()
-                        .addGroup(freqPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(removeFreq1)
-                            .addComponent(removeFreq4))
-                        .addGap(5, 5, 5)
-                        .addGroup(freqPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(channelFourLabel)
-                            .addComponent(channelOneLabel))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(freqPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(channelOneName, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
-                            .addComponent(channelFourName))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(freqPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(freqPanelLayout.createSequentialGroup()
-                                .addComponent(channelFourFreq, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(15, 15, 15)
-                                .addComponent(removeFreq5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(channelFiveLabel))
-                            .addGroup(freqPanelLayout.createSequentialGroup()
-                                .addComponent(channelOneFreq, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(15, 15, 15)
-                                .addComponent(removeFreq2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(channelTwoLabel)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(freqPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(channelTwoName, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
-                            .addComponent(channelFiveName))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(freqPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(freqPanelLayout.createSequentialGroup()
-                                .addComponent(channelFiveFreq, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(15, 15, 15)
-                                .addComponent(removeFreq6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(channelSixLabel))
-                            .addGroup(freqPanelLayout.createSequentialGroup()
-                                .addComponent(channelTwoFreq, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(15, 15, 15)
-                                .addComponent(removeFreq3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(channelThreeLabel)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(freqPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(channelThreeName, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
-                            .addComponent(channelSixName))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(freqPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(channelSixFreq, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(channelThreeFreq, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(freqPanelLayout.createSequentialGroup()
-                        .addComponent(freqLabel)
-                        .addGap(1, 1, 1)
-                        .addComponent(addFreqLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        freqPanelLayout.setVerticalGroup(
-            freqPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(freqPanelLayout.createSequentialGroup()
-                .addGroup(freqPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(freqLabel)
-                    .addComponent(addFreqLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(5, 5, 5)
-                .addGroup(freqPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(removeFreq1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(freqPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(channelOneFreq)
-                        .addComponent(channelOneName)
-                        .addComponent(channelTwoName)
-                        .addComponent(channelTwoFreq)
-                        .addComponent(channelThreeName)
-                        .addComponent(channelThreeFreq, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(channelTwoLabel)
-                        .addComponent(channelThreeLabel)
-                        .addComponent(channelOneLabel))
-                    .addGroup(freqPanelLayout.createSequentialGroup()
-                        .addComponent(removeFreq2)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(removeFreq3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(5, 5, 5)
-                .addGroup(freqPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(freqPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(channelFourName)
-                        .addComponent(channelFourFreq))
-                    .addGroup(freqPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(channelFiveName)
-                        .addComponent(channelFiveLabel)
-                        .addComponent(channelFiveFreq))
-                    .addGroup(freqPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(channelSixName)
-                        .addComponent(channelSixFreq)
-                        .addComponent(channelSixLabel))
-                    .addGroup(freqPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(removeFreq6, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(freqPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(channelFourLabel)
-                            .addComponent(removeFreq4)))
-                    .addComponent(removeFreq5))
-                .addGap(0, 0, 0))
-        );
-
         startPointLinkUpTimeComoboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Local", "Zulu" }));
 
         rallyPointLinkUpTimeComoboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Local", "Zulu" }));
@@ -667,6 +479,8 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
 
         rallyPointSPTimeComoboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Local", "Zulu" }));
 
+        freqGrid1.setBackground(new java.awt.Color(255, 255, 255));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -674,6 +488,9 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(metaphaseEditor2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -725,11 +542,8 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(startPointSPTimeComoboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addGap(10, 10, 10))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(freqPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(metaphaseEditor2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addComponent(freqGrid1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addContainerGap())))
         );
         layout.setVerticalGroup(
@@ -772,172 +586,19 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
                         .addComponent(rallyPointSP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(timePicker5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(freqPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(freqGrid1, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(metaphaseEditor2, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(1, 1, 1))
+                .addComponent(metaphaseEditor2, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
-    /**
-     * <p>
-     * Adds channels to the freqs table. The user must enter a frequency name
-     * and the frequency entered must be a float.
-     * </p>
-     *
-     * @param evt click add freq label
-     */
-    private void addFreqLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addFreqLabelMouseClicked
-        try {
-            java.net.URL imgURL = getClass().getResource("/convoy/resources/images/radioFrequencyIcon.png");
-
-            Icon icon = new ImageIcon(imgURL);
-
-            JTextField freqName = new JTextField();
-            JTextField freq = new JTextField();
-
-            Object[] stuff = {"Freq Name: ", freqName, "Frequency:", freq};
-            int response;
-            response = JOptionPane.showConfirmDialog(this, stuff, "Add New Freq", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, icon);
-            freqName.requestFocus();
-            if (response == JOptionPane.CANCEL_OPTION) {
-            } else {
-                if (freqName.getText().equalsIgnoreCase("")) {
-                    JOptionPane.showMessageDialog(this, "Please provide a frequency name.");
-                    addFreqLabelMouseClicked(evt);
-                } else if (!Float.isNaN(Float.parseFloat(freq.getText()))) {
-                    if (response == JOptionPane.OK_OPTION && addFreqCount == 1) {
-                        channelOneLabel.setVisible(true);
-                        channelOneName.setVisible(true);
-                        channelOneFreq.setVisible(true);
-
-                        channelOneName.setText(freqName.getText());
-                        channelOneFreq.setText(freq.getText());
-
-                        removeFreq1.setVisible(true);
-
-                        addFreqCount++;
-
-                        repaint();
-                        revalidate();
-                    } else if (response == JOptionPane.OK_OPTION && addFreqCount == 2) {
-                        channelTwoLabel.setVisible(true);
-                        channelTwoName.setVisible(true);
-                        channelTwoFreq.setVisible(true);
-
-                        channelTwoName.setText(freqName.getText());
-                        channelTwoFreq.setText(freq.getText());
-                        removeFreq2.setVisible(true);
-
-                        addFreqCount++;
-                    } else if (response == JOptionPane.OK_OPTION && addFreqCount == 3) {
-                        channelThreeLabel.setVisible(true);
-                        channelThreeName.setVisible(true);
-                        channelThreeFreq.setVisible(true);
-
-                        channelThreeName.setText(freqName.getText());
-                        channelThreeFreq.setText(freq.getText());
-
-                        removeFreq3.setVisible(true);
-
-                        addFreqCount++;
-
-                        repaint();
-                        revalidate();
-                    } else if (response == JOptionPane.OK_OPTION && addFreqCount == 4) {
-                        channelFourLabel.setVisible(true);
-                        channelFourName.setVisible(true);
-                        channelFourFreq.setVisible(true);
-
-                        channelFourName.setText(freqName.getText());
-                        channelFourFreq.setText(freq.getText());
-
-                        removeFreq4.setVisible(true);
-
-                        addFreqCount++;
-
-                        repaint();
-                        revalidate();
-                    } else if (response == JOptionPane.OK_OPTION && addFreqCount == 5) {
-                        channelFiveLabel.setVisible(true);
-                        channelFiveName.setVisible(true);
-                        channelFiveFreq.setVisible(true);
-
-                        channelFiveName.setText(freqName.getText());
-                        channelFiveFreq.setText(freq.getText());
-
-                        removeFreq5.setVisible(true);
-
-                        addFreqCount++;
-
-                        repaint();
-                        revalidate();
-                    } else if (response == JOptionPane.OK_OPTION && addFreqCount == 6) {
-                        channelSixLabel.setVisible(true);
-                        channelSixName.setVisible(true);
-                        channelSixFreq.setVisible(true);
-
-                        channelSixName.setText(freqName.getText());
-                        channelSixFreq.setText(freq.getText());
-
-                        addFreqLabel.setVisible(false);
-
-                        removeFreq6.setVisible(true);
-
-                        addFreqCount++;
-
-                        repaint();
-                        revalidate();
-                    }
-                }
-            }
-        } catch (HeadlessException | NumberFormatException ex) {
-            //ex.printStackTrace();
-            JOptionPane.showMessageDialog(this, "The frequency must be within a valid range.");
-        }
-    }//GEN-LAST:event_addFreqLabelMouseClicked
-
-    private void removeFreq1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_removeFreq1MousePressed
-        channelOneLabel.setVisible(false);
-        channelOneName.setVisible(false);
-        channelOneFreq.setVisible(false);
-        removeFreq1.setVisible(false);
-        addFreqCount--;
-    }//GEN-LAST:event_removeFreq1MousePressed
-
-    private void channelOneNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_channelOneNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_channelOneNameActionPerformed
-
-    private void channelThreeFreqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_channelThreeFreqActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_channelThreeFreqActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel accLabel;
     private javax.swing.JTextField accTextField;
-    private javax.swing.JLabel addFreqLabel;
     private javax.swing.JLabel ccLabel;
     private javax.swing.JTextField ccTextField;
-    private javax.swing.JTextField channelFiveFreq;
-    private javax.swing.JLabel channelFiveLabel;
-    private javax.swing.JTextField channelFiveName;
-    private javax.swing.JTextField channelFourFreq;
-    private javax.swing.JLabel channelFourLabel;
-    private javax.swing.JTextField channelFourName;
-    private javax.swing.JTextField channelOneFreq;
-    private javax.swing.JLabel channelOneLabel;
-    private javax.swing.JTextField channelOneName;
-    private javax.swing.JTextField channelSixFreq;
-    private javax.swing.JLabel channelSixLabel;
-    private javax.swing.JTextField channelSixName;
-    private javax.swing.JTextField channelThreeFreq;
-    private javax.swing.JLabel channelThreeLabel;
-    private javax.swing.JTextField channelThreeName;
-    private javax.swing.JTextField channelTwoFreq;
-    private javax.swing.JLabel channelTwoLabel;
-    private javax.swing.JTextField channelTwoName;
-    private javax.swing.JLabel freqLabel;
-    private javax.swing.JPanel freqPanel;
+    private convoy.gui.FreqGrid freqGrid1;
     private javax.swing.JLabel fromLinkUpLabel;
     private javax.swing.JLabel fromSPLabel;
     private javax.swing.JLayeredPane jLayeredPane1;
@@ -948,12 +609,6 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
     private com.michaelbaranov.microba.calendar.DatePicker rallyPointLinkup;
     private com.michaelbaranov.microba.calendar.DatePicker rallyPointSP;
     private javax.swing.JComboBox rallyPointSPTimeComoboBox;
-    private javax.swing.JLabel removeFreq1;
-    private javax.swing.JLabel removeFreq2;
-    private javax.swing.JLabel removeFreq3;
-    private javax.swing.JLabel removeFreq4;
-    private javax.swing.JLabel removeFreq5;
-    private javax.swing.JLabel removeFreq6;
     private javax.swing.JLabel stagingAreaLabel;
     private javax.swing.JTextField stagingAreaTextField;
     private javax.swing.JComboBox startPointLinkUpTimeComoboBox;

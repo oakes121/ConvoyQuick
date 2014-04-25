@@ -39,7 +39,7 @@
     </Property>
     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
       <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-        <LineBorder thickness="2"/>
+        <LineBorder/>
       </Border>
     </Property>
     <Property name="name" type="java.lang.String" value="" noResource="true"/>

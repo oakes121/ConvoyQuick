@@ -184,10 +184,16 @@ public class Load {
         
         if (selection == 1) {
             vp.setCCIcon(ccImageIcon, passengerNum);
+            
+            if (!MainWindow.getCC())
+                MainWindow.setCC(true);
         }
         
         if (selection == 2) {
             vp.setACCIcon(accImageIcon, passengerNum);
+            
+            if (!MainWindow.getACC())
+                MainWindow.setACC(true);
         }
         
         if (selection == 3) {

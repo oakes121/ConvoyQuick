@@ -33,9 +33,13 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Component id="metaphaseEditor2" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
@@ -100,12 +104,8 @@
                       </Group>
                       <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" attributes="0">
-                      <Component id="freqPanel" max="32767" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                  </Group>
                   <Group type="102" alignment="1" attributes="0">
-                      <Component id="metaphaseEditor2" pref="0" max="32767" attributes="0"/>
+                      <Component id="freqGrid1" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -162,10 +162,10 @@
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="freqPanel" max="-2" attributes="0"/>
+              <Component id="freqGrid1" pref="154" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="metaphaseEditor2" min="-2" pref="115" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+              <Component id="metaphaseEditor2" min="-2" pref="114" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -239,278 +239,6 @@
         <Property name="text" type="java.lang.String" value="Rally Point SP Time:"/>
       </Properties>
     </Component>
-    <Container class="javax.swing.JPanel" name="freqPanel">
-      <Properties>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="ff" red="ff" type="rgb"/>
-        </Property>
-        <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[637, 64]"/>
-        </Property>
-      </Properties>
-
-      <Layout>
-        <DimensionLayout dim="0">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
-                  <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="removeFreq1" min="-2" max="-2" attributes="0"/>
-                              <Component id="removeFreq4" alignment="0" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="channelFourLabel" min="-2" max="-2" attributes="0"/>
-                              <Component id="channelOneLabel" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="channelOneName" pref="80" max="32767" attributes="0"/>
-                              <Component id="channelFourName" max="32767" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="channelFourFreq" min="-2" pref="58" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                                  <Component id="removeFreq5" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="channelFiveLabel" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="channelOneFreq" min="-2" pref="58" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                                  <Component id="removeFreq2" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="channelTwoLabel" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="channelTwoName" pref="80" max="32767" attributes="0"/>
-                              <Component id="channelFiveName" max="32767" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Component id="channelFiveFreq" min="-2" pref="58" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                                  <Component id="removeFreq6" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="channelSixLabel" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" attributes="0">
-                                  <Component id="channelTwoFreq" min="-2" pref="58" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                                  <Component id="removeFreq3" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="channelThreeLabel" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="channelThreeName" pref="80" max="32767" attributes="0"/>
-                              <Component id="channelSixName" max="32767" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="channelSixFreq" min="-2" pref="60" max="-2" attributes="0"/>
-                              <Component id="channelThreeFreq" min="-2" pref="60" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <Component id="freqLabel" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-                          <Component id="addFreqLabel" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <EmptySpace max="32767" attributes="0"/>
-              </Group>
-          </Group>
-        </DimensionLayout>
-        <DimensionLayout dim="1">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="freqLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="addFreqLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="removeFreq1" alignment="1" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="channelOneFreq" alignment="3" max="32767" attributes="0"/>
-                          <Component id="channelOneName" alignment="3" max="32767" attributes="0"/>
-                          <Component id="channelTwoName" alignment="3" max="32767" attributes="0"/>
-                          <Component id="channelTwoFreq" alignment="3" max="32767" attributes="0"/>
-                          <Component id="channelThreeName" alignment="3" max="32767" attributes="0"/>
-                          <Component id="channelThreeFreq" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="channelTwoLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="channelThreeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="channelOneLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <Component id="removeFreq2" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      </Group>
-                      <Component id="removeFreq3" alignment="0" max="32767" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                          <Component id="channelFourName" alignment="3" max="32767" attributes="0"/>
-                          <Component id="channelFourFreq" alignment="3" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                          <Component id="channelFiveName" alignment="3" max="32767" attributes="0"/>
-                          <Component id="channelFiveLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="channelFiveFreq" alignment="3" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                          <Component id="channelSixName" alignment="3" max="32767" attributes="0"/>
-                          <Component id="channelSixFreq" alignment="3" max="32767" attributes="0"/>
-                          <Component id="channelSixLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                          <Component id="removeFreq6" alignment="1" min="-2" pref="16" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="channelFourLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="removeFreq4" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <Component id="removeFreq5" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-              </Group>
-          </Group>
-        </DimensionLayout>
-      </Layout>
-      <SubComponents>
-        <Component class="javax.swing.JLabel" name="freqLabel">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Frequencies - "/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="addFreqLabel">
-          <Properties>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor" postCode="addFreqLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));">
-              <Color blue="ff" green="33" red="0" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="&lt;HTML&gt;&lt;U&gt;+ Add Freq&lt;/U&gt;&lt;/HTML&gt;"/>
-          </Properties>
-          <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="addFreqLabelMouseClicked"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JLabel" name="channelOneLabel">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="CH1: "/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="channelOneFreq">
-        </Component>
-        <Component class="javax.swing.JTextField" name="channelOneName">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="channelOneNameActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JLabel" name="channelTwoLabel">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="CH2: "/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="channelTwoName">
-        </Component>
-        <Component class="javax.swing.JTextField" name="channelTwoFreq">
-        </Component>
-        <Component class="javax.swing.JLabel" name="channelThreeLabel">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="CH3: "/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="channelThreeName">
-        </Component>
-        <Component class="javax.swing.JTextField" name="channelThreeFreq">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="channelThreeFreqActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JLabel" name="channelFourLabel">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="CH4: "/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="channelFourName">
-        </Component>
-        <Component class="javax.swing.JTextField" name="channelFourFreq">
-        </Component>
-        <Component class="javax.swing.JLabel" name="channelFiveLabel">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="CH5: "/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="channelFiveName">
-        </Component>
-        <Component class="javax.swing.JTextField" name="channelFiveFreq">
-        </Component>
-        <Component class="javax.swing.JLabel" name="channelSixLabel">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="CH6: "/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="channelSixName">
-        </Component>
-        <Component class="javax.swing.JTextField" name="channelSixFreq">
-        </Component>
-        <Component class="javax.swing.JLabel" name="removeFreq1">
-          <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/convoy/resources/images/removeFreq.png"/>
-            </Property>
-          </Properties>
-          <Events>
-            <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="removeFreq1MousePressed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JLabel" name="removeFreq2">
-          <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/convoy/resources/images/removeFreq.png"/>
-            </Property>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="removeFreq3">
-          <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/convoy/resources/images/removeFreq.png"/>
-            </Property>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="removeFreq4">
-          <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/convoy/resources/images/removeFreq.png"/>
-            </Property>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="removeFreq5">
-          <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/convoy/resources/images/removeFreq.png"/>
-            </Property>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="removeFreq6">
-          <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/convoy/resources/images/removeFreq.png"/>
-            </Property>
-          </Properties>
-        </Component>
-      </SubComponents>
-    </Container>
     <Component class="javax.swing.JComboBox" name="startPointLinkUpTimeComoboBox">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
@@ -574,6 +302,8 @@
     <Component class="convoy.gui.TimePicker" name="timePicker5">
     </Component>
     <Component class="convoy.textEditor.com.metaphaseeditor.MetaphaseEditor" name="metaphaseEditor2">
+    </Component>
+    <Component class="convoy.gui.FreqGrid" name="freqGrid1">
     </Component>
   </SubComponents>
 </Form>
