@@ -27,7 +27,9 @@ import javax.swing.JTextField;
 
 /**
  *
- * @author Oakes
+ * @author Oakes Isaac
+ * This class creates a dynamic grid that will allow the end user to add and delete 
+ *  radio frequencies. 
  */
 public class FreqGrid extends javax.swing.JPanel implements MouseListener {
 
