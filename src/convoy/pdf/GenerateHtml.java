@@ -263,19 +263,19 @@ public class GenerateHtml {
                 String passenger3 = "<td>" + vehicleGrid.getVehiclePanelArray().get(i).getPassenger3() + "</td>\n";
                 
                 if(vehicleGrid.getVehiclePanelArray().get(i).getPassengerLabel1().getForeground() == Color.RED){
-                    passenger1 = "<td class=\"red\">" + vehicleGrid.getVehiclePanelArray().get(i).getPassenger1() + "</td>\n";
+                    passenger1 = "<td class=\"red\"><imc src=\"" + getProgramPath() + "\\conx\\images\\icons\\medic.png" + "\" />" + vehicleGrid.getVehiclePanelArray().get(i).getPassenger1() + "</td>\n";
                 }
                 if(vehicleGrid.getVehiclePanelArray().get(i).getPassengerLabel2().getForeground() == Color.RED){
-                    passenger2 = "<td class=\"red\">" + vehicleGrid.getVehiclePanelArray().get(i).getPassenger1() + "</td>\n";
+                    passenger2 = "<td class=\"red\"><imc src=\"" + getProgramPath() + "\\conx\\images\\icons\\medic.png" + "\" />" + vehicleGrid.getVehiclePanelArray().get(i).getPassenger1() + "</td>\n";
                 }
                 if(vehicleGrid.getVehiclePanelArray().get(i).getPassengerLabel3().getForeground() == Color.RED){
-                    passenger3 = "<td class=\"red\">" + vehicleGrid.getVehiclePanelArray().get(i).getPassenger1() + "</td>\n";
+                    passenger3 = "<td class=\"red\"><imc src=\"" + getProgramPath() + "\\conx\\images\\icons\\medic.png" + "\" />" + vehicleGrid.getVehiclePanelArray().get(i).getPassenger1() + "</td>\n";
                 }
                 
                 
                 vehicles[i] = "<table>\n"
                         + "                                            <tr>\n"
-                        + "                                                <td class=\"driver\">" + vehicleGrid.getVehiclePanelArray().get(i).getDriverName() + "</td>\n"
+                        + "                                                <td class=\"driver\"><imc src=\"" + getProgramPath() + "\\conx\\images\\icons\\steeringWheel.png" + "\" />" + vehicleGrid.getVehiclePanelArray().get(i).getDriverName() + "</td>\n"
                         + "                                            </tr>\n"
                         + "\n"
                         + "                                            <tr>\n"

@@ -448,8 +448,8 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
         //System.out.println("Adding New Vehicle");
         getMedicIcon();
         getDriverIcon();
-        getCCIcon();
-        getACCIcon();
+        //getCCIcon();
+        //getACCIcon();
         // vehicleGridObj.replaceAddNewVehiclePanel(newVehiclePanel);
 
         if (isCreateMode) {
@@ -847,6 +847,8 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
         URL theUrl;
         try {
             theUrl = new URL("file:\\" + vp.getIconPath());
+            
+            //System.out.print(theUrl);
             
             try {
                 img = ImageIO.read(theUrl);
