@@ -116,7 +116,7 @@ public class VehiclePanel extends javax.swing.JPanel {
             URL url = getClass().getResource("convoy/resources/icons/steeringWheel.png");
             img = ImageIO.read(url);
           */
-             Image driverImage = img.getScaledInstance(15, 15, java.awt.Image.SCALE_SMOOTH);
+             Image driverImage = img.getScaledInstance(20, 20, java.awt.Image.SCALE_SMOOTH);
             ImageIcon icon = new ImageIcon(driverImage);
             driverWheelLabel.setIcon(icon);
             revalidate();
@@ -136,7 +136,7 @@ public class VehiclePanel extends javax.swing.JPanel {
           */
             
             int labelNumber = x;
-            Image medicImage = img.getScaledInstance(15, 15, java.awt.Image.SCALE_SMOOTH);
+            Image medicImage = img.getScaledInstance(20, 20, java.awt.Image.SCALE_SMOOTH);
             ImageIcon icon = new ImageIcon(medicImage);
             
             if (labelNumber == 1 ){
@@ -167,7 +167,7 @@ public class VehiclePanel extends javax.swing.JPanel {
             img = ImageIO.read(url);
           */
             int labelNumber = x;
-            Image ccImage = img.getScaledInstance(15, 15, java.awt.Image.SCALE_SMOOTH);
+            Image ccImage = img.getScaledInstance(20, 20, java.awt.Image.SCALE_SMOOTH);
             ImageIcon icon = new ImageIcon(ccImage);
             if (labelNumber == 1){
             iconLabel1.setVisible(true);
@@ -197,7 +197,7 @@ public class VehiclePanel extends javax.swing.JPanel {
             img = ImageIO.read(url);
           */
             int labelNumber = x;
-            Image accImage = img.getScaledInstance(15, 15, java.awt.Image.SCALE_SMOOTH);
+            Image accImage = img.getScaledInstance(20, 20, java.awt.Image.SCALE_SMOOTH);
             ImageIcon icon = new ImageIcon(accImage);
             if (labelNumber == 1){
             iconLabel1.setVisible(true);
@@ -662,9 +662,14 @@ public class VehiclePanel extends javax.swing.JPanel {
         deleteButton.setBackground(new java.awt.Color(204, 0, 0));
         deleteButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         deleteButton.setForeground(new java.awt.Color(255, 255, 255));
-        deleteButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\Oakes\\Documents\\NetBeansProjects\\ConvoyQuick\\build\\conx\\images\\icons\\deleteVehicleIcon.png")); // NOI18N
+        deleteButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\Oakes\\Documents\\NetBeansProjects\\ConvoyQuick\\build\\conx\\images\\icons\\deleteIcon.png")); // NOI18N
         deleteButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        deleteButton.setPreferredSize(new java.awt.Dimension(15, 22));
+        deleteButton.setPreferredSize(new java.awt.Dimension(22, 22));
+        deleteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -673,7 +678,7 @@ public class VehiclePanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(deleteButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(deleteButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(componentPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())))
@@ -681,11 +686,15 @@ public class VehiclePanel extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(2, 2, 2)
+                .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(componentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_deleteButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel additionalInfoField;

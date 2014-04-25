@@ -111,7 +111,7 @@ public class FreqInfo extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(176, 20));
 
         removeFreq1.setBackground(new java.awt.Color(255, 255, 255));
-        removeFreq1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Oakes\\Documents\\NetBeansProjects\\ConvoyQuick\\build\\conx\\images\\icons\\deleteVehicleIcon.png")); // NOI18N
+        removeFreq1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Oakes\\Documents\\NetBeansProjects\\ConvoyQuick\\build\\conx\\images\\icons\\deleteIcon.png")); // NOI18N
         removeFreq1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 removeFreq1MousePressed(evt);
