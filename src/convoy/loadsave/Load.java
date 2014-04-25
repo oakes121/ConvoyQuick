@@ -6,6 +6,7 @@ import convoy.objects.Mission;
 import convoy.objects.Vehicle;
 import java.awt.Cursor;
 import java.awt.HeadlessException;
+import java.awt.Image;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -40,6 +41,10 @@ public class Load {
     private String missionNumber = null;
     private int option;
     private boolean isLoaded = false;
+    private static Image medicImageIcon = AddVehiclePopUp.getMedicIcon();
+    private static Image driverImageIcon = AddVehiclePopUp.getDriverIcon();
+    private static Image ccImageIcon = AddVehiclePopUp.getCCIcon();
+    private static Image accImageIcon = AddVehiclePopUp.getACCIcon();
 
     /**
      * loadProject() loads a file that with the file extension ".conx"
@@ -144,14 +149,22 @@ public class Load {
 
                     vp.setSelections(vehicleGridsVehicles.get(i).get(j).getSelection1(),
                             vehicleGridsVehicles.get(i).get(j).getSelection2(),
-                            vehicleGridsVehicles.get(i).get(j).getSelection1());
+                            vehicleGridsVehicles.get(i).get(j).getSelection3());
+                    
+                    vp.setDriverIcon(driverImageIcon);
+                    
+                    setIcons(vp.getSelection1(), 1, vp);
+                    setIcons(vp.getSelection2(), 2, vp);
+                    setIcons(vp.getSelection3(), 3, vp);
                     
                     mainMenu.getMainWindow().getVehicleGrids().get(i).replaceAddNewVehiclePanel(vp);
                     
-                    AddVehiclePopUp avpp = new AddVehiclePopUp(vp, mainMenu.getMainWindow().getVehicleGrids().get(i),
+                    /*AddVehiclePopUp avpp = new AddVehiclePopUp(vp, mainMenu.getMainWindow().getVehicleGrids().get(i),
                             vehicleGridsVehicles.get(i).get(j).getSelection1(),
                             vehicleGridsVehicles.get(i).get(j).getSelection2(),
                             vehicleGridsVehicles.get(i).get(j).getSelection3(), j);
+                    avpp.dispose(); 
+                    avpp = null; */
                     
                     //
                 }
@@ -165,6 +178,26 @@ public class Load {
             exc.printStackTrace(); // If there was an error, print the info.
         }
 
+    }
+    
+    private void setIcons(int selection, int passengerNum, VehiclePanel vp) {
+        
+        if (selection == 1) {
+            vp.setCCIcon(ccImageIcon, passengerNum);
+        }
+        
+        if (selection == 2) {
+            vp.setACCIcon(accImageIcon, passengerNum);
+        }
+        
+        if (selection == 3) {
+            vp.setMedicIcon(medicImageIcon, passengerNum);
+        }
+        
+        if (selection == 4) {            
+            vp.removeIconImage(passengerNum);
+        }
+        
     }
 
     public static String getProgramPath() throws UnsupportedEncodingException {

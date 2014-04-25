@@ -477,13 +477,9 @@ public final class MainWindow extends javax.swing.JFrame {
         picturePanel2Layout.setVerticalGroup(
             picturePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(picturePanel2Layout.createSequentialGroup()
+                .addComponent(missionNumberPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(picturePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(picturePanel2Layout.createSequentialGroup()
-                        .addContainerGap(200, Short.MAX_VALUE)
-                        .addComponent(vehicleGrid1, javax.swing.GroupLayout.DEFAULT_SIZE, 541, Short.MAX_VALUE)
-                        .addGap(1, 1, 1))
-                    .addGroup(picturePanel2Layout.createSequentialGroup()
-                        .addComponent(missionNumberPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(picturePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(picturePanel2Layout.createSequentialGroup()
                                 .addGap(44, 44, 44)
@@ -493,7 +489,11 @@ public final class MainWindow extends javax.swing.JFrame {
                             .addGroup(picturePanel2Layout.createSequentialGroup()
                                 .addGap(162, 162, 162)
                                 .addComponent(leftArrow, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 343, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, picturePanel2Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(vehicleGrid1, javax.swing.GroupLayout.PREFERRED_SIZE, 535, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(1, 1, 1)))
                 .addComponent(additionalInfoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 

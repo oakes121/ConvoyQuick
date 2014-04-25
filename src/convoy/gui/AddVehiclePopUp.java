@@ -37,10 +37,10 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
     private String numberOfSeats;
     private URL imageUrl;
     private Image img;
-    private Image medicImageIcon;
-    private Image driverImageIcon;
-    private Image ccImageIcon;
-    private Image accImageIcon;
+    private static Image medicImageIcon = getMedicIcon();
+    private static Image driverImageIcon = getDriverIcon();
+    private static Image ccImageIcon = getCCIcon();
+    private static Image accImageIcon = getACCIcon();
     private Image finalImage;
     private URL url;
     private boolean isCreateMode = true;
@@ -445,11 +445,7 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
     private void addVehicleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addVehicleButtonActionPerformed
         // TODO add your handling code here:
         //addValuesToVehiclePanel();
-        //System.out.println("Adding New Vehicle");
-        getMedicIcon();
-        getDriverIcon();
-        //getCCIcon();
-        //getACCIcon();
+        //System.out.println("Adding New Vehicle");        
         // vehicleGridObj.replaceAddNewVehiclePanel(newVehiclePanel);
 
         if (isCreateMode) {
@@ -784,7 +780,7 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
     }
 
     // This method gets the driver Icon from the resources folder
-    public void getDriverIcon() {
+    public static void setDriverIcon() {
 
         try {
             //URL url = getClass().getResource("./convoy/resources/icons/steeringWheel.png");
@@ -797,7 +793,7 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
     }
 
     //This method gets the medic icon from the resources folder 
-    public void getMedicIcon() {
+    public static void setMedicIcon() {
         try {
             //URL url = getClass().getClassLoader().getResource("./conx/images/icons/medic.png");
             Image iconImage = ImageIO.read(new File(getProgramPath() + "\\conx\\images\\icons\\medic.png"));
@@ -810,7 +806,7 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
     }
 
     //This method gets the Convoy Commander icon from the resources folder 
-    public void getCCIcon() {
+    public static void setCCIcon() {
         try {
             //URL url = getClass().getClassLoader().getResource("./conx/images/icons/cc.png");
             Image iconImage = ImageIO.read(new File(getProgramPath() + "\\conx\\images\\icons\\ccIcon.png"));
@@ -823,7 +819,7 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
     }
 
     //This method gets the Convoy Commander icon from the resources folder 
-    public void getACCIcon() {
+    public static void setACCIcon() {
         try {
             //URL url = getClass().getClassLoader().getResource("./conx/images/icons/acc.png");
             Image iconImage = ImageIO.read(new File(getProgramPath() + "\\conx\\images\\icons\\accIcon.png"));
@@ -833,6 +829,35 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
         } catch (IOException ex) {
             Logger.getLogger(AddVehiclePopUp.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+        public static Image getMedicIcon() {
+        if (medicImageIcon == null) {
+            setMedicIcon();
+            
+        }
+        return medicImageIcon;
+    }
+    
+    public static Image getDriverIcon() {
+        if (driverImageIcon == null )
+            setDriverIcon();
+        
+        return driverImageIcon;
+    }
+    
+    public static Image getCCIcon() {
+        if (ccImageIcon == null) 
+            setCCIcon();
+        
+        return ccImageIcon;
+    }
+    
+    public static Image getACCIcon() {
+        if (accImageIcon == null)
+            setACCIcon();
+        
+        return accImageIcon;
     }
     
     public void getInfoFromVehiclePanel(VehiclePanel vp) {

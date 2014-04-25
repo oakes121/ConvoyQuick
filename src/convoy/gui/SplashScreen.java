@@ -25,6 +25,7 @@ import java.util.logging.Logger;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import javax.swing.JWindow;
+import javax.swing.UIManager;
 
 /**
  *
@@ -68,6 +69,12 @@ public class SplashScreen extends JWindow {
     public SplashScreen() {
 
         initComponents();
+        
+         try {
+             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+         }catch(Exception ex) {
+             ex.printStackTrace();
+         }
 
     }
 
