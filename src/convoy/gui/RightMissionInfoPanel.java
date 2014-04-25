@@ -274,6 +274,10 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
         return this.rallyPointSPTimeComoboBox.getSelectedIndex();
     }
     
+    public FreqGrid getFreqGrid() {
+        return freqGrid1;
+    }
+    
     public void setStartLinkUpTime(String time) {
         timePicker2.setTime(time);
     }

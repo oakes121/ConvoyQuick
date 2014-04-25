@@ -97,7 +97,8 @@ public class Load {
                         mission.getRightAdditionalInfo(),
                         mission.getAdditionalInfo(),
                         mission.getUnitPatch());
-
+                
+                mainWindow.getRightMissionInfoPanel().getFreqGrid().redrawFreqs(mission.getFreqs());
                 mainMenu.setMainWindow(mainWindow);
                 mainMenu.getMainWindow().display();
                 loadVehicles();

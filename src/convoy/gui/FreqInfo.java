@@ -31,20 +31,51 @@ public class FreqInfo extends javax.swing.JPanel {
         channelOneLabel.setText(channelOneLabelText);        
     }
     
+    /**
+     * decrementFreqInfoCount() decrements 
+     */
     public static void decrementFreqInfoCount() {
         freqInfoCount--;
     }
 
+    /**
+     * getRemoveFreq1() returns removeFreq1
+     * @return removeFreq1
+     */
     public JLabel getRemoveFreq1() {
         return removeFreq1;
     }
     
+    /**
+     * setChannelOneFreq(String txt) sets channelOneFreq's text to txt
+     * @param txt the text that will appear in channelOneFreq's textfield
+     */
     public void setChannelOneFreq(String txt) {
         this.channelOneFreq.setText(txt);
     }
     
+    /**
+     * setChannelOneName(String txt) sets channelOneName's text to txt
+     * @param txt the text that will appear in channelOneName's textfield
+     */
     public void setChannelOneName(String txt) {
         this.channelOneName.setText(txt);
+    }
+    
+    /**
+     * getFreqName() returns channelOneName.getText()
+     * @return channelOneName.getText()
+     */
+    public String getFreqName() {
+        return channelOneName.getText();
+    }
+    
+    /**
+     * getFreq() returns Integer.parseInt(channelOneFreq.getText())
+     * @return Integer.parseInt(channelOneFreq.getText())
+     */
+    public int getFreq() {
+        return Integer.parseInt(channelOneFreq.getText());
     }
     
     /**

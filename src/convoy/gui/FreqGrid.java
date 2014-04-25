@@ -6,6 +6,7 @@
 
 package convoy.gui;
 
+import convoy.objects.Frequency;
 import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.FontFormatException;
@@ -33,6 +34,7 @@ public class FreqGrid extends javax.swing.JPanel implements MouseListener {
     private GridBagConstraints gbc = new GridBagConstraints ();    // constraints used to control the layout of the grid
     private ArrayList<JPanel> panelHolder;                 // array used to create a grid of blank jPanels
     private ArrayList<FreqInfo> freqInfoArray;
+    private ArrayList<Frequency> freqsArray;
     private JLabel addNewFreq;
     private int freqCount = 0;
 
@@ -43,6 +45,7 @@ public class FreqGrid extends javax.swing.JPanel implements MouseListener {
     public FreqGrid() {
         panelHolder = new ArrayList<>();
         freqInfoArray = new ArrayList<>();
+        freqsArray = new ArrayList<>();
         addNewFreq = new JLabel("+ Add New Freq");
         addNewFreq.setForeground((new java.awt.Color(0,0,255)));
         addNewFreq.setToolTipText("Click here to add new frequency.");
@@ -66,8 +69,9 @@ public class FreqGrid extends javax.swing.JPanel implements MouseListener {
             fi.getRemoveFreq1().addMouseListener(this);
             fi.getRemoveFreq1().setCursor(new Cursor(Cursor.HAND_CURSOR));
             panelHolder.get(freqCount).removeAll();
-            
+            freqsArray.add(new Frequency(fi.getFreqName(),  fi.getFreq()));
             freqInfoArray.add(fi);
+            
             
             panelHolder.get(freqCount).add(freqInfoArray.get(freqCount));
             
@@ -141,7 +145,8 @@ public class FreqGrid extends javax.swing.JPanel implements MouseListener {
             
             freqInfoArray.get(count).removeMouseListener(this);
             panelHolder.remove(count);
-            freqInfoArray.remove(count);    
+            freqInfoArray.remove(count);  
+            freqsArray.remove(count);
             --freqCount;
             FreqInfo.decrementFreqInfoCount();
             
@@ -157,6 +162,20 @@ public class FreqGrid extends javax.swing.JPanel implements MouseListener {
             revalidate();
             repaint();
         }  
+    }
+    
+    public ArrayList<Frequency> getFreqs() {
+        return freqsArray;
+    }
+    
+    public void redrawFreqs(ArrayList<Frequency> freqsToAdd) {
+        
+        for (int i = 0; i < freqsToAdd.size(); i++) {
+            FreqInfo fi = new FreqInfo();
+            fi.setChannelOneFreq(freqsToAdd.get(i).getFreq() + "");
+            fi.setChannelOneName(freqsToAdd.get(i).getFreqName());
+            addFreqInfo(fi); 
+        }
     }
     
     /**

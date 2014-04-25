@@ -7,7 +7,7 @@ import java.util.Date;
 
 public class Mission implements Serializable {
 
-    private static Mission uniqueInstance;  
+    private static Mission uniqueInstance;
     private String missionNumber;                    // The designated mission name for the convoy
     private int classification;    // The classification of the mission 
     private Time missionLinkUpTime;                  // The meeting time of the convoy 
@@ -31,19 +31,22 @@ public class Mission implements Serializable {
     private String fromSPTime;
     private String toLinkUpTime;
     private String toSPTime;
-    private int fromLinkUpTimeZone; 
-    private int fromSPTimeZone; 
-    private int toLinkUpTimeZone; 
+    private int fromLinkUpTimeZone;
+    private int fromSPTimeZone;
+    private int toLinkUpTimeZone;
     private int toSPTimeZone;
     private String leftAdditionalText;
     private String rightAdditionalText;
     private String additionalText;
     private String unitPatch;
+    private ArrayList<Frequency> freqs;
+
     /**
-     *  constructor Mission() initializes all class variables
+     * constructor Mission() initializes all class variables
      */
     private Mission() {
-        
+
+        freqs = new ArrayList<>();
         missionNumber = "Misson Number";
         leftTo = "";
         leftFrom = "";
@@ -58,8 +61,8 @@ public class Mission implements Serializable {
     }
 
     /**
-     * constructor Mission(int missionNumber, String missionName,
-     * int numberOfPersonnel, int numberOfVehicles, String missionStagingArea,
+     * constructor Mission(int missionNumber, String missionName, int
+     * numberOfPersonnel, int numberOfVehicles, String missionStagingArea,
      * String unitName, int lUH, int lUM, int lUS, int dTH, int dTM, int dTS)
      * initializes all class variables
      *
@@ -83,30 +86,31 @@ public class Mission implements Serializable {
      * @param dTS int value representing seconds use to instantiate
      * missionDepartureTime
      */
-    private Mission(    String missionNumber, 
-                        String missionStagingArea,
-                        String leftTo,  
-                        String leftFrom,                         
-                        String cc, 
-                        String acc, 
-                        Date fromLinkUpDate, 
-                        Date fromSPDate, 
-                        Date toLinkUpDate, 
-                        Date toSPDate,
-                        String fromLinkUpTime, 
-                        String fromSPTime, 
-                        String toLinkUpTime, 
-                        String toSPTime,
-                        int fromLinkUpTimeZone, 
-                        int fromSPTimeZone, 
-                        int toLinkUpTimeZone, 
-                        int toSPTimeZone,
-                        int classification,
-                        String left,
-                        String right,
-                        String text,
-                        String unitPatch) {
-         
+    private Mission(String missionNumber,
+            String missionStagingArea,
+            String leftTo,
+            String leftFrom,
+            String cc,
+            String acc,
+            Date fromLinkUpDate,
+            Date fromSPDate,
+            Date toLinkUpDate,
+            Date toSPDate,
+            String fromLinkUpTime,
+            String fromSPTime,
+            String toLinkUpTime,
+            String toSPTime,
+            int fromLinkUpTimeZone,
+            int fromSPTimeZone,
+            int toLinkUpTimeZone,
+            int toSPTimeZone,
+            int classification,
+            String left,
+            String right,
+            String text,
+            String unitPatch, ArrayList<Frequency> newFreqs) {
+
+        freqs = new ArrayList<>(newFreqs);
         this.missionNumber = missionNumber;
         this.missionStagingArea = missionStagingArea;
         this.leftTo = leftTo;
@@ -136,32 +140,34 @@ public class Mission implements Serializable {
         this.toLinkUpTimeZone = toLinkUpTimeZone;
         this.toSPTimeZone = toSPTimeZone;
     }
-    
+
     /**
-     * Method getInstance() will return a static object of Mission() that was  
-     *  assigned the name uniqueInstance. 
+     * Method getInstance() will return a static object of Mission() that was
+     * assigned the name uniqueInstance.
+     *
      * @return if null will return new Mission() ,else return uniqueInstance
      */
-    public static synchronized Mission getInstance() {
-        
+    public static Mission getInstance() {
+
         // if uniqueInstance is null, instantiate it to new Mission()
         if (uniqueInstance == null) {
             uniqueInstance = new Mission();
         }
-        
+
         return uniqueInstance;
-       
+
     }
-    
+
     /**
-     * getInstance(int missionNumber, String missionName,
-            int numberOfPersonnel, int numberOfVehicles,String missionStagingArea,
-            String unitName, int lUH, int lUM, int lUS, int dTH, int dTM, int dTS)
+     * getInstance(int missionNumber, String missionName, int numberOfPersonnel,
+     * int numberOfVehicles,String missionStagingArea, String unitName, int lUH,
+     * int lUM, int lUS, int dTH, int dTM, int dTS)
      *
-     * will return a static object of Mission(int missionNumber, String missionName,
-            int numberOfPersonnel, int numberOfVehicles,String missionStagingArea,
-            String unitName, int lUH, int lUM, int lUS, int dTH, int dTM, int dTS) 
-     * that was assigned the name uniqueInstance. 
+     * will return a static object of Mission(int missionNumber, String
+     * missionName, int numberOfPersonnel, int numberOfVehicles,String
+     * missionStagingArea, String unitName, int lUH, int lUM, int lUS, int dTH,
+     * int dTM, int dTS) that was assigned the name uniqueInstance.
+     *
      * @param missionNumber int value that missionNumber will be set to
      * @param missionStagingArea string value that missionStagingArea will be
      * set to
@@ -182,44 +188,44 @@ public class Mission implements Serializable {
      * @param rightAdditionalText
      * @param additionalText
      * @param unitPatch
-     * @return 
+     * @return
      */
-    public static synchronized Mission getInstance( String missionNumber, 
-                                                    String missionStagingArea, 
-                                                    String leftTo,  
-                                                    String leftFrom,  
-                                                    String cc, 
-                                                    String acc, 
-                                                    Date fromLinkUpDate, 
-                                                    Date fromSPDate, 
-                                                    Date toLinkUpDate, 
-                                                    Date toSPDate,
-                                                    String fromLinkUpTime, 
-                                                    String fromSPTime, 
-                                                    String toLinkUpTime, 
-                                                    String toSPTime,
-                                                    int fromLinkUpTimeZone, 
-                                                    int fromSPTimeZone, 
-                                                    int toLinkUpTimeZone, 
-                                                    int toSPTimeZone,
-                                                    int classification,
-                                                    String leftAdditionalText,
-                                                    String rightAdditionalText,
-                                                    String additionalText,
-                                                    String unitPatch) {
-        
+    public static Mission getInstance(String missionNumber,
+            String missionStagingArea,
+            String leftTo,
+            String leftFrom,
+            String cc,
+            String acc,
+            Date fromLinkUpDate,
+            Date fromSPDate,
+            Date toLinkUpDate,
+            Date toSPDate,
+            String fromLinkUpTime,
+            String fromSPTime,
+            String toLinkUpTime,
+            String toSPTime,
+            int fromLinkUpTimeZone,
+            int fromSPTimeZone,
+            int toLinkUpTimeZone,
+            int toSPTimeZone,
+            int classification,
+            String leftAdditionalText,
+            String rightAdditionalText,
+            String additionalText,
+            String unitPatch, ArrayList<Frequency> newFreqs) {
+
         // if uniqueInstance is null, instantiate it to new Mission()
-        uniqueInstance = new Mission(   missionNumber, missionStagingArea, leftTo, leftFrom,
-            cc, acc, fromLinkUpDate, fromSPDate, toLinkUpDate, toSPDate, fromLinkUpTime, fromSPTime, toLinkUpTime, toSPTime, fromLinkUpTimeZone, 
-            fromSPTimeZone, toLinkUpTimeZone, toSPTimeZone, classification,leftAdditionalText, rightAdditionalText, additionalText, unitPatch);
-           
-        return uniqueInstance;        
+        uniqueInstance = new Mission(missionNumber, missionStagingArea, leftTo, leftFrom,
+                cc, acc, fromLinkUpDate, fromSPDate, toLinkUpDate, toSPDate, fromLinkUpTime, fromSPTime, toLinkUpTime, toSPTime, fromLinkUpTimeZone,
+                fromSPTimeZone, toLinkUpTimeZone, toSPTimeZone, classification, leftAdditionalText, rightAdditionalText, additionalText, unitPatch,
+                newFreqs);
+
+        return uniqueInstance;
     }
-		
-	
 
     /**
      * Method addPersonnel(Personnel person) adds persons to mission
+     *
      * @param person person to be added
      * @return people.add(person) returns whether or not a person was addded
      */
@@ -230,7 +236,16 @@ public class Mission implements Serializable {
     }
 
     /**
+     * getFreqs() returns freqs
+     * @return freqs
+     */
+    public ArrayList<Frequency> getFreqs() {
+        return freqs;
+    }
+
+    /**
      * Method removePersonnel(Personnel person) removes persons from mission
+     *
      * @param person person to be removed
      * @return boolean returns whether or not a person was removed
      */
@@ -245,28 +260,30 @@ public class Mission implements Serializable {
         return false;
 
     }
-    
+
     /**
      * Method removeAllPersonnel() remove all personnel from the mission
      */
-    public void removeAllPersonnel(){
-        
+    public void removeAllPersonnel() {
+
         people.clear();
-        
+
     }
-    
+
     /**
      * Method addVehicle(Vehicle vehicle) adds vehicle
+     *
      * @param newVehicle
      */
     public void addVehicle(Vehicle newVehicle) {
-        vehicles.add(newVehicle);        
+        vehicles.add(newVehicle);
     }
-    
+
     /**
      * Method removeVehicle(Vehicle vehicle) removes vehicles
+     *
      * @param vehicle vehicle to be removed
-     * @return boolean returns whether or not vehicle was removed 
+     * @return boolean returns whether or not vehicle was removed
      */
     public boolean removeVehicle(Vehicle vehicle) {
         int i = vehicles.indexOf(vehicle);
@@ -278,35 +295,37 @@ public class Mission implements Serializable {
     }
 
     /**
-     * Method setMissionNumber(int missionNumber) sets this.missionNumber 
-     * to missionNumber
-     * @param missionNumber 
+     * Method setMissionNumber(int missionNumber) sets this.missionNumber to
+     * missionNumber
+     *
+     * @param missionNumber
      */
     public void setMissionNumber(String missionNumber) {
         this.missionNumber = missionNumber;
     }
 
     /**
-     * Method setNumberOfPersonnel(int numberOfPersonnel) sets this.numberOfPersonnel
-     * to numberOfPersonnel
+     * Method setNumberOfPersonnel(int numberOfPersonnel) sets
+     * this.numberOfPersonnel to numberOfPersonnel
+     *
      * @param leftTo
      */
     public void setLeftTo(String leftTo) {
         this.leftTo = leftTo;
     }
-    
+
     public void setLeftFrom(String leftFrom) {
         this.leftFrom = leftFrom;
     }
 
     /**
-     * Method setNumberOfVehicles(int numberOfVehicles) sets this.numberOfVehicles
-     * to numberOfVehicles
+     * Method setNumberOfVehicles(int numberOfVehicles) sets
+     * this.numberOfVehicles to numberOfVehicles
      */
     public void setRightTo(String rightTo) {
         this.rightTo = rightTo;
     }
-    
+
     public void setRightFrom(String rightFrom) {
         this.rightFrom = rightFrom;
     }
@@ -314,16 +333,18 @@ public class Mission implements Serializable {
     /**
      * Method setMissionClassification(Classification classification) sets
      * this.missionClassification to classification
-     * @param classification Classification value that this.missionClassification
-     * is set to
+     *
+     * @param classification Classification value that
+     * this.missionClassification is set to
      */
     public void setMissionClassification(int classification) {
         this.classification = classification;
     }
 
     /**
-     * Method setmissionLinkUptime(int hours, int minutes, int seconds) sets the time of the 
-     * missionLinkUpTime to hours:minutes:seconds
+     * Method setmissionLinkUptime(int hours, int minutes, int seconds) sets the
+     * time of the missionLinkUpTime to hours:minutes:seconds
+     *
      * @param hours int value that will be passed to setHours
      * @param minutes int value that will be passed to setMinutes
      * @param seconds int value that will be passed to setSeconds
@@ -335,8 +356,9 @@ public class Mission implements Serializable {
     }
 
     /**
-     * Method setMissionDepartureTime(int hours, int minutes, int seconds) sets the time of the 
-     * setMissionDepartureTime to hours:minutes:seconds
+     * Method setMissionDepartureTime(int hours, int minutes, int seconds) sets
+     * the time of the setMissionDepartureTime to hours:minutes:seconds
+     *
      * @param hours int value that will be passed to setHours
      * @param minutes int value that will be passed to setMinutes
      * @param seconds int value that will be passed to setSeconds
@@ -348,8 +370,9 @@ public class Mission implements Serializable {
     }
 
     /**
-     * Method setMissionStagingArea(String stagingArea) sets this.missionStagingArea
-     * to stagingArea
+     * Method setMissionStagingArea(String stagingArea) sets
+     * this.missionStagingArea to stagingArea
+     *
      * @param stagingArea String value that missionStagingArea will be set to
      */
     public void setMissionStagingArea(String stagingArea) {
@@ -358,6 +381,7 @@ public class Mission implements Serializable {
 
     /**
      * Method setUnitName(String unitName) sets this.unitName to unitName
+     *
      * @param unitName String value that unitName will be set to
      */
     public void setUnitName(String unitName) {
@@ -366,6 +390,7 @@ public class Mission implements Serializable {
 
     /**
      * Method getMissionNumber() will return missionNumber
+     *
      * @return missionNumber
      */
     public String getMissionNumber() {
@@ -374,6 +399,7 @@ public class Mission implements Serializable {
 
     /**
      * Method getNumberOfPersonnel() will return numberOfPersonnel
+     *
      * @return numberOfPersonnel
      */
     public String getLeftTo() {
@@ -382,14 +408,16 @@ public class Mission implements Serializable {
 
     /**
      * Method getNumberOfVehicles() will return numberOfVehicles
+     *
      * @return numberOfVehicles
      */
     public String getRightTo() {
         return rightTo;
     }
-    
+
     /**
      * Method getNumberOfPersonnel() will return numberOfPersonnel
+     *
      * @return numberOfPersonnel
      */
     public String getLeftFrom() {
@@ -398,6 +426,7 @@ public class Mission implements Serializable {
 
     /**
      * Method getNumberOfVehicles() will return numberOfVehicles
+     *
      * @return numberOfVehicles
      */
     public String getRightFrom() {
@@ -406,6 +435,7 @@ public class Mission implements Serializable {
 
     /**
      * Method getMissionClassification() will return missionClassification
+     *
      * @return missionClassification
      */
     public int getMissionClassification() {
@@ -414,6 +444,7 @@ public class Mission implements Serializable {
 
     /**
      * Method getMissionLinkUpTime() will return missionLinkUpTime.toString()
+     *
      * @return missionLinkUpTime.toString()
      */
     public String getMissionLinkUpTime() {
@@ -421,7 +452,9 @@ public class Mission implements Serializable {
     }
 
     /**
-     * Method getMissionDepartureTime() will return missionDepartureTime.toString()
+     * Method getMissionDepartureTime() will return
+     * missionDepartureTime.toString()
+     *
      * @return missionDepartureTime.toString();
      */
     public String getMissionDepartureTime() {
@@ -430,99 +463,120 @@ public class Mission implements Serializable {
 
     /**
      * Method getMissionstagingArea() will return missionStagingArea
+     *
      * @return missionStagingArea
      */
     public String getMissionstagingArea() {
         return missionStagingArea;
     }
-    
+
     /**
      * Method getVehicles() will return vehicles
+     *
      * @return vehicles
      */
     public ArrayList<Vehicle> getVehicles() {
         return vehicles;
     }
-    
+
     /**
-     * 
+     *
      * @param index position in vehicles ArrayList
      * @return vehicle object
      */
     public Vehicle getVehicleAtIndex(int index) {
         Vehicle tempVehicle = this.vehicles.get(index);
-        
-        if (tempVehicle != null)
+
+        if (tempVehicle != null) {
             return tempVehicle;
-        
+        }
+
         return null;
     }
 
     /**
      * Method getUnitName() will return unitName
+     *
      * @return unitName
      */
     public String getUnitName() {
         return unitName;
     }
-    
-    public String getCC(){
-        return this.cc;        
+
+    public String getCC() {
+        return this.cc;
     }
-    public String getACC(){
-        return this.acc;        
+
+    public String getACC() {
+        return this.acc;
     }
-    public Date getFromLinkUpDate(){
-        return this.fromLinkUpDate;        
+
+    public Date getFromLinkUpDate() {
+        return this.fromLinkUpDate;
     }
-    public Date getFromSPDate(){
-        return this.fromSPDate;        
+
+    public Date getFromSPDate() {
+        return this.fromSPDate;
     }
-    public Date getToLinkUpDate(){
-        return this.toLinkUpDate;        
+
+    public Date getToLinkUpDate() {
+        return this.toLinkUpDate;
     }
-    public Date getToSPDate(){
-        return this.toSPDate;        
+
+    public Date getToSPDate() {
+        return this.toSPDate;
     }
-    
-    public String getFromLinkUpTime(){
-        return this.fromLinkUpTime;        
+
+    public String getFromLinkUpTime() {
+        return this.fromLinkUpTime;
     }
-    public String getFromSPTime(){
-        return this.fromSPTime;        
+
+    public String getFromSPTime() {
+        return this.fromSPTime;
     }
-    public String getToLinkUpTime(){
-        return this.toLinkUpTime;        
+
+    public String getToLinkUpTime() {
+        return this.toLinkUpTime;
     }
-    public String getToSTime(){
-        return this.toSPTime;        
+
+    public String getToSTime() {
+        return this.toSPTime;
     }
-    public int getFromLinkUpTimeZone(){
-        return this.fromLinkUpTimeZone;        
+
+    public int getFromLinkUpTimeZone() {
+        return this.fromLinkUpTimeZone;
     }
-    public int getFromSPTimeZone(){
-        return this.fromSPTimeZone;        
+
+    public int getFromSPTimeZone() {
+        return this.fromSPTimeZone;
     }
-    public int getToLinkUpTimeZone(){
-        return this.toLinkUpTimeZone;        
+
+    public int getToLinkUpTimeZone() {
+        return this.toLinkUpTimeZone;
     }
-    public int getToSPTimeZone(){
-        return this.toSPTimeZone;        
+
+    public int getToSPTimeZone() {
+        return this.toSPTimeZone;
     }
-    public int getClassification(){
-        return this.classification;        
+
+    public int getClassification() {
+        return this.classification;
     }
-    public String getLeftAdditionalInfo(){
-        return this.leftAdditionalText;        
+
+    public String getLeftAdditionalInfo() {
+        return this.leftAdditionalText;
     }
-    public String getRightAdditionalInfo(){
-        return this.rightAdditionalText;        
+
+    public String getRightAdditionalInfo() {
+        return this.rightAdditionalText;
     }
-    public String getAdditionalInfo(){
-        return this.additionalText;        
+
+    public String getAdditionalInfo() {
+        return this.additionalText;
     }
-    public String getUnitPatch(){
-        return this.unitPatch;        
+
+    public String getUnitPatch() {
+        return this.unitPatch;
     }
 
 }

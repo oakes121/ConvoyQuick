@@ -730,7 +730,8 @@ public final class MainWindow extends javax.swing.JFrame {
                     this.leftMissionInfoPanel1.getAdditionalText(),
                     this.rightMissionInfoPanel2.getAdditionalText(),
                     this.additionalTextPanel1.getAdditionalText(),
-                    this.leftMissionInfoPanel1.getImagePath()
+                    this.leftMissionInfoPanel1.getImagePath(),
+                    this.rightMissionInfoPanel2.getFreqGrid().getFreqs()
             );
             try {
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -954,8 +955,12 @@ public final class MainWindow extends javax.swing.JFrame {
                 this.leftMissionInfoPanel1.getAdditionalText(),
                 this.rightMissionInfoPanel2.getAdditionalText(),
                 this.additionalTextPanel1.getAdditionalText(),
-                this.leftMissionInfoPanel1.getImagePath()
+                this.leftMissionInfoPanel1.getImagePath(),
+                this.rightMissionInfoPanel2.getFreqGrid().getFreqs()
         );
+        
+        
+        
         try {
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             Save sf = new Save(mission);
