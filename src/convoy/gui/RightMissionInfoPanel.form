@@ -183,6 +183,9 @@
       <Properties>
         <Property name="toolTipText" type="java.lang.String" value="Convoy Commander"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ccTextFieldActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="accLabel">
       <Properties>

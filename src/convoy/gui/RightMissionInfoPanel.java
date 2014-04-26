@@ -9,6 +9,7 @@ import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.*;
+import org.jdesktop.xswingx.PromptSupport;
 
 /**
  * @author Mike Moye <mtm5313@psu.edu>
@@ -31,6 +32,8 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
         doFonts();
         freqGrid1.setToolTipText("Click the blue text to add a new frequency.");
         //doFreqs();
+        PromptSupport.setPrompt("Convoy Commander", ccTextField);
+        PromptSupport.setPrompt("Assistant Convoy Commander", accTextField);
     }
 
     /**
@@ -454,6 +457,11 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
         ccLabel.setText("CC : ");
 
         ccTextField.setToolTipText("Convoy Commander");
+        ccTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ccTextFieldActionPerformed(evt);
+            }
+        });
 
         accLabel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         accLabel.setText("ACC: ");
@@ -594,6 +602,10 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void ccTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ccTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ccTextFieldActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel accLabel;
