@@ -51,11 +51,22 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
     public boolean acc = false;
 
     public AddVehiclePopUp() {
-
+        
         initComponents();
         addHintsToFields();
         newVehiclePanel = new VehiclePanel();
         initDocumentListeners();
+        if(MainWindow.getCC()){
+            jCheckBox2.setVisible(false);
+        }else{
+          jCheckBox2.setVisible(true);  
+        }
+        if(MainWindow.getACC()){
+            jCheckBox3.setVisible(false);
+        }else{
+          jCheckBox3.setVisible(true);  
+        }
+        
         this.setLocationRelativeTo(null); //centers frame
         this.setTitle("Add a New Vehicle"); //adds title
         this.setIconImage(new ImageIcon(getClass().getResource("/convoy/resources/images/humveeIcon.png")).getImage());
@@ -75,6 +86,17 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
         setSelection1(selection1);
         setSelection2(selection2);
         setSelection3(selection3);
+        
+        if(MainWindow.getCC()){
+            jCheckBox2.setVisible(false);
+        }else{
+          jCheckBox2.setVisible(true);  
+        }
+        if(MainWindow.getACC()){
+            jCheckBox3.setVisible(false);
+        }else{
+          jCheckBox3.setVisible(true);  
+        }
        
         addVehicleButton.doClick();
     }
@@ -130,6 +152,8 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         addVehicleButton = new javax.swing.JButton();
         cancelButton = new javax.swing.JButton();
+        jCheckBox2 = new javax.swing.JCheckBox();
+        jCheckBox3 = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(102, 102, 0));
@@ -204,14 +228,14 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
             }
         });
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select Type", "CC", "ACC", "Medic", "Passenger" }));
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select Type", "Medic", "Passenger" }));
         jComboBox2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox2ActionPerformed(evt);
             }
         });
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select Type", "CC", "ACC", "Medic", "Passenger" }));
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select Type", "Medic", "Passenger" }));
         jComboBox3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox3ActionPerformed(evt);
@@ -231,7 +255,7 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel8.setText("Driver");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select Type", "CC", "ACC", "Medic", "Passenger" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select Type", "Medic", "Passenger" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
@@ -367,6 +391,24 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
             }
         });
 
+        jCheckBox2.setBackground(new java.awt.Color(194, 178, 128));
+        jCheckBox2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jCheckBox2.setText(" Convoy Commander's Vehicle");
+        jCheckBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox2ActionPerformed(evt);
+            }
+        });
+
+        jCheckBox3.setBackground(new java.awt.Color(194, 178, 128));
+        jCheckBox3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jCheckBox3.setText("Assistant Convoy Commander's Vehicle");
+        jCheckBox3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
         jLayeredPane1.setLayout(jLayeredPane1Layout);
         jLayeredPane1Layout.setHorizontalGroup(
@@ -384,9 +426,11 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
                         .addGap(40, 40, 40))
                     .addGroup(jLayeredPane1Layout.createSequentialGroup()
                         .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jCheckBox2)
+                            .addComponent(jCheckBox3)
                             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(20, 20, 20))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jLayeredPane1Layout.setVerticalGroup(
             jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -395,8 +439,12 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
                 .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jLayeredPane1Layout.createSequentialGroup()
+                        .addComponent(jCheckBox2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jCheckBox3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(20, 20, 20)
                         .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -409,12 +457,14 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
         jLayeredPane1.setLayer(jPanel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(addVehicleButton, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(cancelButton, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(jCheckBox2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(jCheckBox3, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLayeredPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 769, Short.MAX_VALUE)
+            .addComponent(jLayeredPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 759, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -450,6 +500,13 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
 
         if (isCreateMode) {
             if (validateVehicleInfo()) {
+                
+                if(jCheckBox2.isSelected()){
+                    MainWindow.setCC(true);
+                }
+                if(jCheckBox3.isSelected()){
+                    MainWindow.setACC(true);
+                }
 
                 
                 newVehiclePanel.setSelections(jComboBox1.getSelectedIndex(),
@@ -510,9 +567,9 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
             jComboBox3.setSelectedIndex(0);
             return false;
         }else {
-            
+            /*
             if(jComboBox1.getSelectedIndex() == 1){
-                MainWindow.setCC(true);
+                //MainWindow.setCC(true);
             }
             if(jComboBox1.getSelectedIndex() == 2){
                 MainWindow.setACC(true);
@@ -529,7 +586,7 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
             if(jComboBox3.getSelectedIndex() == 2){
                 MainWindow.setACC(true);
             }
-            
+            */
             return true;
         }
 
@@ -557,6 +614,7 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
     }
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        /*
         if(jComboBox1.getSelectedIndex() == 1 && MainWindow.getCC()){
             JOptionPane.showMessageDialog(null, "The Convoy Commander has already been assigned.", "Alert Message", JOptionPane.WARNING_MESSAGE);
             jComboBox1.setSelectedIndex(0);
@@ -565,11 +623,12 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "The Assitant Convoy Commander has already been assigned.", "Alert Message", JOptionPane.WARNING_MESSAGE);
             jComboBox1.setSelectedIndex(0);
         }
-        
+        */
         
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
+        /*        
         if(jComboBox3.getSelectedIndex() == 1 && MainWindow.getCC()){
             JOptionPane.showMessageDialog(null, "The Convoy Commander has already been assigned.", "Alert Message", JOptionPane.WARNING_MESSAGE);
             jComboBox3.setSelectedIndex(0);
@@ -578,6 +637,7 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "The Assitant Convoy Commander has already been assigned.", "Alert Message", JOptionPane.WARNING_MESSAGE);
             jComboBox3.setSelectedIndex(0);
         }
+        */
 
     }//GEN-LAST:event_jComboBox3ActionPerformed
 
@@ -621,6 +681,7 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
     }//GEN-LAST:event_imageLabelMousePressed
 
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+        /*
         if(jComboBox2.getSelectedIndex() == 1 && MainWindow.getCC()){
             JOptionPane.showMessageDialog(null, "The Convoy Commander has already been assigned.", "Alert Message", JOptionPane.WARNING_MESSAGE);
             jComboBox2.setSelectedIndex(0);
@@ -629,7 +690,24 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "The Assitant Convoy Commander has already been assigned.", "Alert Message", JOptionPane.WARNING_MESSAGE);
             jComboBox2.setSelectedIndex(0);
         }
+        */
     }//GEN-LAST:event_jComboBox2ActionPerformed
+
+    private void jCheckBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox3ActionPerformed
+        if(jCheckBox3.isSelected()){
+            jCheckBox2.setEnabled(false);
+        }else{
+           jCheckBox2.setEnabled(true); 
+        }
+    }//GEN-LAST:event_jCheckBox3ActionPerformed
+
+    private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
+        if(jCheckBox2.isSelected()){
+            jCheckBox3.setEnabled(false);
+        }else{
+           jCheckBox3.setEnabled(true); 
+        }
+    }//GEN-LAST:event_jCheckBox2ActionPerformed
 
     public void setEditVehicleCounter(int counter) {
         editVehicleCounter = counter;
@@ -664,15 +742,15 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
         vp.setDriverIcon(driverImageIcon);
 
         //These conditional statements set the CC label to the passenger
-        if (jComboBox1.getSelectedIndex() == 1) {
-            vp.setCCIcon(ccImageIcon, 1);
+        if (jComboBox1.getSelectedIndex() == 2) {
+            //vp.setCCIcon(ccImageIcon, 1);
         }
 
-        if (jComboBox2.getSelectedIndex() == 1) {
-            vp.setCCIcon(ccImageIcon, 2);
+        if (jComboBox2.getSelectedIndex() == 2) {
+            //vp.setCCIcon(ccImageIcon, 2);
         }
-        if (jComboBox3.getSelectedIndex() == 1) {
-            vp.setCCIcon(ccImageIcon, 3);
+        if (jComboBox3.getSelectedIndex() == 2) {
+            //vp.setCCIcon(ccImageIcon, 3);
         }
         /*
          //These Conditional statements remove the CC icons
@@ -692,15 +770,15 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
          */
 
         // These conditional statements are used if any of the combo box selects medic as their passenger type
-        if (jComboBox1.getSelectedIndex() == 3) {
+        if (jComboBox1.getSelectedIndex() == 1) {
             vp.setPassenger1Layout();
             vp.setMedicIcon(medicImageIcon, 1);
         }
-        if (jComboBox2.getSelectedIndex() == 3) {
+        if (jComboBox2.getSelectedIndex() == 1) {
             vp.setPassenger2Layout();
             vp.setMedicIcon(medicImageIcon, 2);
         }
-        if (jComboBox3.getSelectedIndex() == 3) {
+        if (jComboBox3.getSelectedIndex() == 1) {
             vp.setPassenger3Layout();
             vp.setMedicIcon(medicImageIcon, 3);
         }
@@ -768,13 +846,13 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
          */
         // These Conditional statements are used to add ACC icon
         if (jComboBox1.getSelectedIndex() == 2) {
-            vp.setACCIcon(accImageIcon, 1);
+            //vp.setACCIcon(accImageIcon, 1);
         }
         if (jComboBox2.getSelectedIndex() == 2) {
-            vp.setACCIcon(accImageIcon, 2);
+            //vp.setACCIcon(accImageIcon, 2);
         }
         if (jComboBox3.getSelectedIndex() == 2) {
-            vp.setACCIcon(accImageIcon, 3);
+            //vp.setACCIcon(accImageIcon, 3);
         }
 
     }
@@ -1084,6 +1162,8 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
     private javax.swing.JButton addVehicleButton;
     private javax.swing.JButton cancelButton;
     private javax.swing.JLabel imageLabel;
+    private javax.swing.JCheckBox jCheckBox2;
+    private javax.swing.JCheckBox jCheckBox3;
     protected javax.swing.JComboBox jComboBox1;
     protected javax.swing.JComboBox jComboBox2;
     protected javax.swing.JComboBox jComboBox3;
