@@ -396,7 +396,7 @@ public class GenerateHtml {
             
             
 
-            if (rightAdditionalText.equalsIgnoreCase("") || rightAdditionalText.contains("Additional Information Goes Here")) {
+            if (rightAdditionalText.equalsIgnoreCase("") || "AdditionalInformationGoesHere".equals(rightAdditionalText.replace("<html>", "").replace("<head>", "").replace("<body>", "").replace("</html>", "").replace("</head>", "").replace("</body>", "").replace("\n", "").replace(" ", ""))) {
                 rightAdditionalText = "";
             } else {
                 rightAdditionalText = "             <tr>\n"
@@ -496,7 +496,7 @@ public class GenerateHtml {
                                 + "            height: 33%;\n"
                                 + "        }\n"
                                 + "        .vehicle td{\n"
-                                + "            //height: 250px;\n"
+                                + "            height: 25px;\n"
                                 + "            text-align: center;\n"
                                 + "            //border: 1px solid black;\n"
                                 + "            vertical-align: bottom;\n"

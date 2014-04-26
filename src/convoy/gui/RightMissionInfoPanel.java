@@ -34,6 +34,8 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
         //doFreqs();
         PromptSupport.setPrompt("Convoy Commander", ccTextField);
         PromptSupport.setPrompt("Assistant Convoy Commander", accTextField);
+        
+        //PromptSupport.setPrompt("Additional Information Goes Here", metaphaseEditor2);
     }
 
     /**

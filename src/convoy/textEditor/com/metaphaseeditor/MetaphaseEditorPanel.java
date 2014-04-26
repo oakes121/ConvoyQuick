@@ -22,20 +22,22 @@
 
 package convoy.textEditor.com.metaphaseeditor;
 
+import com.swabunga.spell.engine.SpellDictionary;
+import com.swabunga.spell.engine.SpellDictionaryHashMap;
+import com.swabunga.spell.swing.JTextComponentSpellChecker;
 import convoy.textEditor.com.metaphaseeditor.action.AddAttributesAction;
 import convoy.textEditor.com.metaphaseeditor.action.DecreaseIndentAction;
 import convoy.textEditor.com.metaphaseeditor.action.FindReplaceAction;
 import convoy.textEditor.com.metaphaseeditor.action.FormatAction;
 import convoy.textEditor.com.metaphaseeditor.action.IncreaseIndentAction;
 import convoy.textEditor.com.metaphaseeditor.action.RemoveAttributesAction;
-import com.swabunga.spell.engine.SpellDictionary;
-import com.swabunga.spell.engine.SpellDictionaryHashMap;
-import com.swabunga.spell.swing.JTextComponentSpellChecker;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
 import java.io.BufferedReader;
@@ -63,6 +65,7 @@ import javax.swing.JEditorPane;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 import javax.swing.JTextArea;
@@ -86,6 +89,7 @@ import javax.swing.text.html.StyleSheet;
 import javax.swing.undo.CannotRedoException;
 import javax.swing.undo.CannotUndoException;
 import javax.swing.undo.UndoManager;
+import org.jdesktop.xswingx.PromptSupport;
 
 /**
  *
@@ -236,10 +240,20 @@ public class MetaphaseEditorPanel extends javax.swing.JPanel {
 
         createEditorKitActionTable();
         
+        
+        
         htmlTextArea = new JTextArea();
         htmlTextArea.setFont(new Font("Monospaced", Font.PLAIN, 12));
         
+        //PromptSupport.setPrompt("Additional Information Goes Here", htmlTextArea);
+        
         htmlTextPane.setContentType("text/html");
+        
+        setDocument("Addtional Information Goes Here");
+        
+        htmlTextArea.setForeground(Color.gray);
+        
+        addListeners();
 
         findReplaceAction = new FindReplaceAction("Find/Replace", htmlTextPane);
         /*
@@ -467,6 +481,7 @@ public class MetaphaseEditorPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         htmlDocument = new javax.swing.text.html.HTMLDocument();
+        jPopupMenu1 = new javax.swing.JPopupMenu();
         toolbarPanel = new javax.swing.JPanel();
         textEffectPanel = new javax.swing.JPanel();
         boldButton = new javax.swing.JButton();
@@ -733,6 +748,11 @@ public class MetaphaseEditorPanel extends javax.swing.JPanel {
                 htmlTextPaneMouseClicked(evt);
             }
         });
+        htmlTextPane.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                htmlTextPaneFocusGained(evt);
+            }
+        });
         htmlTextPane.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 htmlTextPaneKeyPressed(evt);
@@ -762,7 +782,7 @@ public class MetaphaseEditorPanel extends javax.swing.JPanel {
                 .addComponent(toolbarPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(mainScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -940,6 +960,12 @@ public class MetaphaseEditorPanel extends javax.swing.JPanel {
         new HTMLEditorKit.InsertHTMLTextAction("Insert Bulleted List", "<ul><li></li></ul>", Tag.BODY, Tag.UL).actionPerformed(evt);
     }//GEN-LAST:event_insertRemoveBulletedListButtonActionPerformed
 
+    private void htmlTextPaneFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_htmlTextPaneFocusGained
+        if("Additional Information Goes Here".equals(htmlTextPane.getText())){
+            htmlTextPane.setText("");
+        }
+    }//GEN-LAST:event_htmlTextPaneFocusGained
+
     private void setToolbarFocusActionListener(JComponent component) {
         Component[] vComponents = component.getComponents();
         for (int i=0; i<vComponents.length; i++) {
@@ -1031,6 +1057,39 @@ public class MetaphaseEditorPanel extends javax.swing.JPanel {
     public SpellCheckDictionaryVersion getDictionaryVersion() {
         return spellCheckDictionaryVersion;
     }
+    
+    private void addListeners() {
+        htmlTextPane.addFocusListener(new FocusListener() {
+
+            @Override
+            public void focusGained(FocusEvent fe) {
+                
+                //JOptionPane.showMessageDialog(null, "<head>\n\n\n</head>\n<body>\n Additional Information Goes Here\n</body>\n</html>");
+                
+                //JOptionPane.showMessageDialog(null, getDocument().replace("<html>", "").replace("<head>", "").replace("<body>", "").replace("</html>", "").replace("</head>", "").replace("</body>", "").replace("\n", ""));
+                
+                if("AdditionalInformationGoesHere".equals(getDocument().replace("<html>", "").replace("<head>", "").replace("<body>", "").replace("</html>", "").replace("</head>", "").replace("</body>", "").replace("\n", "").replace(" ", ""))){
+                    setDocument("");
+                } else {
+                }
+                
+            }
+
+            @Override
+            public void focusLost(FocusEvent fe) {
+                //JOptionPane.showMessageDialog(null, getDocument().replace("<html>", "").replace("<head>", "").replace("<body>", "").replace("</html>", "").replace("</head>", "").replace("</body>", "").replace("\n", "").replace(" ", ""));
+                
+                if ("<pstyle=\"margin-top:0\"></p>".equals(getDocument().replace("<html>", "").replace("<head>", "").replace("<body>", "").replace("</html>", "").replace("</head>", "").replace("</body>", "").replace("\n", "").replace(" ", ""))){
+                    
+                    setDocument("Additional Information Goes Here");
+                    htmlTextPane.setForeground(Color.gray);
+                }else {
+                    //JOptionPane.showMessageDialog(null, "You entered invalid data");
+                    //htmlTextPane.grabFocus();//make the textField in foucs again
+                }
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backgroundColorButton;
@@ -1047,6 +1106,7 @@ public class MetaphaseEditorPanel extends javax.swing.JPanel {
     private javax.swing.JButton insertRemoveBulletedListButton;
     private javax.swing.JButton insertRemoveNumberedListButton;
     private javax.swing.JButton italicButton;
+    private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JPanel justificationPanel;
     private javax.swing.JButton leftJustifyButton;
     private javax.swing.JPanel listPanel;
@@ -1296,5 +1356,6 @@ public class MetaphaseEditorPanel extends javax.swing.JPanel {
                 }
             }
         }
-    }
+    }    
+    
 }

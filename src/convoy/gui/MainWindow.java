@@ -88,7 +88,7 @@ public final class MainWindow extends javax.swing.JFrame {
             this.leftMissionInfoPanel1.setIcon(icon);
             
             //this.leftMissionInfoPanel1.setAdditionalText("Additional Text Goes Here");
-            this.rightMissionInfoPanel2.setAddtionalText("Additional Text Goes Here");
+            this.rightMissionInfoPanel2.setAddtionalText("Additional Information Goes Here");
             
             this.rightArrow.setVisible(false);
             this.leftArrow.setVisible(false);
