@@ -56,10 +56,11 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="leftAdditionalTextPanel1" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="imageLabel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -79,7 +80,6 @@
                           </Group>
                       </Group>
                   </Group>
-                  <Component id="leftAdditionalTextPanel2" alignment="0" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -92,27 +92,26 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <Component id="classificationDropBox" min="-2" pref="50" max="-2" attributes="0"/>
-                      <EmptySpace pref="64" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="missionNumberLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="missionNumberTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="64" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="fromTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="fromLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="66" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="toLabel" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
-                          <Component id="toTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="toTextField" min="-2" max="-2" attributes="0"/>
+                          <Component id="toLabel" min="-2" pref="20" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Component id="imageLabel" min="-2" pref="190" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
-              <Component id="leftAdditionalTextPanel2" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+              <Component id="leftAdditionalTextPanel1" min="-2" pref="74" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -197,7 +196,7 @@
         <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="imageLabelMousePressed"/>
       </Events>
     </Component>
-    <Component class="convoy.gui.LeftAdditionalTextPanel" name="leftAdditionalTextPanel2">
+    <Component class="convoy.gui.LeftAdditionalTextPanel" name="leftAdditionalTextPanel1">
     </Component>
   </SubComponents>
 </Form>

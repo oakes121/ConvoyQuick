@@ -1,6 +1,7 @@
 package convoy.pdf;
 
 import convoy.gui.VehicleGrid;
+import convoy.objects.Frequency;
 import convoy.objects.Radio;
 import java.awt.Color;
 import java.io.*;
@@ -146,6 +147,7 @@ public class GenerateHtml {
      * @param toLUTime
      * @param fromSPTime
      * @param toSPTime
+     * @param freq
      * @param freqs
      * @param rightAdditionalText
      * @param additionalText
@@ -168,7 +170,7 @@ public class GenerateHtml {
             String toLUTime,
             String fromSPTime,
             String toSPTime,
-            ArrayList<Radio> freqs,
+            ArrayList<Frequency> freq,
             String rightAdditionalText,
             String additionalText,
             VehicleGrid vehicleGrid) {
@@ -256,23 +258,21 @@ public class GenerateHtml {
             }
 
             for (int i = 0; i < vehicleGrid.getVehiclePanelArray().size(); i++) {
-                
-                
+
                 String passenger1 = "<td>" + vehicleGrid.getVehiclePanelArray().get(i).getPassenger1() + "</td>\n";
                 String passenger2 = "<td>" + vehicleGrid.getVehiclePanelArray().get(i).getPassenger2() + "</td>\n";
                 String passenger3 = "<td>" + vehicleGrid.getVehiclePanelArray().get(i).getPassenger3() + "</td>\n";
-                
-                if(vehicleGrid.getVehiclePanelArray().get(i).getPassengerLabel1().getForeground() == Color.RED){
+
+                if (vehicleGrid.getVehiclePanelArray().get(i).getPassengerLabel1().getForeground() == Color.RED) {
                     passenger1 = "<td class=\"red\"><imc src=\"" + getProgramPath() + "\\conx\\images\\icons\\medic.png" + "\" />" + vehicleGrid.getVehiclePanelArray().get(i).getPassenger1() + "</td>\n";
                 }
-                if(vehicleGrid.getVehiclePanelArray().get(i).getPassengerLabel2().getForeground() == Color.RED){
+                if (vehicleGrid.getVehiclePanelArray().get(i).getPassengerLabel2().getForeground() == Color.RED) {
                     passenger2 = "<td class=\"red\"><imc src=\"" + getProgramPath() + "\\conx\\images\\icons\\medic.png" + "\" />" + vehicleGrid.getVehiclePanelArray().get(i).getPassenger1() + "</td>\n";
                 }
-                if(vehicleGrid.getVehiclePanelArray().get(i).getPassengerLabel3().getForeground() == Color.RED){
+                if (vehicleGrid.getVehiclePanelArray().get(i).getPassengerLabel3().getForeground() == Color.RED) {
                     passenger3 = "<td class=\"red\"><imc src=\"" + getProgramPath() + "\\conx\\images\\icons\\medic.png" + "\" />" + vehicleGrid.getVehiclePanelArray().get(i).getPassenger1() + "</td>\n";
                 }
-                
-                
+
                 vehicles[i] = "<table>\n"
                         + "                                            <tr>\n"
                         + "                                                <td class=\"driver\"><imc src=\"" + getProgramPath() + "\\conx\\images\\icons\\steeringWheel.png" + "\" />" + vehicleGrid.getVehiclePanelArray().get(i).getDriverName() + "</td>\n"
@@ -312,7 +312,7 @@ public class GenerateHtml {
                         + "                                        </table>";
             }
 
-            String radio = "                           <tr>"
+            String radio = "                     <tr>"
                     + "                             <td colspan=\"6\">"
                     + "                                <table id=\"freqTable\">\n"
                     + "                                    <!-- frequency table //-->\n"
@@ -324,103 +324,77 @@ public class GenerateHtml {
                     + "                             </td>"
                     + "                         </tr>";
 
-            if (!freqs.get(0).getName().equalsIgnoreCase("")) {
-                radio = "                           <tr>"
-                        + "                             <td colspan=\"6\">"
-                        + "                                <table id=\"freqTable\">\n"
-                        + "                                    <!-- frequency table //-->\n"
-                        + "                                    <tr>\n"
-                        + "                                        <td class=\"label\" colspan=\"6\">Frequencys -</td>\n"
-                        + "                                    </tr>\n"
-                        + "                                    <tr>\n"
-                        + "                                        <td class=\"label\">CH1:</td>\n"
-                        + "                                        <td class=\"data\" id=\"ch1Name\">" + freqs.get(0).getName() + "</td>\n"
-                        + "                                        <td class=\"data\" id=\"ch1Freq\">" + freqs.get(0).getFreq() + "</td>\n"
-                        + "                                    </tr>\n"
-                        + "                                </table>\n"
-                        + "                                <!-- end frequency table //-->\n"
-                        + "                             </td>"
-                        + "                         </tr>";
+            String[] freqs = new String[6];
+            
+            String xFreq = "";
+            
+            for(int i=0; i<6; i++){
+                freqs [i] = "";
             }
-            if (!freqs.get(1).getName().equalsIgnoreCase("")) {
-                radio = "                           <tr>\n"
-                        + "                            <!-- frequency row //-->\n"
-                        + "                            <td colspan=\"6\">\n"
-                        + "                                 <table id=\"freqTable\">\n"
-                        + "                                    <!-- frequency table //-->\n"
-                        + "                                    <tr>\n"
-                        + "                                        <td class=\"label\" colspan=\"6\">Frequencys -</td>\n"
-                        + "                                    </tr>\n"
-                        + "                                    <tr>\n"
-                        + "                                        <td class=\"label\">CH1:</td>\n"
-                        + "                                        <td class=\"data\" id=\"ch1Name\">" + freqs.get(0).getName() + "</td>\n"
-                        + "                                        <td class=\"data\" id=\"ch1Freq\">" + freqs.get(0).getFreq() + "</td>\n"
-                        + "                                        <td class=\"label\">CH2:</td>\n"
-                        + "                                        <td class=\"data\" id=\"ch2Name\">" + freqs.get(1).getName() + "</td>\n"
-                        + "                                        <td class=\"data\" id=\"ch2Freq\">" + freqs.get(1).getFreq() + "</td>\n"
-                        + "                                    </tr>\n"
-                        + "                                </table>\n"
-                        + "                                <!-- end frequency table //-->\n"
-                        + "                            </td>\n"
-                        + "                        </tr>\n";
+            
+            if(freq.size() > 0){
+                freqs[0] = " <td class=\"label\">CH" + 1 + ":</td>\n"
+                        + " <td class=\"data\" id=\"ch1Name\">" + freq.get(0).getFreqName() + "</td>\n"
+                        + " <td class=\"data\" id=\"ch1Freq\">" + freq.get(0).getFreq() + "</td>\n";
             }
+            if(freq.size() > 1){    
+                freqs[1] = " <td class=\"label\">CH" + 2 + ":</td>\n"
+                        + " <td class=\"data\" id=\"ch2Name\">" + freq.get(1).getFreqName() + "</td>\n"
+                        + " <td class=\"data\" id=\"ch2Freq\">" + freq.get(1).getFreq() + "</td></tr>\n";
+            }
+            if(freq.size() > 2){    
+                freqs[2] = "<tr><td class=\"label\">CH" + 3 + ":</td>\n"
+                        + " <td class=\"data\" id=\"ch3Name\">" + freq.get(2).getFreqName() + "</td>\n"
+                        + " <td class=\"data\" id=\"ch3Freq\">" + freq.get(2).getFreq() + "</td>\n";
+            }
+            if(freq.size() > 3){            
+                freqs[3] = " <td class=\"label\">CH" + 4 + ":</td>\n"
+                        + " <td class=\"data\" id=\"ch4Name\">" + freq.get(3).getFreqName() + "</td>\n"
+                        + " <td class=\"data\" id=\"ch4Freq\">" + freq.get(3).getFreq() + "</td></tr>\n";
+            }
+             if(freq.size() > 4){   
+                freqs[0] = "<tr><td class=\"label\">CH" + 5 + ":</td>\n"
+                        + " <td class=\"data\" id=\"ch5Name\">" + freq.get(4).getFreqName() + "</td>\n"
+                        + " <td class=\"data\" id=\"ch5Freq\">" + freq.get(4).getFreq() + "</td>\n";
+             }
+              if(freq.size() > 5){  
+                freqs[0] = " <td class=\"label\">CH" + 6 + ":</td>\n"
+                        + " <td class=\"data\" id=\"ch6Name\">" + freq.get(5).getFreqName() + "</td>\n"
+                        + " <td class=\"data\" id=\"ch6Freq\">" + freq.get(5).getFreq() + "</td>\n";
+              }
+                
+                
 
-            if (!freqs.get(2).getName().equalsIgnoreCase("")) {
-                radio = "                        <tr>\n"
-                        + "                            <!-- frequency row //-->\n"
-                        + "                            <td colspan=\"6\">\n" + "                    <table id=\"freqTable\">\n"
-                        + "                                    <!-- frequency table //-->\n"
-                        + "                                    <tr>\n"
-                        + "                                        <td class=\"label\" colspan=\"6\">Frequencys -</td>\n"
-                        + "                                    </tr>\n"
-                        + "                                    <tr>\n"
-                        + "                                        <td class=\"label\">CH1:</td>\n"
-                        + "                                        <td class=\"data\" id=\"ch1Name\">" + freqs.get(0).getName() + "</td>\n"
-                        + "                                        <td class=\"data\" id=\"ch1Freq\">" + freqs.get(0).getFreq() + "</td>\n"
-                        + "                                        <td class=\"label\">CH2:</td>\n"
-                        + "                                        <td class=\"data\" id=\"ch2Name\">" + freqs.get(1).getName() + "</td>\n"
-                        + "                                        <td class=\"data\" id=\"ch2Freq\">" + freqs.get(1).getFreq() + "</td>\n"
-                        + "                                    </tr>\n"
-                        + "                                     <tr>\n"
-                        + "                                        <td class=\"label\">CH3:</td>\n"
-                        + "                                        <td class=\"data\" id=\"ch3Name\">" + freqs.get(2).getName() + "</td>\n"
-                        + "                                        <td class=\"data\" id=\"ch3Freq\">" + freqs.get(2).getFreq() + "</td>\n"
-                        + "                                    </tr>\n"
-                        + "                                </table>\n"
-                        + "                                <!-- end frequency table //-->\n" + "                            </td>\n"
-                        + "                        </tr>\n";
-            }
+            if (freq.size() > 0) {
+                
+                radio = "";
+                
+                for (int f = 0; f < freq.size(); f++) {
 
-            if (!freqs.get(3).getName().equalsIgnoreCase("")) {
-                radio
-                        = "                        <tr>\n"
-                        + "                            <!-- frequency row //-->\n"
-                        + "                            <td colspan=\"6\">\n" + "                    <table id=\"freqTable\">\n"
-                        + "                    <table id=\"freqTable\">\n"
-                        + "                                    <!-- frequency table //-->\n"
-                        + "                                    <tr>\n"
-                        + "                                        <td class=\"label\" colspan=\"6\">Frequencys -</td>\n"
-                        + "                                    </tr>\n"
-                        + "                                    <tr>\n"
-                        + "                                        <td class=\"label\">CH1:</td>\n"
-                        + "                                        <td class=\"data\" id=\"ch1Name\">" + freqs.get(0).getName() + "</td>\n"
-                        + "                                        <td class=\"data\" id=\"ch1Freq\">" + freqs.get(0).getFreq() + "</td>\n"
-                        + "                                        <td class=\"label\">CH2:</td>\n"
-                        + "                                        <td class=\"data\" id=\"ch2Name\">" + freqs.get(1).getName() + "</td>\n"
-                        + "                                        <td class=\"data\" id=\"ch2Freq\">" + freqs.get(1).getFreq() + "</td>\n"
-                        + "                                    </tr>\n"
-                        + "                                     <tr>\n"
-                        + "                                        <td class=\"label\">CH3:</td>\n"
-                        + "                                        <td class=\"data\" id=\"ch3Name\">" + freqs.get(2).getName() + "</td>\n"
-                        + "                                        <td class=\"data\" id=\"ch3Freq\">" + freqs.get(2).getFreq() + "</td>\n"
-                        + "                                        <td class=\"label\">CH4:</td>\n"
-                        + "                                        <td class=\"data\" id=\"ch4Name\">" + freqs.get(3).getName() + "</td>\n"
-                        + "                                        <td class=\"data\" id=\"ch4Freq\">" + freqs.get(3).getFreq() + "</td>\n"
-                        + "                                    </tr>\n"
-                        + "                                </table>\n"
-                        + "                                <!-- end frequency table //-->\n" + "                            </td>\n"
-                        + "                        </tr>\n";
+                    xFreq += freqs[f];
+                    
+                }
+
+                radio += "                           <tr>"
+                                + "                             <td colspan=\"2\">"
+                                + "                                <table id=\"freqTable\">\n"
+                                + "                                    <!-- frequency table //-->\n"
+                                + "                                    <tr>\n"
+                                + "                                        <td class=\"label\" colspan=\"6\">Frequencys -</td>\n"
+                                + "                                    </tr>\n"
+                                + "                                    <tr>\n"
+                                + xFreq
+                                + "                                    </tr>\n"
+                                + "                                </table>\n"
+                                + "                                <!-- end frequency table //-->\n"
+                                + "                             </td>"
+                                + "                         </tr>";
+
+                
+
             }
+            
+            
 
             if (rightAdditionalText.equalsIgnoreCase("") || rightAdditionalText.contains("Additional Information Goes Here")) {
                 rightAdditionalText = "";
@@ -568,7 +542,7 @@ public class GenerateHtml {
                                 + "             height: 56px"
                                 + "         }"
                                 + "          .vehicle{\n"
-                                + "            height: 200px;\n"
+                                + "            //height: 200px;\n"
                                 + "            border: 1px solid black;\n width: 100px;\n"
                                 + "             max-width: 100px;"
                                 + "             width: 100px;"

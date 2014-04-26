@@ -425,7 +425,9 @@ public final class MainWindow extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAutoRequestFocus(false);
         setBackground(new java.awt.Color(255, 255, 255));
-        setMinimumSize(new java.awt.Dimension(1350, 800));
+        setMaximumSize(new java.awt.Dimension(1350, 2147483647));
+        setMinimumSize(new java.awt.Dimension(1200, 800));
+        setPreferredSize(new java.awt.Dimension(1200, 906));
         getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.LINE_AXIS));
 
         picturePanel2.setBackground(new java.awt.Color(194, 178, 128));
@@ -436,8 +438,6 @@ public final class MainWindow extends javax.swing.JFrame {
 
         leftMissionInfoPanel1.setPreferredSize(new java.awt.Dimension(650, 400));
         missionNumberPanel.add(leftMissionInfoPanel1);
-
-        rightMissionInfoPanel2.setPreferredSize(new java.awt.Dimension(790, 400));
         missionNumberPanel.add(rightMissionInfoPanel2);
 
         additionalInfoPanel.setBackground(new java.awt.Color(255, 255, 255));
@@ -767,7 +767,27 @@ public final class MainWindow extends javax.swing.JFrame {
                                 
                             for (VehicleGrid vehicleGrid : vehicleGrids) {
                                 GenerateHtml gh = new GenerateHtml();
-                                gh.generateHtml(this.leftMissionInfoPanel1.getImagePath(), this.leftMissionInfoPanel1.getClassification(), this.leftMissionInfoPanel1.getMissionNumber(), this.leftMissionInfoPanel1.getFrom(), this.leftMissionInfoPanel1.getTo(), this.leftMissionInfoPanel1.getAdditionalText(), this.rightMissionInfoPanel2.getCC(), this.rightMissionInfoPanel2.getACC(), this.rightMissionInfoPanel2.getStagingArea(), this.rightMissionInfoPanel2.getFromLU(), this.rightMissionInfoPanel2.getToLU(), this.rightMissionInfoPanel2.getFromSP(), this.rightMissionInfoPanel2.getToSP(), this.rightMissionInfoPanel2.getStartLinkUpTime(), this.rightMissionInfoPanel2.getStartSPTime(), this.rightMissionInfoPanel2.getRallyLinkUpTime(), this.rightMissionInfoPanel2.getRallySPTime(), this.rightMissionInfoPanel2.getFreqs(), this.rightMissionInfoPanel2.getAdditionalText(), this.additionalTextPanel1.getAdditionalText(), vehicleGrid);
+                                gh.generateHtml(this.leftMissionInfoPanel1.getImagePath(),
+                                        this.leftMissionInfoPanel1.getClassification(),
+                                        this.leftMissionInfoPanel1.getMissionNumber(),
+                                        this.leftMissionInfoPanel1.getFrom(),
+                                        this.leftMissionInfoPanel1.getTo(),
+                                        this.leftMissionInfoPanel1.getAdditionalText(),
+                                        this.rightMissionInfoPanel2.getCC(),
+                                        this.rightMissionInfoPanel2.getACC(),
+                                        this.rightMissionInfoPanel2.getStagingArea(),
+                                        this.rightMissionInfoPanel2.getFromLU(),
+                                        this.rightMissionInfoPanel2.getToLU(),
+                                        this.rightMissionInfoPanel2.getFromSP(),
+                                        this.rightMissionInfoPanel2.getToSP(),
+                                        this.rightMissionInfoPanel2.getStartLinkUpTime(),
+                                        this.rightMissionInfoPanel2.getStartSPTime(),
+                                        this.rightMissionInfoPanel2.getRallyLinkUpTime(),
+                                        this.rightMissionInfoPanel2.getRallySPTime(),
+                                        this.rightMissionInfoPanel2.getFreqGrid().getFreqs(),
+                                        this.rightMissionInfoPanel2.getAdditionalText(),
+                                        this.additionalTextPanel1.getAdditionalText(),
+                                        vehicleGrid);
                                 Create cp = new Create(chooser.getSelectedFile().getPath());
                                 cp.createPDF();
                             }
@@ -895,7 +915,7 @@ public final class MainWindow extends javax.swing.JFrame {
                             this.rightMissionInfoPanel2.getStartSPTime(),
                             this.rightMissionInfoPanel2.getRallyLinkUpTime(),
                             this.rightMissionInfoPanel2.getRallySPTime(),
-                            this.rightMissionInfoPanel2.getFreqs(),
+                            this.rightMissionInfoPanel2.getFreqGrid().getFreqs(),
                             this.rightMissionInfoPanel2.getAdditionalText(),
                             this.additionalTextPanel1.getAdditionalText(),
                             this.vehicleGrids.get(0)
@@ -1119,7 +1139,7 @@ public final class MainWindow extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel leftArrow;
-    private convoy.gui.LeftMissionInfoPanel leftMissionInfoPanel1;
+    protected convoy.gui.LeftMissionInfoPanel leftMissionInfoPanel1;
     private javax.swing.JMenuItem loadMenuItem;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JPanel missionNumberPanel;
@@ -1127,7 +1147,7 @@ public final class MainWindow extends javax.swing.JFrame {
     private convoy.gui.PicturePanel picturePanel2;
     private javax.swing.JMenuItem printMenuItem;
     private javax.swing.JLabel rightArrow;
-    private convoy.gui.RightMissionInfoPanel rightMissionInfoPanel2;
+    protected convoy.gui.RightMissionInfoPanel rightMissionInfoPanel2;
     private javax.swing.JMenuItem saveMenuItem;
     private javax.swing.JMenuItem templatesMenuItem;
     protected convoy.gui.VehicleGrid vehicleGrid1;

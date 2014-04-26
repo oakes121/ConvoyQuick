@@ -106,7 +106,7 @@ public class SplashScreen extends JWindow {
         }
         topSecretFont = topSecretFont.deriveFont(Font.BOLD, 96f);
         
-        PicturePanel picturePanel1 = new PicturePanel("/convoy/resources/images/SplashScreen.gif");
+        PicturePanel picturePanel1 = new PicturePanel("/convoy/resources/images/Splash Screen 01 NO LOADING BAR.png");
 
         picturePanel1.setBackground(new java.awt.Color(194, 178, 128));
 

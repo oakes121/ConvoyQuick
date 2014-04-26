@@ -58,7 +58,7 @@ public class Create {
         String input = "convoy.htm";  // need to be charset utf-8
         String output = "src\\pdf\\" + input.replace(".htm", "");
         htmlToPdfFile(new File(root, input),
-                new File(output + ".pdf"));
+                new File(output));
         //System.out.println("Done");
     }
 

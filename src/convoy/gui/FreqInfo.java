@@ -71,8 +71,8 @@ public class FreqInfo extends javax.swing.JPanel {
      * getFreq() returns Integer.parseInt(channelOneFreq.getText())
      * @return Integer.parseInt(channelOneFreq.getText())
      */
-    public int getFreq() {
-        return Integer.parseInt(channelOneFreq.getText());
+    public float getFreq() {
+        return Float.parseFloat(channelOneFreq.getText());
     }
     
     /**
@@ -108,7 +108,7 @@ public class FreqInfo extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(176, 20));
 
         removeFreq1.setBackground(new java.awt.Color(255, 255, 255));
-        removeFreq1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Oakes\\Documents\\NetBeansProjects\\ConvoyQuick\\build\\conx\\images\\icons\\deleteIcon.png")); // NOI18N
+        removeFreq1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/convoy/resources/images/deleteIcon.png"))); // NOI18N
         removeFreq1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 removeFreq1MousePressed(evt);
@@ -141,13 +141,13 @@ public class FreqInfo extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(channelOneName, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(channelOneFreq, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(channelOneLabel))
-                    .addComponent(removeFreq1, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(removeFreq1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

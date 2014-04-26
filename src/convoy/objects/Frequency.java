@@ -10,14 +10,14 @@ import java.io.Serializable;
 public class Frequency implements Serializable {
 
     private String freqName;
-    private int freq;
+    private float freq;
 
     /**
      * 
      * @param freqName name of the frequency
      * @param freq number of frequency
      */
-    public Frequency(String freqName, int freq) {
+    public Frequency(String freqName, float freq) {
         this.freqName = freqName;
         this.freq = freq;
     }
@@ -34,7 +34,7 @@ public class Frequency implements Serializable {
      * setFreq(int freq) will set this.freq to freq
      * @param freqName what this.freq will be set to
      */
-    public void setFreq(int freq) {
+    public void setFreq(float freq) {
         this.freq = freq;
     }
 
@@ -50,7 +50,7 @@ public class Frequency implements Serializable {
      * getFreqName() will return freq
      * @return freq
      */
-    public int getFreq() {
+    public float getFreq() {
         return freq;
     }
 
