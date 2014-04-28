@@ -392,8 +392,11 @@ public class VehicleGrid extends javax.swing.JPanel implements ActionListener, K
                         avpp.setCreateMode(false);
                         avpp.setEditMode(true);                           
                         avpp.getInfoFromVehiclePanel(vehiclePanelArray.get(i));
+                        
+                        
                                             
                         
+                        /*
                         if((vehiclePanelArray.get(i).getSelection1() == 1) ||
                                 (vehiclePanelArray.get(i).getSelection2() == 1) || 
                                 (vehiclePanelArray.get(i).getSelection3() == 1))
@@ -403,13 +406,21 @@ public class VehicleGrid extends javax.swing.JPanel implements ActionListener, K
                         if((vehiclePanelArray.get(i).getSelection1() == 2) ||
                                 (vehiclePanelArray.get(i).getSelection2() == 2) || 
                                 (vehiclePanelArray.get(i).getSelection3() == 2))
-                            MainWindow.setACC(false);
+                            MainWindow.setACC(false);*/
                         
                         avpp.setSelection1(vehiclePanelArray.get(i).getSelection1());
                         avpp.setSelection2(vehiclePanelArray.get(i).getSelection2());
                         avpp.setSelection3(vehiclePanelArray.get(i).getSelection3());
                         
                         avpp.setVisible(true);
+                        
+                        if(avpp.ccCheckBox.isSelected()){
+                            avpp.accCheckBox.setEnabled(false);
+                        }
+                        
+                        if(avpp.accCheckBox.isSelected()){
+                            avpp.ccCheckBox.setEnabled(false);
+                        }
                       
                     }
                                              

@@ -671,6 +671,7 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox2ActionPerformed
 
     private void accCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_accCheckBoxActionPerformed
+        JOptionPane.showMessageDialog(this, "22");
         if (isEditMode && !isCreateMode)
             newVehiclePanel = vehicleGridObj.getVehiclePanelArray().get(editVehicleCounter);
         
@@ -679,15 +680,17 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
             if (!MainWindow.getACC()){
                 newVehiclePanel.setCCIORACCIcon(accImageIcon);
                 newVehiclePanel.setIsACC(true);
+                MainWindow.setACC(true);
             }else
-                JOptionPane.showMessageDialog(null, "The Assistant Convoy Commander has already been assigned.333", "Alert Message", JOptionPane.WARNING_MESSAGE);
-        }else {
-            if (accCheckBox.isSelected() || vehicleGridObj.getVehiclePanelArray().get(editVehicleCounter).getIsACC()) {
-                vehicleGridObj.getVehiclePanelArray().get(editVehicleCounter).removeCCORACCIcon();
-                vehicleGridObj.getVehiclePanelArray().get(editVehicleCounter).setIsACC(false);
+                JOptionPane.showMessageDialog(null, "The Assistant Convoy Commander has already been assigned", "Alert Message", JOptionPane.WARNING_MESSAGE);
+        }else { 
+            if ((accCheckBox.isSelected() || newVehiclePanel.getIsCC()) && isEditMode) {
+                newVehiclePanel.removeCCORACCIcon();
+                newVehiclePanel.setIsACC(false);
                 MainWindow.setACC(false);
             }
                 
+            JOptionPane.showMessageDialog(this, "111");
            ccCheckBox.setEnabled(true); 
         }
     }//GEN-LAST:event_accCheckBoxActionPerformed
@@ -702,12 +705,13 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
             if (!MainWindow.getCC()){
                 newVehiclePanel.setCCIORACCIcon(ccImageIcon);
                 newVehiclePanel.setIsCC(true);
+                MainWindow.setCC(true);
             }else
-                JOptionPane.showMessageDialog(null, "The Convoy Commander has already been assigned.333", "Alert Message", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null, "The Convoy Commander has already been assigned", "Alert Message", JOptionPane.WARNING_MESSAGE);
         }else{
-            if (ccCheckBox.isSelected() || vehicleGridObj.getVehiclePanelArray().get(editVehicleCounter).getIsCC()) {
-                vehicleGridObj.getVehiclePanelArray().get(editVehicleCounter).removeCCORACCIcon();
-                vehicleGridObj.getVehiclePanelArray().get(editVehicleCounter).setIsCC(false);
+            if ((ccCheckBox.isSelected() || newVehiclePanel.getIsCC()) && isEditMode) {
+                newVehiclePanel.removeCCORACCIcon();
+                newVehiclePanel.setIsCC(false);
                 MainWindow.setCC(false);
                 //JOptionPane.showMessageDialog(this, MainWindow.getCC() ? "isCC2" : "isn'tCC2");
             }
@@ -1175,10 +1179,10 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JCheckBox accCheckBox;
+    protected javax.swing.JCheckBox accCheckBox;
     private javax.swing.JButton addVehicleButton;
     private javax.swing.JButton cancelButton;
-    private javax.swing.JCheckBox ccCheckBox;
+    protected javax.swing.JCheckBox ccCheckBox;
     private javax.swing.JLabel imageLabel;
     protected javax.swing.JComboBox jComboBox1;
     protected javax.swing.JComboBox jComboBox2;

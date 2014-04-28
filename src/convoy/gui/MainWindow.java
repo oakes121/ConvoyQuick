@@ -48,7 +48,6 @@ public final class MainWindow extends javax.swing.JFrame {
     }
 
     public static void setCC(boolean xCC) {
-        //JOptionPane.showMessageDialog(null, xCC ? "xCC is true" : "xCC is false");
         cc = xCC;
     }
 
