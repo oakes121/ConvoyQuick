@@ -48,6 +48,7 @@ public final class MainWindow extends javax.swing.JFrame {
     }
 
     public static void setCC(boolean xCC) {
+        //JOptionPane.showMessageDialog(null, xCC ? "xCC is true" : "xCC is false");
         cc = xCC;
     }
 
@@ -64,7 +65,6 @@ public final class MainWindow extends javax.swing.JFrame {
     public MainWindow() {
         try {
             initComponents();
-            
             this.setLocationRelativeTo(null);
             this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // added
             this.setTitle("Convoy Quick - Convoy Documentation Creator To Help Save Lives");

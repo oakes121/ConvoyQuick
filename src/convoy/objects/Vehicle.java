@@ -16,6 +16,8 @@ public class Vehicle implements Serializable {
     private Personnel vehicleCommander;
     private Icon vehicleIcon;
     private ArrayList<Personnel> passengers;
+     private boolean isCC = false;
+    private boolean isACC = false;
     private int addVehiclePopUpJComboBox1Selection = 0;
     private int addVehiclePopUpJComboBox2Selection = 0;
     private int addVehiclePopUpJComboBox3Selection = 0;
@@ -288,6 +290,22 @@ public class Vehicle implements Serializable {
     
     public int getSelection3() {
         return addVehiclePopUpJComboBox3Selection;
+    }
+    
+    public void setIsCC(boolean truth) {
+        isCC = truth;
+    }
+    
+    public void setIsACC(boolean truth) {
+        isACC = truth;
+    }
+    
+    public boolean getIsCC() {
+        return isCC;
+    }
+    
+    public boolean getIsACC() {
+        return isACC;
     }
     
     /**

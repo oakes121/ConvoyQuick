@@ -178,33 +178,31 @@ public class Load {
         } catch (Exception exc) {
             exc.printStackTrace(); // If there was an error, print the info.
         }
-
     }
     
     private void setIcons(int selection, int passengerNum, VehiclePanel vp) {
         
-        if (selection == 1) {
-            vp.setCCIcon(ccImageIcon, passengerNum);
-            
-            if (!MainWindow.getCC())
-                MainWindow.setCC(true);
+        if (vp.getIsCC()){
+            if (!MainWindow.getCC()){
+                vp.setCCIORACCIcon(ccImageIcon);
+                MainWindow.setCC(true);                
+            }
         }
         
-        if (selection == 2) {
-            vp.setACCIcon(accImageIcon, passengerNum);
-            
-            if (!MainWindow.getACC())
+        if (vp.getIsACC()){     
+            if (!MainWindow.getACC()) {
+                vp.setCCIORACCIcon(accImageIcon);
                 MainWindow.setACC(true);
+            }
         }
         
-        if (selection == 3) {
+        if (selection == 1){
             vp.setMedicIcon(medicImageIcon, passengerNum);
         }
         
-        if (selection == 4) {            
+        if (selection == 2){            
             vp.removeIconImage(passengerNum);
         }
-        
     }
 
     public static String getProgramPath() throws UnsupportedEncodingException {

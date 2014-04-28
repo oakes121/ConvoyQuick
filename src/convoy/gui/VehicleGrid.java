@@ -388,10 +388,11 @@ public class VehicleGrid extends javax.swing.JPanel implements ActionListener, K
                         
                         AddVehiclePopUp avpp = new AddVehiclePopUp();
                         avpp.setObject(this);
+                        avpp.setEditVehicleCounter(i); 
                         avpp.setCreateMode(false);
-                        avpp.setEditMode(true);
+                        avpp.setEditMode(true);                           
                         avpp.getInfoFromVehiclePanel(vehiclePanelArray.get(i));
-                        avpp.setEditVehicleCounter(i);                        
+                                            
                         
                         if((vehiclePanelArray.get(i).getSelection1() == 1) ||
                                 (vehiclePanelArray.get(i).getSelection2() == 1) || 

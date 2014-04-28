@@ -8,6 +8,8 @@ package convoy.gui;
 import java.awt.Cursor;
 import java.awt.FileDialog;
 import java.awt.Image;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -57,14 +59,14 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
         newVehiclePanel = new VehiclePanel();
         initDocumentListeners();
         if(MainWindow.getCC()){
-            jCheckBox2.setVisible(false);
+            ccCheckBox.setVisible(false);
         }else{
-          jCheckBox2.setVisible(true);  
+          ccCheckBox.setVisible(true);  
         }
         if(MainWindow.getACC()){
-            jCheckBox3.setVisible(false);
+            accCheckBox.setVisible(false);
         }else{
-          jCheckBox3.setVisible(true);  
+          accCheckBox.setVisible(true);  
         }
         
         this.setLocationRelativeTo(null); //centers frame
@@ -74,32 +76,7 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
     }
-    
-    public AddVehiclePopUp(VehiclePanel newVP, VehicleGrid vg, int selection1, int selection2, int selection3, int vehicleCount){
-        initComponents();
-        isCreateMode = false;
-        isEditMode = true;
-        newVehiclePanel = newVP;
-        editVehicleCounter = vehicleCount;
-        setObject(vg);
-        getInfoFromVehiclePanel(newVehiclePanel);      
-        setSelection1(selection1);
-        setSelection2(selection2);
-        setSelection3(selection3);
-        
-        if(MainWindow.getCC()){
-            jCheckBox2.setVisible(false);
-        }else{
-          jCheckBox2.setVisible(true);  
-        }
-        if(MainWindow.getACC()){
-            jCheckBox3.setVisible(false);
-        }else{
-          jCheckBox3.setVisible(true);  
-        }
-       
-        addVehicleButton.doClick();
-    }
+
 
     /**
      * initDocumentListeners()limits the all text field input to 20 characters
@@ -152,8 +129,8 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         addVehicleButton = new javax.swing.JButton();
         cancelButton = new javax.swing.JButton();
-        jCheckBox2 = new javax.swing.JCheckBox();
-        jCheckBox3 = new javax.swing.JCheckBox();
+        ccCheckBox = new javax.swing.JCheckBox();
+        accCheckBox = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(102, 102, 0));
@@ -391,21 +368,21 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
             }
         });
 
-        jCheckBox2.setBackground(new java.awt.Color(194, 178, 128));
-        jCheckBox2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jCheckBox2.setText(" Convoy Commander's Vehicle");
-        jCheckBox2.addActionListener(new java.awt.event.ActionListener() {
+        ccCheckBox.setBackground(new java.awt.Color(194, 178, 128));
+        ccCheckBox.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        ccCheckBox.setText(" Convoy Commander's Vehicle");
+        ccCheckBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox2ActionPerformed(evt);
+                ccCheckBoxActionPerformed(evt);
             }
         });
 
-        jCheckBox3.setBackground(new java.awt.Color(194, 178, 128));
-        jCheckBox3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jCheckBox3.setText("Assistant Convoy Commander's Vehicle");
-        jCheckBox3.addActionListener(new java.awt.event.ActionListener() {
+        accCheckBox.setBackground(new java.awt.Color(194, 178, 128));
+        accCheckBox.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        accCheckBox.setText("Assistant Convoy Commander's Vehicle");
+        accCheckBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox3ActionPerformed(evt);
+                accCheckBoxActionPerformed(evt);
             }
         });
 
@@ -426,8 +403,8 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
                         .addGap(40, 40, 40))
                     .addGroup(jLayeredPane1Layout.createSequentialGroup()
                         .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jCheckBox2)
-                            .addComponent(jCheckBox3)
+                            .addComponent(ccCheckBox)
+                            .addComponent(accCheckBox)
                             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
@@ -439,9 +416,9 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
                 .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                        .addComponent(jCheckBox2)
+                        .addComponent(ccCheckBox)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jCheckBox3)
+                        .addComponent(accCheckBox)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -457,8 +434,8 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
         jLayeredPane1.setLayer(jPanel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(addVehicleButton, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(cancelButton, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(jCheckBox2, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(jCheckBox3, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(ccCheckBox, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(accCheckBox, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -501,10 +478,10 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
         if (isCreateMode) {
             if (validateVehicleInfo()) {
                 
-                if(jCheckBox2.isSelected()){
+                if(ccCheckBox.isSelected()){
                     MainWindow.setCC(true);
                 }
-                if(jCheckBox3.isSelected()){
+                if(accCheckBox.isSelected()){
                     MainWindow.setACC(true);
                 }
 
@@ -693,21 +670,50 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
         */
     }//GEN-LAST:event_jComboBox2ActionPerformed
 
-    private void jCheckBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox3ActionPerformed
-        if(jCheckBox3.isSelected()){
-            jCheckBox2.setEnabled(false);
-        }else{
-           jCheckBox2.setEnabled(true); 
+    private void accCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_accCheckBoxActionPerformed
+        if (isEditMode && !isCreateMode)
+            newVehiclePanel = vehicleGridObj.getVehiclePanelArray().get(editVehicleCounter);
+        
+        if(accCheckBox.isSelected()){
+            ccCheckBox.setEnabled(false);
+            if (!MainWindow.getACC()){
+                newVehiclePanel.setCCIORACCIcon(accImageIcon);
+                newVehiclePanel.setIsACC(true);
+            }else
+                JOptionPane.showMessageDialog(null, "The Assistant Convoy Commander has already been assigned.333", "Alert Message", JOptionPane.WARNING_MESSAGE);
+        }else {
+            if (accCheckBox.isSelected() || vehicleGridObj.getVehiclePanelArray().get(editVehicleCounter).getIsACC()) {
+                vehicleGridObj.getVehiclePanelArray().get(editVehicleCounter).removeCCORACCIcon();
+                vehicleGridObj.getVehiclePanelArray().get(editVehicleCounter).setIsACC(false);
+                MainWindow.setACC(false);
+            }
+                
+           ccCheckBox.setEnabled(true); 
         }
-    }//GEN-LAST:event_jCheckBox3ActionPerformed
+    }//GEN-LAST:event_accCheckBoxActionPerformed
 
-    private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
-        if(jCheckBox2.isSelected()){
-            jCheckBox3.setEnabled(false);
+    private void ccCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ccCheckBoxActionPerformed
+        if (isEditMode && !isCreateMode)
+            newVehiclePanel = vehicleGridObj.getVehiclePanelArray().get(editVehicleCounter);
+        
+        if(ccCheckBox.isSelected()){
+            accCheckBox.setEnabled(false);
+             //JOptionPane.showMessageDialog(this, MainWindow.getCC() ? "isCC1" : "isn'tCC1");
+            if (!MainWindow.getCC()){
+                newVehiclePanel.setCCIORACCIcon(ccImageIcon);
+                newVehiclePanel.setIsCC(true);
+            }else
+                JOptionPane.showMessageDialog(null, "The Convoy Commander has already been assigned.333", "Alert Message", JOptionPane.WARNING_MESSAGE);
         }else{
-           jCheckBox3.setEnabled(true); 
+            if (ccCheckBox.isSelected() || vehicleGridObj.getVehiclePanelArray().get(editVehicleCounter).getIsCC()) {
+                vehicleGridObj.getVehiclePanelArray().get(editVehicleCounter).removeCCORACCIcon();
+                vehicleGridObj.getVehiclePanelArray().get(editVehicleCounter).setIsCC(false);
+                MainWindow.setCC(false);
+                //JOptionPane.showMessageDialog(this, MainWindow.getCC() ? "isCC2" : "isn'tCC2");
+            }
+           accCheckBox.setEnabled(true); 
         }
-    }//GEN-LAST:event_jCheckBox2ActionPerformed
+    }//GEN-LAST:event_ccCheckBoxActionPerformed
 
     public void setEditVehicleCounter(int counter) {
         editVehicleCounter = counter;
@@ -889,7 +895,7 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
             //URL url = getClass().getClassLoader().getResource("./conx/images/icons/cc.png");
             Image iconImage = ImageIO.read(new File(getProgramPath() + "\\conx\\images\\icons\\ccIcon.png"));
             // Image iconImage = ImageIO.read(url);
-            ccImageIcon = iconImage.getScaledInstance(17, 17, java.awt.Image.SCALE_SMOOTH);
+            ccImageIcon = iconImage.getScaledInstance(50, 50, java.awt.Image.SCALE_SMOOTH);
 
         } catch (IOException ex) {
             Logger.getLogger(AddVehiclePopUp.class.getName()).log(Level.SEVERE, null, ex);
@@ -902,7 +908,7 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
             //URL url = getClass().getClassLoader().getResource("./conx/images/icons/acc.png");
             Image iconImage = ImageIO.read(new File(getProgramPath() + "\\conx\\images\\icons\\accIcon.png"));
             //Image iconImage = ImageIO.read(url);
-            accImageIcon = iconImage.getScaledInstance(17, 17, java.awt.Image.SCALE_SMOOTH);
+            accImageIcon = iconImage.getScaledInstance(50, 50, java.awt.Image.SCALE_SMOOTH);
 
         } catch (IOException ex) {
             Logger.getLogger(AddVehiclePopUp.class.getName()).log(Level.SEVERE, null, ex);
@@ -936,9 +942,21 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
             setACCIcon();
         
         return accImageIcon;
-    }
+    } 
     
     public void getInfoFromVehiclePanel(VehiclePanel vp) {
+        if (vp.getIsCC()) {
+            ccCheckBox.setVisible(true);
+            ccCheckBox.setSelected(true);
+        }
+        
+        
+        if (vp.getIsACC()){
+            accCheckBox.setVisible(true);
+            accCheckBox.setSelected(true);
+        }
+        
+        
         personnel1Field.setText(vp.getDriverName());
         personnel2Field.setText(vp.getPassenger1());
         personnel3Field.setText(vp.getPassenger2());
@@ -980,17 +998,17 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
     
     public void setSelection1(int selec) {
         jComboBox1.setSelectedIndex(selec);
-        validationAfterSet(selec);        
+        //validationAfterSet(selec);        
     }
     
     public void setSelection2(int selec) {
         jComboBox2.setSelectedIndex(selec);
-        validationAfterSet(selec);           
+        //validationAfterSet(selec);           
     }
     
     public void setSelection3(int selec) {
         jComboBox3.setSelectedIndex(selec);
-        validationAfterSet(selec);        
+        //validationAfterSet(selec);        
     }
     
     public void addVehicleButtonDoClick() {
@@ -1009,15 +1027,13 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
         return jComboBox3.getSelectedIndex();
     }
     
-    public void setCreateMode(boolean truth){
+    public void setCreateMode(boolean truth) {
         isCreateMode = truth;
     }
     
     public void setEditMode(boolean truth) {
         isEditMode = truth;
     } 
-    
-    
 
     public void modifyPopUp() {
 
@@ -1159,11 +1175,11 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBox accCheckBox;
     private javax.swing.JButton addVehicleButton;
     private javax.swing.JButton cancelButton;
+    private javax.swing.JCheckBox ccCheckBox;
     private javax.swing.JLabel imageLabel;
-    private javax.swing.JCheckBox jCheckBox2;
-    private javax.swing.JCheckBox jCheckBox3;
     protected javax.swing.JComboBox jComboBox1;
     protected javax.swing.JComboBox jComboBox2;
     protected javax.swing.JComboBox jComboBox3;

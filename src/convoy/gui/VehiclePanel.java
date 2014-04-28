@@ -23,6 +23,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 
 /**
@@ -37,6 +38,8 @@ public class VehiclePanel extends javax.swing.JPanel {
     private String iconPath;
     private Image finalImage;
     private Image img;
+    private boolean isCC = false;
+    private boolean isACC = false;
     private int addVehiclePopUpJComboBox1Selection = 0;
     private int addVehiclePopUpJComboBox2Selection = 0;
     private int addVehiclePopUpJComboBox3Selection = 0;
@@ -158,29 +161,24 @@ public class VehiclePanel extends javax.swing.JPanel {
       }   
     }
     
+    public void removeCCORACCIcon() {
+        //ccOrACC.setIcon(null);
+        ccOrACC.setVisible(false);
+    }
+    
     // This method sets the CC Image if passenger type is Convoy Commander
-    public void setCCIcon (Image img, int x){
+    public void setCCIORACCIcon (Image img){
         
       try{  
           /*
             URL url = getClass().getResource("convoy/resources/icons/steeringWheel.png");
             img = ImageIO.read(url);
           */
-            int labelNumber = x;
-            Image ccImage = img.getScaledInstance(20, 20, java.awt.Image.SCALE_SMOOTH);
+         
+            Image ccImage = img.getScaledInstance(28, 28, java.awt.Image.SCALE_SMOOTH);
             ImageIcon icon = new ImageIcon(ccImage);
-            if (labelNumber == 1){
-            iconLabel1.setVisible(true);
-            iconLabel1.setIcon(icon);
-            }
-            if (labelNumber == 2){
-                iconLabel2.setVisible(true);
-                iconLabel2.setIcon(icon);
-            }
-             if (labelNumber == 3){
-                iconLabel3.setVisible(true);
-                iconLabel3.setIcon(icon);
-            }
+            this.ccOrACC.setIcon(icon);
+            this.ccOrACC.setVisible(true);            
             revalidate();
             repaint();
       }
@@ -191,7 +189,7 @@ public class VehiclePanel extends javax.swing.JPanel {
     // This method sets the ACC Image if passenger type is Convoy Commander
     public void setACCIcon (Image img, int x){
         
-      try{  
+      try {  
           /*
             URL url = getClass().getResource("convoy/resources/icons/steeringWheel.png");
             img = ImageIO.read(url);
@@ -203,6 +201,7 @@ public class VehiclePanel extends javax.swing.JPanel {
             iconLabel1.setVisible(true);
             iconLabel1.setIcon(icon);
             }
+            
             if (labelNumber == 2){
                 iconLabel2.setVisible(true);
                 iconLabel2.setIcon(icon);
@@ -214,8 +213,7 @@ public class VehiclePanel extends javax.swing.JPanel {
             revalidate();
             repaint();
       }
-      catch (Exception ex){ 
-      }  
+      catch (Exception ex) {}  
     }
     
     //This method removes the CC icon from the label
@@ -370,6 +368,8 @@ public class VehiclePanel extends javax.swing.JPanel {
         v.addPassengers(passenger1Label.getText());
         v.addPassengers(passenger2Label.getText());
         v.addPassengers(passenger3Label.getText());
+        v.setIsACC(isACC);
+        v.setIsCC(isCC);
     }
     
     /**
@@ -379,6 +379,8 @@ public class VehiclePanel extends javax.swing.JPanel {
      *  various JLabels associated with this class
      */
     public void batchVehicleSet(Vehicle v) {
+        isACC = v.getIsACC();
+        isCC = v.getIsCC();
         bumperNumberLabel.setText(v.getBumperNumber());
         callSignLabel.setText(v.getCallSign());
         driverLabel.setText(v.getDriverName());
@@ -459,6 +461,23 @@ public class VehiclePanel extends javax.swing.JPanel {
     public int getSelection3() {
         return addVehiclePopUpJComboBox3Selection;
     }
+    
+    public void setIsCC(boolean truth) {
+        isCC = truth;
+    }
+    
+    public void setIsACC(boolean truth) {
+        isACC = truth;
+    }
+    
+    public boolean getIsCC() {
+        return isCC;
+    }
+    
+    public boolean getIsACC() {
+        return isACC;
+    }
+   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -487,6 +506,7 @@ public class VehiclePanel extends javax.swing.JPanel {
         additionalInfoField1 = new javax.swing.JLabel();
         additionalInfoField = new javax.swing.JLabel();
         deleteButton = new javax.swing.JButton();
+        ccOrACC = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -662,7 +682,7 @@ public class VehiclePanel extends javax.swing.JPanel {
         deleteButton.setBackground(new java.awt.Color(204, 0, 0));
         deleteButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         deleteButton.setForeground(new java.awt.Color(255, 255, 255));
-        deleteButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\Oakes\\Documents\\NetBeansProjects\\ConvoyQuick\\build\\conx\\images\\icons\\deleteIcon.png")); // NOI18N
+        deleteButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/convoy/resources/images/deleteIcon.png"))); // NOI18N
         deleteButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         deleteButton.setPreferredSize(new java.awt.Dimension(22, 22));
         deleteButton.addActionListener(new java.awt.event.ActionListener() {
@@ -678,16 +698,21 @@ public class VehiclePanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(deleteButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(componentPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(ccOrACC, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(29, 29, 29)
+                        .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ccOrACC, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(componentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -701,6 +726,7 @@ public class VehiclePanel extends javax.swing.JPanel {
     private javax.swing.JLabel additionalInfoField1;
     private javax.swing.JLabel bumperNumberLabel;
     private javax.swing.JLabel callSignLabel;
+    private javax.swing.JLabel ccOrACC;
     private javax.swing.JPanel componentPanel;
     private javax.swing.JButton deleteButton;
     private javax.swing.JLabel driverLabel;
