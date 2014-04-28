@@ -42,7 +42,6 @@ public class AboutWindow extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
 
         setTitle("Convoy Quick - About");
-        setAlwaysOnTop(true);
 
         jPanel1.setBackground(new java.awt.Color(194, 178, 128));
 
