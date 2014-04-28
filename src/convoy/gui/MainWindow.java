@@ -674,8 +674,12 @@ public final class MainWindow extends javax.swing.JFrame {
      * @param evt click help -> about menu item
      */
     private void aboutMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutMenuItemActionPerformed
-        Object[] stuff = {new ImageIcon(getClass().getResource("/convoy/resources/images/logo.png")), "About Content Goes Here"};
-        JOptionPane.showMessageDialog(null, stuff, "About", JOptionPane.INFORMATION_MESSAGE, null);
+        AboutWindow g = new AboutWindow();
+       URL iconURL = getClass().getResource("/convoy/resources/images/humveeIcon.png");
+       ImageIcon icon = new ImageIcon(iconURL);
+       g.setIconImage(icon.getImage());
+        g.setLocationRelativeTo( null );
+        g.setVisible(true);
     }//GEN-LAST:event_aboutMenuItemActionPerformed
 
     /**
