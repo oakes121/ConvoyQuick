@@ -671,7 +671,6 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox2ActionPerformed
 
     private void accCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_accCheckBoxActionPerformed
-        JOptionPane.showMessageDialog(this, "22");
         if (isEditMode && !isCreateMode)
             newVehiclePanel = vehicleGridObj.getVehiclePanelArray().get(editVehicleCounter);
         
@@ -689,8 +688,7 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
                 newVehiclePanel.setIsACC(false);
                 MainWindow.setACC(false);
             }
-                
-            JOptionPane.showMessageDialog(this, "111");
+            
            ccCheckBox.setEnabled(true); 
         }
     }//GEN-LAST:event_accCheckBoxActionPerformed
