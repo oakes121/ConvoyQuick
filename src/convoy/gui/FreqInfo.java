@@ -24,7 +24,7 @@ public class FreqInfo extends javax.swing.JPanel {
         this.removeFreq1.setToolTipText("Click here to delete frequency.");
         freqInfoCount++;
         
-        String channelOneLabelText = channelOneLabel.getText().substring(0,2) + "" + freqInfoCount + ":";
+        String channelOneLabelText = channelOneLabel.getText().substring(0,2);
         channelOneLabel.setText(channelOneLabelText);        
     }
     
