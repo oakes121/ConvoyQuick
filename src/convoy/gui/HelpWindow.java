@@ -45,7 +45,6 @@ public class HelpWindow extends javax.swing.JFrame {
         jToggleButton9 = new javax.swing.JToggleButton();
 
         setTitle("Convoy Quick - Help");
-        setAlwaysOnTop(true);
         setBackground(new java.awt.Color(194, 178, 128));
         setMinimumSize(new java.awt.Dimension(816, 547));
         setResizable(false);
