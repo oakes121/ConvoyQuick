@@ -474,16 +474,16 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
         stagingAreaLabel.setText("Staging Area: ");
 
         fromLinkUpLabel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        fromLinkUpLabel.setText("Start Point Linkup Time:");
+        fromLinkUpLabel.setText("Departure Linkup Time:");
 
         fromSPLabel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        fromSPLabel.setText("Start Point SP Time:");
+        fromSPLabel.setText("Departure SP Time:");
 
         toLinkUpLabel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        toLinkUpLabel.setText("Rally Point Linkup Time:");
+        toLinkUpLabel.setText("Destination Linkup Time:");
 
         toSPLabel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        toSPLabel.setText("Rally Point SP Time:");
+        toSPLabel.setText("Destination SP Time:");
 
         startPointLinkUpTimeComoboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Local", "Zulu" }));
 
@@ -518,10 +518,10 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(stagingAreaTextField))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(fromLinkUpLabel)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(startPointLinkup, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(toLinkUpLabel)

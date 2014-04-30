@@ -150,7 +150,8 @@ public final class MainWindow extends javax.swing.JFrame {
             String leftAdditionalText,
             String rightAdditionalText,
             String additionalText,
-            String unitPatch) {
+            String unitPatch, 
+            String vehPass) {
         try {
             initComponents();
             
@@ -195,6 +196,7 @@ public final class MainWindow extends javax.swing.JFrame {
             this.rightMissionInfoPanel2.setStartSPTimZone(startSPTimeZone);
             this.rightMissionInfoPanel2.setRallyLinkUpTimeZone(rallyLinkUpTimeZone);
             this.rightMissionInfoPanel2.setRallSPTimeZone(rallySPTimeZone);
+            this.leftMissionInfoPanel1.getVehPassTextField().setText(vehPass);
             
             //Image img = new ImageIcon(unitPatch).getImage().getScaledInstance(202, 168, java.awt.Image.SCALE_SMOOTH);
             
@@ -734,7 +736,8 @@ public final class MainWindow extends javax.swing.JFrame {
                     this.rightMissionInfoPanel2.getAdditionalText(),
                     this.additionalTextPanel1.getAdditionalText(),
                     this.leftMissionInfoPanel1.getImagePath(),
-                    this.rightMissionInfoPanel2.getFreqGrid().getFreqs()
+                    this.rightMissionInfoPanel2.getFreqGrid().getFreqs(), 
+                    this.leftMissionInfoPanel1.getVehPassTextField().getText()
             );
             try {
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -979,7 +982,8 @@ public final class MainWindow extends javax.swing.JFrame {
                 this.rightMissionInfoPanel2.getAdditionalText(),
                 this.additionalTextPanel1.getAdditionalText(),
                 this.leftMissionInfoPanel1.getImagePath(),
-                this.rightMissionInfoPanel2.getFreqGrid().getFreqs()
+                this.rightMissionInfoPanel2.getFreqGrid().getFreqs(),
+                this.leftMissionInfoPanel1.getVehPassTextField().getText()
         );
         
         

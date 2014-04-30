@@ -40,6 +40,7 @@ public class Mission implements Serializable {
     private String additionalText;
     private String unitPatch;
     private ArrayList<Frequency> freqs;
+    private String vehPass;
 
     /**
      * constructor Mission() initializes all class variables
@@ -108,7 +109,8 @@ public class Mission implements Serializable {
             String left,
             String right,
             String text,
-            String unitPatch, ArrayList<Frequency> newFreqs) {
+            String unitPatch, ArrayList<Frequency> newFreqs,
+            String vehPass) {
 
         freqs = new ArrayList<>(newFreqs);
         this.missionNumber = missionNumber;
@@ -139,6 +141,7 @@ public class Mission implements Serializable {
         this.fromSPTimeZone = fromSPTimeZone;
         this.toLinkUpTimeZone = toLinkUpTimeZone;
         this.toSPTimeZone = toSPTimeZone;
+        this.vehPass = vehPass;
     }
 
     /**
@@ -212,13 +215,14 @@ public class Mission implements Serializable {
             String leftAdditionalText,
             String rightAdditionalText,
             String additionalText,
-            String unitPatch, ArrayList<Frequency> newFreqs) {
+            String unitPatch, ArrayList<Frequency> newFreqs,
+            String vehPass) {
 
         // if uniqueInstance is null, instantiate it to new Mission()
         uniqueInstance = new Mission(missionNumber, missionStagingArea, leftTo, leftFrom,
                 cc, acc, fromLinkUpDate, fromSPDate, toLinkUpDate, toSPDate, fromLinkUpTime, fromSPTime, toLinkUpTime, toSPTime, fromLinkUpTimeZone,
                 fromSPTimeZone, toLinkUpTimeZone, toSPTimeZone, classification, leftAdditionalText, rightAdditionalText, additionalText, unitPatch,
-                newFreqs);
+                newFreqs, vehPass);
 
         return uniqueInstance;
     }
@@ -241,6 +245,14 @@ public class Mission implements Serializable {
      */
     public ArrayList<Frequency> getFreqs() {
         return freqs;
+    }
+
+    public String getVehPass() {
+        return vehPass;
+    }
+
+    public void setVehPass(String vehPass) {
+        this.vehPass = vehPass;
     }
 
     /**
