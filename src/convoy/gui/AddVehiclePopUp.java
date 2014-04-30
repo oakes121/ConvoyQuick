@@ -791,15 +791,15 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
             vp.setMedicIcon(medicImageIcon, 3);
         }
 
-        if (jComboBox1.getSelectedIndex() == 4) {
+        if (jComboBox1.getSelectedIndex() == 2) {
             vp.setPassenger1LayoutToBlack();
             vp.removeIconImage(1);
         }
-        if (jComboBox2.getSelectedIndex() == 4) {
+        if (jComboBox2.getSelectedIndex() == 2) {
             vp.setPassenger2LayoutToBlack();
             vp.removeIconImage(2);
         }
-        if (jComboBox3.getSelectedIndex() == 4) {
+        if (jComboBox3.getSelectedIndex() == 2) {
             vp.setPassenger3LayoutToBlack();
             vp.removeIconImage(3);
         }
