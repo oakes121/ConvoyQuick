@@ -683,7 +683,7 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
             }else
                 JOptionPane.showMessageDialog(null, "The Assistant Convoy Commander has already been assigned", "Alert Message", JOptionPane.WARNING_MESSAGE);
         }else { 
-            if ((accCheckBox.isSelected() || newVehiclePanel.getIsACC()) && isEditMode) {
+            if ((accCheckBox.isSelected() || newVehiclePanel.getIsACC())) {
                 newVehiclePanel.removeCCORACCIcon();
                 newVehiclePanel.setIsACC(false);
                 MainWindow.setACC(false);
@@ -707,7 +707,7 @@ public class AddVehiclePopUp extends javax.swing.JFrame {
             }else
                 JOptionPane.showMessageDialog(null, "The Convoy Commander has already been assigned", "Alert Message", JOptionPane.WARNING_MESSAGE);
         }else{
-            if ((ccCheckBox.isSelected() || newVehiclePanel.getIsCC()) && isEditMode) {
+            if ((ccCheckBox.isSelected() || newVehiclePanel.getIsCC())) {
                 newVehiclePanel.removeCCORACCIcon();
                 newVehiclePanel.setIsCC(false);
                 MainWindow.setCC(false);
