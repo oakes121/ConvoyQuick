@@ -84,7 +84,7 @@ public class AboutWindow extends javax.swing.JFrame {
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel9.setText("Sgt. Dennis Thompson");
+        jLabel9.setText("SGT. Dennis Thompson");
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/convoy/resources/images/Maryland.png"))); // NOI18N
 
