@@ -509,7 +509,7 @@ public class GenerateHtml {
                                 + "            //table-layout: fixed;\n"
                                 + "        }\n"
                                 + "        .additionalText {\n"
-                                + "            height: 100px;\n"
+                                + "            height: 50px;\n"
                                 + "        }\n"
                                 + "        #unitPatch img {\n"
                                 + "            width: 202px;\n"
