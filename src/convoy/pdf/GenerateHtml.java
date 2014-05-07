@@ -173,7 +173,8 @@ public class GenerateHtml {
             ArrayList<Frequency> freq,
             String rightAdditionalText,
             String additionalText,
-            VehicleGrid vehicleGrid) {
+            VehicleGrid vehicleGrid,
+            String vehPass) {
 
         try {
 
@@ -566,20 +567,25 @@ public class GenerateHtml {
                                 + "                            <td colspan=\"3\" id=\"classification\">" + xClassification + "</td>\n"
                                 + "                        </tr>\n"
                                 + "                        <tr>\n"
-                                + "                            <td class=\"picCell\" colspan=\"1\" rowspan=\"4\" id=\"unitPatch\"><img src=\"" + "file:\\" + watermark + "\" alt=\"unitPatch\"/></td>\n"
+                                + "                            <td class=\"picCell\" colspan=\"1\" rowspan=\"5\" id=\"unitPatch\"><img src=\"" + "file:\\" + watermark + "\" alt=\"unitPatch\"/></td>\n"
                                 + "                        </tr>\n"
                                 + "                        <tr>\n"
                                 + "                            <td class=\"leftLabel\">Mission #</td>\n"
                                 + "                            <td class=\"leftData\" id=\"misisonNumber\">" + missionNumber + "</td>\n"
                                 + "                        </tr>\n"
                                 + "                        <tr>\n"
-                                + "                            <td class=\"leftLabel\">Start Point:</td>\n"
+                                + "                            <td class=\"leftLabel\">Departure:</td>\n"
                                 + "                            <td class=\"leftData\" id=\"leftFrom\">" + leftFrom + "</td>\n"
                                 + "                        </tr>\n"
                                 + "                        <tr>\n"
-                                + "                            <td class=\"leftLabel\">Rally Point:</td>\n"
+                                + "                            <td class=\"leftLabel\">Destination:</td>\n"
                                 + "                            <td class=\"leftData\" id=\"leftTo\">" + leftTo + "</td>\n"
                                 + "                        </tr>\n"
+                                + "                        <tr>\n"
+                                + "                            <td class=\"leftLabel\">Veh/Pass:</td>\n"
+                                + "                            <td class=\"leftData\" id=\"leftTo\">" + vehPass + "</td>\n"
+                                + "                        </tr>\n"
+                                
                                 + leftAdditionalText
                                 + "                    </table>\n"
                                 + "                    <!-- end left mission info table //-->\n"

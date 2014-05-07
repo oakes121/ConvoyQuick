@@ -57,30 +57,34 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="imageLabel" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="classificationDropBox" pref="574" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="vehPassLabel" alignment="0" max="32767" attributes="0"/>
-                          <Component id="destinationLabel" alignment="0" max="32767" attributes="0"/>
-                          <Component id="departureLabel" alignment="1" max="32767" attributes="0"/>
-                          <Component id="missionNumberLabel" alignment="1" max="32767" attributes="0"/>
-                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="imageLabel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="fromTextField" max="32767" attributes="0"/>
-                          <Component id="missionNumberTextField" max="32767" attributes="0"/>
-                          <Component id="toTextField" alignment="0" max="32767" attributes="0"/>
-                          <Component id="vehPassTextField" alignment="1" max="32767" attributes="0"/>
+                          <Component id="classificationDropBox" pref="574" max="32767" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="vehPassLabel" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="destinationLabel" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="departureLabel" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="missionNumberLabel" alignment="1" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="fromTextField" max="32767" attributes="0"/>
+                                  <Component id="missionNumberTextField" max="32767" attributes="0"/>
+                                  <Component id="toTextField" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="vehPassTextField" alignment="1" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
                       </Group>
                   </Group>
+                  <Component id="leftAdditionalTextPanel1" alignment="0" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
-          <Component id="leftAdditionalTextPanel1" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -88,34 +92,34 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
+                  <Component id="imageLabel" min="-2" pref="190" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
                       <Component id="classificationDropBox" min="-2" pref="50" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="missionNumberLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="missionNumberTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="fromTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="departureLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="fromTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="toTextField" min="-2" max="-2" attributes="0"/>
-                          <Component id="destinationLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="destinationLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="toTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="vehPassLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="vehPassTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <Component id="imageLabel" min="-2" pref="190" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="vehPassLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="vehPassTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-              <Component id="leftAdditionalTextPanel1" min="-2" pref="62" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="leftAdditionalTextPanel1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

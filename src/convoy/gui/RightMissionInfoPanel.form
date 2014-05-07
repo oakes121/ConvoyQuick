@@ -163,9 +163,8 @@
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="freqGrid1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Component id="metaphaseEditor2" pref="158" max="32767" attributes="0"/>
-              <EmptySpace min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

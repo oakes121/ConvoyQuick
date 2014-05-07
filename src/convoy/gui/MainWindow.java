@@ -793,7 +793,8 @@ public final class MainWindow extends javax.swing.JFrame {
                                         this.rightMissionInfoPanel2.getFreqGrid().getFreqs(),
                                         this.rightMissionInfoPanel2.getAdditionalText(),
                                         this.additionalTextPanel1.getAdditionalText(),
-                                        vehicleGrid);
+                                        vehicleGrid, 
+                    this.leftMissionInfoPanel1.getVehPassTextField().getText());
                                 Create cp = new Create(chooser.getSelectedFile().getPath());
                                 cp.createPDF();
                             }
@@ -924,7 +925,8 @@ public final class MainWindow extends javax.swing.JFrame {
                             this.rightMissionInfoPanel2.getFreqGrid().getFreqs(),
                             this.rightMissionInfoPanel2.getAdditionalText(),
                             this.additionalTextPanel1.getAdditionalText(),
-                            this.vehicleGrids.get(0)
+                            this.vehicleGrids.get(0), 
+                    this.leftMissionInfoPanel1.getVehPassTextField().getText()
                     );
 
                     Create cp = new Create(chooser.getSelectedFile().getPath());

@@ -599,9 +599,8 @@ public class RightMissionInfoPanel extends javax.swing.JPanel {
                         .addComponent(timePicker5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(freqGrid1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(metaphaseEditor2, javax.swing.GroupLayout.PREFERRED_SIZE, 158, Short.MAX_VALUE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(metaphaseEditor2, javax.swing.GroupLayout.PREFERRED_SIZE, 158, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

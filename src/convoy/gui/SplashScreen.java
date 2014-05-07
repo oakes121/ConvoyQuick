@@ -110,7 +110,7 @@ public class SplashScreen extends JWindow {
 
         picturePanel1.setBackground(new java.awt.Color(194, 178, 128));
 
-        picturePanel1.setBorder(BorderFactory.createBevelBorder(10, Color.BLACK, Color.BLACK));
+        picturePanel1.setBorder(BorderFactory.createLineBorder(Color.BLACK, 5));
         
         this.add(picturePanel1);
 
@@ -123,8 +123,8 @@ public class SplashScreen extends JWindow {
         content.setBackground(Color.WHITE);
 
         // Set the window's bounds, centering the window
-        int width = 527;
-        int height = 410;
+        int width = 517;
+        int height = 370;
         Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
         int x = (screen.width - width) / 2;
         int y = (screen.height - height) / 2;
